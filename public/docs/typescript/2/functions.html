@@ -1,0 +1,250 @@
+<h1>More on Functions</h1>
+<p>지역 함수이건, 다른 모듈에서 불러온 함수이건, 어떤 클래스의 메서드이건, 함수는 어느 어플리케이션에서도 기초적인 구성 요소의 역할을 합니다. 함수는 값입니다. 그리고 다른 값처럼, TypeScript에서는 함수들이 호출될 수 있는 방법을 서술하는 방법이 많이 있습니다. 함수를 설명하는 타입들을 작성하는 방법들을 알아봅시다.</p> <h2 id="함수-타입-표현식" style="position:relative;">함수 타입 표현식</h2> <p>함수를 설명하는 가장 간단한 방법은 <em>함수 타입 표현식</em> 입니다. 이 타입은 화살표 함수와 문법적으로 유사합니다.</p> <pre data-language="ts">function greeter(fn: (a: string) =&gt; void) {
+  fn("Hello, World");
+}
+ 
+function printToConsole(s: string) {
+  console.log(s);
+}
+ 
+greeter(printToConsole);</pre> <p><code>(a: string) =&gt; void</code> 라는 문법은 “문자열 타입 <code>a</code>를 하나의 매개변수로 가지고 반환값이 없는 함수”를 의미합니다. 함수 선언처럼, 매개변수의 타입이 지정되지 않으면, 암묵적으로 <code>any</code>가 됩니다.</p> <blockquote> <p>매개변수 이름이 <strong>필수</strong> 라는것을 명심하십시오. 함수 타입 <code>(string) =&gt; void</code>는 ”<code>any</code> 타입을 가진 <code>string</code>이라는 이름의 매개변수를 가진 함수를 뜻합니다!</p> </blockquote> <p>물론 타입 별칭을 사용해서 함수의 타입에 이름을 붙일 수 있습니다.</p> <pre data-language="ts">type GreetFunction = (a: string) =&gt; void;
+function greeter(fn: GreetFunction) {
+  // ...
+}</pre> <h2 id="호출-시그니처" style="position:relative;">호출 시그니처</h2> <p>JavaScript에서, 함수들은 호출이 가능할 뿐만 아니라, 프로퍼티도 가질 수 있습니다. 하지만, 함수 타입 표현식 문법은 프로퍼티를 정의하는 것을 허락하지 않습니다. 만약 우리가 호출 가능하면서 프로퍼티를 가진 무언가를 설명하려고 하면, 객체 타입에 <em>호출 시그니처</em> 를 사용하여 표현할 수 있습니다.</p> <pre data-language="ts">type DescribableFunction = {
+  description: string;
+  (someArg: number): boolean;
+};
+function doSomething(fn: DescribableFunction) {
+  console.log(fn.description + " returned " + fn(6));
+}</pre> <p>이 문법은 함수 타입 표현식과 다릅니다. 매개변수 타입과 반환값의 타입 사이에 <code>=&gt;</code>가 아닌 <code>:</code>를 사용해야 합니다.</p> <h2 id="구성-시그니처" style="position:relative;">구성 시그니처</h2> <p>JavaScript 함수는 <code>new</code>연산자를 통해서도 호출 될 수 있습니다. TypeScript는 이런 것들이 주로 새로운 객체를 생성하는데 사용되기 때문에 <em>생성자</em> 로 간주합니다. 여러분은 호출 시그니처 앞에 <code>new</code> 키워드를 붙임으로서, <em>구성 시그니처</em>를 작성할 수 있습니다.</p> <pre data-language="ts">type SomeConstructor = {
+  new (s: string): SomeObject;
+};
+function fn(ctor: SomeConstructor) {
+  return new ctor("hello");
+}</pre> <p>JavaScript의 <code>Date</code> 객체와 같은 몇몇 객체는 <code>new</code>가 있든 없든 호출될 수 있습니다. 여러분은 호출 시그니처와 구성 시그니처를 임의로 같은 타입에서 결합시킬 수 있습니다.</p> <pre data-language="ts">interface CallOrConstruct {
+  new (s: string): Date;
+  (n?: number): number;
+}</pre> <h2 id="제네릭-함수" style="position:relative;">제네릭 함수</h2> <p>입력 값이 출력 값의 타입과 관련이 있거나, 두 입력값의 타입이 서로 관련이 있는 형태의 함수를 작성하는 것은 흔히 일어나는 일입니다. 잠시 배열의 첫 번째 원소를 반환하는 함수를 생각해 봅시다.</p> <pre data-language="ts">function firstElement(arr: any[]) {
+  return arr[0];
+}</pre> <p>함수는 제 역할을 하지만, 아쉽게도 반환 타입이 <code>any</code> 입니다. 함수가 배열 원소의 타입을 반환한다면 더 나을 것 같습니다.</p> <p>TypeScript에서, <em>제네릭</em> 문법이 두 값 사이의 상관관계를 표현하기 위해서 사용됩니다. 우리는 함수 시그니처에서 <em>타입 매개변수</em>를 선언함으로서 그런 표현을 할 수 있습니다.</p> <pre data-language="ts">function firstElement&lt;Type&gt;(arr: Type[]): Type | undefined {
+  return arr[0];
+}</pre> <p>타입 매개변수 <code>Type</code>을 이 함수에 선언하고, 필요한 두 곳에 사용함으로써 우리는 함수의 입력 값(배열)과 출력(반환 값) 사이에 연결고리를 만들었습니다. 이제 우리가 이 함수를 호출할 때, 더 명확한 타입을 얻을 수 있습니다.</p> <pre data-language="ts">// s는 "string" 타입
+const s = firstElement(["a", "b", "c"]);
+// n은 "number" 타입
+const n = firstElement([1, 2, 3]);
+// u는 "undefined" 타입
+const u = firstElement([]);</pre> <h3 id="추론inference" style="position:relative;">추론(Inference)</h3> <p>이 예제에서 우리는 <code>Type</code>을 특정하지 않았음에 주목하세요. 여기서 타입은 <em>추론되었습니다</em> 즉 TypeScript에 의해서 자동적으로 선택된 것입니다.</p> <p>우리는 여러 개의 타입 매개변수도 사용할 수 있습니다. 예를 들어서, <code>map</code>의 스탠드얼론 버전은 아래와 같을 것 입니다.</p> <pre data-language="ts">function map&lt;Input, Output&gt;(arr: Input[], func: (arg: Input) =&gt; Output): Output[] {
+  return arr.map(func);
+}
+ 
+// 매개변수 'n'의 타입은 'string' 입니다.
+// 'parsed'는 number[] 타입을 하고 있습니다.
+const parsed = map(["1", "2", "3"], (n) =&gt; parseInt(n));</pre> <p>이 예제에서 TypeScript는 <code>Input</code> 타입과(입력으로 주어진 <code>string</code> 배열로부터) <code>Output</code>타입을 함수 표현식의 반환 값(<code>number</code>)를 통해서 추론할 수 있는 점을 눈여겨보십시오.</p> <h3 id="타입-제한-조건" style="position:relative;">타입 제한 조건</h3> <p>우리는 <em>모든</em> 타입에 대해서 동작하는 제네릭 함수들을 작성하였습니다. 가끔, 우리는 두 값을 연관시키기 원하지만 특정한 값들의 부분집합에 한해서만 동작하기를 원할 때가 있습니다. 이러한 경우에 우리는 <em>타입 제한 조건</em>을 사용하여, 타입 매개변수가 받아들일 수 있는 타입들을 제한할 수 있습니다.</p> <p>두 값 중에 더 긴 것을 반환하는 함수를 작성해 봅시다. 이 작업을 위해, number인 <code>length</code> 프로퍼티가 필요합니다. <code>extends</code>절을 이용해서 타입 매개변수를 그 타입으로 <em>제한</em> 할 수 있습니다.</p> <pre data-language="ts">function longest&lt;Type extends { length: number }&gt;(a: Type, b: Type) {
+  if (a.length &gt;= b.length) {
+    return a;
+  } else {
+    return b;
+  }
+}
+ 
+// longerArray 의 타입은 'number[]' 입니다'
+const longerArray = longest([1, 2], [1, 2, 3]);
+// longerString 의 타입은 'alice' | 'bob' 입니다.
+const longerString = longest("alice", "bob");
+// 에러! Number에는 'length' 프로퍼티가 없습니다.
+const notOK = longest(10, 100);</pre> <p>이 예시에서는 몇 가지 흥미로운 점에 주목해야 합니다. 우리는 TypeScript가 <code>longest</code>의 반환 타입을 <em>추론</em> 하도록 허용했습니다. 반환 타입 추론은 제네릭 함수에서도 작동합니다.</p> <p>우리가 <code>Type</code>을 <code>{ length: number }</code>로 제한했기에, 우리는 <code>a</code>와 <code>b</code> 매개변수에 대해서 <code>.length</code> 프로퍼티에 접근할 수 있었습니다. 타입 제한이 없다면, 이러한 값들이 length 프로퍼티를 가지지 않는 다른 타입일 수 있기 때문에, 그 프로퍼티에 접근 할 수 없었을 것입니다.</p> <p><code>longerArray</code>와 <code>longerString</code>의 타입은 인수를 기반으로 추론되었습니다. 제네릭은 두 개 이상의 값을 같은 타입으로 연관 짓는 것이라는 사실을 기억해야 합니다!</p> <p>결국 우리가 원하는 대로 <code>longest(10,100)</code>은 <code>number</code>타입이 <code>.length</code> 프로퍼티를 가지고 있지 않았기 때문에 호출이 거부된 것을 볼 수 있습니다.</p> <h3 id="제한된-값으로-작업하기" style="position:relative;">제한된 값으로 작업하기</h3> <p>다음은 제네릭 타입 제약 조건을 사용할 때, 흔히 범할 수 있는 실수입니다.</p> <pre data-language="ts">function minimumLength&lt;Type extends { length: number }&gt;(
+  obj: Type,
+  minimum: number
+): Type {
+  if (obj.length &gt;= minimum) {
+    return obj;
+  } else {
+    return { length: minimum };
+  }
+}</pre> <p>이 함수는 문제가 없는 것처럼 보입니다. <code>Type</code>은 <code>{ length: number }</code>로 제한되어 있고, 함수는 <code>Type</code>이나 저 제약조건을 만족하는 값을 반환합니다. 문제는 이 함수가 제약사항을 만족하는 <em>어떤</em> 객체가 아닌, 입력된 <em>어떤</em> 객체를 반환한다는 점입니다. 만약 이 코드가 유효하다면, 여러분들은 확실히 동작하지 않을 아래의 코드를 작성할 수 있을 것입니다.</p> <pre data-language="ts">// 'arr' gets value { length: 6 }
+const arr = minimumLength([1, 2, 3], 6);
+// 여기서 배열은 'slice' 메서드를 가지고 있지만
+// 반환된 객체는 그렇지 않기에 에러가 발생합니다!
+console.log(arr.slice(0));</pre> <h3 id="타입-인수를-명시하기" style="position:relative;">타입 인수를 명시하기</h3> <p>TypeScript는 제네릭 호출에서 의도된 타입을 대체로 추론해 내지만, 항상 그렇지는 않습니다. 예를 들어서, 여러분들이 두 배열을 결합하는 함수를 하나 작성했다고 합시다.</p> <pre data-language="ts">function combine&lt;Type&gt;(arr1: Type[], arr2: Type[]): Type[] {
+  return arr1.concat(arr2);
+}</pre> <p>일반적으로 짝이 맞지 않는 배열과 함께 해당 함수를 부르는 것은 잘못된 것일 것입니다.</p> <pre data-language="ts">const arr = combine([1, 2, 3], ["hello"]);</pre> <p>만약 여러분이 이런 것을 의도하셨다면, 여러분은 수동으로 <code>Type</code>을 명시해야 합니다.</p> <pre data-language="ts">const arr = combine&lt;string | number&gt;([1, 2, 3], ["hello"]);</pre> <h3 id="좋은-제네릭-함수를-작성하기-위한-가이드라인" style="position:relative;">좋은 제네릭 함수를 작성하기 위한 가이드라인</h3> <p>제네릭 함수를 작성하는 것은 재미있고, 타입 매개 변수를 사용하는 것이 쉬울 수 있습니다. 너무 많은 타입 매개변수나 제한 조건을 꼭 필요하지 않은 곳에 사용하는 것은 추론을 잘하지 못하게 해서 여러분의 함수 호출자를 불만스럽게 만들 수 있습니다.</p> <h4 id="타입-매개변수를-누르기" style="position:relative;">타입 매개변수를 누르기</h4> <p>여기 비슷해 보이는 두 함수를 쓰는 방법이 있습니다.</p> <pre data-language="ts">function firstElement1&lt;Type&gt;(arr: Type[]) {
+  return arr[0];
+}
+ 
+function firstElement2&lt;Type extends any[]&gt;(arr: Type) {
+  return arr[0];
+}
+ 
+// a: number (good)
+const a = firstElement1([1, 2, 3]);
+// b: any (bad)
+const b = firstElement2([1, 2, 3]);</pre> <p>처음 보기에는 동일하게 보일 수 있습니다만, <code>firstElement1</code>이 이 함수를 작성하는데 더 좋은 방법입니다. 이 함수의 추론된 반환 타입은 <code>Type</code> 입니다만, <code>firstElement2</code>의 추론된 반환 타입은 TypeScript가 호출 중에 타입을 해석하기 위해서 “기다리기” 보다 호출 시점에 <code>arr[0]</code> 표현식을 타입 제한 조건을 이용해서 해석하기 때문에 <code>any</code>가 됩니다.</p> <blockquote> <p><strong>규칙</strong>: 가능하다면, 타입 매개변수를 제약하기보다는 타입 매개변수 그 자체를 사용하십시오.</p> </blockquote> <h4 id="더-적은-타입-매개변수를-사용하기" style="position:relative;">더 적은 타입 매개변수를 사용하기</h4> <p>다음은 유사한 함수의 또 다른 쌍입니다.</p> <pre data-language="ts">function filter1&lt;Type&gt;(arr: Type[], func: (arg: Type) =&gt; boolean): Type[] {
+  return arr.filter(func);
+}
+ 
+function filter2&lt;Type, Func extends (arg: Type) =&gt; boolean&gt;(
+  arr: Type[],
+  func: Func
+): Type[] {
+  return arr.filter(func);
+}</pre> <p>우리는 <em>두 값을 연관시키지 않는</em> 타입 매개변수 <code>Func</code>를 만들었습니다. 이는 타입 인수를 원하는 호출자가 아무 이유 없이 추가 타입 인수를 제공해야 하기 때문에, 상당히 좋지 않습니다. <code>Func</code>는 함수를 더 읽고 이해하기 어렵게 만들 뿐이지, 아무것도 하지 않습니다!</p> <blockquote> <p><strong>규칙</strong>: 항상 가능하다면 타입 매개변수를 최소로 사용하십시오</p> </blockquote> <h4 id="타입-매개변수는-두-번-나타나야-합니다" style="position:relative;">타입 매개변수는 두 번 나타나야 합니다.</h4> <p>가끔 우리는 함수가 제네릭이 필요 없을 수 있다는 사실을 간과합니다.</p> <pre data-language="ts">function greet&lt;Str extends string&gt;(s: Str) {
+  console.log("Hello, " + s);
+}
+ 
+greet("world");</pre> <p>우리는 간단한 버전을 쉽게 작성할 수 있었을 것입니다.</p> <pre data-language="ts">function greet(s: string) {
+  console.log("Hello, " + s);
+}</pre> <p>타입 매개변수는 <em>여러 값의 타입을 연관</em>시키는 용도로 사용함을 기억해 주십시오. 만약 타입 매개변수가 함수 시그니처에서 한 번만 사용되었다면, 어떤 것도 연관시키지 않고 있는 것입니다.</p> <blockquote> <p><strong>규칙</strong>: 만약 타입 매개변수가 한 곳에서만 나온다면, 정말로 필요한 건지 다시 생각해 보십시오.</p> </blockquote> <h2 id="선택적-매개변수" style="position:relative;">선택적 매개변수</h2> <p>JavaScript에서 쓰이는 함수는 종종 가변적인 수의 인자들을 사용합니다. 예를 들어서 <code>number</code>의 <code>toFixed</code> 메서드는 선택적으로 자릿수를 사용합니다.</p> <pre data-language="ts">function f(n: number) {
+  console.log(n.toFixed()); // 0 arguments
+  console.log(n.toFixed(3)); // 1 argument
+}</pre> <p>TypeScript에서 우리는 매개변수를 <code>?</code>로 표시함으로 <em>선택적</em>으로 만들 수 있습니다.</p> <pre data-language="ts">function f(x?: number) {
+  // ...
+}
+f(); // OK
+f(10); // OK</pre> <p>매개변수의 타입이 <code>number</code>로 지정되었지만, JavaScript에서 명시되지 않은 매개변수는 <code>undefined</code>가 되기 때문에, <code>x</code> 매개변수는 실질적으로 <code>number | undefined</code> 타입이 될 것입니다.</p> <p>여러분은 매개변수 <em>기본값</em>또한 제공할 수 있습니다.</p> <pre data-language="ts">function f(x = 10) {
+  // ...
+}</pre> <p>이제 <code>f</code>의 본문 내에서 모든 <code>undefined</code> 인수가 <code>10</code>으로 대체되기 때문에 <code>x</code>의 타입은 <code>number</code>가 될 것입니다. 매개변수가 선택적일 때, 호출자는 <code>undefined</code>를 넘김으로써, “누락된” 인수를 흉내 낼 수 있습니다.</p> <pre data-language="ts">declare function f(x?: number): void;
+// cut
+// All OK
+f();
+f(10);
+f(undefined);</pre> <h3 id="콜백-함수에서의-선택적-매개변수" style="position:relative;">콜백 함수에서의 선택적 매개변수</h3> <p>선택적 매개변수 및 함수 타입 표현식에 대해 알게 되면, 콜백을 호출하는 함수를 작성할 때 아래와 같은 실수를 범하기 쉽습니다.</p> <pre data-language="ts">function myForEach(arr: any[], callback: (arg: any, index?: number) =&gt; void) {
+  for (let i = 0; i &lt; arr.length; i++) {
+    callback(arr[i], i);
+  }
+}</pre> <p>사람들이 <code>index?</code>를 선택적 매개변수로 사용하기 위해 작성할 때 보통 의도하는 것은 두 호출 모두 유효하기를 바라는 것입니다.</p> <pre data-language="ts">myForEach([1, 2, 3], (a) =&gt; console.log(a));
+myForEach([1, 2, 3], (a, i) =&gt; console.log(a, i));</pre> <p><em>실제로</em> 이것이 의미하는 바는 <em><code>callback</code>이 하나의 인수로 호출될 수 있음</em> 입니다. 다시 말해, 이전의 함수 정의는 구현이 다음과 같을 수도 있다고 하는 것과 같습니다.</p> <pre data-language="ts">function myForEach(arr: any[], callback: (arg: any, index?: number) =&gt; void) {
+  for (let i = 0; i &lt; arr.length; i++) {
+    // 오늘은 index를 제공하고 싶지 않아
+    callback(arr[i]);
+  }
+}</pre> <p>결국, TypeScript는 이러한 의미를 강제하여 실제로 일어나지 않을 에러를 발생시킵니다.</p>  <pre data-language="ts">myForEach([1, 2, 3], (a, i) =&gt; {
+  console.log(i.toFixed());
+});</pre> <p>JavaScript에서, 매개변수로 지정된 것보다 많은 인수를 전달하여 호출되면, 남은 인수들은 단순히 무시됩니다. TypeScript도 같은 방식으로 동작합니다. (같은 타입을 가진) 매개변수가 더 적은 함수는 더 많은 매개변수가 있는 함수를 대체할 수 있습니다.</p> <blockquote> <p>콜백에 대한 함수 타입을 작성할 때, 해당 인수 없이 <em>호출할</em> 의도가 없는 한, <em>절대로</em> 선택적 매개변수를 사용하지 마십시오.</p> </blockquote> <h2 id="함수-오버로드" style="position:relative;">함수 오버로드</h2> <p>몇몇 JavaScript 함수는 다양한 인수의 개수, 타입을 통해서 호출될 수 있습니다. 예를 들어서, 여러분은 <code>Date</code>를 생성하고, 타임스탬프 하나(인자 한 개)를 받을 수도 있고, 월/일/연도 형식(인자 3개)를 받는 함수를 만들 수 있을 것입니다.</p> <p>TypeScript에서는, 우리는 다른 방법으로 호출될 수 있는 함수를 <em>오버로드 시그니처</em>를 작성함으로 묘사할 수 있습니다. 그러기 위해서, 함수 시그니처 몇 개(보통 2개 이상)을 적은 다음, 함수 본문을 작성하면 됩니다.</p> <pre data-language="ts">function makeDate(timestamp: number): Date;
+function makeDate(m: number, d: number, y: number): Date;
+function makeDate(mOrTimestamp: number, d?: number, y?: number): Date {
+  if (d !== undefined &amp;&amp; y !== undefined) {
+    return new Date(y, mOrTimestamp, d);
+  } else {
+    return new Date(mOrTimestamp);
+  }
+}
+const d1 = makeDate(12345678);
+const d2 = makeDate(5, 5, 5);
+const d3 = makeDate(1, 3);</pre> <p>이 예시에서, 우리는 두 개의 오버로드를 작성하였습니다. 하나는 한 개의 인수를 받고, 다른 하나는 인수 세 개를 받습니다. 처음에 쓴 이 두 시그니처들을 <em>오버로드 시그니처</em> 라고 합니다.</p> <p>그리고, 우리는 호환 가능한 시그니처와 함께 함수 구현을 작성하였습니다. 함수는 <em>구현</em> 시그니처를 가지고 있습니다만, 이 시그니처는 직접 호출될 수 없습니다. 우리가 필수적인 매개변수 뒤에 두 개의 선택적 매개변수를 작성하였지만, 우리는 두 개의 매개변수 만으로는 이 함수를 호출할 수 없습니다!</p> <h3 id="오버로드-시그니처와-구현-시그니처" style="position:relative;">오버로드 시그니처와 구현 시그니처</h3> <p>이것은 일반적인 혼동의 원인입니다. 사람들은 종종 아래처럼 코드를 작성하고, 왜 에러가 있는지 이해하지 못하는 경우가 있습니다.</p> <pre data-language="ts">function fn(x: string): void;
+function fn() {
+  // ...
+}
+// 0개의 인자로 호출하기를 예상했음
+fn();</pre> <p>다시 한번 강조하지만, 함수 본문을 작성하기 위해 사용된 시그니처는 외부에서 “보이지 않습니다”.</p> <blockquote> <p><em>구현</em>의 시그니처는 외부에서 보이지 않습니다. 오버로드된 함수를 작성할 때, 여러분들은 <em>두 개 이상</em>의 시그니처를 함수 구현 위에 작성해야 합니다.</p> </blockquote> <p>또한 구현 시그니처는 오버로드된 시그니처와 <em>호환되어야</em> 합니다. 예를 들어, 아래의 함수들은 구현 시그니처가 오버로드들과 올바르게 일치하지 않기 때문에 오류가 있습니다.</p> <pre data-language="ts">function fn(x: boolean): void;
+// 인수 타입이 옳지 않습니다.
+function fn(x: string): void;
+function fn(x: boolean) {}</pre> <pre data-language="ts">function fn(x: string): string;
+// 반환 타입이 옳지 않습니다.
+function fn(x: number): boolean;
+function fn(x: string | number) {
+  return "oops";
+}</pre> <h3 id="좋은-오버로드-작성하기" style="position:relative;">좋은 오버로드 작성하기</h3> <p>제네릭처럼, 함수 오버로드를 작성할 때 따라야 할 몇몇 가이드라인이 있습니다. 다음의 규칙을 따르는 것은 여러분의 함수들을 부르기 쉽고, 이해하기 쉽고, 구현하기 쉽게 만들어 줄 것입니다.</p> <p>문자열 혹은 배열의 길이를 반환하는 함수를 생각해 봅시다.</p> <pre data-language="ts">function len(s: string): number;
+function len(arr: any[]): number;
+function len(x: any) {
+  return x.length;
+}</pre> <p>이 함수는 괜찮습니다. 우리는 이 함수를 문자열이나 배열을 통해서 호출할 수 있습니다. 하지만, TypeScript는 하나의 오버로드를 통해서만 함수를 해석하기에, 우리는 이 함수를 문자열 <em>또는</em> 배열이 될 수 있는 값을 통해서 호출할 수 없습니다.</p> <pre data-language="ts">len(""); // OK
+len([0]); // OK
+len(Math.random() &gt; 0.5 ? "hello" : [0]);</pre> <p>두 오버로드 모두 같은 인수 개수와, 같은 반환 타입을 가지기 때문에, 우리는 오버로드 되지 않은 함수의 형태로 다음과 같이 작성할 수 있습니다.</p> <pre data-language="ts">function len(x: any[] | string) {
+  return x.length;
+}</pre> <p>훨씬 낫습니다! 호출자는 이 함수를 두 가지 값 중 하나를 이용하여 호출할 수 있으며, 추가적으로 정확한 구현 시그니처를 찾을 필요도 없어졌습니다.</p> <blockquote> <p>가능하다면 오버로드 대신 유니온 타입을 사용하십시오</p> </blockquote> <h3 id="함수-내에서-this-선언하기" style="position:relative;">함수 내에서 <code>this</code> 선언하기</h3> <p>TypeScript는 함수 안에서의 <code>this</code>가 무엇이 되어야 할지, 아래의 예시처럼 코드 흐름 분석을 통해서 추론합니다.</p> <pre data-language="ts">const user = {
+  id: 123,
+ 
+  admin: false,
+  becomeAdmin: function () {
+    this.admin = true;
+  },
+};</pre> <p>TypeScript는 함수 <code>user.becomeAdmin</code>이 외부 객체 <code>user</code>에 상응하는 <code>this</code>를 가지고 있다고 이해합니다. 보통 이걸로 충분할 수 있습니다만, 여러분들은 <code>this</code>객체가 표현하는 것에 대해서 더 많은 통제가 필요한 경우가 많을 겁니다. JavaScript 명세에서는 <code>this</code>라는 이름의 매개변수를 가질 수 없다고 나와 있기에, TypeScript는 해당 문법 공간을 함수 본문에서 <code>this</code>의 타입을 정의하는 데 사용하도록 허락해 줍니다.</p> <pre data-language="ts">interface DB {
+  filterUsers(filter: (this: User) =&gt; boolean): User[];
+}
+ 
+const db = getDB();
+const admins = db.filterUsers(function (this: User) {
+  return this.admin;
+});</pre> <p>이 패턴은 일반적으로 다른 객체가 함수를 호출할 때 제어하는 콜백 스타일 API에서 흔히 사용됩니다. 이런 효과를 얻기 위해서는 화살표 함수가 아닌 <code>function</code> 키워드를 사용해야 합니다.</p> <pre data-language="ts">interface DB {
+  filterUsers(filter: (this: User) =&gt; boolean): User[];
+}
+ 
+const db = getDB();
+const admins = db.filterUsers(() =&gt; this.admin);</pre> <h2 id="알아야-할-다른-타입" style="position:relative;">알아야 할 다른 타입</h2> <p>함수 타입에 대해서 작업을 할 때, 자주 나타나는 몇 가지 추가 타입들이 더 있습니다. 모든 타입처럼, 이 타입들을 어디서나 사용하실 수 있습니다만, 이 타입들은 특별히 함수라는 맥락에 관련이 깊습니다.</p> <h3 id="void" style="position:relative;"><code>void</code></h3> <p><code>void</code>는 값을 반환하지 않는 함수의 반환 값을 의미합니다. 함수에 <code>return</code>문이 없거나, 명시적으로 값을 반환하지 않을 때, 추론되는 타입입니다.</p> <pre data-language="ts">// 추론된 반환 타입은 void 입니다.
+function noop() {
+  return;
+}</pre> <p>JavaScript에서는, 아무것도 반환하지 않는 함수는 암묵적으로 <code>undefined</code> 값을 반환합니다. 하지만 TypeScript에서 <code>void</code>와 <code>undefined</code>는 같은 것으로 간주되지 않습니다. 이 장의 끝에서 다 자세한 내용들을 다루도록 하겠습니다.</p> <blockquote> <p><code>void</code>는 <code>undefined</code>과 같지 않습니다.</p> </blockquote> <h3 id="object" style="position:relative;"><code>object</code></h3> <p>특별한 타입 <code>object</code>는 원시 값(<code>string</code>, <code>number</code>, <code>bigint</code>, <code>boolean</code>, <code>symbol</code>, <code>null</code>, <code>undefined</code>)이 아닌 모든 값을 지칭합니다. 이것은 <em>빈 객체 타입</em> <code>{ }</code>와는 다르고, 전역 타입 <code>Object</code>와도 다릅니다. 아마도 여러분은 <code>Object</code>를 사용할 일이 없을 것입니다.</p> <blockquote> <p><code>object</code>는 <code>Object</code>가 아닙니다.. <strong>항상</strong> <code>object</code>를 사용하십시오!</p> </blockquote> <p>JavaScript에서 함수 값은 객체입니다. 프로퍼티가 있고, 프로토타입 체인에 <code>Object.prototype</code>가 있고, <code>instanceof Object</code>이면서, <code>Object.keys</code>를 호출할 수 있고, 기타 등등이 있습니다. 이러한 이유로, TypeScript에서 함수 타입은 <code>object</code>로 간주됩니다.</p> <h3 id="unknown" style="position:relative;"><code>unknown</code></h3> <p><code>unknown</code> 타입은 <em>모든 값</em>을 나타냅니다. <code>any</code> 타입과 유사합니다만, <code>unknown</code> 타입에 어떤 것을 대입하는 것이 유효하지 않기 때문에 더 안전합니다.</p> <pre data-language="ts">function f1(a: any) {
+  a.b(); // OK
+}
+function f2(a: unknown) {
+  a.b();
+}</pre> <p>이는 <code>any</code> 형태의 값을 함수 본문에 사용하지 않고도, 아무 값이나 받는 함수를 표현할 수 있기 때문에, 함수 타입을 설명하는 데에 유용하게 쓰입니다.</p> <p>반대로, 여러분들은 unknown 타입의 값을 반환하는 함수를 표현할 수 있습니다.</p> <pre data-language="ts">function safeParse(s: string): unknown {
+  return JSON.parse(s);
+}
+ 
+// 'obj'를 사용할 때 조심해야 합니다!
+const obj = safeParse(someRandomString);</pre> <h3 id="never" style="position:relative;"><code>never</code></h3> <p>어떤 함수는 <em>결코(never)</em> 값을 반환하지 않습니다</p> <pre data-language="ts">function fail(msg: string): never {
+  throw new Error(msg);
+}</pre> <p><code>never</code> 타입은 결코 관측될 수 없는 값을 의미합니다. 반환 타입에서는, 해당 함수가 예외를 발생시키거나, 프로그램 실행을 종료함을 의미합니다.</p> <p><code>never</code>은 TypeScript가 유니온에 아무것도 남아있지 않다고 판단했을 때 또한 나타납니다.</p> <pre data-language="ts">function fn(x: string | number) {
+  if (typeof x === "string") {
+    // do something
+  } else if (typeof x === "number") {
+    // do something else
+  } else {
+    x; // 'never' 타입이 됨!
+  }
+}</pre> <h3 id="function" style="position:relative;"><code>Function</code></h3> <p>전역 타입 <code>Function</code>은 <code>bind</code>, <code>call</code>, <code>apply</code> 그리고 JavaScript 함수 값에 있는 다른 프로퍼티를 설명하는 데에 사용됩니다. 또한 여기에는 <code>Function</code>타입의 값은 언제나 호출될 수 있다는 값을 가지며, 이러한 호출은 <code>any</code>를 반환합니다.</p> <pre data-language="ts">function doSomething(f: Function) {
+  return f(1, 2, 3);
+}</pre> <p>이는 <em>타입되지 않은 함수 호출</em> 이며, 안전하지 않은 <code>any</code> 타입을 반환하기에 일반적으로 피하는 것이 가장 좋습니다.</p> <p>만약 여러분이 임의의 함수를 허용해야 하지만, 호출할 생각이 없다면 <code>() =&gt; void</code> 타입이 일반적으로 더 안전합니다.</p> <h2 id="나머지-매개변수와-인수" style="position:relative;">나머지 매개변수와 인수</h2> <blockquote class="bg-reading"> <p>배경지식 읽기:<br> <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Functions/rest_parameters">나머지 매개변수(Rest Parameter)</a><br> <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Operators/Spread_syntax">전개 구문(Spread Syntax)</a><br> </p> </blockquote> <h3 id="나머지-매개변수rest-parameter" style="position:relative;">나머지 매개변수(Rest Parameter)</h3> <p>선택적 매개변수와 오버로드를 사용하여 다양한 정해진 인수들을 받아들일 수 있지만, 우리는 <em>정해지지 않은</em> 수의 인수를 받아들이는 함수를 <em>나머지 매개변수</em>를 이용하여 정의할 수 있습니다.</p> <p>나머지 매개변수는 다른 모든 매개변수 뒤에 나타나며, <code>...</code> 구문을 사용합니다.</p> <pre data-language="ts">function multiply(n: number, ...m: number[]) {
+  return m.map((x) =&gt; n * x);
+}
+// 'a' gets value [10, 20, 30, 40]
+const a = multiply(10, 1, 2, 3, 4);</pre> <p>TypeScript에서는, 이러한 매개변수에 대한 타입 표기는 암묵적으로 <code>any</code>가 아닌 <code>any[]</code>를 사용하며, 타입 표현식은 <code>Array&lt;T&gt;</code> 또는 <code>T[]</code> 또는 튜플 타입(나중에 배울 것입니다)으로 표현해야 합니다.</p> <h3 id="나머지-인수rest-argument" style="position:relative;">나머지 인수(Rest Argument)</h3> <p>반대로 우리는 전개 구문을 사용하여 배열에서 제공되는 인수의 개수를 <em>제공</em>할 수 있습니다. 예를 들어, 배열의 <code>push</code> 메서드는 인수를 몇 개든 받을 수 있습니다.</p> <pre data-language="ts">const arr1 = [1, 2, 3];
+const arr2 = [4, 5, 6];
+arr1.push(...arr2);</pre> <p>일반적으로 TypeScript는 배열이 불변하다고 간주하지 않습니다. 이로 인해 다음과 같은 놀라운 동작이 발생할 수 있습니다.</p> <pre data-language="ts">// 추론된 타입은 0개 이상의 숫자를 가지는 배열인 number[]
+// 명시적으로 2개의 숫자를 가지는 배열로 간주되지 않습니다
+const args = [8, 5];
+const angle = Math.atan2(...args);</pre> <p>이러한 상황의 최선의 해결책은 코드에 따라서 다르지만, 일반적으로 <code>const</code> 콘텍스트가 가장 간단한 해결책입니다.</p> <pre data-language="ts">// 길이가 2인 튜플로 추론됨
+const args = [8, 5] as const;
+// OK
+const angle = Math.atan2(...args);</pre> <p>나머지 인수를 사용하는 것은 오래된 런타임을 대상으로 할 때, <a href="https://www.typescriptlang.org/tsconfig#downlevelIteration"><code>downlevelIteration</code></a>을 필요로 할 수 있습니다.</p>  <h2 id="매개변수-구조-분해parameter-destructing" style="position:relative;">매개변수 구조 분해(Parameter Destructing)</h2> <blockquote class="bg-reading"> <p>배경지식 읽기:<br> <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment">구조분해 할당</a><br> </p> </blockquote> <p>매개변수 분해를 사용하여 인수로 제공된 객체를 함수 본문에서 하나 이상의 지역 변수로 편리하게 언팩 할 수 있습니다. JavaScript에서는 아래의 형태처럼 생겼습니다.</p> <pre data-language="js">function sum({ a, b, c }) {
+  console.log(a + b + c);
+}
+sum({ a: 10, b: 3, c: 9 });</pre> <p>객체를 위한 타입 표기는 분해 구문 뒤에 위치하게 됩니다.</p> <pre data-language="ts">function sum({ a, b, c }: { a: number; b: number; c: number }) {
+  console.log(a + b + c);
+}</pre> <p>약간 장황하게 느껴질 수 있지만, 여기에서도 이름 붙은 타입을 사용할 수 있습니다.</p> <pre data-language="ts">// 이전 예제와 동일
+type ABC = { a: number; b: number; c: number };
+function sum({ a, b, c }: ABC) {
+  console.log(a + b + c);
+}</pre> <h2 id="함수의-할당가능성" style="position:relative;">함수의 할당가능성</h2> <h3 id="void-반환-타입" style="position:relative;">
+<code>void</code> 반환 타입</h3> <p>함수의 <code>void</code> 반환 타입은 몇몇 일반적이지는 않지만 예측할 수 있는 동작을 발생시킬 수 있습니다.</p> <p><code>void</code> 반환 타입으로의 문맥적 타이핑은 함수를 아무것도 반환하지 <strong>않도록</strong> 강제하지 <strong>않습니다</strong>.이를 설명하는 또 다른 방법은, <code>void</code> 반환 타입을 가지는 문맥적 함수 타입(<code>type vf = () =&gt; void</code>)가 구현되었을 때, <em>아무값</em>이나 반환될 수 있지만, 무시됩니다.</p> <p>그러므로 후술할 타입 <code>() =&gt; void</code>의 구현들은 모두 유효합니다.</p> <pre data-language="ts">type voidFunc = () =&gt; void;
+ 
+const f1: voidFunc = () =&gt; {
+  return true;
+};
+ 
+const f2: voidFunc = () =&gt; true;
+ 
+const f3: voidFunc = function () {
+  return true;
+};</pre> <p>그리고 이러한 함수의 반환값이 다른 변수에 할당될 때, 이들은 여전히 <code>void</code>타입을 유지할 것입니다.</p> <pre data-language="ts">const v1 = f1();
+ 
+const v2 = f2();
+ 
+const v3 = f3();</pre> <p>이러한 동작이 존재하기에, <code>Array.prototype.push</code>가 number를 반환하고, <code>Array.prototype.forEach</code> 메서드가 <code>void</code> 반환 타입을 가지는 함수를 예상함에도 다음 코드는 유효할 수 있습니다.</p> <pre data-language="ts">const src = [1, 2, 3];
+const dst = [0];
+ 
+src.forEach((el) =&gt; dst.push(el));</pre> <p>유의해야 할 한 가지 다른 경우가 있습니다. 리터럴 함수 정의가 <code>void</code> 반환 값을 가지고 있다면, 그 함수는 어떠한 것도 반환해서는 <strong>안됩니다</strong>.</p> <pre data-language="ts">function f2(): void {
+  // @ts-expect-error
+  return true;
+}
+ 
+const f3 = function (): void {
+  // @ts-expect-error
+  return true;
+};</pre> <p><code>void</code>에 대한 더 많은 내용은 다음 문서 항목을 참조해 주십시오.</p> <ul> <li><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html#void">v1 handbook</a></li> <li><a href="https://www.typescriptlang.org/docs/handbook/2/functions.html#void">v2 handbook</a></li> <li><a href="https://github.com/Microsoft/TypeScript/wiki/FAQ#why-are-functions-returning-non-void-assignable-to-function-returning-void">FAQ - “Why are functions returning non-void assignable to function returning void?”</a></li> </ul><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2012-2023 Microsoft<br>Licensed under the Apache License, Version 2.0.<br>
+    <a href="https://www.typescriptlang.org/ko/docs/handbook/2/functions.html" class="_attribution-link">https://www.typescriptlang.org/ko/docs/handbook/2/functions.html</a>
+  </p>
+</div>

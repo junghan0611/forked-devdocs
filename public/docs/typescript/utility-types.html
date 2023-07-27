@@ -1,0 +1,148 @@
+<h1>Utility Types</h1>
+<p>TypeScript는 일반적인 타입 변환을 쉽게 하기 위해서 몇 가지 유틸리티 타입을 제공합니다. 이러한 유틸리티는 전역으로 사용 가능합니다.</p> <h2 id="partialtype" style="position:relative;"><code>Partial&lt;Type&gt;</code></h2> <p><code>Type</code> 집합의 모든 프로퍼티를 선택적으로 타입을 생성합니다. 이 유틸리티는 주어진 타입의 모든 하위 타입 집합을 나타내는 타입을 반환합니다.</p> <h5 id="예제" style="position:relative;">예제</h5> <pre data-language="ts">interface Todo {
+  title: string;
+  description: string;
+}
+ 
+function updateTodo(todo: Todo, fieldsToUpdate: Partial&lt;Todo&gt;) {
+  return { ...todo, ...fieldsToUpdate };
+}
+ 
+const todo1 = {
+  title: "organize desk",
+  description: "clear clutter",
+};
+ 
+const todo2 = updateTodo(todo1, {
+  description: "throw out trash",
+});</pre> <h2 id="requiredtype" style="position:relative;"><code>Required&lt;Type&gt;</code></h2> <p><code>Type</code> 집합의 모든 프로퍼티를 필수로 설정한 타입을 생성합니다. <a href="#partialtype"><code>Partial</code></a>의 반대입니다.</p> <h5 id="예제-1" style="position:relative;">예제</h5> <pre data-language="ts">interface Props {
+  a?: number;
+  b?: string;
+}
+ 
+const obj: Props = { a: 5 };
+ 
+const obj2: Required&lt;Props&gt; = { a: 5 };</pre> <h2 id="readonlytype" style="position:relative;"><code>Readonly&lt;Type&gt;</code></h2> <p><code>Type</code> 집합의 모든 프로퍼티<code>읽기 전용(readonly)</code>으로 설정한 타입을 생성합니다, 즉 생성된 타입의 프로퍼티는 재할당될 수 없습니다.</p> <h5 id="예제-2" style="position:relative;">예제</h5> <pre data-language="ts">interface Todo {
+  title: string;
+}
+ 
+const todo: Readonly&lt;Todo&gt; = {
+  title: "Delete inactive users",
+};
+ 
+todo.title = "Hello";</pre> <p>이 유틸리티는 런타임에 실패할 할당 표현식을 표현할 때 유용합니다(예. <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object/freeze">frozen 객체</a> 의 프로퍼티에 재할당하려고 하는 경우).</p> <h5 id="objectfreeze" style="position:relative;"><code>Object.freeze</code></h5> <pre data-language="ts">function freeze&lt;Type&gt;(obj: Type): Readonly&lt;Type&gt;;</pre> <h2 id="recordkeystype" style="position:relative;"><code>Record&lt;Keys,Type&gt;</code></h2> <p>타입 <code>Type</code>의 프로퍼티 <code>키</code>의 집합으로 타입을 생성합니다. 이 유틸리티는 타입의 프로퍼티를 다른 타입에 매핑 시키는데 사용될 수 있습니다.</p> <h5 id="예제-3" style="position:relative;">예제</h5> <pre data-language="ts">interface PageInfo {
+  title: string;
+}
+ 
+type Page = "home" | "about" | "contact";
+ 
+const nav: Record&lt;Page, PageInfo&gt; = {
+  about: { title: "about" },
+  contact: { title: "contact" },
+  home: { title: "home" },
+};
+ 
+nav.about;</pre> <h2 id="picktype-keys" style="position:relative;"><code>Pick&lt;Type, Keys&gt;</code></h2> <p><code>Type</code>에서 프로퍼티 <code>Keys</code>의 집합을 선택해 타입을 생성합니다.</p> <h5 id="예제-4" style="position:relative;">예제</h5> <pre data-language="ts">interface Todo {
+  title: string;
+  description: string;
+  completed: boolean;
+}
+ 
+type TodoPreview = Pick&lt;Todo, "title" | "completed"&gt;;
+ 
+const todo: TodoPreview = {
+  title: "Clean room",
+  completed: false,
+};
+ 
+todo;</pre> <h2 id="omittype-keys" style="position:relative;"><code>Omit&lt;Type, Keys&gt;</code></h2> <p><code>Type</code>에서 모든 프로퍼티를 선택하고 <code>키</code>를 제거한 타입을 생성합니다.</p> <h5 id="예제-5" style="position:relative;">예제</h5> <pre data-language="ts">interface Todo {
+  title: string;
+  description: string;
+  completed: boolean;
+}
+ 
+type TodoPreview = Omit&lt;Todo, "description"&gt;;
+ 
+const todo: TodoPreview = {
+  title: "Clean room",
+  completed: false,
+};
+ 
+todo;</pre> <h2 id="excludetype-excludedunion" style="position:relative;"><code>Exclude&lt;Type, ExcludedUnion&gt;</code></h2> <p><code>ExcludedUnion</code>에 할당할 수 있는 모든 유니온 멤버를 <code>Type</code>에서 제외하여 타입을 생성합니다.</p> <h5 id="예제-6" style="position:relative;">예제</h5> <pre data-language="ts">type T0 = Exclude&lt;"a" | "b" | "c", "a"&gt;;
+type T1 = Exclude&lt;"a" | "b" | "c", "a" | "b"&gt;;
+type T2 = Exclude&lt;string | number | (() =&gt; void), Function&gt;;</pre> <h2 id="extracttype-union" style="position:relative;"><code>Extract&lt;Type, Union&gt;</code></h2> <p><code>Union</code>에 할당할 수 있는 모든 유니온 멤버를 <code>Type</code>에서 가져와서 타입을 생성합니다.</p> <h5 id="예제-7" style="position:relative;">예제</h5> <pre data-language="ts">type T0 = Extract&lt;"a" | "b" | "c", "a" | "f"&gt;;
+type T1 = Extract&lt;string | number | (() =&gt; void), Function&gt;;</pre> <h2 id="nonnullabletype" style="position:relative;"><code>NonNullable&lt;Type&gt;</code></h2> <p><code>Type</code>에서 <code>null</code>과 <code>정의되지 않은 것(undefined)</code>을 제외하고 타입을 생성합니다.</p> <h5 id="예제-8" style="position:relative;">예제</h5> <pre data-language="ts">type T0 = NonNullable&lt;string | number | undefined&gt;;
+type T1 = NonNullable&lt;string[] | null | undefined&gt;;</pre> <h2 id="parameterstype" style="position:relative;"><code>Parameters&lt;Type&gt;</code></h2> <p>함수 타입 <code>Type</code>의 매개변수에 사용된 타입에서 튜플 타입을 생성합니다.</p> <h5 id="예제-9" style="position:relative;">예제</h5> <pre data-language="ts">declare function f1(arg: { a: number; b: string }): void;
+ 
+type T0 = Parameters&lt;() =&gt; string&gt;;
+type T1 = Parameters&lt;(s: string) =&gt; void&gt;;
+type T2 = Parameters&lt;&lt;T&gt;(arg: T) =&gt; T&gt;;
+type T3 = Parameters&lt;typeof f1&gt;;
+type T4 = Parameters&lt;any&gt;;
+type T5 = Parameters&lt;never&gt;;
+type T6 = Parameters&lt;string&gt;;
+type T7 = Parameters&lt;Function&gt;;</pre> <h2 id="constructorparameterstype" style="position:relative;"><code>ConstructorParameters&lt;Type&gt;</code></h2> <p>생성자 함수 타입의 타입에서 튜플 또는 배열 타입을 생성합니다. 모든 매개변수 타입을 가지는 튜플 타입(또는 <code>Type</code>이 함수가 아닌 경우 타입 <code>never</code>)을 생성합니다.</p> <h5 id="예제-10" style="position:relative;">예제</h5> <pre data-language="ts">type T0 = ConstructorParameters&lt;ErrorConstructor&gt;;
+type T1 = ConstructorParameters&lt;FunctionConstructor&gt;;
+type T2 = ConstructorParameters&lt;RegExpConstructor&gt;;
+type T3 = ConstructorParameters&lt;any&gt;;
+ 
+type T4 = ConstructorParameters&lt;Function&gt;;</pre> <h2 id="returntypetype" style="position:relative;"><code>ReturnType&lt;Type&gt;</code></h2> <p>함수 <code>Type</code>의 반환 타입으로 구성된 타입을 생성합니다.</p> <h5 id="예제-11" style="position:relative;">예제</h5> <pre data-language="ts">declare function f1(): { a: number; b: string };
+ 
+type T0 = ReturnType&lt;() =&gt; string&gt;;
+type T1 = ReturnType&lt;(s: string) =&gt; void&gt;;
+type T2 = ReturnType&lt;&lt;T&gt;() =&gt; T&gt;;
+type T3 = ReturnType&lt;&lt;T extends U, U extends number[]&gt;() =&gt; T&gt;;
+type T4 = ReturnType&lt;typeof f1&gt;;
+type T5 = ReturnType&lt;any&gt;;
+type T6 = ReturnType&lt;never&gt;;
+type T7 = ReturnType&lt;string&gt;;
+type T8 = ReturnType&lt;Function&gt;;</pre> <h2 id="instancetypetype" style="position:relative;"><code>InstanceType&lt;Type&gt;</code></h2> <p><code>Type</code>의 생성자 함수의 인스턴스 타입으로 구성된 타입을 생성합니다.</p> <h5 id="예제-12" style="position:relative;">예제</h5> <pre data-language="ts">class C {
+  x = 0;
+  y = 0;
+}
+ 
+type T0 = InstanceType&lt;typeof C&gt;;
+type T1 = InstanceType&lt;any&gt;;
+type T2 = InstanceType&lt;never&gt;;
+type T3 = InstanceType&lt;string&gt;;
+type T4 = InstanceType&lt;Function&gt;;</pre> <h2 id="thisparametertypetype" style="position:relative;"><code>ThisParameterType&lt;Type&gt;</code></h2> <p>함수 타입의 <a href="https://www.typescriptlang.org/docs/handbook/functions.html#this-parameters">this</a> 매개변수의 타입, 또는 함수 타입에 <code>this</code>매개변수가 없을 경우 <a href="https://www.typescriptlang.org/docs/handbook/release-notes/typescript-3-0.html#new-unknown-top-type">unknown</a> 을 추출합니다.</p> <h5 id="예제-13" style="position:relative;">예제</h5> <pre data-language="ts">function toHex(this: Number) {
+  return this.toString(16);
+}
+ 
+function numberToString(n: ThisParameterType&lt;typeof toHex&gt;) {
+  return toHex.apply(n);
+}</pre> <h2 id="omitthisparametertype" style="position:relative;"><code>OmitThisParameter&lt;Type&gt;</code></h2> <p><code>Type</code>에서 <a href="https://www.typescriptlang.org/docs/handbook/functions.html#this-parameters"><code>this</code></a> 매개변수를 제거합니다. <code>Type</code>에 명시적으로 선언된 <code>this</code>매개변수가 없는 경우에, 단순히 <code>Type</code>입니다. 반면에, <code>this</code>매개변수가 없는 새로운 함수 타입은 <code>Type</code>에서 생성됩니다. 제네릭은 사라지고 마지막 오버로드 시그니처만 새로운 함수 타입으로 전파됩니다.</p> <h5 id="예제-14" style="position:relative;">예제</h5> <pre data-language="ts">function toHex(this: Number) {
+  return this.toString(16);
+}
+ 
+const fiveToHex: OmitThisParameter&lt;typeof toHex&gt; = toHex.bind(5);
+ 
+console.log(fiveToHex());</pre> <h2 id="thistypetype" style="position:relative;"><code>ThisType&lt;Type&gt;</code></h2> <p>이 유틸리티는 변형된 타입을 반환하지 않습니다. 대신에, 문맥적 <a href="https://www.typescriptlang.org/docs/handbook/functions.html#this"><code>this</code></a> 타입에 표시하는 역할을 합니다. 이 유틸리티를 사용하기 위해서는 <code>--noImplicitThis</code> 플래그를 사용해야 하는 것을 기억하세요.</p> <h5 id="예제-15" style="position:relative;">예제</h5> <pre data-language="ts">type ObjectDescriptor&lt;D, M&gt; = {
+  data?: D;
+  methods?: M &amp; ThisType&lt;D &amp; M&gt;; // Type of 'this' in methods is D &amp; M
+};
+ 
+function makeObject&lt;D, M&gt;(desc: ObjectDescriptor&lt;D, M&gt;): D &amp; M {
+  let data: object = desc.data || {};
+  let methods: object = desc.methods || {};
+  return { ...data, ...methods } as D &amp; M;
+}
+ 
+let obj = makeObject({
+  data: { x: 0, y: 0 },
+  methods: {
+    moveBy(dx: number, dy: number) {
+      this.x += dx; // Strongly typed this
+      this.y += dy; // Strongly typed this
+    },
+  },
+});
+ 
+obj.x = 10;
+obj.y = 20;
+obj.moveBy(5, 5);</pre> <p>위 예제에서, <code>makeObject</code>의 인수인 <code>methods</code> 객체는 <code>ThisType&lt;D &amp; M&gt;</code> 을 포함한 문맥적 타입을 가지고 따라서 <code>methods</code> 객체의 메서드 안에 <a href="https://www.typescriptlang.org/docs/handbook/functions.html#this">this</a> 타입은 <code>{ x: number, y: number } &amp; { moveBy(dx: number, dy: number): number }</code>입니다. <code>methods</code> 프로퍼티의 타입은 추론 대상인 동시에 메서드의 <code>this</code> 타입의 출처인 것에 주목하세요.</p> <p><code>ThisType&lt;T&gt;</code> 마커 인터페이스는 단지 <code>lib.d.ts</code>에 선언된 빈 인터페이스입니다. 객체 리터럴의 문맥적 타입으로 인식되는 것을 넘어, 그 인터페이스는 빈 인터페이스처럼 동작합니다.</p> <h2 id="내장-문자열-조작-타입" style="position:relative;">내장 문자열 조작 타입</h2> <h3 id="uppercasestringtype" style="position:relative;"><code>Uppercase&lt;StringType&gt;</code></h3> <h3 id="lowercasestringtype" style="position:relative;"><code>Lowercase&lt;StringType&gt;</code></h3> <h3 id="capitalizestringtype" style="position:relative;"><code>Capitalize&lt;StringType&gt;</code></h3> <h3 id="uncapitalizestringtype" style="position:relative;"><code>Uncapitalize&lt;StringType&gt;</code></h3> <p>템플릿 문자열 리터럴에서의 문자열 조작을 돕기 위해, TypeScript는 타입 시스템 내에서 문자열 조작에 사용할 수 있는 타입 집합이 포함되어 있습니다. <a href="https://www.typescriptlang.org/docs/handbook/2/template-literal-types.html#intrinsic-string-manipulation-types">이 링크</a>에서 예제를 확인하세요.</p><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2012-2023 Microsoft<br>Licensed under the Apache License, Version 2.0.<br>
+    <a href="https://www.typescriptlang.org/ko/docs/handbook/utility-types.html" class="_attribution-link">https://www.typescriptlang.org/ko/docs/handbook/utility-types.html</a>
+  </p>
+</div>

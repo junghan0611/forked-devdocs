@@ -1,0 +1,13 @@
+<h1>Keyof Type Operator</h1>
+<h2 id="keyof-타입-연산자" style="position:relative;">
+<code>keyof</code> 타입 연산자</h2> <p><code>keyof</code> 연산자는 객체 타입에서 객체의 키 값들을 숫자나 문자열 리터럴 유니언을 생성합니다. 아래 타입 P는 “x” | “y”와 동일한 타입입니다.</p> <pre data-language="ts">type Point = { x: number; y: number };
+type P = keyof Point;</pre> <p>만약 타입이 <code>string</code>이나 <code>number</code> 인덱스 시그니쳐를 가지고 있다면, <code>keyof</code>는 해당 타입을 리턴합니다.</p> <pre data-language="ts">type Arrayish = { [n: number]: unknown };
+type A = keyof Arrayish;
+ 
+type Mapish = { [k: string]: boolean };
+type M = keyof Mapish;</pre> <p>위 예제에서 주목할 점은 <code>M</code>은 <code>string | number</code>라는 점입니다. — JavaScript 객체 키는 항상 문자열을 강제하기 때문에, <code>obj[0]</code>은 <code>obj["0"]</code>과 동일합니다.</p> <p><code>keyof</code> 타입은 우리가 추후에 학습할 매핑된 타입과 함께 사용할 때 특히 유용합니다.</p><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2012-2023 Microsoft<br>Licensed under the Apache License, Version 2.0.<br>
+    <a href="https://www.typescriptlang.org/ko/docs/handbook/2/keyof-types.html" class="_attribution-link">https://www.typescriptlang.org/ko/docs/handbook/2/keyof-types.html</a>
+  </p>
+</div>

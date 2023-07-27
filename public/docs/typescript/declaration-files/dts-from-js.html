@@ -1,0 +1,25 @@
+<h1>Creating .d.ts Files from .js files</h1>
+<p><a href="https://www.typescriptlang.org/docs/handbook/release-notes/typescript-3-7.html#--declaration-and---allowjs">TypeScript 3.7에서</a>, TypeScript는 JSDoc 구문을 사용한 JavaScript에서 .d.ts 파일을 생성할 수 있게 되었습니다.</p> <p>즉 프로젝트를 TypeScript에 이식하거나(porting) 코드베이스에 .d.ts 파일을 유지하지 않고도 TypeScript 기반 편집기의 환경을 유지할 수 있습니다. TypeScript는 대부분의 JSDoc 태그를 지원하며, <a href="https://www.typescriptlang.org/docs/handbook/type-checking-javascript-files.html#supported-jsdoc">참조</a>에서 찾을 수 있습니다.</p> <h2 id="dts-파일-생성을-위한-프로젝트-설정-setting-up-your-project-to-emit-dts-files" style="position:relative;">.d.ts 파일 생성을 위한 프로젝트 설정 (Setting up your Project to emit .d.ts files)</h2> <p>.d.ts 파일을 프로젝트에서 생성하려면, 다음과 같은 4단계를 거쳐야합니다:</p> <ul> <li>개발 의존성에 TypeScript 추가</li> <li>TypeScript 설정을 위해 <code>tsconfig.json</code> 추가</li> <li>JS 파일에 해당하는 d.ts 파일을 생성하기 위해 TypeScript 컴파일 실행</li> <li>(선택적으로) 타입을 참조하기 위한 package.json 수정</li> </ul> <h3 id="typescript-추가-adding-typescript" style="position:relative;">TypeScript 추가 (Adding TypeScript)</h3> <p><a href="https://www.typescriptlang.org/download">설치 페이지</a>에서 방법을 확인할 수 있습니다.</p> <h3 id="tsconfig" style="position:relative;">TSConfig</h3> <p>TSConfig는 컴파일러 플래그를 구성하고 파일을 찾을 위치를 선언하는 json5 파일입니다. 위와 같은 경우, 다음과 같은 파일이 필요합니다:</p> <pre tsconfig="true" data-language="typescript">{
+  // 프로젝트에 알맞게 수정하세요.
+  "include": ["src/**/*"],
+
+  "compilerOptions": {
+    // 일반적으로 소스 파일로 무시되기 때문에,
+    // TypeScript가 JS 파일을 읽도록 지시합니다.
+    "allowJs": true,
+    // d.ts 파일을 생성시킵니다.
+    "declaration": true,
+    // 컴파일러 실행이 오직
+    // d.ts 파일만 출력하게 합니다.
+    "emitDeclarationOnly": true,
+    // 타입은 이 디렉터리 안에 존재해야 합니다.
+    // 해당 설정을 제거하면,
+    // .d.ts 파일이 .js 파일 옆에 생성됩니다.
+    "outDir": "dist",
+  },
+}</pre> <p><a href="https://www.typescriptlang.org/reference">tsconfig 참조</a>에서 더 많은 옵션을 찾을 수 있습니다. TSConfig 파일을 사용하는 대신 CLI를 사용할 수 있습니다.</p> <pre data-language="shell">npx typescript src/**/*.js --declaration --allowJs --emitDeclarationOnly --outDir types</pre> <h2 id="컴파일러-실행-run-the-compiler" style="position:relative;">컴파일러 실행 (Run the compiler)</h2> <p><a href="https://www.typescriptlang.org/download">설치 페이지</a>에서 방법을 확인할 수 있습니다. 프로젝트의 <code>.gitignore</code>에 파일이 있을 때, 이러한 파일들이 패키지에 포함되어 있는지 확인합니다.</p> <h2 id="packagejson-수정-editing-the-packagejson" style="position:relative;">package.json 수정 (Editing the package.json)</h2> <p>TypeScript는 .d.ts 파일을 찾기 위한 추가 단계와 함께 <code>package.json</code>의 모듈에 대한 노드 관계(node resolution)를 복제합니다. 대략적으로 먼저 선택적인 <code>"types"</code> 필드를 확인 후, 다음은 <code>"main"</code>, 마지막으로 루트에서 <code>index.d.ts</code>를 확인합니다.</p> <table> <thead> <tr> <th align="left">Package.json</th> <th align="left">기본 .d.ts의 위치</th> </tr> </thead> <tbody> <tr> <td align="left">“types” 필드 없음</td> <td align="left">“main” 확인 후, index.d.ts 확인</td> </tr> <tr> <td align="left">“types”: “main.d.ts”</td> <td align="left">main.d.ts</td> </tr> <tr> <td align="left">“types”: “./dist/main.js”</td> <td align="left">./dist/main.d.ts</td> </tr> </tbody> </table> <p>type 필드가 없다면, “main”으로 넘어갑니다.</p> <table> <thead> <tr> <th align="left">Package.json</th> <th align="left">기본 .d.ts의 위치</th> </tr> </thead> <tbody> <tr> <td align="left">“main” 필드 없음</td> <td align="left">index.d.ts</td> </tr> <tr> <td align="left">“main”:“index.js”</td> <td align="left">index.d.ts</td> </tr> <tr> <td align="left">“main”:“./dist/index.js”</td> <td align="left">./dist/index.d.ts</td> </tr> </tbody> </table> <h2 id="팁-tips" style="position:relative;">팁 (Tips)</h2> <p>.d.ts의 테스트를 작성하고 싶다면, <a href="https://github.com/SamVerschueren/tsd">tsd</a>를 사용해보세요.</p><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2012-2023 Microsoft<br>Licensed under the Apache License, Version 2.0.<br>
+    <a href="https://www.typescriptlang.org/ko/docs/handbook/declaration-files/dts-from-js.html" class="_attribution-link">https://www.typescriptlang.org/ko/docs/handbook/declaration-files/dts-from-js.html</a>
+  </p>
+</div>

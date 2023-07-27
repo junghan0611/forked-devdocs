@@ -1,0 +1,18 @@
+<h1>Typeof Type Operator</h1>
+<h2 id="typeof-타입-연산자" style="position:relative;">
+<code>typeof</code> 타입 연산자</h2> <p>JavaScript에서는 이미 <em>표현식</em> 컨텍스트에서 사용할 수 있는 <code>typeof</code> 연산자가 있습니다.</p> <pre data-language="ts">// "string"을 출력합니다
+console.log(typeof "Hello world");</pre> <p>TypeScript는 <em>타입</em> 컨텍스트에서 변수나 프로퍼티의 타입을 추론할 수 있는 <code>typeof</code> 연산자를 추가합니다.</p> <pre data-language="ts">let s = "hello";
+let n: typeof s;</pre> <p>기본 타입에 대해선 별로 유용하진 않지만, 다른 타입 연산자와 함께 <code>typeof</code>를 사용하여 많은 패턴을 편리하게 표현할 수 있습니다. 예를 들어, 미리 정의된 타입인 <code>ReturnType&lt;T&gt;</code> 부터 살펴보겠습니다. 위 타입은 <em>함수 타입</em> 을 받으면서 반환되는 타입을 제공합니다.</p> <pre data-language="ts">type Predicate = (x: unknown) =&gt; boolean;
+type K = ReturnType&lt;Predicate&gt;;</pre> <p>함수 이름에 <code>ReturnType</code>을 사용하면, 안내 오류를 확인할 수 있습니다.</p> <pre data-language="ts">function f() {
+  return { x: 10, y: 3 };
+}
+type P = ReturnType&lt;f&gt;;</pre> <p><em>값</em> 과 <em>타입</em> 은 같지 않다는 것을 명심하세요. <em>값 <code>f</code></em> 의 <em>타입</em> 을 추론하기 위해서 <code>typeof</code>를 사용합니다.</p> <pre data-language="ts">function f() {
+  return { x: 10, y: 3 };
+}
+type P = ReturnType&lt;typeof f&gt;;</pre> <h3 id="제한" style="position:relative;">제한</h3> <p>TypeScript는 <code>typeof</code>를 사용할 수 있는 표현식의 종류를 의도적으로 제한합니다.</p> <p>특히, 식별자(예: 변수이름) 혹은 프로퍼티에서만 <code>typeof</code>를 사용할 수 있습니다. 실행 중인 것으로 생각되는 코드 작성의 실수를 피하는데 도움을 줄 수 있지만, 그렇진 않습니다.</p> <pre data-language="ts">// Meant to use = ReturnType&lt;typeof msgbox&gt;
+let shouldContinue: typeof msgbox("Are you sure you want to continue?");</pre><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2012-2023 Microsoft<br>Licensed under the Apache License, Version 2.0.<br>
+    <a href="https://www.typescriptlang.org/ko/docs/handbook/2/typeof-types.html" class="_attribution-link">https://www.typescriptlang.org/ko/docs/handbook/2/typeof-types.html</a>
+  </p>
+</div>

@@ -1,0 +1,107 @@
+<h1>Integrating with Build Tools</h1>
+<p>빌드 도구들</p> <ul> <li><a href="#babel">Babel</a></li> <li><a href="#browserify">Browserify</a></li> <li><a href="#duo">Duo</a></li> <li><a href="#grunt">Grunt</a></li> <li><a href="#gulp">Gulp</a></li> <li><a href="#jspm">Jspm</a></li> <li><a href="#webpack">Webpack</a></li> <li><a href="#msbuild">MSBuild</a></li> <li><a href="#nuget">NuGet</a></li> </ul> <h1 id="babel" style="position:relative;">Babel</h1> <h3 id="설치" style="position:relative;">설치</h3> <pre data-language="shell">npm install @babel/cli @babel/core @babel/preset-typescript --save-dev</pre> <h3 id="babelrc" style="position:relative;">.babelrc</h3> <pre data-language="js">{
+  "presets": ["@babel/preset-typescript"]
+}</pre> <h3 id="커맨드-라인-인터페이스-사용" style="position:relative;">커맨드 라인 인터페이스 사용</h3> <pre data-language="shell">./node_modules/.bin/babel --out-file bundle.js src/index.ts</pre> <h3 id="packagejson" style="position:relative;">package.json</h3> <pre data-language="js">{
+  "scripts": {
+    "build": "babel --out-file bundle.js main.ts"
+  },
+}</pre> <h3 id="커맨드-라인-인터페이스-사용-1" style="position:relative;">커맨드 라인 인터페이스 사용</h3> <pre data-language="shell">npm run build</pre> <h1 id="browserify" style="position:relative;">Browserify</h1> <h3 id="설치-1" style="position:relative;">설치</h3> <pre data-language="shell">npm install tsify</pre> <h3 id="커맨드-라인-인터페이스-사용-2" style="position:relative;">커맨드 라인 인터페이스 사용</h3> <pre data-language="shell">browserify main.ts -p [ tsify --noImplicitAny ] &gt; bundle.js</pre> <h3 id="api-사용" style="position:relative;">API 사용</h3> <pre data-language="js">var browserify = require("browserify");
+var tsify = require("tsify");
+
+browserify()
+    .add("main.ts")
+    .plugin("tsify", { noImplicitAny: true })
+    .bundle()
+    .pipe(process.stdout);</pre> <p>자세한 내용: <a href="https://github.com/smrq/tsify">smrq/tsify</a></p> <h1 id="duo" style="position:relative;">Duo</h1> <h3 id="설치-2" style="position:relative;">설치</h3> <pre data-language="shell">npm install duo-typescript</pre> <h3 id="커맨드-라인-인터페이스-사용-3" style="position:relative;">커맨드 라인 인터페이스 사용</h3> <pre data-language="shell">duo --use duo-typescript entry.ts</pre> <h3 id="api-사용-1" style="position:relative;">API 사용</h3> <pre data-language="js">var Duo = require("duo");
+var fs = require("fs")
+var path = require("path")
+var typescript = require("duo-typescript");
+
+var out = path.join(__dirname, "output.js")
+
+Duo(__dirname)
+    .entry("entry.ts")
+    .use(typescript())
+    .run(function (err, results) {
+        if (err) throw err;
+        // 컴파일된 결과를 출력 파일에 작성합니다
+        fs.writeFileSync(out, results.code);
+    });</pre> <p>자세한 내용: <a href="https://github.com/frankwallis/duo-typescript">frankwallis/duo-typescript</a></p> <h1 id="grunt" style="position:relative;">Grunt</h1> <h3 id="설치-3" style="position:relative;">설치</h3> <pre data-language="shell">npm install grunt-ts</pre> <h3 id="기본-gruntfilejs" style="position:relative;">기본 Gruntfile.js</h3> <pre data-language="js">module.exports = function(grunt) {
+    grunt.initConfig({
+        ts: {
+            default : {
+                src: ["**/*.ts", "!node_modules/**/*.ts"]
+            }
+        }
+    });
+    grunt.loadNpmTasks("grunt-ts");
+    grunt.registerTask("default", ["ts"]);
+};</pre> <p>자세한 내용: <a href="https://github.com/TypeStrong/grunt-ts">TypeStrong/grunt-ts</a></p> <h1 id="gulp" style="position:relative;">Gulp</h1> <h3 id="설치-4" style="position:relative;">설치</h3> <pre data-language="shell">npm install gulp-typescript</pre> <h3 id="기본-gulpfilejs" style="position:relative;">기본 gulpfile.js</h3> <pre data-language="js">var gulp = require("gulp");
+var ts = require("gulp-typescript");
+
+gulp.task("default", function () {
+    var tsResult = gulp.src("src/*.ts")
+        .pipe(ts({
+              noImplicitAny: true,
+              out: "output.js"
+        }));
+    return tsResult.js.pipe(gulp.dest("built/local"));
+});</pre> <p>자세한 내용: <a href="https://github.com/ivogabe/gulp-typescript">ivogabe/gulp-typescript</a></p> <h1 id="jspm" style="position:relative;">Jspm</h1> <h3 id="설치-5" style="position:relative;">설치</h3> <pre data-language="shell">npm install -g jspm@beta</pre> <p><em>주의사항: 현재 jspm의 TypeScript 지원은 0.16beta 입니다.</em></p> <p>자세한 내용: <a href="https://github.com/Microsoft/TypeScriptSamples/tree/master/jspm">TypeScriptSamples/jspm</a></p> <h1 id="webpack" style="position:relative;">Webpack</h1> <h3 id="설치-6" style="position:relative;">설치</h3> <pre data-language="shell">npm install ts-loader --save-dev</pre> <h3 id="webpack-2-사용-시-기본-webpackconfigjs" style="position:relative;">Webpack 2 사용 시 기본 webpack.config.js</h3> <pre data-language="js">module.exports = {
+    entry: "./src/index.tsx",
+    output: {
+        path: '/',
+        filename: "bundle.js"
+    },
+    resolve: {
+        extensions: [".tsx", ".ts", ".js", ".json"]
+    },
+    module: {
+        rules: [
+            // '.ts' 또는 '.tsx' 확장자를 가진 모든 파일은 'ts-loader'에 의해 처리됩니다.
+            { test: /\.tsx?$/, use: ["ts-loader"], exclude: /node_modules/ }
+        ]
+    }
+}</pre> <h3 id="webpack-1-사용-시-기본-webpackconfigjs" style="position:relative;">Webpack 1 사용 시 기본 webpack.config.js</h3> <pre data-language="js">module.exports = {
+    entry: "./src/index.tsx",
+    output: {
+        filename: "bundle.js"
+    },
+    resolve: {
+        // '.ts'와 '.tsx'를 해석 가능한 확장자로 추가합니다.
+        extensions: ["", ".webpack.js", ".web.js", ".ts", ".tsx", ".js"]
+    },
+    module: {
+        loaders: [
+            // '.ts' 또는 '.tsx' 확장자를 가진 모든 파일은 'ts-loader'에 의해 처리됩니다.
+            { test: /\.tsx?$/, loader: "ts-loader" }
+        ]
+    }
+}</pre> <p><a href="https://www.npmjs.com/package/ts-loader">ts-loader에 대한 자세한 내용</a>은 여기를 참조하세요.</p> <p>대안:</p> <ul> <li><a href="https://www.npmjs.com/package/awesome-typescript-loader">awesome-typescript-loader</a></li> </ul> <h1 id="msbuild" style="position:relative;">MSBuild</h1> <p>로컬에 설치된 <code>Microsoft.TypeScript.Default.props</code> (맨 위)와 <code>Microsoft.TypeScript.targets</code> (맨 아래) 파일을 포함하도록 프로젝트 파일을 업데이트하세요:</p> <pre data-language="xml">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003"&gt;
+  &lt;!-- 하단에 default props 포함 --&gt;
+  &lt;Import
+      Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props"
+      Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" /&gt;
+
+  &lt;!-- TypeScript 환경 설정 --&gt;
+  &lt;PropertyGroup Condition="'$(Configuration)' == 'Debug'"&gt;
+    &lt;TypeScriptRemoveComments&gt;false&lt;/TypeScriptRemoveComments&gt;
+    &lt;TypeScriptSourceMap&gt;true&lt;/TypeScriptSourceMap&gt;
+  &lt;/PropertyGroup&gt;
+  &lt;PropertyGroup Condition="'$(Configuration)' == 'Release'"&gt;
+    &lt;TypeScriptRemoveComments&gt;true&lt;/TypeScriptRemoveComments&gt;
+    &lt;TypeScriptSourceMap&gt;false&lt;/TypeScriptSourceMap&gt;
+  &lt;/PropertyGroup&gt;
+
+  &lt;!-- 하단에 default targets 포함 --&gt;
+  &lt;Import
+      Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets"
+      Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" /&gt;
+&lt;/Project&gt;</pre> <p>MSBuild 컴파일러 옵션 정의에 대한 자세한 내용: <a href="compiler-options-in-msbuild.md">MSBuild 프로젝트의 컴파일러 옵션 설정</a></p> <h1 id="nuget" style="position:relative;">NuGet</h1> <ul> <li>우-클릭 -&gt; Manage NuGet Packages</li> <li>
+<code>Microsoft.TypeScript.MSBuild</code>를 검색하세요</li> <li>
+<code>Install</code> 클릭</li> <li>설치가 완료되면 다시 빌드 하세요!</li> </ul> <p>자세한 내용은 <a href="http://docs.nuget.org/Consume/Package-Manager-Dialog">패키지 매니저 다이얼로그</a>와 <a href="https://github.com/Microsoft/TypeScript/wiki/Nightly-drops#using-nuget-with-msbuild">NuGet과 nightly builds 사용</a>을 참고하세요</p><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2012-2023 Microsoft<br>Licensed under the Apache License, Version 2.0.<br>
+    <a href="https://www.typescriptlang.org/ko/docs/handbook/integrating-with-build-tools.html" class="_attribution-link">https://www.typescriptlang.org/ko/docs/handbook/integrating-with-build-tools.html</a>
+  </p>
+</div>

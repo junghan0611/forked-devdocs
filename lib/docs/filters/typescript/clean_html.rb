@@ -23,7 +23,7 @@ module Docs
       end
 
       def other
-        if base_url.path == '/docs/handbook/'
+        if base_url.path == '/ko/docs/handbook/'
           deprecated = at_css('#deprecated-content')
           deprecated.css('h3', '#deprecated-icon').remove if deprecated
           deprecated.add_class('deprecated') if deprecated

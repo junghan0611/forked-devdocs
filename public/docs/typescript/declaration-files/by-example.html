@@ -1,0 +1,69 @@
+<h1>Declaration Reference</h1>
+<h1 id="소개-introduction" style="position:relative;">소개 (Introduction)</h1> <p>이 가이드는 양질의 선언 파일을 작성하는 방법을 설명하기 위해 작성되었습니다. 이 가이드는 일부 API 문서를 해당 API 사용 예시와 함께 보여주고, 상응하는 선언을 작성하는 방법을 설명합니다.</p> <p>예제는 대체로 후반부로 갈수록 복잡해집니다.</p> <ul> <li><a href="#%ED%94%84%EB%A1%9C%ED%8D%BC%ED%8B%B0%EB%A5%BC-%EA%B0%96%EB%8A%94-%EA%B0%9D%EC%B2%B4-objects-with-properties">프로퍼티를 갖는 객체 (Objects with Properties)</a></li> <li><a href="#%EC%98%A4%EB%B2%84%EB%A1%9C%EB%93%9C%EB%90%9C-%ED%95%A8%EC%88%98-overloaded-functions">오버로드된 함수 (Overloaded Function)</a></li> <li><a href="#%EC%9E%AC%EC%82%AC%EC%9A%A9-%EA%B0%80%EB%8A%A5%ED%95%9C-%ED%83%80%EC%9E%85-%EC%9D%B8%ED%84%B0%ED%8E%98%EC%9D%B4%EC%8A%A4-reusable-types-interfaces">재사용 가능한 타입 (인터페이스) (Reusable Types (Interfaces))</a></li> <li><a href="#%EC%9E%AC%EC%82%AC%EC%9A%A9-%EA%B0%80%EB%8A%A5%ED%95%9C-%ED%83%80%EC%9E%85-%ED%83%80%EC%9E%85-%EB%B3%84%EC%B9%AD-reusable-types-type-aliases">재사용 가능한 타입 (타입 별칭) (Reusable Types (Type Aliases))</a></li> <li><a href="#%ED%83%80%EC%9E%85-%EA%B5%AC%EC%A1%B0%ED%99%94%ED%95%98%EA%B8%B0-organizing-types">타입 구조화하기 (Organizing Types)</a></li> <li><a href="#%ED%81%B4%EB%9E%98%EC%8A%A4-classes">클래스 (Classes)</a></li> <li><a href="#%EC%A0%84%EC%97%AD-%EB%B3%80%EC%88%98-global-variables">전역 변수 (Global Variables)</a></li> <li><a href="#%EC%A0%84%EC%97%AD-%ED%95%A8%EC%88%98-global-functions">전역 함수 (Global Functions)</a></li> </ul> <h1 id="예제-the-examples" style="position:relative;">예제 (The Examples)</h1> <h2 id="프로퍼티를-갖는-객체-objects-with-properties" style="position:relative;">프로퍼티를 갖는 객체 (Objects with Properties)</h2> <p><em>문서</em></p> <blockquote> <p>전역 변수 <code>myLib</code>에는 인사말을 만드는 함수 <code>makeGreeting</code>와, 지금까지 생성한 인사말의 수를 가리키는 <code>numberOfGreetings</code> 프로퍼티가 있습니다.</p> </blockquote> <p><em>코드</em></p> <pre data-language="ts">let result = myLib.makeGreeting("hello, world");
+console.log("The computed greeting is:" + result);
+
+let count = myLib.numberOfGreetings;</pre> <p><em>선언</em></p> <p>점 표기법으로 접근하는 타입이나 값을 설명하기 위해 <code>declare namespace</code>를 사용하세요.</p> <pre data-language="ts">declare namespace myLib {
+    function makeGreeting(s: string): string;
+    let numberOfGreetings: number;
+}</pre> <h2 id="오버로드된-함수-overloaded-functions" style="position:relative;">오버로드된 함수 (Overloaded Functions)</h2> <p><em>문서</em></p> <p><code>getWidget</code> 함수는 숫자를 인자로 받아 Widget을 반환하거나, 문자열을 인자로 받아 Widget 배열을 반환합니다.</p> <p><em>코드</em></p> <pre data-language="ts">let x: Widget = getWidget(43);
+
+let arr: Widget[] = getWidget("all of them");</pre> <p><em>선언</em></p> <pre data-language="ts">declare function getWidget(n: number): Widget;
+declare function getWidget(s: string): Widget[];</pre> <h2 id="재사용-가능한-타입-인터페이스-reusable-types-interfaces" style="position:relative;">재사용 가능한 타입 (인터페이스) (Reusable Types (Interfaces))</h2> <p><em>문서</em></p> <blockquote> <p>greeting을 명시할 때, 반드시 <code>GreetingSettings</code> 객체를 전달해야 합니다. 이 객체는 다음의 프로퍼티를 갖고 있습니다:</p> <p>1 - greeting: 필수 문자열</p> <p>2 - duration: 선택적 시간 (밀리초)</p> <p>3 - color: 선택적 문자열, 예. ‘#ff00ff’</p> </blockquote> <p><em>코드</em></p> <pre data-language="ts">greet({
+  greeting: "hello world",
+  duration: 4000
+});</pre> <p><em>선언</em></p> <p>프로퍼티를 갖는 타입을 정의하기 위해 <code>interface</code>를 사용하세요.</p> <pre data-language="ts">interface GreetingSettings {
+  greeting: string;
+  duration?: number;
+  color?: string;
+}
+
+declare function greet(setting: GreetingSettings): void;</pre> <h2 id="재사용-가능한-타입-타입-별칭-reusable-types-type-aliases" style="position:relative;">재사용 가능한 타입 (타입 별칭) (Reusable Types (Type Aliases))</h2> <p><em>문서</em></p> <blockquote> <p>인사말이 예상되는 어느 곳에나, <code>string</code>, <code>string</code>을 반환하는 함수, 또는 <code>Greeter</code> 인스턴스를 전달할 수 있습니다.</p> </blockquote> <p><em>코드</em></p> <pre data-language="ts">function getGreeting() {
+    return "howdy";
+}
+class MyGreeter extends Greeter { }
+
+greet("hello");
+greet(getGreeting);
+greet(new MyGreeter());</pre> <p><em>선언</em></p> <p>타입에 대한 약칭으로 타입 별칭을 사용할 수 있습니다:</p> <pre data-language="ts">type GreetingLike = string | (() =&gt; string) | Greeter;
+
+declare function greet(g: GreetingLike): void;</pre> <h2 id="타입-구조화하기-organizing-types" style="position:relative;">타입 구조화하기 (Organizing Types)</h2> <p><em>문서</em></p> <blockquote> <p><code>greeter</code> 객체는 파일에 로그를 작성하거나 경고 창을 띄울 수 있습니다. 로그 옵션을 <code>.log(...)</code> 내부에, 경고 창 옵션을 <code>.alert(...)</code> 내부에 전달할 수 있습니다.</p> </blockquote> <p><em>코드</em></p> <pre data-language="ts">const g = new Greeter("Hello");
+g.log({ verbose: true });
+g.alert({ modal: false, title: "Current Greeting" });</pre> <p><em>선언</em></p> <p>타입을 구조화하기 위해 네임스페이스를 사용하세요.</p> <pre data-language="ts">declare namespace GreetingLib {
+    interface LogOptions {
+        verbose?: boolean;
+    }
+    interface AlertOptions {
+        modal: boolean;
+        title?: string;
+        color?: string;
+    }
+}</pre> <p>중첩된 네임스페이스를 하나의 선언으로 만들 수 있습니다:</p> <pre data-language="ts">declare namespace GreetingLib.Options {
+    // Refer to via GreetingLib.Options.Log
+    interface Log {
+        verbose?: boolean;
+    }
+    interface Alert {
+        modal: boolean;
+        title?: string;
+        color?: string;
+    }
+}</pre> <h2 id="클래스-classes" style="position:relative;">클래스 (Classes)</h2> <p><em>문서</em></p> <blockquote> <p><code>Greeter</code> 객체를 인스턴스화해서 greeter를 생성하거나, 이 객체를 상속해서 커스텀 greeter를 생성할 수 있습니다.</p> </blockquote> <p><em>코드</em></p> <pre data-language="ts">const myGreeter = new Greeter("hello, world");
+myGreeter.greeting = "howdy";
+myGreeter.showGreeting();
+
+class SpecialGreeter extends Greeter {
+    constructor() {
+        super("Very special greetings");
+    }
+}</pre> <p><em>선언</em></p> <p>클래스 혹은 클래스-같은 객체를 설명하기 위해 <code>declare class</code>를 사용하세요. 클래스는 생성자 뿐만 아니라 프로퍼티와 메서드를 가질 수 있습니다.</p> <pre data-language="ts">declare class Greeter {
+    constructor(greeting: string);
+
+    greeting: string;
+    showGreeting(): void;
+}</pre> <h2 id="전역-변수-global-variables" style="position:relative;">전역 변수 (Global Variables)</h2> <p><em>문서</em></p> <blockquote> <p>전역 변수 <code>foo</code>는 존재하는 위젯의 수를 포함합니다.</p> </blockquote> <p><em>코드</em></p> <pre data-language="ts">console.log("Half the number of widgets is " + (foo / 2));</pre> <p><em>선언</em></p> <p>변수를 선언하기 위해 <code>declare var</code>를 사용하세요. 만약 변수가 읽기-전용이라면, <code>declare const</code>를 사용하세요. 변수가 블록-스코프인 경우 <code>declare let</code> 또한 사용할 수 있습니다.</p> <pre data-language="ts">/** 존재하는 위젯의 수 */
+declare var foo: number;</pre> <h2 id="전역-함수-global-functions" style="position:relative;">전역 함수 (Global Functions)</h2> <p><em>문서</em></p> <blockquote> <p>사용자에게 인사말을 보여주기 위해 <code>greet</code> 함수를 호출할 수 있습니다.</p> </blockquote> <p><em>코드</em></p> <pre data-language="ts">greet("hello, world");</pre> <p><em>선언</em></p> <p>함수를 선언하기 위해 <code>declare function</code>을 사용하세요.</p> <pre data-language="ts">declare function greet(greeting: string): void;</pre><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2012-2023 Microsoft<br>Licensed under the Apache License, Version 2.0.<br>
+    <a href="https://www.typescriptlang.org/ko/docs/handbook/declaration-files/by-example.html" class="_attribution-link">https://www.typescriptlang.org/ko/docs/handbook/declaration-files/by-example.html</a>
+  </p>
+</div>

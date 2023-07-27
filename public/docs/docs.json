@@ -1,0 +1,15 @@
+[
+  {
+    "name": "TypeScript",
+    "slug": "typescript",
+    "type": "typescript",
+    "links": {
+      "home": "https://www.typescriptlang.org",
+      "code": "https://github.com/Microsoft/TypeScript"
+    },
+    "release": "5.1.6",
+    "mtime": 1690436949,
+    "db_size": 1306191,
+    "attribution": "&copy; 2012-2023 Microsoft<br>\n      Licensed under the Apache License, Version 2.0."
+  }
+]

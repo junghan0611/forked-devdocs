@@ -1,0 +1,81 @@
+<h1>Mapped Types</h1>
+<p>중복을 피하기 위해서 다른 타입을 바탕으로 새로운 타입을 생성할 수 있습니다.</p> <p>매핑된 타입은 이전에 선언하지 않았던 프로퍼티의 타입을 선언할 수 있는 인덱스 시그니처 문법로 구성됩니다.</p> <pre data-language="ts">type OnlyBoolsAndHorses = {
+  [key: string]: boolean | Horse;
+};
+ 
+const conforms: OnlyBoolsAndHorses = {
+  del: true,
+  rodney: false,
+};</pre> <p>매핑된 타입은 <code>PropertyKey</code>(<a href="https://www.typescriptlang.org/docs/handbook/2/indexed-access-types.html"><code>keyof</code>을 통해서</a> 자주 생성되는)의 조합을 사용하여 키를 통해 타입을 반복적으로 생성하는 제너릭 타입입니다.</p> <pre data-language="ts">type OptionsFlags&lt;Type&gt; = {
+  [Property in keyof Type]: boolean;
+};</pre> <p>다음 예제에서, <code>OptionsFlags</code>는 <code>Type</code> 타입의 모든 프로퍼티를 가져와서 해당 값을 불린으로 변경합니다.</p> <pre data-language="ts">type FeatureFlags = {
+  darkMode: () =&gt; void;
+  newUserProfile: () =&gt; void;
+};
+ 
+type FeatureOptions = OptionsFlags&lt;FeatureFlags&gt;;</pre> <h3 id="mapping-modifiers" style="position:relative;">Mapping Modifiers</h3> <p>매핑중에는 추가할 수 있는 수정자로 <code>readonly</code>와 <code>?</code> 있습니다. 각각 가변성과 선택성에 영향을 미칩니다.</p> <p><code>-</code> 또는 <code>+</code>를 접두사로 붙여서 이런 수정자를 추가하거나 제거할 수 있습니다. 접두사를 추가하지 않으면 <code>+</code>로 간주합니다.</p> <pre data-language="ts">// 타입의 프로퍼티에서 'readonly' 속성을 제거합니다
+type CreateMutable&lt;Type&gt; = {
+  -readonly [Property in keyof Type]: Type[Property];
+};
+ 
+type LockedAccount = {
+  readonly id: string;
+  readonly name: string;
+};
+ 
+type UnlockedAccount = CreateMutable&lt;LockedAccount&gt;;</pre> <pre data-language="ts">// 타입의 프로퍼티에서 'optional' 속성을 제거합니다
+type Concrete&lt;Type&gt; = {
+  [Property in keyof Type]-?: Type[Property];
+};
+ 
+type MaybeUser = {
+  id: string;
+  name?: string;
+  age?: number;
+};
+ 
+type User = Concrete&lt;MaybeUser&gt;;</pre> <h2 id="key-remapping-via-as" style="position:relative;">Key Remapping via <code>as</code>
+</h2> <p>TypeScript 4.1 이상에서는 매핑된 타입에 <code>as</code> 절을 사용해서 매핑된 타입의 키를 다시 매핑할 수 있습니다.</p> <pre data-language="ts">type MappedTypeWithNewProperties&lt;Type&gt; = {
+    [Properties in keyof Type as NewKeyType]: Type[Properties]
+}</pre> <p><a href="https://www.typescriptlang.org/docs/handbook/2/template-literal-types.html">템플릿 리터럴 타입</a>과 같은 기능을 활용해서 이전 프로퍼티에서 새로운 프로퍼티 이름을 만들 수 있습니다.</p> <pre data-language="ts">type Getters&lt;Type&gt; = {
+    [Property in keyof Type as `get${Capitalize&lt;string &amp; Property&gt;}`]: () =&gt; Type[Property]
+};
+ 
+interface Person {
+    name: string;
+    age: number;
+    location: string;
+}
+ 
+type LazyPerson = Getters&lt;Person&gt;;</pre> <p>조건부 타입을 통해 <code>never</code>를 생성해서 키를 필터링할 수 있습니다.</p> <pre data-language="ts">// 'kind' 프로퍼티를 제거합니다
+type RemoveKindField&lt;Type&gt; = {
+    [Property in keyof Type as Exclude&lt;Property, "kind"&gt;]: Type[Property]
+};
+ 
+interface Circle {
+    kind: "circle";
+    radius: number;
+}
+ 
+type KindlessCircle = RemoveKindField&lt;Circle&gt;;</pre> <p><code>string | number | symbol</code> 의 조합뿐만 아니라 모든 타입의 조합을 임의로 매핑할 수 있습니다.</p> <pre data-language="ts">type EventConfig&lt;Events extends { kind: string }&gt; = {
+    [E in Events as E["kind"]]: (event: E) =&gt; void;
+}
+ 
+type SquareEvent = { kind: "square", x: number, y: number };
+type CircleEvent = { kind: "circle", radius: number };
+ 
+type Config = EventConfig&lt;SquareEvent | CircleEvent&gt;</pre> <h3 id="further-exploration" style="position:relative;">Further Exploration</h3> <p>매핑된 타입은 타입 조작 섹션의 다른 기능들과 잘 동작합니다. 예를 들어 객체의 <code>pii</code> 프로퍼티가 <code>true</code>로 설정되어 있는지에 따라 <code>true</code> 혹은 <code>false</code>를 반환하는 <a href="https://www.typescriptlang.org/docs/handbook/2/conditional-types.html">조건부 타입을 사용한 매핑된 타입</a>이 있습니다.</p> <pre data-language="ts">type ExtractPII&lt;Type&gt; = {
+  [Property in keyof Type]: Type[Property] extends { pii: true } ? true : false;
+};
+ 
+type DBFields = {
+  id: { format: "incrementing" };
+  name: { type: string; pii: true };
+};
+ 
+type ObjectsNeedingGDPRDeletion = ExtractPII&lt;DBFields&gt;;</pre><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2012-2023 Microsoft<br>Licensed under the Apache License, Version 2.0.<br>
+    <a href="https://www.typescriptlang.org/ko/docs/handbook/2/mapped-types.html" class="_attribution-link">https://www.typescriptlang.org/ko/docs/handbook/2/mapped-types.html</a>
+  </p>
+</div>

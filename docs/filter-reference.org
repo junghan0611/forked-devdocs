@@ -1,0 +1,318 @@
+*Table of contents:*
+
+- [[#overview][Overview]]
+- [[#instance-methods][Instance methods]]
+- [[#core-filters][Core filters]]
+- [[#custom-filters][Custom filters]]
+  - [[#cleanhtmlfilter][CleanHtmlFilter]]
+  - [[#entriesfilter][EntriesFilter]]
+
+** Overview
+:PROPERTIES:
+:CUSTOM_ID: overview
+:END:
+Filters use the [[https://github.com/jch/html-pipeline][HTML::Pipeline]]
+library. They take an HTML string or [[http://nokogiri.org/][Nokogiri]]
+node as input, optionally perform modifications and/or extract
+information from it, and then outputs the result. Together they form a
+pipeline where each filter hands its output to the next filter's input.
+Every documentation page passes through this pipeline before being
+copied on the local filesystem.
+
+Filters are subclasses of the
+[[https://github.com/freeCodeCamp/devdocs/blob/main/lib/docs/core/filter.rb][=Docs::Filter=]]
+class and require a =call= method. A basic implementation looks like
+this:
+
+#+begin_src ruby
+module Docs
+  class CustomFilter < Filter
+    def call
+      doc
+    end
+  end
+end
+#+end_src
+
+Filters which manipulate the Nokogiri node object (=doc= and related
+methods) are /HTML filters/ and must not manipulate the HTML string
+(=html=). Vice-versa, filters which manipulate the string representation
+of the document are /text filters/ and must not manipulate the Nokogiri
+node object. The two types are divided into two stacks within the
+scrapers. These stacks are then combined into a pipeline that calls the
+HTML filters before the text filters (more details
+[[./scraper-reference.md#filter-stacks][here]]). This is to avoid
+parsing the document multiple times.
+
+The =call= method must return either =doc= or =html=, depending on the
+type of filter.
+
+** Instance methods
+:PROPERTIES:
+:CUSTOM_ID: instance-methods
+:END:
+- =doc= [Nokogiri::XML::Node] The Nokogiri representation of the
+  container element. See
+  [[http://www.rubydoc.info/github/sparklemotion/nokogiri/Nokogiri/XML/Node][Nokogiri's
+  API docs]] for the list of available methods.
+
+- =html= [String] The string representation of the container element.
+
+- =context= [Hash] *(frozen)* The scraper's =options= along with a few
+  additional keys: =:base_url=, =:root_url=, =:root_page= and =:url=.
+
+- =result= [Hash] Used to store the page's metadata and pass back
+  information to the scraper. Possible keys:
+
+  - =:path= --- the page's normalized path
+  - =:store_path= --- the path where the page will be stored (equal to
+    =:path= with =.html= at the end)
+  - =:internal_urls= --- the list of distinct internal URLs found within
+    the page
+  - =:entries= --- the
+    [[https://github.com/freeCodeCamp/devdocs/blob/main/lib/docs/core/models/entry.rb][=Entry=]]
+    objects to add to the index
+
+- =css=, =at_css=, =xpath=, =at_xpath= Shortcuts for =doc.css=,
+  =doc.xpath=, etc.
+
+- =base_url=, =current_url=, =root_url= [Docs::URL] Shortcuts for
+  =context[:base_url]=, =context[:url]=, and =context[:root_url]=
+  respectively.
+
+- =root_path= [String] Shortcut for =context[:root_path]=.
+
+- =subpath= [String] The sub-path from the base URL of the current URL.
+  /Example: if =base_url= equals =example.com/docs= and =current_url=
+  equals =example.com/docs/file?raw=, the returned value is =/file=./
+
+- =slug= [String] The =subpath= removed of any leading slash or =.html=
+  extension. /Example: if =subpath= equals =/dir/file.html=, the
+  returned value is =dir/file=./
+
+- =root_page?= [Boolean] Returns =true= if the current page is the root
+  page.
+
+- =initial_page?= [Boolean] Returns =true= if the current page is the
+  root page or its subpath is one of the scraper's =initial_paths=.
+
+** Core filters
+:PROPERTIES:
+:CUSTOM_ID: core-filters
+:END:
+- [[https://github.com/freeCodeCamp/devdocs/blob/main/lib/docs/filters/core/container.rb][=ContainerFilter=]]
+  --- changes the root node of the document (remove everything outside)
+- [[https://github.com/freeCodeCamp/devdocs/blob/main/lib/docs/filters/core/clean_html.rb][=CleanHtmlFilter=]]
+  --- removes HTML comments, =<script>=, =<style>=, etc.
+- [[https://github.com/freeCodeCamp/devdocs/blob/main/lib/docs/filters/core/normalize_urls.rb][=NormalizeUrlsFilter=]]
+  --- replaces all URLs with their fully qualified counterpart
+- [[https://github.com/freeCodeCamp/devdocs/blob/main/lib/docs/filters/core/internal_urls.rb][=InternalUrlsFilter=]]
+  --- detects internal URLs (the ones to scrape) and replaces them with
+  their unqualified, relative counterpart
+- [[https://github.com/freeCodeCamp/devdocs/blob/main/lib/docs/filters/core/normalize_paths.rb][=NormalizePathsFilter=]]
+  --- makes the internal paths consistent (e.g. always end with =.html=)
+- [[https://github.com/freeCodeCamp/devdocs/blob/main/lib/docs/filters/core/clean_local_urls.rb][=CleanLocalUrlsFilter=]]
+  --- removes links, iframes and images pointing to localhost
+  (=FileScraper= only)
+- [[https://github.com/freeCodeCamp/devdocs/blob/main/lib/docs/filters/core/inner_html.rb][=InnerHtmlFilter=]]
+  --- converts the document to a string
+- [[https://github.com/freeCodeCamp/devdocs/blob/main/lib/docs/filters/core/clean_text.rb][=CleanTextFilter=]]
+  --- removes empty nodes
+- [[https://github.com/freeCodeCamp/devdocs/blob/main/lib/docs/filters/core/attribution.rb][=AttributionFilter=]]
+  --- appends the license info and link to the original document
+- [[https://github.com/freeCodeCamp/devdocs/blob/main/lib/docs/filters/core/title.rb][=TitleFilter=]]
+  --- prepends the document with a title (disabled by default)
+- [[https://github.com/freeCodeCamp/devdocs/blob/main/lib/docs/filters/core/entries.rb][=EntriesFilter=]]
+  --- abstract filter for extracting the page's metadata
+
+** Custom filters
+:PROPERTIES:
+:CUSTOM_ID: custom-filters
+:END:
+Scrapers can have any number of custom filters but require at least the
+two described below.
+
+*Note:* filters are located in the
+[[https://github.com/freeCodeCamp/devdocs/tree/main/lib/docs/filters/][=lib/docs/filters=]]
+directory. The class's name must be the
+[[http://api.rubyonrails.org/classes/String.html#method-i-camelize][CamelCase]]
+equivalent of the filename.
+
+*** =CleanHtmlFilter=
+:PROPERTIES:
+:CUSTOM_ID: cleanhtmlfilter
+:END:
+The =CleanHtml= filter is tasked with cleaning the HTML markup where
+necessary and removing anything superfluous or nonessential. Only the
+core documentation should remain at the end.
+
+Nokogiri's many jQuery-like methods make it easy to search and modify
+elements --- see the
+[[http://www.rubydoc.info/github/sparklemotion/nokogiri/Nokogiri/XML/Node][API
+docs]].
+
+Here's an example implementation that covers the most common use-cases:
+
+#+begin_src ruby
+module Docs
+  class MyScraper
+    class CleanHtmlFilter < Filter
+      def call
+        css('hr').remove
+        css('#changelog').remove if root_page?
+
+        # Set id attributes on <h3> instead of an empty <a>
+        css('h3').each do |node|
+          node['id'] = node.at_css('a')['id']
+        end
+
+        # Make proper table headers
+        css('td.header').each do |node|
+          node.name = 'th'
+        end
+
+        # Remove code highlighting
+        css('pre').each do |node|
+          node.content = node.content
+        end
+
+        doc
+      end
+    end
+  end
+end
+#+end_src
+
+*Notes:*
+
+- Empty elements will be automatically removed by the core
+  =CleanTextFilter= later in the pipeline's execution.
+- Although the goal is to end up with a clean version of the page, try
+  to keep the number of modifications to a minimum, so as to make the
+  code easier to maintain. Custom CSS is the preferred way of
+  normalizing the pages (except for hiding stuff which should always be
+  done by removing the markup).
+- Try to document your filter's behavior as much as possible,
+  particularly modifications that apply only to a subset of pages. It'll
+  make updating the documentation easier.
+
+*** =EntriesFilter=
+:PROPERTIES:
+:CUSTOM_ID: entriesfilter
+:END:
+The =Entries= filter is responsible for extracting the page's metadata,
+represented by a set of /entries/, each with a name, type and path.
+
+The following two models are used under the hood to represent the
+metadata:
+
+- [[https://github.com/freeCodeCamp/devdocs/blob/main/lib/docs/core/models/entry.rb][=Entry(name, type, path)=]]
+- [[https://github.com/freeCodeCamp/devdocs/blob/main/lib/docs/core/models/type.rb][=Type(name, slug, count)=]]
+
+Each scraper must implement its own =EntriesFilter= by subclassing the
+[[https://github.com/freeCodeCamp/devdocs/blob/main/lib/docs/filters/core/entries.rb][=Docs::EntriesFilter=]]
+class. The base class already implements the =call= method and includes
+four methods which the subclasses can override:
+
+- =get_name= [String] The name of the default entry (aka. the page's
+  name). It is usually guessed from the =slug= (documented above) or by
+  searching the HTML markup. *Default:* modified version of =slug=
+  (underscores are replaced with spaces and forward slashes with dots)
+
+- =get_type= [String] The type of the default entry (aka. the page's
+  type). Entries without a type can be searched for but won't be listed
+  in the app's sidebar (unless no other entries have a type). *Default:*
+  =nil=
+
+- =include_default_entry?= [Boolean] Whether to include the default
+  entry. Used when a page consists of multiple entries (returned by
+  =additional_entries=) but doesn't have a name/type of its own, or to
+  remove a page from the index (if it has no additional entries), in
+  which case it won't be copied on the local filesystem and any link to
+  it in the other pages will be broken (as explained on the
+  [[./scraper-reference.md][Scraper Reference]] page, this is used to
+  keep the =:skip= / =:skip_patterns= options to a maintainable size, or
+  if the page includes links that can't reached from anywhere else).
+  *Default:* =true=
+
+- =additional_entries= [Array] The list of additional entries. Each
+  entry is represented by an Array of three attributes: its name,
+  fragment identifier, and type. The fragment identifier refers to the
+  =id= attribute of the HTML element (usually a heading) that the entry
+  relates to. It is combined with the page's path to become the entry's
+  path. If absent or =nil=, the page's path is used. If the type is
+  absent or =nil=, the default =type= is used. Example:
+  =[ ['One'], ['Two', 'id'], ['Three', nil, 'type'] ]= adds three
+  additional entries, the first one named "One" with the default path
+  and type, the second one named "Two" with the URL fragment "#id" and
+  the default type, and the third one named "Three" with the default
+  path and the type "type". The list is usually constructed by running
+  through the markup. Exceptions can also be hard-coded for specific
+  pages. *Default:* =[]=
+
+The following accessors are also available, but must not be overridden:
+
+- =name= [String] Memoized version of =get_name= (=nil= for the root
+  page).
+
+- =type= [String] Memoized version of =get_type= (=nil= for the root
+  page).
+
+*Notes:*
+
+- Leading and trailing whitespace is automatically removed from names
+  and types.
+- Names must be unique across the documentation and as short as possible
+  (ideally less than 30 characters). Whenever possible, methods should
+  be differentiated from properties by appending =()=, and instance
+  methods should be differentiated from class methods using the
+  =Class#method= or =object.method= conventions.
+- You can call =name= from =get_type= or =type= from =get_name= but
+  doing both will cause a stack overflow (i.e. you can infer the name
+  from the type or the type from the name, but you can't do both at the
+  same time). Don't call =get_name= or =get_type= directly as their
+  value isn't memoized.
+- The root page has no name and no type (both are =nil=). =get_name= and
+  =get_type= won't get called with the page (but =additional_entries=
+  will).
+- =Docs::EntriesFilter= is an /HTML filter/. It must be added to the
+  scraper's =html_filters= stack.
+- Try to document the code as much as possible, particularly the special
+  cases. It'll make updating the documentation easier.
+
+*Example:*
+
+#+begin_src ruby
+module Docs
+  class MyScraper
+    class EntriesFilter < Docs::EntriesFilter
+      def get_name
+        node = at_css('h1')
+        result = node.content.strip
+        result << ' event' if type == 'Events'
+        result << '()' if node['class'].try(:include?, 'function')
+        result
+      end
+
+      def get_type
+        object, method = *slug.split('/')
+        method ? object : 'Miscellaneous'
+      end
+
+      def additional_entries
+        return [] if root_page?
+
+        css('h2').map do |node|
+          [node.content, node['id']]
+        end
+      end
+
+      def include_default_entry?
+        !at_css('.obsolete')
+      end
+    end
+  end
+end
+#+end_src
+
+return [[Home]]
