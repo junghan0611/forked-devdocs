@@ -1,0 +1,53 @@
+<header><h1>Set.prototype[@@iterator]()</h1></header><div class="section-content">
+<p> <code>Set</code> 객체의 <code>@@iterator</code> 메서드는 <a href="../../iteration_protocols">Iteration 프로토콜</a>을 구현하며, <a href="../../operators/spread_syntax">전개 구문</a> 및 <a href="../../statements/for...of"><code>for...of</code></a> 루프와 같이 순회를 예상하는 대부분의 구문에서 Set을 사용할 수 있도록 합니다. Set의 값을 산출하는 반복자를 반환합니다. </p> <p>이 속성의 초기 값은 <a href="values"><code>Set.prototype.values</code></a> 속성의 초기 값과 동일한 함수 객체입니다.</p>
+</div>
+<section aria-labelledby="시도해보기"><h2 id="시도해보기">시도해보기</h2>
+<div class="section-content"><iframe class="interactive is-js-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/js/set-prototype-@@iterator.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe></div></section><section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="OjjnAACgFwNzq/rT/QNOFxBsJtDk67eVatbdYD+Xxio=" data-language="js"><span class="token keyword">set</span><span class="token punctuation">[</span>Symbol<span class="token punctuation">.</span>iterator<span class="token punctuation">]</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+</pre>
+</div></div></section><section aria-labelledby="반환_값"><h3 id="반환_값">반환 값</h3>
+<div class="section-content"><p><a href="values"><code>Set.prototype.values()</code></a>와 동일하게 set의 값을 산출하는 새로운 반복 가능한 반복자 객체를 반환합니다.</p></div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+</section><section aria-labelledby="for...of_루프를_사용한_반복"><h3 id="for...of_루프를_사용한_반복">for...of 루프를 사용한 반복</h3>
+<div class="section-content">
+<p> 이 메서드를 직접 호출할 필요는 거의 없습니다. <code>@@iterator</code> 메서드의 존재는 <code>Set</code> 객체가 <a href="../../iteration_protocols#the_iterable_protocol">반복 가능</a>하게 해주며, <code>for...of</code> 루프와 같은 반복 구문은 이 메서드를 자동으로 호출하여 루프를 돌릴 반복자를 얻게 됩니다. </p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="s07FeHxVZfq5CtmH2V/W5qS+5rTbcp5ruOaw5m659s0=" data-language="js"><span class="token keyword">const</span> mySet <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Set</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+mySet<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token string">"0"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+mySet<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+mySet<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">const</span> v <span class="token keyword">of</span> mySet<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>v<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="반복자_수동으로_돌리기"><h3 id="반복자_수동으로_돌리기">반복자 수동으로 돌리기</h3>
+<div class="section-content">
+<p>반환된 반복자 객체의 <code>next()</code> 메서드를 수동으로 호출하여 반복 프로세스를 최대한 제어할 수 있습니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="mJCI/hIlEbomEhOCh/iG+CSFxff/i0hArZRzgJRzbaI=" data-language="js"><span class="token keyword">const</span> mySet <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Set</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+mySet<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token string">"0"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+mySet<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+mySet<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> setIter <span class="token operator">=</span> mySet<span class="token punctuation">[</span>Symbol<span class="token punctuation">.</span>iterator<span class="token punctuation">]</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>setIter<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>value<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// "0"</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>setIter<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>value<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 1</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>setIter<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>value<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Object</span>
+</pre>
+</div>
+</div></section><h2 id="명세서">명세서</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://tc39.es/ecma262/multipage/keyed-collections.html#sec-set.prototype-@@iterator">ECMAScript Language Specification <br><small># sec-set.prototype-@@iterator</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="entries"><code>Set.prototype.entries()</code></a></li> <li><a href="keys"><code>Set.prototype.keys()</code></a></li> <li><a href="values"><code>Set.prototype.values()</code></a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Set/@@iterator" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Set/@@iterator</a>
+  </p>
+</div>

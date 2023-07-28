@@ -1,0 +1,71 @@
+<header><h1>tabs.insertCSS()</h1></header><div class="section-content">
+<p>페이지에 CSS 삽입하기</p> <blockquote> <p><strong>Note:</strong> When using Manifest V3 or higher, use <a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/scripting/insertCSS" class="only-in-en-us"><code>scripting.insertCSS()</code> <small>(en-US)</small></a> and <a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/scripting/removeCSS" class="only-in-en-us"><code>scripting.removeCSS()</code> <small>(en-US)</small></a> to insert and remove CSS.</p> </blockquote> <p>이 API를 사용하기 위해 여러분은 해당 페이지 URL에 대한 허가가 필요합니다. 이 허가에 대한 요청은 <a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/manifest.json/permissions#host_permissions">호스트 허가</a>를 통하거나 <a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/manifest.json/permissions#activetab_permission">활성화 된 탭 허가</a>을 사용할 수도 있습니다.</p> <p>You can only inject CSS into pages whose URL can be expressed using a <a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Match_patterns">match pattern</a>: meaning, its scheme must be one of "http", "https", or "file". This means that you can't inject CSS into any of the browser's built-in pages, such as about:debugging, about:addons, or the page that opens when you open a new empty tab.</p> <blockquote> <p><strong>Note:</strong> Firefox resolves URLs in injected CSS files relative to the CSS file itself, rather than to the page it's injected into.</p> </blockquote> <p>The inserted CSS may be removed again by calling <a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/tabs/removeCSS" class="only-in-en-us"><code>tabs.removeCSS()</code> <small>(en-US)</small></a>.</p> <p>This is an asynchronous function that returns a <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise"><code>Promise</code></a> (on Firefox only).</p>
+</div>
+<section aria-labelledby="syntax"><h2 id="syntax">Syntax</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="tEf5QWvIi8XxHg3E1oCDeJ/WFqcM3GsIB0a+4/JL0xY=" data-language="js"><span class="token keyword">let</span> inserting <span class="token operator">=</span> browser<span class="token punctuation">.</span>tabs<span class="token punctuation">.</span><span class="token function">insertCSS</span><span class="token punctuation">(</span>
+  tabId<span class="token punctuation">,</span>           <span class="token comment">// optional integer</span>
+  details          <span class="token comment">// object</span>
+<span class="token punctuation">)</span>
+</pre>
+</div></div></section><section aria-labelledby="parameters"><h3 id="parameters">Parameters</h3>
+<div class="section-content"><dl> <dt id="tabid">
+<code>tabId</code> <span class="badge inline optional">Optional</span>
+</dt> <dd> <p><code>integer</code>. The ID of the tab in which to insert the CSS. Defaults to the active tab of the current window.</p> </dd> <dt id="details"><code>details</code></dt> <dd> <p>An object describing the CSS to insert. It contains the following properties:</p> <dl> <dt id="allframes">
+<code>allFrames</code> <span class="badge inline optional">Optional</span>
+</dt> <dd> <p><code>boolean</code>. If <code>true</code>, the CSS will be injected into all frames of the current page. If it is <code>false</code>, CSS is only injected into the top frame. Defaults to <code>false</code>.</p> </dd> <dt id="code">
+<code>code</code> <span class="badge inline optional">Optional</span>
+</dt> <dd> <p><code>string</code>. Code to inject, as a text string.</p> </dd> <dt id="cssorigin">
+<code>cssOrigin</code> <span class="badge inline optional">Optional</span>
+</dt> <dd> <p><code>string</code>. This can take one of two values: "user", to add the CSS as a user stylesheet or "author" to add it as an author stylesheet. If this option is omitted, the CSS is added as an author stylesheet.</p> <ul> <li>"user" enables you to prevent websites from overriding the CSS you insert: see <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Cascade#cascading_order">Cascading order</a>.</li> <li>"author" stylesheets behave as if they appear after all author rules specified by the web page. This behavior includes any author stylesheets added dynamically by the page's scripts, even if that addition happens after the <code>insertCSS</code> call completes.</li> </ul> </dd> <dt id="file">
+<code>file</code> <span class="badge inline optional">Optional</span>
+</dt> <dd> <p><code>string</code>. Path to a file containing the code to inject. In Firefox, relative URLs are resolved relative to the current page URL. In Chrome, these URLs are resolved relative to the extension's base URL. To work cross-browser, you can specify the path as an absolute URL, starting at the extension's root, like this: <code>"/path/to/stylesheet.css"</code>.</p> </dd> <dt id="frameid">
+<code>frameId</code> <span class="badge inline optional">Optional</span>
+</dt> <dd> <p><code>integer</code>. The frame where the CSS should be injected. Defaults to <code>0</code> (the top-level frame).</p> </dd> <dt id="matchaboutblank">
+<code>matchAboutBlank</code> <span class="badge inline optional">Optional</span>
+</dt> <dd> <p><code>boolean</code>. If <code>true</code>, the code will be injected into embedded "about:blank" and "about:srcdoc" frames if your extension has access to their parent document. The code cannot be inserted in top-level about: frames. Defaults to <code>false</code>.</p> </dd> <dt id="runat">
+<code>runAt</code> <span class="badge inline optional">Optional</span>
+</dt> <dd> <p><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/extensionTypes/RunAt" class="only-in-en-us"><code>extensionTypes.RunAt</code> <small>(en-US)</small></a>. The soonest that the code will be injected into the tab. Defaults to "document_idle".</p> </dd> </dl> </dd> </dl></div></section><section aria-labelledby="return_value"><h3 id="return_value">Return value</h3>
+<div class="section-content"><p>A <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise"><code>Promise</code></a> that will be fulfilled with no arguments when all the CSS has been inserted. If any error occurs, the promise will be rejected with an error message.</p></div></section><section aria-labelledby="examples"><h2 id="examples">Examples</h2>
+<div class="section-content">
+<p>This example inserts into the currently active tab CSS which is taken from a string.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="Jm25jwxDxC5KfaLdl8s01GboOVeQGhtJcnuZnyjAfT8=" data-language="js"><span class="token keyword">let</span> css <span class="token operator">=</span> <span class="token string">"body { border: 20px dotted pink; }"</span><span class="token punctuation">;</span>
+
+browser<span class="token punctuation">.</span>browserAction<span class="token punctuation">.</span>onClicked<span class="token punctuation">.</span><span class="token function">addListener</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+
+  <span class="token keyword">function</span> <span class="token function">onError</span><span class="token punctuation">(</span><span class="token parameter">error</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">Error: </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>error<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token keyword">let</span> insertingCSS <span class="token operator">=</span> browser<span class="token punctuation">.</span>tabs<span class="token punctuation">.</span><span class="token function">insertCSS</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token literal-property property">code</span><span class="token operator">:</span> css<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  insertingCSS<span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token keyword">null</span><span class="token punctuation">,</span> onError<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div> <p>This example inserts CSS which is loaded from a file packaged with the extension. The CSS is inserted into the tab whose ID is 2:</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="cDComn9+PWH+azwi/8P1HpcJO9u8CEUbeI2XKYlfDGE=" data-language="js">browser<span class="token punctuation">.</span>browserAction<span class="token punctuation">.</span>onClicked<span class="token punctuation">.</span><span class="token function">addListener</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+
+  <span class="token keyword">function</span> <span class="token function">onError</span><span class="token punctuation">(</span><span class="token parameter">error</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">Error: </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>error<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token keyword">let</span> insertingCSS <span class="token operator">=</span> browser<span class="token punctuation">.</span>tabs<span class="token punctuation">.</span><span class="token function">insertCSS</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token punctuation">{</span><span class="token literal-property property">file</span><span class="token operator">:</span> <span class="token string">"content-style.css"</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  insertingCSS<span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token keyword">null</span><span class="token punctuation">,</span> onError<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="example_extensions"><h3 id="example_extensions">Example extensions</h3>
+<div class="section-content"><ul>
+<li><a href="https://github.com/mdn/webextensions-examples/tree/master/apply-css" target="_blank">apply-css</a></li>
+<li><a href="https://github.com/mdn/webextensions-examples/tree/master/beastify" target="_blank">beastify</a></li>
+<li><a href="https://github.com/mdn/webextensions-examples/tree/master/session-state" target="_blank">session-state</a></li>
+</ul></div></section><h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<div class="section-content"><blockquote> <p><strong>Note:</strong> This API is based on Chromium's <a href="https://developer.chrome.com/docs/extensions/reference/tabs/#method-insertCSS" target="_blank"><code>chrome.tabs</code></a> API. This documentation is derived from <a href="https://chromium.googlesource.com/chromium/src/+/master/chrome/common/extensions/api/tabs.json" target="_blank"><code>tabs.json</code></a> in the Chromium code.</p> <p>Microsoft Edge compatibility data is supplied by Microsoft Corporation and is included here under the Creative Commons Attribution 3.0 United States License.</p> </blockquote></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Mozilla/Add-ons/WebExtensions/API/tabs/insertCSS" class="_attribution-link">https://developer.mozilla.org/ko/docs/Mozilla/Add-ons/WebExtensions/API/tabs/insertCSS</a>
+  </p>
+</div>

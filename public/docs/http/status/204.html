@@ -1,0 +1,24 @@
+<h1>204 No Content</h1>
+<header><h1>204 No Content</h1></header><div class="section-content">
+<p> HTTP <code>204 No Content</code> 성공 상태 응답 코드는 요청이 성공했으나 클라이언트가 현재 페이지에서 벗어나지 않아도 된다는 것을 나타냅니다. </p> <p> 예를 들어 위키 사이트에 "저장 후 편집 계속" 기능을 구현할 때 사용할 수 있습니다. 이 경우 <a href="../methods/put"><code>PUT</code></a> 요청을 사용하여 페이지를 저장하고 <code>204 No Content</code> 응답을 전송하여 편집기를 다른 페이지로 대체해서는 안 된다는 것을 나타냅니다. </p> <p>기본값에서 204 응답은 캐시에 저장할 수 있습니다. 캐시에서 가져온 응답인 경우 <a href="../headers/etag"><code>ETag</code></a> 헤더를 포함합니다.</p>
+</div>
+<section aria-labelledby="상태"><h2 id="상태">상태</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">http</span></p>
+<pre data-signature="sArNA7JAYVKOJscsdP2Zi1QvTPejF8y4lABYfofgeO0=" data-language="http">204 No Content
+</pre>
+</div></div></section><h2 id="명세서">명세서</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://www.rfc-editor.org/rfc/rfc9110#status.204">HTTP Semantics <br><small># status.204</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="호환성_참고사항"><h2 id="호환성_참고사항">호환성 참고사항</h2>
+<div class="section-content"><ul> <li> 이 상태코드는 본문 없는 응답을 위한 상태 코드이지만, 서버에서 잘못되게 본문을 포함한 응답을 전달하는 경우가 존재할 수 있습니다. 이 프로토콜은 사용자 에이전트 다양한 방법으로 처리하는 것을 허용하고 있습니다. <a href="https://github.com/httpwg/http-core/issues/26" target="_blank">이에 대한 토론은 여기서 확인할 수 있습니다.</a> 보통 지속 연결에서 볼 수 있는 문제로, 잘못 포함된 본문이 이후 요청에 대한 별도의 응답을 담고 있을 수 있습니다. Apple Safari는 잘못 포함된 모든 데이터를 거부합니다. Google Chrome과 Microsoft Edge는 잘못된 데이터의 최대 4바이트를 검사한 후, 유효한 별도의 요청을 찾지 못한 경우 폐기합니다. Firefox는 1킬로바이트 이상을 검사합니다. </li> </ul></div></section><section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="../methods">HTTP 요청 메서드</a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/HTTP/Status/204" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/HTTP/Status/204</a>
+  </p>
+</div>

@@ -1,0 +1,83 @@
+<header><h1>&lt;li&gt;</h1></header><div class="section-content"><p><code>&lt;li&gt;</code>는 목록의 항목을 나타냅니다. 반드시 정렬 목록(<a href="ol"><code>&lt;ol&gt;</code></a>), 비정렬 목록(<a href="ul"><code>&lt;ul&gt;</code></a>, 혹은 메뉴(<a href="menu"><code>&lt;menu&gt;</code></a>) 안에 위치해야 합니다. 메뉴와 비정렬 목록에서는 보통 불릿으로 항목을 나타내고, 정렬 목록에서는 숫자나 문자를 사용한 오름차순 카운터로 나타냅니다.</p></div>
+<h2 id="시도해보기">시도해보기</h2>
+<div class="section-content">
+<iframe class="interactive is-tabbed-shorter-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/tabbed/li.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe>  <figure class="table-container"><div class="_table"><table class="properties"> <tbody> <tr> <th scope="row"><a href="../content_categories">콘텐츠 카테고리</a></th> <td>없음.</td> </tr> <tr> <th scope="row">가능한 콘텐츠</th> <td>
+<a href="../content_categories#%ed%94%8c%eb%a1%9c%ec%9a%b0_%ec%bd%98%ed%85%90%ec%b8%a0">플로우 콘텐츠</a>.</td> </tr> <tr> <th scope="row">태그 생략</th> <td> 다른 <code>&lt;li&gt;</code> 요소 바로 뒤따르거나 자신이 부모의 마지막 자식인 경우 닫는 태그를 생략할 수 있습니다. </td> </tr> <tr> <th scope="row">가능한 부모 요소</th> <td> <a href="ul"><code>&lt;ul&gt;</code></a>, <a href="ol"><code>&lt;ol&gt;</code></a>, <a href="menu"><code>&lt;menu&gt;</code></a> 요소. </td> </tr> <tr> <th scope="row">가능한 ARIA 역할</th> <td> <a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/menuitem_role" class="only-in-en-us"><code>menuitem</code> <small>(en-US)</small></a>, <a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/menuitemcheckbox_role" class="only-in-en-us"><code>menuitemcheckbox</code> <small>(en-US)</small></a>, <a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/menuitemradio_role" class="only-in-en-us"><code>menuitemradio</code> <small>(en-US)</small></a>, <a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/option_role" class="only-in-en-us"><code>option</code> <small>(en-US)</small></a>, <a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/presentation_role" class="only-in-en-us"><code>presentation</code> <small>(en-US)</small></a>, <a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/radio_role" class="only-in-en-us"><code>radio</code> <small>(en-US)</small></a>, <a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/separator_role" class="only-in-en-us"><code>separator</code> <small>(en-US)</small></a>, <a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/tab_role" class="only-in-en-us"><code>tab</code> <small>(en-US)</small></a>, <a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/treeitem_role" class="only-in-en-us"><code>treeitem</code> <small>(en-US)</small></a> </td> </tr> <tr> <th scope="row">DOM 인터페이스</th> <td><a href="https://developer.mozilla.org/ko/docs/Web/API/HTMLLIElement"><code>HTMLLIElement</code></a></td> </tr> </tbody> </table></div></figure>
+</div>
+<h2 id="특성">특성</h2>
+<div class="section-content">
+<p>이 요소는 <a href="../global_attributes">전역 특성</a>을 포함합니다.</p> <dl> <dt id="value"><a id="attr-value" class="inline-block" href="#attr-value"><b><code>value</code></b></a></dt> <dd> <p><a href="ol"><code>&lt;ol&gt;</code></a> 요소 내부에서 항목의 현재 서수 값을 나타내는 정수. 리스트가 로마 숫자나 문자로 표시되더라도 이 특성에는 숫자만 넣을수 있습니다. <code>value</code>를 지정한 항목을 뒤따르는 다른 항목은 이 값에서부터 번호를 매깁니다. <code>value</code> 속성은 비정렬 목록(<a href="ul"><code>&lt;ul&gt;</code></a>)과 메뉴(<a href="menu"><code>&lt;menu&gt;</code></a>)에서는 아무 의미가 없습니다.</p> <div class="notecard note" id="sect1"> <p><strong>참고:</strong> HTML4에서는 <code>value</code>의 사용을 중단했지만 HTML5에서 다시 도입했습니다.</p> </div> </dd> <dt id="type">
+<a id="attr-type" class="inline-block" href="#attr-type"><b><code>type</code></b></a> <abbr class="icon icon-deprecated" title="지원이 중단되었습니다. 새로운 웹사이트에서 사용하지 마세요."> <span class="visually-hidden">지원이 중단되었습니다</span> </abbr>
+</dt> <dd> <p>넘버링 타입을 나타내는 문자.</p> <ul> <li>
+<code>a</code>: 소문자 글자</li> <li>
+<code>A</code>: 대문자 글자</li> <li>
+<code>i</code>: 소문자 로마 숫자</li> <li>
+<code>I</code>: 대문자 문자 숫자</li> <li>
+<code>1</code>: 숫자</li> </ul> <p>부모 <a href="ol"><code>&lt;ol&gt;</code></a> 요소에서 지정하는 유형을 덮어씁니다.</p> <div class="notecard note" id="sect2"> <p><strong>참고:</strong> 이 속성은 사용 중단됐습니다. 대신 CSS <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/list-style-type"><code>list-style-type</code> <small>(en-US)</small></a> 속성을 사용하세요.</p> </div> </dd> </dl>
+</div>
+<h2 id="예제">예제</h2>
+<div class="section-content"><p>더 자세한 예제는 <a href="ol"><code>&lt;ol&gt;</code></a>과 <a href="ul"><code>&lt;ul&gt;</code></a>을 참고하세요.</p></div>
+<h3 id="정렬_목록">정렬 목록</h3>
+<div class="section-content">
+<div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="6Q0sRggrKHlootDwxDXlYmOG4YVhO5wsufxua72tyiU=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ol</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">&gt;</span></span>first item<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">&gt;</span></span>second item<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">&gt;</span></span>third item<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>ol</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div>
+<div class="code-example" id="sect3">
+
+<iframe class="sample-code-frame" title="정렬 목록 sample" id="frame_정렬_목록" src="https://live.mdnplay.dev/ko/docs/Web/HTML/Element/li/runner.html?id=%EC%A0%95%EB%A0%AC_%EB%AA%A9%EB%A1%9D" loading="lazy"></iframe>
+</div>
+</div>
+<h3 id="사용자_지정_값을_가진_정렬_목록">사용자 지정 값을 가진 정렬 목록</h3>
+<div class="section-content">
+<div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="S1oOw/VFjYJDQMyd3/GDcl7lMzSVBzFU9v8zZ1TNfYI=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ol</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>I<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>3<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>third item<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">&gt;</span></span>fourth item<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">&gt;</span></span>fifth item<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>ol</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div>
+<div class="code-example" id="sect4">
+
+<iframe class="sample-code-frame" title="사용자 지정 값을 가진 정렬 목록 sample" id="frame_사용자_지정_값을_가진_정렬_목록" src="https://live.mdnplay.dev/ko/docs/Web/HTML/Element/li/runner.html?id=%EC%82%AC%EC%9A%A9%EC%9E%90_%EC%A7%80%EC%A0%95_%EA%B0%92%EC%9D%84_%EA%B0%80%EC%A7%84_%EC%A0%95%EB%A0%AC_%EB%AA%A9%EB%A1%9D" loading="lazy"></iframe>
+</div>
+</div>
+<h3 id="비정렬_목록">비정렬 목록</h3>
+<div class="section-content">
+<div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="n/mufchg5iyyuO4Hnju5sDr1nBhjgM/5SMT86oWnG2Y=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ul</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">&gt;</span></span>first item<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">&gt;</span></span>second item<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">&gt;</span></span>third item<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>ul</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div>
+<div class="code-example" id="sect5">
+
+<iframe class="sample-code-frame" title="비정렬 목록 sample" id="frame_비정렬_목록" src="https://live.mdnplay.dev/ko/docs/Web/HTML/Element/li/runner.html?id=%EB%B9%84%EC%A0%95%EB%A0%AC_%EB%AA%A9%EB%A1%9D" loading="lazy"></iframe>
+</div>
+</div>
+<h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-li-element">HTML Standard <br><small># the-li-element</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li>리스트 관련 다른 요소: <a href="ul"><code>&lt;ul&gt;</code></a>, <a href="li" aria-current="page"><code>&lt;li&gt;</code></a>, <a href="menu"><code>&lt;menu&gt;</code></a>.</li> <li>
+<code>&lt;li&gt;</code> 요소와 유용하게 사용할 수 있는 CSS 속성 <ul> <li>서수를 표현할 방식을 지정하는 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/list-style"><code>list-style</code> <small>(en-US)</small></a> 속성.</li> <li>복잡한 중첩 목록을 처리하기 위한 <a href="https://developer.mozilla.org/ko/docs/Web/CSS/CSS_counter_styles/Using_CSS_counters">CSS 카운터</a>
+</li> <li>항목의 들여쓰기를 조정하기 위한 <a href="https://developer.mozilla.org/ko/docs/Web/CSS/margin"><code>margin</code></a> 속성.</li> </ul> </li> </ul></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/HTML/Element/li" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/HTML/Element/li</a>
+  </p>
+</div>

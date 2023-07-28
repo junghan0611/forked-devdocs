@@ -1,0 +1,77 @@
+<header><h1>AnalyserNode.getFloatTimeDomainData()</h1></header><div class="section-content"><p><a href="../analysernode"><code>AnalyserNode</code></a> 인터페이스의 <code>getFloatTimeDomainData()</code> 메서드는 전달된 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Float32Array"><code>Float32Array</code> <small>(en-US)</small></a> 배열 내로 현재 파형, 즉 시간 영역 데이터를 복사합니다.</p></div>
+<h2 id="구문">구문</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="2GLxF2OOWojZFTRyHlTQ2hox5O2ip1jEQMykeOGY968=" data-language="js"><span class="token keyword">var</span> audioCtx <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">AudioContext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> analyser <span class="token operator">=</span> audioCtx<span class="token punctuation">.</span><span class="token function">createAnalyser</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> dataArray <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Float32Array</span><span class="token punctuation">(</span>analyser<span class="token punctuation">.</span>fftSize<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Float32Array는 fftSize와 같은 길이일 필요가 있습니다</span>
+analyser<span class="token punctuation">.</span><span class="token function">getFloatTimeDomainData</span><span class="token punctuation">(</span>dataArray<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// getFloatTimeDomainData()로부터 반환된 데이터로 Float32Array를 채웁니다</span>
+</pre>
+</div></div>
+<h3 id="매개변수">매개변수</h3>
+<div class="section-content"><dl> <dt id="array"><code>array</code></dt> <dd> <p> 시간 영역 데이터가 복사될 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Float32Array"><code>Float32Array</code> <small>(en-US)</small></a>. 만약 배열이 <a href="frequencybincount"><code>AnalyserNode.frequencyBinCount</code></a>보다 더 적은 요소를 가지고 있다면, 초과한 요소는 탈락됩니다. 만약 이것이 필요한 것보다 더 많은 요소를 가지고 있다면, 초과한 요소는 무시됩니다. </p> </dd> </dl></div>
+<h3 id="반환_값">반환 값</h3>
+<div class="section-content"><p>없음.</p></div>
+<h2 id="예제">예제</h2>
+<div class="section-content">
+<p>다음의 예제는 <code>AnalyserNode</code>를 생성하기 위한 <a href="../audiocontext"><code>AudioContext</code></a>와 그리고 나서 반복적으로 시간 영역 데이터를 수집하고 현재 오디오 입력의 "오실로스코프 스타일의" 출력을 그리기 위한 <a href="../window/requestanimationframe"><code>requestAnimationFrame</code></a>과 <a href="https://developer.mozilla.org/ko/docs/Web/HTML/Element/canvas"><code>&lt;canvas&gt;</code></a>의 기본 사용을 보여줍니다. 더 완벽한 응용 예제/정보를 보려면 <a href="https://mdn.github.io/voice-change-o-matic-float-data/" target="_blank">Voice-change-O-matic-float-data</a> 데모를 확인하세요 (<a href="https://github.com/mdn/voice-change-o-matic-float-data" target="_blank">소스 코드</a>도 보세요).</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="p/ROdNfZUaqSKTHDElPkPJdhaY5mIbR8vZmf4FcNag0=" data-language="js"><span class="token keyword">var</span> audioCtx <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token punctuation">(</span>window<span class="token punctuation">.</span>AudioContext <span class="token operator">||</span> window<span class="token punctuation">.</span>webkitAudioContext<span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> analyser <span class="token operator">=</span> audioCtx<span class="token punctuation">.</span><span class="token function">createAnalyser</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token operator">...</span>
+
+analyser<span class="token punctuation">.</span>fftSize <span class="token operator">=</span> <span class="token number">1024</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> bufferLength <span class="token operator">=</span> analyser<span class="token punctuation">.</span>fftSize<span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>bufferLength<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> dataArray <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Float32Array</span><span class="token punctuation">(</span>bufferLength<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+canvasCtx<span class="token punctuation">.</span><span class="token function">clearRect</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token constant">WIDTH</span><span class="token punctuation">,</span> <span class="token constant">HEIGHT</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">function</span> <span class="token function">draw</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  drawVisual <span class="token operator">=</span> <span class="token function">requestAnimationFrame</span><span class="token punctuation">(</span>draw<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  analyser<span class="token punctuation">.</span><span class="token function">getFloatTimeDomainData</span><span class="token punctuation">(</span>dataArray<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  canvasCtx<span class="token punctuation">.</span>fillStyle <span class="token operator">=</span> <span class="token string">'rgb(200, 200, 200)'</span><span class="token punctuation">;</span>
+  canvasCtx<span class="token punctuation">.</span><span class="token function">fillRect</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token constant">WIDTH</span><span class="token punctuation">,</span> <span class="token constant">HEIGHT</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  canvasCtx<span class="token punctuation">.</span>lineWidth <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span>
+  canvasCtx<span class="token punctuation">.</span>strokeStyle <span class="token operator">=</span> <span class="token string">'rgb(0, 0, 0)'</span><span class="token punctuation">;</span>
+  canvasCtx<span class="token punctuation">.</span><span class="token function">beginPath</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">var</span> sliceWidth <span class="token operator">=</span> <span class="token constant">WIDTH</span> <span class="token operator">*</span> <span class="token number">1.0</span> <span class="token operator">/</span> bufferLength<span class="token punctuation">;</span>
+  <span class="token keyword">var</span> x <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">var</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> bufferLength<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">var</span> v <span class="token operator">=</span> dataArray<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">*</span> <span class="token number">200.0</span><span class="token punctuation">;</span>
+    <span class="token keyword">var</span> y <span class="token operator">=</span> <span class="token constant">HEIGHT</span><span class="token operator">/</span><span class="token number">2</span> <span class="token operator">+</span> v<span class="token punctuation">;</span>
+
+    <span class="token keyword">if</span><span class="token punctuation">(</span>i <span class="token operator">===</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      canvasCtx<span class="token punctuation">.</span><span class="token function">moveTo</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+      canvasCtx<span class="token punctuation">.</span><span class="token function">lineTo</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    x <span class="token operator">+=</span> sliceWidth<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  canvasCtx<span class="token punctuation">.</span><span class="token function">lineTo</span><span class="token punctuation">(</span>canvas<span class="token punctuation">.</span>width<span class="token punctuation">,</span> canvas<span class="token punctuation">.</span>height<span class="token operator">/</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  canvasCtx<span class="token punctuation">.</span><span class="token function">stroke</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token function">draw</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div>
+</div>
+<h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://webaudio.github.io/web-audio-api/#dom-analysernode-getfloattimedomaindata">Web Audio API <br><small># dom-analysernode-getfloattimedomaindata</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="../web_audio_api/using_web_audio_api">Web Audio API 사용하기</a></li> </ul></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/AnalyserNode/getFloatTimeDomainData" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/AnalyserNode/getFloatTimeDomainData</a>
+  </p>
+</div>

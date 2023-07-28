@@ -1,0 +1,35 @@
+<header><h1>&lt;embed&gt;</h1></header><div class="section-content"><p><code>&lt;embed&gt;</code>는 외부 어플리케이션이나 대화형 컨텐츠와의 통합점을 나타냅니다.</p></div>
+<h2 id="시도해보기">시도해보기</h2>
+<div class="section-content">
+<iframe class="interactive is-tabbed-standard-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/tabbed/embed.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe> <p>The source for this interactive example is stored in a GitHub repository. If you'd like to contribute to the interactive examples project, please clone <a href="https://github.com/mdn/interactive-examples" target="_blank">https://github.com/mdn/interactive-examples</a> and send us a pull request.</p> <ul> <li>
+<strong><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Content_categories" class="only-in-en-us">컨텐츠 범주 <small>(en-US)</small></a></strong> <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Content_categories#flow_content" class="only-in-en-us">플로우 컨텐츠 <small>(en-US)</small></a>, <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Content_categories#phrasing_content" class="only-in-en-us">구문 컨텐츠 <small>(en-US)</small></a>, 포함된 컨텐츠, 대화형 컨텐츠, palpable 컨텐츠.</li> <li>
+<strong>허용된 컨텐츠</strong> 없음. 이것은 <a href="https://developer.mozilla.org/ko/docs/Glossary/Void_element">empty element</a>.</li> <li>
+<strong>태그 생략</strong> 시작 태그는 있어야 하며, 종료태그는 있어서는 안됩니다.</li> <li>
+<strong>허용된 부모 요소</strong> 포함된 컨텐츠를 허용하는 모든 요소</li> <li>
+<strong>DOM 인터페이스</strong> <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLEmbedElement"><code>HTMLEmbedElement</code> <small>(en-US)</small></a>
+</li> </ul>
+</div>
+<h2 id="속성">속성</h2>
+<div class="section-content">
+<p>이 요소는 <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes" class="only-in-en-us">전역 속성 <small>(en-US)</small></a>을 포함합니다.</p> <dl> <dt id="height"><a id="attr-height" class="inline-block" href="#attr-height"><b><code>height</code></b></a></dt> <dd> <p>리소스의 표시될 높이 길이를 CSS 픽셀로 지정</p> </dd> <dt id="src"><a id="attr-src" class="inline-block" href="#attr-src"><b><code>src</code></b></a></dt> <dd> <p>포함된 리소스의 URL</p> </dd> <dt id="type"><a id="attr-type" class="inline-block" href="#attr-type"><b><code>type</code></b></a></dt> <dd> <p>인스턴스화할 플러그인을 고르기 위해 사용되는 MIME 타입</p> </dd> <dt id="width"><a id="attr-width" class="inline-block" href="#attr-width"><b><code>width</code></b></a></dt> <dd> <p>리소스의 표시될 가로 길이를 CSS 픽셀로 지정</p> </dd> </dl>
+</div>
+<h2 id="예제">예제</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="dItBRlqphw9pX36RuO/wCbNH7NNYGTSyX27ZAsuxKLs=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>embed</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>video/quicktime<span class="token punctuation">"</span></span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>movie.mov<span class="token punctuation">"</span></span> <span class="token attr-name">width</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>640<span class="token punctuation">"</span></span> <span class="token attr-name">height</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>480<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div></div>
+<h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://html.spec.whatwg.org/multipage/iframe-embed-object.html#the-embed-element">HTML Standard <br><small># the-embed-element</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li>다양한 타입의 포함된 컨텐츠를 위해 사용되는 다른 요소들 <a href="audio"><code>&lt;audio&gt;</code></a>, <a href="canvas"><code>&lt;canvas&gt;</code></a>, <a href="iframe"><code>&lt;iframe&gt;</code></a>, <a href="img"><code>&lt;img&gt;</code></a>, <code><a href="https://developer.mozilla.org/en-US/docs/Web/MathML/Element/math" class="only-in-en-us">&lt;math&gt; <small>(en-US)</small></a></code>, <a href="object"><code>&lt;object&gt;</code></a>, <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/SVG/Element/svg"><code>&lt;svg&gt;</code> <small>(en-US)</small></a>, and <a href="video"><code>&lt;video&gt;</code></a>.</li> </ul></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/HTML/Element/embed" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/HTML/Element/embed</a>
+  </p>
+</div>

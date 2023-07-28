@@ -1,0 +1,21 @@
+<header><h1>document.anchors</h1></header><div class="section-content">
+<div class="notecard deprecated" id="sect1"><p><strong>지원이 중단되었습니다:</strong> This feature is no longer recommended. Though some browsers might still support it, it may have already been removed from the relevant web standards, may be in the process of being dropped, or may only be kept for compatibility purposes. Avoid using it, and update existing code if possible; see the <a href="#browser_compatibility">compatibility table</a> at the bottom of this page to guide your decision. Be aware that this feature may cease to work at any time.</p></div> <p><a href="../document"><code>Document</code></a> 인터페이스의 <code>anchors</code> 읽기 전용 속성은 문서 내의 모든 앵커 목록을 반환합니다.</p>
+</div>
+<h2 id="예제">예제</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="kyVkckDJ+S1kJgJt6wDO9kxKvG5LxK52CM7WgOoZbF8=" data-language="js"><span class="token keyword">if</span> <span class="token punctuation">(</span> document<span class="token punctuation">.</span>anchors<span class="token punctuation">.</span>length <span class="token operator">&gt;=</span> <span class="token number">5</span> <span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">dump</span><span class="token punctuation">(</span><span class="token string">"dump found too many anchors"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    window<span class="token punctuation">.</span>location <span class="token operator">=</span> <span class="token string">"http://www.google.com"</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div></div>
+<h2 id="알아두기">알아두기</h2>
+<div class="section-content"><p>이전 버전과의 호환성을 제공하기 위해, 반환된 anchor들의 목록은 <code>name</code> 속성(attribute)으로 생성된 anchors들만 포함하고 <code>id</code> 속성(attribute)으로 생성된 것들은 포함하지 않습니다.</p></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/Document/anchors" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/Document/anchors</a>
+  </p>
+</div>

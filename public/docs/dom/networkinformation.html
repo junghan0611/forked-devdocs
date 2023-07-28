@@ -1,0 +1,38 @@
+<header><h1>NetworkInformation</h1></header><div class="section-content">
+<div class="notecard experimental" id="sect1"><p><strong>Experimental:</strong> <strong>This is an <a href="https://developer.mozilla.org/en-US/docs/MDN/Writing_guidelines/Experimental_deprecated_obsolete#experimental">experimental technology</a></strong><br>Check the <a href="#browser_compatibility">Browser compatibility table</a> carefully before using this in production.</p></div> <p>The <code>NetworkInformation</code> interface provides information about the connection a device is using to communicate with the network and provides a means for scripts to be notified if the connection type changes. The <code>NetworkInformation</code> interfaces cannot be instantiated. It is instead accessed through the <code>connection</code> property of the <a href="navigator"><code>Navigator</code></a> interface.</p>
+<div class="notecard note" id="sect2"> <p><strong>참고:</strong> 이 기능은 <a href="web_workers_api">Web Worker</a>에서 사용할 수 있습니다</p> </div>
+</div>
+<h2 id="properties">Properties</h2>
+<div class="section-content">
+<p><em>This interface also inherits properties of its parent, <a href="eventtarget"><code>EventTarget</code></a>.</em></p> <dl> <dt id="networkinformation.downlink_en-us">
+<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/NetworkInformation/downlink"><code>NetworkInformation.downlink</code> <small>(en-US)</small></a> <span class="badge inline readonly">읽기 전용</span>
+</dt> <dd> <p>Returns the effective bandwidth estimate in megabits per second, rounded to the nearest multiple of 25 kilobits per seconds.</p> </dd> <dt id="networkinformation.downlinkmax_en-us">
+<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/NetworkInformation/downlinkMax"><code>NetworkInformation.downlinkMax</code> <small>(en-US)</small></a> <span class="badge inline readonly">읽기 전용</span>
+</dt> <dd> <p>Returns the maximum downlink speed, in megabits per second (Mbps), for the underlying connection technology.</p> </dd> <dt id="networkinformation.effectivetype_en-us">
+<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/NetworkInformation/effectiveType"><code>NetworkInformation.effectiveType</code> <small>(en-US)</small></a> <span class="badge inline readonly">읽기 전용</span>
+</dt> <dd> <p>Returns the effective type of the connection meaning one of 'slow-2g', '2g', '3g', or '4g'. This value is determined using a combination of recently observed round-trip time and downlink values.</p> </dd> <dt id="networkinformation.rtt_en-us">
+<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/NetworkInformation/rtt"><code>NetworkInformation.rtt</code> <small>(en-US)</small></a> <span class="badge inline readonly">읽기 전용</span>
+</dt> <dd> <p>Returns the estimated effective round-trip time of the current connection, rounded to the nearest multiple of 25 milliseconds.</p> </dd> <dt id="networkinformation.savedata_en-us">
+<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/NetworkInformation/saveData"><code>NetworkInformation.saveData</code> <small>(en-US)</small></a> <span class="badge inline readonly">읽기 전용</span>
+</dt> <dd> <p>Returns <code>true</code> if the user has set a reduced data usage option on the user agent.</p> </dd> <dt id="networkinformation.type_en-us">
+<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/NetworkInformation/type"><code>NetworkInformation.type</code> <small>(en-US)</small></a> <span class="badge inline readonly">읽기 전용</span>
+</dt> <dd> <p>Returns the type of connection a device is using to communicate with the network. It will be one of the following values:</p> <ul> <li><code>bluetooth</code></li> <li><code>cellular</code></li> <li><code>ethernet</code></li> <li><code>none</code></li> <li><code>wifi</code></li> <li><code>wimax</code></li> <li><code>other</code></li> <li><code>unknown</code></li> </ul> </dd> </dl>
+</div>
+<h3 id="event_handlers">Event handlers</h3>
+<div class="section-content"><dl> <dt id="networkinformation.onchange_en-us"><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/NetworkInformation/change_event"><code>NetworkInformation.onchange</code> <small>(en-US)</small></a></dt> <dd> <p>The event that's fired when connection information changes and the <code><a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event" class="only-in-en-us">change <small>(en-US)</small></a></code> is fired on this object.</p> </dd> </dl></div>
+<h2 id="methods">Methods</h2>
+<div class="section-content"><p><em>This interface also inherits methods of its parent, <a href="eventtarget"><code>EventTarget</code></a>.</em></p></div>
+<h2 id="명세서">명세서</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://wicg.github.io/netinfo/#networkinformation-interface">Network Information API <br><small># networkinformation-interface</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<h2 id="see_also">See also</h2>
+<div class="section-content"><ul> <li><a href="network_information_api">Network Information API</a></li> <li><a href="navigator/online">Online and offline events</a></li> <li>The <a href="navigator"><code>Navigator</code></a> interface that implements it.</li> </ul></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/NetworkInformation" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/NetworkInformation</a>
+  </p>
+</div>

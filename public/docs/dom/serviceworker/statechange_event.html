@@ -1,0 +1,58 @@
+<header><h1>ServiceWorker.onstatechange</h1></header><div class="section-content">
+<div class="notecard experimental" id="sect1"><p><strong>Experimental:</strong> <strong>This is an <a href="https://developer.mozilla.org/en-US/docs/MDN/Writing_guidelines/Experimental_deprecated_obsolete#experimental">experimental technology</a></strong><br>Check the <a href="#browser_compatibility">Browser compatibility table</a> carefully before using this in production.</p></div> <p><code>statechange</code> 타입의 이벤트가 발생될 때마다 호출되는 <a href="../eventtarget/addeventlistener"><code>EventListener</code></a> 속성. 기본적으로 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorker/state"><code>ServiceWorker.state</code> <small>(en-US)</small></a>가 변경되는 시점에 발생한다.</p>
+</div>
+<h2 id="syntax">Syntax</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="NjUPQ4Pcs7rqSvNPzKK4TicjbyrTSTmcoQH1K0HUNgw=" data-language="js">ServiceWorker<span class="token punctuation">.</span><span class="token function-variable function">onstatechange</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">statechangeevent</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token operator">...</span> <span class="token punctuation">}</span>
+ServiceWorker<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">'statechange'</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">statechangeevent</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token operator">...</span> <span class="token punctuation">}</span> <span class="token punctuation">)</span>
+</pre>
+</div></div>
+<h2 id="examples">Examples</h2>
+<div class="section-content">
+<p>이 코드 조각은 <a href="https://github.com/GoogleChrome/samples/blob/gh-pages/service-worker/registration-events/index.html" target="_blank">service worker registration-events sample</a> (<a href="https://googlechrome.github.io/samples/service-worker/registration-events/" target="_blank">live demo</a>) 으로부터 가져온 것이다. 이 코드는 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorker/state"><code>ServiceWorker.state</code> <small>(en-US)</small></a>의 모든 변경 사항을 수신하고 그 값을 반환한다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="5Op79+FvoNt4BPiewdjLpOf+ujLWHqDBlA8KJQg7ZlQ=" data-language="js"><span class="token keyword">var</span> serviceWorker<span class="token punctuation">;</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span>registration<span class="token punctuation">.</span>installing<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  serviceWorker <span class="token operator">=</span> registration<span class="token punctuation">.</span>installing<span class="token punctuation">;</span>
+  document<span class="token punctuation">.</span><span class="token function">querySelector</span><span class="token punctuation">(</span><span class="token string">'#kind'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>textContent <span class="token operator">=</span> <span class="token string">'installing'</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>registration<span class="token punctuation">.</span>waiting<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  serviceWorker <span class="token operator">=</span> registration<span class="token punctuation">.</span>waiting<span class="token punctuation">;</span>
+  document<span class="token punctuation">.</span><span class="token function">querySelector</span><span class="token punctuation">(</span><span class="token string">'#kind'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>textContent <span class="token operator">=</span> <span class="token string">'waiting'</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>registration<span class="token punctuation">.</span>active<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  serviceWorker <span class="token operator">=</span> registration<span class="token punctuation">.</span>active<span class="token punctuation">;</span>
+  document<span class="token punctuation">.</span><span class="token function">querySelector</span><span class="token punctuation">(</span><span class="token string">'#kind'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>textContent <span class="token operator">=</span> <span class="token string">'active'</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">if</span> <span class="token punctuation">(</span>serviceWorker<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token function">logState</span><span class="token punctuation">(</span>serviceWorker<span class="token punctuation">.</span>state<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  serviceWorker<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">'statechange'</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">e</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token function">logState</span><span class="token punctuation">(</span>e<span class="token punctuation">.</span>target<span class="token punctuation">.</span>state<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div> <p><code>statechange</code> 가 발생할 때, 서비스워커의 참조들이 변화할 수 있으므로 주의하라. 예시:</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="l8EOWElCvFUj0pMkqjJPdA+dREBkVKY+UAJBzjhxkZs=" data-language="js">navigator<span class="token punctuation">.</span>serviceWorker<span class="token punctuation">.</span><span class="token function">register</span><span class="token punctuation">(</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">swr</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  swr<span class="token punctuation">.</span>installing<span class="token punctuation">.</span>state <span class="token operator">==</span> <span class="token string">"installing"</span>
+  swr<span class="token punctuation">.</span>installing<span class="token punctuation">.</span><span class="token function-variable function">onstatechange</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    swr<span class="token punctuation">.</span>installing <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+    <span class="token comment">// 이 시점에서, swr.waiting 또는 swr.active는 true일 것이다. 이것은 statechange 이벤트가 대기 상태이기 때문이며,</span>
+    <span class="token comment">// 그동안 잠재 상태의 워커가 waiting 상태가 될 수도 있으며 가능한 경우에는 즉시 activated 될 것이다.</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</pre>
+</div>
+</div>
+<h2 id="명세서">명세서</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://w3c.github.io/ServiceWorker/#dom-serviceworker-onstatechange">Service Workers <br><small># dom-serviceworker-onstatechange</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/ServiceWorker/statechange_event" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/ServiceWorker/statechange_event</a>
+  </p>
+</div>

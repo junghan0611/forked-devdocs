@@ -1,0 +1,167 @@
+<header><h1>Object.create()</h1></header><div class="section-content"><p><code>Object.create()</code> 메서드는 지정된 프로토타입 객체 및 속성(property)을 갖는 새 객체를 만듭니다.</p></div>
+<section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="lKW6DcV5/i+3F+PfHJu7U2UhbaCXErj+t/BYXOL7tuU=" data-language="js">Object<span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span>proto<span class="token punctuation">[</span><span class="token punctuation">,</span> propertiesObject<span class="token punctuation">]</span><span class="token punctuation">)</span>
+</pre>
+</div></div></section><section aria-labelledby="매개변수"><h3 id="매개변수">매개변수</h3>
+<div class="section-content"><dl> <dt id="proto"><code>proto</code></dt> <dd> <p>새로 만든 객체의 프로토타입이어야 할 객체.</p> </dd> <dt id="propertiesobject"><code>propertiesObject</code></dt> <dd> <p>선택사항. 지정되고 <a href="../undefined"><code>undefined</code></a>가 아니면, 자신의 속성(즉, 자체에 정의되어 그 프로토타입 체인에서 열거가능하지 <em>않은</em> 속성)이 열거가능한 객체는 해당 속성명으로 새로 만든 객체에 추가될 속성 설명자(descriptor)를 지정합니다. 이러한 속성은 <a href="defineproperties"><code>Object.defineProperties()</code></a>의 두 번째 인수에 해당합니다.</p> </dd> </dl></div></section><section aria-labelledby="반환값"><h3 id="반환값">반환값</h3>
+<div class="section-content"><p>지정된 프로토타입 개체와 속성을 갖는 새로운 개체.</p></div></section><section aria-labelledby="예외"><h3 id="예외">예외</h3>
+<div class="section-content"><p><code>proto</code> 매개변수가 <a href="../../operators/null"><code>null</code></a> 또는 객체가 아닌 경우 <a href="../typeerror"><code>TypeError</code></a> 예외가 발생(throw).</p></div></section><section aria-labelledby="예"><h2 id="예">예</h2>
+</section><section aria-labelledby="object.create를_사용한_고전적인_상속방법"><h3 id="object.create를_사용한_고전적인_상속방법">
+<code>Object.create()</code>를 사용한 고전적인 상속방법</h3>
+<div class="section-content">
+<p>아래는 고전적인 상속방법으로 사용된 <code>Object.create()</code> 사용 예입니다. 이는 단일 상속 용으로, JavaScript가 지원하는 전부입니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="PYXEk67YVLWFYK0tTMqqkfLpPK9wVvnhN2avwWz21yo=" data-language="js"><span class="token comment">// Shape - 상위클래스</span>
+<span class="token keyword">function</span> <span class="token function">Shape</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">this</span><span class="token punctuation">.</span>x <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+  <span class="token keyword">this</span><span class="token punctuation">.</span>y <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// 상위클래스 메서드</span>
+<span class="token class-name">Shape</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function-variable function">move</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">x<span class="token punctuation">,</span> y</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">this</span><span class="token punctuation">.</span>x <span class="token operator">+=</span> x<span class="token punctuation">;</span>
+  <span class="token keyword">this</span><span class="token punctuation">.</span>y <span class="token operator">+=</span> y<span class="token punctuation">;</span>
+  console<span class="token punctuation">.</span><span class="token function">info</span><span class="token punctuation">(</span><span class="token string">'Shape moved.'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token comment">// Rectangle - 하위클래스</span>
+<span class="token keyword">function</span> <span class="token function">Rectangle</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token function">Shape</span><span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// super 생성자 호출.</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// 하위클래스는 상위클래스를 확장</span>
+<span class="token class-name">Rectangle</span><span class="token punctuation">.</span>prototype <span class="token operator">=</span> Object<span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span><span class="token class-name">Shape</span><span class="token punctuation">.</span>prototype<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token class-name">Rectangle</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span>constructor <span class="token operator">=</span> Rectangle<span class="token punctuation">;</span>
+
+<span class="token keyword">var</span> rect <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Rectangle</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'Is rect an instance of Rectangle?'</span><span class="token punctuation">,</span> rect <span class="token keyword">instanceof</span> <span class="token class-name">Rectangle</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// true</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'Is rect an instance of Shape?'</span><span class="token punctuation">,</span> rect <span class="token keyword">instanceof</span> <span class="token class-name">Shape</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// true</span>
+rect<span class="token punctuation">.</span><span class="token function">move</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Outputs, 'Shape moved.'</span>
+</pre>
+</div> <p>여러 객체에서 상속하고 싶은 경우엔 mixin이 사용가능합니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="E1Aj+jGYsK4vsb/+ZzJXhYoyS9vOgsFbNDhdJa1lX/4=" data-language="js"><span class="token keyword">function</span> <span class="token function">MyClass</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token function">SuperClass</span><span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">OtherSuperClass</span><span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token class-name">MyClass</span><span class="token punctuation">.</span>prototype <span class="token operator">=</span> Object<span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span><span class="token class-name">SuperClass</span><span class="token punctuation">.</span>prototype<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 상속</span>
+<span class="token function">mixin</span><span class="token punctuation">(</span><span class="token class-name">MyClass</span><span class="token punctuation">.</span>prototype<span class="token punctuation">,</span> <span class="token class-name">OtherSuperClass</span><span class="token punctuation">.</span>prototype<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// mixin</span>
+
+<span class="token class-name">MyClass</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function-variable function">myMethod</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">// 기능 수행</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</pre>
+</div> <p><code>mixin</code> 함수는 상위(super)클래스 프로토타입에서 하위(sub)클래스 프로토타입으로 함수를 복사하고, mixin 함수는 사용자에 의해 공급될 필요가 있습니다. mixin 같은 함수의 예는 <a href="https://api.jquery.com/jQuery.extend/" target="_blank">jQuery.extend()</a>입니다.</p>
+</div></section><section aria-labelledby="object.create와_함께_propertiesobject_인수_사용하기"><h3 id="object.create와_함께_propertiesobject_인수_사용하기">
+<code>Object.create()</code>와 함께 <code>propertiesObject</code> 인수 사용하기</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="uggU9z7Fn1hwI8G8IbncgqTCraTSJx6iBWv14Ql4V34=" data-language="js"><span class="token keyword">var</span> o<span class="token punctuation">;</span>
+
+<span class="token comment">// 프로토타입이 null인 객체 생성</span>
+o <span class="token operator">=</span> Object<span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span><span class="token keyword">null</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+
+o <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token comment">// 위는 아래와 같습니다:</span>
+o <span class="token operator">=</span> Object<span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span><span class="token class-name">Object</span><span class="token punctuation">.</span>prototype<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+
+<span class="token comment">// 샘플 속성 두개를 갖는 객체를 만드는 예.</span>
+<span class="token comment">// (두 번째 매개변수는 키를 *속성 설명자*에 맵핑함을 주의하세요.)</span>
+o <span class="token operator">=</span> Object<span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span><span class="token class-name">Object</span><span class="token punctuation">.</span>prototype<span class="token punctuation">,</span> <span class="token punctuation">{</span>
+  <span class="token comment">// foo는 정규 '값 속성'</span>
+  <span class="token literal-property property">foo</span><span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token literal-property property">writable</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span> <span class="token literal-property property">configurable</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span> <span class="token literal-property property">value</span><span class="token operator">:</span> <span class="token string">'hello'</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token comment">// bar는 접근자(accessor, getter-및-setter) 속성</span>
+  <span class="token literal-property property">bar</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token literal-property property">configurable</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+    <span class="token function-variable function">get</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> <span class="token number">10</span><span class="token punctuation">;</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token function-variable function">set</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">value</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'Setting `o.bar` to'</span><span class="token punctuation">,</span> value<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+<span class="token comment">/* ES5 접근자로 코드는 이렇게 할 수 있습니다
+    get function() { return 10; },
+    set function(value) { console.log('setting `o.bar` to', value); } */</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+
+<span class="token keyword">function</span> <span class="token function">Constructor</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+o <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Constructor</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// 위는 아래와 같습니다:</span>
+o <span class="token operator">=</span> Object<span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span><span class="token class-name">Constructor</span><span class="token punctuation">.</span>prototype<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// 물론, 생성자 함수에 실제 초기화 코드가 있다면</span>
+<span class="token comment">// Object.create()는 그것을 반영할 수 없습니다</span>
+
+
+<span class="token comment">// 빈 새 객체가 프로토타입인 새 객체를 만들고</span>
+<span class="token comment">// 값이 42인 단일 속성 'p' 추가.</span>
+o <span class="token operator">=</span> Object<span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> <span class="token literal-property property">p</span><span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token literal-property property">value</span><span class="token operator">:</span> <span class="token number">42</span> <span class="token punctuation">}</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// 기본으로 writable, enumerable 또는 configurable 속성은 false:</span>
+o<span class="token punctuation">.</span>p <span class="token operator">=</span> <span class="token number">24</span><span class="token punctuation">;</span>
+o<span class="token punctuation">.</span>p<span class="token punctuation">;</span>
+<span class="token comment">// 42</span>
+
+o<span class="token punctuation">.</span>q <span class="token operator">=</span> <span class="token number">12</span><span class="token punctuation">;</span>
+<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">var</span> prop <span class="token keyword">in</span> o<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>prop<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token comment">// 'q'</span>
+
+<span class="token keyword">delete</span> o<span class="token punctuation">.</span>p<span class="token punctuation">;</span>
+<span class="token comment">// false</span>
+
+<span class="token comment">// ES3 속성을 지정하기 위해</span>
+o2 <span class="token operator">=</span> Object<span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+  <span class="token literal-property property">p</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token literal-property property">value</span><span class="token operator">:</span> <span class="token number">42</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">writable</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">enumerable</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">configurable</span><span class="token operator">:</span> <span class="token boolean">true</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div></div></section><section aria-labelledby="폴리필"><h2 id="폴리필">폴리필</h2>
+<div class="section-content">
+<p>이 폴리필에서는 새 개체에 대한 프로토타입이 선택되었지만 두번째 인수가 없이 개체를 생성하는 사례를 보여줍니다.</p> <p><code>[[Prototype]]</code>에 <code>null</code> 을 설정하는 것이 실제 ES5 <code>Object.create</code>에서는 지원되지만, ECMAScript 5 보다 낮은 버전에서는 상속에 제한이 있기 때문에 이 폴리필에서는 지원할 수 없음에 주의하세요.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="FEDzqyuOvKVFIplUIlGQggfPO+eWHHaA5bR+fYL38ic=" data-language="js"><span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">typeof</span> Object<span class="token punctuation">.</span>create <span class="token operator">!=</span> <span class="token string">'function'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  Object<span class="token punctuation">.</span>create <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter"><span class="token keyword">undefined</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">var</span> <span class="token function-variable function">Temp</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">prototype<span class="token punctuation">,</span> propertiesObject</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">if</span><span class="token punctuation">(</span>prototype <span class="token operator">!==</span> <span class="token function">Object</span><span class="token punctuation">(</span>prototype<span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> prototype <span class="token operator">!==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">throw</span> <span class="token function">TypeError</span><span class="token punctuation">(</span><span class="token string">'Argument must be an object, or null'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+      <span class="token class-name">Temp</span><span class="token punctuation">.</span>prototype <span class="token operator">=</span> prototype <span class="token operator">||</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span>propertiesObject <span class="token operator">!==</span> <span class="token keyword">undefined</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        Object<span class="token punctuation">.</span><span class="token function">defineProperties</span><span class="token punctuation">(</span><span class="token class-name">Temp</span><span class="token punctuation">.</span>prototype<span class="token punctuation">,</span> propertiesObject<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+      <span class="token keyword">var</span> result <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Temp</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token class-name">Temp</span><span class="token punctuation">.</span>prototype <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+      <span class="token comment">// Object.create(null)인 경우 모방</span>
+      <span class="token keyword">if</span><span class="token punctuation">(</span>prototype <span class="token operator">===</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+         result<span class="token punctuation">.</span>__proto__ <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+      <span class="token keyword">return</span> result<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div>
+</div></section><h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://tc39.es/ecma262/multipage/fundamental-objects.html#sec-object.create">ECMAScript Language Specification <br><small># sec-object.create</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="참조"><h2 id="참조">참조</h2>
+<div class="section-content"><ul> <li><a href="defineproperty"><code>Object.defineProperty()</code></a></li> <li><a href="defineproperties"><code>Object.defineProperties()</code></a></li> <li><a href="isprototypeof"><code>Object.prototype.isPrototypeOf()</code></a></li> <li>John Resig의 <a href="http://ejohn.org/blog/objectgetprototypeof/" target="_blank">getPrototypeOf()</a> 포스트</li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Object/create" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Object/create</a>
+  </p>
+</div>

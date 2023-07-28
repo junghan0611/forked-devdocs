@@ -1,0 +1,65 @@
+<header><h1>DocumentOrShadowRoot.activeElement</h1></header><div class="section-content">
+<p><a href="../document"><code>Document</code></a>와 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/ShadowRoot"><code>ShadowRoot</code> <small>(en-US)</small></a> 인터페이스의 <code>activeElement</code> 읽기 전용 속성은 DOM과 섀도우 DOM 내에서 현재 포커스를 받은 <a href="../element"><code>Element</code></a> 객체를 반환합니다. 이 속성은 <a class="page-not-created"><code>DocumentOrShadowRoot</code></a> <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Glossary/Mixin">믹스인 <small>(en-US)</small></a>에서 상속받습니다.</p> <p><code>activeElement</code> 접근 시점에 텍스트를 블록 선택하고 있는 경우 해당하는 <a href="https://developer.mozilla.org/ko/docs/Web/HTML/Element/input"><code>&lt;input&gt;</code></a>이나 <a href="https://developer.mozilla.org/ko/docs/Web/HTML/Element/textarea"><code>&lt;textarea&gt;</code></a> 객체를 반환하는데, 그러면 그 객체의 <a class="page-not-created"><code>selectionStart</code></a>와 <a class="page-not-created"><code>selectionEnd</code></a> 메서드를 사용해 선택에 대한 더 자세한 정보를 알아낼 수 있습니다. 포커스가 자주 가는 다른 경우로는 <a href="https://developer.mozilla.org/ko/docs/Web/HTML/Element/select"><code>&lt;select&gt;</code></a> 요소나 <code>type</code>이 <code>"button"</code>, <code>"checkbox"</code>, <code>"radio"</code>인 <a href="https://developer.mozilla.org/ko/docs/Web/HTML/Element/input"><code>&lt;input&gt;</code></a> 요소가 있습니다.</p> <p>보통 사용자는 포커스 가능한 요소를 Tab 키를 사용해 탐색할 수 있고, 스페이스 바를 사용해 활성화(버튼을 누르거나 라디오 버튼을 켜는 등)할 수 있습니다. 포커스 가능한 요소는 현재 플랫폼과 브라우저 설정에 따라 다릅니다. 가령 macOS의 경우, 기본값에서는 텍스트 입력 칸이 아니면 보통 포커스 할 수 없습니다.</p> <div class="notecard note" id="sect1"> <p><strong>참고:</strong> 포커스(사용자의 입력 이벤트를 받는 요소)와 선택(문서 내에서 강조하고 있는 부분)은 다릅니다. 현재 선택 영역은 <a href="../window/getselection"><code>window.getSelection()</code></a>을 사용해 가져올 수 있습니다.</p> </div>
+</div>
+<h2 id="구문">구문</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="gvVN6W7lXQg3/0PMkU+OkJCW5oJITe440OuweyIWBVM=" data-language="js">element <span class="token operator">=</span> DocumentOrShadowRoot<span class="token punctuation">.</span>activeElement
+</pre>
+</div></div>
+<h3 id="값">값</h3>
+<div class="section-content"><p>포커스를 갖고 있는 <a href="../element"><code>Element</code></a>. 그런 요소가 없으면 <a href="https://developer.mozilla.org/ko/docs/Web/HTML/Element/body"><code>&lt;body&gt;</code></a> 또는 <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Operators/null"><code>null</code></a>.</p></div>
+<h2 id="예제">예제</h2>
+
+<h3 id="html">HTML</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="99PV+w6ofoU7ed8iLFv3IBByUK8O2dMUZlNCfSSBY+Q=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>아래 두 영역에서 텍스트를 선택해보세요.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>form</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>textarea</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>ta-example-one<span class="token punctuation">"</span></span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>ta-example-one<span class="token punctuation">"</span></span> <span class="token attr-name">rows</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>7<span class="token punctuation">"</span></span> <span class="token attr-name">cols</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>40<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>텍스트 영역 1. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tincidunt, lorem a porttitor molestie, odio nibh iaculis libero, et accumsan nunc orci eu dui.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>textarea</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>textarea</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>ta-example-two<span class="token punctuation">"</span></span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>ta-example-two<span class="token punctuation">"</span></span> <span class="token attr-name">rows</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>7<span class="token punctuation">"</span></span> <span class="token attr-name">cols</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>40<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>텍스트 영역 2. Fusce ullamcorper, nisl ac porttitor adipiscing, urna orci egestas libero, ut accumsan orci lacus laoreet diam. Morbi sed euismod diam.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>textarea</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>form</span><span class="token punctuation">&gt;</span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>활성화된 요소 ID: <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>b</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>output-element<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>b</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>선택한 텍스트: <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>b</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>output-text<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>b</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div></div>
+<h3 id="javascript">JavaScript</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="vbV6JAs4GjgiPZ/cgK7L3YAbxV3sniLF2hNx6Djhi5I=" data-language="js"><span class="token keyword">function</span> <span class="token function">onMouseUp</span><span class="token punctuation">(</span><span class="token parameter">e</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> activeTextarea <span class="token operator">=</span> document<span class="token punctuation">.</span>activeElement<span class="token punctuation">;</span>
+  <span class="token keyword">const</span> selection <span class="token operator">=</span> activeTextarea<span class="token punctuation">.</span>value<span class="token punctuation">.</span><span class="token function">substring</span><span class="token punctuation">(</span>
+    activeTextarea<span class="token punctuation">.</span>selectionStart<span class="token punctuation">,</span> activeTextarea<span class="token punctuation">.</span>selectionEnd
+  <span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">const</span> outputElement <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">'output-element'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">const</span> outputText <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">'output-text'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  outputElement<span class="token punctuation">.</span>innerHTML <span class="token operator">=</span> activeTextarea<span class="token punctuation">.</span>id<span class="token punctuation">;</span>
+  outputText<span class="token punctuation">.</span>innerHTML <span class="token operator">=</span> selection<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">const</span> textarea1 <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">'ta-example-one'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> textarea2 <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">'ta-example-two'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+textarea1<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">'mouseup'</span><span class="token punctuation">,</span> onMouseUp<span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+textarea2<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">'mouseup'</span><span class="token punctuation">,</span> onMouseUp<span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div></div>
+<h3 id="결과">결과</h3>
+<div class="section-content"><div class="code-example" id="sect2">
+
+<iframe class="sample-code-frame" title="예제 sample" id="frame_예제" width="400" height="400" src="https://live.mdnplay.dev/ko/docs/Web/API/Document/activeElement/runner.html?id=%EC%98%88%EC%A0%9C" loading="lazy"></iframe>
+</div></div>
+<h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://html.spec.whatwg.org/multipage/interaction.html#dom-documentorshadowroot-activeelement-dev">HTML Standard <br><small># dom-documentorshadowroot-activeelement-dev</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/Document/activeElement" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/Document/activeElement</a>
+  </p>
+</div>

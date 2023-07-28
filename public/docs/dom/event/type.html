@@ -1,0 +1,50 @@
+<header><h1>Event.type</h1></header><div class="section-content"><p><a href="../event"><code>Event</code></a> 인터페이스의 <code>type</code> 읽기 전용 속성은 이벤트의 유형을 나타내는 문자열을 반환합니다. 이 속성은 이벤트를 생성할 때 설정되며, <code>click</code>, <code>load</code>, <code>error</code>처럼 특정 이벤트를 지칭할 때 사용하는 이름과 같은 값을 반환합니다.</p></div>
+<h2 id="값">값</h2>
+<div class="section-content"><p><a href="../event"><code>Event</code></a>의 유형을 나타내는 {{jdxref("String")}}입니다.</p></div>
+<h2 id="예제">예제</h2>
+<div class="section-content"><p>이 예제에서는 키보드를 누르거나 마우스를 클릭할 때마다 발생한 이벤트의 유형을 기록합니다.</p></div>
+<h3 id="html">HTML</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="IqoCceE5JywS0eSG6KVzbM/gFWB57lMPVLpKrcbN7RA=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>아무 키나 누르거나 마우스를 클릭해서 이벤트 유형을 알아보세요.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>log<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div></div>
+<h3 id="javascript">JavaScript</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="FyugYXJYVOGmqZy2GWCMyQsTaFwePQ1UsCzKdbQgOGY=" data-language="js"><span class="token keyword">function</span> <span class="token function">getEventType</span><span class="token punctuation">(</span><span class="token parameter">event</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> log <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">'log'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  log<span class="token punctuation">.</span>innerText <span class="token operator">=</span> event<span class="token punctuation">.</span>type <span class="token operator">+</span> <span class="token string">'\n'</span> <span class="token operator">+</span> log<span class="token punctuation">.</span>innerText<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// 키보드 이벤트</span>
+document<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">'keydown'</span><span class="token punctuation">,</span> getEventType<span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// 1번</span>
+document<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">'keypress'</span><span class="token punctuation">,</span> getEventType<span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 2번</span>
+document<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">'keyup'</span><span class="token punctuation">,</span> getEventType<span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token comment">// 3번</span>
+
+<span class="token comment">// 마우스 이벤트</span>
+document<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">'mousedown'</span><span class="token punctuation">,</span> getEventType<span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 1번</span>
+document<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">'mouseup'</span><span class="token punctuation">,</span> getEventType<span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment">// 2번</span>
+document<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">'click'</span><span class="token punctuation">,</span> getEventType<span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>     <span class="token comment">// 3번</span>
+</pre>
+</div></div>
+<h3 id="결과">결과</h3>
+<div class="section-content"><div class="code-example" id="sect1">
+
+<iframe class="sample-code-frame" title="예제 sample" id="frame_예제" src="https://live.mdnplay.dev/ko/docs/Web/API/Event/type/runner.html?id=%EC%98%88%EC%A0%9C" loading="lazy"></iframe>
+</div></div>
+<h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="#">DOM Standard <br><small># ref-for-dom-event-type④</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="../eventtarget/addeventlistener"><code>EventTarget.addEventListener()</code></a></li> <li><a href="../eventtarget/removeeventlistener"><code>EventTarget.removeEventListener()</code></a></li> </ul></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/Event/type" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/Event/type</a>
+  </p>
+</div>

@@ -1,0 +1,205 @@
+<header><h1>WeakMap</h1></header><div class="section-content">
+<p><code>WeakMap</code> 은 키/값 쌍의 모음으로, 키는 반드시 객체 또는 <a href="symbol#%EC%A0%84%EC%97%AD_%EC%8B%AC%EB%B3%BC_%EB%A0%88%EC%A7%80%EC%8A%A4%ED%8A%B8%EB%A6%AC%EC%9D%98_%EA%B3%B5%EC%9C%A0_%EC%8B%AC%EB%B3%BC">등록되지 않은 심볼</a>이며 값은 임의의 <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Data_structures#javascript%EC%9D%98_%ED%83%80%EC%9E%85">JavaScript 타입</a>입니다. <code>WeakMap</code>은 키에 대한 강력한 참조를 생성하지 않으므로, 객체가 <code>WeakMap</code>의 키에 포함되더라도 가비지 컬렉션의 대상이 됩니다. 키 객체가 가비지 컬렉터에 의해 정리된 후에는, 다른 곳에 강력한 참조가 존재하지 않는 한, 키에 연결됐던 값 또한 가비지 컬렉션 대상이 됩니다. <code>WeakMap</code>의 키로 사용할 수 있는 유일한 원시 값은 심볼, 정확히는 <a href="symbol#%EC%A0%84%EC%97%AD_%EC%8B%AC%EB%B3%BC_%EB%A0%88%EC%A7%80%EC%8A%A4%ED%8A%B8%EB%A6%AC%EC%9D%98_%EA%B3%B5%EC%9C%A0_%EC%8B%AC%EB%B3%BC">등록되지 않은 심볼</a>인데, 등록되지 않은 심볼은 고유함이 보장되며 다시 생성할 수 없기 때문입니다.</p> <p><code>WeakMap</code>을 사용하면 값이 키를 참조하더라도 키 객체의 가비지 컬렉션을 방지하지 않는 방식으로 데이터를 객체에 연결할 수 있습니다. 그러나 <code>WeakMap</code>은 키의 활성 상태를 관찰하는 것을 허용하지 않으며, 이는 <code>WeakMap</code>의 키를 열거할 수 없는 이유입니다. 만약 <code>WeakMap</code>이 키 목록을 얻을 수 있는 어떤 메서드를 제공했다면, 그 목록은 가비지 컬렉션 상태에 따라 달라질 것이므로 비결정성이 발생합니다. 키 목록이 필요하면 <code>WeakMap</code> 대신 <a href="map"><code>Map</code></a>을 사용해야 합니다.</p> <p><a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Guide/Keyed_collections">키 기반 컬렉션</a> 안내서의 <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Guide/Keyed_collections#weakmap_%EA%B0%9D%EC%B2%B4">WeakMap 객체</a> 구획에서 <code>WeakMap</code>에 대해 자세히 알아볼 수 있습니다.</p>
+</div>
+<section aria-labelledby="설명"><h2 id="설명">설명</h2>
+<div class="section-content"><p><code>WeakMap</code>의 키는 반드시 가비지 컬렉션 가능해야 합니다. 대부분의 <a href="https://developer.mozilla.org/ko/docs/Glossary/Primitive">원시 값</a>은 임의로 생성될 수 있고 생명 주기가 따로 없으므로 키로 사용할 수 없습니다. 객체와 <a href="symbol#%EC%A0%84%EC%97%AD_%EC%8B%AC%EB%B3%BC_%EB%A0%88%EC%A7%80%EC%8A%A4%ED%8A%B8%EB%A6%AC%EC%9D%98_%EA%B3%B5%EC%9C%A0_%EC%8B%AC%EB%B3%BC">등록되지 않은 심볼</a>은 가비지 컬렉션 대상이므로 키로 사용할 수 있습니다.</p></div></section><section aria-labelledby="왜_weakmap인가"><h3 id="왜_weakmap인가">왜 WeakMap인가?</h3>
+<div class="section-content">
+<p>JavaScript의 맵 API는 4개의 API 메서드와 이들이 공유하는 두 개의 배열(키용 하나, 값용 하나)으로도 구현하려면 구현할 수 있습니다. 이 맵에 요소를 추가하면 키와 값을 동시에 각 배열의 끝으로 넣는 작업을 수행할 것입니다. 결과적으로, 키와 값이 두 배열 각각에서 같은 인덱스에 위치하게 됩니다. 맵에서 값을 가져오려면 키 배열을 순회하면서 일치하는 항목을 찾고, 이 항목의 인덱스로 값 배열에서 값을 가져올 것입니다.</p> <p>이 구현에는 두 가지 큰 불편함이 있습니다.</p> <ol> <li>값의 설정과 검색이 <code>O(n)</code>(<em>n</em>은 맵 키의 수)입니다. 두 작업 모두 일치하는 값을 찾기 위해 키 목록을 순회해야 하기 때문입니다.</li> <li>메모리 누수입니다. 배열은 각 키와 각 값에 대한 참조가 무기한 유지되도록 보장하기 때문인데, 이 때문에 다른 곳에서 객체를 참조하지 않더라도 키가 가비지 컬렉션 대상이 되지 못합니다. 값도 마찬가지입니다.</li> </ol> <p>반면, <code>WeakMap</code>에서 키 객체는 가비지 컬렉션 되지 않는 한 자신의 값을 강력하게 참조하고, 그 후에는 약하게 참조합니다. 따라서 <code>WeakMap</code>은 다음과 같습니다.</p> <ul> <li>가비지 컬렉션을 방지하지 않으므로 키 객체에 대한 참조가 결국 사라집니다.</li> <li>키 객체가 <code>WeakMap</code> 밖의 다른 곳에서 참조되지 않으면 그 값의 가비지 컬렉션도 허용합니다.</li> </ul> <p><code>WeakMap</code>은 가비지 컬렉션 되지 않아야만 유용한 키에 정보를 매핑할 때 특히 유용한 구조입니다.</p> <p>그러나 <code>WeakMap</code>은 키의 활성 상태를 관찰하는 것을 허용하지 않으므로 키를 열거할 수 없습니다. 키 목록을 얻을 수 있는 방법은 존재하지 않습니다. 그런 방법이 존재했다면, 키 목록은 가비지 컬렉션 상태에 따라 달라질 것이므로 비결정성이 발생합니다. 키 목록이 필요하면 <a href="map"><code>Map</code></a>을 사용해야 합니다.</p>
+</div></section><section aria-labelledby="생성자"><h2 id="생성자">생성자</h2>
+<div class="section-content"><dl> <dt id="weakmap_en-us"><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakMap/WeakMap"><code>WeakMap()</code> <small>(en-US)</small></a></dt> <dd> <p>새로운 <code>WeakMap</code> 객체를 생성합니다.</p> </dd> </dl></div></section><section aria-labelledby="인스턴스_속성"><h2 id="인스턴스_속성">인스턴스 속성</h2>
+<div class="section-content">
+<p>이 속성들은 <code>WeakMap.prototype</code>에 정의되며 모든 <code>WeakMap</code> 인스턴스가 공유합니다.</p> <dl> <dt id="weakmap.prototype.constructor"><a href="object/constructor"><code>WeakMap.prototype.constructor</code></a></dt> <dd> <p>인스턴스 객체를 생성했던 생성자 함수입니다. <code>WeakMap</code> 인스턴스에서의 초기 값은 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakMap/WeakMap"><code>WeakMap</code> <small>(en-US)</small></a> 생성자입니다.</p> </dd> <dt id="weakmap.prototypetostringtag"><code>WeakMap.prototype[@@toStringTag]</code></dt> <dd> <p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol/toStringTag" class="only-in-en-us"><code>@@toStringTag</code> <small>(en-US)</small></a> 속성의 초기 값은 문자열 <code>"WeakMap"</code>입니다. 이 속성은 <a href="object/tostring"><code>Object.prototype.toString()</code></a>에서 사용합니다.</p> </dd> </dl>
+</div></section><section aria-labelledby="인스턴스_메서드"><h2 id="인스턴스_메서드">인스턴스 메서드</h2>
+<div class="section-content"><dl> <dt id="weakmap.prototype.delete"><a href="weakmap/delete"><code>WeakMap.prototype.delete()</code></a></dt> <dd> <p><code>key</code>에 연결된 값을 제거합니다. 이후 <code>WeakMap.prototype.has(key)</code>는 <code>false</code>를 반환할 것입니다.</p> </dd> <dt id="weakmap.prototype.get"><a href="weakmap/get"><code>WeakMap.prototype.get()</code></a></dt> <dd> <p><code>key</code>에 연결된 값을 반환합니다. 값이 없으면 <code>undefined</code>를 반환합니다.</p> </dd> <dt id="weakmap.prototype.has"><a href="weakmap/has"><code>WeakMap.prototype.has()</code></a></dt> <dd> <p><code>key</code>에 연결된 값이 <code>WeakMap</code> 객체에 존재하는지 나타내는 불리언 값을 반환합니다.</p> </dd> <dt id="weakmap.prototype.set"><a href="weakmap/set"><code>WeakMap.prototype.set()</code></a></dt> <dd> <p><code>WeakMap</code> 객체의 <code>key</code>에 <code>value</code>를 연결합니다. <code>WeakMap</code> 객체를 반환합니다.</p> </dd> </dl></div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+</section><section aria-labelledby="weakmap_사용하기"><h3 id="weakmap_사용하기">WeakMap 사용하기</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="BIpI//BkDTXwu9WDR/cSgqtLpZ+D9lFctZVcUkohQt4=" data-language="js"><span class="token keyword">const</span> wm1 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">WeakMap</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> wm2 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">WeakMap</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> wm3 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">WeakMap</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> o1 <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> <span class="token function-variable function">o2</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> o3 <span class="token operator">=</span> window<span class="token punctuation">;</span>
+
+wm1<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span>o1<span class="token punctuation">,</span> <span class="token number">37</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+wm1<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span>o2<span class="token punctuation">,</span> <span class="token string">"azerty"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+wm2<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span>o1<span class="token punctuation">,</span> o2<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 값은 함수와 객체를 포함해 아무거나 가능</span>
+wm2<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span>o3<span class="token punctuation">,</span> <span class="token keyword">undefined</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+wm2<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span>wm1<span class="token punctuation">,</span> wm2<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 키는 아무 객체나 가능. 다른 WeakMap도 가능합니다!</span>
+
+wm1<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>o2<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// "azerty"</span>
+wm2<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>o2<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// undefined, wm2에는 o2에 연결된 값이 없음</span>
+wm2<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>o3<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// undefined, o3에 undefined를 연결함</span>
+
+wm1<span class="token punctuation">.</span><span class="token function">has</span><span class="token punctuation">(</span>o2<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// true</span>
+wm2<span class="token punctuation">.</span><span class="token function">has</span><span class="token punctuation">(</span>o2<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// false</span>
+wm2<span class="token punctuation">.</span><span class="token function">has</span><span class="token punctuation">(</span>o3<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// true (값이 undefined지만)</span>
+
+wm3<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span>o1<span class="token punctuation">,</span> <span class="token number">37</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+wm3<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>o1<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 37</span>
+
+wm1<span class="token punctuation">.</span><span class="token function">has</span><span class="token punctuation">(</span>o1<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// true</span>
+wm1<span class="token punctuation">.</span><span class="token function">delete</span><span class="token punctuation">(</span>o1<span class="token punctuation">)</span><span class="token punctuation">;</span>
+wm1<span class="token punctuation">.</span><span class="token function">has</span><span class="token punctuation">(</span>o1<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// false</span>
+</pre>
+</div></div></section><section aria-labelledby="weakmap과_유사하지만_.clear_메서드를_가진_클래스_구현"><h3 id="weakmap과_유사하지만_.clear_메서드를_가진_클래스_구현">WeakMap과 유사하지만 .clear() 메서드를 가진 클래스 구현</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="s7uScsol3UcrBsapXiHYDwh/rZ5yeMPRarP/kxVFcm8=" data-language="js"><span class="token keyword">class</span> <span class="token class-name">ClearableWeakMap</span> <span class="token punctuation">{</span>
+  #wm<span class="token punctuation">;</span>
+  <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token parameter">init</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>#wm <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">WeakMap</span><span class="token punctuation">(</span>init<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token function">clear</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>#wm <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">WeakMap</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword">delete</span><span class="token punctuation">(</span>k<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span>#wm<span class="token punctuation">.</span><span class="token function">delete</span><span class="token punctuation">(</span>k<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token function">get</span><span class="token punctuation">(</span>k<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span>#wm<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>k<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token function">has</span><span class="token punctuation">(</span><span class="token parameter">k</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span>#wm<span class="token punctuation">.</span><span class="token function">has</span><span class="token punctuation">(</span>k<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token function">set</span><span class="token punctuation">(</span>k<span class="token punctuation">,</span> v<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>#wm<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span>k<span class="token punctuation">,</span> v<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</pre>
+</div></div></section><section aria-labelledby="비공개_멤버_흉내내기"><h3 id="비공개_멤버_흉내내기">비공개 멤버 흉내내기</h3>
+<div class="section-content">
+<p><a href="weakmap" aria-current="page"><code>WeakMap</code></a>을 사용하면 비공개 데이터를 객체에 연결할 수 있고, 다음과 같은 이점을 누릴 수 있습니다.</p> <ul> <li>
+<a href="map"><code>Map</code></a>과 비교했을 때, <code>WeakMap</code>은 키로 사용되는 객체에 대한 강력한 참조를 보유하지 않으므로 객체와 그 메타데이터가 동일한 수명을 공유하고, 따라서 메모리 누수를 방지할 수 있습니다.</li> <li>열거할 수 없는 속성이나 <a href="symbol"><code>Symbol</code></a> 속성을 사용하는 것과 비교했을 때, <code>WeakMap</code>은 객체 외부에 존재하므로 <a href="object/getownpropertysymbols"><code>Object.getOwnPropertySymbols</code></a> 등 리플렉션 메서드를 사용하더라도 사용자 코드에서는 메타데이터를 가져올 수 없습니다.</li> <li>
+<a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Closures">클로저</a>와 비교했을 때, 하나의 <code>WeakMap</code>을 생성자에서 생성한 모든 인스턴스에 재사용할 수 있으므로 메모리 효율성이 더 높고, 같은 클래스의 다른 인스턴스가 서로의 비공개 멤버를 읽을 수 있습니다.</li> </ul> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="1LoQ0gzdgQBx4Y9Z5Y2v9xlt+4vGTA3VZCBFS3bRR9w=" data-language="js"><span class="token keyword">let</span> Thing<span class="token punctuation">;</span>
+
+<span class="token punctuation">{</span>
+  <span class="token keyword">const</span> privateScope <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">WeakMap</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">let</span> counter <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+
+  <span class="token function-variable function">Thing</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>someProperty <span class="token operator">=</span> <span class="token string">"foo"</span><span class="token punctuation">;</span>
+
+    privateScope<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+      <span class="token literal-property property">hidden</span><span class="token operator">:</span> <span class="token operator">++</span>counter<span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+  <span class="token class-name">Thing</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function-variable function">showPublic</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span>someProperty<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+  <span class="token class-name">Thing</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function-variable function">showPrivate</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> privateScope<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">.</span>hidden<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">typeof</span> privateScope<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// "undefined"</span>
+
+<span class="token keyword">const</span> thing <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Thing</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>thing<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// Thing {someProperty: "foo"}</span>
+
+thing<span class="token punctuation">.</span><span class="token function">showPublic</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// "foo"</span>
+
+thing<span class="token punctuation">.</span><span class="token function">showPrivate</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// 1</span>
+</pre>
+</div> <p>위 코드는 <a href="../classes/private_class_fields">비공개 필드</a>를 사용하는 아래 예제와 동일하다고 볼 수 있습니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="wU8PXilWK9e/N+Ot3PJNW2GraJOvllxsL3xXV140340=" data-language="js"><span class="token keyword">class</span> <span class="token class-name">Thing</span> <span class="token punctuation">{</span>
+  <span class="token keyword">static</span> #counter <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+  #hidden<span class="token punctuation">;</span>
+  <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>someProperty <span class="token operator">=</span> <span class="token string">'foo'</span><span class="token punctuation">;</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>#hidden <span class="token operator">=</span> <span class="token operator">++</span>Thing<span class="token punctuation">.</span>#counter<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token function">showPublic</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span>someProperty<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token function">showPrivate</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span>#hidden<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>thing<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// Thing {someProperty: "foo"}</span>
+
+thing<span class="token punctuation">.</span><span class="token function">showPublic</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// "foo"</span>
+
+thing<span class="token punctuation">.</span><span class="token function">showPrivate</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// 1</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="메타데이터_연결하기"><h3 id="메타데이터_연결하기">메타데이터 연결하기</h3>
+<div class="section-content">
+<p><a href="weakmap" aria-current="page"><code>WeakMap</code></a>을 사용하면 객체의 생명 주기에 영향을 주지 않고도 메타데이터를 연결할 수 있습니다. 비공개 멤버 예제하고도 굉장히 비슷한데, 비공개 멤버 또한 <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Inheritance_and_the_prototype_chain">프로토타입 상속</a>에 참여하지 않는 외부 메타데이터로 설계됐기 때문입니다.</p> <p>하지만 이 방법은 이미 생성된 객체들을 대상으로도 확장할 수 있습니다. 예를 들어 웹에서는, DOM 요소에 추가 데이터를 연결했다가 나중에 접근하고 싶은 경우가 생길 수 있습니다. 흔히 쓰이는 방법은 데이터를 요소의 속성으로 붙이는 것입니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="lJgH5Vj0dUxrxQOzL+XFubseQk88VMx1XbL5gLarsuY=" data-language="js"><span class="token keyword">const</span> buttons <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">querySelectorAll</span><span class="token punctuation">(</span><span class="token string">".button"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+buttons<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">button</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  button<span class="token punctuation">.</span>clicked <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+  button<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">"click"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    button<span class="token punctuation">.</span>clicked <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+    <span class="token keyword">const</span> currentButtons <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token operator">...</span>document<span class="token punctuation">.</span><span class="token function">querySelectorAll</span><span class="token punctuation">(</span><span class="token string">".button"</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>currentButtons<span class="token punctuation">.</span><span class="token function">every</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">button</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> button<span class="token punctuation">.</span>clicked<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"모든 버튼을 클릭했습니다!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div> <p>위 방법도 동작하지만, 몇 가지 문제가 있습니다.</p> <ul> <li>
+<code>clicked</code> 속성이 열거 가능하므로 <a href="object/keys"><code>Object.keys(button)</code></a>, <a href="../statements/for...in"><code>for...in</code></a> 반복문 등에 노출됩니다. <a href="object/defineproperty"><code>Object.defineProperty()</code></a>를 사용하면 대응할 수 있지만, 대신 코드가 더 시끄러워집니다.</li> <li>
+<code>clicked</code> 속성은 일반 문자열 속성이므로 다른 코드에서 접근하거나 덮어쓸 수 있습니다. <a href="symbol"><code>Symbol</code></a> 키를 사용해 대응할 수 있지만, 그래도 <a href="object/getownpropertysymbols"><code>Object.getOwnPropertySymbols()</code></a>로 접근할 수 있습니다.</li> </ul> <p><code>WeakMap</code>을 사용하면 모두 고칠 수 있습니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="O6aP8PpbsiRmyQNlVrCwMzANkWeL69Qgve0RTnPloHI=" data-language="js"><span class="token keyword">const</span> buttons <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">querySelectorAll</span><span class="token punctuation">(</span><span class="token string">".button"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> clicked <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">WeakMap</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+buttons<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">button</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  clicked<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span>button<span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  button<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">"click"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    clicked<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span>button<span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">const</span> currentButtons <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token operator">...</span>document<span class="token punctuation">.</span><span class="token function">querySelectorAll</span><span class="token punctuation">(</span><span class="token string">".button"</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>currentButtons<span class="token punctuation">.</span><span class="token function">every</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">button</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> clicked<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>button<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"모든 버튼을 클릭했습니다!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div> <p>여기서는 <code>clicked</code>에 접근할 수 있는 코드만 각 버튼의 클릭 상태를 알 수 있으므로 외부 코드는 이 상태를 바꿀 수 없습니다. 또한 버튼이 DOM에서 제거되면 연관됐던 메타데이터도 가비지 컬렉터가 자동으로 정리합니다.</p>
+</div></section><section aria-labelledby="캐싱"><h3 id="캐싱">캐싱</h3>
+<div class="section-content">
+<p>함수에 전달했던 매개변수와 그 함수의 결과를 연관지으면, 같은 매개변수를 다시 받았을 때 함수를 다시 실행하지 않고 캐시된 결과를 반환할 수 있습니다. 이 방법은 함수가 순수(외부 객체를 조작하거나, 기타 관측 가능한 부작용을 유발하지 않음)할 때 유용합니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="7z6ECEzAQysGiIZDY7C9FDsyaXeBWs0/WfnN6qp+lNM=" data-language="js"><span class="token keyword">const</span> cache <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">WeakMap</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">function</span> <span class="token function">handleObjectValues</span><span class="token punctuation">(</span><span class="token parameter">obj</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>cache<span class="token punctuation">.</span><span class="token function">has</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> cache<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword">const</span> result <span class="token operator">=</span> Object<span class="token punctuation">.</span><span class="token function">values</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span>heavyComputation<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  cache<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span>obj<span class="token punctuation">,</span> result<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">return</span> result<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div> <p>하지만 함수가 한 객체를 받을 때만 사용할 수 있다는 점을 주의해야 합니다. 또한 입력했던 객체를 함수에 다시 전달할 일이 영원히 없다고 해도, 결과는 캐시에 계속 남아있게 됩니다. 더 효율적인 방법은 <a href="map"><code>Map</code></a>과 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakRef"><code>WeakRef</code> <small>(en-US)</small></a> 객체를 사용해서, 임의 타입의 입력 값을 그에 대응하는 (아마도 매우 큰) 계산 결과와 연관짓는 것입니다. 자세한 내용은 <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Memory_management#weakref%EC%99%80_finalizationregistry">WeakRef와 FinalizationRegistry</a> 예제를 참고하세요.</p>
+</div></section><h2 id="명세서">명세서</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://tc39.es/ecma262/multipage/keyed-collections.html#sec-weakmap-objects">ECMAScript Language Specification <br><small># sec-weakmap-objects</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="https://github.com/zloirock/core-js#weakmap" target="_blank"><code>core-js</code>의 <code>WeakMap</code> 폴리필</a></li> <li>
+<a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Guide/Keyed_collections">키 기반 컬렉션</a> 안내서의 <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Guide/Keyed_collections#weakmap_%EA%B0%9D%EC%B2%B4">WeakMap 객체</a>
+</li> <li><a href="https://fitzgeraldnick.com/2014/01/13/hiding-implementation-details-with-e6-weakmaps.html" target="_blank">Hiding Implementation Details with ECMAScript 6 WeakMaps</a></li> <li><a href="map"><code>Map</code></a></li> <li><a href="set"><code>Set</code></a></li> <li><a href="weakset"><code>WeakSet</code></a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/WeakMap" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/WeakMap</a>
+  </p>
+</div>

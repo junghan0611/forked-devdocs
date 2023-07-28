@@ -1,0 +1,60 @@
+<header><h1>Symbol.hasInstance</h1></header><div class="section-content"><p> <code>Symbol.hasInstance</code> 정적 데이터 속성은 <a href="../symbol#%EC%9E%98_%EC%95%8C%EB%A0%A4%EC%A7%84_%EC%8B%AC%EB%B3%BC">잘 알려진 심볼</a> <code>@@hasInstance</code>를 나타냅니다. <a href="../../operators/instanceof"><code>instanceof</code></a> 연산자는 생성자 객체가 객체를 인스턴스로 인식하는지 여부를 확인하기 위해 사용하는 메서드의 오른쪽 피연산자에서 이 심볼을 찾습니다. </p></div>
+<section aria-labelledby="시도해보기"><h2 id="시도해보기">시도해보기</h2>
+<div class="section-content"><iframe class="interactive is-js-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/js/symbol-hasinstance.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe></div></section><section aria-labelledby="값"><h2 id="값">값</h2>
+<div class="section-content">
+<p>잘 알려진 심볼 <code>@@hasInstance</code>.</p>
+<figure class="table-container"><div class="_table"><table class="standard-table"> <thead> <tr> <th class="header" colspan="2">Property attributes of <code>Symbol.hasInstance</code>
+</th> </tr> </thead> <tbody> <tr> <td>Writable</td> <td>불가능</td> </tr> <tr> <td>Enumerable</td> <td>불가능</td> </tr> <tr> <td>Configurable</td> <td>불가능</td> </tr> </tbody> </table></div></figure>
+</div></section><section aria-labelledby="설명"><h2 id="설명">설명</h2>
+<div class="section-content">
+<p><code>instanceof</code> 연산자는 다음 알고리즘을 사용하여 <code>object instanceof constructor</code>의 반환 값을 계산합니다.</p> <ol> <li> <code>constructor</code>에 <code>@@hasInstance</code> 메서드가 있는 경우, 첫 번째 인수로 <code>object</code>를 사용하여 호출하고 <a href="../boolean#boolean_coercion">불리언으로 강제 변환</a>된 결과를 반환합니다. <code>constructor</code>가 객체가 아니거나 <code>constructor[@@hasInstance]</code>가 <code>null</code>, <code>undefined</code>, 함수 중 하나가 아닌 경우 <a href="../typeerror"><code>TypeError</code></a>가 발생합니다. </li> <li> 그렇지 않으면, <code>constructor</code>에 <code>@@hasInstance</code> 메서드가 없는 경우(<code>constructor[@@hasInstance]</code>가 <code>null</code> 또는 <code>undefined</code>), <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/@@hasInstance" class="only-in-en-us"><code>Function.prototype[@@hasInstance]</code> <small>(en-US)</small></a>와 동일한 알고리즘을 사용하여 결과를 결정합니다. <code>constructor</code>가 함수가 아닌 경우 <a href="../typeerror"><code>TypeError</code></a>가 발생합니다. </li> </ol> <p>모든 함수는 기본적으로 <code>Function.prototype</code>을 상속하기 때문에, 대부분의 경우 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/@@hasInstance" class="only-in-en-us"><code>Function.prototype[@@hasInstance]</code> <small>(en-US)</small></a> 메서드는 오른쪽이 함수인 경우 <code>instanceof</code>의 동작을 지정합니다.</p>
+</div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+</section><section aria-labelledby="사용자_지정_instanceof_동작"><h3 id="사용자_지정_instanceof_동작">사용자 지정 instanceof 동작</h3>
+<div class="section-content">
+<p>예를 들어 다음과 같이 사용자 정의 <code>instanceof</code> 동작을 구현할 수 있습니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="x/9NQjNAk67xwrMBARqaA00uuEBfGLVcxriWXbb1Wwk=" data-language="js"><span class="token keyword">class</span> <span class="token class-name">MyArray</span> <span class="token punctuation">{</span>
+  <span class="token keyword">static</span> <span class="token punctuation">[</span>Symbol<span class="token punctuation">.</span>hasInstance<span class="token punctuation">]</span><span class="token punctuation">(</span><span class="token parameter">instance</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> Array<span class="token punctuation">.</span><span class="token function">isArray</span><span class="token punctuation">(</span>instance<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token keyword">instanceof</span> <span class="token class-name">MyArray</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// true</span>
+</pre>
+</div> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="0lcJk9SOZ698JmZAOio3FGTEeIxSmQ2O1wFTvHnJQ5o=" data-language="js"><span class="token keyword">function</span> <span class="token function">MyArray</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+Object<span class="token punctuation">.</span><span class="token function">defineProperty</span><span class="token punctuation">(</span>MyArray<span class="token punctuation">,</span> Symbol<span class="token punctuation">.</span>hasInstance<span class="token punctuation">,</span> <span class="token punctuation">{</span>
+  <span class="token function">value</span><span class="token punctuation">(</span><span class="token parameter">instance</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> Array<span class="token punctuation">.</span><span class="token function">isArray</span><span class="token punctuation">(</span>instance<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token keyword">instanceof</span> <span class="token class-name">MyArray</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// true</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="객체의_인스턴스_검사하기"><h3 id="객체의_인스턴스_검사하기">객체의 인스턴스 검사하기</h3>
+<div class="section-content">
+<p> <code>instanceof</code> 키워드를 사용하여 객체가 클래스의 인스턴스 여부를 확인할 수 있는 것과 같은 방법으로 <code>Symbol.hasInstance</code>를 사용하여 동일한 검사를 수행할 수 있습니다. </p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="chCJtAaXuJzALuN2KbQvFsyIW57zPBKFPn54snVrdTs=" data-language="js"><span class="token keyword">class</span> <span class="token class-name">Animal</span> <span class="token punctuation">{</span>
+  <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">const</span> cat <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Animal</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>Animal<span class="token punctuation">[</span>Symbol<span class="token punctuation">.</span>hasInstance<span class="token punctuation">]</span><span class="token punctuation">(</span>cat<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// true</span>
+</pre>
+</div>
+</div></section><h2 id="명세서">명세서</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://tc39.es/ecma262/multipage/fundamental-objects.html#sec-symbol.hasinstance">ECMAScript Language Specification <br><small># sec-symbol.hasinstance</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="../../operators/instanceof"><code>instanceof</code></a></li> <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/@@hasInstance" class="only-in-en-us"><code>Function.prototype[@@hasInstance]()</code> <small>(en-US)</small></a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Symbol/hasInstance" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Symbol/hasInstance</a>
+  </p>
+</div>

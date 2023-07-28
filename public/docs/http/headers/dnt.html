@@ -1,0 +1,31 @@
+<h1>DNT</h1>
+<header><h1>DNT</h1></header><div class="section-content">
+<p><code>DNT</code> (<strong>D</strong>o <strong>N</strong>ot <strong>T</strong>rack) 요청 헤더는 사용자의 트래킹 선호 설정을 가르킵니다. 이는 개인화 컨텐츠가 아닌 사생활 정보를 더 It lets users indicate whether would prefer privacy rather than personalized content.</p> <figure class="table-container"><div class="_table"><table class="properties"> <tbody> <tr> <th scope="row">Header type</th> <td><a href="https://developer.mozilla.org/ko/docs/Glossary/Request_header">Request header</a></td> </tr> <tr> <th scope="row"><a href="https://developer.mozilla.org/ko/docs/Glossary/Forbidden_header_name">Forbidden header name</a></th> <td>yes</td> </tr> </tbody> </table></div></figure>
+</div>
+<section aria-labelledby="문법"><h2 id="문법">문법</h2>
+<div class="section-content"><pre class="notranslate">DNT: 0
+DNT: 1
+</pre></div></section><section aria-labelledby="디렉티브"><h2 id="디렉티브">디렉티브</h2>
+<div class="section-content"><dl> <dt id="0">0</dt> <dd> <p>사용자가 대상 사이트에 대해 트래킹을 허용하는 것을 말합니다.</p> </dd> <dt id="1">1</dt> <dd> <p>사용자가 대상 사이트에 대해 트래킹을 원하지 않는 것을 말합니다.</p> </dd> </dl></div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+</section><section aria-labelledby="javascript를_통해_do_not_track_상태_읽기"><h3 id="javascript를_통해_do_not_track_상태_읽기">JavaScript를 통해 Do Not Track 상태 읽기</h3>
+<div class="section-content">
+<p>사용자의 DNT 선호 설정은 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/Navigator/doNotTrack"><code>Navigator.doNotTrack</code> <small>(en-US)</small></a> 프로퍼티를 사용해 JavaScript로도 읽을 수 있씁니다:</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="4TNrmSQ3E++ILwN9ir5Byu2I7dd+BXQwvTaSE8LSBJk=" data-language="js">navigator<span class="token punctuation">.</span>doNotTrack<span class="token punctuation">;</span> <span class="token comment">// "0" or "1"</span>
+</pre>
+</div>
+</div></section><h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://www.w3.org/TR/tracking-dnt/#dnt-header-field">Tracking Preference Expression (DNT) <br><small># dnt-header-field</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="함께_참고할_내용"><h2 id="함께_참고할_내용">함께 참고할 내용</h2>
+<div class="section-content"><ul> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/Navigator/doNotTrack"><code>Navigator.doNotTrack</code> <small>(en-US)</small></a></li> <li>
+<a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Tk" class="only-in-en-us"><code>Tk</code> <small>(en-US)</small></a> header</li> <li><a href="https://en.wikipedia.org/wiki/Do_Not_Track" target="_blank">Do Not Track on Wikipedia</a></li> <li><a href="https://www.eff.org/deeplinks/2011/02/what-does-track-do-not-track-mean" target="_blank">What Does the "Track" in "Do Not Track" Mean? – EFF</a></li> <li><a href="http://donottrack.us/" target="_blank">donottrack.us</a></li> <li>DNT browser settings help: <ul> <li><a href="https://www.mozilla.org/en-US/firefox/dnt/" target="_blank">Firefox</a></li> <li><a href="https://support.google.com/chrome/answer/2790761" target="_blank">Chrome</a></li> </ul> </li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/HTTP/Headers/DNT" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/HTTP/Headers/DNT</a>
+  </p>
+</div>

@@ -1,0 +1,60 @@
+<header><h1>prefers-color-scheme</h1></header><div class="section-content">
+<p><code>prefers-color-scheme</code> <a href="https://developer.mozilla.org/ko/docs/Web/CSS">CSS</a> <a href="../@media#media_features">미디어 특성</a>은 사용자의 시스템이 라이트 테마나 다크 테마를 사용하는지 탐지하는 데에 사용됩니다.</p> <p>사용자는 운영체제 설정(라이트 모드 또는 다크 모드)이나 사용자 에이전트 설정에서 선호하는 테마를 나타낼 수 있습니다.</p>
+</div>
+<section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content"><dl> <dt id="light"><code>light</code></dt> <dd> <p>사용자가 시스템에 라이트 테마를 사용하는 것을 선호하거나 선호하는 테마를 알리지 않았음을 나타냅니다.</p> </dd> <dt id="dark"><code>dark</code></dt> <dd> <p>사용자가 시스템에 다크 테마를 사용하는 것을 선호한다고 알렸음을 나타냅니다.</p> </dd> </dl></div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+<div class="section-content"><p>요소들에게 초기 색상을 설정합니다. 이 요소들이 사용자의 선호 테마에 따라 다른 스타일로 나타나도록 할 수 있습니다.</p></div></section><section aria-labelledby="html"><h3 id="html">HTML</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="STwdjnvAB0PVkYDVPdTdnl02SUxUAkUP+bi8uYEhu/I=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>day<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Day (initial)<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>day light-scheme<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Day (changes in light scheme)<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>day dark-scheme<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Day (changes in dark scheme)<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>br</span><span class="token punctuation">&gt;</span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>night<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Night (initial)<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>night light-scheme<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Night (changes in light scheme)<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>night dark-scheme<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Night (changes in dark scheme)<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div></div></section><section aria-labelledby="css"><h3 id="css">CSS</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="OephLpwHDt8pcnyV0o/4a2Ki+6eQipHMTsfdAPlqVpI=" data-language="css"><span class="token selector">.day</span>   <span class="token punctuation">{</span> <span class="token property">background</span><span class="token punctuation">:</span> #eee<span class="token punctuation">;</span> <span class="token property">color</span><span class="token punctuation">:</span> black<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+<span class="token selector">.night</span> <span class="token punctuation">{</span> <span class="token property">background</span><span class="token punctuation">:</span> #333<span class="token punctuation">;</span> <span class="token property">color</span><span class="token punctuation">:</span> white<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+
+<span class="token atrule"><span class="token rule">@media</span> <span class="token punctuation">(</span><span class="token property">prefers-color-scheme</span><span class="token punctuation">:</span> dark<span class="token punctuation">)</span></span> <span class="token punctuation">{</span>
+  <span class="token selector">.day.dark-scheme</span>   <span class="token punctuation">{</span> <span class="token property">background</span><span class="token punctuation">:</span>  #333<span class="token punctuation">;</span> <span class="token property">color</span><span class="token punctuation">:</span> white<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+  <span class="token selector">.night.dark-scheme</span> <span class="token punctuation">{</span> <span class="token property">background</span><span class="token punctuation">:</span> black<span class="token punctuation">;</span> <span class="token property">color</span><span class="token punctuation">:</span>  #ddd<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token atrule"><span class="token rule">@media</span> <span class="token punctuation">(</span><span class="token property">prefers-color-scheme</span><span class="token punctuation">:</span> light<span class="token punctuation">)</span></span> <span class="token punctuation">{</span>
+  <span class="token selector">.day.light-scheme</span>   <span class="token punctuation">{</span> <span class="token property">background</span><span class="token punctuation">:</span> white<span class="token punctuation">;</span> <span class="token property">color</span><span class="token punctuation">:</span>  #555<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+  <span class="token selector">.night.light-scheme</span> <span class="token punctuation">{</span> <span class="token property">background</span><span class="token punctuation">:</span>  #eee<span class="token punctuation">;</span> <span class="token property">color</span><span class="token punctuation">:</span> black<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">.day, .night</span> <span class="token punctuation">{</span>
+  <span class="token property">display</span><span class="token punctuation">:</span> inline-block<span class="token punctuation">;</span>
+  <span class="token property">padding</span><span class="token punctuation">:</span> 1em<span class="token punctuation">;</span>
+  <span class="token property">width</span><span class="token punctuation">:</span> 7em<span class="token punctuation">;</span>
+  <span class="token property">height</span><span class="token punctuation">:</span> 2em<span class="token punctuation">;</span>
+  <span class="token property">vertical-align</span><span class="token punctuation">:</span> middle<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div></div></section><section aria-labelledby="결과"><h3 id="결과">결과</h3>
+<div class="section-content"><div class="code-example" id="sect1">
+
+<iframe class="sample-code-frame" title="예제" id="frame_examples" src="https://live.mdnplay.dev/ko/docs/Web/CSS/@media/prefers-color-scheme/runner.html?id=examples" loading="lazy"></iframe>
+</div></div></section><h2 id="명세서">명세서</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://drafts.csswg.org/mediaqueries-5/#prefers-color-scheme">Media Queries Level 5 <br><small># prefers-color-scheme</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li>
+<a href="https://firefox-source-docs.mozilla.org/devtools-user/page_inspector/how_to/examine_and_edit_css/index.html#view_media_rules_for_prefers-color-scheme" target="_blank">Simulate prefers-color-scheme in Firefox</a> (Firefox Page Inspector &gt; Examine and edit CSS)</li> <li><a href="https://www.youtube.com/watch?v=jmepqJ5UbuM" target="_blank">Video tutorial: Coding a Dark Mode for your Website</a></li> <li><a href="https://stuffandnonsense.co.uk/blog/redesigning-your-product-and-website-for-dark-mode" target="_blank">Redesigning your product and website for dark mode</a></li> <li>
+<a href="https://blogs.windows.com/windowsexperience/2019/04/01/windows-10-tip-dark-theme-in-file-explorer/" target="_blank">Windows</a>, <a href="https://developer.apple.com/design/human-interface-guidelines/macos/visual-design/dark-mode/" target="_blank">macOS</a>, <a href="https://www.theverge.com/2019/5/7/18530599/google-android-q-features-hands-on-dark-mode-gestures-accessibility-io-2019" target="_blank">Android</a>, or <a href="https://support.mozilla.org/en-US/questions/1271928" target="_blank">다른 플랫폼</a>에서 색상 변경하기</li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/CSS/@media/prefers-color-scheme" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/CSS/@media/prefers-color-scheme</a>
+  </p>
+</div>

@@ -1,0 +1,354 @@
+<header><h1>구조 분해 할당</h1></header><div class="section-content"><p><strong>구조 분해 할당</strong> 구문은 배열이나 객체의 속성을 해체하여 그 값을 개별 변수에 담을 수 있게 하는 JavaScript 표현식입니다.</p></div>
+<section aria-labelledby="시도해보기"><h2 id="시도해보기">시도해보기</h2>
+<div class="section-content"><iframe class="interactive is-js-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/js/expressions-destructuringassignment.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe></div></section><section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="1N5NCFxp6ye4lqNgOdnLukD2SCRb1z5AfPHsoDQQthM=" data-language="js"><span class="token keyword">var</span> a<span class="token punctuation">,</span> b<span class="token punctuation">,</span> rest<span class="token punctuation">;</span>
+<span class="token punctuation">[</span>a<span class="token punctuation">,</span> b<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">20</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 10</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 20</span>
+
+<span class="token punctuation">[</span>a<span class="token punctuation">,</span> b<span class="token punctuation">,</span> <span class="token operator">...</span>rest<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">20</span><span class="token punctuation">,</span> <span class="token number">30</span><span class="token punctuation">,</span> <span class="token number">40</span><span class="token punctuation">,</span> <span class="token number">50</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 10</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 20</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>rest<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// [30, 40, 50]</span>
+
+<span class="token punctuation">(</span><span class="token punctuation">{</span> a<span class="token punctuation">,</span> b <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token literal-property property">a</span><span class="token operator">:</span> <span class="token number">10</span><span class="token punctuation">,</span> <span class="token literal-property property">b</span><span class="token operator">:</span> <span class="token number">20</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 10</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 20</span>
+
+
+<span class="token comment">// Stage 4(finished) proposal</span>
+<span class="token punctuation">(</span><span class="token punctuation">{</span>a<span class="token punctuation">,</span> b<span class="token punctuation">,</span> <span class="token operator">...</span>rest<span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token literal-property property">a</span><span class="token operator">:</span> <span class="token number">10</span><span class="token punctuation">,</span> <span class="token literal-property property">b</span><span class="token operator">:</span> <span class="token number">20</span><span class="token punctuation">,</span> <span class="token literal-property property">c</span><span class="token operator">:</span> <span class="token number">30</span><span class="token punctuation">,</span> <span class="token literal-property property">d</span><span class="token operator">:</span> <span class="token number">40</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 10</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 20</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>rest<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// {c: 30, d: 40}</span>
+</pre>
+</div></div></section><section aria-labelledby="설명"><h2 id="설명">설명</h2>
+<div class="section-content">
+<p>객체 및 배열 리터럴 표현식을 사용하면 즉석에서 쉽게 데이터 뭉치를 만들 수 있습니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="qQrM7C5tNebgoeHJQaMbdY7D+c8rkz9xuZOujt9B6Ss=" data-language="js"><span class="token keyword">var</span> x <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+</pre>
+</div> <p>구조 분해 할당의 구문은 위와 비슷하지만, 대신 할당문의 좌변에서 사용하여, 원래 변수에서 어떤 값을 분해해 할당할지 정의합니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="OTmX9kzBWsnZtrb44xNSQXCk/lWKK6CCfXM9ydOelPk=" data-language="js"><span class="token keyword">var</span> x <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> <span class="token punctuation">[</span>y<span class="token punctuation">,</span> z<span class="token punctuation">]</span> <span class="token operator">=</span> x<span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>y<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 1</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>z<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 2</span>
+</pre>
+</div> <p>구조 분해 할당은 Perl이나 Python 등 다른 언어가 가지고 있는 기능입니다.</p>
+</div></section><section aria-labelledby="배열_구조_분해"><h2 id="배열_구조_분해">배열 구조 분해</h2>
+</section><section aria-labelledby="기본_변수_할당"><h3 id="기본_변수_할당">기본 변수 할당</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="AYw0bQPmK4x8dkpbqysruPRfvj2/hoEjw8FSH61IkB0=" data-language="js"><span class="token keyword">var</span> foo <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">"one"</span><span class="token punctuation">,</span> <span class="token string">"two"</span><span class="token punctuation">,</span> <span class="token string">"three"</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+<span class="token keyword">var</span> <span class="token punctuation">[</span>red<span class="token punctuation">,</span> yellow<span class="token punctuation">,</span> green<span class="token punctuation">]</span> <span class="token operator">=</span> foo<span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>red<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// "one"</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>yellow<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// "two"</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>green<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// "three"</span>
+</pre>
+</div></div></section><section aria-labelledby="선언에서_분리한_할당"><h3 id="선언에서_분리한_할당">선언에서 분리한 할당</h3>
+<div class="section-content">
+<p>변수의 선언이 분리되어도 구조 분해를 통해 값을 할당할 수 있습니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="LkrpWQ20GMpfjuJd9x2e1BRauCZWOQI5d8q8t3Gpa5c=" data-language="js"><span class="token keyword">var</span> a<span class="token punctuation">,</span> b<span class="token punctuation">;</span>
+
+<span class="token punctuation">[</span>a<span class="token punctuation">,</span> b<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 1</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 2</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="기본값"><h3 id="기본값">기본값</h3>
+<div class="section-content">
+<p>변수에 기본값을 할당하면, 분해한 값이 <a href="../global_objects/undefined"><code>undefined</code></a>일 때 그 값을 대신 사용합니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="IQmy6szq/ii4ozDgXNVop5WLIZc34BV57omzUJrme1w=" data-language="js"><span class="token keyword">var</span> a<span class="token punctuation">,</span> b<span class="token punctuation">;</span>
+
+<span class="token punctuation">[</span>a<span class="token operator">=</span><span class="token number">5</span><span class="token punctuation">,</span> b<span class="token operator">=</span><span class="token number">7</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 1</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 7</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="변수_값_교환하기"><h3 id="변수_값_교환하기">변수 값 교환하기</h3>
+<div class="section-content">
+<p>하나의 구조 분해 표현식만으로 두 변수의 값을 교환할 수 있습니다.</p> <p>구조 분해 할당 없이 두 값을 교환하려면 임시 변수가 필요합니다. (일부 로우 레벨 언어에서는 <a href="http://en.wikipedia.org/wiki/XOR_swap" target="_blank">XOR 교체 트릭</a>을 사용할 수 있습니다)</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="RhEjlGC80GvjPL4eWjLHg4WZiiHiCZEOvLxxS+QrYPs=" data-language="js"><span class="token keyword">var</span> a <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> b <span class="token operator">=</span> <span class="token number">3</span><span class="token punctuation">;</span>
+
+<span class="token punctuation">[</span>a<span class="token punctuation">,</span> b<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">[</span>b<span class="token punctuation">,</span> a<span class="token punctuation">]</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 3</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 1</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="함수가_반환한_배열_분석"><h3 id="함수가_반환한_배열_분석">함수가 반환한 배열 분석</h3>
+<div class="section-content">
+<p>함수는 이전부터 배열을 반환할 수 있었습니다. 구조 분해를 사용하면 반환된 배열에 대한 작업을 더 간결하게 수행할 수 있습니다.</p> <p>아래 예제에서 <code>f()</code>는 출력으로 배열 <code>[1, 2]</code>을 반환하는데, 하나의 구조 분해만으로 값을 분석할 수 있습니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="TBqeq1REe/bv5sMxt71Gr7/U+RYgLpZ5lvU0kzuFfFs=" data-language="js"><span class="token keyword">function</span> <span class="token function">f</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">var</span> a<span class="token punctuation">,</span> b<span class="token punctuation">;</span>
+<span class="token punctuation">[</span>a<span class="token punctuation">,</span> b<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">f</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 1</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 2</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="일부_반환_값_무시하기"><h3 id="일부_반환_값_무시하기">일부 반환 값 무시하기</h3>
+<div class="section-content">
+<p>다음과 같이 필요하지 않은 반환 값을 무시할 수 있습니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="I3JU5GnpOFsXMEh/ZiCP92eBUabFBv73gf4SJMZrc00=" data-language="js"><span class="token keyword">function</span> <span class="token function">f</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">var</span> <span class="token punctuation">[</span>a<span class="token punctuation">,</span> <span class="token punctuation">,</span> b<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">f</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 1</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 3</span>
+</pre>
+</div> <p>반환 값을 모두 무시할 수도 있습니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="cII65Xc6rnTFtG11Yj2JrUNxDL1Jeu1+hvjHmtALEeg=" data-language="js"><span class="token punctuation">[</span><span class="token punctuation">,</span><span class="token punctuation">,</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">f</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="변수에_배열의_나머지를_할당하기"><h3 id="변수에_배열의_나머지를_할당하기">변수에 배열의 나머지를 할당하기</h3>
+<div class="section-content">
+<p>배열을 구조 분해할 경우, 나머지 구문을 이용해 분해하고 남은 부분을 하나의 변수에 할당할 수 있습니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="ZiXqw5hlZe8w8X5N95vbjl9TXHtWVKGBjHIq3vMrlmU=" data-language="js"><span class="token keyword">var</span> <span class="token punctuation">[</span>a<span class="token punctuation">,</span> <span class="token operator">...</span>b<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 1</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// [2, 3]</span>
+</pre>
+</div> <p>나머지 요소의 오른쪽 뒤에 쉼표가 있으면 <a href="../global_objects/syntaxerror"><code>SyntaxError</code></a>가 발생합니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="kbaPqiC2g7YMWgqDfSR/XdOKs9aftz8Aai+QlrR7bhc=" data-language="js"><span class="token keyword">var</span> <span class="token punctuation">[</span>a<span class="token punctuation">,</span> <span class="token operator">...</span>b<span class="token punctuation">,</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token comment">// SyntaxError: rest element may not have a trailing comma</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="정규_표현식과_일치하는_값_해체하기"><h3 id="정규_표현식과_일치하는_값_해체하기">정규 표현식과 일치하는 값 해체하기</h3>
+<div class="section-content">
+<p>정규 표현식의 <a href="../global_objects/regexp/exec"><code>exec()</code></a> 메서드는 일치하는 부분를 찾으면 그 문자열에서 정규식과 일치하는 부분 전체를 배열의 맨 앞에, 그리고 그 뒤에 정규식에서 괄호로 묶인 각 그룹과 일치하는 부분을 포함하는 배열을 반환합니다. 구조 분해 할당은 필요하지 않은 경우 일치하는 전체 부분은 무시하고 필요한 부분만 쉽게 빼올 수 있습니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="qmAR2WLB9htyHFuuPWxILUf+M/YOOFf9UqByqj1/L9w=" data-language="js"><span class="token keyword">function</span> <span class="token function">parseProtocol</span><span class="token punctuation">(</span><span class="token parameter">url</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">var</span> parsedURL <span class="token operator">=</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex"><span class="token anchor function">^</span><span class="token group punctuation">(</span><span class="token char-set class-name">\w</span><span class="token quantifier number">+</span><span class="token group punctuation">)</span><span class="token escape">\:</span><span class="token escape">\/</span><span class="token escape">\/</span><span class="token group punctuation">(</span><span class="token char-class"><span class="token char-class-punctuation punctuation">[</span><span class="token char-class-negation operator">^</span><span class="token escape">\/</span><span class="token char-class-punctuation punctuation">]</span></span><span class="token quantifier number">+</span><span class="token group punctuation">)</span><span class="token escape">\/</span><span class="token group punctuation">(</span><span class="token char-set class-name">.</span><span class="token quantifier number">*</span><span class="token group punctuation">)</span><span class="token anchor function">$</span></span><span class="token regex-delimiter">/</span></span><span class="token punctuation">.</span><span class="token function">exec</span><span class="token punctuation">(</span>url<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>parsedURL<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>parsedURL<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// ["https://developer.mozilla.org/en-US/Web/JavaScript", "https", "developer.mozilla.org", "en-US/Web/JavaScript"]</span>
+
+  <span class="token keyword">var</span> <span class="token punctuation">[</span><span class="token punctuation">,</span> protocol<span class="token punctuation">,</span> fullhost<span class="token punctuation">,</span> fullpath<span class="token punctuation">]</span> <span class="token operator">=</span> parsedURL<span class="token punctuation">;</span>
+  <span class="token keyword">return</span> protocol<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token function">parseProtocol</span><span class="token punctuation">(</span><span class="token string">'https://developer.mozilla.org/en-US/Web/JavaScript'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// "https"</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="객체_구조_분해"><h2 id="객체_구조_분해">객체 구조 분해</h2>
+</section><section aria-labelledby="기본_할당"><h3 id="기본_할당">기본 할당</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="U7eX3xyGT773xkdAIFHKOF7QyHrOLmxE16EzTG2M7xY=" data-language="js"><span class="token keyword">var</span> o <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token literal-property property">p</span><span class="token operator">:</span> <span class="token number">42</span><span class="token punctuation">,</span> <span class="token literal-property property">q</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> <span class="token punctuation">{</span>p<span class="token punctuation">,</span> q<span class="token punctuation">}</span> <span class="token operator">=</span> o<span class="token punctuation">;</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>p<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 42</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>q<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// true</span>
+</pre>
+</div></div></section><section aria-labelledby="선언_없는_할당"><h3 id="선언_없는_할당">선언 없는 할당</h3>
+<div class="section-content">
+<p>구조 분해를 통해 변수의 선언과 분리하여 변수에 값을 할당할 수 있습니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="7WtfawOj+hfedZVkgd8uVYfyPC7e7VH/CoYwYIv9gTE=" data-language="js"><span class="token keyword">var</span> a<span class="token punctuation">,</span> b<span class="token punctuation">;</span>
+
+<span class="token punctuation">(</span><span class="token punctuation">{</span>a<span class="token punctuation">,</span> b<span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token literal-property property">a</span><span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token literal-property property">b</span><span class="token operator">:</span> <span class="token number">2</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div> <div class="note notecard" id="sect1"> <p><strong>참고</strong>: 할당 문을 둘러싼 <code>( .. )</code>는 선언 없이 객체 리터럴(object literal) 비구조화 할당을 사용할 때 필요한 구문입니다.</p> <p><code>{a, b} = {a:1, b:2}</code>는 유효한 독립 구문이 아닙니다. 좌변의 <code>{a, b}</code>이 객체 리터럴이 아닌 블록으로 간주되기 때문입니다.</p> <p>하지만, <code>({a, b} = {a:1, b:2})</code>는 유효한데, <code>var {a, b} = {a:1, b:2}</code>와 같습니다.</p> <p><code>( .. )</code> 표현식 앞에는 세미콜론이 있어야 합니다. 그렇지 않을 경우 이전 줄과 연결되어 함수를 실행하는데 이용될 수 있습니다.</p> </div>
+</div></section><section aria-labelledby="새로운_변수_이름으로_할당하기"><h3 id="새로운_변수_이름으로_할당하기">새로운 변수 이름으로 할당하기</h3>
+<div class="section-content">
+<p>객체로부터 속성을 해체하여 객체의 원래 속성명과는 다른 이름의 변수에 할당할 수 있습니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="cJoH6dzL8hWMOVGPUXI6qjKk2AYaWFmRoqrZ8QCvLpk=" data-language="js"><span class="token keyword">var</span> o <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token literal-property property">p</span><span class="token operator">:</span> <span class="token number">42</span><span class="token punctuation">,</span> <span class="token literal-property property">q</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> <span class="token punctuation">{</span><span class="token literal-property property">p</span><span class="token operator">:</span> foo<span class="token punctuation">,</span> <span class="token literal-property property">q</span><span class="token operator">:</span> bar<span class="token punctuation">}</span> <span class="token operator">=</span> o<span class="token punctuation">;</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>foo<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 42</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>bar<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// true</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="기본값_2"><h3 id="기본값_2">기본값</h3>
+<div class="section-content">
+<p>객체로부터 해체된 값이 <code>undefined</code>인 경우, 변수에 기본값을 할당할 수 있습니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="VrMT3VfC87p+m1PxCrKjLal2d9kG6pY3DLfpsfoxDuE=" data-language="js"><span class="token keyword">var</span> <span class="token punctuation">{</span>a <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">,</span> b <span class="token operator">=</span> <span class="token number">5</span><span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token literal-property property">a</span><span class="token operator">:</span> <span class="token number">3</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 3</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 5</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="기본값_갖는_새로운_이름의_변수에_할당하기"><h3 id="기본값_갖는_새로운_이름의_변수에_할당하기">기본값 갖는 새로운 이름의 변수에 할당하기</h3>
+<div class="section-content">
+<p>새로운 변수명 할당과 기본값 할당을 한번에 할 수 있습니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="pGrzs0JLUVJyPNZkeAyE3itI2S81otAYVAZIjK9VGhI=" data-language="js"><span class="token keyword">var</span> <span class="token punctuation">{</span><span class="token literal-property property">a</span><span class="token operator">:</span> aa <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">,</span> <span class="token literal-property property">b</span><span class="token operator">:</span> bb <span class="token operator">=</span> <span class="token number">5</span><span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token literal-property property">a</span><span class="token operator">:</span> <span class="token number">3</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>aa<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 3</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>bb<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 5</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="함수_매개변수의_기본값_설정하기"><h3 id="함수_매개변수의_기본값_설정하기">함수 매개변수의 기본값 설정하기</h3>
+<div class="section-content">
+<h4 id="es5_버전">ES5 버전</h4> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="AJebIgiB5mNFiH+mX2ISfSgDnvGSWx6osHf6ncuv9Ak=" data-language="js"><span class="token keyword">function</span> <span class="token function">drawES5Chart</span><span class="token punctuation">(</span><span class="token parameter">options</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  options <span class="token operator">=</span> options <span class="token operator">===</span> <span class="token keyword">undefined</span> <span class="token operator">?</span> <span class="token punctuation">{</span><span class="token punctuation">}</span> <span class="token operator">:</span> options<span class="token punctuation">;</span>
+  <span class="token keyword">var</span> size <span class="token operator">=</span> options<span class="token punctuation">.</span>size <span class="token operator">===</span> <span class="token keyword">undefined</span> <span class="token operator">?</span> <span class="token string">'big'</span> <span class="token operator">:</span> options<span class="token punctuation">.</span>size<span class="token punctuation">;</span>
+  <span class="token keyword">var</span> cords <span class="token operator">=</span> options<span class="token punctuation">.</span>cords <span class="token operator">===</span> <span class="token keyword">undefined</span> <span class="token operator">?</span> <span class="token punctuation">{</span> <span class="token literal-property property">x</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token literal-property property">y</span><span class="token operator">:</span> <span class="token number">0</span> <span class="token punctuation">}</span> <span class="token operator">:</span> options<span class="token punctuation">.</span>cords<span class="token punctuation">;</span>
+  <span class="token keyword">var</span> radius <span class="token operator">=</span> options<span class="token punctuation">.</span>radius <span class="token operator">===</span> <span class="token keyword">undefined</span> <span class="token operator">?</span> <span class="token number">25</span> <span class="token operator">:</span> options<span class="token punctuation">.</span>radius<span class="token punctuation">;</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>size<span class="token punctuation">,</span> cords<span class="token punctuation">,</span> radius<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token comment">// 이제 드디어 차트 그리기 수행</span>
+<span class="token punctuation">}</span>
+
+<span class="token function">drawES5Chart</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  <span class="token literal-property property">cords</span><span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token literal-property property">x</span><span class="token operator">:</span> <span class="token number">18</span><span class="token punctuation">,</span> <span class="token literal-property property">y</span><span class="token operator">:</span> <span class="token number">30</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">radius</span><span class="token operator">:</span> <span class="token number">30</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div> <h4 id="es2015_버전">ES2015 버전</h4> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="dsmwatYh4gxscAdXFdd8otp6WwvbemkW8dsEwj4lQ7M=" data-language="js"><span class="token keyword">function</span> <span class="token function">drawES2015Chart</span><span class="token punctuation">(</span><span class="token punctuation">{</span>size <span class="token operator">=</span> <span class="token string">'big'</span><span class="token punctuation">,</span> cords <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token literal-property property">x</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token literal-property property">y</span><span class="token operator">:</span> <span class="token number">0</span> <span class="token punctuation">}</span><span class="token punctuation">,</span> radius <span class="token operator">=</span> <span class="token number">25</span><span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>size<span class="token punctuation">,</span> cords<span class="token punctuation">,</span> radius<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token comment">// 차트 그리기 수행</span>
+<span class="token punctuation">}</span>
+
+<span class="token function">drawES2015Chart</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  <span class="token literal-property property">cords</span><span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token literal-property property">x</span><span class="token operator">:</span> <span class="token number">18</span><span class="token punctuation">,</span> <span class="token literal-property property">y</span><span class="token operator">:</span> <span class="token number">30</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">radius</span><span class="token operator">:</span> <span class="token number">30</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div> <div class="note notecard" id="sect2"> <p>위의 <code>drawES2015Chart</code> 함수의 원형에서 구조 분해된 좌변에 빈 오브젝트 리터럴을 할당하는 것을 볼 수 있습니다 <code>{size = 'big', cords = {x: 0, y: 0}, radius = 25} = {}</code>. 빈 오브젝트를 우변에 할당하지 않고도 함수를 작성할 수 있습니다. 하지만, 지금의 형태에서는 단순히 <code><strong>drawES2015Chart()</strong></code>와 같이 어떤 매개변수 없이도 호출할 수 있지만, 우변의 빈 오브젝트 할당을 없앤다면 함수 호출시 적어도 하나의 인자가 제공되어야만 합니다. 이 함수가 어떠한 매개변수 없이도 호출할 수 있길 원한다면 지금 형태가 유용하고, 무조건 객체를 넘기길 원하는 경우에는 빈 객체 할당을 하지 않는 것이 유용할 수 있습니다.</p> </div>
+</div></section><section aria-labelledby="중첩된_객체_및_배열의_구조_분해"><h3 id="중첩된_객체_및_배열의_구조_분해">중첩된 객체 및 배열의 구조 분해</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="Z70/oQXLqEXj42Ba70iRPlqLGmfqxGwPSVh0pIdOnpA=" data-language="js"><span class="token keyword">var</span> metadata <span class="token operator">=</span> <span class="token punctuation">{</span>
+    <span class="token literal-property property">title</span><span class="token operator">:</span> <span class="token string">"Scratchpad"</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">translations</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+       <span class="token punctuation">{</span>
+        <span class="token literal-property property">locale</span><span class="token operator">:</span> <span class="token string">"de"</span><span class="token punctuation">,</span>
+        <span class="token literal-property property">localization_tags</span><span class="token operator">:</span> <span class="token punctuation">[</span> <span class="token punctuation">]</span><span class="token punctuation">,</span>
+        <span class="token literal-property property">last_edit</span><span class="token operator">:</span> <span class="token string">"2014-04-14T08:43:37"</span><span class="token punctuation">,</span>
+        <span class="token literal-property property">url</span><span class="token operator">:</span> <span class="token string">"/de/docs/Tools/Scratchpad"</span><span class="token punctuation">,</span>
+        <span class="token literal-property property">title</span><span class="token operator">:</span> <span class="token string">"JavaScript-Umgebung"</span>
+       <span class="token punctuation">}</span>
+    <span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">url</span><span class="token operator">:</span> <span class="token string">"/en-US/docs/Tools/Scratchpad"</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">var</span> <span class="token punctuation">{</span> <span class="token literal-property property">title</span><span class="token operator">:</span> englishTitle<span class="token punctuation">,</span> <span class="token literal-property property">translations</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">{</span> <span class="token literal-property property">title</span><span class="token operator">:</span> localeTitle <span class="token punctuation">}</span><span class="token punctuation">]</span> <span class="token punctuation">}</span> <span class="token operator">=</span> metadata<span class="token punctuation">;</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>englishTitle<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// "Scratchpad"</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>localeTitle<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// "JavaScript-Umgebung"</span>
+</pre>
+</div></div></section><section aria-labelledby="for_of_반복문과_구조_분해"><h3 id="for_of_반복문과_구조_분해">for of 반복문과 구조 분해</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="4BrV2I78YgBs1Oz1ng4+0qLEh/joksobidoUdHLc3lU=" data-language="js"><span class="token keyword">var</span> people <span class="token operator">=</span> <span class="token punctuation">[</span>
+  <span class="token punctuation">{</span>
+    <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">"Mike Smith"</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">family</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token literal-property property">mother</span><span class="token operator">:</span> <span class="token string">"Jane Smith"</span><span class="token punctuation">,</span>
+      <span class="token literal-property property">father</span><span class="token operator">:</span> <span class="token string">"Harry Smith"</span><span class="token punctuation">,</span>
+      <span class="token literal-property property">sister</span><span class="token operator">:</span> <span class="token string">"Samantha Smith"</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">age</span><span class="token operator">:</span> <span class="token number">35</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">{</span>
+    <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">"Tom Jones"</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">family</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token literal-property property">mother</span><span class="token operator">:</span> <span class="token string">"Norah Jones"</span><span class="token punctuation">,</span>
+      <span class="token literal-property property">father</span><span class="token operator">:</span> <span class="token string">"Richard Jones"</span><span class="token punctuation">,</span>
+      <span class="token literal-property property">brother</span><span class="token operator">:</span> <span class="token string">"Howard Jones"</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">age</span><span class="token operator">:</span> <span class="token number">25</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">var</span> <span class="token punctuation">{</span><span class="token literal-property property">name</span><span class="token operator">:</span> n<span class="token punctuation">,</span> <span class="token literal-property property">family</span><span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token literal-property property">father</span><span class="token operator">:</span> f <span class="token punctuation">}</span> <span class="token punctuation">}</span> <span class="token keyword">of</span> people<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"Name: "</span> <span class="token operator">+</span> n <span class="token operator">+</span> <span class="token string">", Father: "</span> <span class="token operator">+</span> f<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// "Name: Mike Smith, Father: Harry Smith"</span>
+<span class="token comment">// "Name: Tom Jones, Father: Richard Jones"</span>
+</pre>
+</div></div></section><section aria-labelledby="함수_매개변수로_전달된_객체에서_필드_해체하기"><h3 id="함수_매개변수로_전달된_객체에서_필드_해체하기">함수 매개변수로 전달된 객체에서 필드 해체하기</h3>
+<div class="section-content">
+<div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="GX3wIzW0gwo6vwz3tC6VdtjJ6K7dcvV4PtYWjAHWfCI=" data-language="js"><span class="token keyword">function</span> <span class="token function">userId</span><span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span>id<span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> id<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">function</span> <span class="token function">whois</span><span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span><span class="token literal-property property">displayName</span><span class="token operator">:</span> displayName<span class="token punctuation">,</span> <span class="token literal-property property">fullName</span><span class="token operator">:</span> <span class="token punctuation">{</span><span class="token literal-property property">firstName</span><span class="token operator">:</span> name<span class="token punctuation">}</span><span class="token punctuation">}</span></span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>displayName <span class="token operator">+</span> <span class="token string">" is "</span> <span class="token operator">+</span> name<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">var</span> user <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token literal-property property">id</span><span class="token operator">:</span> <span class="token number">42</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">displayName</span><span class="token operator">:</span> <span class="token string">"jdoe"</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">fullName</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token literal-property property">firstName</span><span class="token operator">:</span> <span class="token string">"John"</span><span class="token punctuation">,</span>
+      <span class="token literal-property property">lastName</span><span class="token operator">:</span> <span class="token string">"Doe"</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"userId: "</span> <span class="token operator">+</span> <span class="token function">userId</span><span class="token punctuation">(</span>user<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// "userId: 42"</span>
+<span class="token function">whois</span><span class="token punctuation">(</span>user<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// "jdoe is John"</span>
+</pre>
+</div> <p>이 예제는 user 객체로부터 <code>id</code>, <code>displayName</code> 및 <code>firstName</code> 을 해체해 출력합니다.</p>
+</div></section><section aria-labelledby="계산된_속성_이름과_구조_분해"><h3 id="계산된_속성_이름과_구조_분해">계산된 속성 이름과 구조 분해</h3>
+<div class="section-content">
+<p>계산된 속성 이름(computed property name)은, <a href="object_initializer#computed_property_names">객체 리터럴</a>과 비슷하게 구조 분해에도 사용될 수 있습니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="HpKJimKgerrAj7s6O/duBzNsEzR0sfnTnaLE8ji9QSQ=" data-language="js"><span class="token keyword">let</span> key <span class="token operator">=</span> <span class="token string">"z"</span><span class="token punctuation">;</span>
+<span class="token keyword">let</span> <span class="token punctuation">{</span> <span class="token punctuation">[</span>key<span class="token punctuation">]</span><span class="token operator">:</span> foo <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token literal-property property">z</span><span class="token operator">:</span> <span class="token string">"bar"</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>foo<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// "bar"</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="객체_구조_분해에서_rest"><h3 id="객체_구조_분해에서_rest">객체 구조 분해에서 Rest</h3>
+<div class="section-content">
+<p><a href="https://github.com/tc39/proposal-object-rest-spread" target="_blank">Rest/Spread Properties for ECMAScript</a> 제안(stage 3)에서는 구조 분해에 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/rest_parameters">rest</a> 구문을 추가하고 있습니다. rest 속성은 구조 분해 패턴으로 걸러지지 않은 열거형 속성의 키를 가진 나머지 항목들을 모읍니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="2/M7HEOM9DHOFgcuhNK7oP7X2XVACODkFKj8Ki229LY=" data-language="js"><span class="token keyword">let</span> <span class="token punctuation">{</span>a<span class="token punctuation">,</span> b<span class="token punctuation">,</span> <span class="token operator">...</span>rest<span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token literal-property property">a</span><span class="token operator">:</span> <span class="token number">10</span><span class="token punctuation">,</span> <span class="token literal-property property">b</span><span class="token operator">:</span> <span class="token number">20</span><span class="token punctuation">,</span> <span class="token literal-property property">c</span><span class="token operator">:</span> <span class="token number">30</span><span class="token punctuation">,</span> <span class="token literal-property property">d</span><span class="token operator">:</span> <span class="token number">40</span><span class="token punctuation">}</span>
+a<span class="token punctuation">;</span> <span class="token comment">// 10</span>
+b<span class="token punctuation">;</span> <span class="token comment">// 20</span>
+rest<span class="token punctuation">;</span> <span class="token comment">// { c: 30, d: 40 }</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="속성_이름이_유효한_javascript_식별자명이_아닌_경우"><h3 id="속성_이름이_유효한_javascript_식별자명이_아닌_경우">속성 이름이 유효한 JavaScript 식별자명이 아닌 경우</h3>
+<div class="section-content">
+<p>구조 분해는 JavaScript <a href="https://developer.mozilla.org/ko/docs/Glossary/Identifier">식별자</a> 이름으로 적합하지 않은 속성명이 제공된 경우에도 이용할 수 있습니다. 이 때는 대체할 유효한 식별자명을 제공해야 합니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="BW+B89RAGpJws1wNRHBwgbZwxSJayWcAEL2lDDL0PdA=" data-language="js"><span class="token keyword">const</span> foo <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token string-property property">'fizz-buzz'</span><span class="token operator">:</span> <span class="token boolean">true</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token string-property property">'fizz-buzz'</span><span class="token operator">:</span> fizzBuzz <span class="token punctuation">}</span> <span class="token operator">=</span> foo<span class="token punctuation">;</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>fizzBuzz<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// "true"</span>
+</pre>
+</div>
+</div></section><h2 id="명세서">명세서</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody>
+<tr><td><a href="https://tc39.es/ecma262/multipage/ecmascript-language-expressions.html#sec-destructuring-assignment">ECMAScript Language Specification <br><small># sec-destructuring-assignment</small></a></td></tr>
+<tr><td><a href="https://tc39.es/ecma262/multipage/ecmascript-language-statements-and-declarations.html#sec-destructuring-binding-patterns">ECMAScript Language Specification <br><small># sec-destructuring-binding-patterns</small></a></td></tr>
+</tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators#Assignment_operators" class="only-in-en-us">할당 연산자 <small>(en-US)</small></a></li> <li><a href="https://hacks.mozilla.org/2015/05/es6-in-depth-destructuring/" target="_blank">"ES6 in Depth: Destructuring" on hacks.mozilla.org</a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment</a>
+  </p>
+</div>

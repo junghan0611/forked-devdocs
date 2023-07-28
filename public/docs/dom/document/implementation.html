@@ -1,0 +1,32 @@
+<header><h1>Document.implementation</h1></header><div class="section-content"><p>현재 document에 연관된 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/DOMImplementation"><code>DOMImplementation</code> <small>(en-US)</small></a> 객체를 반환합니다.</p></div>
+<h2 id="syntax">Syntax</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="scQZq3wIihvOdnmOsbtAwIVJ4KSCtbyyjLDpsPgnfpk=" data-language="js">DOMImpObj <span class="token operator">=</span> document<span class="token punctuation">.</span>implementation<span class="token punctuation">;</span>
+</pre>
+</div></div>
+<h2 id="example">Example</h2>
+<div class="section-content">
+<div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="Oov8aJFKLqTNC3uJ5uKgQQVhHAAb+XKQQAClbw42DNg=" data-language="js"><span class="token keyword">var</span> modName <span class="token operator">=</span> <span class="token string">"HTML"</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> modVer <span class="token operator">=</span> <span class="token string">"2.0"</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> conformTest <span class="token operator">=</span> document<span class="token punctuation">.</span>implementation<span class="token punctuation">.</span><span class="token function">hasFeature</span><span class="token punctuation">(</span> modName<span class="token punctuation">,</span> modVer <span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token function">alert</span><span class="token punctuation">(</span> <span class="token string">"DOM "</span> <span class="token operator">+</span> modName <span class="token operator">+</span> <span class="token string">" "</span> <span class="token operator">+</span> modVer <span class="token operator">+</span> <span class="token string">" supported?: "</span> <span class="token operator">+</span> conformTest <span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// alerts with: "DOM HTML 2.0 supported?: true" if DOM Level 2 HTML module is supported.</span>
+</pre>
+</div> <p>모듈 네임 목록(예: Core, HTML, XML, 등등)은 DOM Level 2 <a href="https://www.w3.org/TR/DOM-Level-2-Core/introduction.html#ID-Conformance-h2" target="_blank">Conformance 섹션</a>에서 확인하실 수 있습니다.</p>
+</div>
+<h2 id="notes">Notes</h2>
+<div class="section-content"><p>W3C의 DOM Level 1 권고안에는 DOM 모듈을 브라우저에서 지원하는지를 확인하는 방법 중 하나인 <code>hasFeature</code> 메소드만 명시되어 있습니다(위 예제와 <a href="https://www.w3.org/2003/02/06-dom-support.html" target="_blank">What does your user agent claim to support?</a> 문서를 확인하세요). 사용이 가능한 경우, 다른 <code>DOMImplementation</code> 메소드들이 단일 document 외부의 것들을 컨트롤하기 위한 서비스들을 제공합니다. 예를 들어, <code>DOMImplementation</code> 인터페이스는 <code>createDocumentType</code> 메소드와 implementation에 의해 관리되는 하나 이상의 document를 위해 생성되는 DTD가 무엇인지를 포함합니다.</p></div>
+<h2 id="specification">Specification</h2>
+<div class="section-content"><ul> <li><a href="https://www.w3.org/TR/DOM-Level-2-Core/core.html#ID-102161490" target="_blank">DOM Level 2 Core: implementation</a></li> <li><a href="https://www.w3.org/TR/DOM-Level-3-Core/core.html#ID-102161490" target="_blank">DOM Level 3 Core: implementation</a></li> </ul></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/Document/implementation" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/Document/implementation</a>
+  </p>
+</div>

@@ -1,0 +1,37 @@
+<header><h1>GeolocationCoordinates</h1></header><div class="section-content">
+<div class="notecard secure" id="sect1"><p><strong>Secure context:</strong> This feature is available only in <a href="https://developer.mozilla.org/ko/docs/Web/Security/Secure_Contexts">secure contexts</a> (HTTPS), in some or all <a href="#browser_compatibility">supporting browsers</a>.</p></div> <p><code>GeolocationCoordinates</code> 인터페이스는 지구상에서의 장치 위치와 고도, 그리고 이 정보들의 정확도를 나타냅니다.</p>
+</div>
+<h2 id="인스턴스_속성">인스턴스 속성</h2>
+<div class="section-content">
+<p><code>GeolocationCoordinates</code> 인터페이스는 어떤 속성도 상속하지 않습니다.</p> <dl> <dt id="geolocationcoordinates.latitude">
+<a href="geolocationcoordinates/latitude"><code>GeolocationCoordinates.latitude</code></a> <span class="badge inline readonly">읽기 전용</span> <span class="notecard inline secure">Secure context</span>
+</dt> <dd> <p>위치의 위도를 도(°) 단위의 <code>double</code>로 반환합니다.</p> </dd> <dt id="geolocationcoordinates.longitude">
+<a href="geolocationcoordinates/longitude"><code>GeolocationCoordinates.longitude</code></a> <span class="badge inline readonly">읽기 전용</span> <span class="notecard inline secure">Secure context</span>
+</dt> <dd> <p>위치의 경도를 도(°) 단위의 <code>double</code>로 반환합니다.</p> </dd> <dt id="geolocationcoordinates.altitude">
+<a href="geolocationcoordinates/altitude"><code>GeolocationCoordinates.altitude</code></a> <span class="badge inline readonly">읽기 전용</span> <span class="notecard inline secure">Secure context</span>
+</dt> <dd> <p>위치의 해발고도를 미터 단위의 <code>double</code>로 반환합니다. 구현체가 고도 데이터를 제공하지 못하면 <code>null</code>입니다.</p> </dd> <dt id="geolocationcoordinates.accuracy">
+<a href="geolocationcoordinates/accuracy"><code>GeolocationCoordinates.accuracy</code></a> <span class="badge inline readonly">읽기 전용</span> <span class="notecard inline secure">Secure context</span>
+</dt> <dd> <p><code>latitude</code>와 <code>longitude</code>의 오차범위를 미터 단위의 <code>double</code>로 반환합니다.</p> </dd> <dt id="geolocationcoordinates.altitudeaccuracy">
+<a href="geolocationcoordinates/altitudeaccuracy"><code>GeolocationCoordinates.altitudeAccuracy</code></a> <span class="badge inline readonly">읽기 전용</span> <span class="notecard inline secure">Secure context</span>
+</dt> <dd> <p><code>altitude</code>의 오차범위를 미터 단위의 <code>double</code>로 반환합니다. 이 값은 <code>null</code>일 수 있습니다.</p> </dd> <dt id="geolocationcoordinates.heading">
+<a href="geolocationcoordinates/heading"><code>GeolocationCoordinates.heading</code></a> <span class="badge inline readonly">읽기 전용</span> <span class="notecard inline secure">Secure context</span>
+</dt> <dd> <p>장치가 향한 방위를 나타내는 <code>double</code>을 반환합니다. 진북(真北)에서 벗어난 각도를 도(°) 단위로 표현한 값으로, 진북인 <code>0</code>부터 시계방향(동쪽은 <code>90</code>도, 서쪽은 <code>270</code>도)으로 나아갑니다. <code>speed</code>가 <code>0</code>이면 <code>heading</code>은 <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/NaN"><code>NaN</code></a>입니다. 장치가 <code>heading</code>을 제공하지 못하면 <code>null</code>입니다.</p> </dd> <dt id="geolocationcoordinates.speed">
+<a href="geolocationcoordinates/speed"><code>GeolocationCoordinates.speed</code></a> <span class="badge inline readonly">읽기 전용</span> <span class="notecard inline secure">Secure context</span>
+</dt> <dd> <p>장치의 속도를 초속 미터 단위의 <code>double</code>로 반환합니다. 이 값은 <code>null</code>일 수 있습니다.</p> </dd> </dl>
+</div>
+<h2 id="인스턴스_메서드">인스턴스 메서드</h2>
+<div class="section-content"><p><code>GeolocationCoordinates</code> 인터페이스는 어떤 메서드도 상속하거나 구현하지 않습니다.</p></div>
+<h2 id="명세서">명세서</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://w3c.github.io/geolocation-api/#coordinates_interface">Geolocation API <br><small># coordinates_interface</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="geolocation_api/using_the_geolocation_api">Geolocation API 사용하기</a></li> <li><a href="geolocation"><code>Geolocation</code></a></li> </ul></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/GeolocationCoordinates" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/GeolocationCoordinates</a>
+  </p>
+</div>

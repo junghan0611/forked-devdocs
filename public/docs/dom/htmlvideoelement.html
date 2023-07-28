@@ -1,0 +1,62 @@
+<header><h1>HTMLVideoElement</h1></header><div class="section-content">
+<p><code>HTMLVideoElement</code> 인터페이스는 Video object를 조작하는데 필요한 프로퍼티와 메소드를 제공합니다. <a href="htmlmediaelement"><code>HTMLMediaElement</code></a>와 <a href="htmlelement"><code>HTMLElement</code></a>를 상속합니다.</p> <p><a href="https://developer.mozilla.org/en-US/docs/Web/Media/Formats" class="only-in-en-us">지원하는 미디어 포맷 <small>(en-US)</small></a> 목록은 브라우저마다 다릅니다. 여러분은 적절한 범위의 브라우저에서 지원하는 한가지 비디어 포맷을 제공하던가, 지원할 모든 브라우저를 위한 여러 종류의 미디어 포맷을 제공해야 합니다.</p>
+</div>
+<h2 id="속성properties">속성(Properties)</h2>
+<div class="section-content">
+<p><em><a href="htmlmediaelement"><code>HTMLMediaElement</code></a>와</em> <em><a href="htmlelement"><code>HTMLElement</code></a>의 속성들도 상속 받습니다.</em></p> <dl> <dt id="htmlvideoelement.height"><a class="page-not-created"><code>HTMLVideoElement.height</code></a></dt> <dd> <p>표시 영역의 높이를 나타내는 HTML Attribute <a href="https://developer.mozilla.org/ko/docs/Web/HTML/Element/video#attr-height"><code>height</code></a>의 값을 <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/String"><code>DOMString</code></a>으로 반환합니다. 단위는 pixel입니다.</p> </dd> <dt id="htmlvideoelement.poster"><a class="page-not-created"><code>HTMLVideoElement.poster</code></a></dt> <dd> <p>비디오 데이터가 없을 때 보여줄 이미지를 지정하는 HTML Attribute <a href="https://developer.mozilla.org/ko/docs/Web/HTML/Element/video#attr-poster"><code>poster</code></a>의 값을 <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/String"><code>DOMString</code></a>로 반환합니다.</p> </dd> <dt id="htmlvideoelement.videoheight_en-us">
+<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLVideoElement/videoHeight"><code>HTMLVideoElement.videoHeight</code> <small>(en-US)</small></a> <span class="badge inline readonly">읽기 전용</span>
+</dt> <dd> <p>비디오의 height를 부호 없는 정수로 나타낸 값을 반환합니다. 비디오가 없는 경우 0을 반환합니다.</p> </dd> <dt id="htmlvideoelement.videowidth_en-us">
+<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLVideoElement/videoWidth"><code>HTMLVideoElement.videoWidth</code> <small>(en-US)</small></a> <span class="badge inline readonly">읽기 전용</span>
+</dt> <dd> <p>비디오의 width를 부호 없는 정수로 나타낸 값을 반환합니다. 비디오가 없는 경우 0을 반환합니다.</p> </dd> <dt id="htmlvideoelement.width"><a class="page-not-created"><code>HTMLVideoElement.width</code></a></dt> <dd> <p>표시 영역의 높이를 나타내는 HTML Attribute <a href="https://developer.mozilla.org/ko/docs/Web/HTML/Element/video#attr-width"><code>width</code></a>의 값을 <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/String"><code>DOMString</code></a>으로 반환합니다. 단위는 pixel입니다.</p> </dd> </dl>
+</div>
+<h3 id="gecko_전용_속성">Gecko 전용 속성</h3>
+<div class="section-content"><dl> <dt id="htmlvideoelement.mozparsedframes">
+<a class="page-not-created"><code>HTMLVideoElement.mozParsedFrames</code></a> <abbr class="icon icon-nonstandard" title="비표준. 사용하기전에 다른 브라우저에서도 사용 가능한지 확인 해주세요."> <span class="visually-hidden">비표준</span> </abbr><span class="badge inline readonly">읽기 전용</span>
+</dt> <dd> <p>미디어 소스에서 파싱된 비디오 프레임 수를 <code>unsigned long</code> 값으로 반환합니다.</p> </dd> <dt id="htmlvideoelement.mozdecodedframes">
+<a class="page-not-created"><code>HTMLVideoElement.mozDecodedFrames</code></a> <abbr class="icon icon-nonstandard" title="비표준. 사용하기전에 다른 브라우저에서도 사용 가능한지 확인 해주세요."> <span class="visually-hidden">비표준</span> </abbr><span class="badge inline readonly">읽기 전용</span>
+</dt> <dd> <p>화상으로 디코딩 된 비디오 프레임 수를 <code>unsigned long</code> 값으로 반환합니다.</p> </dd> <dt id="htmlvideoelement.mozpresentedframes">
+<a class="page-not-created"><code>HTMLVideoElement.mozPresentedFrames</code></a> <abbr class="icon icon-nonstandard" title="비표준. 사용하기전에 다른 브라우저에서도 사용 가능한지 확인 해주세요."> <span class="visually-hidden">비표준</span> </abbr><span class="badge inline readonly">읽기 전용</span>
+</dt> <dd> <p>렌더링 파이프 라인을 통해 출력된 디코드 프레임 수를 <code>unsigned long</code> 값으로 반환합니다.</p> </dd> <dt id="htmlvideoelement.mozpaintedframes">
+<a class="page-not-created"><code>HTMLVideoElement.mozPaintedFrames</code></a> <abbr class="icon icon-nonstandard" title="비표준. 사용하기전에 다른 브라우저에서도 사용 가능한지 확인 해주세요."> <span class="visually-hidden">비표준</span> </abbr><span class="badge inline readonly">읽기 전용</span>
+</dt> <dd> <p>화면에 그려진 프레임 수를 <code>unsigned long</code> 값으로 반환합니다.</p> </dd> <dt id="htmlvideoelement.mozframedelay">
+<a class="page-not-created"><code>HTMLVideoElement.mozFrameDelay</code></a> <abbr class="icon icon-nonstandard" title="비표준. 사용하기전에 다른 브라우저에서도 사용 가능한지 확인 해주세요."> <span class="visually-hidden">비표준</span> </abbr><span class="badge inline readonly">읽기 전용</span>
+</dt> <dd> <p>지연 출력된 비디오 프레임을 초 단위로 <code>double</code> 값으로 반환한다.</p> </dd> <dt id="htmlvideoelement.mozhasaudio">
+<a class="page-not-created"><code>HTMLVideoElement.mozHasAudio</code></a> <abbr class="icon icon-nonstandard" title="비표준. 사용하기전에 다른 브라우저에서도 사용 가능한지 확인 해주세요."> <span class="visually-hidden">비표준</span> </abbr><span class="badge inline readonly">읽기 전용</span>
+</dt> <dd> <p>비디오와 연관된 오디오 존재 여부를 <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Boolean"><code>boolean</code></a> 값으로 반환한다.</p> </dd> </dl></div>
+<h3 id="microsoft_확장_속성">Microsoft 확장 속성</h3>
+<div class="section-content"><dl> <dt id="htmlvideoelement.msframestep_en-us">
+<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLVideoElement"><code>HTMLVideoElement.msFrameStep()</code> <small>(en-US)</small></a> <abbr class="icon icon-nonstandard" title="비표준. 사용하기전에 다른 브라우저에서도 사용 가능한지 확인 해주세요."> <span class="visually-hidden">비표준</span> </abbr>
+</dt> <dd> <p>프레임 단위로 앞/뒤로 이동합니다.</p> </dd> <dt id="htmlvideoelement.mshorizontalmirror_en-us">
+<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLVideoElement"><code>HTMLVideoElement.msHorizontalMirror</code> <small>(en-US)</small></a> <abbr class="icon icon-nonstandard" title="비표준. 사용하기전에 다른 브라우저에서도 사용 가능한지 확인 해주세요."> <span class="visually-hidden">비표준</span> </abbr>
+</dt> <dd> <p>비디오의 좌/우 반전 시키거나 반전된 상태를 반환합니다.</p> </dd> <dt id="htmlvideoelement.msinsertvideoeffect_en-us">
+<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLVideoElement"><code>HTMLVideoElement.msInsertVideoEffect()</code> <small>(en-US)</small></a> <abbr class="icon icon-nonstandard" title="비표준. 사용하기전에 다른 브라우저에서도 사용 가능한지 확인 해주세요."> <span class="visually-hidden">비표준</span> </abbr>
+</dt> <dd> <p>미디어 파이프라인에 특정 비디오 효과를 추가합니다.</p> </dd> <dt id="htmlvideoelement.msislayoutoptimalforplayback_en-us">
+<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLVideoElement"><code>HTMLVideoElement.msIsLayoutOptimalForPlayback</code> <small>(en-US)</small></a> <abbr class="icon icon-nonstandard" title="비표준. 사용하기전에 다른 브라우저에서도 사용 가능한지 확인 해주세요."> <span class="visually-hidden">비표준</span> </abbr><span class="badge inline readonly">읽기 전용</span>
+</dt> <dd> <p>더 효과적인 비디오 렌더링이 가능하면 true를 반환합니다.</p> </dd> <dt id="htmlvideoelement.msisstereo3d_en-us">
+<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLVideoElement"><code>HTMLVideoElement.msIsStereo3D</code> <small>(en-US)</small></a> <abbr class="icon icon-nonstandard" title="비표준. 사용하기전에 다른 브라우저에서도 사용 가능한지 확인 해주세요."> <span class="visually-hidden">비표준</span> </abbr><span class="badge inline readonly">읽기 전용</span>
+</dt> <dd> <p>시스템이 비디오를 stereo 3-D로 판단하였는지 여부를 반환합니다. 값을 true로 지정한다면 video를 stereo 3-D로 인식합니다..</p> </dd> <dt id="htmlvideoelement.mszoom_en-us">
+<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLVideoElement"><code>HTMLVideoElement.msZoom</code> <small>(en-US)</small></a> <abbr class="icon icon-nonstandard" title="비표준. 사용하기전에 다른 브라우저에서도 사용 가능한지 확인 해주세요."> <span class="visually-hidden">비표준</span> </abbr>
+</dt> <dd> <p>비디오 프레임을 출력부에 딱 맞게 트림합니다.</p> </dd> </dl></div>
+<h2 id="메소드">메소드</h2>
+<div class="section-content">
+<p><em><a href="htmlmediaelement"><code>HTMLMediaElement</code></a>와 <a href="htmlelement"><code>HTMLElement</code></a>의 메소드도 상속 받습니다.</em></p> <dl> <dt id="htmlvideoelement.getvideoplaybackquality_en-us">
+<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLVideoElement/getVideoPlaybackQuality"><code>HTMLVideoElement.getVideoPlaybackQuality()</code> <small>(en-US)</small></a> <abbr class="icon icon-experimental" title="Experimental. 예상되는 동작은 향후 변경될 수 있습니다."> <span class="visually-hidden">Experimental</span> </abbr>
+</dt> <dd> <p>현재 재생 결과를 담고 있는 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/VideoPlaybackQuality"><code>VideoPlaybackQuality</code> <small>(en-US)</small></a> 객체를 반환합니다. 전체 프레임 중 drop 되거나 손실된 프레임 등 재생 정보를 포함합니다.</p> </dd> </dl>
+</div>
+<h2 id="events">Events</h2>
+<div class="section-content"><p><em><a href="htmlmediaelement"><code>HTMLMediaElement</code></a>와 <a href="htmlelement"><code>HTMLElement</code></a>의 이벤트를 상속합니다.</em> <a href="https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener"><code>addEventListener()</code></a> 메소드 또는 <code>oneventname</code> 프로퍼티에 리스너를 전달하여 이벤트를 수신합니다.</p></div>
+<h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://html.spec.whatwg.org/multipage/media.html#htmlvideoelement">HTML Standard <br><small># htmlvideoelement</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<h2 id="더_보기">더 보기</h2>
+<div class="section-content"><ul> <li>HTML 엘리먼트 구현체: <a href="https://developer.mozilla.org/ko/docs/Web/HTML/Element/video"><code>&lt;video&gt;</code></a>.</li> <li>
+<a href="https://people.mozilla.org/~cpearce/paint-stats-demo.html" target="_blank">Demo of video paint statistics</a>(링크 소멸)</li> <li><a href="https://developer.mozilla.org/en-US/docs/Web/Media/Formats" class="only-in-en-us">지원하는 미디어 포맷 <small>(en-US)</small></a></li> </ul></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/HTMLVideoElement" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/HTMLVideoElement</a>
+  </p>
+</div>

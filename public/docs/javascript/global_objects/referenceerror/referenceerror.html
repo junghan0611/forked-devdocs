@@ -1,0 +1,73 @@
+<header><h1>ReferenceError() 생성자</h1></header><div class="section-content"><p><code>ReferenceError</code> 객체는 존재하지 않는 변수를 참조할 때의 에러를 의미합니다.</p></div>
+<section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content">
+<div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="gmh3MIfGpTsz8l2dV0LuGBW33I3QmzNPgtvQdRNAl38=" data-language="js"><span class="token keyword">new</span> <span class="token class-name">ReferenceError</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">new</span> <span class="token class-name">ReferenceError</span><span class="token punctuation">(</span>message<span class="token punctuation">)</span>
+<span class="token keyword">new</span> <span class="token class-name">ReferenceError</span><span class="token punctuation">(</span>message<span class="token punctuation">,</span> options<span class="token punctuation">)</span>
+<span class="token keyword">new</span> <span class="token class-name">ReferenceError</span><span class="token punctuation">(</span>message<span class="token punctuation">,</span> fileName<span class="token punctuation">)</span>
+<span class="token keyword">new</span> <span class="token class-name">ReferenceError</span><span class="token punctuation">(</span>message<span class="token punctuation">,</span> fileName<span class="token punctuation">,</span> lineNumber<span class="token punctuation">)</span>
+<span class="token function">ReferenceError</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token function">ReferenceError</span><span class="token punctuation">(</span>message<span class="token punctuation">)</span>
+<span class="token function">ReferenceError</span><span class="token punctuation">(</span>message<span class="token punctuation">,</span> options<span class="token punctuation">)</span>
+<span class="token function">ReferenceError</span><span class="token punctuation">(</span>message<span class="token punctuation">,</span> fileName<span class="token punctuation">)</span>
+<span class="token function">ReferenceError</span><span class="token punctuation">(</span>message<span class="token punctuation">,</span> fileName<span class="token punctuation">,</span> lineNumber<span class="token punctuation">)</span>
+</pre>
+</div> <blockquote> <p><strong>Note:</strong> <code>ReferenceError()</code> 는 <a href="../../operators/new"><code>new</code></a>와 같이 호출될 때도 있고 아닐 때도 있습니다. 두 방법 모두 새로운 <code>ReferenceError</code> 인스턴스를 생성합니다.</p> </blockquote>
+</div></section><section aria-labelledby="매개변수"><h3 id="매개변수">매개변수</h3>
+<div class="section-content"><dl> <dt id="message">
+<code>message</code> <span class="badge inline optional">Optional</span>
+</dt> <dd> <p>이 오류에 대한 사람이 읽을 수 있는 설명.</p> </dd> <dt id="options">
+<code>options</code> <span class="badge inline optional">Optional</span>
+</dt> <dd> <p>아래 속성을 가진 객체</p> <dl> <dt id="cause">
+<code>cause</code> <span class="badge inline optional">Optional</span>
+</dt> <dd> <p>오류의 특정 원인을 나타내는 속성을 가리킵니다. 보다 구체적이거나 유용한 오류 메시지와 함께 오류를 처리했다가 다시 발생했을 때 이 속성을 사용하여 원래 오류를 전달할 수 있습니다.</p> </dd> </dl> </dd> <dt id="filename">
+<code>fileName</code> <span class="badge inline optional">Optional</span> <abbr class="icon icon-nonstandard" title="비표준. 사용하기전에 다른 브라우저에서도 사용 가능한지 확인 해주세요."> <span class="visually-hidden">비표준</span> </abbr>
+</dt> <dd> <p>이 예외의 원인이 된 코드가 있는 파일 이름</p> </dd> <dt id="linenumber">
+<code>lineNumber</code> <span class="badge inline optional">Optional</span> <abbr class="icon icon-nonstandard" title="비표준. 사용하기전에 다른 브라우저에서도 사용 가능한지 확인 해주세요."> <span class="visually-hidden">비표준</span> </abbr>
+</dt> <dd> <p>이 예외의 원인이 코드의 줄 수</p> </dd> </dl></div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+</section><section aria-labelledby="referenceerror_처리하기"><h3 id="referenceerror_처리하기">ReferenceError 처리하기</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="qReB5CnTGQ1zJwPe8//+hb+W1Rhh829n7e6Wd4eUBCY=" data-language="js"><span class="token keyword">try</span> <span class="token punctuation">{</span>
+  <span class="token keyword">let</span> a <span class="token operator">=</span> undefinedVariable
+<span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span>e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>e <span class="token keyword">instanceof</span> <span class="token class-name">ReferenceError</span><span class="token punctuation">)</span>  <span class="token comment">// true</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>e<span class="token punctuation">.</span>message<span class="token punctuation">)</span>                    <span class="token comment">// "undefinedVariable is not defined"</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>e<span class="token punctuation">.</span>name<span class="token punctuation">)</span>                       <span class="token comment">// "ReferenceError"</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>e<span class="token punctuation">.</span>fileName<span class="token punctuation">)</span>                   <span class="token comment">// "Scratchpad/1"</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>e<span class="token punctuation">.</span>lineNumber<span class="token punctuation">)</span>                 <span class="token comment">// 2</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>e<span class="token punctuation">.</span>columnNumber<span class="token punctuation">)</span>               <span class="token comment">// 6</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>e<span class="token punctuation">.</span>stack<span class="token punctuation">)</span>                      <span class="token comment">// "@Scratchpad/2:2:7\n"</span>
+<span class="token punctuation">}</span>
+</pre>
+</div></div></section><section aria-labelledby="referenceerror_생성하기"><h3 id="referenceerror_생성하기">ReferenceError 생성하기</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="V6ttXy/xYQyyTwBF2lG2vE/hOuYlBzi+5aCfOv1PyiQ=" data-language="js"><span class="token keyword">try</span> <span class="token punctuation">{</span>
+  <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">ReferenceError</span><span class="token punctuation">(</span><span class="token string">'Hello'</span><span class="token punctuation">,</span> <span class="token string">'someFile.js'</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span>e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>e <span class="token keyword">instanceof</span> <span class="token class-name">ReferenceError</span><span class="token punctuation">)</span>  <span class="token comment">// true</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>e<span class="token punctuation">.</span>message<span class="token punctuation">)</span>                    <span class="token comment">// "Hello"</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>e<span class="token punctuation">.</span>name<span class="token punctuation">)</span>                       <span class="token comment">// "ReferenceError"</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>e<span class="token punctuation">.</span>fileName<span class="token punctuation">)</span>                   <span class="token comment">// "someFile.js"</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>e<span class="token punctuation">.</span>lineNumber<span class="token punctuation">)</span>                 <span class="token comment">// 10</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>e<span class="token punctuation">.</span>columnNumber<span class="token punctuation">)</span>               <span class="token comment">// 0</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>e<span class="token punctuation">.</span>stack<span class="token punctuation">)</span>                      <span class="token comment">// "@Scratchpad/2:2:9\n"</span>
+<span class="token punctuation">}</span>
+</pre>
+</div></div></section><h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://tc39.es/ecma262/multipage/fundamental-objects.html#sec-nativeerror-constructors">ECMAScript Language Specification <br><small># sec-nativeerror-constructors</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="../error"><code>Error</code></a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/ReferenceError/ReferenceError" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/ReferenceError/ReferenceError</a>
+  </p>
+</div>

@@ -1,0 +1,48 @@
+<header><h1>더하기 할당 (+=)</h1></header><div class="section-content"><p> 더하기 할당 연산자(<code>+=</code>)는 오른쪽 피연산자의 값을 변수에 더한 결과를 다시 변수에 할당합니다. 두 피연산자의 타입이 더하기 할당 연산자의 동작을 결정하며, 덧셈 또는 문자열 연결이 가능합니다. </p></div>
+<section aria-labelledby="시도해보기"><h2 id="시도해보기">시도해보기</h2>
+<div class="section-content"><iframe class="interactive is-js-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/js/expressions-addition-assignment.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe></div></section><section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="NFqprWMCY747pF0Q/RNQ4uyfU+KK8PHf4ayuQJDY0tI=" data-language="js">x <span class="token operator">+=</span> y <span class="token comment">// x = x + y</span>
+</pre>
+</div></div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+</section><section aria-labelledby="더하기_할당_사용하기"><h3 id="더하기_할당_사용하기">더하기 할당 사용하기</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="7vGM+nxAfX3eE804bzfH/t4fVI4WrQSaLtKyiUos2KI=" data-language="js"><span class="token comment">// foo = 'foo'</span>
+<span class="token comment">// bar = 5</span>
+<span class="token comment">// baz = true</span>
+<span class="token comment">// 위와 같은 변수를 가정할 때</span>
+
+<span class="token comment">// Number + Number -&gt; 덧셈</span>
+bar <span class="token operator">+=</span> <span class="token number">2</span> <span class="token comment">// 7</span>
+
+<span class="token comment">// Boolean + Number -&gt; 덧셈</span>
+baz <span class="token operator">+=</span> <span class="token number">1</span> <span class="token comment">// 2</span>
+
+<span class="token comment">// Boolean + Boolean -&gt; 덧셈</span>
+baz <span class="token operator">+=</span> <span class="token boolean">false</span> <span class="token comment">// 1</span>
+
+<span class="token comment">// Number + String -&gt; 연결</span>
+bar <span class="token operator">+=</span> <span class="token string">'foo'</span> <span class="token comment">// "5foo"</span>
+
+<span class="token comment">// String + Boolean -&gt; 연결</span>
+foo <span class="token operator">+=</span> <span class="token boolean">false</span> <span class="token comment">// "foofalse"</span>
+
+<span class="token comment">// String + String -&gt; 연결</span>
+foo <span class="token operator">+=</span> <span class="token string">'bar'</span> <span class="token comment">// "foobar"</span>
+</pre>
+</div></div></section><h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://tc39.es/ecma262/multipage/ecmascript-language-expressions.html#sec-assignment-operators">ECMAScript Language Specification <br><small># sec-assignment-operators</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Guide/Expressions_and_operators#%ed%95%a0%eb%8b%b9_%ec%97%b0%ec%82%b0%ec%9e%90">JavaScript 안내서의 할당 연산자</a></li> <li><a href="addition">더하기 연산자</a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Operators/Addition_assignment" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Operators/Addition_assignment</a>
+  </p>
+</div>

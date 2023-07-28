@@ -1,0 +1,102 @@
+<header><h1>&lt;label&gt;</h1></header><div class="section-content"><p><code>&lt;label&gt;</code>는 사용자 인터페이스 항목의 설명을 나타냅니다.</p></div>
+<h2 id="시도해보기">시도해보기</h2>
+<div class="section-content">
+<iframe class="interactive is-tabbed-shorter-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/tabbed/label.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe>  <p><code>&lt;label&gt;</code> 을 <a href="input"><code>&lt;input&gt;</code></a> 요소와 연결하면 몇 가지 이점이 있습니다:</p> <ul> <li>label 텍스트는 텍스트 입력과 시각적으로 관련이 있을뿐만 아니라 프로그래밍적으로도 관련이 있습니다. 예를 들어, 화면리더기(screenreader) 는 폼 입력(form input)에서 label 을 읽어서 보조기술(assistive technology) 사용자가 입력해야하는 텍스트가 무엇인지 더 쉽게 이해할 수 있게 합니다.</li> <li>관련 label 을 클릭해서 input 자체에 초점을 맞추거나 활성화를 시킬 수 있습니다. (활성되어서)늘어난 누를 수 있는 영역(hit area)은 터치스크린 사용자를 포함해 입력하려하는 모든 사람에게 이점을 줍니다.</li> </ul> <p><code>&lt;label&gt;</code> 을 <code>&lt;input&gt;</code> 요소와 연관시키려면, <code>&lt;input&gt;</code> 에 <code>id</code> 속성을 넣어야합니다. 그런 다음 <code>&lt;label&gt;</code> 에 <code>id</code> 와 같은 값의 <code>for</code> 속성을 넣어야합니다.</p> <p>또는, <code>&lt;label&gt;</code> 안에 <code>&lt;input&gt;</code> 을 중첩시킬 수 있습니다. 이 경우 연관이 암시적이므로 <code>for</code> 및 <code>id</code>속성이 필요없습니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="IPfMOb47D44fucxpUGpR4rX+TiGIk+ehtOSiT6m2WUk=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>label</span><span class="token punctuation">&gt;</span></span>Do you like peas?
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>checkbox<span class="token punctuation">"</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>peas<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>label</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div> <p>다른 사용법 메모:</p> <ul> <li>label 이 붙여진 양식 컨트롤(form control) 은 <em>레이블된 제어 labeled control</em> 라고 불립니다. 하나의 input 은 여러 label들에 연관되어있습니다.</li> <li>연관된 양식 컨트롤(form control) 이 있는 <code>&lt;label&gt;</code> 이 클릭되거나 터치되면, 이 label의 <code>click</code> 이벤트는 연관된 control 도 동작시킵니다.</li> </ul>
+</div>
+<h2 id="특성">특성</h2>
+<div class="section-content">
+<p>이 요소는 <a href="../global_attributes">전역 특성</a>을 포함합니다.</p> <dl> <dt id="for"><a id="attr-for" class="inline-block" href="#attr-for"><b><code>for</code></b></a></dt> <dd> <p>같은 문서 내의 <code>&lt;label&gt;</code> 요소로서, <a href="../content_categories#%eb%a0%88%ec%9d%b4%eb%b8%94_%ea%b0%80%eb%8a%a5">레이블 가능</a>한 form-related 요소의 <a href="../global_attributes#id"><code>id</code></a>. 레이블 가능한 요소일 때, <code>for</code> 속성값과 일치하는 <code>id</code>를 가진 문서의 첫 번째 요소는 그 label 요소의 *라벨 제어(labeled control)*라고 합니다. label을 지정할 수 없으면 <code>for</code> 속성은 영향을 미치지 않습니다. 문서의 뒷부분에 <code>id</code> 값과 일치하는 다른 요소들은 무시합니다.</p> <div class="notecard note" id="sect2"> <p><strong>참고:</strong> <code>&lt;label&gt;</code> 요소는 <code>for</code> 속성과 제어control 요소를 동시에 가질 수 있습니다. 이 때 <code>for</code> 속성은 포함되어있는 제어control 요소를 가리키고 있어야 합니다.</p> </div> </dd> <dt id="form"><a id="attr-form" class="inline-block" href="#attr-form"><b><code>form</code></b></a></dt> <dd> <p>label과 연관된 <a href="form"><code>&lt;form&gt;</code></a> 요소(<em>양식 소유자 form owner</em>). 이 속성이 지정된 경우, 이 속성 값은 동일한 문서의 <a href="form"><code>&lt;form&gt;</code></a> 요소의 id입니다. 따라서 label 요소를 양식 요소의 자손이 아닌 문서의 어느 곳에나 배치 할 수 있습니다.</p> </dd> </dl>
+</div>
+<h2 id="css_스타일링">CSS 스타일링</h2>
+<div class="section-content"><p><code>&lt;label&gt;</code> 요소에 대한 특별한 스타일 고려 사항은 없습니다. 구조적으로 단순한 인라인 요소이므로 <a href="span"><code>&lt;span&gt;</code></a> 또는 <a href="a"><code>&lt;a&gt;</code></a> 요소와 같은 방식으로 스타일을 지정할 수 있습니다 }}. 텍스트를 읽기 어렵게하지 않는 한 원하는 방식으로 스타일을 적용 할 수 있습니다.</p></div>
+<h2 id="예제">예제</h2>
+
+<h3 id="간단한_label_예제">간단한 label 예제</h3>
+<div class="section-content">
+<div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="j1kSWPcv+7Mw/+mXvfd6irOoN85ldsbmR08BH1fzycY=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>label</span><span class="token punctuation">&gt;</span></span>Click me <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>text<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>label</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div>
+<div class="code-example" id="sect3">
+
+<iframe class="sample-code-frame" title="간단한 label 예제 sample" id="frame_간단한_label_예제" width="200" height="60" src="https://live.mdnplay.dev/ko/docs/Web/HTML/Element/label/runner.html?id=%EA%B0%84%EB%8B%A8%ED%95%9C_label_%EC%98%88%EC%A0%9C" loading="lazy"></iframe>
+</div>
+</div>
+<h3 id="for_속성_예제">"for" 속성 예제</h3>
+<div class="section-content">
+<div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="eGq72r+/EnHjsjVgE9uwuw7gqy+g6xRGIlngTeKr0CA=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>label</span> <span class="token attr-name">for</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>username<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Click me<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>label</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>text<span class="token punctuation">"</span></span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>username<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div>
+<div class="code-example" id="sect4">
+
+<iframe class="sample-code-frame" title="for 속성 예제 sample" id="frame_for_속성_예제" width="200" height="60" src="https://live.mdnplay.dev/ko/docs/Web/HTML/Element/label/runner.html?id=for_%EC%86%8D%EC%84%B1_%EC%98%88%EC%A0%9C" loading="lazy"></iframe>
+</div>
+</div>
+<h2 id="접근성_고려사항">접근성 고려사항</h2>
+
+<h3 id="인터랙티브_콘텐츠">인터랙티브 콘텐츠</h3>
+<div class="section-content">
+<p>Don't place interactive elements such as <a href="a">anchors</a> or <a href="https://developer.mozilla.org/ko/docs/Web/HTML/Element/button">buttons</a> inside a <code>label</code>. Doing so makes it difficult for people to activate the form input associated with the <code>label</code>.</p> <p><code>label</code> 안에 <a href="a">anchors</a> 또는 <a href="https://developer.mozilla.org/ko/docs/Web/HTML/Element/button">buttons</a>와 같은 인터랙티브 요소를 배치하지 마십시오. 그렇게하면 사람들이 <code>label</code>과 관련된 양식을 입력하기 어렵습니다.</p> <h4 id="하지_마세요">하지 마세요</h4> <div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="a61M/7UHt7PfnXYP8xqoSsjENfF/+ohFM8GxFMpGWXU=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>label</span> <span class="token attr-name">for</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>tac<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>tac<span class="token punctuation">"</span></span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>checkbox<span class="token punctuation">"</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>terms-and-conditions<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+  I agree to the <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>terms-and-conditions.html<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Terms and Conditions<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>label</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div> <h4 id="이렇게_하세요">이렇게 하세요</h4> <div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="NsQA56alwDjfpGnBX8VbvhtZRev7DkQyEciWLuSnEIU=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>label</span> <span class="token attr-name">for</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>tac<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>tac<span class="token punctuation">"</span></span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>checkbox<span class="token punctuation">"</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>terms-and-conditions<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+  I agree to the Terms and Conditions
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>label</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>terms-and-conditions.html<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Read our Terms and Conditions<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div>
+</div>
+<h3 id="제목">제목</h3>
+<div class="section-content">
+<p>제목은 일반적으로 <a href="heading_elements#navigation">탐색 목적</a>의 보조 도구로 사용되므로 <code>&lt;label&gt;</code> 내에 <a href="heading_elements">제목 요소</a>를 배치하면 많은 종류의 보조 기술을 방해합니다. label의 텍스트를 시각적으로 조정해야하는 경우, <code>&lt;label&gt;</code> 요소에 적용된 CSS 클래스를 사용하십시오.</p> <p><a href="form">양식(form)</a> 또는 양식의 섹션에 제목이 필요한 경우 <a href="fieldset"><code>&lt;fieldset&gt;</code></a> 내에 배치 된 <a href="legend"><code>&lt;legend&gt;</code></a> 요소를 사용하십시오.</p> <h4 id="하지_마세요_2">하지 마세요</h4> <div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="WxnKa+ICOVhSuk0GuSI6Eyzz595KMb9r8W0Nz5vkFio=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>label</span> <span class="token attr-name">for</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>your-name<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h3</span><span class="token punctuation">&gt;</span></span>Your name<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h3</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>your-name<span class="token punctuation">"</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>your-name<span class="token punctuation">"</span></span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>text<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>label</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div> <h4 id="이렇게_하세요_2">이렇게 하세요</h4> <div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="Gm5wv0RzVcSYtVVGFEUFQzYokMuDzAOWKaFGuaTj17s=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>label</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>large-label<span class="token punctuation">"</span></span> <span class="token attr-name">for</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>your-name<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+  Your name
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>your-name<span class="token punctuation">"</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>your-name<span class="token punctuation">"</span></span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>text<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>label</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div>
+</div>
+<h3 id="버튼">버튼</h3>
+<div class="section-content"><p><code>type="button"</code>선언과 유효한 <code>value</code> 속성을 가진 <a href="input"><code>&lt;input&gt;</code></a> 요소에는 연관된 레이블이 필요하지 않습니다. 그렇게하면 보조 기술이 버튼 입력을 구문 분석하는 방법을 실제로 방해 할 수 있습니다. <a href="https://developer.mozilla.org/ko/docs/Web/HTML/Element/button"><code>&lt;button&gt;</code></a> 요소에도 동일하게 적용됩니다.</p></div>
+<h2 id="기술_요약">기술 요약</h2>
+<div class="section-content"><figure class="table-container"><div class="_table"><table class="properties"> <tbody> <tr> <th scope="row"><a href="../content_categories">콘텐츠 카테고리</a></th> <td> <a href="../content_categories#%ed%94%8c%eb%a1%9c%ec%9a%b0_%ec%bd%98%ed%85%90%ec%b8%a0">플로우 콘텐츠</a>, <a href="../content_categories#%ea%b5%ac%eb%ac%b8_%ec%bd%98%ed%85%90%ec%b8%a0">구문 콘텐츠</a>, <a href="../content_categories#%eb%8c%80%ed%99%94%ed%98%95_%ec%bd%98%ed%85%90%ec%b8%a0">대화형 콘텐츠</a>, <a href="../content_categories#%ec%96%91%ec%8b%9d_%ea%b4%80%eb%a0%a8_%ec%bd%98%ed%85%90%ec%b8%a0">양식 관련 콘텐츠</a>, 뚜렷한 콘텐츠. </td> </tr> <tr> <th scope="row">가능한 콘텐츠</th> <td> <a href="../content_categories#%ea%b5%ac%eb%ac%b8_%ec%bd%98%ed%85%90%ec%b8%a0">구문 콘텐츠</a>. 단, 다른 <code>&lt;label&gt;</code> 요소는 자손으로 올 수 없습니다. 레이블을 지정한 컨트롤 외의 다른 <a href="../content_categories#%eb%a0%88%ec%9d%b4%eb%b8%94_%ea%b0%80%eb%8a%a5">레이블 가능</a> 요소는 자손으로 사용할 수 없습니다. </td> </tr> <tr> <th scope="row">태그 생략</th> <td>불가능, 시작과 끝에 태그를 추가하는것은 필수입니다.</td> </tr> <tr> <th scope="row">가능한 부모 요소</th> <td>
+<a href="../content_categories#%ea%b5%ac%eb%ac%b8_%ec%bd%98%ed%85%90%ec%b8%a0">구문 콘텐츠</a>를 허용하는 모든 요소.</td> </tr> <tr> <th scope="row">가능한 ARIA 역할</th> <td>없음</td> </tr> <tr> <th scope="row">DOM 인터페이스</th> <td><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLLabelElement"><code>HTMLLabelElement</code> <small>(en-US)</small></a></td> </tr> </tbody> </table></div></figure></div>
+<h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://html.spec.whatwg.org/multipage/forms.html#the-label-element">HTML Standard <br><small># the-label-element</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/HTML/Element/label" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/HTML/Element/label</a>
+  </p>
+</div>

@@ -1,0 +1,55 @@
+<header><h1>RTCIceCandidate.candidate</h1></header><div class="section-content">
+<p><a href="../rtcicecandidate"><code>RTCIceCandidate</code></a> 인터페이스에 대한 읽기 속성인 <code>candidate</code> 는 candidate에 대해 자세히 설명해주는 <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/String"><code>DOMString</code></a>를 반환합니다.</p> <p><code>RTCIceCandidate</code>의 거의 모든 다른 속성들은 사실 이 문자열에서 가져와진 것입니다.</p> <p>이 속성은 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/RTCIceCandidate/RTCIceCandidate"><code>RTCIceCandidate()</code> <small>(en-US)</small></a>를 사용해서 신규 candidate 객체를 구성 할 때, <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/RTCIceCandidate/candidate"><code>candidate</code> <small>(en-US)</small></a> 속성의 값을 지정해서 설정 할 수 있습니다.</p>
+</div>
+<h2 id="syntax">Syntax</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="C9IwuhK3riE/SvE10V2ezELth0FyiK3W7M0tuwl9mhE=" data-language="js"><span class="token keyword">var</span> candidate <span class="token operator">=</span> RTCIceCandidate<span class="token punctuation">.</span>candidate<span class="token punctuation">;</span>
+</pre>
+</div></div>
+<h3 id="값">값</h3>
+<div class="section-content">
+<p>반환되는 <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/String"><code>DOMString</code></a> 값은 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Glossary/SDP">SDP <small>(en-US)</small></a>의 속성인 <code>"candidate"</code>에서 직접 가져와진 candidate의 속성에 대해 알려줍니다. candidate 문자열은 해당 candidate에 대한 네트워크 연결 정보를 명시합니다. <code>candidate</code>가 빈 문자열 (<code>""</code>)이라면, 더 이상 남아있는 candidate가 없다는 뜻입니다. 빈 문자열은 "candidate 종료" 표시자로도 알려져있습니다.</p> <p>candidate 문자열에 대한 구문은 <a href="https://datatracker.ietf.org/doc/html/rfc5245#section-15.1" target="_blank">RFC 5245, 섹션 15.1</a>에 설명되어있습니다.</p> <pre data-language="plain">a=candidate:4234997325 1 udp 2043278322 192.168.0.56 44323 typ host
+</pre> <p>위와 같은 a-line (속성 line)에서 해당하는 <code>candidate</code> 문자열의 값은 <code>"candidate:4234997325 1 udp 2043278322 192.168.0.56 44323 typ host"</code>가 됩니다.</p> <p><a href="https://developer.mozilla.org/ko/docs/Glossary/User_agent">user agent</a>는 항상 가장 높거나 같은 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/RTCIceCandidate/priority"><code>priority</code> <small>(en-US)</small></a>를 가진 candidate를 선호합니다. 위의 예시에서, 우선 순위는 <code>2043278322</code> 입니다. 속성은 단일 스페이스로 특정한 순서가 있습니다. 위의 candidate에 대한 전체 속성 리스트는 다음과 같습니다:</p> <ul> <li>
+<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/RTCIceCandidate/foundation"><code>foundation</code> <small>(en-US)</small></a> = 4234997325</li> <li>
+<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/RTCIceCandidate/component"><code>component</code> <small>(en-US)</small></a> = <code>"rtp"</code> (<code>"rtp"</code>는 1이 문자열에 있고, <code>"rtcp"</code>는 2가 문자열에 있습니다.)</li> <li>
+<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/RTCIceCandidate/protocol"><code>protocol</code> <small>(en-US)</small></a> = <code>"udp"</code>
+</li> <li>
+<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/RTCIceCandidate/priority"><code>priority</code> <small>(en-US)</small></a> = 2043278322</li> <li>
+<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/RTCIceCandidate/address"><code>ip</code> <small>(en-US)</small></a> = <code>"192.168.0.56"</code>
+</li> <li>
+<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/RTCIceCandidate/port"><code>port</code> <small>(en-US)</small></a> = 44323</li> <li>
+<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/RTCIceCandidate/type"><code>type</code> <small>(en-US)</small></a> = <code>"host"</code>
+</li> </ul>
+</div>
+<h2 id="예시">예시</h2>
+<div class="section-content">
+<p>아래 예제에서는 시그널링 과정에서 원격 유저에게서 수신 받은 ICE candidate 정보를 가진 SDP 문자열을 입력으로 받는 함수입니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="r4O3ElKDjwtxF18fRYi/fDFn7hYbarcfcFoHxFxQZNM=" data-language="js"><span class="token keyword">function</span> <span class="token function">handleNewIceCandidate</span><span class="token punctuation">(</span><span class="token parameter">candidateSDP</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">var</span> candidateObj <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">RTCIceCandidate</span><span class="token punctuation">(</span>candidateSDP<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  myPeerConnection<span class="token punctuation">.</span><span class="token function">addIceCandidate</span><span class="token punctuation">(</span>candidateObj<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">catch</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    <span class="token comment">/* handle the error thrown by addIceCandidate() */</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div> <p><code>handleNewIceCandidate()</code> 함수는 수신 받은 candidate의 SDP 문자를 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/RTCIceCandidate/RTCIceCandidate"><code>RTCIceCandidate()</code> <small>(en-US)</small></a>에 보내고, candidate를 알려주는 <a class="page-not-created"><code>RTCIceCanddiate</code></a> 객체를 반환 받습니다.</p> <p>그 후, 신규 candidatesms <a href="../rtcpeerconnection/addicecandidate"><code>RTCPeerConnection.addIceCandidate()</code></a>에 전달되서 candidate의 리스트에 추가해서 WebRTC가 연결 설정으로 사용 하도록 고려합니다.</p> <p>위 예제는 더 간단하게 표현 될 수 있습니다. ECMAScript 2016의 고급 기능들을 사용해서 아래와 같이 나타낼 수 있습니다:</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="elih0X3JPB3Zns/TCrliM+tqtj5b2vVQZt8tpYDUh0o=" data-language="js"><span class="token keyword">let</span> <span class="token function-variable function">handleNewIceCandidate</span> <span class="token operator">=</span> <span class="token parameter">candidateSDP</span> <span class="token operator">=&gt;</span>
+  myPeerConnection<span class="token punctuation">.</span><span class="token function">addIceCandidate</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">RTCIceCandidate</span><span class="token punctuation">(</span>candidateSDP<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div>
+</div>
+<h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://w3c.github.io/webrtc-pc/#dom-rtcicecandidate-candidate">WebRTC: Real-Time Communication in Browsers <br><small># dom-rtcicecandidate-candidate</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/RTCIceCandidate/candidate" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/RTCIceCandidate/candidate</a>
+  </p>
+</div>

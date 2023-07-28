@@ -1,0 +1,64 @@
+<header><h1>String.prototype.lastIndexOf()</h1></header><div class="section-content"><p><code>lastIndexOf()</code> 메서드는 주어진 값과 일치하는 부분을 <code>fromIndex</code>로부터 역순으로 탐색하여, 최초로 마주치는 인덱스를 반환합니다. 일치하는 부분을 찾을 수 없으면 <code>-1</code>을 반환합니다.</p></div>
+<section aria-labelledby="시도해보기"><h2 id="시도해보기">시도해보기</h2>
+<div class="section-content"><iframe class="interactive is-shorter-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/js/string-lastindexof.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe></div></section><section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="FLRxZ19xuw/NSv/+jWA9USb2n6E9GKBEAH10TOWx8vM=" data-language="js">str<span class="token punctuation">.</span><span class="token function">lastIndexOf</span><span class="token punctuation">(</span>searchValue<span class="token punctuation">[</span><span class="token punctuation">,</span> fromIndex<span class="token punctuation">]</span><span class="token punctuation">)</span>
+</pre>
+</div></div></section><section aria-labelledby="매개변수"><h3 id="매개변수">매개변수</h3>
+<div class="section-content"><dl> <dt id="searchvalue"><code>searchValue</code></dt> <dd> <p>탐색할 문자열. 빈 값을 제공할 경우 <code>fromIndex</code>를 반환합니다.</p> </dd> <dt id="fromindex">
+<code>fromIndex</code> <span class="badge inline optional">Optional</span>
+</dt> <dd> <p>탐색의 시작점으로 사용할 인덱스. 기본값은 <code>+Infinity</code>입니다. <code>fromIndex &gt;= str.length</code>인 경우 모든 문자열을 탐색합니다. <code>fromIndex &lt; 0</code>인 경우엔 <code>0</code>을 지정한 것과 동일합니다.</p> </dd> </dl></div></section><section aria-labelledby="반환_값"><h3 id="반환_값">반환 값</h3>
+<div class="section-content"><p>문자열 내에서 searchValue가 마지막으로 등장하는 인덱스. 등장하지 않으면 <code>-1</code>.</p></div></section><section aria-labelledby="설명"><h2 id="설명">설명</h2>
+<div class="section-content">
+<p>문자열의 문자는 왼쪽에서 오른쪽으로 인덱스를 매깁니다. 첫 번째 문자의 인덱스는 <code>0</code>이며, 마지막 문자의 인덱스는 <code>str.length -1</code>입니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="ygke3RfOzr1FRBiVKAYR7il7TTSEGbtMQoo9W/3nCbA=" data-language="js"><span class="token string">'canal'</span><span class="token punctuation">.</span><span class="token function">lastIndexOf</span><span class="token punctuation">(</span><span class="token string">'a'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>     <span class="token comment">//  3 반환</span>
+<span class="token string">'canal'</span><span class="token punctuation">.</span><span class="token function">lastIndexOf</span><span class="token punctuation">(</span><span class="token string">'a'</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">//  1 반환</span>
+<span class="token string">'canal'</span><span class="token punctuation">.</span><span class="token function">lastIndexOf</span><span class="token punctuation">(</span><span class="token string">'a'</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// -1 반환</span>
+<span class="token string">'canal'</span><span class="token punctuation">.</span><span class="token function">lastIndexOf</span><span class="token punctuation">(</span><span class="token string">'x'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>     <span class="token comment">// -1 반환</span>
+<span class="token string">'canal'</span><span class="token punctuation">.</span><span class="token function">lastIndexOf</span><span class="token punctuation">(</span><span class="token string">'c'</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//  0 반환</span>
+<span class="token string">'canal'</span><span class="token punctuation">.</span><span class="token function">lastIndexOf</span><span class="token punctuation">(</span><span class="token string">'c'</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">//  0 반환</span>
+<span class="token string">'canal'</span><span class="token punctuation">.</span><span class="token function">lastIndexOf</span><span class="token punctuation">(</span><span class="token string">''</span><span class="token punctuation">)</span><span class="token punctuation">;</span>      <span class="token comment">//  5 반환</span>
+<span class="token string">'canal'</span><span class="token punctuation">.</span><span class="token function">lastIndexOf</span><span class="token punctuation">(</span><span class="token string">''</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment">//  2 반환</span>
+</pre>
+</div> <div class="notecard note" id="sect1"> <p><strong>참고:</strong> <code>'abab'.lastIndexOf('ab', 2)</code>는 0이 아니고 2를 반환합니다. <code>fromIndex</code>는 탐색의 시작점만 제한하기 때문입니다.</p> </div>
+</div></section><section aria-labelledby="대소문자_구분"><h3 id="대소문자_구분">대소문자 구분</h3>
+<div class="section-content">
+<p><code>lastIndexOf()</code> 메서드는 대소문자를 구분합니다. 예를 들어, 아래 예제는 <code>-1</code>을 반환합니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="2SBGgX4XLcZ/upDFH1eFoSlikRidB8NnEJnOteQcXvs=" data-language="js"><span class="token string">'Blue Whale, Killer Whale'</span><span class="token punctuation">.</span><span class="token function">lastIndexOf</span><span class="token punctuation">(</span><span class="token string">'blue'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// -1 반환</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+</section><section aria-labelledby="indexof와_lastindexof_사용하기"><h3 id="indexof와_lastindexof_사용하기">
+<code>indexOf()</code>와 <code>lastIndexOf()</code> 사용하기</h3>
+<div class="section-content">
+<p>아래 예제는 문자열 <code>"Brave new world"</code> 내에서 특정 값의 위치를 확인하기 위해 <a href="indexof"><code>indexOf()</code></a>와 <code>lastIndexOf()</code>를 사용합니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="kpF+kfzjibI/BDmVOgteYesCKvKzsbvwmhSDtPSDSgM=" data-language="js"><span class="token keyword">let</span> anyString <span class="token operator">=</span> <span class="token string">'Brave new world'</span><span class="token punctuation">;</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'시작점으로부터 처음 만나는 w의 위치는 '</span> <span class="token operator">+</span> anyString<span class="token punctuation">.</span><span class="token function">indexOf</span><span class="token punctuation">(</span><span class="token string">'w'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// logs 8</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'끝점으로부터 처음 만나는 w의 위치는 '</span> <span class="token operator">+</span> anyString<span class="token punctuation">.</span><span class="token function">lastIndexOf</span><span class="token punctuation">(</span><span class="token string">'w'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// logs 10</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'시작점으로부터 처음 만나는 "new"의 위치는 '</span> <span class="token operator">+</span> anyString<span class="token punctuation">.</span><span class="token function">indexOf</span><span class="token punctuation">(</span><span class="token string">'new'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// logs 6</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'끝점으로부터 처음 만나는 "new"의 위치는 '</span> <span class="token operator">+</span> anyString<span class="token punctuation">.</span><span class="token function">lastIndexOf</span><span class="token punctuation">(</span><span class="token string">'new'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// logs 6</span>
+</pre>
+</div>
+</div></section><h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://tc39.es/ecma262/multipage/text-processing.html#sec-string.prototype.lastindexof">ECMAScript Language Specification <br><small># sec-string.prototype.lastindexof</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="charat"><code>String.prototype.charAt()</code></a></li> <li><a href="indexof"><code>String.prototype.indexOf()</code></a></li> <li><a href="split"><code>String.prototype.split()</code></a></li> <li><a href="../array/indexof"><code>Array.prototype.indexOf()</code></a></li> <li><a href="../array/lastindexof"><code>Array.prototype.lastIndexOf()</code></a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/String/lastIndexOf" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/String/lastIndexOf</a>
+  </p>
+</div>

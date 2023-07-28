@@ -1,0 +1,84 @@
+<header><h1>String.prototype.trimStart()</h1></header><div class="section-content"><p> <code>trimStart()</code> 메서드는 문자열 시작부분의 공백을 제거합니다. 또한 <code>trimLeft()</code>라는 별칭으로 호출이 가능합니다. </p></div>
+<section aria-labelledby="시도해보기"><h2 id="시도해보기">시도해보기</h2>
+<div class="section-content">
+<iframe class="interactive is-js-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/js/string-trimstart.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe> 
+</div></section><section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="2rh1i50Y9V/7wdSylRfKA3nN0rMO+SL9p4AE3a4QeLA=" data-language="js"><span class="token function">trimStart</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token function">trimLeft</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+</pre>
+</div></div></section><section aria-labelledby="반환값"><h3 id="반환값">반환값</h3>
+<div class="section-content"><p> <code>str</code> 시작부분(왼쪽)에서 공백이 제거된 새 문자열을 반환합니다. <code>str</code> 에 공백이 없을시에도 에러가 발생하지 않고 여전히 새 문자열(본질적으로 <code>str</code> 의 복사본)이 반환됩니다. </p></div></section><section aria-labelledby="별칭"><h3 id="별칭">별칭</h3>
+<div class="section-content">
+<p> <a href="padstart"><code>String.prototype.padStart</code></a> 표준 메서드 이름과 같은 함수의 일관성을 위해서 <code>trimStart</code> 가 되었습니다. 그러나, 웹 호환성을 위해서 <code>trimLeft</code> 이라는 별칭을 가집니다. 일부 엔진에서 이것은 다음 예시를 의미합니다. </p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="nYn1FaIN5+nX4DlS1QN2RmgEvnKfhCL1Y+REfyIqs2o=" data-language="js"><span class="token class-name">String</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span>trimLeft<span class="token punctuation">.</span>name <span class="token operator">===</span> <span class="token string">"trimStart"</span><span class="token punctuation">;</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+</section><section aria-labelledby="trimstart_사용"><h3 id="trimstart_사용">trimStart() 사용</h3>
+<div class="section-content">
+<p>다음 예제는 <code>'foo '</code> 문자열을 표시합니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="/2aCZYXx5fS7tvoDvA1YG4hl0ixpybrxCLO7bPMH/q0=" data-language="js"><span class="token keyword">var</span> str <span class="token operator">=</span> <span class="token string">'   foo  '</span><span class="token punctuation">;</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>str<span class="token punctuation">.</span>length<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 8</span>
+
+str <span class="token operator">=</span> str<span class="token punctuation">.</span><span class="token function">trimStart</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>str<span class="token punctuation">.</span>length<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 5</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>str<span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token comment">// 'foo  '</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="폴리필"><h2 id="폴리필">폴리필</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="oPh6Q/gD2f7e8qSTURuUfDQY06pdzOScrMMp3l/S6YI=" data-language="js"><span class="token comment">//https://github.com/FabioVergani/js-Polyfill_String-trimStart</span>
+
+<span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">w</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">var</span> String<span class="token operator">=</span>w<span class="token punctuation">.</span>String<span class="token punctuation">,</span> Proto<span class="token operator">=</span><span class="token class-name">String</span><span class="token punctuation">.</span>prototype<span class="token punctuation">;</span>
+
+    <span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">o<span class="token punctuation">,</span>p</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>p <span class="token keyword">in</span> o<span class="token operator">?</span>o<span class="token punctuation">[</span>p<span class="token punctuation">]</span><span class="token operator">?</span><span class="token boolean">false</span><span class="token operator">:</span><span class="token boolean">true</span><span class="token operator">:</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token keyword">var</span> r<span class="token operator">=</span><span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex"><span class="token anchor function">^</span><span class="token char-set class-name">\s</span><span class="token quantifier number">+</span></span><span class="token regex-delimiter">/</span></span><span class="token punctuation">;</span>
+            o<span class="token punctuation">[</span>p<span class="token punctuation">]</span><span class="token operator">=</span>o<span class="token punctuation">.</span>trimLeft<span class="token operator">||</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+                <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">replace</span><span class="token punctuation">(</span>r<span class="token punctuation">,</span><span class="token string">''</span><span class="token punctuation">)</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">(</span>Proto<span class="token punctuation">,</span><span class="token string">'trimStart'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">(</span>window<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">/*
+ES6:
+(w=&amp;gt;{
+    const String=w.String, Proto=String.prototype;
+
+    ((o,p)=&amp;gt;{
+        if(p in o?o[p]?false:true:true){
+            const r=/^\s+/;
+            o[p]=o.trimLeft||function(){
+                return this.replace(r,'')
+            }
+        }
+    })(Proto,'trimStart');
+
+})(window);
+*/</span>
+</pre>
+</div></div></section><h2 id="명세서">명세서</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://tc39.es/ecma262/multipage/text-processing.html#sec-string.prototype.trimstart">ECMAScript Language Specification <br><small># sec-string.prototype.trimstart</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li>
+<code>String.prototype.trimStart</code> 의 폴리필은 <a href="https://github.com/zloirock/core-js#ecmascript-string-and-regexp" target="_blank"><code>core-js</code></a>를 참고하세요.</li> <li><a href="trim"><code>String.prototype.trim()</code></a></li> <li><a href="trimend"><code>String.prototype.trimEnd()</code></a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/String/trimStart" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/String/trimStart</a>
+  </p>
+</div>

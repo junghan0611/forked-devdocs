@@ -1,0 +1,58 @@
+<header><h1>AudioWorkletNode.port</h1></header><div class="section-content">
+<div class="notecard experimental" id="sect1"><p><strong>Experimental:</strong> <strong>This is an <a href="https://developer.mozilla.org/en-US/docs/MDN/Writing_guidelines/Experimental_deprecated_obsolete#experimental">experimental technology</a></strong><br>Check the <a href="#browser_compatibility">Browser compatibility table</a> carefully before using this in production.</p></div> <p><a href="../audioworkletnode"><code>AudioWorkletNode</code></a> 인터페이스의 읽기 전용 <code>port</code> 속성은 연관된 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/MessagePort"><code>MessagePort</code> <small>(en-US)</small></a>를 반환합니다. 이것은 노드와 노드에 연관된 <a href="../audioworkletprocessor"><code>AudioWorkletProcessor</code></a> 사이에서 소통하기 위해 사용될 수 있습니다.</p> <div class="notecard note" id="sect2"> <p> <strong>참고:</strong> 채널의 다른 쪽 끝에 있는 포트는 프로세서의 <a href="../audioworkletprocessor/port"><code>port</code></a> 속성 아래에서 사용 가능합니다. </p> </div>
+</div>
+<h2 id="구문">구문</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="LBnIXCtpagFFOzi+ePpUnxKQcWVfRpa1la2+uoGb5KY=" data-language="js">audioWorkletNodeInstance<span class="token punctuation">.</span>port<span class="token punctuation">;</span>
+</pre>
+</div></div>
+<h3 id="값">값</h3>
+<div class="section-content"><p><code>AudioWorkletNode</code> 와 이것에 연관된 <code>AudioWorkletProcessor</code>를 연결하는 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/MessagePort"><code>MessagePort</code> <small>(en-US)</small></a> 객체.</p></div>
+<h2 id="예제">예제</h2>
+<div class="section-content">
+<p>양방향 소통 능력을 시연하기 위해서, 우리는 <code>AudioWorkletProcessor</code> 를 생성할 것인데, 이는 무음을 출력하고 이것의 <code>AudioWorkletNode</code> 으로부터의 핑 요청에 응답할 것입니다.</p> <p>우선, 우리는 커스텀 <code>AudioWorkletProcessor</code> 를 정의하고, 등록할 필요가 있습니다. 이 작업은 별도의 파일에서 이루어져야 함에 주의하세요.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="24qNHi7AG41s1Lw0gQuryaClAZmG9mgN2uyPNcDBHR8=" data-language="js"><span class="token comment">// ping-pong-processor.js</span>
+<span class="token keyword">class</span> <span class="token class-name">PingPongProcessor</span> <span class="token keyword">extends</span> <span class="token class-name">AudioWorkletProcessor</span> <span class="token punctuation">{</span>
+  <span class="token function">constructor</span> <span class="token punctuation">(</span><span class="token parameter"><span class="token operator">...</span>args</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">super</span><span class="token punctuation">(</span><span class="token operator">...</span>args<span class="token punctuation">)</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>port<span class="token punctuation">.</span><span class="token function-variable function">onmessage</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">e</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>e<span class="token punctuation">.</span>data<span class="token punctuation">)</span>
+      <span class="token keyword">this</span><span class="token punctuation">.</span>port<span class="token punctuation">.</span><span class="token function">postMessage</span><span class="token punctuation">(</span><span class="token string">'pong'</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+  <span class="token function">process</span> <span class="token punctuation">(</span><span class="token parameter">inputs<span class="token punctuation">,</span> outputs<span class="token punctuation">,</span> parameters</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token boolean">true</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token function">registerProcessor</span><span class="token punctuation">(</span><span class="token string">'ping-pong-processor'</span><span class="token punctuation">,</span> PingPongProcessor<span class="token punctuation">)</span>
+</pre>
+</div> <p>이제 메인 스크립트 파일에서 우리는 프로세서를 로드하고, 프로세서의 이름을 전달하며 <code>AudioWorkletNode</code> 의 인스턴스를 생성하고, 노드를 오디오 그래프에 연결할 것입니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="SKVn6vhq0ffi8NUJZyxgOsai+KOjzHwMeCV2ywJkJvU=" data-language="js"><span class="token keyword">const</span> audioContext <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">AudioContext</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">await</span> audioContext<span class="token punctuation">.</span>audioWorklet<span class="token punctuation">.</span><span class="token function">addModule</span><span class="token punctuation">(</span><span class="token string">'ping-pong-processor.js'</span><span class="token punctuation">)</span>
+<span class="token keyword">const</span> pingPongNode <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">AudioWorkletNode</span><span class="token punctuation">(</span>audioContext<span class="token punctuation">,</span> <span class="token string">'ping-pong-processor'</span><span class="token punctuation">)</span>
+<span class="token comment">// 매 초 AudioWorkletNode로부터</span>
+<span class="token comment">// AudioWorkletProcessor에 'ping' 문자열을 포함하는 메시지를 보냅니다</span>
+<span class="token function">setInterval</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> pingPongNode<span class="token punctuation">.</span>port<span class="token punctuation">.</span><span class="token function">postMessage</span><span class="token punctuation">(</span><span class="token string">'ping'</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">1000</span><span class="token punctuation">)</span>
+pingPongNode<span class="token punctuation">.</span>port<span class="token punctuation">.</span><span class="token function-variable function">onmessage</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">e</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>e<span class="token punctuation">.</span>data<span class="token punctuation">)</span>
+pingPongNode<span class="token punctuation">.</span><span class="token function">connect</span><span class="token punctuation">(</span>audioContext<span class="token punctuation">.</span>destination<span class="token punctuation">)</span>
+</pre>
+</div> <p>이것은 <code>"ping"</code> 과 <code>"pong"</code> 문자열을 콘솔에 매 초 출력할 것입니다.</p>
+</div>
+<h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://webaudio.github.io/web-audio-api/#dom-audioworkletnode-port">Web Audio API <br><small># dom-audioworkletnode-port</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="../web_audio_api">Web Audio API</a></li> <li><a href="../web_audio_api/using_web_audio_api">Web Audio API 사용하기</a></li> </ul></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/AudioWorkletNode/port" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/AudioWorkletNode/port</a>
+  </p>
+</div>

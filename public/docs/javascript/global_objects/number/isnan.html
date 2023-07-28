@@ -1,0 +1,55 @@
+<header><h1>Number.isNaN()</h1></header><div class="section-content"><p><code>Number.isNaN()</code> 메서드는 주어진 값이 <a href="../nan"><code>NaN</code></a>인지 판별합니다. 기존부터 존재한 전역 <a href="../isnan"><code>isNaN()</code></a> 함수의 더 엄격한 버전입니다.</p></div>
+<section aria-labelledby="시도해보기"><h2 id="시도해보기">시도해보기</h2>
+<div class="section-content"><iframe class="interactive is-taller-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/js/number-isnan.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe></div></section><section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="T5k78O+CrxTgNUQorF1ZWQe5ttBHNiyAylPPAj4lrt8=" data-language="js">    Number<span class="token punctuation">.</span><span class="token function">isNaN</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span>
+</pre>
+</div></div></section><section aria-labelledby="매개변수"><h3 id="매개변수">매개변수</h3>
+<div class="section-content"><dl> <dt id="value"><code>value</code></dt> <dd> <p><a href="../nan"><code>NaN</code></a>인지 판별할 값.</p> </dd> </dl></div></section><section aria-labelledby="반환_값"><h3 id="반환_값">반환 값</h3>
+<div class="section-content"><p>주어진 값의 유형이 <a href="../number"><code>Number</code></a>이고 값이 <a href="../nan"><code>NaN</code></a>이면 <code>true</code>, 아니면 <code>false</code>.</p></div></section><section aria-labelledby="설명"><h2 id="설명">설명</h2>
+<div class="section-content">
+<p><a href="../nan"><code>NaN</code></a>이 <code>NaN</code>인지 계산할 때, 두 동일 연산자 <code>==</code>과 <code>===</code> 모두 <code>false</code>로 평가되므로 값의 <code>NaN</code> 여부를 알아내려면 <code>Number.isNaN()</code>이 필요합니다. 이 상황은 다른 모든 JavaScript와 다른 특별한 경우입니다.</p> <p>전역 <a href="../isnan"><code>isNaN()</code></a> 함수와 달리, <code>Number.isNaN()</code>은 강제로 매개변수를 숫자로 변환하는 문제를 겪지 않습니다. 이는 이제 보통<a href="../nan"><code>NaN</code></a>으로 변환됐을 값이 안전하게 전달되지만, 실제로는 <a href="../nan"><code>NaN</code></a>과 같은 값이 아님을 의미합니다. 이는 또한 오직 숫자형이고 또한 <a href="../nan"><code>NaN</code></a>인 값만이 <code>true</code>를 반환함을 뜻합니다.</p>
+</div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="s0NyvirycBtHbR0+8YoU2/KGVufU4i/sdRMHVbkzRoc=" data-language="js">Number<span class="token punctuation">.</span><span class="token function">isNaN</span><span class="token punctuation">(</span><span class="token number">NaN</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token comment">// true</span>
+Number<span class="token punctuation">.</span><span class="token function">isNaN</span><span class="token punctuation">(</span>Number<span class="token punctuation">.</span><span class="token number">NaN</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// true</span>
+Number<span class="token punctuation">.</span><span class="token function">isNaN</span><span class="token punctuation">(</span><span class="token number">0</span> <span class="token operator">/</span> <span class="token number">0</span><span class="token punctuation">)</span>       <span class="token comment">// true</span>
+
+<span class="token comment">// 예를 들면 이들은 global isNaN()으로는 true가 됐을 것임</span>
+Number<span class="token punctuation">.</span><span class="token function">isNaN</span><span class="token punctuation">(</span><span class="token string">"NaN"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>      <span class="token comment">// false</span>
+Number<span class="token punctuation">.</span><span class="token function">isNaN</span><span class="token punctuation">(</span><span class="token keyword">undefined</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// false</span>
+Number<span class="token punctuation">.</span><span class="token function">isNaN</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>         <span class="token comment">// false</span>
+Number<span class="token punctuation">.</span><span class="token function">isNaN</span><span class="token punctuation">(</span><span class="token string">"blabla"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment">// false</span>
+
+<span class="token comment">// 모두</span>
+Number<span class="token punctuation">.</span><span class="token function">isNaN</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+Number<span class="token punctuation">.</span><span class="token function">isNaN</span><span class="token punctuation">(</span><span class="token keyword">null</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+Number<span class="token punctuation">.</span><span class="token function">isNaN</span><span class="token punctuation">(</span><span class="token number">37</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+Number<span class="token punctuation">.</span><span class="token function">isNaN</span><span class="token punctuation">(</span><span class="token string">"37"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+Number<span class="token punctuation">.</span><span class="token function">isNaN</span><span class="token punctuation">(</span><span class="token string">"37.37"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+Number<span class="token punctuation">.</span><span class="token function">isNaN</span><span class="token punctuation">(</span><span class="token string">""</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+Number<span class="token punctuation">.</span><span class="token function">isNaN</span><span class="token punctuation">(</span><span class="token string">" "</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div></div></section><section aria-labelledby="폴리필"><h2 id="폴리필">폴리필</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="E7GvUbw28BbT0hlWqGNHTi96+gpJkGj0YA0FiUQXlCU=" data-language="js">Number<span class="token punctuation">.</span>isNaN <span class="token operator">=</span> Number<span class="token punctuation">.</span>isNaN <span class="token operator">||</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">value</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> value <span class="token operator">!==</span> value<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div></div></section><h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://tc39.es/ecma262/multipage/numbers-and-dates.html#sec-number.isnan">ECMAScript Language Specification <br><small># sec-number.isnan</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="../number"><code>Number</code></a></li> <li><a href="../isnan"><code>isNaN()</code></a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Number/isNaN" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Number/isNaN</a>
+  </p>
+</div>

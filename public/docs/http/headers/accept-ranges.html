@@ -1,0 +1,24 @@
+<h1>Accept-Ranges</h1>
+<header><h1>Accept-Ranges</h1></header><div class="section-content">
+<p><code>Accept-Ranges</code> 응답 HTTP 헤더는 부분 요청의 지원을 알리기 위해 서버에 의해 사용되는 표식입니다. 이 필드의 값은 범위를 정의하기 위해 사용될 수 있는 단위를 가리킵니다.</p> <p><code>Accept-Ranges</code> 헤더가 존재하면, 브라우저는 처음부터 다시 다운로드를 시작하지 않고, 중단된 다운로드를 <em>재개</em>하려고 할 것입니다.</p> <figure class="table-container"><div class="_table"><table class="properties"> <tbody> <tr> <th scope="row">Header type</th> <td><a href="https://developer.mozilla.org/ko/docs/Glossary/Response_header">Response header</a></td> </tr> <tr> <th scope="row"><a href="https://developer.mozilla.org/ko/docs/Glossary/Forbidden_header_name">Forbidden header name</a></th> <td>no</td> </tr> </tbody> </table></div></figure>
+</div>
+<section aria-labelledby="문법"><h2 id="문법">문법</h2>
+<div class="section-content"><pre class="notranslate">Accept-Ranges: bytes
+Accept-Ranges: none
+</pre></div></section><section aria-labelledby="디렉티브"><h2 id="디렉티브">디렉티브</h2>
+<div class="section-content"><dl> <dt id="none"><code>none</code></dt> <dd> <p>지원되는 범위의 단위가 없음을 나타내는데, 이는 헤더가 존재하지 않는 경우와 동일하므로 거의 사용되지 않습니다. 그렇지만 IE9같은 브라우저의 경우 다운로드 매니저의 일시중지 버튼을 비활성화(disable) 혹은 제거(remove)할 때 쓰이곤 합니다.</p> </dd> <dt id="bytes"><code>bytes</code></dt> <dd> <p>범위는 바이트로 표현될 수 있습니다.</p> </dd> </dl></div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+<div class="section-content"><pre class="notranslate">Accept-Ranges: bytes
+</pre></div></section><h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://www.rfc-editor.org/rfc/rfc9110#field.accept-ranges">HTTP Semantics <br><small># field.accept-ranges</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="함께_참고할_내용"><h2 id="함께_참고할_내용">함께 참고할 내용</h2>
+<div class="section-content"><ul> <li><a href="if-range"><code>If-Range</code></a></li> <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Range" class="only-in-en-us"><code>Ranges</code> <small>(en-US)</small></a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/HTTP/Headers/Accept-Ranges" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/HTTP/Headers/Accept-Ranges</a>
+  </p>
+</div>

@@ -1,0 +1,39 @@
+<header><h1>URLSearchParams.append()</h1></header><div class="section-content">
+<p><a href="../urlsearchparams"><code>URLSearchParams</code></a> 인터페이스의 <code>append()</code> 메서드는 지정한 키/값 쌍을 새로운 검색 매개변수로서 추가합니다.</p> <p>아래 예제에서도 볼 수 있듯, 같은 키를 여러 번 추가하면 매개변수 문자열에 각각의 키와 함께 여러 번 나타나게 됩니다.</p>
+<div class="notecard note" id="sect1"> <p><strong>참고:</strong> 이 기능은 <a href="../web_workers_api">Web Worker</a>에서 사용할 수 있습니다</p> </div>
+</div>
+<h2 id="구문">구문</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="7EjWKzVwlMeEel2H3TvsUTGJhsdlnrt4plixU/rSL08=" data-language="js"><span class="token function">append</span><span class="token punctuation">(</span>name<span class="token punctuation">,</span> value<span class="token punctuation">)</span>
+</pre>
+</div></div>
+<h3 id="매개변수">매개변수</h3>
+<div class="section-content"><dl> <dt id="name"><code>name</code></dt> <dd> <p>추가할 매개변수의 이름입니다.</p> </dd> <dt id="value"><code>value</code></dt> <dd> <p>추가할 매개변수의 값입니다.</p> </dd> </dl></div>
+<h3 id="반환_값">반환 값</h3>
+<div class="section-content"><p>없음 (<a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/undefined"><code>undefined</code></a>).</p></div>
+<h2 id="예제">예제</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="UmtXto4ckgGtHI97iCQppymoGBQHs8cX4+jWZbp4dxg=" data-language="js"><span class="token keyword">let</span> url <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">URL</span><span class="token punctuation">(</span><span class="token string">'https://example.com?foo=1&amp;bar=2'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">let</span> params <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">URLSearchParams</span><span class="token punctuation">(</span>url<span class="token punctuation">.</span>search<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// 두 번째 foo 매개변수 추가</span>
+params<span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span><span class="token string">'foo'</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// 이제 쿼리 문자열이 'foo=1&amp;bar=2&amp;foo=4'</span>
+</pre>
+</div></div>
+<h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://url.spec.whatwg.org/#dom-urlsearchparams-append">URL Standard <br><small># dom-urlsearchparams-append</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li>URL 관련 다른 인터페이스: <a href="../url"><code>URL</code></a>, <a class="page-not-created"><code>HTMLHyperlinkElementUtils</code></a>.</li> <li><a href="https://developer.chrome.com/blog/urlsearchparams/" target="_blank">Google Developers: Easy URL manipulation with URLSearchParams</a></li> </ul></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/URLSearchParams/append" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/URLSearchParams/append</a>
+  </p>
+</div>

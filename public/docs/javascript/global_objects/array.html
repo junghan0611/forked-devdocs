@@ -1,0 +1,298 @@
+<header><h1>Array</h1></header><div class="section-content"><p>JavaScript <code>Array</code> 클래스는 리스트 형태의 고수준 객체인 배열을 생성할 때 사용하는 전역 객체입니다.</p></div>
+<section aria-labelledby="설명"><h2 id="설명">설명</h2>
+<div class="section-content">
+<p>배열은 리스트와 비슷한 객체로서 순회와 변형 작업을 수행하는 메서드를 갖습니다. JavaScript 배열은 길이도, 각 요소의 자료형도 고정되어 있지 않습니다. 배열의 길이가 언제든지 늘어나거나 줄어들 수 있고 데이터를 연속적이지 않은 곳에 저장할 수 있으므로, JavaScript 배열은 밀집성을 보장하지 않습니다. 보통 이런 성질들은 편리하지만, 사용하려는 목적에 맞지 않으면 형식화 배열(typed array)을 사용하는 것을 고려해보세요.</p> <p>배열은 (<a href="https://ko.wikipedia.org/wiki/%EC%97%B0%EA%B4%80_%EB%B0%B0%EC%97%B4" target="_blank">연관 배열</a>과 달리) 요소 인덱스로 문자열을 사용할 수 없으며 무조건 정수만 허용합니다. <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Guide/Working_with_objects#%ea%b0%9d%ec%b2%b4%ec%99%80_%ec%86%8d%ec%84%b1">대괄호 구문</a> 또는 <a href="../operators/property_accessors">속성 접근자</a>를 사용해 정수가 아닌 키에 접근할 경우 배열의 요소가 아니라 배열의 <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Data_structures#%EC%86%8D%EC%84%B1">객체 속성 컬렉션</a>에 연결된 변수를 바라보게 됩니다. <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Guide/Indexed_collections#%EB%B0%B0%EC%97%B4_%EA%B0%9D%EC%B2%B4%EC%9D%98_%EB%A9%94%EC%84%9C%EB%93%9C">순회 및 변형 작업</a> 또한 이런 속성에 적용할 수 없습니다.</p>
+</div></section><section aria-labelledby="자주_사용하는_연산"><h3 id="자주_사용하는_연산">자주 사용하는 연산</h3>
+<div class="section-content">
+<p><strong>배열 만들기</strong></p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="gsS3XcsxZcHZyN9AxM8JswWa0ftl33bBwXyQppO2stU=" data-language="js"><span class="token keyword">let</span> fruits <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'사과'</span><span class="token punctuation">,</span> <span class="token string">'바나나'</span><span class="token punctuation">]</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>fruits<span class="token punctuation">.</span>length<span class="token punctuation">)</span>
+<span class="token comment">// 2</span>
+</pre>
+</div> <p><strong>인덱스로 배열의 항목에 접근하기</strong></p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="ZdHkW/YzNPOhNPT7txe/+uWKGyHVDuAYDI5LT3m05WE=" data-language="js"><span class="token keyword">let</span> first <span class="token operator">=</span> fruits<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
+<span class="token comment">// 사과</span>
+
+<span class="token keyword">let</span> last <span class="token operator">=</span> fruits<span class="token punctuation">[</span>fruits<span class="token punctuation">.</span>length <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span>
+<span class="token comment">// 바나나</span>
+</pre>
+</div> <p><strong>배열의 항목들을 순환하며 처리하기</strong></p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="kJZ2uOT4RIHrHJbFgmskxGUFrGCq6XYfB4UD5N+QT6U=" data-language="js">fruits<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">item<span class="token punctuation">,</span> index<span class="token punctuation">,</span> array</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>item<span class="token punctuation">,</span> index<span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token comment">// 사과 0</span>
+<span class="token comment">// 바나나 1</span>
+</pre>
+</div> <p><strong>배열 끝에 항목 추가하기</strong></p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="4da6qakbX6mMxsX+MrtMsYZ7BRSOwQ92UA0faK85g/U=" data-language="js"><span class="token keyword">let</span> newLength <span class="token operator">=</span> fruits<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token string">'오렌지'</span><span class="token punctuation">)</span>
+<span class="token comment">// ["사과", "바나나", "오렌지"]</span>
+</pre>
+</div> <p><strong>배열 끝에서부터 항목 제거하기</strong></p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="cpRRuSD32k1+4Au10TfN1QU9y1VJxE80NJjhvxBj/kw=" data-language="js"><span class="token keyword">let</span> last <span class="token operator">=</span> fruits<span class="token punctuation">.</span><span class="token function">pop</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">// 끝에있던 '오렌지'를 제거</span>
+<span class="token comment">// ["사과", "바나나"]</span>
+</pre>
+</div> <p><strong>배열 앞에서부터 항목 제거하기</strong></p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="aNJTTvPj3csBES96rkGX/gRtzpn2tA9YAh0tJ1ECn+w=" data-language="js"><span class="token keyword">let</span> first <span class="token operator">=</span> fruits<span class="token punctuation">.</span><span class="token function">shift</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">// 제일 앞의 '사과'를 제거</span>
+<span class="token comment">// ["바나나"]</span>
+</pre>
+</div> <p><strong>배열 앞에 항목 추가하기</strong></p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="j8PqimbTX4Pc+oQC5Dm/DviqWio5V1jS2YZtlPyM6So=" data-language="js"><span class="token keyword">let</span> newLength <span class="token operator">=</span> fruits<span class="token punctuation">.</span><span class="token function">unshift</span><span class="token punctuation">(</span><span class="token string">'딸기'</span><span class="token punctuation">)</span> <span class="token comment">// 앞에 추가</span>
+<span class="token comment">// ["딸기", "바나나"]</span>
+</pre>
+</div> <p><strong>배열 안 항목의 인덱스 찾기</strong></p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="JA/5hlPLUkkxM9rTXHHGNnWSckOnqNGOlFF+bGfa64g=" data-language="js">fruits<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token string">'망고'</span><span class="token punctuation">)</span>
+<span class="token comment">// ["딸기", "바나나", "망고"]</span>
+
+<span class="token keyword">let</span> pos <span class="token operator">=</span> fruits<span class="token punctuation">.</span><span class="token function">indexOf</span><span class="token punctuation">(</span><span class="token string">"바나나"</span><span class="token punctuation">)</span>
+<span class="token comment">// 1</span>
+</pre>
+</div> <p><strong>인덱스 위치에 있는 항목 제거하기</strong></p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="ssm+J/+FgqJEDP4IYhrP1vXrTHD2OYggHd1m/8lrZ/k=" data-language="js"><span class="token keyword">let</span> removedItem <span class="token operator">=</span> fruits<span class="token punctuation">.</span><span class="token function">splice</span><span class="token punctuation">(</span>pos<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token comment">// 항목을 제거하는 방법</span>
+
+<span class="token comment">// ["딸기", "망고"]</span>
+</pre>
+</div> <p><strong>인덱스 위치에서부터 여러개의 항목 제거하기</strong></p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="1CUJSQR3kGb/R1aAuSY16LHybaQDMc1xgiULQlybsEk=" data-language="js"><span class="token keyword">let</span> vegetables <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'양배추'</span><span class="token punctuation">,</span> <span class="token string">'순무'</span><span class="token punctuation">,</span> <span class="token string">'무'</span><span class="token punctuation">,</span> <span class="token string">'당근'</span><span class="token punctuation">]</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>vegetables<span class="token punctuation">)</span>
+<span class="token comment">// ["양배추", "순무", "무", "당근"]</span>
+
+<span class="token keyword">let</span> pos <span class="token operator">=</span> <span class="token number">1</span>
+<span class="token keyword">let</span> n <span class="token operator">=</span> <span class="token number">2</span>
+
+<span class="token keyword">let</span> removedItems <span class="token operator">=</span> vegetables<span class="token punctuation">.</span><span class="token function">splice</span><span class="token punctuation">(</span>pos<span class="token punctuation">,</span> n<span class="token punctuation">)</span>
+<span class="token comment">// 배열에서 항목을 제거하는 방법</span>
+<span class="token comment">// pos 인덱스부터 n개의 항목을 제거함</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>vegetables<span class="token punctuation">)</span>
+<span class="token comment">// ["양배추", "당근"] (원 배열 vegetables의 값이 변함)</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>removedItems<span class="token punctuation">)</span>
+<span class="token comment">// ["순무", "무"]</span>
+</pre>
+</div> <p><strong>배열 복사하기</strong></p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="FFvkBO7LcWjIYuF2XDkD8hzVKLZIy3xALaNVAHidp1A=" data-language="js"><span class="token keyword">let</span> shallowCopySpread <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token operator">...</span>fruits<span class="token punctuation">]</span>
+<span class="token comment">// ["딸기", "망고"]</span>
+</pre>
+</div> <p>위 코드는 <a href="../operators/spread_syntax">전개 구문</a>을 사용해 배열의 얕은 복사를 만드는 방법입니다. 배열을 복사하는 다른 방법은 아래의 <a href="#%EB%B0%B0%EC%97%B4_%EB%B3%B5%EC%82%AC%ED%95%98%EA%B8%B0">배열 복사하기</a>에서 논의합니다.</p>
+</div></section><section aria-labelledby="배열_요소에_접근하기"><h3 id="배열_요소에_접근하기">배열 요소에 접근하기</h3>
+<div class="section-content">
+<p>JavaScript 배열의 인덱스는 0부터 시작합니다. 즉, 배열 첫 번째 요소의 인덱스는 0이고, 마지막 요소의 인덱스는 배열의 <a href="array/length"><code>length</code></a> 속성에서 1을 뺀 것과 같습니다.</p> <p>잘못된 인덱스를 사용하면 <code>undefined</code>를 반환합니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="HUnWWYdpt/7NzTlCvPTtQz+eWrB4jmMyz/xwh2x+K54=" data-language="js"><span class="token keyword">let</span> arr <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'첫 번째 요소입니다'</span><span class="token punctuation">,</span> <span class="token string">'두 번째 요소입니다'</span><span class="token punctuation">,</span> <span class="token string">'마지막 요소입니다'</span><span class="token punctuation">]</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>arr<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span>              <span class="token comment">// '첫 번째 요소입니다'를 기록</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>arr<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span>              <span class="token comment">// '두 번째 요소입니다'를 기록</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>arr<span class="token punctuation">[</span>arr<span class="token punctuation">.</span>length <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token comment">// '마지막 요소입니다'를 기록</span>
+</pre>
+</div> <p><code>toString</code>이 속성인 것과 마찬가지로 (정확히 하자면, <code>toString()</code>은 메서드입니다) 배열의 요소도 속성입니다. 하지만 배열 요소에 아래 코드처럼 접근하려고 하면, 속성 이름이 유효하지 않기 때문에 구문 오류가 발생합니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="iMdoK+ts7sZeEvGPmPzbQuZKFUup/6TNgYFfNuHA0n0=" data-language="js">console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>arr<span class="token punctuation">.</span><span class="token number">0</span><span class="token punctuation">)</span> <span class="token comment">// 구문 오류</span>
+</pre>
+</div> <p>이 현상은 JavaScript 배열과 그 속성에 어떤 특별한 점이 있어서 그런 것이 아닙니다. 모든 JavaScript 속성은 이름이 숫자로 시작할 경우 마침표 표기법으로 접근할 수 없고, 대괄호 표기법을 사용해야 합니다.</p> <p>예를 들면, 어떤 객체에 <code>'3d'</code>라는 이름의 속성이 있다면, 이 속성에 접근할 땐 대괄호 표기법을 사용해야만 합니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="L0Rxr1T2yhEuefXSLmYm5utLj4JMvWO8OtaURPlpgLQ=" data-language="js"><span class="token keyword">let</span> years <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1950</span><span class="token punctuation">,</span> <span class="token number">1960</span><span class="token punctuation">,</span> <span class="token number">1970</span><span class="token punctuation">,</span> <span class="token number">1980</span><span class="token punctuation">,</span> <span class="token number">1990</span><span class="token punctuation">,</span> <span class="token number">2000</span><span class="token punctuation">,</span> <span class="token number">2010</span><span class="token punctuation">]</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>years<span class="token punctuation">.</span><span class="token number">0</span><span class="token punctuation">)</span>   <span class="token comment">// 구문 오류</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>years<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span>  <span class="token comment">// 정상 작동</span>
+</pre>
+</div> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="GD8pe7L9NYadeCwI8/LAdD/IgGtf+aPL8fIJXMjRlts=" data-language="js">renderer<span class="token punctuation">.</span>3d<span class="token punctuation">.</span><span class="token function">setTexture</span><span class="token punctuation">(</span>model<span class="token punctuation">,</span> <span class="token string">'character.png'</span><span class="token punctuation">)</span>     <span class="token comment">// 구문 오류</span>
+renderer<span class="token punctuation">[</span><span class="token string">'3d'</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">setTexture</span><span class="token punctuation">(</span>model<span class="token punctuation">,</span> <span class="token string">'character.png'</span><span class="token punctuation">)</span>  <span class="token comment">// 정상 작동</span>
+</pre>
+</div> <p><code>3d</code> 예시에서 <code>'3d'</code>를 따옴표로 감싸야 함에 유의하세요. JavaScript 배열 인덱스도 <code>years[2]</code> 대신에 <code>years['2']</code>를 사용하듯 따옴표로 둘러쌀 수 있습니다. 그러나 굳이 그럴 필요는 없습니다.</p> <p><code>years[2]</code>의 <code>2</code>는 JavaScript 엔진이 암시적인 <code>toString</code> 변환을 사용해 문자열로 변환합니다. 그 결과로서 <code>'2'</code>와 <code>'02'</code>는 <code>years</code> 객체에서 서로 다른 칸을 가리키며, 다음 코드는 <code>true</code>가 될 수 있습니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="DKrfwIUyU1sa1ZjW4I4D0eirqjLDdEMRiOrWTRvINgc=" data-language="js">console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>years<span class="token punctuation">[</span><span class="token string">'2'</span><span class="token punctuation">]</span> <span class="token operator">!=</span> years<span class="token punctuation">[</span><span class="token string">'02'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="배열_길이와_숫자형_속성의_관계"><h3 id="배열_길이와_숫자형_속성의_관계">배열 길이와 숫자형 속성의 관계</h3>
+<div class="section-content">
+<p>JavaScript 배열의 <a href="array/length"><code>length</code></a> 속성과 숫자형 속성은 연결되어 있습니다.</p> <p>몇몇 배열 내장 메서드(<a href="array/join"><code>join</code></a>, <a href="array/slice"><code>slice</code></a>, <a href="array/indexof"><code>indexOf</code></a> 등)은 호출했을 때 배열의 <a href="array/length"><code>length</code></a> 속성의 값을 참고합니다.</p> <p>다른 메서드(<a href="array/push"><code>push</code></a>, <a href="array/splice"><code>splice</code></a> 등) 또한 배열의 <a href="array/length"><code>length</code></a> 속성을 바꾸는 결과를 낳습니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="MAgqDzyOHsF43tiGcoPGxrylqj0aGOe2PwyTjIAkglM=" data-language="js"><span class="token keyword">const</span> fruits <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+fruits<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token string">'바나나'</span><span class="token punctuation">,</span> <span class="token string">'사과'</span><span class="token punctuation">,</span> <span class="token string">'복숭아'</span><span class="token punctuation">)</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>fruits<span class="token punctuation">.</span>length<span class="token punctuation">)</span> <span class="token comment">// 3</span>
+</pre>
+</div> <p>배열 인덱스로 유효한 속성을 JavaScript 배열에 설정할 때, 그 인덱스가 현재 배열의 경계 바깥에 있는 경우, JavaScript 엔진은 배열의 <a href="array/length"><code>length</code></a> 속성을 그에 맞춰 업데이트 합니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="LuFH/2Ri43DHxVj6jxnxWIPvsoqLEMjifXA6s0b63yA=" data-language="js">fruits<span class="token punctuation">[</span><span class="token number">5</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">'mango'</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>fruits<span class="token punctuation">[</span><span class="token number">5</span><span class="token punctuation">]</span><span class="token punctuation">)</span>           <span class="token comment">// '망고'</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>Object<span class="token punctuation">.</span><span class="token function">keys</span><span class="token punctuation">(</span>fruits<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">// ['0', '1', '2', '5']</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>fruits<span class="token punctuation">.</span>length<span class="token punctuation">)</span>       <span class="token comment">// 6</span>
+</pre>
+</div> <p><a href="array/length"><code>length</code></a>를 직접 늘려도 요소에 변화는 없습니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="dvGbBbvxGxfuL7PfcnXK5/CKS9quHGwi2qEkg6pfaNM=" data-language="js">fruits<span class="token punctuation">.</span>length <span class="token operator">=</span> <span class="token number">10</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>fruits<span class="token punctuation">)</span>              <span class="token comment">// ['바나나', '사과', '복숭아', 비어 있음 x 2, '망고', 비어 있음 x 4]</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>Object<span class="token punctuation">.</span><span class="token function">keys</span><span class="token punctuation">(</span>fruits<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">// ['0', '1', '2', '5']</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>fruits<span class="token punctuation">.</span>length<span class="token punctuation">)</span>       <span class="token comment">// 10</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>fruits<span class="token punctuation">[</span><span class="token number">8</span><span class="token punctuation">]</span><span class="token punctuation">)</span>           <span class="token comment">// undefined</span>
+</pre>
+</div> <p>하지만, <a href="array/length"><code>length</code></a> 속성을 감소시키면 요소가 지워집니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="u6i76VIO9fhljVd624lO7QrVnSVo2x23Twzi9nn1Kvc=" data-language="js">fruits<span class="token punctuation">.</span>length <span class="token operator">=</span> <span class="token number">2</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>Object<span class="token punctuation">.</span><span class="token function">keys</span><span class="token punctuation">(</span>fruits<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">// ['0', '1']</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>fruits<span class="token punctuation">.</span>length<span class="token punctuation">)</span>       <span class="token comment">// 2</span>
+</pre>
+</div> <p><a href="array/length"><code>Array.length</code></a> 문서에 더 자세한 설명이 있습니다.</p>
+</div></section><section aria-labelledby="정규표현식_일치_결과를_이용한_배열_생성"><h3 id="정규표현식_일치_결과를_이용한_배열_생성">정규표현식 일치 결과를 이용한 배열 생성</h3>
+<div class="section-content">
+<p><a href="regexp"><code>RegExp</code></a>와 문자열 사이의 일치 결과는 JavaScript 배열을 반환합니다. 이 배열은 일치 결과에 대한 정보를 포함하는 속성과 요소가 담겨있습니다. <a href="regexp/exec"><code>RegExp.exec()</code></a>, <a href="string/match"><code>String.match()</code></a>의 반환 값에서 이런 배열을 볼 수 있습니다.</p> <p>다음 예제와 표에서 배열의 속성과 요소에 대한 설명을 확인하세요.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="D7tqLoUiNFVHLAK3sXMfEZG6/EJJcOD9eZN3xom0TP8=" data-language="js"><span class="token comment">// 하나의 d와 하나 이상의 b에 하나의 d가 뒤따라 일치해야 함</span>
+<span class="token comment">// 일치한 b와 다음 d를 기억할 것</span>
+<span class="token comment">// 대소문자 구분 없음</span>
+
+<span class="token keyword">const</span> myRe <span class="token operator">=</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">d<span class="token group punctuation">(</span>b<span class="token quantifier number">+</span><span class="token group punctuation">)</span><span class="token group punctuation">(</span>d<span class="token group punctuation">)</span></span><span class="token regex-delimiter">/</span><span class="token regex-flags">i</span></span>
+<span class="token keyword">const</span> myArray <span class="token operator">=</span> myRe<span class="token punctuation">.</span><span class="token function">exec</span><span class="token punctuation">(</span><span class="token string">'cdbBdbsbz'</span><span class="token punctuation">)</span>
+</pre>
+</div> <p>반환된 <code>myArray</code> 배열의 속성과 요소는 다음과 같습니다.</p> <figure class="table-container"><div class="_table"><table class="fullwidth-table standard-table"> <tbody> <tr> <th class="header" scope="col">속성/요소</th> <th class="header" scope="col">설명</th> <th class="header" scope="col">예시</th> </tr> <tr> <td>
+<code>input</code><br><span class="badge inline readonly">읽기 전용</span>
+</td> <td>정규표현식 일치 대상이 된 원본 문자열입니다.</td> <td><code>"cdbBdbsbz"</code></td> </tr> <tr> <td>
+<code>index</code><br><span class="badge inline readonly">읽기 전용</span>
+</td> <td>일치가 위치한 원본 문자열에서의 인덱스입니다.</td> <td><code>1</code></td> </tr> <tr> <td>
+<code>[0]</code><br><span class="badge inline readonly">읽기 전용</span>
+</td> <td>마지막으로 일치한 텍스트입니다.</td> <td><code>"dbBd"</code></td> </tr> <tr> <td>
+<code>[1], ...[n]</code><br><span class="badge inline readonly">읽기 전용</span>
+</td> <td>존재할 경우, 정규표현식에서 괄호로 지정한 부분문자열 일치에 대응하는 요소입니다. 가능한 수의 제한은 없습니다.</td> <td><code>[1]: "bB"<br>[2]: "d"</code></td> </tr> </tbody> </table></div></figure>
+</div></section><section aria-labelledby="배열_복사하기"><h3 id="배열_복사하기">배열 복사하기</h3>
+<div class="section-content">
+<p>배열을 새로운 변수에 할당해도 배열이 복사되지는 않습니다. 새로운 변수에는 원본 배열을 가리키는 참조만 할당되며, 원본 배열의 값을 바꾸면 새 변수에서도 그 변경점이 반영됩니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="eqCSCb+Im9aYhxHafimOWiQc9KmShm0eaUCMmv+/UbE=" data-language="js"><span class="token keyword">let</span> array1 <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">]</span>
+<span class="token keyword">let</span> array1Reference <span class="token operator">=</span> array1<span class="token punctuation">;</span>
+array1<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">9</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>array1Reference<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// Array [1,9,3] - array1의 변화가 array1Reference에도 나타남 - 복사본이 아님</span>
+</pre>
+</div> <p>배열의 복사본을 만들기 위해서는 새 배열을 위한 변수를 생성하고, 원본 배열 각각의 원시 요소에 대해서도 새로운 변수를 생성해야 합니다. (변수를 원시 값으로 초기화하면 참조를 할당하지 않고 값을 복사합니다.) JavaScript에서는 이를 위해 다음과 같은 방법을 사용할 수 있습니다.</p> <p><a href="../operators/spread_syntax">전개 구문</a>:</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="S87TV/s7G5TgJgNV4O4cQJhCrSZm9SG3+JncBC1gLXM=" data-language="js"><span class="token keyword">let</span> shallowCopySpread <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token operator">...</span>fruits<span class="token punctuation">]</span>
+<span class="token comment">// ["Strawberry", "Mango"]</span>
+</pre>
+</div> <p><a href="array/slice"><code>Array.slice()</code></a>:</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="e5eGPm14KzQh4O2rUEtzux3QTAk7S3le9lEuKQb6vjE=" data-language="js"><span class="token keyword">let</span> shallowCopySlice <span class="token operator">=</span> fruits<span class="token punctuation">.</span><span class="token function">slice</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token comment">// ["Strawberry", "Mango"]</span>
+</pre>
+</div> <p><a href="array/from"><code>Array.from()</code></a>:</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="m9m4DeEIXowu9kzNqDYRKlU7xzRbudQ/Af+GFRzBhNw=" data-language="js"><span class="token keyword">let</span> shallowCopyFrom <span class="token operator">=</span> Array<span class="token punctuation">.</span><span class="token function">from</span><span class="token punctuation">(</span>fruits<span class="token punctuation">)</span>
+<span class="token comment">// ["Strawberry", "Mango"]</span>
+</pre>
+</div> <p>위의 세 코드는 모두 '얕은 복사'를 생성합니다. 얕은 복사란 배열의 최상위 요소가 원시 값일 경우 복사하지만, 중첩 배열이나 객체 요소일 경우에는 원본 배열의 요소를 참조하게 됩니다.</p> <p>모든 요소의 '깊은 복사', 즉 중첩 배열과 객체 요소 또한 동일한 형태로 복사하는 방법 중 하나는 <a href="json/stringify"><code>JSON.stringify()</code></a>를 사용해 배열을 JSON 문자열로 변환한 후, <a href="json/parse"><code>JSON.parse()</code></a>로 다시 배열을 구성하는 것입니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="8BC00j8aMWmqPtkwZc5++OeuEU1m12eShX/fGBb+/KA=" data-language="js"><span class="token keyword">let</span> deepCopy <span class="token operator">=</span> <span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span><span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span>fruits<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// ["Strawberry", "Mango"]</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="생성자"><h2 id="생성자">생성자</h2>
+<div class="section-content"><dl> <dt id="array"><a href="array/array"><code>Array()</code></a></dt> <dd> <p><code>Array</code> 객체를 생성합니다.</p> </dd> </dl></div></section><section aria-labelledby="정적_속성"><h2 id="정적_속성">정적 속성</h2>
+<div class="section-content"><dl> <dt id="get_arrayspecies"><a href="array/@@species"><code>get Array[@@species]</code></a></dt> <dd> <p>파생 객체를 생성하는데 사용하는 생성자 함수입니다.</p> </dd> </dl></div></section><section aria-labelledby="정적_메서드"><h2 id="정적_메서드">정적 메서드</h2>
+<div class="section-content"><dl> <dt id="array.from"><a href="array/from"><code>Array.from()</code></a></dt> <dd> <p>유사 배열 또는 반복 가능한 객체로부터 새로운 <code>Array</code> 인스턴스를 생성합니다.</p> </dd> <dt id="array.isarray"><a href="array/isarray"><code>Array.isArray()</code></a></dt> <dd> <p>만약 매개변수가 배열이면 참을, 아니면 거짓을 반환합니다.</p> </dd> <dt id="array.of"><a href="array/of"><code>Array.of()</code></a></dt> <dd> <p>매개변수의 수와 자료형에 제한 없이, 지정한 값을 사용해 새 <code>Array</code> 인스턴스를 생성합니다.</p> </dd> </dl></div></section><section aria-labelledby="인스턴스_속성"><h2 id="인스턴스_속성">인스턴스 속성</h2>
+<div class="section-content"><dl> <dt id="array.prototype.length"><a href="array/length"><code>Array.prototype.length</code></a></dt> <dd> <p>배열의 원소 수를 나타냅니다.</p> </dd> <dt id="array.prototypeunscopables"><a href="array/@@unscopables"><code>Array.prototype[@@unscopables]</code></a></dt> <dd> <p><a href="../statements/with"><code>with</code></a> 결속 범위로부터 제외하려는 속성 이름이 들어있는 기호입니다.</p> </dd> </dl></div></section><section aria-labelledby="인스턴스_메서드"><h2 id="인스턴스_메서드">인스턴스 메서드</h2>
+<div class="section-content"><dl> <dt id="array.prototype.at">
+<a href="array/at"><code>Array.prototype.at()</code></a> <abbr class="icon icon-experimental" title="Experimental. 예상되는 동작은 향후 변경될 수 있습니다."> <span class="visually-hidden">Experimental</span> </abbr>
+</dt> <dd> <p>주어진 인덱스의 요소를 반환합니다. 음수 값을 지정할 경우 인덱스를 배열의 끝부터 셉니다.</p> </dd> <dt id="array.prototype.concat"><a href="array/concat"><code>Array.prototype.concat()</code></a></dt> <dd> <p>배열과 배열/값 매개변수를 이어붙인 새로운 배열을 반환합니다.</p> </dd> <dt id="array.prototype.copywithin"><a href="array/copywithin"><code>Array.prototype.copyWithin()</code></a></dt> <dd> <p>배열 내의 지정된 요소들을 동일한 배열 내에서 복사합니다.</p> </dd> <dt id="array.prototype.entries"><a href="array/entries"><code>Array.prototype.entries()</code></a></dt> <dd> <p>배열의 각 인덱스에 대한 키/값 쌍을 가지는 새로운 배열 반복자 객체를 반환합니다.</p> </dd> <dt id="array.prototype.every"><a href="array/every"><code>Array.prototype.every()</code></a></dt> <dd> <p>배열의 모든 요소가 주어진 판별 함수를 만족할 경우 <code>true</code>를 반환합니다.</p> </dd> <dt id="array.prototype.fill"><a href="array/fill"><code>Array.prototype.fill()</code></a></dt> <dd> <p>배열을 시작 인덱스부터 끝 인덱스까지의 지정한 값으로 채웁니다.</p> </dd> <dt id="array.prototype.filter"><a href="array/filter"><code>Array.prototype.filter()</code></a></dt> <dd> <p>지정한 필터 함수의 반환 결과가 <code>true</code>인 요소만 모아서 새로운 배열을 반환합니다.</p> </dd> <dt id="array.prototype.find"><a href="array/find"><code>Array.prototype.find()</code></a></dt> <dd> <p>주어진 판별 함수를 만족하는 첫 번째 요소를 반환합니다. 만족하는 요소가 없으면 <code>undefined</code>를 반환합니다.</p> </dd> <dt id="array.prototype.findindex"><a href="array/findindex"><code>Array.prototype.findIndex()</code></a></dt> <dd> <p>주어진 판별 함수를 만족하는 첫 번째 요소의 인덱스를 반환합니다. 만족하는 요소가 없으면 <code>-1</code>를 반환합니다.</p> </dd> <dt id="array.prototype.flat"><a href="array/flat"><code>Array.prototype.flat()</code></a></dt> <dd> <p>배열 내의 모든 중첩 배열을 지정한 깊이까지 재귀적으로 이어붙인 새로운 배열을 반환합니다.</p> </dd> <dt id="array.prototype.flatmap"><a href="array/flatmap"><code>Array.prototype.flatMap()</code></a></dt> <dd> <p>배열의 모든 요소 각각에 대해 주어진 콜백 함수를 호출하고, 그 반환 값을 모아 새로운 배열을 생성한 후, 모든 중첩 배열을 이어붙여 평탄화해 반환합니다.</p> </dd> <dt id="array.prototype.foreach"><a href="array/foreach"><code>Array.prototype.forEach()</code></a></dt> <dd> <p>배열의 각각의 요소에 대해 함수를 호출합니다.</p> </dd> <dt id="array.prototype.includes"><a href="array/includes"><code>Array.prototype.includes()</code></a></dt> <dd> <p>배열이 주어진 값을 포함하는지 판별해 <code>true</code> 또는 <code>false</code>를 반환합니다.</p> </dd> <dt id="array.prototype.indexof"><a href="array/indexof"><code>Array.prototype.indexOf()</code></a></dt> <dd> <p>배열에서 주어진 값과 일치하는 제일 앞의 인덱스를 반환합니다. 없으면 <code>-1</code>을 반환합니다.</p> </dd> <dt id="array.prototype.join"><a href="array/join"><code>Array.prototype.join()</code></a></dt> <dd> <p>배열의 모든 요소를 문자열로 합칩니다.</p> </dd> <dt id="array.prototype.keys"><a href="array/keys"><code>Array.prototype.keys()</code></a></dt> <dd> <p>배열의 각 인덱스에 대한 키를 가지는 새로운 배열 반복자 객체를 반환합니다.</p> </dd> <dt id="array.prototype.lastindexof"><a href="array/lastindexof"><code>Array.prototype.lastIndexOf()</code></a></dt> <dd> <p>배열에서 주어진 값과 일치하는 제일 뒤의 인덱스를 반환합니다. 없으면 <code>-1</code>을 반환합니다.</p> </dd> <dt id="array.prototype.map"><a href="array/map"><code>Array.prototype.map()</code></a></dt> <dd> <p>배열의 모든 요소 각각에 대하여 주어진 콜백 함수를 호출하고, 그 반환 값을 모은 새로운 배열을 반환합니다.</p> </dd> <dt id="array.prototype.pop"><a href="array/pop"><code>Array.prototype.pop()</code></a></dt> <dd> <p>배열에서 마지막 요소를 뽑아내고, 그 요소를 반환합니다.</p> </dd> <dt id="array.prototype.push"><a href="array/push"><code>Array.prototype.push()</code></a></dt> <dd> <p>배열의 끝에 하나 이상의 요소를 추가하고, 배열의 변경된 <code>length</code>를 반환합니다.</p> </dd> <dt id="array.prototype.reduce"><a href="array/reduce"><code>Array.prototype.reduce()</code></a></dt> <dd> <p>주어진 콜백 함수를 가산기와 요소 각각에 대해 (왼쪽에서 오른쪽으로) 호출하여 하나의 값으로 줄인 결과를 반환합니다.</p> </dd> <dt id="array.prototype.reduceright"><a href="array/reduceright"><code>Array.prototype.reduceRight()</code></a></dt> <dd> <p>주어진 콜백 함수를 가산기와 요소 각각에 대해 (오른쪽에서 왼쪽으로) 호출하여 하나의 값으로 줄인 결과를 반환합니다.</p> </dd> <dt id="array.prototype.reverse"><a href="array/reverse"><code>Array.prototype.reverse()</code></a></dt> <dd> <p>배열의 요소 순서를 뒤집습니다. 즉 첫 번째 요소가 마지막이 되고 마지막이 첫 번째가 됩니다.</p> </dd> <dt id="array.prototype.shift"><a href="array/shift"><code>Array.prototype.shift()</code></a></dt> <dd> <p>배열에서 첫 번째 요소를 삭제하고, 그 요소를 반환합니다.</p> </dd> <dt id="array.prototype.slice"><a href="array/slice"><code>Array.prototype.slice()</code></a></dt> <dd> <p>배열의 일부를 추출한 새 배열을 반환합니다.</p> </dd> <dt id="array.prototype.some"><a href="array/some"><code>Array.prototype.some()</code></a></dt> <dd> <p>배열의 어떤 요소가 주어진 판별 함수를 만족할 경우 <code>true</code>를 반환합니다.</p> </dd> <dt id="array.prototype.sort"><a href="array/sort"><code>Array.prototype.sort()</code></a></dt> <dd> <p>배열의 요소를 정렬하고 그 배열을 반환합니다.</p> </dd> <dt id="array.prototype.splice"><a href="array/splice"><code>Array.prototype.splice()</code></a></dt> <dd> <p>배열에서 요소를 추가하거나 삭제합니다.</p> </dd> <dt id="array.prototype.tolocalestring"><a href="array/tolocalestring"><code>Array.prototype.toLocaleString()</code></a></dt> <dd> <p>배열과 그 요소를 나타내는 지역화된 문자열을 반환합니다. <a href="object/tolocalestring"><code>Object.prototype.toLocaleString()</code></a> 메서드를 재정의합니다.</p> </dd> <dt id="array.prototype.tostring"><a href="array/tostring"><code>Array.prototype.toString()</code></a></dt> <dd> <p>배열과 그 요소를 나타내는 문자열을 반환합니다. <a href="object/tostring"><code>Object.prototype.toString()</code></a> 메서드를 재정의합니다.</p> </dd> <dt id="array.prototype.unshift"><a href="array/unshift"><code>Array.prototype.unshift()</code></a></dt> <dd> <p>배열의 앞에 하나 이상의 요소를 추가하고, 배열의 변경된 <code>length</code>를 반환합니다.</p> </dd> <dt id="array.prototype.values"><a href="array/values"><code>Array.prototype.values()</code></a></dt> <dd> <p>배열의 각 인덱스에 대한 값을 가지는 새로운 배열 반복자 객체를 반환합니다.</p> </dd> <dt id="array.prototypeiterator"><a href="array/@@iterator"><code>Array.prototype[@@iterator]()</code></a></dt> <dd> <p>배열의 각 인덱스에 대한 값을 가지는 새로운 배열 반복자 객체를 반환합니다.</p> </dd> </dl></div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+</section><section aria-labelledby="배열_생성"><h3 id="배열_생성">배열 생성</h3>
+<div class="section-content">
+<p>아래 예제에서는 길이 0의 배열 <code>msgArray</code> 을 생성하고, <code>msgArray[0]</code> 와 <code>msgArray[99]</code> 에 값을 할당하여 배열의 길이를 100으로 변경합니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="OVv0/KT6QxLUSB/IIbUcJo/8xsyHEmFVcQdvkDhzF1k=" data-language="js"><span class="token keyword">let</span> msgArray <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+msgArray<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">'Hello'</span>
+msgArray<span class="token punctuation">[</span><span class="token number">99</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">'world'</span>
+
+<span class="token keyword">if</span> <span class="token punctuation">(</span>msgArray<span class="token punctuation">.</span>length <span class="token operator">===</span> <span class="token number">100</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'길이가 100입니다.'</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="2차원_배열_생성"><h3 id="2차원_배열_생성">2차원 배열 생성</h3>
+<div class="section-content">
+<p>아래의 예제는 2차원 문자열 배열로 체스판을 생성합니다. 첫 번째 이동은 <code>board[6][4]</code>의 <code>'p'</code>를 <code>board[4][4]</code>로 복사하여 이루어집니다. 그 후 이전 위치 <code>[6][4]</code>는 빈 공간으로 만듭니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="Egcd1Rex6HZgcEzYQhyc7ep598X6n27okt2mFN16Tfs=" data-language="js"><span class="token keyword">let</span> board <span class="token operator">=</span> <span class="token punctuation">[</span>
+  <span class="token punctuation">[</span><span class="token string">'R'</span><span class="token punctuation">,</span><span class="token string">'N'</span><span class="token punctuation">,</span><span class="token string">'B'</span><span class="token punctuation">,</span><span class="token string">'Q'</span><span class="token punctuation">,</span><span class="token string">'K'</span><span class="token punctuation">,</span><span class="token string">'B'</span><span class="token punctuation">,</span><span class="token string">'N'</span><span class="token punctuation">,</span><span class="token string">'R'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+  <span class="token punctuation">[</span><span class="token string">'P'</span><span class="token punctuation">,</span><span class="token string">'P'</span><span class="token punctuation">,</span><span class="token string">'P'</span><span class="token punctuation">,</span><span class="token string">'P'</span><span class="token punctuation">,</span><span class="token string">'P'</span><span class="token punctuation">,</span><span class="token string">'P'</span><span class="token punctuation">,</span><span class="token string">'P'</span><span class="token punctuation">,</span><span class="token string">'P'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+  <span class="token punctuation">[</span><span class="token string">' '</span><span class="token punctuation">,</span><span class="token string">' '</span><span class="token punctuation">,</span><span class="token string">' '</span><span class="token punctuation">,</span><span class="token string">' '</span><span class="token punctuation">,</span><span class="token string">' '</span><span class="token punctuation">,</span><span class="token string">' '</span><span class="token punctuation">,</span><span class="token string">' '</span><span class="token punctuation">,</span><span class="token string">' '</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+  <span class="token punctuation">[</span><span class="token string">' '</span><span class="token punctuation">,</span><span class="token string">' '</span><span class="token punctuation">,</span><span class="token string">' '</span><span class="token punctuation">,</span><span class="token string">' '</span><span class="token punctuation">,</span><span class="token string">' '</span><span class="token punctuation">,</span><span class="token string">' '</span><span class="token punctuation">,</span><span class="token string">' '</span><span class="token punctuation">,</span><span class="token string">' '</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+  <span class="token punctuation">[</span><span class="token string">' '</span><span class="token punctuation">,</span><span class="token string">' '</span><span class="token punctuation">,</span><span class="token string">' '</span><span class="token punctuation">,</span><span class="token string">' '</span><span class="token punctuation">,</span><span class="token string">' '</span><span class="token punctuation">,</span><span class="token string">' '</span><span class="token punctuation">,</span><span class="token string">' '</span><span class="token punctuation">,</span><span class="token string">' '</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+  <span class="token punctuation">[</span><span class="token string">' '</span><span class="token punctuation">,</span><span class="token string">' '</span><span class="token punctuation">,</span><span class="token string">' '</span><span class="token punctuation">,</span><span class="token string">' '</span><span class="token punctuation">,</span><span class="token string">' '</span><span class="token punctuation">,</span><span class="token string">' '</span><span class="token punctuation">,</span><span class="token string">' '</span><span class="token punctuation">,</span><span class="token string">' '</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+  <span class="token punctuation">[</span><span class="token string">'p'</span><span class="token punctuation">,</span><span class="token string">'p'</span><span class="token punctuation">,</span><span class="token string">'p'</span><span class="token punctuation">,</span><span class="token string">'p'</span><span class="token punctuation">,</span><span class="token string">'p'</span><span class="token punctuation">,</span><span class="token string">'p'</span><span class="token punctuation">,</span><span class="token string">'p'</span><span class="token punctuation">,</span><span class="token string">'p'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+  <span class="token punctuation">[</span><span class="token string">'r'</span><span class="token punctuation">,</span><span class="token string">'n'</span><span class="token punctuation">,</span><span class="token string">'b'</span><span class="token punctuation">,</span><span class="token string">'q'</span><span class="token punctuation">,</span><span class="token string">'k'</span><span class="token punctuation">,</span><span class="token string">'b'</span><span class="token punctuation">,</span><span class="token string">'n'</span><span class="token punctuation">,</span><span class="token string">'r'</span><span class="token punctuation">]</span> <span class="token punctuation">]</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>board<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span><span class="token string">'\n'</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">'\n\n'</span><span class="token punctuation">)</span>
+
+<span class="token comment">// 폰을 앞으로 두 칸 전진</span>
+board<span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">]</span> <span class="token operator">=</span> board<span class="token punctuation">[</span><span class="token number">6</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">]</span>
+board<span class="token punctuation">[</span><span class="token number">6</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">' '</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>board<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span><span class="token string">'\n'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+</pre>
+</div> <p>결과는 다음과 같습니다.</p> <pre class="notranslate">R,N,B,Q,K,B,N,R
+P,P,P,P,P,P,P,P
+ , , , , , , ,
+ , , , , , , ,
+ , , , , , , ,
+ , , , , , , ,
+p,p,p,p,p,p,p,p
+r,n,b,q,k,b,n,r
+
+R,N,B,Q,K,B,N,R
+P,P,P,P,P,P,P,P
+ , , , , , , ,
+ , , , , , , ,
+ , , , ,p, , ,
+ , , , , , , ,
+p,p,p,p, ,p,p,p
+r,n,b,q,k,b,n,r
+</pre>
+</div></section><section aria-labelledby="배열을_사용하여_일련의_값을_테이블처럼_표시하기"><h3 id="배열을_사용하여_일련의_값을_테이블처럼_표시하기">배열을 사용하여 일련의 값을 테이블처럼 표시하기</h3>
+<div class="section-content">
+<div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="hR2N+quQ63s3ZxOnwm8CsFxlccm0yTBtzhpVUWpn3CM=" data-language="js"><span class="token keyword">const</span> values <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> x <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> x <span class="token operator">&lt;</span> <span class="token number">10</span><span class="token punctuation">;</span> x<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+ values<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token punctuation">[</span>
+  <span class="token number">2</span> <span class="token operator">**</span> x<span class="token punctuation">,</span>
+  <span class="token number">2</span> <span class="token operator">*</span> x <span class="token operator">**</span> <span class="token number">2</span>
+ <span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+console<span class="token punctuation">.</span><span class="token function">table</span><span class="token punctuation">(</span>values<span class="token punctuation">)</span>
+</pre>
+</div> <p>결과는 다음과 같습니다.</p> <pre class="notranslate">// 첫 번째 열은 인덱스
+0  1    0
+1  2    2
+2  4    8
+3  8    18
+4  16   32
+5  32   50
+6  64   72
+7  128  98
+8  256  128
+9  512  162
+</pre>
+</div></section><h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://tc39.es/ecma262/multipage/indexed-collections.html#sec-array-objects">ECMAScript Language Specification <br><small># sec-array-objects</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li>JavaScript 안내서: <ul> <li><a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Guide/Working_with_objects#%ea%b0%9d%ec%b2%b4_%ec%86%8d%ec%84%b1_%ec%9d%b8%eb%8d%b1%ec%8b%b1">객체 속성 인덱싱</a></li> <li><a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Guide/Indexed_collections#array_%EA%B0%9D%EC%B2%B4">인덱스 컬렉션: <code>Array</code> 객체</a></li> </ul> </li> <li><a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Guide/Typed_arrays">형식화 배열</a></li> <li><a href="../errors/invalid_array_length">RangeError: invalid array length</a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array</a>
+  </p>
+</div>

@@ -1,0 +1,41 @@
+<header><h1>Date.prototype.toUTCString()</h1></header><div class="section-content">
+<p><code>toUTCString()</code> 메서드는 날짜를 문자열로 변환하여 UTC 시단대로 해석합니다. <code>toGMTString()</code>은 이 메서드의 별칭입니다.</p> <p><a href="https://datatracker.ietf.org/doc/html/rfc7231#section-7.1.1.1" target="_blank">rfc7231</a>에 기반하고 <a href="https://tc39.es/ecma262/#sec-date.prototype.toutcstring" target="_blank">ECMA-262 toUTCString</a>에 따라 음수 값을 가질 수 있습니다.</p>
+</div>
+<section aria-labelledby="시도해보기"><h2 id="시도해보기">시도해보기</h2>
+<div class="section-content"><iframe class="interactive is-shorter-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/js/date-toutcstring.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe></div></section><section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="OEIWr6txGSh9BGvz9KxaVuF47wyq3ff4K8DLkhy2Hr0=" data-language="js"><span class="token function">toUTCString</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+</pre>
+</div></div></section><section aria-labelledby="반환_값"><h3 id="반환_값">반환 값</h3>
+<div class="section-content"><p>UTC 시간대를 사용하여 지정된 날짜를 나타내는 문자열입니다.</p></div></section><section aria-labelledby="설명"><h2 id="설명">설명</h2>
+<div class="section-content">
+<p><code>toUTCString()</code>에 의하여 반환된 값은 <code>Www, dd Mmm yyyy hh:mm:ss GMT</code> 형식의 문자열입니다, 아래와 같습니다.</p> <figure class="table-container"><div class="_table"><table> <thead> <tr> <th>문자열 형식</th> <th>설명</th> </tr> </thead> <tbody> <tr> <td><code>Www</code></td> <td>요일, 세 글자로 (예를 들어 <code>Sun</code>, <code>Mon</code>)</td> </tr> <tr> <td><code>dd</code></td> <td>월일, 필요한 경우 선두가 0인 두 자리 숫자로 표시</td> </tr> <tr> <td><code>Mmm</code></td> <td>달, 세 글자로 (예를 들어 <code>Jan</code>, <code>Feb</code>)</td> </tr> <tr> <td><code>yyyy</code></td> <td>연도, 필요한 경우 선행 0이 포함된 네 자리 이상의 숫자로 표시</td> </tr> <tr> <td><code>hh</code></td> <td>시간, 필요한 경우 선행 0인 두 자리 숫자로 표시</td> </tr> <tr> <td><code>mm</code></td> <td>분, 필요한 경우 선행 0인 두 자리 숫자로 표시</td> </tr> <tr> <td><code>ss</code></td> <td>초, 필요한 경우 선행 0인 두 자리 숫자로 표시</td> </tr> </tbody> </table></div></figure>
+</div></section><section aria-labelledby="별칭"><h3 id="별칭">별칭</h3>
+<div class="section-content">
+<p>JavaScript의 <code>Date</code> API는 Java의 <code>java.util.Date</code> 라이브러리의 영감을 받았습니다 (1997년 Java 1.1 이후로 사실상 유산이 될지라도). 특히 JavaScript의 날짜는 항상 UTC 시간에 의해 작동하는 반면, <a href="https://en.wikipedia.org/wiki/Greenwich_Mean_Time" target="_blank">Greenwich Mean Time</a>는 <a href="https://en.wikipedia.org/wiki/Coordinated_Universal_Time" target="_blank">Coordinated Universal Time</a>와 동일하지 않기 때문에, Java의 <code>Date</code> 클래스에는 <code>toGMTString</code>이라는 형편없는 이름의 메서드가 있었습니다. 웹 호환성의 이유로 <code>toGMTSring</code>은 <code>toUTCString</code>의 별칭으로 남아 있으며, 이들은 정확히 동일한 함수 개체를 참조합니다. 아래와 같습니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="3dG7QOo53pvfAeqn9K9XBQf0edu/7i/YmOYEMaGQqx0=" data-language="js"><span class="token class-name">Date</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span>toGMTString<span class="token punctuation">.</span>name <span class="token operator">===</span> <span class="token string">"toUTCString"</span><span class="token punctuation">;</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+</section><section aria-labelledby="toutcstring_사용"><h3 id="toutcstring_사용">toUTCString() 사용</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="OCOojaPsez2TTu3QR3uvlcasBF8qmvf97aaPIamr8Uw=" data-language="js"><span class="token keyword">const</span> today <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token string">"Wed, 14 Jun 2017 00:00:00 PDT"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> UTCstring <span class="token operator">=</span> today<span class="token punctuation">.</span><span class="token function">toUTCString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Wed, 14 Jun 2017 07:00:00 GMT</span>
+</pre>
+</div></div></section><h2 id="명세서">명세서</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://tc39.es/ecma262/multipage/numbers-and-dates.html#sec-date.prototype.toutcstring">ECMAScript Language Specification <br><small># sec-date.prototype.toutcstring</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="tolocalestring"><code>Date.prototype.toLocaleString()</code></a></li> <li><a href="todatestring"><code>Date.prototype.toDateString()</code></a></li> <li><a href="toisostring"><code>Date.prototype.toISOString()</code></a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Date/toUTCString" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Date/toUTCString</a>
+  </p>
+</div>

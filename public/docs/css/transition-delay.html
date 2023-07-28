@@ -1,0 +1,74 @@
+<header><h1>transition-delay</h1></header><div class="section-content"><div class="notecard experimental" id="sect1"><p><strong>Experimental:</strong> <strong>This is an <a href="https://developer.mozilla.org/en-US/docs/MDN/Writing_guidelines/Experimental_deprecated_obsolete#experimental">experimental technology</a></strong><br>Check the <a href="#browser_compatibility">Browser compatibility table</a> carefully before using this in production.</p></div></div>
+<section aria-labelledby="summary"><h2 id="summary">Summary</h2>
+<div class="section-content">
+<p><code>transition-delay</code> CSS 속성은 transition될 속성이 transition 요청을 받은 이후 실제로 <a href="css_transitions/using_css_transitions">transition하기</a>까지 기다려야하는 시간의 양을 지정합니다.</p> <p>A value of <code>0s</code>, or <code>0ms</code>, indicates that the property will begin to animate its transition immediately when the value changes; positive values will delay the start of the transition effect for the corresponding number of seconds. Negative values cause the transition to begin immediately, but to cause the transition to seem to begin partway through the animation effect.</p> <p>You may specify multiple delays; each delay will be applied to the corresponding property as specified by the <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/transition-property"><code>transition-property</code> <small>(en-US)</small></a> property, which acts as a master list. If there are fewer delays specified than in the master list, missing values are set to the initial value (<code>0s</code>). If there are more delays, the list is simply truncated to the right size. In both case the CSS declaration stays valid.</p>
+<figure class="table-container"><div class="_table"><table class="properties"><tbody>
+<tr>
+<th scope="row"><a href="initial_value">초기값</a></th>
+<td><code>0s</code></td>
+</tr>
+<tr>
+<th scope="row">적용대상</th>
+<td>all elements, <a href="::before"><code>::before</code></a> and <a href="::after"><code>::after</code></a> <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-elements">pseudo-elements</a>
+</td>
+</tr>
+<tr>
+<th scope="row"><a href="inheritance">상속</a></th>
+<td>no</td>
+</tr>
+<tr>
+<th scope="row"><a href="computed_value">계산 값</a></th>
+<td>as specified</td>
+</tr>
+<tr>
+<th scope="row">Animation type</th>
+<td>Not animatable</td>
+</tr>
+</tbody></table></div></figure>
+</div></section><section aria-labelledby="syntax"><h2 id="syntax">Syntax</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="LmT9keo7DqLfnu6AP/YYaOyW6XUJRZXjm6Krv6XePJE=" data-language="css"><span class="token comment">/* &lt;time&gt; values */</span>
+<span class="token property">transition-delay</span><span class="token punctuation">:</span> 3s<span class="token punctuation">;</span>
+<span class="token property">transition-delay</span><span class="token punctuation">:</span> 2s<span class="token punctuation">,</span> 4ms<span class="token punctuation">;</span>
+
+<span class="token comment">/* Global values */</span>
+<span class="token property">transition-delay</span><span class="token punctuation">:</span> inherit<span class="token punctuation">;</span>
+<span class="token property">transition-delay</span><span class="token punctuation">:</span> initial<span class="token punctuation">;</span>
+<span class="token property">transition-delay</span><span class="token punctuation">:</span> unset<span class="token punctuation">;</span>
+</pre>
+</div></div></section><section aria-labelledby="values"><h3 id="values">Values</h3>
+<div class="section-content"><dl> <dt id="time"><code>&lt;time&gt;</code></dt> <dd> <p>Is a <a href="time"><code>&lt;time&gt;</code></a> denoting the amount of time to wait between a property's value changing and the start of the animation effect.</p> </dd> </dl></div></section><section aria-labelledby="formal_syntax"><h3 id="formal_syntax">Formal syntax</h3>
+<div class="section-content"><pre class="notranslate"><span class="token property" id="transition-delay">transition-delay = </span><br>  <a href="time"><span class="token property">&lt;time&gt;</span></a><a href="value_definition_syntax#hash_mark">#</a>  <br><br></pre></div></section><section aria-labelledby="examples"><h2 id="examples">Examples</h2>
+<div class="section-content">
+<p><code>transition-delay: 0.5s</code></p>   
+<div class="code-example" id="sect2">
+
+<iframe class="sample-code-frame" title="Examples" id="frame_delay_0_5s" width="275" height="150" src="https://live.mdnplay.dev/ko/docs/Web/CSS/transition-delay/runner.html?id=delay_0_5s" loading="lazy"></iframe>
+</div> <p><code>transition-delay: 1s</code></p>   
+<div class="code-example" id="sect3">
+
+<iframe class="sample-code-frame" title="Examples" id="frame_delay_1s" width="275" height="150" src="https://live.mdnplay.dev/ko/docs/Web/CSS/transition-delay/runner.html?id=delay_1s" loading="lazy"></iframe>
+</div> <p><code>transition-delay: 2s</code></p>   
+<div class="code-example" id="sect4">
+
+<iframe class="sample-code-frame" title="Examples" id="frame_delay_2s" width="275" height="150" src="https://live.mdnplay.dev/ko/docs/Web/CSS/transition-delay/runner.html?id=delay_2s" loading="lazy"></iframe>
+</div> <p><code>transition-delay: 4s</code></p>   
+<div class="code-example" id="sect5">
+
+<iframe class="sample-code-frame" title="Examples" id="frame_delay_4s" width="275" height="150" src="https://live.mdnplay.dev/ko/docs/Web/CSS/transition-delay/runner.html?id=delay_4s" loading="lazy"></iframe>
+</div>
+</div></section><h2 id="명세서">명세서</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://drafts.csswg.org/css-transitions/#transition-delay-property">CSS Transitions <br><small># transition-delay-property</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="see_also"><h2 id="see_also">See also</h2>
+<div class="section-content"><ul> <li><a href="css_transitions/using_css_transitions">Using CSS transitions</a></li> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/TransitionEvent"><code>TransitionEvent</code> <small>(en-US)</small></a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/CSS/transition-delay" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/CSS/transition-delay</a>
+  </p>
+</div>

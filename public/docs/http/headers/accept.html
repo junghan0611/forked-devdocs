@@ -1,0 +1,36 @@
+<h1>Accept</h1>
+<header><h1>Accept</h1></header><div class="section-content">
+<p><code>Accept</code> 요청 HTTP 헤더는 <a href="../basics_of_http/mime_types">MIME 타입</a>으로 표현되는, 클라이언트가 이해 가능한 컨텐츠 타입이 무엇인지를 알려줍니다. <a href="../content_negotiation">컨텐츠 협상</a>을 이용해, 서버는 제안 중 하나를 선택하고 사용하며 <a href="content-type"><code>Content-Type</code></a> 응답 헤더로 클라이언트에게 선택된 타입을 알려줍니다. 브라우저는 요청이 이루어진 컨텍스트에 따라 해당 헤더에 대해 적당한 값들을 설정합니다: CSS 스타일시트를 불러오게 되면, 이미지, 비디오 혹은 스크립트를 불러올 때와 다른 값이 요청에 대해 설정됩니다.</p> <figure class="table-container"><div class="_table"><table class="properties"> <tbody> <tr> <th scope="row">Header type</th> <td><a href="https://developer.mozilla.org/ko/docs/Glossary/Request_header">Request header</a></td> </tr> <tr> <th scope="row"><a href="https://developer.mozilla.org/ko/docs/Glossary/Forbidden_header_name">Forbidden header name</a></th> <td>no</td> </tr> </tbody> </table></div></figure>
+</div>
+<section aria-labelledby="문법"><h2 id="문법">문법</h2>
+<div class="section-content"><pre class="notranslate">Accept: &lt;MIME_type&gt;/&lt;MIME_subtype&gt;
+Accept: &lt;MIME_type&gt;/*
+Accept: */*
+
+// Multiple types, weighted with the <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Glossary/Quality_values">quality value <small>(en-US)</small></a> syntax:
+Accept: text/html, application/xhtml+xml, application/xml;q=0.9, */*;q=0.8
+</pre></div></section><section aria-labelledby="디렉티브"><h2 id="디렉티브">디렉티브</h2>
+<div class="section-content"><dl> <dt id="mime_typemime_subtype"><code>&lt;MIME_type&gt;/&lt;MIME_subtype&gt;</code></dt> <dd> <p><code>text/html</code>와 같이 단일의 간격한 <a href="../basics_of_http/mime_types">MIME 타입</a>.</p> </dd> <dt id="mime_type"><code>&lt;MIME_type&gt;/*</code></dt> <dd> <p>서버 타입을 갖지 않는 MIME 타입. <code>image/*</code> 은 <code>image/png</code>, <code>image/svg</code>, <code>image/gif</code> 그리고 어떤 다른 이미지 타입들과도 일치하게 됩니다.</p> </dd> <dt id="sect1"><code>*/*</code></dt> <dd> <p>모든 MIME 타입</p> </dd> <dt id="q">
+<code>;q=</code> (q-인자 가중치)</dt> <dd> <p>사용되는 모든 값들은 <em>weight</em>라고 부르는 상대적인 <a href="https://developer.mozilla.org/en-US/docs/Glossary/Quality_values" class="only-in-en-us">품질 값 <small>(en-US)</small></a>을 사용하여 표현되는 선호 순서로 대체됩니다.</p> </dd> </dl></div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+<div class="section-content"><pre class="notranslate">Accept: text/html
+
+Accept: image/*
+
+Accept: text/html, application/xhtml+xml, application/xml;q=0.9, */*;q=0.8
+</pre></div></section><h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://www.rfc-editor.org/rfc/rfc9110#field.accept">HTTP Semantics <br><small># field.accept</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="함께_참고할_내용"><h2 id="함께_참고할_내용">함께 참고할 내용</h2>
+<div class="section-content"><ul> <li>HTTP <a href="../content_negotiation">컨텐츠 협상</a>
+</li> <li>컨텐츠 현상의 결과에 대한 헤더: <a href="content-type"><code>Content-Type</code></a>
+</li> <li>다른 유사한 헤더들: <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/TE" class="only-in-en-us"><code>TE</code> <small>(en-US)</small></a>, <a href="accept-encoding"><code>Accept-Encoding</code></a>, <a href="accept-charset"><code>Accept-Charset</code></a>, <a href="accept-language"><code>Accept-Language</code></a>
+</li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/HTTP/Headers/Accept" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/HTTP/Headers/Accept</a>
+  </p>
+</div>

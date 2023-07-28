@@ -1,0 +1,35 @@
+<header><h1>Number.MAX_VALUE</h1></header><div class="section-content"><p><code>Number.MAX_VALUE</code> 속성은 JavaScript가 표현할 수 있는 제일 큰 양의 숫자 값을 나타냅니다.</p></div>
+<section aria-labelledby="시도해보기"><h2 id="시도해보기">시도해보기</h2>
+<div class="section-content">
+<iframe class="interactive is-js-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/js/number-maxvalue.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe><figure class="table-container"><div class="_table"><table class="standard-table"> <thead> <tr> <th class="header" colspan="2">Property attributes of <code>Number.MAX_VALUE</code>
+</th> </tr> </thead> <tbody> <tr> <td>Writable</td> <td>불가능</td> </tr> <tr> <td>Enumerable</td> <td>불가능</td> </tr> <tr> <td>Configurable</td> <td>불가능</td> </tr> </tbody> </table></div></figure>
+</div></section><section aria-labelledby="설명"><h2 id="설명">설명</h2>
+<div class="section-content">
+<p><code>MAX_VALUE</code>의 값은 약 <code>1.79E+308</code>, 2^1024입니다. <code>MAX_VALUE</code>보다 큰 값은 <a href="../infinity"><code>Infinity</code></a>로 표현됩니다.</p> <p><code>MAX_VALUE</code>는 <a href="../number"><code>Number</code></a>의 정적 속성이기 때문에, 직접 생성한 <a href="../number"><code>Number</code></a> 객체의 속성이 아니라 <code>Number.MAX_VALUE</code> 형식으로 사용해야 합니다.</p>
+</div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+</section><section aria-labelledby="max_value_사용하기"><h3 id="max_value_사용하기">
+<code>MAX_VALUE</code> 사용하기</h3>
+<div class="section-content">
+<p>다음 코드는 두 개의 수를 곱합니다. 만약 결과가 <code>MAX_VALUE</code> 이하면 <code>func1</code>을 호출하고, 그렇지 않으면 <code>func2</code>를 호출합니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="bx3sLxJTZiSFfNyPisJo9lC2pKWFa0CjzkzHkb9w1Ec=" data-language="js"><span class="token keyword">if</span> <span class="token punctuation">(</span>num1 <span class="token operator">*</span> num2 <span class="token operator">&lt;=</span> Number<span class="token punctuation">.</span><span class="token constant">MAX_VALUE</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token function">func1</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+  <span class="token function">func2</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div>
+</div></section><h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://tc39.es/ecma262/multipage/numbers-and-dates.html#sec-number.max_value">ECMAScript Language Specification <br><small># sec-number.max_value</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="참고"><h2 id="참고">참고</h2>
+<div class="section-content"><ul> <li><a href="min_value"><code>Number.MIN_VALUE</code></a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Number/MAX_VALUE" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Number/MAX_VALUE</a>
+  </p>
+</div>

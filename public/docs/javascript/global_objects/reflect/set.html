@@ -1,0 +1,52 @@
+<header><h1>Reflect.set()</h1></header><div class="section-content"><p><code>Reflect.set()</code> 정적 메서드는 객체 속성의 값을 설정합니다.</p></div>
+<section aria-labelledby="시도해보기"><h2 id="시도해보기">시도해보기</h2>
+<div class="section-content"><iframe class="interactive is-js-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/js/reflect-set.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe></div></section><section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="KYOJkQgdRMO1auOctZHqJWja17n9jkdu5XEwcXM7SJA=" data-language="js">Reflect<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span>target<span class="token punctuation">,</span> propertyKey<span class="token punctuation">,</span> value<span class="token punctuation">[</span><span class="token punctuation">,</span> receiver<span class="token punctuation">]</span><span class="token punctuation">)</span>
+</pre>
+</div></div></section><section aria-labelledby="매개변수"><h3 id="매개변수">매개변수</h3>
+<div class="section-content"><dl> <dt id="target"><code>target</code></dt> <dd> <p>속성의 값을 설정할 대상 객체.</p> </dd> <dt id="propertykey"><code>propertyKey</code></dt> <dd> <p>값을 설정할 속성의 이름.</p> </dd> <dt id="value"><code>value</code></dt> <dd> <p>설정할 값.</p> </dd> <dt id="receiver">
+<code>receiver</code> <span class="badge inline optional">Optional</span>
+</dt> <dd> <p>속성이 설정자일 경우, <code>this</code>로 사용할 값.</p> </dd> </dl></div></section><section aria-labelledby="반환_값"><h3 id="반환_값">반환 값</h3>
+<div class="section-content"><p>값 설정의 성공 여부를 나타내는 <a href="../boolean"><code>Boolean</code></a>.</p></div></section><section aria-labelledby="예외"><h3 id="예외">예외</h3>
+<div class="section-content"><p><code>target</code>이 <a href="../object"><code>Object</code></a>가 아니면 <a href="../typeerror"><code>TypeError</code></a>.</p></div></section><section aria-labelledby="설명"><h2 id="설명">설명</h2>
+<div class="section-content"><p><code>Reflect.set()</code> 메서드는 객체 속성의 값을 설정할 수 있습니다. 속성 추가도 할 수 있으며, 함수라는 점을 제외하면 동작 방식은 <a href="../../operators/property_accessors">속성 접근자</a>와 같습니다.</p></div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+</section><section aria-labelledby="reflect.set_사용하기"><h3 id="reflect.set_사용하기">
+<code>Reflect.set()</code> 사용하기</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="057+r1iaAtsamBM/Je5Jtkt8v919lPFRtEL33/wYgto=" data-language="js"><span class="token comment">// Object</span>
+<span class="token keyword">var</span> obj <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+Reflect<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span>obj<span class="token punctuation">,</span> <span class="token string">'prop'</span><span class="token punctuation">,</span> <span class="token string">'value'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// true</span>
+obj<span class="token punctuation">.</span>prop<span class="token punctuation">;</span> <span class="token comment">// "value"</span>
+
+<span class="token comment">// Array</span>
+<span class="token keyword">var</span> arr <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'duck'</span><span class="token punctuation">,</span> <span class="token string">'duck'</span><span class="token punctuation">,</span> <span class="token string">'duck'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+Reflect<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span>arr<span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token string">'goose'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// true</span>
+arr<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment">// "goose"</span>
+
+<span class="token comment">// 배열 자르기</span>
+Reflect<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span>arr<span class="token punctuation">,</span> <span class="token string">'length'</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// true</span>
+arr<span class="token punctuation">;</span> <span class="token comment">// ["duck"];</span>
+
+<span class="token comment">// 매개변수를 하나만 제공하면 속성 키 이름은 문자열 "undefined", 값은 undefined</span>
+<span class="token keyword">var</span> obj <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+Reflect<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// true</span>
+Reflect<span class="token punctuation">.</span><span class="token function">getOwnPropertyDescriptor</span><span class="token punctuation">(</span>obj<span class="token punctuation">,</span> <span class="token string">'undefined'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// { value: undefined, writable: true, enumerable: true, configurable: true }</span>
+</pre>
+</div></div></section><h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://tc39.es/ecma262/multipage/reflection.html#sec-reflect.set">ECMAScript Language Specification <br><small># sec-reflect.set</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="../reflect"><code>Reflect</code></a></li> <li><a href="../../operators/property_accessors">속성 접근자</a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Reflect/set" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Reflect/set</a>
+  </p>
+</div>

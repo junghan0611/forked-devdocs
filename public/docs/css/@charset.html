@@ -1,0 +1,35 @@
+<header><h1>@charset</h1></header><div class="section-content">
+<p><code>@charset</code> <a href="https://developer.mozilla.org/ko/docs/Web/CSS">CSS</a> <a href="at-rule">at-규칙</a>은 스타일 시트에 쓰이는 문자 인코딩을 지정합니다. 스타일 시트의 첫 번째 요소여야 하며 어떤 문자가 선행되지 않아야 합니다; <a href="syntax#nested_statements">중첩된 문</a>이 아니기에, <a href="at-rule#conditional_group_rules">조건부 그룹 at-규칙</a> 내에 사용될 수 없습니다. 여러 <code>@charset</code> at-규칙이 정의된 경우, 첫 번째 것만 사용되고 HTML 요소의 <code>style</code> attribute 또는 HTML 페이지의 문자 집합과 관련 있는 <a href="https://developer.mozilla.org/ko/docs/Web/HTML/Element/style"><code>&lt;style&gt;</code></a> 요소 내에서 사용될 수 없습니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="/6G7NS6uxv0fVrQpHcqi071CUrCwjXVfqbW/eHE3e/4=" data-language="css"><span class="token atrule"><span class="token rule">@charset</span> <span class="token string">"utf-8"</span><span class="token punctuation">;</span></span>
+</pre>
+</div> <p>이 at-규칙은 <a href="content"><code>content</code></a>처럼 일부 CSS 속성(property)에서 비 ASCII 문자를 사용할 때 유용합니다.</p> <p>스타일 시트의 문자 인코딩을 정의하는 여러 방법이 있기에, 브라우저는 다음과 같은 순서로 다음 방법을 시도합니다( 그리고 하나가 결과를 산출하자 마자 곧 멈춥니다):</p> <ol> <li>파일의 시작 부분에 놓이는 <a href="http://en.wikipedia.org/wiki/Byte_order_mark" target="_blank">Unicode byte-order</a> 문자값.</li> <li>
+<code>Content-Type:</code> HTTP 헤더의 <code>charset</code> attribute 또는 스타일 시트를 제공하는 데 쓰이는 프로토콜 등가물에 주어진 값.</li> <li>
+<code>@charset</code> CSS at-규칙.</li> <li>참조하는 문서에 의해 정의된 문자 인코딩 사용: <a href="https://developer.mozilla.org/ko/docs/Web/HTML/Element/link"><code>&lt;link&gt;</code></a> 요소의 <code>charset</code> attribute. 이 메서드는 HTML5에서 폐기(obsolete)되어 사용해서는 안됩니다.</li> <li>문서가 UTF-8이라고 가정</li> </ol>
+</div>
+<section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content">
+<pre class="notranslate">@charset "UTF-8";
+@charset 'iso-8859-15';
+</pre> <p>where:</p> <dl> <dt id="charset"><em>charset</em></dt> <dd> <p>사용되는 문자 인코딩을 나타내는 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/string"><code>&lt;string&gt;</code> <small>(en-US)</small></a>입니다. <a href="https://www.iana.org/assignments/character-sets" target="_blank">IANA-registry</a>에 정의된 웹 안전 문자 인코딩의 이름이어야 합니다. 여러 이름이 인코딩과 관련된 경우, <em>preferred</em>로 표시된 것만 사용되어야 합니다.</p> </dd> </dl>
+</div></section><section aria-labelledby="형식_구문"><h3 id="형식_구문">형식 구문</h3>
+<div class="section-content">Error: could not find syntax for this item</div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="mA0jq9rGj4b4cUg5U0B5CRfgMKVj+6SttncZDmVH2iI=" data-language="css"><span class="token atrule"><span class="token rule">@charset</span> <span class="token string">"UTF-8"</span><span class="token punctuation">;</span></span>       <span class="token comment">/* 스타일 시트의 인코딩을 Unicode UTF-8로 설정 */</span>
+<span class="token atrule"><span class="token rule">@charset</span> <span class="token string">'iso-8859-15'</span><span class="token punctuation">;</span></span> <span class="token comment">/* 스타일 시트의 인코딩을 Latin-9 (서유럽어, euro sign 있는) 로 설정 */</span>
+ <span class="token atrule"><span class="token rule">@charset</span> <span class="token string">"UTF-8"</span><span class="token punctuation">;</span></span>      <span class="token comment">/* 무효한, at-규칙 앞에 문자(공백)가 있음 */</span>
+<span class="token atrule"><span class="token rule">@charset</span> UTF-8<span class="token punctuation">;</span></span>         <span class="token comment">/* 무효한, ' 또는 " 없는 문자집합 CSS &lt;string&gt; (en-US)이 아님 */</span>
+</pre>
+</div></div></section><h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="#">Cascading Style Sheets Level 2 Revision 2 (CSS 2.2) Specification <br><small># charset①</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/CSS/@charset" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/CSS/@charset</a>
+  </p>
+</div>

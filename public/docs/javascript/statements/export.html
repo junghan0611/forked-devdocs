@@ -1,0 +1,160 @@
+<header><h1>export</h1></header><div class="section-content">
+<p><code>export</code> 문은 JavaScript 모듈에서 함수, 객체, 원시 값을 내보낼 때 사용합니다. 내보낸 값은 다른 프로그램에서 <a href="import"><code>import</code></a> 문으로 가져가 사용할 수 있습니다.</p> <p>내보내는 모듈은 <code>"use strict"</code>의 존재 유무와 상관없이 무조건 <a href="../strict_mode">엄격 모드</a>입니다. <code>export</code> 문은 HTML 안에 작성한 스크립트에서는 사용할 수 없습니다.</p>
+</div>
+<section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content">
+<div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="kDsVOAFu7DBgTkS1aJT1BMRQ9AUMktT1MuKbMqccc4c=" data-language="js">    <span class="token comment">// 하나씩 내보내기</span>
+    <span class="token keyword">export</span> <span class="token keyword">let</span> name1<span class="token punctuation">,</span> name2<span class="token punctuation">,</span> …<span class="token punctuation">,</span> nameN<span class="token punctuation">;</span> <span class="token comment">// var, const도 동일</span>
+    <span class="token keyword">export</span> <span class="token keyword">let</span> name1 <span class="token operator">=</span> …<span class="token punctuation">,</span> name2 <span class="token operator">=</span> …<span class="token punctuation">,</span> …<span class="token punctuation">,</span> nameN<span class="token punctuation">;</span> <span class="token comment">// var, const도 동일</span>
+    <span class="token keyword">export</span> <span class="token keyword">function</span> <span class="token function">functionName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token operator">...</span><span class="token punctuation">}</span>
+    <span class="token keyword">export</span> <span class="token keyword">class</span> <span class="token class-name">ClassName</span> <span class="token punctuation">{</span><span class="token operator">...</span><span class="token punctuation">}</span>
+
+    <span class="token comment">// 목록으로 내보내기</span>
+    <span class="token keyword">export</span> <span class="token punctuation">{</span> name1<span class="token punctuation">,</span> name2<span class="token punctuation">,</span> …<span class="token punctuation">,</span> nameN <span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// 내보내면서 이름 바꾸기</span>
+    <span class="token keyword">export</span> <span class="token punctuation">{</span> variable1 <span class="token keyword">as</span> name1<span class="token punctuation">,</span> variable2 <span class="token keyword">as</span> name2<span class="token punctuation">,</span> …<span class="token punctuation">,</span> nameN <span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// 비구조화로 내보내기</span>
+    <span class="token keyword">export</span> <span class="token keyword">const</span> <span class="token punctuation">{</span> name1<span class="token punctuation">,</span> <span class="token literal-property property">name2</span><span class="token operator">:</span> bar <span class="token punctuation">}</span> <span class="token operator">=</span> o<span class="token punctuation">;</span>
+
+    <span class="token comment">// 기본 내보내기</span>
+    <span class="token keyword">export</span> <span class="token keyword">default</span> expression<span class="token punctuation">;</span>
+    <span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">…</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> … <span class="token punctuation">}</span> <span class="token comment">// also class, function*</span>
+    <span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">function</span> <span class="token function">name1</span><span class="token punctuation">(</span><span class="token parameter">…</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> … <span class="token punctuation">}</span> <span class="token comment">// also class, function*</span>
+    <span class="token keyword">export</span> <span class="token punctuation">{</span> name1 <span class="token keyword">as</span> <span class="token keyword">default</span><span class="token punctuation">,</span> … <span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// 모듈 조합</span>
+    <span class="token keyword">export</span> <span class="token operator">*</span> from …<span class="token punctuation">;</span> <span class="token comment">// does not set the default export</span>
+    <span class="token keyword">export</span> <span class="token operator">*</span> <span class="token keyword">as</span> name1 from …<span class="token punctuation">;</span>
+    <span class="token keyword">export</span> <span class="token punctuation">{</span> name1<span class="token punctuation">,</span> name2<span class="token punctuation">,</span> …<span class="token punctuation">,</span> nameN <span class="token punctuation">}</span> from …<span class="token punctuation">;</span>
+    <span class="token keyword">export</span> <span class="token punctuation">{</span> import1 <span class="token keyword">as</span> name1<span class="token punctuation">,</span> import2 <span class="token keyword">as</span> name2<span class="token punctuation">,</span> …<span class="token punctuation">,</span> nameN <span class="token punctuation">}</span> from …<span class="token punctuation">;</span>
+    <span class="token keyword">export</span> <span class="token punctuation">{</span> <span class="token keyword">default</span> <span class="token punctuation">}</span> from …<span class="token punctuation">;</span>
+</pre>
+</div> <dl> <dt id="namen"><code>nameN</code></dt> <dd> <p>내보낼 식별자 이름. <a href="import"><code>import</code></a>를 사용해 다른 스크립트에서 가져갈 수 있습니다.</p> </dd> </dl>
+</div></section><section aria-labelledby="설명"><h2 id="설명">설명</h2>
+<div class="section-content">
+<p>내보내기에는 두 종류, <strong>유명</strong>(named)과 <strong>기본</strong>(default) 내보내기가 있습니다. 모듈 하나에서, 유명 내보내기는 여러 개 존재할 수 있지만 기본 내보내기는 하나만 가능합니다. 각 종류는 위의 구문 중 하나와 대응합니다.</p> <ul> <li>유명 내보내기 <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="W4CYUagC7HzW3hqOJFkWZjnrtcu6eZceGgHwO0//npE=" data-language="js"><span class="token comment">// 먼저 선언한 식별자 내보내기</span>
+<span class="token keyword">export</span> <span class="token punctuation">{</span> myFunction<span class="token punctuation">,</span> myVariable <span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token comment">// 각각의 식별자 내보내기</span>
+<span class="token comment">// (변수, 상수, 함수, 클래스)</span>
+<span class="token keyword">export</span> <span class="token keyword">let</span> myVariable <span class="token operator">=</span> Math<span class="token punctuation">.</span><span class="token function">sqrt</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">export</span> <span class="token keyword">function</span> <span class="token function">myFunction</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token operator">...</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
+</pre>
+</div> </li> <li>기본 내보내기 <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="+10u7dGc4IE0b9/VRWe1zHfJ1ME6/FlUJN1HbiW/V4I=" data-language="js"><span class="token comment">// 먼저 선언한 식별자 내보내기</span>
+<span class="token keyword">export</span> <span class="token punctuation">{</span> myFunction <span class="token keyword">as</span> <span class="token keyword">default</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token comment">// 각각의 식별자 내보내기</span>
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token operator">...</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">class</span> <span class="token punctuation">{</span> <span class="token operator">...</span> <span class="token punctuation">}</span>
+</pre>
+</div> </li> </ul> <p>유명 내보내기는 여러 값을 내보낼 때 유용합니다. 가져갈 때는 내보낸 이름과 동일한 이름을 사용해야 합니다.</p> <p>반면 기본 내보내기는 어떤 이름으로도 가져올 수 있습니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="XycmZG5Lop7GrGcbRUny5P0IPlqvHEsnYOfPkTo+B78=" data-language="js"><span class="token comment">// test.js</span>
+<span class="token keyword">let</span> k<span class="token punctuation">;</span> 
+<span class="token keyword">export</span> <span class="token keyword">default</span> k <span class="token operator">=</span> <span class="token number">12</span><span class="token punctuation">;</span>
+</pre>
+</div> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="vLDS/Dle592EF35AOErfDyG7X/4zXkJxToDsoD1MKcE=" data-language="js"><span class="token comment">// 임의의 다른 파일</span>
+<span class="token keyword">import</span> m <span class="token keyword">from</span> <span class="token string">'./test'</span><span class="token punctuation">;</span> <span class="token comment">// k가 기본 내보내기이므로, 가져오는 이름으로 k 대신 m을 사용해도 문제 없음</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>m<span class="token punctuation">)</span><span class="token punctuation">;</span>         <span class="token comment">// 12 기록</span>
+</pre>
+</div> <p>식별자 충돌을 피하기 위해 유명 내보내기 중 이름을 바꿔줄 수도 있습니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="wQC7Yzdg+M1qzulGXbxQw6wK98IKl5IJcKy3e62Fato=" data-language="js"><span class="token keyword">export</span> <span class="token punctuation">{</span> myFunction <span class="token keyword">as</span> function1<span class="token punctuation">,</span>
+         myVariable <span class="token keyword">as</span> variable <span class="token punctuation">}</span><span class="token punctuation">;</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="다시_내보내기_조합"><h3 id="다시_내보내기_조합">다시 내보내기 / 조합</h3>
+<div class="section-content">
+<p>부모 모듈이 자식 모듈을 가져와서 다시 내보낼 수도 있습니다. 즉, 여러 개의 모듈을 모아놓을 하나의 모듈을 만들 수 있습니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="JvS5jJrSIANz4jnzHVYnnqbTIFjYXehjcbm0vm0a/Y0=" data-language="js"><span class="token keyword">export</span> foo <span class="token keyword">from</span> <span class="token string">'bar.js'</span><span class="token punctuation">;</span>
+</pre>
+</div> <p>위 구문은 아래와 동일합니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="U5GwvqaAlgYLabXKcoCuwLR8dPrmxf26ji/KEyh6XSw=" data-language="js"><span class="token keyword">import</span> foo <span class="token keyword">from</span> <span class="token string">'bar.js'</span><span class="token punctuation">;</span>
+<span class="token keyword">export</span> foo<span class="token punctuation">;</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+</section><section aria-labelledby="유명_내보내기_사용"><h3 id="유명_내보내기_사용">유명 내보내기 사용</h3>
+<div class="section-content">
+<p>어떤 모듈에서 다음과 같은 코드를 가진다고 해보겠습니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="VEAzzwGj2rf/la5MLWWwaBWD3EcSb+wm7UZWWOeNT20=" data-language="js"><span class="token comment">// module "my-module.js"</span>
+<span class="token keyword">function</span> <span class="token function">cube</span><span class="token punctuation">(</span><span class="token parameter">x</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> x <span class="token operator">*</span> x <span class="token operator">*</span> x<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">const</span> foo <span class="token operator">=</span> Math<span class="token punctuation">.</span><span class="token constant">PI</span> <span class="token operator">+</span> Math<span class="token punctuation">.</span><span class="token constant">SQRT2</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> graph <span class="token operator">=</span> <span class="token punctuation">{</span>
+    <span class="token literal-property property">options</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token literal-property property">color</span><span class="token operator">:</span><span class="token string">'white'</span><span class="token punctuation">,</span>
+        <span class="token literal-property property">thickness</span><span class="token operator">:</span><span class="token string">'2px'</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token function-variable function">draw</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'From graph draw function'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">export</span> <span class="token punctuation">{</span> cube<span class="token punctuation">,</span> foo<span class="token punctuation">,</span> graph <span class="token punctuation">}</span><span class="token punctuation">;</span>
+</pre>
+</div> <p>다른 스크립트에서는 아래와 같이 사용할 수 있습니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="cIi4XVX7E64vfevIUQnXQ000QfvnzHJqTxRUuHtAl6w=" data-language="js"><span class="token comment">// You should use this script in html with the type module.</span>
+<span class="token comment">// For example:</span>
+<span class="token comment">//   &lt;script type="module" src="./demo.js"&gt;&lt;/script&gt;</span>
+<span class="token comment">//</span>
+<span class="token comment">// Open the page in a http server, otherwise there will be a CORS policy error.</span>
+<span class="token comment">//</span>
+<span class="token comment">// script demo.js</span>
+
+<span class="token keyword">import</span> <span class="token punctuation">{</span> cube<span class="token punctuation">,</span> foo<span class="token punctuation">,</span> graph <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'my-module'</span><span class="token punctuation">;</span>
+graph<span class="token punctuation">.</span>options <span class="token operator">=</span> <span class="token punctuation">{</span>
+    <span class="token literal-property property">color</span><span class="token operator">:</span><span class="token string">'blue'</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">thickness</span><span class="token operator">:</span><span class="token string">'3px'</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+graph<span class="token punctuation">.</span><span class="token function">draw</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token function">cube</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 27</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>foo<span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token comment">// 4.555806215962888</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="기본_내보내기_사용"><h3 id="기본_내보내기_사용">기본 내보내기 사용</h3>
+<div class="section-content">
+<p>단일 값을 내보낼 때나 모듈의 폴백 값이 필요할 땐 기본 내보내기를 사용할 수 있습니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="If4AC5ADnEsazhuyNKnB+Th5eahRZJYSdWDYbtr9jKw=" data-language="js"><span class="token comment">// module "my-module.js"</span>
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">function</span> <span class="token function">cube</span><span class="token punctuation">(</span><span class="token parameter">x</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> x <span class="token operator">*</span> x <span class="token operator">*</span> x<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div> <p>그런 다음, 다른 스크립트에서 가져오는건 간단합니다:</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="y/b4dSD8exT1FxSeykgqzDDFFjAlx9Bjq8Pw6l3TPe8=" data-language="js"><span class="token keyword">import</span> cube <span class="token keyword">from</span> <span class="token string">'./my-module.js'</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token function">cube</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 27</span>
+</pre>
+</div> <p><code>export default</code>를 사용할 때 <code>var</code>, <code>let</code>, <code>const</code>는 사용하지 못합니다.</p>
+</div></section><h2 id="명세서">명세서</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://tc39.es/ecma262/multipage/ecmascript-language-scripts-and-modules.html#sec-exports">ECMAScript Language Specification <br><small># sec-exports</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="import"><code>import</code></a></li> <li>
+<a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Guide/Modules">JavaScript 모듈</a> 안내서</li> <li>
+<a href="https://hacks.mozilla.org/2015/08/es6-in-depth-modules/" target="_blank">ES6 in Depth: Modules</a>, Hacks blog post by Jason Orendorff</li> <li>
+<a href="https://hacks.mozilla.org/2018/03/es-modules-a-cartoon-deep-dive/" target="_blank">ES modules: A cartoon deep-dive</a>, Hacks blog post by Lin Clark</li> <li><a href="https://exploringjs.com/es6/ch_modules.html" target="_blank">Axel Rauschmayer's book: "Exploring JS: Modules"</a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Statements/export" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Statements/export</a>
+  </p>
+</div>

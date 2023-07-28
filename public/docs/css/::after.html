@@ -1,0 +1,115 @@
+<header><h1>::after (:after)</h1></header><div class="section-content">
+<p>CSS에서, <code>::after</code> 는 선택한 요소의 맨 마지막 자식으로 <a href="pseudo-elements">의사 요소</a>를 하나 생성합니다. 보통 <a href="content"><code>content</code></a> 속성과 함께 짝지어, 요소에 장식용 콘텐츠를 추가할 때 사용합니다. 기본값은 인라인입니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="rO6rxjHZZ+VsxhPNL4wGnLfxDl2srER+7jb9AdYWRh0=" data-language="css"><span class="token comment">/* 링크 뒤에 화살표 추가 */</span>
+<span class="token selector">a::after</span> <span class="token punctuation">{</span>
+  <span class="token property">content</span><span class="token punctuation">:</span> <span class="token string">"→"</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div> <div class="notecard note" id="sect1"> <p><strong>참고:</strong> <code>::before</code>와 <code>::after</code>로 생성한 의사 요소는 <a href="https://www.w3.org/TR/CSS2/generate.html#before-after-content" target="_blank">원본 요소의 서식 박스에 포함되므로</a>, <a href="https://developer.mozilla.org/ko/docs/Web/HTML/Element/img"><code>&lt;img&gt;</code></a>나 <a href="https://developer.mozilla.org/ko/docs/Web/HTML/Element/br"><code>&lt;br&gt;</code></a> 등 <a href="replaced_element">대체 요소</a>에 적용할 수 없습니다.</p> </div>
+</div>
+<section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content">Error: could not find syntax for this item <div class="notecard note" id="sect2"> <p><strong>참고:</strong> <a href="pseudo-classes">의사 클래스</a>와 <a href="pseudo-elements">의사 요소</a>를 구분하기 위해 CSS3부터<code>::after</code> 구문을 도입했습니다. 그러나 브라우저는 CSS2 구문인 <code>:after</code>도 허용합니다.</p> </div>
+</div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+</section><section aria-labelledby="간단한_사용법"><h3 id="간단한_사용법">간단한 사용법</h3>
+<div class="section-content">
+<p>평범한 문단과 흥미진진한 문단을 위해 클래스 두 개를 만들고, 문단 마지막에 의사 요소를 추가해보겠습니다.</p> <h4 id="html">HTML</h4> <div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="GQvSKobiclDDei4Sjm/GFyDYZM9YiGbsbClzgHqsf9c=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>boring-text<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>적당히 평범하고 심심한 글입니다.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>지루하지도 흥미진진하지도 않은 글입니다.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>exciting-text<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>MDN 기여는 쉽고 재밌습니다.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div> <h4 id="css">CSS</h4> <div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="jaIoY+A8Jtymk582bmLjdDqrce08lFPlXG5EM1w9we4=" data-language="css"><span class="token selector">.exciting-text::after</span> <span class="token punctuation">{</span>
+  <span class="token property">content</span><span class="token punctuation">:</span> <span class="token string">" &lt;- 흥미진진!"</span><span class="token punctuation">;</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> green<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">.boring-text::after</span> <span class="token punctuation">{</span>
+  <span class="token property">content</span><span class="token punctuation">:</span> <span class="token string">" &lt;- 먼지풀풀"</span><span class="token punctuation">;</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> red<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div> <h4 id="결과">결과</h4>
+<div class="code-example" id="sect3">
+
+<iframe class="sample-code-frame" title="간단한 사용법 sample" id="frame_간단한_사용법" width="500" height="150" src="https://live.mdnplay.dev/ko/docs/Web/CSS/::after/runner.html?id=%EA%B0%84%EB%8B%A8%ED%95%9C_%EC%82%AC%EC%9A%A9%EB%B2%95" loading="lazy"></iframe>
+</div>
+</div></section><section aria-labelledby="장식_예제"><h3 id="장식_예제">장식 예제</h3>
+<div class="section-content">
+<p><a href="content"><code>content</code></a> 속성을 활용해 자유롭게 텍스트나 이미지를 추가할 수 있습니다.</p> <h4 id="html_2">HTML</h4> <div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="EqCF5W/Wrx68eTDKSsY01zyBHsjyCTWy803fbX+WfCI=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>ribbon<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>마지막의 주황색 상자를 바라보세요.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div> <h4 id="css_2">CSS</h4> <div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="hG52J68rrrfxG4a+MlaFH2m7rkMCYXS3dSVDOP3b0I0=" data-language="css"><span class="token selector">.ribbon</span> <span class="token punctuation">{</span>
+ <span class="token property">background-color</span><span class="token punctuation">:</span> #5BC8F7<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">.ribbon::after</span> <span class="token punctuation">{</span>
+ <span class="token property">content</span><span class="token punctuation">:</span> <span class="token string">"멋진 주황색 상자입니다."</span><span class="token punctuation">;</span>
+ <span class="token property">background-color</span><span class="token punctuation">:</span> #FFBA10<span class="token punctuation">;</span>
+ <span class="token property">border-color</span><span class="token punctuation">:</span> black<span class="token punctuation">;</span>
+ <span class="token property">border-style</span><span class="token punctuation">:</span> dotted<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div> <h4 id="결과_2">결과</h4>
+<div class="code-example" id="sect4">
+
+<iframe class="sample-code-frame" title="장식 예제 sample" id="frame_장식_예제" width="550" height="60" src="https://live.mdnplay.dev/ko/docs/Web/CSS/::after/runner.html?id=%EC%9E%A5%EC%8B%9D_%EC%98%88%EC%A0%9C" loading="lazy"></iframe>
+</div>
+</div></section><section aria-labelledby="툴팁"><h3 id="툴팁">툴팁</h3>
+<div class="section-content">
+<p>다음 예제는 <code>::after</code>와 함께 CSS <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/attr"><code>attr()</code> <small>(en-US)</small></a> 표현식, <code>data-descr</code> <a href="https://developer.mozilla.org/ko/docs/Web/HTML/Global_attributes/data-*">사용자 설정 데이터 속성</a>을 사용해 툴팁을 구현합니다. JavaScript 없이요!</p> <p><code>tabindex="0"</code>을 추가해 각 <code>span</code>에 포커스가 갈 수 있도록 지정한 후, CSS <code>:focus</code> 선택자를 추가하여 키보드 사용자도 지원할 수 있습니다. 예제를 통해 ::before와 ::after가 얼마나 유연한지 확인할 수 있지만, 가장 접근성이 뛰어난 구현을 위해서라면 <a href="https://developer.mozilla.org/ko/docs/Web/HTML/Element/details">요약과 세부 요소</a>처럼 의미를 담은 요소를 활용하는 편이 좋습니다.</p> <h4 id="html_3">HTML</h4> <div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="7O6WB9R/Uc3mdzfADuk2hTllhh73A5Q8Ct7b5/J6YpA=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>이 예제는
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span> <span class="token attr-name">tabindex</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>0<span class="token punctuation">"</span></span> <span class="token attr-name">data-descr</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>단어와 문장 부호의 집합<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>텍스트<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">&gt;</span></span>와 함께 약간의
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span> <span class="token attr-name">tabindex</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>0<span class="token punctuation">"</span></span> <span class="token attr-name">data-descr</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>호버 시 보여지는 작은 팝업<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>툴팁<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">&gt;</span></span>을 포함합니다.
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div> <h4 id="css_3">CSS</h4> <div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="V7aAWcBUePr602hA5G3GGpIwC2iCsn8ylDMwrsC8AE4=" data-language="css"><span class="token selector">span[data-descr]</span> <span class="token punctuation">{</span>
+  <span class="token property">position</span><span class="token punctuation">:</span> relative<span class="token punctuation">;</span>
+  <span class="token property">text-decoration</span><span class="token punctuation">:</span> underline<span class="token punctuation">;</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> #00F<span class="token punctuation">;</span>
+  <span class="token property">cursor</span><span class="token punctuation">:</span> help<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">span[data-descr]:hover::after,
+span[data-descr]:focus::after</span> <span class="token punctuation">{</span>
+  <span class="token property">content</span><span class="token punctuation">:</span> <span class="token function">attr</span><span class="token punctuation">(</span>data-descr<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token property">position</span><span class="token punctuation">:</span> absolute<span class="token punctuation">;</span>
+  <span class="token property">left</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
+  <span class="token property">top</span><span class="token punctuation">:</span> 24px<span class="token punctuation">;</span>
+  <span class="token property">min-width</span><span class="token punctuation">:</span> 200px<span class="token punctuation">;</span>
+  <span class="token property">border</span><span class="token punctuation">:</span> 1px #aaaaaa solid<span class="token punctuation">;</span>
+  <span class="token property">border-radius</span><span class="token punctuation">:</span> 10px<span class="token punctuation">;</span>
+  <span class="token property">background-color</span><span class="token punctuation">:</span> #ffffcc<span class="token punctuation">;</span>
+  <span class="token property">padding</span><span class="token punctuation">:</span> 12px<span class="token punctuation">;</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> #000000<span class="token punctuation">;</span>
+  <span class="token property">font-size</span><span class="token punctuation">:</span> 14px<span class="token punctuation">;</span>
+  <span class="token property">z-index</span><span class="token punctuation">:</span> 1<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div> <h4 id="결과_3">결과</h4>
+<div class="code-example" id="sect5">
+
+<iframe class="sample-code-frame" title="툴팁 sample" id="frame_툴팁" width="450" height="120" src="https://live.mdnplay.dev/ko/docs/Web/CSS/::after/runner.html?id=%ED%88%B4%ED%8C%81" loading="lazy"></iframe>
+</div>
+</div></section><h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://drafts.csswg.org/css-pseudo/#generated-content">CSS Pseudo-Elements Module Level 4 <br><small># generated-content</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="::before"><code>::before</code></a></li> <li><a href="content"><code>content</code></a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/CSS/::after" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/CSS/::after</a>
+  </p>
+</div>

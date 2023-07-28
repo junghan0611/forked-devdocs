@@ -1,0 +1,31 @@
+<header><h1>AnalyserNode()</h1></header><div class="section-content"><p><a href="../web_audio_api">Web Audio API</a>의 <code>AnalyserNode()</code> 생성자는 새로운 <a href="../analysernode"><code>AnalyserNode</code></a> 객체 인스턴스를 생성합니다.</p></div>
+<h2 id="구문">구문</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="EcUtTd6NIzdMAMjmMMLUN6H7V5qER1t5IccNfTuyEMo=" data-language="js"><span class="token keyword">var</span> analyserNode <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">AnalyserNode</span><span class="token punctuation">(</span>context<span class="token punctuation">,</span> <span class="token operator">?</span>options<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div></div>
+<h3 id="매개변수">매개변수</h3>
+<div class="section-content">
+<p><em><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/AudioNode"><code>AudioNodeOptions</code> <small>(en-US)</small></a> dictionary로부터 매개변수를 상속받습니다.</em></p> <dl> <dt id="context"><em>context</em></dt> <dd> <p><a href="../audiocontext"><code>AudioContext</code></a> 또는 <a href="../offlineaudiocontext"><code>OfflineAudioContext</code></a>에의 참조.</p> </dd> <dt id="options">
+<em>options</em> <span class="badge inline optional">Optional</span>
+</dt> <dd> <p> * <code>fftSize</code>: <a href="https://en.wikipedia.org/wiki/Frequency_domain" target="_blank">주파수 영역</a> 분석에 대한 <a href="https://en.wikipedia.org/wiki/Fast_Fourier_transform" target="_blank">FFT</a>의 원하는 초기 사이즈. 기본값은 <code>2048</code>입니다. </p> <ul> <li> <code>maxDecibels</code>: FFT 분석에 대한 <a href="https://en.wikipedia.org/wiki/Decibel" target="_blank">dB</a>단위로의 원하는 초기 최대 power. 기본값은 <code>-30</code>입니다. </li> <li> <code>minDecibels</code>: FFT 분석에 대한 dB단위로의 원하는 초기 최소 power. 기본값은 <code>-100</code>입니다. </li> <li>
+<code>smoothingTimeConstant</code>: FFT 분석에 대한 원하는 초기 smoothing 상수. 기본값은 <code>0.8</code>입니다.</li> </ul> </dd> </dl>
+</div>
+<h3 id="반환_값">반환 값</h3>
+<div class="section-content"><p>새로운 <a href="../analysernode"><code>AnalyserNode</code></a> 객체 인스턴스.</p></div>
+<h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://webaudio.github.io/web-audio-api/#dom-analysernode-analysernode">Web Audio API <br><small># dom-analysernode-analysernode</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li>
+<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/BaseAudioContext/createAnalyser"><code>BaseAudioContext.createAnalyser()</code> <small>(en-US)</small></a>, 동등한 팩토리 메서드</li> </ul></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/AnalyserNode/AnalyserNode" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/AnalyserNode/AnalyserNode</a>
+  </p>
+</div>

@@ -1,0 +1,47 @@
+<header><h1>NodeList.values()</h1></header><div class="section-content"><p><code>NodeList.values()</code> 메서드는 이 객체에 포함된 모든 값을 통과할 수 있는 <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Iteration_protocols"><code>iterator</code></a>를 반환합니다. 값은 <a href="../node"><code>Node</code></a> 객체 입니다.</p></div>
+<h2 id="syntax">Syntax</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="G9e8Rcc/8okvROqfru3Gi727FMc8yLS9BdBP3drMU30=" data-language="js">nodeList<span class="token punctuation">.</span><span class="token function">values</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div></div>
+<h3 id="return_value">Return value</h3>
+<div class="section-content"><p><a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Iteration_protocols"><code>iterator</code></a>를 반환합니다.</p></div>
+<h2 id="example">Example</h2>
+<div class="section-content">
+<div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="sPum72w7627DRPdrN98Bdi3IXKt6yCjSu8o1rYBlw7w=" data-language="js"><span class="token keyword">var</span> node <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">createElement</span><span class="token punctuation">(</span><span class="token string">"div"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> kid1 <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">createElement</span><span class="token punctuation">(</span><span class="token string">"p"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> kid2 <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">createTextNode</span><span class="token punctuation">(</span><span class="token string">"hey"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> kid3 <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">createElement</span><span class="token punctuation">(</span><span class="token string">"span"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+node<span class="token punctuation">.</span><span class="token function">appendChild</span><span class="token punctuation">(</span>kid1<span class="token punctuation">)</span><span class="token punctuation">;</span>
+node<span class="token punctuation">.</span><span class="token function">appendChild</span><span class="token punctuation">(</span>kid2<span class="token punctuation">)</span><span class="token punctuation">;</span>
+node<span class="token punctuation">.</span><span class="token function">appendChild</span><span class="token punctuation">(</span>kid3<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">var</span> list <span class="token operator">=</span> node<span class="token punctuation">.</span>childNodes<span class="token punctuation">;</span>
+
+<span class="token comment">// Using for..of</span>
+<span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">var</span> value <span class="token keyword">of</span> list<span class="token punctuation">.</span><span class="token function">values</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div> <p>결과는 다음과 같습니다 :</p> <pre class="notranslate">&lt;p&gt;
+#text "hey"
+&lt;span&gt;
+</pre>
+</div>
+<h2 id="명세서">명세서</h2>
+<div class="notecard warning">
+<strong>No specification found</strong><p>No specification data found for <code>api.NodeList.values</code>.<br><a href="#on-github">Check for problems with this page</a> or contribute a missing <code>spec_url</code> to <a href="https://github.com/mdn/browser-compat-data">mdn/browser-compat-data</a>. Also make sure the specification is included in <a href="https://github.com/w3c/browser-specs">w3c/browser-specs</a>.</p>
+</div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<h2 id="see_also">See also</h2>
+<div class="section-content"><ul> <li><a href="../node"><code>Node</code></a></li> <li><a href="../nodelist"><code>NodeList</code></a></li> </ul></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/NodeList/values" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/NodeList/values</a>
+  </p>
+</div>

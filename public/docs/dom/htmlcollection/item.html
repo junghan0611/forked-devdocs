@@ -1,0 +1,32 @@
+<header><h1>HTMLCollection.item</h1></header><div class="section-content">
+<p><a href="../htmlcollection"><code>HTMLCollection</code></a> 의 메소드 <code>item()</code> 은 컬렉션 안의 특정 인덱스에 위치한 노드를 반환합니다.</p> <div class="notecard note" id="sect1"> <p><strong>참고:</strong><code>HTMLCollection</code>은 실시간이기 때문에, DOM을 변경하면 컬렉션 내의 노드도 변경됩니다. 따라서, 한 노드의 인덱스 값이 항상 일정하지는 않습니다.</p> </div>
+</div>
+<h2 id="syntax">Syntax</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="zXAbFYyYY1w/5PBvSHoYpPjDZIbep6B7NPcMfT3R0MU=" data-language="js"><span class="token keyword">var</span> element <span class="token operator">=</span> HTMLCollection<span class="token punctuation">.</span><span class="token function">item</span><span class="token punctuation">(</span>index<span class="token punctuation">)</span>
+</pre>
+</div></div>
+<h3 id="파라미터">파라미터</h3>
+<div class="section-content"><dl> <dt id="index"><code>index</code></dt> <dd> <p>반환받을 <a href="../node"><code>Node</code></a>의 위치. <code>HTMLCollection</code>에 들어있는 요소들은 도큐먼트에 나타나는 순서와 동일합니다.</p> </dd> </dl></div>
+<h3 id="반환값">반환값</h3>
+<div class="section-content"><p>주어진 인덱스의 <a href="../node"><code>Node</code></a>. <code>index</code>가 0보다 작거나 length 속성보다 크다면 <code>null</code>을 반환합니다.</p></div>
+<h2 id="참고사항">참고사항</h2>
+<div class="section-content"><p><code>item()</code> 메소드는 <code>HTMLCollection</code>으로부터 순서가 매겨진 하나의 요소를 반환합니다. 자바스크립트에서, <code>HTMLCollection</code>을 배열처럼 다루는건 아주 쉽습니다. 아래의 <a href="#example">예시</a>를 보세요.</p></div>
+<h2 id="example">Example</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="QuSZJB26Yf5nnTchYMuzOKxcIVB66ISjwKgU0UatJdU=" data-language="js"><span class="token keyword">var</span> c <span class="token operator">=</span> document<span class="token punctuation">.</span>images<span class="token punctuation">;</span>  <span class="token comment">// HTMLCollection입니다</span>
+<span class="token keyword">var</span> img0 <span class="token operator">=</span> c<span class="token punctuation">.</span><span class="token function">item</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>     <span class="token comment">// 이렇게 item() 메소드를 이용할 수 있지만</span>
+<span class="token keyword">var</span> img1 <span class="token operator">=</span> c<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>          <span class="token comment">// 이렇게 표기하는게 쉽고 더 보편적입니다</span>
+</pre>
+</div></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<h2 id="see_also">See also</h2>
+<div class="section-content"><ul> <li><a href="../nodelist/item"><code>NodeList.item()</code></a></li> </ul></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/HTMLCollection/item" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/HTMLCollection/item</a>
+  </p>
+</div>

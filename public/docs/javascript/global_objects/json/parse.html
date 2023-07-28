@@ -1,0 +1,71 @@
+<header><h1>JSON.parse()</h1></header><div class="section-content"><p><code>JSON.parse()</code> 메서드는 JSON 문자열의 구문을 분석하고, 그 결과에서 JavaScript 값이나 객체를 생성합니다. 선택적으로, <code>reviver</code> 함수를 인수로 전달할 경우, 결과를 반환하기 전에 변형할 수 있습니다.</p></div>
+<section aria-labelledby="시도해보기"><h2 id="시도해보기">시도해보기</h2>
+<div class="section-content"><iframe class="interactive is-js-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/js/json-parse.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe></div></section><section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="aLe4F7PFmG50FsvbMcxDjlgxkYsgBsbOg32cDY3pREA=" data-language="js">    <span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span>text<span class="token punctuation">[</span><span class="token punctuation">,</span> reviver<span class="token punctuation">]</span><span class="token punctuation">)</span>
+</pre>
+</div></div></section><section aria-labelledby="매개변수"><h3 id="매개변수">매개변수</h3>
+<div class="section-content"><dl> <dt id="text"><code>text</code></dt> <dd> <p>JSON으로 변환할 문자열. JSON 구문은 <a href="../json"><code>JSON</code></a> 객체의 설명을 참고하세요.</p> </dd> <dt id="reviver">
+<code>reviver</code> <span class="badge inline optional">Optional</span>
+</dt> <dd> <p>함수라면, 변환 결과를 반환하기 전에 이 인수에 전달해 변형함.</p> </dd> </dl></div></section><section aria-labelledby="반환_값"><h3 id="반환_값">반환 값</h3>
+<div class="section-content"><p>주어진 JSON 문자열에 대응하는 <a href="../object"><code>Object</code></a>.</p></div></section><section aria-labelledby="예외"><h3 id="예외">예외</h3>
+<div class="section-content"><p>변환할 문자열이 유효한 JSON이 아닐 경우 <a href="../syntaxerror"><code>SyntaxError</code></a>.</p></div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+</section><section aria-labelledby="json.parse_사용하기"><h3 id="json.parse_사용하기">
+<code>JSON.parse()</code> 사용하기</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="6jYzJQ5+WytdANnBNyXB7qwiUc/VJoKTi1X3/H/gCrk=" data-language="js"><span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span><span class="token string">'{}'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>              <span class="token comment">// {}</span>
+<span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span><span class="token string">'true'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>            <span class="token comment">// true</span>
+<span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span><span class="token string">'"foo"'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>           <span class="token comment">// "foo"</span>
+<span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span><span class="token string">'[1, 5, "false"]'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// [1, 5, "false"]</span>
+<span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span><span class="token string">'null'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>            <span class="token comment">// null</span>
+</pre>
+</div></div></section><section aria-labelledby="reviver_매개변수_사용하기"><h3 id="reviver_매개변수_사용하기">
+<code>reviver</code> 매개변수 사용하기</h3>
+<div class="section-content">
+<p><code>reviver</code>가 주어지면 분석한 값을 반환하기 전에 변환합니다. 구체적으로는, 분석한 값과 그 모든 속성(가장 깊게 중첩된 속성부터 시작해 제일 바깥의 원래 값까지)을 각각 <code>reviver</code>에 전달합니다. <code>reviver</code>의 <code>this</code> 문맥은 분석한 값으로 설정되고, 속성 명(문자열)과 값을 인자로 전달받습니다. <code>reviver</code>가 <a href="../undefined"><code>undefined</code></a>를 반환하거나 반환하지 않는다면, 예컨대 함수가 중간에 실패한다면 그 속성은 최종 결과에서 제외됩니다. 그 외에는 반환 값으로 속성의 값을 재설정합니다.</p> <p>만약 <code>reviver</code>가 일부 값만 변환하고 나머지는 건드리지 않는다면, 나머지 값을 그대로 반환하는걸 잊지 마세요. 그렇지 않으면 변환한 값 외에는 결과에서 모두 제외됩니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="GwpAlkzweK//P7p2yKWFz51igSykzzT5zxrkTNvfBHU=" data-language="js"><span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span><span class="token string">'{"p": 5}'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">key<span class="token punctuation">,</span> value</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span>
+  <span class="token keyword">typeof</span> value <span class="token operator">===</span> <span class="token string">'number'</span>
+    <span class="token operator">?</span> value <span class="token operator">*</span> <span class="token number">2</span> <span class="token comment">// 숫자라면 2배</span>
+    <span class="token operator">:</span> value     <span class="token comment">// 나머진 그대로</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// { p: 10 }</span>
+
+<span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span><span class="token string">'{"1": 1, "2": 2, "3": {"4": 4, "5": {"6": 6}}}'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">key<span class="token punctuation">,</span> value</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>key<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 현재 속성명 출력, 마지막은 빈 문자열("")</span>
+  <span class="token keyword">return</span> value<span class="token punctuation">;</span>     <span class="token comment">// 변환하지 않고 그대로 반환</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// 1</span>
+<span class="token comment">// 2</span>
+<span class="token comment">// 4</span>
+<span class="token comment">// 6</span>
+<span class="token comment">// 5</span>
+<span class="token comment">// 3</span>
+<span class="token comment">// ""</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="후행_쉼표_사용_불가"><h3 id="후행_쉼표_사용_불가">후행 쉼표 사용 불가</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="anbZemD5X2/n8xRSzqv4WYy8LU62eD3WNA0eOBq+zdA=" data-language="js"><span class="token comment">// 둘 다 SyntaxError</span>
+<span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span><span class="token string">'[1, 2, 3, 4, ]'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span><span class="token string">'{"foo" : 1, }'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div></div></section><h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://tc39.es/ecma262/multipage/structured-data.html#sec-json.parse">ECMAScript Language Specification <br><small># sec-json.parse</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="stringify"><code>JSON.stringify()</code></a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse</a>
+  </p>
+</div>

@@ -1,0 +1,40 @@
+<header><h1>Array.prototype[@@unscopables]</h1></header><div class="section-content"><p><code>@@unscopable</code> 기호 속성은 ES2015 이전 ECMAScript 표준에 포함되지 않은 속성 이름을 포함합니다. 해당 속성들은 <a href="../../statements/with"><code>with</code></a> 바인딩에서 제외됩니다.</p></div>
+<section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="U2IhaYGzsgKpWmZkXWJF9cy4icSdirvAWsfDJl4FNBY=" data-language="js">    arr<span class="token punctuation">[</span>Symbol<span class="token punctuation">.</span>unscopables<span class="token punctuation">]</span>
+</pre>
+</div></div></section><section aria-labelledby="설명"><h2 id="설명">설명</h2>
+<div class="section-content">
+<p>with 바인딩에서 제외되는 배열의 기본 속성은 copyWithin, entries, fill, find, findIndex, includes, keys, values입니다.</p> <p>자신의 객체에 대해 <code>unscopables</code>를 설정하는 방법은 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol/unscopables"><code>Symbol.unscopables</code> <small>(en-US)</small></a>를 참고하세요.</p>
+<figure class="table-container"><div class="_table"><table class="standard-table"> <thead> <tr> <th class="header" colspan="2">Property attributes of <code>Array.prototype[@@unscopables]</code>
+</th> </tr> </thead> <tbody> <tr> <td>Writable</td> <td>불가능</td> </tr> <tr> <td>Enumerable</td> <td>불가능</td> </tr> <tr> <td>Configurable</td> <td>가능</td> </tr> </tbody> </table></div></figure>
+</div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+<div class="section-content">
+<p>아래 코드는 ES5 이하에서 잘 작동합니다. 그러나 ECMAScript 2015 이후 <a href="keys"><code>Array.prototype.keys()</code></a> 메서드가 도입되었습니다. 이는 <code>with</code> 내부에서 "keys"가 변수가 아니라 메서드임을 의미합니다. 여기서 <code>Array.prototype[@@unscopables]</code>가 개입하여 일부 배열 메서드가 <code>with</code> 범위에 묶이는 일을 방지합니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="BaspLu0JPF/oEQDbw0qjEqRb4lBnwqWDLv28Xq4hvgE=" data-language="js"><span class="token keyword">var</span> keys <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+<span class="token keyword">with</span> <span class="token punctuation">(</span><span class="token class-name">Array</span><span class="token punctuation">.</span>prototype<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  keys<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token string">"something"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+Object<span class="token punctuation">.</span><span class="token function">keys</span><span class="token punctuation">(</span><span class="token class-name">Array</span><span class="token punctuation">.</span>prototype<span class="token punctuation">[</span>Symbol<span class="token punctuation">.</span>unscopables<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// ["copyWithin", "entries", "fill", "find", "findIndex",</span>
+<span class="token comment">//  "includes", "keys", "values"]</span>
+</pre>
+</div>
+</div></section><h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://tc39.es/ecma262/multipage/indexed-collections.html#sec-array.prototype-@@unscopables">ECMAScript Language Specification <br><small># sec-array.prototype-@@unscopables</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol/unscopables"><code>Symbol.unscopables</code> <small>(en-US)</small></a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/@@unscopables" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/@@unscopables</a>
+  </p>
+</div>

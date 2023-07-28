@@ -1,0 +1,35 @@
+<header><h1>Symbol.prototype.description</h1></header><div class="section-content"><p> <a href="../symbol"><code>Symbol</code></a> 값의 <code>description</code> 접근자 속성은 이 심볼에 대한 설명이 포함된 문자열을 반환하거나 설명이 없는 경우 <code>undefined</code>를 반환합니다. </p></div>
+<section aria-labelledby="시도해보기"><h2 id="시도해보기">시도해보기</h2>
+<div class="section-content"><iframe class="interactive is-js-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/js/symbol-prototype-description.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe></div></section><section aria-labelledby="설명"><h2 id="설명">설명</h2>
+<div class="section-content"><p> <a href="../symbol"><code>Symbol</code></a> 객체는 디버깅에 사용할 수 있지만 심볼 자체에 접근하는 데는 사용할 수 없는 선택적인 설명과 함께 생성할 수 있습니다. <code>Symbol.prototype.description</code> 속성은 해당 설명을 읽는 데 사용할 수 있습니다. 이 속성은 둘러싸는 <code>"Symbol()"</code> 문자열을 포함하지 않으므로 <code>Symbol.prototype.toString()</code>과 다릅니다. 예제를 참조하세요. </p></div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+</section><section aria-labelledby="description_사용하기"><h3 id="description_사용하기">description 사용하기</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="PMSGb5Uf7cGe8qA7Hh0BRMzYlMORL4v3PdknnVL4hUw=" data-language="js"><span class="token function">Symbol</span><span class="token punctuation">(</span><span class="token string">"desc"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// "Symbol(desc)"</span>
+<span class="token function">Symbol</span><span class="token punctuation">(</span><span class="token string">"desc"</span><span class="token punctuation">)</span><span class="token punctuation">.</span>description<span class="token punctuation">;</span> <span class="token comment">// "desc"</span>
+<span class="token function">Symbol</span><span class="token punctuation">(</span><span class="token string">""</span><span class="token punctuation">)</span><span class="token punctuation">.</span>description<span class="token punctuation">;</span> <span class="token comment">// ""</span>
+<span class="token function">Symbol</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>description<span class="token punctuation">;</span> <span class="token comment">// undefined</span>
+
+<span class="token comment">// well-known symbols</span>
+Symbol<span class="token punctuation">.</span>iterator<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// "Symbol(Symbol.iterator)"</span>
+Symbol<span class="token punctuation">.</span>iterator<span class="token punctuation">.</span>description<span class="token punctuation">;</span> <span class="token comment">// "Symbol.iterator"</span>
+
+<span class="token comment">// global symbols</span>
+Symbol<span class="token punctuation">.</span><span class="token function">for</span><span class="token punctuation">(</span><span class="token string">"foo"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// "Symbol(foo)"</span>
+Symbol<span class="token punctuation">.</span><span class="token function">for</span><span class="token punctuation">(</span><span class="token string">"foo"</span><span class="token punctuation">)</span><span class="token punctuation">.</span>description<span class="token punctuation">;</span> <span class="token comment">// "foo"</span>
+</pre>
+</div></div></section><h2 id="명세서">명세서</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://tc39.es/ecma262/multipage/fundamental-objects.html#sec-symbol.prototype.description">ECMAScript Language Specification <br><small># sec-symbol.prototype.description</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="https://github.com/zloirock/core-js#ecmascript-symbol" target="_blank">Polyfill of <code>Symbol.prototype.description</code> in <code>core-js</code></a></li> <li><a href="tostring"><code>Symbol.prototype.toString()</code></a></li> <li>Polyfill: <a href="https://npmjs.com/symbol.prototype.description" target="_blank">https://npmjs.com/symbol.prototype.description</a>
+</li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Symbol/description" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Symbol/description</a>
+  </p>
+</div>

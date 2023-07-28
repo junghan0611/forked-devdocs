@@ -1,0 +1,56 @@
+<header><h1>Clients</h1></header><div class="section-content">
+<div class="notecard experimental" id="sect1"><p><strong>Experimental:</strong> <strong>This is an <a href="https://developer.mozilla.org/en-US/docs/MDN/Writing_guidelines/Experimental_deprecated_obsolete#experimental">experimental technology</a></strong><br>Check the <a href="#browser_compatibility">Browser compatibility table</a> carefully before using this in production.</p></div> <p>The <code>Clients</code> interface provides access to <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/Client"><code>Client</code> <small>(en-US)</small></a> objects. Access it via <code><a href="serviceworkerglobalscope"><code>self</code></a>.clients</code> within a <a href="https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API" class="only-in-en-us">service worker <small>(en-US)</small></a>.</p>
+</div>
+<h2 id="methods">Methods</h2>
+<div class="section-content"><dl> <dt id="clients.get_en-us"><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/Clients/get"><code>Clients.get()</code> <small>(en-US)</small></a></dt> <dd> <p>Returns a <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Promise"><code>Promise</code></a> for a <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/Client"><code>Client</code> <small>(en-US)</small></a> matching a given <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/Client/id"><code>id</code> <small>(en-US)</small></a>.</p> </dd> <dt id="clients.matchall_en-us"><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/Clients/matchAll"><code>Clients.matchAll()</code> <small>(en-US)</small></a></dt> <dd> <p>Returns a <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Promise"><code>Promise</code></a> for an array of <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/Client"><code>Client</code> <small>(en-US)</small></a> objects. An options argument allows you to control the types of clients returned.</p> </dd> <dt id="clients.openwindow_en-us"><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/Clients/openWindow"><code>Clients.openWindow()</code> <small>(en-US)</small></a></dt> <dd> <p>Opens a new browser window for a given url and returns a <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Promise"><code>Promise</code></a> for the new <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/WindowClient"><code>WindowClient</code> <small>(en-US)</small></a>.</p> </dd> <dt id="clients.claim"><a href="clients/claim"><code>Clients.claim()</code></a></dt> <dd> <p>Allows an active service worker to set itself as the <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerContainer/controller"><code>controller</code> <small>(en-US)</small></a> for all clients within its <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerRegistration/scope"><code>scope</code> <small>(en-US)</small></a>.</p> </dd> </dl></div>
+<h2 id="examples">Examples</h2>
+<div class="section-content">
+<p>The following example shows an existing chat window or creates a new one when the user clicks a notification.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="LsR1XDk/tZo4TMRQlLRVYEcLeS4Qny/jYnCrJM78bQE=" data-language="js"><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">'notificationclick'</span><span class="token punctuation">,</span> <span class="token parameter">event</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  event<span class="token punctuation">.</span><span class="token function">waitUntil</span><span class="token punctuation">(</span><span class="token keyword">async</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> allClients <span class="token operator">=</span> <span class="token keyword">await</span> clients<span class="token punctuation">.</span><span class="token function">matchAll</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+      <span class="token literal-property property">includeUncontrolled</span><span class="token operator">:</span> <span class="token boolean">true</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">let</span> chatClient<span class="token punctuation">;</span>
+
+    <span class="token comment">// Let's see if we already have a chat window open:</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">const</span> client <span class="token keyword">of</span> allClients<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">const</span> url <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">URL</span><span class="token punctuation">(</span>client<span class="token punctuation">.</span>url<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+      <span class="token keyword">if</span> <span class="token punctuation">(</span>url<span class="token punctuation">.</span>pathname <span class="token operator">==</span> <span class="token string">'/chat/'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">// Excellent, let's use it!</span>
+        client<span class="token punctuation">.</span><span class="token function">focus</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        chatClient <span class="token operator">=</span> client<span class="token punctuation">;</span>
+        <span class="token keyword">break</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment">// If we didn't find an existing chat window,</span>
+    <span class="token comment">// open a new one:</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>chatClient<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      chatClient <span class="token operator">=</span> <span class="token keyword">await</span> clients<span class="token punctuation">.</span><span class="token function">openWindow</span><span class="token punctuation">(</span><span class="token string">'/chat/'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment">// Message the client:</span>
+    chatClient<span class="token punctuation">.</span><span class="token function">postMessage</span><span class="token punctuation">(</span><span class="token string">"New chat messages!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div>
+</div>
+<h2 id="명세서">명세서</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://w3c.github.io/ServiceWorker/#clients-interface">Service Workers <br><small># clients-interface</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<h2 id="see_also">See also</h2>
+<div class="section-content"><ul> <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API/Using_Service_Workers" class="only-in-en-us">Using Service Workers <small>(en-US)</small></a></li> <li><a href="https://jakearchibald.github.io/isserviceworkerready/" target="_blank">Is ServiceWorker ready?</a></li> <li><a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Promise"><code>Promise</code></a></li> </ul></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/Clients" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/Clients</a>
+  </p>
+</div>

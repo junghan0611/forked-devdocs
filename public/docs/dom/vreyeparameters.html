@@ -1,0 +1,54 @@
+<header><h1>VREyeParameters</h1></header><div class="section-content">
+<div class="notecard experimental" id="sect1"><p><strong>Experimental:</strong> <strong>This is an <a href="https://developer.mozilla.org/en-US/docs/MDN/Writing_guidelines/Experimental_deprecated_obsolete#experimental">experimental technology</a></strong><br>Check the <a href="#browser_compatibility">Browser compatibility table</a> carefully before using this in production.</p></div> <p><a href="https://developer.mozilla.org/en-US/docs/Web/API/WebVR_API" class="only-in-en-us">WebVR API <small>(en-US)</small></a>의 <code>VREyeParameters</code> 인터페이스는 시야 정보 필드를 포함하여 특정한 눈에 대한 장면을 정확하게 렌더링 하는 데 필요한 모든 정보를 나타냅니다.</p> <p><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/VRDisplay/getEyeParameters"><code>VRDisplay.getEyeParameters()</code> <small>(en-US)</small></a> 방법을 통해 액세스 할 수 있습니다.</p> <div class="notecard warning" id="sect2"> <p><strong>경고:</strong> The values in this interface should not be used to compute view or projection matrices. In order to ensure the widest possible hardware compatibility use the matrices provided by <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/VRFrameData"><code>VRFrameData</code> <small>(en-US)</small></a>.</p> </div>
+</div>
+<h2 id="속성">속성</h2>
+<div class="section-content"><dl> <dt id="vreyeparameters.offset_en-us">
+<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/VREyeParameters/offset"><code>VREyeParameters.offset</code> <small>(en-US)</small></a> <span class="badge inline readonly">읽기 전용</span>
+</dt> <dd> <p>사용자 눈 사이의 중심점에서 눈 중심까지의 거리를 미터 단위로 나타냅니다.</p> </dd> <dt id="vreyeparameters.fieldofview_en-us">
+<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/VREyeParameters/fieldOfView"><code>VREyeParameters.fieldOfView</code> <small>(en-US)</small></a> <span class="badge inline readonly">읽기 전용</span>
+</dt> <dd> <p>현재 눈에 보이는 시야를 설명하며,사용자가 동공 사이의 거리(m/s)를 조절할 때 달라질 수 있습니다.(IPD).</p> </dd> <dt id="vreyeparameters.renderwidth_en-us">
+<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/VREyeParameters/renderWidth"><code>VREyeParameters.renderWidth</code> <small>(en-US)</small></a> <span class="badge inline readonly">읽기 전용</span>
+</dt> <dd> <p>각 눈 뷰포트의 권장 렌더 타겟 폭을 픽셀 단위로 설명합니다.</p> </dd> <dt id="vreyeparameters.renderheight_en-us">
+<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/VREyeParameters/renderHeight"><code>VREyeParameters.renderHeight</code> <small>(en-US)</small></a> <span class="badge inline readonly">읽기 전용</span>
+</dt> <dd> <p>각 눈 뷰포트의 권장 렌더 타겟 높이를 픽셀 단위로 나타냅니다..</p> </dd> </dl></div>
+<h2 id="예제">예제</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="b1wVbzpi9MakfbUIPxCZcm6T3nCCIY4r6gCtIrbuaOg=" data-language="js">navigator<span class="token punctuation">.</span><span class="token function">getVRDisplays</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">displays</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">// If a display is available, use it to present the scene</span>
+  vrDisplay <span class="token operator">=</span> displays<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'Display found'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token comment">// Starting the presentation when the button is clicked:</span>
+  <span class="token comment">//   It can only be called in response to a user gesture</span>
+  btn<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">'click'</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    vrDisplay<span class="token punctuation">.</span><span class="token function">requestPresent</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">{</span> <span class="token literal-property property">source</span><span class="token operator">:</span> canvas <span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'Presenting to WebVR display'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+      <span class="token comment">// Set the canvas size to the size of the vrDisplay viewport</span>
+
+      <span class="token keyword">var</span> leftEye <span class="token operator">=</span> vrDisplay<span class="token punctuation">.</span><span class="token function">getEyeParameters</span><span class="token punctuation">(</span><span class="token string">'left'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token keyword">var</span> rightEye <span class="token operator">=</span> vrDisplay<span class="token punctuation">.</span><span class="token function">getEyeParameters</span><span class="token punctuation">(</span><span class="token string">'right'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+      canvas<span class="token punctuation">.</span>width <span class="token operator">=</span> Math<span class="token punctuation">.</span><span class="token function">max</span><span class="token punctuation">(</span>leftEye<span class="token punctuation">.</span>renderWidth<span class="token punctuation">,</span> rightEye<span class="token punctuation">.</span>renderWidth<span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token number">2</span><span class="token punctuation">;</span>
+      canvas<span class="token punctuation">.</span>height <span class="token operator">=</span> Math<span class="token punctuation">.</span><span class="token function">max</span><span class="token punctuation">(</span>leftEye<span class="token punctuation">.</span>renderHeight<span class="token punctuation">,</span> rightEye<span class="token punctuation">.</span>renderHeight<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+      <span class="token function">drawVRScene</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div></div>
+<h2 id="명세">명세</h2>
+<div class="notecard warning">
+<strong>No specification found</strong><p>No specification data found for <code>api.VREyeParameters</code>.<br><a href="#on-github">Check for problems with this page</a> or contribute a missing <code>spec_url</code> to <a href="https://github.com/mdn/browser-compat-data">mdn/browser-compat-data</a>. Also make sure the specification is included in <a href="https://github.com/w3c/browser-specs">w3c/browser-specs</a>.</p>
+</div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/WebVR_API" class="only-in-en-us">WebVR API homepage <small>(en-US)</small></a></li> <li>
+<a href="http://mozvr.com/" target="_blank">MozVr.com</a> — demos, downloads, and other resources from the Mozilla VR team.</li> </ul></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/VREyeParameters" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/VREyeParameters</a>
+  </p>
+</div>

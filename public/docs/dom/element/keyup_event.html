@@ -1,0 +1,61 @@
+<header><h1>Document: keyup event</h1></header><div class="section-content">
+<p>**<code>keyup</code>**키를 놓을 때 이벤트가 발생합니다.</p> <figure class="table-container"><div class="_table"><table> <thead> <tr> <th>거품</th> <th>예</th> </tr> </thead> <tbody> <tr> <td>취소 가능</td> <td>예</td> </tr> <tr> <td>상호 작용</td> <td><a href="../keyboardevent"><code>KeyboardEvent</code></a></td> </tr> <tr> <td>이벤트 핸들러 속성</td> <td><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/Element/keyup_event"><code>onkeyup</code> <small>(en-US)</small></a></td> </tr> </tbody> </table></div></figure> <p><a class="page-not-created"><code>keydown</code></a> 및 <code>keyup</code>이벤트는 어떤 키를 눌렀는지 나타내는 코드를 제공하고 <a class="page-not-created"><code>keypress</code></a> 는 입력 된 <em>문자를</em> 나타냅니다. . 예를 들어, 소문자 "a"는 <code>keydown</code>및 <code>keyup</code>에서는 65로보고 되지만에서는 97 로보고 됩니다 <code>keypress</code>. 모든 이벤트에서 대문자 "A"는 65로보고됩니다.</p> <blockquote> <p><strong>참고 :</strong> 입력 값의 변경에 대응하는 방법을 찾고 있다면 <code>[input event](/en-US/docs/Web/API/HTMLElement/input_event)</code>를 사용해야합니다. <code>keyup</code> 예를 들어 컨텍스트 메뉴의 텍스트를 텍스트 입력에 붙여 넣는 등의 일부 변경 사항은에서 감지 할 수 없습니다.</p> </blockquote> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="URjF3Rt2katjwII2TCz5rAd1E8UUWRmC4zoQDaTO5ZY=" data-language="js">eventTarget<span class="token punctuation">.</span><span class="token function">addEventListener</span> <span class="token punctuation">(</span> <span class="token string">"keyup"</span><span class="token punctuation">,</span> <span class="token parameter">event</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>event<span class="token punctuation">.</span>isComposing <span class="token operator">||</span> event<span class="token punctuation">.</span>keyCode <span class="token operator">===</span> <span class="token number">229</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token comment">// 무언가를합니다</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div>
+</div>
+<h2 id="예">예</h2>
+<div class="section-content"><p>이 예에서는 키를 놓을 때마다 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/code"><code>KeyboardEvent.code</code> <small>(en-US)</small></a> 값을 기록합니다.</p></div>
+<h3 id="addeventlistener_키업_예제">addEventListener 키업 예제</h3>
+<div class="section-content">
+<div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="zra6MxteuNVMYO3SLoE0lpJbnxdjrgwVwP6VyMwV9X4=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span> 먼저 IFrame에 초점을 맞춘 다음 (예 : 클릭하여) 몇 가지 키를 눌러보십시오. &lt;/ p&gt;
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">id</span> <span class="token attr-value"><span class="token punctuation attr-equals">=</span> <span class="token punctuation">"</span>log<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span> &lt;/ p&gt;
+</pre>
+</div> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="UM78YsLJrQHvhTcn1uffAPWccvrS1auoEMbEVOa3UoQ=" data-language="js"><span class="token keyword">const</span> log <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span> <span class="token punctuation">(</span> <span class="token string">'log'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+document<span class="token punctuation">.</span><span class="token function">addEventListener</span> <span class="token punctuation">(</span> <span class="token string">'keyup'</span><span class="token punctuation">,</span> logKey<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">function</span> <span class="token function">logKey</span> <span class="token punctuation">(</span><span class="token parameter">e</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  log<span class="token punctuation">.</span>textContent <span class="token operator">+</span> <span class="token operator">=</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">$ {e.code}</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div>
+<div class="code-example" id="sect1">
+
+<iframe class="sample-code-frame" title="addEventListener 키업 예제" id="frame_addeventlistener_keyup_example" src="https://live.mdnplay.dev/ko/docs/Web/API/Element/keyup_event/runner.html?id=addeventlistener_keyup_example" loading="lazy"></iframe>
+</div>
+</div>
+<h3 id="onkeyup_해당">onkeyup 해당</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="xXuyA68/kLYw6lTk4RGrNt1kokZm8ayathubbR5DDqU=" data-language="js">document<span class="token punctuation">.</span>onkeyup <span class="token operator">=</span> logKey<span class="token punctuation">;</span>
+</pre>
+</div></div>
+<h2 id="명세서">명세서</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody>
+<tr><td><a href="https://w3c.github.io/uievents/#event-type-keyup">UI Events <br><small># event-type-keyup</small></a></td></tr>
+<tr><td><a href="https://html.spec.whatwg.org/multipage/webappapis.html#handler-onkeyup">HTML Standard <br><small># handler-onkeyup</small></a></td></tr>
+</tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<h2 id="또한보십시오">또한보십시오</h2>
+<div class="section-content"><ul> <li><a class="page-not-created"><code>keydown</code></a></li> <li><a class="page-not-created"><code>keypress</code></a></li> <li>
+<a href="../element"><code>Element</code></a> : <a class="page-not-created"><code>keyup</code></a> 이벤트</li> </ul></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/Element/keyup_event" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/Element/keyup_event</a>
+  </p>
+</div>

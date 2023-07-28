@@ -1,0 +1,149 @@
+<header><h1>flex</h1></header><div class="section-content"><p><code>flex</code> <a href="https://developer.mozilla.org/ko/docs/Web/CSS">CSS</a> 속성은 하나의 플렉스 아이템이 자신의 컨테이너가 차지하는 공간에 맞추기 위해 크기를 키우거나 줄이는 방법을 설정하는 속성입니다. <code>flex</code>는 <a href="flex-grow"><code>flex-grow</code></a>, <a href="flex-shrink"><code>flex-shrink</code></a>, <a href="flex-basis"><code>flex-basis</code></a>의 <a href="shorthand_properties">단축 속성</a>입니다.</p></div>
+<section aria-labelledby="시도해보기"><h2 id="시도해보기">시도해보기</h2>
+<div class="section-content">
+<iframe class="interactive is-default-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/css/flex.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe> <p>대부분의 경우, <code>flex</code>의 값에는 <code>auto</code>, <code>initial</code>, <code>none</code>이나 단위 없는 양의 수를 사용해야 합니다. 각 값의 적용 효과를 보려면 아래 플렉스 컨테이너의 크기를 조절해보세요.</p> <p>기본적으로 플렉스 아이템은 콘텐츠의 최소 너비 미만으로 줄어들지 않습니다. <a href="min-width"><code>min-width</code></a>나 <a href="min-height"><code>min-height</code></a> 값을 지정해 바꿀 수 있습니다.</p>
+</div></section><section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content">
+<div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="gHnXHSflNMb9tvy9jVrBff0Jp1YTERv0UnSTbhLeG/o=" data-language="css"><span class="token comment">/* Keyword values */</span>
+<span class="token property">flex</span><span class="token punctuation">:</span> auto<span class="token punctuation">;</span>
+<span class="token property">flex</span><span class="token punctuation">:</span> initial<span class="token punctuation">;</span>
+<span class="token property">flex</span><span class="token punctuation">:</span> none<span class="token punctuation">;</span>
+
+<span class="token comment">/* One value, unitless number: flex-grow */</span>
+<span class="token property">flex</span><span class="token punctuation">:</span> 2<span class="token punctuation">;</span>
+
+<span class="token comment">/* One value, length or percentage: flex-basis */</span>
+<span class="token property">flex</span><span class="token punctuation">:</span> 10em<span class="token punctuation">;</span>
+<span class="token property">flex</span><span class="token punctuation">:</span> 30%<span class="token punctuation">;</span>
+
+<span class="token comment">/* Two values: flex-grow | flex-basis */</span>
+<span class="token property">flex</span><span class="token punctuation">:</span> 1 30px<span class="token punctuation">;</span>
+
+<span class="token comment">/* Two values: flex-grow | flex-shrink */</span>
+<span class="token property">flex</span><span class="token punctuation">:</span> 2 2<span class="token punctuation">;</span>
+
+<span class="token comment">/* Three values: flex-grow | flex-shrink | flex-basis */</span>
+<span class="token property">flex</span><span class="token punctuation">:</span> 2 2 10%<span class="token punctuation">;</span>
+
+<span class="token comment">/* Global values */</span>
+<span class="token property">flex</span><span class="token punctuation">:</span> inherit<span class="token punctuation">;</span>
+<span class="token property">flex</span><span class="token punctuation">:</span> initial<span class="token punctuation">;</span>
+<span class="token property">flex</span><span class="token punctuation">:</span> unset<span class="token punctuation">;</span>
+</pre>
+</div> <p><code>flex</code> 속성은 한 개에서 세 개의 값을 사용해 지정할 수 있습니다.</p> <ul> <li>
+<strong>값이 한 개일 때</strong>, 그 값은 다음 중 하나여야 합니다. <ul> <li>
+<a href="number"><code>&lt;number&gt;</code></a>를 지정하면 <code>&lt;flex-grow&gt;</code>입니다.</li> <li>
+<a href="length"><code>&lt;length&gt;</code></a> 또는 <a href="percentage"><code>&lt;percentage&gt;</code></a>를 지정하면 <code>&lt;flex-basis&gt;</code>입니다.</li> <li>
+<code>none</code>, <code>auto</code>, <code>initial</code> 중 하나를 지정할 수 있습니다.</li> </ul> </li> <li>
+<strong>값이 두 개일때</strong>, 첫 번째 값은 <a href="number"><code>&lt;number&gt;</code></a>여야 하며 <code>&lt;flex-grow&gt;</code>가 됩니다. 두 번째 값은 다음 중 하나여야 합니다. <ul> <li>
+<a href="number"><code>&lt;number&gt;</code></a>를 지정하면 <code>&lt;flex-shrink&gt;</code>입니다.</li> <li>
+<a href="length"><code>&lt;length&gt;</code></a>, <a href="percentage"><code>&lt;percentage&gt;</code></a>, 또는 <code>auto</code>를 지정하면 <code>&lt;flex-basis&gt;</code>입니다.</li> </ul> </li> <li>
+<strong>값이 세 개일 때</strong>는 다음 순서를 따라야 합니다. <ol> <li>
+<code>&lt;flex-grow&gt;</code> 에 사용할 <a href="number"><code>&lt;number&gt;</code></a>
+</li> <li>
+<code>&lt;flex-shrink&gt;</code> 에 사용할 <a href="number"><code>&lt;number&gt;</code></a>
+</li> <li>
+<code>&lt;flex-basis&gt;</code> 에 사용할 <a href="length"><code>&lt;length&gt;</code></a>, <a href="percentage"><code>&lt;percentage&gt;</code></a>, 또는 <code>auto</code>
+</li> </ol> </li> </ul>
+</div></section><section aria-labelledby="값"><h3 id="값">값</h3>
+<div class="section-content">
+<dl> <dt id="initial"><code>initial</code></dt> <dd> <p>아이템 크기가 각각의 <code>width</code>와 <code>height</code> 속성에 따라 정해집니다. 플렉스 컨테이너의 크기를 넘지 않기 위해 최소 크기로 줄어들 수는 있지만, 남은 공간을 채우려 늘어나지는 않습니다. <code>flex: 0 1 auto</code>와 동일합니다.</p> </dd> <dt id="auto"><code>auto</code></dt> <dd> <p>아이템 크기가 각각의 <code>width</code>와 <code>height</code> 속성에 따라 정해집니다. 플렉스 컨테이너의 크기를 넘지 않기 위해 최소 크기로 줄어들 수 있으며, 남은 공간을 채우기 위해 늘어날 수도 있습니다. <code>flex: 1 1 auto</code>와 동일합니다.</p> </dd> <dt id="none"><code>none</code></dt> <dd> <p>아이템 크기가 각각의 <code>width</code>와 <code>height</code> 속성에 따라 정해지며, 컨테이너의 크기에 관계 없이 변하지 않습니다. <code>flex: 0 0 auto</code>와 동일합니다.</p> </dd> <dt id="flex-grow"><code>&lt;'flex-grow'&gt;</code></dt> <dd> <p>플렉스 아이템의 <a href="flex-grow"><code>flex-grow</code></a>를 지정합니다. 음수 값은 유효하지 않습니다. 생략 시 기본값은 <code>0</code>입니다.</p> </dd> <dt id="flex-shrink"><code>&lt;'flex-shrink'&gt;</code></dt> <dd> <p>플렉스 아이템의 <a href="flex-shrink"><code>flex-shrink</code></a>를 지정합니다. 음수 값은 유효하지 않습니다. 생략 시 기본값은 <code>1</code>입니다.</p> </dd> <dt id="flex-basis"><code>&lt;'flex-basis'&gt;</code></dt> <dd> <p>플렉스 아이템의 <a href="flex-basis"><code>flex-basis</code></a>를 지정합니다. <code>0</code>을 지정하려면 <code>&lt;flex-grow&gt;</code> 또는 <code>&lt;flex-shrink&gt;</code>로 읽히지 않도록 단위를 붙여야 합니다. 생략 시 기본값은 <code>auto</code>입니다.</p> </dd> </dl> <div class="notecard note" id="sect1"> <p><strong>참고:</strong> 한 개 또는 두 개의 단위 없는 숫자 값을 사용할 때, <code>&lt;flex-basis&gt;</code>의 값은 <code>auto</code>가 아니라 <code>0</code>이 됩니다. 더 자세한 정보는 <a href="https://drafts.csswg.org/css-flexbox/#flex-common" target="_blank">플렉시블 박스 레이아웃 모듈</a> 초안에서 확인할 수 있습니다.</p> </div>
+</div></section><section aria-labelledby="형식_구문"><h3 id="형식_구문">형식 구문</h3>
+<div class="section-content"><pre class="notranslate"><span class="token property" id="flex">flex = </span><br>  <span class="token keyword">none</span>                                                <a href="value_definition_syntax#single_bar">|</a><br>  <a href="value_definition_syntax#brackets">[</a> <span class="token property">&lt;'flex-grow'&gt;</span> <span class="token property">&lt;'flex-shrink'&gt;</span><a href="value_definition_syntax#question_mark">?</a> <a href="value_definition_syntax#double_bar">||</a> <span class="token property">&lt;'flex-basis'&gt;</span> <a href="value_definition_syntax#brackets">]</a>  <br><br></pre></div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+<div class="section-content">
+<div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="+Sanq3m9O5xxzpcfnaYtDKHEbNSQMKGKaPJIJxEgWMo=" data-language="css"><span class="token selector">#flex-container</span> <span class="token punctuation">{</span>
+  <span class="token property">display</span><span class="token punctuation">:</span> flex<span class="token punctuation">;</span>
+  <span class="token property">flex-direction</span><span class="token punctuation">:</span> row<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">#flex-container &gt; .flex-item</span> <span class="token punctuation">{</span>
+  <span class="token property">flex</span><span class="token punctuation">:</span> auto<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">#flex-container &gt; .raw-item</span> <span class="token punctuation">{</span>
+  <span class="token property">width</span><span class="token punctuation">:</span> 5rem<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div> <div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="HcWOBQCtpkaBsL6y79ykDZXFOLQjsa6YqQhc+5POYQA=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>flex-container<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>flex-item<span class="token punctuation">"</span></span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>flex<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Flex box (click to toggle raw box)<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>raw-item<span class="token punctuation">"</span></span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>raw<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Raw box<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div>  
+</div></section><section aria-labelledby="결과"><h3 id="결과">결과</h3>
+<div class="section-content"><div class="code-example" id="sect2">
+
+<iframe class="sample-code-frame" title="예제 sample" id="frame_예제" width="100%" height="60" src="https://live.mdnplay.dev/ko/docs/Web/CSS/flex/runner.html?id=%EC%98%88%EC%A0%9C" loading="lazy"></iframe>
+</div></div></section><h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://drafts.csswg.org/css-flexbox/#flex-property">CSS Flexible Box Layout Module Level 1 <br><small># flex-property</small></a></td></tr></tbody>
+</table></div>
+<div class="section-content"><figure class="table-container"><div class="_table"><table class="properties"><tbody>
+<tr>
+<th scope="row"><a href="initial_value">초기값</a></th>
+<td>as each of the properties of the shorthand:<br><ul>
+<li>
+<a href="flex-grow"><code>flex-grow</code></a>: <code>0</code>
+</li>
+<li>
+<a href="flex-shrink"><code>flex-shrink</code></a>: <code>1</code>
+</li>
+<li>
+<a href="flex-basis"><code>flex-basis</code></a>: <code>auto</code>
+</li>
+</ul>
+</td>
+</tr>
+<tr>
+<th scope="row">적용대상</th>
+<td>flex items, including in-flow pseudo-elements</td>
+</tr>
+<tr>
+<th scope="row"><a href="inheritance">상속</a></th>
+<td>no</td>
+</tr>
+<tr>
+<th scope="row"><a href="computed_value">계산 값</a></th>
+<td>as each of the properties of the shorthand:<br><ul>
+<li>
+<a href="flex-grow"><code>flex-grow</code></a>: as specified</li>
+<li>
+<a href="flex-shrink"><code>flex-shrink</code></a>: as specified</li>
+<li>
+<a href="flex-basis"><code>flex-basis</code></a>: as specified, but with relative lengths converted into absolute lengths</li>
+</ul>
+</td>
+</tr>
+<tr>
+<th scope="row">Animation type</th>
+<td>as each of the properties of the shorthand:<br><ul>
+<li>
+<a href="flex-grow"><code>flex-grow</code></a>: a <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/number#interpolation">number</a>
+</li>
+<li>
+<a href="flex-shrink"><code>flex-shrink</code></a>: a <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/number#interpolation">number</a>
+</li>
+<li>
+<a href="flex-basis"><code>flex-basis</code></a>: a <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/length#interpolation">length</a>, <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/percentage#interpolation">percentage</a> or calc();</li>
+</ul>
+</td>
+</tr>
+</tbody></table></div></figure></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li>CSS 플렉스박스 안내서: <em><a href="css_flexible_box_layout/basic_concepts_of_flexbox">Basic Concepts of Flexbox</a></em>
+</li> <li>CSS 플렉스박스 안내서: <em><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_flexible_box_layout/Controlling_ratios_of_flex_items_along_the_main_axis" class="only-in-en-us">Controlling Ratios of flex items along the main axis <small>(en-US)</small></a></em>
+</li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/CSS/flex" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/CSS/flex</a>
+  </p>
+</div>

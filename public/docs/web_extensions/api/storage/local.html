@@ -1,0 +1,25 @@
+<header><h1>storage.local</h1></header><div class="section-content">
+<p><code>local</code> 저장소 영역을 표현한다. <code>local</code> 저장소의 항목은 확장이 설치된 기기에 제한된다.</p> <p>브라우저는 local 저장소에 저장할 수 있는 데이터의 양을 제한한다:</p> <ul> <li>
+<a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/manifest.json/permissions#unlimited_storage">"unlimitedStorage" 권한</a>이 없으면 크롬은 데이터의 양을 5M로 제한한다.</li> <li>파이어폭스는 버전 56부터 "unlimitedStorage" 권한을 요청할 수 있다. 아직은 저장 용량을 제한하지는 않지만, 앞으로 그렇게 할 것이므로 큰 용량의 저장할 의도라면 지금 "unlimitedStorage" 권한을 요청하는 것이 좋다.</li> </ul> <p>확장이 제거되면, 그것과 연결된 local 저장소는 지워진다.</p> <p>파이어폭스에서는 확장을 제거해도 local 저장소를 브라우저가 지우지 않도록 막을 수 있다. "about:config"에서 "keepUuidOnUninstall"와 "keepStorageOnUninstall" 두 브라우저 기본 설정을 <code>true</code>로 고치면 된다. 이 특징은 개발자가 확장을 테스트하는데 도움을 주려는 것이다. 확장 스스로 이 값들을 바꿀 수는 없다.</p> <p>이 API는 <a href="https://developer.mozilla.org/ko/docs/Web/API/Window/localStorage"><code>Window.localStorage</code></a>와 비슷하지만, 확장 코드가 확장 관련 데이터를 저장하는데 <code>Window.localStorage</code>를 사용하지 말 것을 권장한다. 사적이 이유로 사용자가 방문 기록이나 데이터를 지우는 다양한 상황에서 확장이 localStorage API로 저장된 데이터는 지워지지만, <a href="local" aria-current="page"><code>storage.local</code></a> API로 저장한 데이터는 정확하게 유지된다.</p>
+</div>
+<section aria-labelledby="메소드"><h2 id="메소드">메소드</h2>
+<div class="section-content">
+<p><code>local</code> 객체는 <a href="storagearea"><code>storage.StorageArea</code></a> 자료형에 정의된 메소드로 구현되었다:</p> <dl> <dt id="storage.storagearea.get"><a href="storagearea/get"><code>storage.StorageArea.get()</code></a></dt> <dd> <p>저장소 영역에서 하나 이상의 항목을 가져온다.</p> </dd> <dt id="storage.storagearea.getbytesinuse"><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/storage/StorageArea/getBytesInUse" class="only-in-en-us"><code>storage.StorageArea.getBytesInUse()</code> <small>(en-US)</small></a></dt> <dd> <p>저장소의 사용된 크기를 바이트단위로 얻는다.</p> </dd> <dt id="storage.storagearea.set"><a href="storagearea/set"><code>storage.StorageArea.set()</code></a></dt> <dd> <p>저장소에 하나 이상의 항목을 설정한다. 이미 있는 항목은 교체된다. 값을 설정하면 <a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/storage/onChanged" class="only-in-en-us"><code>storage.onChanged</code> <small>(en-US)</small></a> 이벤트가 발생한다.</p> </dd> <dt id="storage.storagearea.remove"><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/storage/StorageArea/remove" class="only-in-en-us"><code>storage.StorageArea.remove()</code> <small>(en-US)</small></a></dt> <dd> <p>저장소에서 하나 이상의 값을 지운다.</p> </dd> <dt id="storage.storagearea.clear"><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/storage/StorageArea/clear" class="only-in-en-us"><code>storage.StorageArea.clear()</code> <small>(en-US)</small></a></dt> <dd> <p>저장소의 모든 항목을 지워서 비운다.</p> </dd> </dl>
+</div></section><h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="example_extensions"><h3 id="example_extensions">Example extensions</h3>
+<div class="section-content">
+<ul>
+<li><a href="https://github.com/mdn/webextensions-examples/tree/master/annotate-page" target="_blank">annotate-page</a></li>
+<li><a href="https://github.com/mdn/webextensions-examples/tree/master/forget-it" target="_blank">forget-it</a></li>
+<li><a href="https://github.com/mdn/webextensions-examples/tree/master/navigation-stats" target="_blank">navigation-stats</a></li>
+<li><a href="https://github.com/mdn/webextensions-examples/tree/master/proxy-blocker" target="_blank">proxy-blocker</a></li>
+<li><a href="https://github.com/mdn/webextensions-examples/tree/master/quicknote" target="_blank">quicknote</a></li>
+<li><a href="https://github.com/mdn/webextensions-examples/tree/master/stored-credentials" target="_blank">stored-credentials</a></li>
+</ul> <div class="notecard note" id="sect2"> <p><strong>참고:</strong> <strong>Acknowledgements</strong>This API is based on Chromium's <a href="https://developer.chrome.com/extensions/storage#property-local" target="_blank"><code>chrome.storage</code></a> API. This documentation is derived from <a href="https://chromium.googlesource.com/chromium/src/+/master/extensions/common/api/storage.json" target="_blank"><code>storage.json</code></a> in the Chromium code.Microsoft Edge compatibility data is supplied by Microsoft Corporation and is included here under the Creative Commons Attribution 3.0 United States License.</p> </div>
+</div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Mozilla/Add-ons/WebExtensions/API/storage/local" class="_attribution-link">https://developer.mozilla.org/ko/docs/Mozilla/Add-ons/WebExtensions/API/storage/local</a>
+  </p>
+</div>

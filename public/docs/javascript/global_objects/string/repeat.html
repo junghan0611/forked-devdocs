@@ -1,0 +1,79 @@
+<header><h1>String.prototype.repeat()</h1></header><div class="section-content"><p><code>repeat()</code> 메서드는 문자열을 주어진 횟수만큼 반복해 붙인 새로운 문자열을 반환합니다.</p></div>
+<section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="HU6bAwG9XSmMtefY1lao3ZE3Q/wSECWX0JIIqQmPhN0=" data-language="js">str<span class="token punctuation">.</span><span class="token function">repeat</span><span class="token punctuation">(</span>count<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div></div></section><section aria-labelledby="매개변수"><h3 id="매개변수">매개변수</h3>
+<div class="section-content"><dl> <dt id="count"><code>count</code></dt> <dd> <p>문자열을 반복할 횟수. 0과 양의 무한대 사이의 정수([0, +∞)).</p> </dd> </dl></div></section><section aria-labelledby="반환값"><h3 id="반환값">반환값</h3>
+<div class="section-content"><p>현재 문자열을 주어진 횟수만큼 반복해 붙인 새로운 문자열.</p></div></section><section aria-labelledby="예외"><h3 id="예외">예외</h3>
+<div class="section-content"><ul> <li>
+<a href="../../errors/negative_repetition_count"><code>RangeError</code></a>: 반복 횟수는 양의 정수여야 함.</li> <li>
+<a href="../../errors/resulting_string_too_large"><code>RangeError</code></a>: 반복 횟수는 무한대보다 작아야 하며, 최대 문자열 크기를 넘어선 안됨.</li> </ul></div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="6Kz1pONYDkCvHeZFgwMoN+Qm51Yw8NnldKJuaUEeusg=" data-language="js"><span class="token string">'abc'</span><span class="token punctuation">.</span><span class="token function">repeat</span><span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment">// RangeError</span>
+<span class="token string">'abc'</span><span class="token punctuation">.</span><span class="token function">repeat</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token comment">// ''</span>
+<span class="token string">'abc'</span><span class="token punctuation">.</span><span class="token function">repeat</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token comment">// 'abc'</span>
+<span class="token string">'abc'</span><span class="token punctuation">.</span><span class="token function">repeat</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token comment">// 'abcabc'</span>
+<span class="token string">'abc'</span><span class="token punctuation">.</span><span class="token function">repeat</span><span class="token punctuation">(</span><span class="token number">3.5</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// 'abcabcabc' (count will be converted to integer)</span>
+<span class="token string">'abc'</span><span class="token punctuation">.</span><span class="token function">repeat</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token operator">/</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// RangeError</span>
+
+<span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token function-variable function">toString</span><span class="token operator">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token string">'abc'</span><span class="token punctuation">,</span> <span class="token literal-property property">repeat</span><span class="token operator">:</span> <span class="token class-name">String</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span>repeat <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">repeat</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// 'abcabc' (repeat() is a generic method)</span>
+</pre>
+</div></div></section><section aria-labelledby="폴리필"><h2 id="폴리필">폴리필</h2>
+<div class="section-content">
+<p><code>repeat</code>은 ECMAScript 2015 명세에 추가됐습니다. 따라서 어떤 표준 구현체에서는 사용할 수 없을 수도 있습니다. 그러나 아래 코드를 포함하면 지원하지 않는 플랫폼에서도 <code>repeat</code>을 사용할 수 있습니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="UGsjpV6ePsA7aoHKwvM/zysdGk02chLUo8N+d7dfur4=" data-language="js"><span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token class-name">String</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span>repeat<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token class-name">String</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function-variable function">repeat</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">count</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token string">'use strict'</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">this</span> <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">TypeError</span><span class="token punctuation">(</span><span class="token string">'can\'t convert '</span> <span class="token operator">+</span> <span class="token keyword">this</span> <span class="token operator">+</span> <span class="token string">' to object'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">var</span> str <span class="token operator">=</span> <span class="token string">''</span> <span class="token operator">+</span> <span class="token keyword">this</span><span class="token punctuation">;</span>
+    count <span class="token operator">=</span> <span class="token operator">+</span>count<span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>count <span class="token operator">!=</span> count<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      count <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>count <span class="token operator">&lt;</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">RangeError</span><span class="token punctuation">(</span><span class="token string">'repeat count must be non-negative'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>count <span class="token operator">==</span> <span class="token number">Infinity</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">RangeError</span><span class="token punctuation">(</span><span class="token string">'repeat count must be less than infinity'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    count <span class="token operator">=</span> Math<span class="token punctuation">.</span><span class="token function">floor</span><span class="token punctuation">(</span>count<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>str<span class="token punctuation">.</span>length <span class="token operator">==</span> <span class="token number">0</span> <span class="token operator">||</span> count <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">return</span> <span class="token string">''</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token comment">// Ensuring count is a 31-bit integer allows us to heavily optimize the</span>
+    <span class="token comment">// main part. But anyway, most current (August 2014) browsers can't handle</span>
+    <span class="token comment">// strings 1 &lt;&lt; 28 chars or longer, so:</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>str<span class="token punctuation">.</span>length <span class="token operator">*</span> count <span class="token operator">&gt;=</span> <span class="token number">1</span> <span class="token operator">&lt;&lt;</span> <span class="token number">28</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">RangeError</span><span class="token punctuation">(</span><span class="token string">'repeat count must not overflow maximum string size'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">var</span> maxCount <span class="token operator">=</span> str<span class="token punctuation">.</span>length <span class="token operator">*</span> count<span class="token punctuation">;</span>
+    count <span class="token operator">=</span> Math<span class="token punctuation">.</span><span class="token function">floor</span><span class="token punctuation">(</span>Math<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>count<span class="token punctuation">)</span> <span class="token operator">/</span> Math<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">while</span> <span class="token punctuation">(</span>count<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+       str <span class="token operator">+=</span> str<span class="token punctuation">;</span>
+       count<span class="token operator">--</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    str <span class="token operator">+=</span> str<span class="token punctuation">.</span><span class="token function">substring</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> maxCount <span class="token operator">-</span> str<span class="token punctuation">.</span>length<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> str<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</pre>
+</div>
+</div></section><h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://tc39.es/ecma262/multipage/text-processing.html#sec-string.prototype.repeat">ECMAScript Language Specification <br><small># sec-string.prototype.repeat</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/String/repeat" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/String/repeat</a>
+  </p>
+</div>

@@ -1,0 +1,23 @@
+<header><h1>EventTarget</h1></header><div class="section-content">
+<p><code>EventTarget</code> 인터페이스는 이벤트를 수신할 수 있고, 수신한 이벤트에 대한 수신기(listener)를 가질 수 있는 객체가 구현하는 인터페이스입니다. 즉, 이벤트의 대상이 될 수 있는 객체는 <code>EventTarget</code>의 세 메서드를 구현합니다.</p> <p><a href="element"><code>Element</code></a>, <a href="document"><code>Document</code></a>, <a href="window"><code>Window</code></a>가 가장 흔한 이벤트 대상이며, 이외에도 <a href="xmlhttprequest"><code>XMLHttpRequest</code></a>, <a href="audionode"><code>AudioNode</code></a>, <a href="audiocontext"><code>AudioContext</code></a> 등의 객체도 이벤트 대상입니다.</p> <p>많은 이벤트 대상(요소, 문서, 창, ...)은 <code>onevent</code> 속성과 특성을 사용한 <a href="https://developer.mozilla.org/en-US/docs/Web/Events/Event_handlers" class="only-in-en-us">이벤트 처리기 <small>(en-US)</small></a> 등록도 지원합니다.</p>
+</div>
+<h2 id="생성자">생성자</h2>
+<div class="section-content"><dl> <dt id="eventtarget"><a href="eventtarget/eventtarget"><code>EventTarget()</code></a></dt> <dd> <p>새로운 <code>EventTarget</code> 객체 인스턴스를 생성합니다.</p> </dd> </dl></div>
+<h2 id="메서드">메서드</h2>
+<div class="section-content"><dl> <dt id="eventtarget.addeventlistener"><a href="eventtarget/addeventlistener"><code>EventTarget.addEventListener()</code></a></dt> <dd> <p><code>EventTarget</code>에 특정 이벤트 유형의 처리기를 등록합니다.</p> </dd> <dt id="eventtarget.removeeventlistener"><a href="eventtarget/removeeventlistener"><code>EventTarget.removeEventListener()</code></a></dt> <dd> <p><code>EventTarget</code>에서 이벤트 수신기를 하나 제거합니다.</p> </dd> <dt id="eventtarget.dispatchevent"><a href="eventtarget/dispatchevent"><code>EventTarget.dispatchEvent()</code></a></dt> <dd> <p><code>EventTarget</code>으로 이벤트를 발송합니다.</p> </dd> </dl></div>
+<h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://dom.spec.whatwg.org/#interface-eventtarget">DOM Standard <br><small># interface-eventtarget</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li>
+<a href="https://developer.mozilla.org/en-US/docs/Web/Events" class="only-in-en-us">이벤트 참고서 <small>(en-US)</small></a> - 웹 플랫폼에서 사용할 수 있는 이벤트 목록</li> <li><a href="https://developer.mozilla.org/ko/docs/Learn/JavaScript/Building_blocks/Events">이벤트 입문</a></li> <li>
+<a href="event"><code>Event</code></a> 인터페이스</li> </ul></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/EventTarget" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/EventTarget</a>
+  </p>
+</div>

@@ -1,0 +1,61 @@
+<header><h1>URIError() constructor</h1></header><div class="section-content"><p><code>URIError()</code> 생성자는 전역 URI 핸들링 함수가 잘못 사용될 때 오류를 생성합니다.</p></div>
+<section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="jm+wGskycuzk0cK15t6B3+Y3HXMLZQ1S6a4pdVkHPZ4=" data-language="js"><span class="token keyword">new</span> <span class="token class-name">URIError</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">new</span> <span class="token class-name">URIError</span><span class="token punctuation">(</span>message<span class="token punctuation">)</span>
+<span class="token keyword">new</span> <span class="token class-name">URIError</span><span class="token punctuation">(</span>message<span class="token punctuation">,</span> fileName<span class="token punctuation">)</span>
+<span class="token keyword">new</span> <span class="token class-name">URIError</span><span class="token punctuation">(</span>message<span class="token punctuation">,</span> fileName<span class="token punctuation">,</span> lineNumber<span class="token punctuation">)</span>
+</pre>
+</div></div></section><section aria-labelledby="매개변수"><h3 id="매개변수">매개변수</h3>
+<div class="section-content"><dl> <dt id="message">
+<code>message</code> <span class="badge inline optional">Optional</span>
+</dt> <dd> <p>사람이 읽을 수 있는 에러에 대한 설명.</p> </dd> <dt id="filename">
+<code>fileName</code> <span class="badge inline optional">Optional</span>
+</dt> <dd> <p>예외를 일으킨 코드가 들어있는 파일 이름.</p> </dd> <dt id="linenumber">
+<code>lineNumber</code> <span class="badge inline optional">Optional</span>
+</dt> <dd> <p>예외를 일으킨 코드의 줄 수.</p> </dd> </dl></div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+</section><section aria-labelledby="urierror_잡기"><h3 id="urierror_잡기">URIError 잡기</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="60We0snkQuzDQBSs21m2zrCr/m15+tWCXIbIpMa6qiE=" data-language="js"><span class="token keyword">try</span> <span class="token punctuation">{</span>
+  <span class="token function">decodeURIComponent</span><span class="token punctuation">(</span><span class="token string">'%'</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span>e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>e <span class="token keyword">instanceof</span> <span class="token class-name">URIError</span><span class="token punctuation">)</span>  <span class="token comment">// true</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>e<span class="token punctuation">.</span>message<span class="token punctuation">)</span>              <span class="token comment">// "malformed URI sequence"</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>e<span class="token punctuation">.</span>name<span class="token punctuation">)</span>                 <span class="token comment">// "URIError"</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>e<span class="token punctuation">.</span>fileName<span class="token punctuation">)</span>             <span class="token comment">// "Scratchpad/1"</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>e<span class="token punctuation">.</span>lineNumber<span class="token punctuation">)</span>           <span class="token comment">// 2</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>e<span class="token punctuation">.</span>columnNumber<span class="token punctuation">)</span>         <span class="token comment">// 2</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>e<span class="token punctuation">.</span>stack<span class="token punctuation">)</span>                <span class="token comment">// "@Scratchpad/2:2:3\n"</span>
+<span class="token punctuation">}</span>
+</pre>
+</div></div></section><section aria-labelledby="urierror_생성하기"><h3 id="urierror_생성하기">URIError 생성하기</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="1AweeYtn6JySYK0GfwFg1LLe/spCSzliifyXjIg1FnI=" data-language="js"><span class="token keyword">try</span> <span class="token punctuation">{</span>
+  <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">URIError</span><span class="token punctuation">(</span><span class="token string">'Hello'</span><span class="token punctuation">,</span> <span class="token string">'someFile.js'</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span>e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>e <span class="token keyword">instanceof</span> <span class="token class-name">URIError</span><span class="token punctuation">)</span>  <span class="token comment">// true</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>e<span class="token punctuation">.</span>message<span class="token punctuation">)</span>              <span class="token comment">// "Hello"</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>e<span class="token punctuation">.</span>name<span class="token punctuation">)</span>                 <span class="token comment">// "URIError"</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>e<span class="token punctuation">.</span>fileName<span class="token punctuation">)</span>             <span class="token comment">// "someFile.js"</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>e<span class="token punctuation">.</span>lineNumber<span class="token punctuation">)</span>           <span class="token comment">// 10</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>e<span class="token punctuation">.</span>columnNumber<span class="token punctuation">)</span>         <span class="token comment">// 0</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>e<span class="token punctuation">.</span>stack<span class="token punctuation">)</span>                <span class="token comment">// "@Scratchpad/2:2:9\n"</span>
+<span class="token punctuation">}</span>
+</pre>
+</div></div></section><h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://tc39.es/ecma262/multipage/fundamental-objects.html#sec-nativeerror-constructors">ECMAScript Language Specification <br><small># sec-nativeerror-constructors</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="../error"><code>Error</code></a></li> <li><a href="../decodeuri"><code>decodeURI()</code></a></li> <li><a href="../decodeuricomponent"><code>decodeURIComponent()</code></a></li> <li><a href="../encodeuri"><code>encodeURI()</code></a></li> <li><a href="../encodeuricomponent"><code>encodeURIComponent()</code></a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/URIError/URIError" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/URIError/URIError</a>
+  </p>
+</div>

@@ -1,0 +1,74 @@
+<header><h1>console.countReset()</h1></header><div class="section-content">
+<p><code>console.countReset()</code> 메서드는 <a href="count"><code>console.count()</code></a>의 카운터를 초기화합니다.</p>
+<div class="notecard note" id="sect1"> <p><strong>참고:</strong> 이 기능은 <a href="../web_workers_api">Web Worker</a>에서 사용할 수 있습니다</p> </div>
+</div>
+<h2 id="구문">구문</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="6lxv9j9JV4wrrCxWXjX+2/5/N5E+Gfgdc08Y1LxZJBY=" data-language="js">console<span class="token punctuation">.</span><span class="token function">countReset</span><span class="token punctuation">(</span><span class="token punctuation">[</span>label<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div></div>
+<h3 id="매개변수">매개변수</h3>
+<div class="section-content"><dl> <dt id="label">
+<code>label</code> <span class="badge inline optional">Optional</span>
+</dt> <dd> <p><a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/String"><code>String</code></a>. 지정한 경우, 이 레이블을 지정한 <code>count()</code>를 0으로 초기화합니다. 누락한 경우 default 카운터를 0으로 초기화합니다.</p> </dd> </dl></div>
+<h2 id="예제">예제</h2>
+<div class="section-content">
+<div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="lt30aUZb0q8BsSMc3ZzGH/fRZg3Y/o//cquLCC/XsJk=" data-language="js"><span class="token keyword">let</span> user <span class="token operator">=</span> <span class="token string">""</span><span class="token punctuation">;</span>
+
+<span class="token keyword">function</span> <span class="token function">greet</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">count</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">return</span> <span class="token string">"hi "</span> <span class="token operator">+</span> user<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+user <span class="token operator">=</span> <span class="token string">"bob"</span><span class="token punctuation">;</span>
+<span class="token function">greet</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+user <span class="token operator">=</span> <span class="token string">"alice"</span><span class="token punctuation">;</span>
+<span class="token function">greet</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">greet</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">count</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">countReset</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div> <p>위 코드의 출력 결과는 다음과 같습니다.</p> <pre class="notranslate">"default: 1"
+"default: 2"
+"default: 3"
+"default: 4"
+"default: 0"
+</pre> <p><code>console.countReset()</code>이 기본 카운터를 0으로 초기화했음을 알 수 있습니다.</p> <p>첫 번째 <code>count()</code>의 매개변수에는 문자열 "bob"을 제공하고, 두 번째에는 문자열 "alice"를 제공할 경우...</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="+3sAAcjpjshgQX9d9ybmfXN6grfVb3nd531uHdkz3Pg=" data-language="js"><span class="token keyword">let</span> user <span class="token operator">=</span> <span class="token string">""</span><span class="token punctuation">;</span>
+
+<span class="token keyword">function</span> <span class="token function">greet</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">count</span><span class="token punctuation">(</span>user<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">return</span> <span class="token string">"hi "</span> <span class="token operator">+</span> user<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+user <span class="token operator">=</span> <span class="token string">"bob"</span><span class="token punctuation">;</span>
+<span class="token function">greet</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+user <span class="token operator">=</span> <span class="token string">"alice"</span><span class="token punctuation">;</span>
+<span class="token function">greet</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">greet</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">countReset</span><span class="token punctuation">(</span><span class="token string">"bob"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">count</span><span class="token punctuation">(</span><span class="token string">"alice"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div> <p>다음과 같이 출력합니다.</p> <pre class="notranslate">"bob: 1"
+"alice: 1"
+"alice: 2"
+"bob: 0"
+"alice: 3"
+</pre> <p>카운터 "bob"을 초기화해도 "alice"의 값에는 영향이 없습니다.</p>
+</div>
+<h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://console.spec.whatwg.org/#countreset">Console Standard <br><small># countreset</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/console/countReset" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/console/countReset</a>
+  </p>
+</div>

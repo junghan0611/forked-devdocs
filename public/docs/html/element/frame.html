@@ -1,0 +1,25 @@
+<header><h1>&lt;frame&gt;</h1></header><div class="section-content"><div class="notecard deprecated" id="sect1"><p><strong>지원이 중단되었습니다:</strong> This feature is no longer recommended. Though some browsers might still support it, it may have already been removed from the relevant web standards, may be in the process of being dropped, or may only be kept for compatibility purposes. Avoid using it, and update existing code if possible; see the <a href="#browser_compatibility">compatibility table</a> at the bottom of this page to guide your decision. Be aware that this feature may cease to work at any time.</p></div></div>
+<h2 id="요약">요약</h2>
+<div class="section-content">
+<p><code>&lt;frame&gt;</code>은 다른 HTML 문서가 표시될 수 있는 특정 영역을 정의하는 element이다. frame은 <a href="frameset"><code>&lt;frameset&gt;</code></a>내에서 사용되어야 한다.</p> <p> &lt;frame&gt; element의 사용은 screen reader 사용자들의 접근성 부족과같은 기능문제같은 특정 단점 때문에 권장되지 않는다 &lt;frame&gt; element 대신에 <a href="iframe"><code>&lt;iframe&gt;</code></a> 가 아마 더 적합할것이다. </p>
+</div>
+<h2 id="속성attributes">속성(=Attributes)</h2>
+<div class="section-content">
+<p>다른 모든 HTML elments와 마찬가지로, &lt;frame&gt; element는 전역속성(<a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes" class="only-in-en-us">global attributes <small>(en-US)</small></a>)이 적용된다.</p> <dl> <dt id="src"><a id="attr-src" class="inline-block" href="#attr-src"><b><code>src</code></b></a></dt> <dd> <p>이 속성은 frame으로 표시될 문서를 기입합니다.</p> </dd> <dt id="name"><a id="attr-name" class="inline-block" href="#attr-name"><b><code>name</code></b></a></dt> <dd> <p>이 속성은 프레임을 명명하는데 사용됩니다. 명명되지않은 모든 링크들은 그들이 속해있는 그 프레임 안에서 열릴것입니다</p> </dd> <dt id="noresize"><a id="attr-noresize" class="inline-block" href="#attr-noresize"><b><code>noresize</code></b></a></dt> <dd> <p>이 속성은 사용자가 프레임크기를 조정할수 없게합니다.</p> </dd> <dt id="scrolling"><a id="attr-scrolling" class="inline-block" href="#attr-scrolling"><b><code>scrolling</code></b></a></dt> <dd> <p> 이 속성은 스크롤바의 유무를 결정합니다. 이 속성을 사용하지않으면 특정상황에서 자동으로 브라우져에 스크롤바가 생깁니다. 두가지를 선택할 수 있습니다. "yes"면 항상 스크롤바를 보여주고 "no"면 항상 스크롤바를 보여주지 않습니다. </p> </dd> <dt id="marginheight"><a id="attr-marginheight" class="inline-block" href="#attr-marginheight"><b><code>marginheight</code></b></a></dt> <dd> <p>이 속성은 프레임 사이의 여백 높이를 정의할때 사용됩니다.</p> </dd> <dt id="marginwidth"><a id="attr-marginwidth" class="inline-block" href="#attr-marginwidth"><b><code>marginwidth</code></b></a></dt> <dd> <p>이 속성은 프레임 사이의 여백 넓이를 정의할때 사용됩니다.</p> </dd> <dt id="frameborder"><a id="attr-frameborder" class="inline-block" href="#attr-frameborder"><b><code>frameborder</code></b></a></dt> <dd> <p>이 속성을 사용하면 프레임에 대한 경계선을 넣을 수 있습니다.</p> </dd> </dl>
+</div>
+<h2 id="예시">예시</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="r3BACYYKFRFw2xbfvwh/Q1Fo8bYaKOMWmfKpXhndgAw=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>frameset</span> <span class="token attr-name">cols</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>50%,50%<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>frame</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>https://developer.mozilla.org/en/HTML/Element/iframe<span class="token punctuation">"</span></span> <span class="token punctuation">/&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>frame</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>https://developer.mozilla.org/en/HTML/Element/frame<span class="token punctuation">"</span></span> <span class="token punctuation">/&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>frameset</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div></div>
+<h2 id="참조">참조</h2>
+<div class="section-content"><ul> <li><a href="frameset"><code>&lt;frameset&gt;</code></a></li> <li><a href="iframe"><code>&lt;iframe&gt;</code></a></li> </ul></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/HTML/Element/frame" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/HTML/Element/frame</a>
+  </p>
+</div>

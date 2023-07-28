@@ -1,0 +1,112 @@
+<header><h1>Document.querySelectorAll()</h1></header><div class="section-content">
+<p><a href="../document"><code>Document</code></a> 메소드 <code>querySelectorAll()</code> 는 지정된 셀렉터 그룹에 일치하는 다큐먼트의 엘리먼트 리스트를 나타내는 정적(살아 있지 않은) <a href="../nodelist"><code>NodeList</code></a> 를 반환합니다.</p> <div class="notecard note" id="sect1"> <p><strong>참고:</strong> <strong>노트:</strong> 이 메소드는 <a class="page-not-created"><code>ParentNode</code></a> 믹스인의 <a class="page-not-created"><code>querySelectorAll()</code></a> 메소드를 기반으로 구현되었습니다.</p> </div>
+</div>
+<h2 id="구문">구문</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="sZ7gkAUxiE+frxsbijcE+NExY48A9UH+FmyRGOtWF8I=" data-language="js">elementList <span class="token operator">=</span> parentNode<span class="token punctuation">.</span><span class="token function">querySelectorAll</span><span class="token punctuation">(</span>selectors<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div></div>
+<h3 id="파라미터">파라미터</h3>
+<div class="section-content">
+<dl> <dt id="selectors"><code>selectors</code></dt> <dd> <p>매칭할 하나 이상의 셀렉터를 포함하는 <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/String"><code>DOMString</code></a>. 이 스트링은 반드시 유효한 <a href="https://developer.mozilla.org/ko/docs/Web/CSS/CSS_selectors">CSS 셀렉터</a>여야 합니다; 그렇지 않을 경우, <code>SyntaxError</code> 예외가 발생합니다. 엘리먼트 식별을 위한 셀렉터 사용의 자세한 내용은 <a href="https://developer.mozilla.org/ko/docs/Gecko_DOM_Reference/Locating_DOM_elements_using_selectors" class="page-not-created">셀렉터로 DOM 엘리먼트 찾기</a> 문서를 확인하세요. 콤마를 사용해 분리하여 다중 셀렉터를 지정할수도 있습니다.</p> </dd> </dl> <div class="notecard note" id="sect2"> <p><strong>참고:</strong> <strong>노트:</strong> 표준 CSS 구문이 아닌 문자들은 역슬래시를 사용해 이스케이프해야 합니다. 자바스크립트가 역슬래시 이스케이핑을 사용한 이후로, 그러한 문자들을 사용하는 문자열 리터럴을 작성할 때 특별히 신경써야 합니다. 자세한 내용은 <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/String#%EC%9D%B4%EC%8A%A4%EC%BC%80%EC%9D%B4%ED%94%84_%ED%91%9C%ED%98%84">이스케이프 표현</a>을 확인하세요.</p> </div>
+</div>
+<h3 id="반환_값">반환 값</h3>
+<div class="section-content">
+<p>지정한 셀렉터와 하나라도 일치하는 각 엘리먼트에 대한 하나의 <a href="../element"><code>Element</code></a> 를 포함하는 살아 있지 않은 <a href="../nodelist"><code>NodeList</code></a>. 일치하는 것이 없는 경우에는 비어 있는 <a href="../nodelist"><code>NodeList</code></a>.</p> <div class="notecard note" id="sect3"> <p><strong>참고:</strong> <strong>노트:</strong> 지정한 <code>selectors</code> 가 <a href="https://developer.mozilla.org/ko/docs/Web/CSS/Pseudo-elements">CSS 가상 엘리먼트</a>를 포함하면, 반환 리스트는 항상 비어있습니다.</p> </div>
+</div>
+<h3 id="예외">예외</h3>
+<div class="section-content"><dl> <dt id="syntaxerror"><code>SyntaxError</code></dt> <dd> <p>지정한 <code>selectors</code> 문자열의 구문이 유효하지 않습니다.</p> </dd> </dl></div>
+<h2 id="예시">예시</h2>
+
+<h3 id="일치하는_리스트_얻기">일치하는 리스트 얻기</h3>
+<div class="section-content">
+<p>다큐먼트에서 모든 <a href="https://developer.mozilla.org/ko/docs/Web/HTML/Element/p"><code>&lt;p&gt;</code></a> 엘리먼트의 <a href="../nodelist"><code>NodeList</code></a> 를 얻으려면:</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="Y7AuZsNCo8CqSdscqSgnrFy/lSDlm9BIXdOohz7a6iE=" data-language="js"><span class="token keyword">var</span> matches <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">querySelectorAll</span><span class="token punctuation">(</span><span class="token string">"p"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div> <p>이 예시는 다큐먼트 내의 클래스가 "<code>note</code>" 또는 "<code>alert</code>" 인 모든 <a href="https://developer.mozilla.org/ko/docs/Web/HTML/Element/div"><code>&lt;div&gt;</code></a> 엘리먼트의 목록을 반환합니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="DHZNQRZNr+95yhExtJnaDdS3NRDADVIMuNgKUehdUzU=" data-language="js"><span class="token keyword">var</span> matches <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">querySelectorAll</span><span class="token punctuation">(</span><span class="token string">"div.note, div.alert"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div> <p>여기에서는, ID 가 <code>"test"</code> 인 컨테이너안에 위치하고 부모 엘리먼트가 <a class="page-not-created"><code>div</code></a> 엘리먼트이며 클래스가 <code>"highlighted"</code> 인 <code>&lt;p&gt;</code> 엘리먼트의 리스트를 얻습니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="Fk9+UPMmzEfazksF7Xh7E5w64ioa4OAKzeEH5tkaXNw=" data-language="js"><span class="token keyword">var</span> container <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">querySelector</span><span class="token punctuation">(</span><span class="token string">"#test"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> matches <span class="token operator">=</span> container<span class="token punctuation">.</span><span class="token function">querySelectorAll</span><span class="token punctuation">(</span><span class="token string">"div.highlighted &gt; p"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div> <p>이 예시는 <a href="https://developer.mozilla.org/ko/docs/Web/CSS/Attribute_selectors">속성 셀렉터</a>를 사용해 다큐먼트에서 <code>"data-src"</code> 속성을 포함하는 <a class="page-not-created"><code>iframe</code></a> 엘리먼트의 리스트를 반환합니다:</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="6rT0diTBqyA3vKqr4kOVji1kzvCnHSUU9rr4ojWDq3E=" data-language="js"><span class="token keyword">var</span> matches <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">querySelectorAll</span><span class="token punctuation">(</span><span class="token string">"iframe[data-src]"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div> <p>여기에서는, ID 가 <code>"userlist"</code> 인 리스트 내에서 <code>"data-active"</code> 속성 값이 <code>"1"</code> 인 리스트 항목의 목록을 반환하는데 속성 셀렉터가 사용되었습니다:</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="/KwgUuv0vARwmixPUpo1lx3K6SodWioRL4FoTSX1XE0=" data-language="js"><span class="token keyword">var</span> container <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">querySelector</span><span class="token punctuation">(</span><span class="token string">"#userlist"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> matches <span class="token operator">=</span> container<span class="token punctuation">.</span><span class="token function">querySelectorAll</span><span class="token punctuation">(</span><span class="token string">"li[data-active='1']"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div>
+</div>
+<h3 id="일치_항목에_접근하기">일치 항목에 접근하기</h3>
+<div class="section-content">
+<p>일치하는 항목의 <a href="../nodelist"><code>NodeList</code></a> 가 반환되면, 배열처럼 확인하실 수 있습니다. 배열이 비어있다면(<code>length</code> 프로퍼티가 0), 일치한 것을 발견하지 못한 것입니다.</p> <p>다른 방법으로, 리스트의 컨텐츠에 접근하기위한 표준 배열 노테이션을 사용하실수도 있습니다. 다음과 같이 일반적인 모든 반복문을 사용하실 수 있습니다:</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="+dfK+sE+johstWfLgZDuD2pefUeckfQaTQdTxVW06MY=" data-language="js"><span class="token keyword">var</span> highlightedItems <span class="token operator">=</span> userList<span class="token punctuation">.</span><span class="token function">querySelectorAll</span><span class="token punctuation">(</span><span class="token string">".highlighted"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+highlightedItems<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">userItem</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token function">deleteUser</span><span class="token punctuation">(</span>userItem<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div>
+</div>
+<h2 id="사용자_노트">사용자 노트</h2>
+<div class="section-content"><p><code>querySelectorAll()</code> 은 대부분의 일반적인 자바스크립트 DOM 라이브러리와 다르게 동작하여 예상치못한 결과를 가져올 수 있습니다.</p></div>
+<h3 id="html">HTML</h3>
+<div class="section-content">
+<p>세 번 중첩된 <a href="https://developer.mozilla.org/ko/docs/Web/HTML/Element/div"><code>&lt;div&gt;</code></a> 블록을 갖는 다음 HTML 을 고려해봅시다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="k59okTmuSO+rfwQE4XH4U2rjCmnK0xWLiIjAEZczivQ=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>outer<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>select<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>inner<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div>
+</div>
+<h3 id="자바스크립트">자바스크립트</h3>
+<div class="section-content">
+<div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="Ct6/Ekht2PAIiEb//vooOb/ENoWhJFGr+gO5NcAIp9Y=" data-language="js"><span class="token keyword">var</span> select <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">querySelector</span><span class="token punctuation">(</span><span class="token string">'.select'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> inner <span class="token operator">=</span> select<span class="token punctuation">.</span><span class="token function">querySelectorAll</span><span class="token punctuation">(</span><span class="token string">'.outer .inner'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+inner<span class="token punctuation">.</span>length<span class="token punctuation">;</span> <span class="token comment">// 1 입니다. 0 이 아닙니다!</span>
+</pre>
+</div> <p>클래스 <code>"select"</code> 를 갖는 <code>&lt;div&gt;</code> 컨텍스트에서 <code>".outer .inner"</code> 를 셀렉팅할 때, .outer 가 탐색을 수행하는 기본 엘리먼트(<code>".select"</code>)의 자손이 아님에도 클래스 <code>".inner"</code> 가 탐색됩니다. 기본적으로 <code>querySelectorAll()</code> 은 탐색 범위 내에서 셀렉터의 마지막 엘리먼트만을 검증합니다.</p> <p><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:scope"><code>:scope</code> <small>(en-US)</small></a> 가상 클래스는 예상된 동작을하도록 하지만, 베이스 엘리먼트의 자손에 일치하는 셀렉터로만 제한됩니다:</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="NS2BKN4sO/mJngHEm4NvDGE2/97OqcppIiViFPahRCw=" data-language="js"><span class="token keyword">var</span> select <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">querySelector</span><span class="token punctuation">(</span><span class="token string">'.select'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> inner <span class="token operator">=</span> select<span class="token punctuation">.</span><span class="token function">querySelectorAll</span><span class="token punctuation">(</span><span class="token string">':scope .outer .inner'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+inner<span class="token punctuation">.</span>length<span class="token punctuation">;</span> <span class="token comment">// 0</span>
+</pre>
+</div>
+</div>
+<h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="#">DOM Standard <br><small># ref-for-dom-parentnode-queryselectorall①</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<h2 id="함께_보기">함께 보기</h2>
+<div class="section-content"><ul> <li><a href="../document_object_model/locating_dom_elements_using_selectors">셀렉터를 사용해 DOM 엘리먼트 찾기</a></li> <li>CSS 가이드의 <a href="https://developer.mozilla.org/ko/docs/Web/CSS/Attribute_selectors">속성 셀렉터</a>
+</li> <li>MDN 학습 영역의 <a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Selectors/Attribute_selectors">속성 셀렉터</a>
+</li> <li>
+<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/Element/querySelector"><code>Element.querySelector()</code> <small>(en-US)</small></a> 와 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/Element/querySelectorAll"><code>Element.querySelectorAll()</code> <small>(en-US)</small></a>
+</li> <li><a href="queryselector"><code>Document.querySelector()</code></a></li> <li>
+<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/DocumentFragment/querySelector"><code>DocumentFragment.querySelector()</code> <small>(en-US)</small></a> 와 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/DocumentFragment/querySelectorAll"><code>DocumentFragment.querySelectorAll()</code> <small>(en-US)</small></a>
+</li> <li>
+<a class="page-not-created"><code>ParentNode.querySelector()</code></a> 와 <a class="page-not-created"><code>ParentNode.querySelectorAll()</code></a>
+</li> <li><a href="https://developer.mozilla.org/ko/docs/Archive/Add-ons/Code_snippets/QuerySelector" class="page-not-created"><code>querySelector()</code> 코드 조각</a></li> </ul></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/Document/querySelectorAll" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/Document/querySelectorAll</a>
+  </p>
+</div>

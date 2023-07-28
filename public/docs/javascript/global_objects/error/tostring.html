@@ -1,0 +1,75 @@
+<header><h1>Error.prototype.toString()</h1></header><div class="section-content"><p><code>toString()</code> 메서드는 명시된 <a href="../error"><code>Error</code></a> 객체를 표현하는 문자열을 반환합니다.</p></div>
+<section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="Lq0jsvmSlW5IOdPLUza9KVGj1ExJnl+VrQ7DchaWjuU=" data-language="js"><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+</pre>
+</div></div></section><section aria-labelledby="반환값"><h3 id="반환값">반환값</h3>
+<div class="section-content"><p>명시된 <a href="../error"><code>Error</code></a> 객체를 표현하는 문자열.</p></div></section><section aria-labelledby="설명"><h2 id="설명">설명</h2>
+<div class="section-content">
+<p> <a href="../error"><code>Error</code></a> 객체는 모든 객체가 상속받는 <a href="../object/tostring"><code>Object.prototype.toString()</code></a> 메서드를 재정의합니다. 이 의미는 다음과 같습니다(<a href="../object"><code>Object</code></a>과 <a href="../string"><code>String</code></a>는 그들 만의 원본 값이 있다고 가정합니다): </p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="VCIk/lH2BNsGLPeVXpm0nAJjTcQHh9VSvlY005sAcO8=" data-language="js"><span class="token class-name">Error</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function-variable function">toString</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token string">'use strict'</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">var</span> obj <span class="token operator">=</span> <span class="token function">Object</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>obj <span class="token operator">!==</span> <span class="token keyword">this</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">TypeError</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token keyword">var</span> name <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>name<span class="token punctuation">;</span>
+  name <span class="token operator">=</span> <span class="token punctuation">(</span>name <span class="token operator">===</span> <span class="token keyword">undefined</span><span class="token punctuation">)</span> <span class="token operator">?</span> <span class="token string">'Error'</span> <span class="token operator">:</span> <span class="token function">String</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">var</span> msg <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>message<span class="token punctuation">;</span>
+  msg <span class="token operator">=</span> <span class="token punctuation">(</span>msg <span class="token operator">===</span> <span class="token keyword">undefined</span><span class="token punctuation">)</span> <span class="token operator">?</span> <span class="token string">''</span> <span class="token operator">:</span> <span class="token function">String</span><span class="token punctuation">(</span>msg<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>name <span class="token operator">===</span> <span class="token string">''</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> msg<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>msg <span class="token operator">===</span> <span class="token string">''</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> name<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token keyword">return</span> name <span class="token operator">+</span> <span class="token string">': '</span> <span class="token operator">+</span> msg<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+</section><section aria-labelledby="tostring_사용하기"><h3 id="tostring_사용하기">toString() 사용하기</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="1STJBEHEcSuAeg5lVYpWU4BlUvf3qRNzgKsOh34LH/k=" data-language="js"><span class="token keyword">var</span> e1 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Error</span><span class="token punctuation">(</span><span class="token string">'fatal error'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>e1<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 'Error: fatal error'</span>
+
+<span class="token keyword">var</span> e2 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Error</span><span class="token punctuation">(</span><span class="token string">'fatal error'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+e2<span class="token punctuation">.</span>name <span class="token operator">=</span> <span class="token keyword">undefined</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>e2<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 'Error: fatal error'</span>
+
+<span class="token keyword">var</span> e3 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Error</span><span class="token punctuation">(</span><span class="token string">'fatal error'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+e3<span class="token punctuation">.</span>name <span class="token operator">=</span> <span class="token string">''</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>e3<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 'fatal error'</span>
+
+<span class="token keyword">var</span> e4 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Error</span><span class="token punctuation">(</span><span class="token string">'fatal error'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+e4<span class="token punctuation">.</span>name <span class="token operator">=</span> <span class="token string">''</span><span class="token punctuation">;</span>
+e4<span class="token punctuation">.</span>message <span class="token operator">=</span> <span class="token keyword">undefined</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>e4<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// ''</span>
+
+<span class="token keyword">var</span> e5 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Error</span><span class="token punctuation">(</span><span class="token string">'fatal error'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+e5<span class="token punctuation">.</span>name <span class="token operator">=</span> <span class="token string">'hello'</span><span class="token punctuation">;</span>
+e5<span class="token punctuation">.</span>message <span class="token operator">=</span> <span class="token keyword">undefined</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>e5<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 'hello'</span>
+</pre>
+</div></div></section><h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://tc39.es/ecma262/multipage/fundamental-objects.html#sec-error.prototype.tostring">ECMAScript Language Specification <br><small># sec-error.prototype.tostring</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error/toString"><code>Error.prototype.toSource()</code> <small>(en-US)</small></a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Error/toString" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Error/toString</a>
+  </p>
+</div>

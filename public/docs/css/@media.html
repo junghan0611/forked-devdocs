@@ -1,0 +1,84 @@
+<header><h1>@media</h1></header><div class="section-content">
+<p><code>@media</code> <a href="https://developer.mozilla.org/ko/docs/Web/CSS">CSS</a> <a href="at-rule">@규칙</a>은 스타일 시트의 일부를 하나 이상의 <a href="css_media_queries/using_media_queries">미디어 쿼리</a> 결과에 따라 적용할 때 사용할 수 있습니다. <code>@media</code>를 사용해 미디어 쿼리를 지정하면 해당 쿼리를 만족하는 장치에서만 CSS 블록을 적용할 수 있습니다.</p> <div class="notecard note" id="sect1"> <p><strong>참고:</strong> JavaScript에서는 <code>@media</code>를 <a href="https://developer.mozilla.org/ko/docs/Web/API/CSSMediaRule"><code>CSSMediaRule</code></a> CSS 객체 모델 인터페이스로 접근할 수 있습니다.</p> </div>
+</div>
+<section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content">
+<p><code>@media</code> @규칙은 최상위 코드나, 아무 <a href="at-rule#%EC%A1%B0%EA%B1%B4%EB%B6%80_%EA%B7%B8%EB%A3%B9_%EA%B7%9C%EC%B9%99">조건부 그룹 @규칙</a> 안에 중첩해 작성할 수 있습니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="3hjJz48lRrJiyBis6++V5D0ygk3OVCTJyCjUTL1IxeU=" data-language="css"><span class="token comment">/* 최상위 코드 레벨 */</span>
+<span class="token atrule"><span class="token rule">@media</span> screen <span class="token keyword">and</span> <span class="token punctuation">(</span><span class="token property">min-width</span><span class="token punctuation">:</span> 900px<span class="token punctuation">)</span></span> <span class="token punctuation">{</span>
+  <span class="token selector">article</span> <span class="token punctuation">{</span>
+    <span class="token property">padding</span><span class="token punctuation">:</span> 1rem 3rem<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">/* 다른 조건부 @규칙 내에 중첩 */</span>
+<span class="token atrule"><span class="token rule">@supports</span> <span class="token punctuation">(</span><span class="token property">display</span><span class="token punctuation">:</span> flex<span class="token punctuation">)</span></span> <span class="token punctuation">{</span>
+  <span class="token atrule"><span class="token rule">@media</span> screen <span class="token keyword">and</span> <span class="token punctuation">(</span><span class="token property">min-width</span><span class="token punctuation">:</span> 900px<span class="token punctuation">)</span></span> <span class="token punctuation">{</span>
+    <span class="token selector">article</span> <span class="token punctuation">{</span>
+      <span class="token property">display</span><span class="token punctuation">:</span> flex<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</pre>
+</div> <p>미디어 쿼리 구문에 관한 내용은 <a href="css_media_queries/using_media_queries#%ea%b5%ac%eb%ac%b8">미디어 쿼리 사용하기</a> 문서를 참고하세요.</p>
+</div></section><section aria-labelledby="접근성_고려사항"><h2 id="접근성_고려사항">접근성 고려사항</h2>
+<div class="section-content">
+<p>글씨 크기를 조절한 사용자를 위해서, 미디어 쿼리의 <a href="length"><code>&lt;length&gt;</code></a> 자리에는 <a href="length#em"><code>em</code></a>을 사용하는게 좋습니다.</p> <p><code>em</code>과 <a href="length#px"><code>px</code></a> 모두 유효한 단위지만, 사용자가 브라우저의 글씨 크기를 변경했다면 <code>em</code>이 더 자연스럽게 동작합니다.</p> <p>Level 4 미디어 쿼리를 통한 사용자 경험 향상도 고려해보세요. 예컨대 <code>prefers-reduced-motion</code> 쿼리를 사용하면 <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion" class="only-in-en-us">사용자가 시스템에 애니메이션을 최소로 줄여달라고 요청했는지 알 수 있습니다 <small>(en-US)</small></a>.</p>
+</div></section><section aria-labelledby="보안"><h2 id="보안">보안</h2>
+<div class="section-content">
+<p>미디어 쿼리는 사용자의 장치와 더 나아가 기능과 디자인에 대한 통찰을 제공하므로, "핑거프린팅"을 통해 장치 고유 식별자로 활용하거나, 그보단 덜 해도 사용자가 원하지 않을 수준의 분류를 하기 위해 오용할 가능성이 있습니다.</p> <p>그러므로 브라우저는 기기의 특정을 방지하기 위해 일부 반환 값을 모호하게 할 수 있습니다. 또한 사용자에게 추가 설정을 제공할 수도 있는데, 예를 들어 Firefox의 "핑거프린터 차단" 기능을 활성화하면 많은 수의 미디어 쿼리는 실제 장치 상태 대신 기본 값을 보고하게 됩니다.</p>
+</div></section><section aria-labelledby="형식_구문"><h2 id="형식_구문">형식 구문</h2>
+<div class="section-content"><pre class="notranslate"><span class="token property" id="@media">@media = </span><br>  @media <a href="media-query-list" class="page-not-created"><span class="token property">&lt;media-query-list&gt;</span></a> { <a href="stylesheet" class="page-not-created"><span class="token property">&lt;stylesheet&gt;</span></a> }  <br><br></pre></div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+</section><section aria-labelledby="출력과_화면_미디어_타입_판별"><h3 id="출력과_화면_미디어_타입_판별">출력과 화면 미디어 타입 판별</h3>
+<div class="section-content">
+<div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="qd72Pm59+wd538Fth3jdKLAJ6YXG0Q5IZ1qbSec9W4M=" data-language="css"><span class="token atrule"><span class="token rule">@media</span> print</span> <span class="token punctuation">{</span>
+  <span class="token selector">body</span> <span class="token punctuation">{</span> <span class="token property">font-size</span><span class="token punctuation">:</span> 10pt<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token atrule"><span class="token rule">@media</span> screen</span> <span class="token punctuation">{</span>
+  <span class="token selector">body</span> <span class="token punctuation">{</span> <span class="token property">font-size</span><span class="token punctuation">:</span> 13px<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token atrule"><span class="token rule">@media</span> screen<span class="token punctuation">,</span> print</span> <span class="token punctuation">{</span>
+  <span class="token selector">body</span> <span class="token punctuation">{</span> <span class="token property">line-height</span><span class="token punctuation">:</span> 1.2<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token atrule"><span class="token rule">@media</span> <span class="token keyword">only</span> screen
+  <span class="token keyword">and</span> <span class="token punctuation">(</span><span class="token property">min-width</span><span class="token punctuation">:</span> 320px<span class="token punctuation">)</span>
+  <span class="token keyword">and</span> <span class="token punctuation">(</span><span class="token property">max-width</span><span class="token punctuation">:</span> 480px<span class="token punctuation">)</span>
+  <span class="token keyword">and</span> <span class="token punctuation">(</span><span class="token property">resolution</span><span class="token punctuation">:</span> 150dpi<span class="token punctuation">)</span></span> <span class="token punctuation">{</span>
+    <span class="token selector">body</span> <span class="token punctuation">{</span> <span class="token property">line-height</span><span class="token punctuation">:</span> 1.4<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</pre>
+</div> <p>Media Queries Level 4부터는 새로운 범위 표현 구문을 사용해 더 간결한 미디어 쿼리를 작성할 수 있습니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="nqE0SRcZWuK8u9upE2EScMxeWLGhS5syGZg6IIEHpYs=" data-language="css"><span class="token atrule"><span class="token rule">@media</span> <span class="token punctuation">(</span>height &gt; 600px<span class="token punctuation">)</span></span> <span class="token punctuation">{</span>
+    <span class="token selector">body</span> <span class="token punctuation">{</span> <span class="token property">line-height</span><span class="token punctuation">:</span> 1.4<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token atrule"><span class="token rule">@media</span> <span class="token punctuation">(</span>400px &lt;= width &lt;= 700px<span class="token punctuation">)</span></span> <span class="token punctuation">{</span>
+    <span class="token selector">body</span> <span class="token punctuation">{</span> <span class="token property">line-height</span><span class="token punctuation">:</span> 1.4<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</pre>
+</div> <p>더 많은 예제는 <a href="css_media_queries/using_media_queries">미디어 쿼리 사용하기</a>를 참고하세요.</p>
+</div></section><h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody>
+<tr><td><a href="https://drafts.csswg.org/mediaqueries/#media-descriptor-table">Media Queries Level 4 <br><small># media-descriptor-table</small></a></td></tr>
+<tr><td><a href="https://drafts.csswg.org/css-conditional-3/#at-media">CSS Conditional Rules Module Level 3 <br><small># at-media</small></a></td></tr>
+</tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="css_media_queries/using_media_queries">미디어 쿼리 사용하기</a></li> <li>JavaScript에서 <code>@media</code>에 접근할 때 사용할 수 있는 CSS 객체 모델 인터페이스 <a href="https://developer.mozilla.org/ko/docs/Web/API/CSSMediaRule"><code>CSSMediaRule</code></a>
+</li> <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Mozilla_Extensions" class="only-in-en-us">Mozilla 미디어 특성 확장 <small>(en-US)</small></a></li> <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/WebKit_Extensions" class="only-in-en-us">WebKit 미디어 특성 확장 <small>(en-US)</small></a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/CSS/@media" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/CSS/@media</a>
+  </p>
+</div>

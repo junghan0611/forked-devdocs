@@ -1,0 +1,78 @@
+<header><h1>globalThis</h1></header><div class="section-content"><p> 전역 <code>globalThis</code> 속성에는 일반적으로 <a href="https://developer.mozilla.org/ko/docs/Glossary/Global_object">전역 객체</a>와 유사한 <a href="../operators/this#global_context">전역 <code>this</code></a> 값이 포함됩니다. </p></div>
+<section aria-labelledby="시도해보기"><h2 id="시도해보기">시도해보기</h2>
+<div class="section-content"><iframe class="interactive is-shorter-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/js/globalprops-globalthis.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe></div></section><section aria-labelledby="값"><h2 id="값">값</h2>
+<div class="section-content">
+<p>전역 <code>this</code> 객체입니다.</p>
+<figure class="table-container"><div class="_table"><table class="standard-table"> <thead> <tr> <th class="header" colspan="2">Property attributes of <code>globalThis</code>
+</th> </tr> </thead> <tbody> <tr> <td>Writable</td> <td>가능</td> </tr> <tr> <td>Enumerable</td> <td>불가능</td> </tr> <tr> <td>Configurable</td> <td>가능</td> </tr> </tbody> </table></div></figure> <div class="notecard note" id="sect1"> <p><strong>참고:</strong> <code>globalThis</code> 속성은 구성 및 쓰기가 가능하므로 코드 작성자가 신뢰할 수 없는 코드를 실행할 때 숨길 수 있고 전역 객체 노출을 방지할 수 있습니다.</p> </div>
+</div></section><section aria-labelledby="설명"><h2 id="설명">설명</h2>
+<div class="section-content">
+<p> 역사적으로 전역 객체에 접근하려면 다른 JavaScript 환경에서 다른 구문이 필요했습니다. 웹에서는 <a href="https://developer.mozilla.org/ko/docs/Web/API/Window/window"><code>window</code></a>, <a href="https://developer.mozilla.org/ko/docs/Web/API/Window/self"><code>self</code></a>, <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/Window/frames"><code>frames</code> <small>(en-US)</small></a>를 사용할 수 있지만, <a href="https://developer.mozilla.org/ko/docs/Web/API/Worker">Web Workers</a>에서는 <code>self</code>만 동작합니다. Node.js에서는 이 중 어느 것도 작동하지 않으며 대신 <code>global</code>을 사용해야 합니다. <code>this</code> 키워드는 비엄격 모드에서 실행되는 함수 내부에서 사용될 수 있지만, <code>this</code>는 엄격 모드에서 실행되는 모듈 및 내부 함수에서 <code>undefined</code>가 됩니다. <code>Function('return this')()</code>를 사용하는 방법도 존재하지만, 브라우저의 <a href="https://developer.mozilla.org/ko/docs/Glossary/CSP">CSP</a>와 같이 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/eval"><code>eval()</code> <small>(en-US)</small></a>을 비활성화하는 환경에서는 이러한 방식으로 <a href="function"><code>Function</code></a>을 사용할 수 없습니다. </p> <p><code>globalThis</code> 속성은 환경에 무관하게 전역 <code>this</code> 값, 즉 전역 객체에 접근하는 표준 방법을 제공합니다. <code>window</code>, <code>self</code> 등 유사한 속성과는 다르게 window와 non-window 컨텍스트 모두에서의 동작을 보장합니다. 따라서 코드를 구동하는 환경을 모르더라도 전역 객체에 일관된 방식으로 접근할 수 있습니다. 이름을 기억하는 데 도움이 되도록 전역 범위에서 <code>this</code> 값은 <code>globalThis</code>라는 점만 기억하세요.</p> <div class="notecard note" id="sect2"> <p><strong>참고:</strong> 브라우저와 Node의 경우에서 <code>globalThis</code>는 일반적으로 전역 객체와 동일한 개념입니다(즉, <code>globalThis</code>에 속성을 추가하면 전역 변수가 됨). 그러나 호스트는 전역 객체와 관련이 없는 <code>globalThis</code>에 대해 다른 값을 제공할 수 있습니다.</p> </div>
+</div></section><section aria-labelledby="html과_windowproxy"><h3 id="html과_windowproxy">HTML과 WindowProxy</h3>
+<div class="section-content"><p>많은 엔진에서 <code>globalThis</code>는 실제 전역 객체를 대한 참조이지만 웹 브라우저는 <a href="https://developer.mozilla.org/ko/docs/Web/HTML/Element/iframe"><code>&lt;iframe&gt;</code></a>과 교차 창 보안 문제로 인해 전역 객체를 감싼 <a href="proxy"><code>Proxy</code></a>를 대신 참조합니다(직접 액세스할 수 없음). 일반적인 사용에는 차이가 없다고 봐도 무방하지만, 알아두는 것이 중요합니다.</p></div></section><section aria-labelledby="이름_지정"><h3 id="이름_지정">이름 지정</h3>
+<div class="section-content">
+<p><code>self</code> 및 <code>global</code>과 같은 다른 유명한 이름 제안들은 기존 코드와의 호환성 문제를 우려해 고려 대상에서 제외되었습니다. 자세한 내용은 <a href="https://github.com/tc39/proposal-global/blob/master/NAMING.md" target="_blank">언어 제안서의 "NAMING" 문서</a>를 참조하세요.</p> <p><code>globalThis</code>는 문자 그대로 전역 <code>this</code> 값입니다. 객체 없이 호출되는 비엄격 함수의 <code>this</code> 값과 같은 값입니다. 스크립트의 전역 범위에서 <code>this</code>의 값이기도 합니다.</p>
+</div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+</section><section aria-labelledby="환경별_전역_접근"><h3 id="환경별_전역_접근">환경별 전역 접근</h3>
+<div class="section-content">
+<p>일반적으로 전역 객체는 명시적으로 지정할 필요가 없습니다. 해당 속성은 자동으로 전역 변수로 액세스할 수 있습니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="bETxMeYPaMtvvkob4pgjmzPHWi7lEwK+S3RyEnNtQEk=" data-language="js">console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>window<span class="token punctuation">.</span>Math <span class="token operator">===</span> Math<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// true</span>
+</pre>
+</div> <p>그러나 전역 객체에 명시적으로 접근해야 하는 한 가지 경우는 일반적으로 <a href="https://developer.mozilla.org/ko/docs/Glossary/Polyfill">폴리필</a>을 위해 전역 개체에 <strong>작성</strong> 할 때입니다.</p> <p><code>globalThis</code> 이전에는 환경에 대한 전역 객체를 가져오는 방법 중 유일하게 믿을만한 교차 플랫폼 방법은 <code>Function('return this')()</code> 이었습니다. 그러나 이로 인해 일부 설정에서 <a href="https://developer.mozilla.org/ko/docs/Web/HTTP/CSP">CSP</a> 위반이 발생하므로 작성자는 이와 같은 조각별 정의를 사용합니다(<a href="https://github.com/zloirock/core-js/blob/master/packages/core-js/internals/global.js" target="_blank">원래 core-js 소스</a>).</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="B8GJ+a77uM8AQnydkcuBxp/KNEb1kbgRXtVQ3qoNXXM=" data-language="js"><span class="token keyword">function</span> <span class="token function">check</span><span class="token punctuation">(</span><span class="token parameter">it</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">// Math는 모든 환경에서 전역으로 존재하는 것으로 알려져 있습니다.</span>
+  <span class="token keyword">return</span> it <span class="token operator">&amp;&amp;</span> it<span class="token punctuation">.</span>Math <span class="token operator">===</span> Math <span class="token operator">&amp;&amp;</span> it<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">const</span> globalObject <span class="token operator">=</span>
+  <span class="token function">check</span><span class="token punctuation">(</span><span class="token keyword">typeof</span> window <span class="token operator">===</span> <span class="token string">'object'</span> <span class="token operator">&amp;&amp;</span> window<span class="token punctuation">)</span> <span class="token operator">||</span>
+  <span class="token function">check</span><span class="token punctuation">(</span><span class="token keyword">typeof</span> self <span class="token operator">===</span> <span class="token string">'object'</span> <span class="token operator">&amp;&amp;</span> self<span class="token punctuation">)</span> <span class="token operator">||</span>
+  <span class="token function">check</span><span class="token punctuation">(</span><span class="token keyword">typeof</span> global <span class="token operator">===</span> <span class="token string">'object'</span> <span class="token operator">&amp;&amp;</span> global<span class="token punctuation">)</span> <span class="token operator">||</span>
+  <span class="token comment">// 엄격 모드에서 실행할 때 undefined를 반환합니다.</span>
+  <span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">;</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">||</span>
+  <span class="token function">Function</span><span class="token punctuation">(</span><span class="token string">'return this'</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div> <p>전역 객체를 얻은 후 새로운 전역을 정의할 수 있습니다. 예를 들어 <a href="intl"><code>Intl</code></a>에 대한 구현을 추가합니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="Z0iv/gDUX5mtOJmpl6OCdon3nArLGaYz64xicuew7fc=" data-language="js"><span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">typeof</span> globalObject<span class="token punctuation">.</span>Intl <span class="token operator">===</span> <span class="token string">'undefined'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">// No Intl in this environment; define our own on the global scope</span>
+  Object<span class="token punctuation">.</span><span class="token function">defineProperty</span><span class="token punctuation">(</span>globalObject<span class="token punctuation">,</span> <span class="token string">'Intl'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+    <span class="token literal-property property">value</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token comment">// Our Intl implementation</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">enumerable</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">configurable</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">writable</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div> <p><code>globalThis</code>를 사용할 수 있으므로 환경 전체에 대한 추가 검색이 더 이상 필요하지 않습니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="Sxt36/jgDXY0i8l3loKu2yE1+IpnEVelKl7NFTbQHHo=" data-language="js"><span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">typeof</span> globalThis<span class="token punctuation">.</span>Intl <span class="token operator">===</span> <span class="token string">'undefined'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  Object<span class="token punctuation">.</span><span class="token function">defineProperty</span><span class="token punctuation">(</span>globalThis<span class="token punctuation">,</span> <span class="token string">'Intl'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+    <span class="token literal-property property">value</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token comment">// Our Intl implementation</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">enumerable</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">configurable</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">writable</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div>
+</div></section><h2 id="명세서">명세서</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://tc39.es/ecma262/multipage/global-object.html#sec-globalthis">ECMAScript Language Specification <br><small># sec-globalthis</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="https://github.com/zloirock/core-js#ecmascript-globalthis" target="_blank">Polyfill of <code>globalThis</code> in <code>core-js</code></a></li> <li><a href="../operators/this"><code>this</code></a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/globalThis" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/globalThis</a>
+  </p>
+</div>

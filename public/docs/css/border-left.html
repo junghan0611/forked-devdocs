@@ -1,0 +1,113 @@
+<header><h1>border-left</h1></header><div class="section-content"><p><code>border-left</code> <a href="https://developer.mozilla.org/ko/docs/Web/CSS">CSS</a> <a href="shorthand_properties">단축 속성</a>은 요소의 왼쪽 테두리를 설정합니다. <a href="border-left-width"><code>border-left-width</code></a>, <a href="border-left-style"><code>border-left-style</code></a>, <a href="border-left-color"><code>border-left-color</code></a>의 값을 지정합니다.</p></div>
+<section aria-labelledby="시도해보기"><h2 id="시도해보기">시도해보기</h2>
+<div class="section-content">
+<iframe class="interactive is-default-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/css/border-left.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe> <p>다른 단축 속성과 마찬가지로, <code>border-left</code>는 자신이 포함한 모든 값을 지정하며 사용자가 명시하지 않은 속성도 기본값으로 설정합니다. 즉, 아래 두 코드는 사실 동일합니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="E7smvUmYujnoDZ20yZeVzuHKLwI5jnZ7cdTbJUJPMxc=" data-language="css"><span class="token property">border-left-style</span><span class="token punctuation">:</span> dotted<span class="token punctuation">;</span>
+<span class="token property">border-left</span><span class="token punctuation">:</span> thick green<span class="token punctuation">;</span>
+</pre>
+</div> <div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="Sy2SPnUx+TakgmqTtERkGNwOpD15UonVNTfdqOJVsxk=" data-language="css"><span class="token property">border-left-style</span><span class="token punctuation">:</span> dotted<span class="token punctuation">;</span>
+<span class="token property">border-left</span><span class="token punctuation">:</span> none thick green<span class="token punctuation">;</span>
+</pre>
+</div> <p>따라서 <code>border-left</code>보다 먼저 지정한 <a href="border-left-style"><code>border-left-style</code></a>의 값은 무시됩니다. <a href="border-left-style"><code>border-left-style</code></a>의 기본값은 <code>none</code>이므로, <code>border-style</code>을 명시하지 않으면 테두리를 만들지 않습니다.</p>
+</div></section><section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content">
+<div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="8iahLwyV7oFyOFptVnFq+UINxijqRT+AHP2SMQJ2huE=" data-language="css"><span class="token property">border-left</span><span class="token punctuation">:</span> 1px<span class="token punctuation">;</span>
+<span class="token property">border-left</span><span class="token punctuation">:</span> 2px dotted<span class="token punctuation">;</span>
+<span class="token property">border-left</span><span class="token punctuation">:</span> medium dashed green<span class="token punctuation">;</span>
+</pre>
+</div> <p><code>border-left</code>은 한 개에서 세 개의 값을 사용해 지정할 수 있고, 순서는 상관하지 않습니다.</p>
+</div></section><section aria-labelledby="값"><h3 id="값">값</h3>
+<div class="section-content"><dl> <dt id="br-width"><code>&lt;br-width&gt;</code></dt> <dd> <p><a href="border-left-width"><code>border-left-width</code></a>.</p> </dd> <dt id="br-style"><code>&lt;br-style&gt;</code></dt> <dd> <p><a href="border-left-style"><code>border-left-style</code></a>.</p> </dd> <dt id="color"><a href="color_value"><code>&lt;color&gt;</code></a></dt> <dd> <p><a href="border-left-color"><code>border-left-color</code></a>.</p> </dd> </dl></div></section><section aria-labelledby="형식_구문"><h3 id="형식_구문">형식 구문</h3>
+<div class="section-content"><pre class="notranslate"><span class="token property" id="border-left">border-left = </span><br>  <span class="token property">&lt;line-width&gt;</span>  <a href="value_definition_syntax#double_bar">||</a><br>  <span class="token property">&lt;line-style&gt;</span>  <a href="value_definition_syntax#double_bar">||</a><br>  <a href="color_value"><span class="token property">&lt;color&gt;</span></a>       <br><br><span class="token property" id="&lt;line-width&gt;">&lt;line-width&gt; = </span><br>  <a href="length"><span class="token property">&lt;length [0,∞]&gt;</span></a>  <a href="value_definition_syntax#single_bar">|</a><br>  <span class="token keyword">thin</span>            <a href="value_definition_syntax#single_bar">|</a><br>  <span class="token keyword">medium</span>          <a href="value_definition_syntax#single_bar">|</a><br>  <span class="token keyword">thick</span>           <br><br><span class="token property" id="&lt;line-style&gt;">&lt;line-style&gt; = </span><br>  <span class="token keyword">none</span>    <a href="value_definition_syntax#single_bar">|</a><br>  <span class="token keyword">hidden</span>  <a href="value_definition_syntax#single_bar">|</a><br>  <span class="token keyword">dotted</span>  <a href="value_definition_syntax#single_bar">|</a><br>  <span class="token keyword">dashed</span>  <a href="value_definition_syntax#single_bar">|</a><br>  <span class="token keyword">solid</span>   <a href="value_definition_syntax#single_bar">|</a><br>  <span class="token keyword">double</span>  <a href="value_definition_syntax#single_bar">|</a><br>  <span class="token keyword">groove</span>  <a href="value_definition_syntax#single_bar">|</a><br>  <span class="token keyword">ridge</span>   <a href="value_definition_syntax#single_bar">|</a><br>  <span class="token keyword">inset</span>   <a href="value_definition_syntax#single_bar">|</a><br>  <span class="token keyword">outset</span>  <br><br></pre></div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+<div class="section-content">
+<div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="ZJa6jJ2nCQWi14bY3eYD/jMz/U1CqLWVun0SSK/aGus=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span>
+  왼쪽 테두리를 가진 요소입니다.
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div> <div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="8H0xHMma+A3jjV9s6MFx7BvNIdYDTTFM2NIKgTNDrGI=" data-language="css"><span class="token selector">div</span> <span class="token punctuation">{</span>
+  <span class="token property">border-left</span><span class="token punctuation">:</span> 4px dashed blue<span class="token punctuation">;</span>
+  <span class="token property">background-color</span><span class="token punctuation">:</span> gold<span class="token punctuation">;</span>
+  <span class="token property">height</span><span class="token punctuation">:</span> 100px<span class="token punctuation">;</span>
+  <span class="token property">width</span><span class="token punctuation">:</span> 100px<span class="token punctuation">;</span>
+  <span class="token property">font-weight</span><span class="token punctuation">:</span> bold<span class="token punctuation">;</span>
+  <span class="token property">text-align</span><span class="token punctuation">:</span> center<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div>
+<div class="code-example" id="sect1">
+
+<iframe class="sample-code-frame" title="예제 sample" id="frame_예제" src="https://live.mdnplay.dev/ko/docs/Web/CSS/border-left/runner.html?id=%EC%98%88%EC%A0%9C" loading="lazy"></iframe>
+</div>
+</div></section><h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://drafts.csswg.org/css-backgrounds/#border-shorthands">CSS Backgrounds and Borders Module Level 3 <br><small># border-shorthands</small></a></td></tr></tbody>
+</table></div>
+<div class="section-content"><figure class="table-container"><div class="_table"><table class="properties"><tbody>
+<tr>
+<th scope="row"><a href="initial_value">초기값</a></th>
+<td>as each of the properties of the shorthand:<br><ul>
+<li>
+<a href="border-left-width"><code>border-left-width</code></a>: <code>medium</code>
+</li>
+<li>
+<a href="border-left-style"><code>border-left-style</code></a>: <code>none</code>
+</li>
+<li>
+<a href="border-left-color"><code>border-left-color</code></a>: <code>currentcolor</code>
+</li>
+</ul>
+</td>
+</tr>
+<tr>
+<th scope="row">적용대상</th>
+<td>all elements. It also applies to <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/::first-letter" class="only-in-en-us"><code>::first-letter</code> <small>(en-US)</small></a>.</td>
+</tr>
+<tr>
+<th scope="row"><a href="inheritance">상속</a></th>
+<td>no</td>
+</tr>
+<tr>
+<th scope="row"><a href="computed_value">계산 값</a></th>
+<td>as each of the properties of the shorthand:<br><ul>
+<li>
+<a href="border-left-width"><code>border-left-width</code></a>: the absolute length or <code>0</code> if <a href="border-left-style"><code>border-left-style</code></a> is <code>none</code> or <code>hidden</code>
+</li>
+<li>
+<a href="border-left-style"><code>border-left-style</code></a>: as specified</li>
+<li>
+<a href="border-left-color"><code>border-left-color</code></a>: computed color</li>
+</ul>
+</td>
+</tr>
+<tr>
+<th scope="row">Animation type</th>
+<td>as each of the properties of the shorthand:<br><ul>
+<li>
+<a href="border-left-color"><code>border-left-color</code></a>: a <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#interpolation">color</a>
+</li>
+<li>
+<a href="border-left-style"><code>border-left-style</code></a>: discrete</li>
+<li>
+<a href="border-left-width"><code>border-left-width</code></a>: a <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/length#interpolation">length</a>
+</li>
+</ul>
+</td>
+</tr>
+</tbody></table></div></figure></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/CSS/border-left" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/CSS/border-left</a>
+  </p>
+</div>

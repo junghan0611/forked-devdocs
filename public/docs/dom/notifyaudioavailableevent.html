@@ -1,0 +1,13 @@
+<header><h1>NotifyAudioAvailableEvent</h1></header><div class="section-content">
+
+<div class="notecard nonstandard" id="sect1"><p><strong>비표준:</strong> 이 기능은 비표준이므로 실제 프로덕션에서 사용하지 마세요. 모든 사용자 환경에서 작동하지 않을 수 도 있으며, 미래에 호환성 문제가 생길 수 있습니다.</p></div>
+<div class="notecard deprecated" id="sect2"><p><strong>지원이 중단되었습니다:</strong> This feature is no longer recommended. Though some browsers might still support it, it may have already been removed from the relevant web standards, may be in the process of being dropped, or may only be kept for compatibility purposes. Avoid using it, and update existing code if possible; see the <a href="#browser_compatibility">compatibility table</a> at the bottom of this page to guide your decision. Be aware that this feature may cease to work at any time.</p></div>This interface defines the event for audio elements triggered when the Audiobuffer is full.
+</div>
+<h3 id="attributes">Attributes</h3>
+<div class="section-content"><figure class="table-container"><div class="_table"><table> <thead> <tr> <th>Attribute</th> <th>Type</th> <th>Description</th> </tr> </thead> <tbody> <tr> <td><code>frameBuffer</code></td> <td><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Float32Array" class="only-in-en-us"><code>Float32Array</code> <small>(en-US)</small></a></td> <td>The <strong>frameBuffer</strong> attribute contains a typed array (<code>Float32Array</code>) with the raw audio data (32-bit float values) obtained from decoding the audio (e.g., the raw data being sent to the audio hardware vs. encoded audio). This is of the form [channel1, channel2, ..., channelN, channel1, channel2, ..., channelN, ...]. All audio frames are normalized to a length of channels * 1024 by default, but could be any length between 512 and 16384 if the user has set a different length using the <strong>mozFrameBufferLength</strong> attribute. <strong>Read only.</strong>
+</td> </tr> <tr> <td><code>time</code></td> <td><code>float</code></td> <td>The <strong>time</strong> attribute contains a float representing the time in seconds of the first sample in the <strong>frameBuffer</strong> array since the start of the audio track.</td> </tr> </tbody> </table></div></figure></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/NotifyAudioAvailableEvent" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/NotifyAudioAvailableEvent</a>
+  </p>
+</div>

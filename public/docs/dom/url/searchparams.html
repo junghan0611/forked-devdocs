@@ -1,0 +1,34 @@
+<header><h1>URL.searchParams</h1></header><div class="section-content">
+<p><a href="../url"><code>URL</code></a> 인터페이스의 <code>searchParams</code> 읽기 전용 속성은 URL 내의 <a href="https://developer.mozilla.org/ko/docs/Web/HTTP/Methods/GET"><code>GET</code></a> 디코딩 된 쿼리 매개변수에 접근할 수 있는 <a href="../urlsearchparams"><code>URLSearchParams</code></a> 객체를 반환합니다.</p>
+<div class="notecard note" id="sect1"> <p><strong>참고:</strong> 이 기능은 <a href="../web_workers_api">Web Worker</a>에서 사용할 수 있습니다</p> </div>
+</div>
+<h2 id="구문">구문</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="q3x3u2Wv0oCu1yrLo/diDps2r3Be4cFE6H+iR/F2qaE=" data-language="js"><span class="token keyword">const</span> urlSearchParams <span class="token operator">=</span> url<span class="token punctuation">.</span>searchParams
+</pre>
+</div></div>
+<h3 id="값">값</h3>
+<div class="section-content"><p><a href="../urlsearchparams"><code>URLSearchParams</code></a> 객체.</p></div>
+<h2 id="예제">예제</h2>
+<div class="section-content">
+<p>페이지의 URL을 <code>https://example.com/?name=Jonathan%20Smith&amp;age=18</code>로 가정했을 때, <code>name</code>과 <code>age</code> 매개변수는 다음과 같이 가져올 수 있습니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="FW4EtUWnc8KxI7NK5O79HRYvpWsR8eTuU4WNUWL8vS8=" data-language="js"><span class="token keyword">let</span> params <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">URL</span><span class="token punctuation">(</span>document<span class="token punctuation">.</span>location<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span>searchParams<span class="token punctuation">;</span>
+<span class="token keyword">let</span> name <span class="token operator">=</span> params<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">'name'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// is the string "Jonathan Smith".</span>
+<span class="token keyword">let</span> age <span class="token operator">=</span> <span class="token function">parseInt</span><span class="token punctuation">(</span>params<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">'age'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// is the number 18</span>
+</pre>
+</div>
+</div>
+<h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://url.spec.whatwg.org/#dom-url-searchparams">URL Standard <br><small># dom-url-searchparams</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/URL/searchParams" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/URL/searchParams</a>
+  </p>
+</div>

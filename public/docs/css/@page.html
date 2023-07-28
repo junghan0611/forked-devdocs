@@ -1,0 +1,38 @@
+<header><h1>@page</h1></header><div class="section-content">
+<p><code>@page</code> CSS @규칙은 문서를 인쇄할 때 일부 CSS 속성을 수정하는 데 쓰입니다. <code>@page</code>로 모든 CSS 속성을 바꿀 수는 없습니다. 문서의 margin, orphan, widow(앞단에서 넘어온 짤막한 행) 및 page break만 바꿀 수 있습니다. 다른 CSS 속성을 바꾸려는 시도는 무시됩니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="rfZ4uvNBURnsi55DTLvWz2t64jXdtXeoWIFipuBiyGI=" data-language="css"><span class="token atrule"><span class="token rule">@page</span></span> <span class="token punctuation">{</span>
+  <span class="token property">margin</span><span class="token punctuation">:</span> 1cm<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token atrule"><span class="token rule">@page</span> <span class="token punctuation">:</span>first</span> <span class="token punctuation">{</span>
+  <span class="token property">margin</span><span class="token punctuation">:</span> 2cm<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div> <p><code>@page</code> @규칙은 CSS 객체 모델 인터페이스 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/CSSPageRule"><code>CSSPageRule</code> <small>(en-US)</small></a>를 통해 액세스될 수 있습니다.</p> <div class="notecard note" id="sect1"> <p><strong>참고:</strong> <strong>주의:</strong> W3C은 viewport 관련 <a href="length"><code>&lt;length&gt;</code></a> 단위, <code>vh</code>, <code>vw</code>, <code>vmin</code> 및 <code>vmax</code> 처리법을 논의 중입니다. 그 동안에 <code>@page</code> @규칙 내에서 사용하지 마세요.</p> </div>
+</div>
+<section aria-labelledby="구문"><h2 id="구문">구문</h2>
+</section><section aria-labelledby="서술자"><h3 id="서술자">서술자</h3>
+<div class="section-content"><dl> <dt id="size"><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/@page/size" class="only-in-en-us"><code>size</code> <small>(en-US)</small></a></dt> <dd> <p>페이지 박스 내 포함 블록의 대상(target) 크기 및 방향을 지정합니다. 한 페이지 박스가 한 페이지 시트에 렌더링 되는 일반적인 경우에, 또한 대상(destination) 페이지 시트의 크기를 나타냅니다.</p> </dd> <dt id="marks"><a href="@page/marks" class="page-not-created"><code>marks</code></a></dt> <dd> <p>문서에 crop 및/또는 registration 마크를 추가합니다.</p> </dd> <dt id="bleed"><a href="@page/bleed" class="page-not-created"><code>bleed</code></a></dt> <dd> <p>페이지 렌더링이 잘리는(clip) 페이지 박스 너머 범위를 지정합니다.</p> </dd> </dl></div></section><section aria-labelledby="형식_구문"><h3 id="형식_구문">형식 구문</h3>
+<div class="section-content"><pre class="notranslate"><span class="token property" id="@page">@page = </span><br>  @page <span class="token property">&lt;page-selector-list&gt;</span><a href="value_definition_syntax#question_mark">?</a> { <a href="declaration-list" class="page-not-created"><span class="token property">&lt;declaration-list&gt;</span></a> }  <br><br><span class="token property" id="&lt;page-selector-list&gt;">&lt;page-selector-list&gt; = </span><br>  <span class="token property">&lt;page-selector&gt;</span><a href="value_definition_syntax#hash_mark">#</a>  <br><br><span class="token property" id="&lt;page-selector&gt;">&lt;page-selector&gt; = </span><br>  <a href="value_definition_syntax#brackets">[</a> <a href="ident-token" class="page-not-created"><span class="token property">&lt;ident-token&gt;</span></a><a href="value_definition_syntax#question_mark">?</a> <span class="token property">&lt;pseudo-page&gt;</span><a href="value_definition_syntax#asterisk">*</a> ]!  <br><br><span class="token property" id="&lt;pseudo-page&gt;">&lt;pseudo-page&gt; = </span><br>  ':' <a href="value_definition_syntax#brackets">[</a> <span class="token keyword">left</span> <a href="value_definition_syntax#single_bar">|</a> <span class="token keyword">right</span> <a href="value_definition_syntax#single_bar">|</a> <span class="token keyword">first</span> <a href="value_definition_syntax#single_bar">|</a> <span class="token keyword">blank</span> <a href="value_definition_syntax#brackets">]</a>  <br><br></pre></div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+<div class="section-content">
+<p>예제를 위한 <code>@page</code>의 다양한 <a href="pseudo-classes">가상 클래스</a> 참조해 주세요.</p> <ul> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:blank"><code>:blank</code> <small>(en-US)</small></a></li> <li><a href=":first"><code>:first</code></a></li> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:left"><code>:left</code> <small>(en-US)</small></a></li> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:right"><code>:right</code> <small>(en-US)</small></a></li> <li>
+<a class="page-not-created"><code>:recto</code></a> <abbr class="icon icon-experimental" title="Experimental. 예상되는 동작은 향후 변경될 수 있습니다."> <span class="visually-hidden">Experimental</span> </abbr>
+</li> <li>
+<a class="page-not-created"><code>:verso</code></a> <abbr class="icon icon-experimental" title="Experimental. 예상되는 동작은 향후 변경될 수 있습니다."> <span class="visually-hidden">Experimental</span> </abbr>
+</li> </ul>
+</div></section><h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody>
+<tr><td><a href="https://drafts.csswg.org/css-page/#at-page-rule">CSS Paged Media Module Level 3 <br><small># at-page-rule</small></a></td></tr>
+<tr><td><a href="https://drafts.csswg.org/css-logical/#page">CSS Logical Properties and Values Level 1 <br><small># page</small></a></td></tr>
+</tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/CSS/@page" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/CSS/@page</a>
+  </p>
+</div>

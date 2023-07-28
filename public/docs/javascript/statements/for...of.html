@@ -1,0 +1,191 @@
+<header><h1>for...of</h1></header><div class="section-content"><p><code>for...of</code>은 <a href="../iteration_protocols#iterable">반복가능한 객체</a> (<a href="../global_objects/array"><code>Array</code></a>, <a href="../global_objects/map"><code>Map</code></a>, <a href="../global_objects/set"><code>Set</code></a>, <a href="../global_objects/string"><code>String</code></a>, <a href="../global_objects/typedarray"><code>TypedArray</code></a>, <a href="../functions/arguments">arguments</a> 객체 등을 포함)에 대해서 반복하고 각 개별 속성값에 대해 실행되는 문이 있는 사용자 정의 반복 후크를 호출하는 루프를 생성합니다.</p></div>
+<section aria-labelledby="시도해보기"><h2 id="시도해보기">시도해보기</h2>
+<div class="section-content"><iframe class="interactive is-js-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/js/statement-forof.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe></div></section><section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content">
+<div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="VBbsF39GlhjYJeyZxOuop5CuTaWyjl3a/IV4ofd8Ass=" data-language="js">    <span class="token keyword">for</span> <span class="token punctuation">(</span>variable <span class="token keyword">of</span> iterable<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      statement
+    <span class="token punctuation">}</span>
+</pre>
+</div> <dl> <dt id="variable"><code>variable</code></dt> <dd> <p>각 반복에 서로 다른 속성값이 <em>variable</em>에 할당됩니다.</p> </dd> <dt id="iterable"><code>iterable</code></dt> <dd> <p>반복되는 열거가능(enumerable)한 속성이 있는 객체.</p> </dd> </dl>
+</div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+</section><section aria-labelledby="array에_대해_반복"><h3 id="array에_대해_반복">
+<code>Array</code>에 대해 반복:</h3>
+<div class="section-content">
+<div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="AKfwAo88UgOoMR6JB1cTyKGugqoDlSGSvi64fHvMizg=" data-language="js"><span class="token keyword">let</span> iterable <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">20</span><span class="token punctuation">,</span> <span class="token number">30</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> value <span class="token keyword">of</span> iterable<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token comment">// 10</span>
+<span class="token comment">// 20</span>
+<span class="token comment">// 30</span>
+</pre>
+</div> <p><a href="let"><code>let</code></a> 대신 <a href="const"><code>const</code></a>도 사용할 수 있습니다, 블록 내부 변수를 수정하지 않는 경우.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="vU2PvJ+Zbqucqr6Dae5xcdLyhVeHUIEpXNsDdFiu0hY=" data-language="js"><span class="token keyword">let</span> iterable <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">20</span><span class="token punctuation">,</span> <span class="token number">30</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">const</span> value <span class="token keyword">of</span> iterable<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token comment">// 10</span>
+<span class="token comment">// 20</span>
+<span class="token comment">// 30</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="string에_대해_반복"><h3 id="string에_대해_반복">
+<code>String</code>에 대해 반복:</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="xrOpbzWa6b4X8Jrv6pnFDVHqLephj9EBB4c/DBY57Is=" data-language="js"><span class="token keyword">let</span> iterable <span class="token operator">=</span> <span class="token string">"boo"</span><span class="token punctuation">;</span>
+
+<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> value <span class="token keyword">of</span> iterable<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token comment">// "b"</span>
+<span class="token comment">// "o"</span>
+<span class="token comment">// "o"</span>
+</pre>
+</div></div></section><section aria-labelledby="typedarray에_대해_반복"><h3 id="typedarray에_대해_반복">
+<code>TypedArray</code>에 대해 반복:</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="8xSuYm5oR0eTgcR85CAsL8b+yZiCvj67W2OH4CmfNmg=" data-language="js"><span class="token keyword">let</span> iterable <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Uint8Array</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">0x00</span><span class="token punctuation">,</span> <span class="token number">0xff</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> value <span class="token keyword">of</span> iterable<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token comment">// 0</span>
+<span class="token comment">// 255</span>
+</pre>
+</div></div></section><section aria-labelledby="map에_대해_반복"><h3 id="map에_대해_반복">
+<code>Map</code>에 대해 반복:</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="1KeePO2+STwSF1OjrANCJzkfjZwLfHHGZ7bMbnKqFa0=" data-language="js"><span class="token keyword">let</span> iterable <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Map</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token string">"a"</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token string">"b"</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token string">"c"</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> entry <span class="token keyword">of</span> iterable<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>entry<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token comment">// [a, 1]</span>
+<span class="token comment">// [b, 2]</span>
+<span class="token comment">// [c, 3]</span>
+
+<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> <span class="token punctuation">[</span>key<span class="token punctuation">,</span> value<span class="token punctuation">]</span> <span class="token keyword">of</span> iterable<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token comment">// 1</span>
+<span class="token comment">// 2</span>
+<span class="token comment">// 3</span>
+</pre>
+</div></div></section><section aria-labelledby="set에_대해_반복"><h3 id="set에_대해_반복">
+<code>Set</code>에 대해 반복:</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="6SkAsnTZ18m9fPm3fWlQbCV62D9c5rvh1lx5BM5rzU8=" data-language="js"><span class="token keyword">let</span> iterable <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Set</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> value <span class="token keyword">of</span> iterable<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token comment">// 1</span>
+<span class="token comment">// 2</span>
+<span class="token comment">// 3</span>
+</pre>
+</div></div></section><section aria-labelledby="dom_컬렉션에_대해_반복"><h3 id="dom_컬렉션에_대해_반복">DOM 컬렉션에 대해 반복</h3>
+<div class="section-content">
+<p><a href="https://developer.mozilla.org/ko/docs/Web/API/NodeList"><code>NodeList</code></a> 같은 DOM 컬렉션에 대해 반복: 다음 예는 article의 직계 자손인 paragraph에 <code>read</code> 클래스를 추가합니다:</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="xe5ql0ieobIP+wY3G/XI2StctnYIafV/OUgeoZB3yxs=" data-language="js"><span class="token comment">// 주의: 이는 NodeList.prototype[Symbol.iterator]가</span>
+<span class="token comment">// 구현된 플랫폼에서만 작동합니다</span>
+<span class="token keyword">let</span> articleParagraphs <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">querySelectorAll</span><span class="token punctuation">(</span><span class="token string">"article &gt; p"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> paragraph <span class="token keyword">of</span> articleParagraphs<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  paragraph<span class="token punctuation">.</span>classList<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token string">"read"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="생성기에_대해_반복"><h3 id="생성기에_대해_반복">생성기에 대해 반복</h3>
+<div class="section-content">
+<p><a href="function*">생성기</a>에 대해서도 반복할 수 있습니다:</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="T0GvH06++2CQiuIccPoolQcUlg8GcG8XHADcJjyQDCY=" data-language="js"><span class="token keyword">function</span><span class="token operator">*</span> <span class="token function">fibonacci</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token comment">// 생성기 함수</span>
+  <span class="token keyword">let</span> <span class="token punctuation">[</span>prev<span class="token punctuation">,</span> curr<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+  <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token punctuation">[</span>prev<span class="token punctuation">,</span> curr<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">[</span>curr<span class="token punctuation">,</span> prev <span class="token operator">+</span> curr<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">yield</span> curr<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> n <span class="token keyword">of</span> <span class="token function">fibonacci</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token comment">// 1000에서 수열을 자름</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>n <span class="token operator">&gt;=</span> <span class="token number">1000</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">break</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="다른_반복가능_객체에_대해_반복"><h3 id="다른_반복가능_객체에_대해_반복">다른 반복가능 객체에 대해 반복</h3>
+<div class="section-content">
+<p><a href="../iteration_protocols#iterable">iterable</a> 프로토콜을 명시해서 구현하는 객체에 대해서도 반복할 수 있습니다:</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="33wKNxlYEYsRwvkLmMgupIdmcfzJWPVDdQPpR7fGt5Q=" data-language="js"><span class="token keyword">var</span> iterable <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token punctuation">[</span>Symbol<span class="token punctuation">.</span>iterator<span class="token punctuation">]</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token punctuation">{</span>
+      <span class="token literal-property property">i</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
+      <span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>i <span class="token operator">&lt;</span> <span class="token number">3</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+          <span class="token keyword">return</span> <span class="token punctuation">{</span> <span class="token literal-property property">value</span><span class="token operator">:</span> <span class="token keyword">this</span><span class="token punctuation">.</span>i<span class="token operator">++</span><span class="token punctuation">,</span> <span class="token literal-property property">done</span><span class="token operator">:</span> <span class="token boolean">false</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> <span class="token punctuation">{</span> <span class="token literal-property property">value</span><span class="token operator">:</span> <span class="token keyword">undefined</span><span class="token punctuation">,</span> <span class="token literal-property property">done</span><span class="token operator">:</span> <span class="token boolean">true</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">var</span> value <span class="token keyword">of</span> iterable<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token comment">// 0</span>
+<span class="token comment">// 1</span>
+<span class="token comment">// 2</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="for...of와_for...in의_차이"><h3 id="for...of와_for...in의_차이">
+<code>for...of</code>와 <code>for...in</code>의 차이</h3>
+<div class="section-content">
+<p><a href="for...in"><code>for...in</code></a> 루프는 객체의 모든 열거가능한 속성에 대해 반복합니다.</p> <p><code>for...of</code> 구문은 <strong>컬렉션</strong> 전용입니다. 모든 객체보다는, <code>[Symbol.iterator]</code> 속성이 있는 모든 컬렉션 요소에 대해 이 방식으로 반복합니다.</p> <p>다음 예는 <code>for...of</code> 루프와 <code>for...in</code> 루프의 차이를 보입니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="15r5A7+ci7lwXa94XLrrW8+PNy76Imn0yqz+XulNCac=" data-language="js"><span class="token class-name">Object</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function-variable function">objCustom</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token class-name">Array</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function-variable function">arrCustom</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">let</span> iterable <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+iterable<span class="token punctuation">.</span>foo <span class="token operator">=</span> <span class="token string">"hello"</span><span class="token punctuation">;</span>
+
+<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token keyword">in</span> iterable<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// logs 0, 1, 2, "foo", "arrCustom", "objCustom"</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token keyword">of</span> iterable<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// logs 3, 5, 7</span>
+<span class="token punctuation">}</span>
+</pre>
+</div>
+</div></section><h2 id="명세서">명세서</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://tc39.es/ecma262/multipage/ecmascript-language-statements-and-declarations.html#sec-for-in-and-for-of-statements">ECMAScript Language Specification <br><small># sec-for-in-and-for-of-statements</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li>
+<a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Statements/for_each...in" class="page-not-created">for each...in</a> - 비슷한 문이지만, 속성 이름 자체보다는 객체의 속성값을 반복합니다 (사라짐).</li> <li><a href="../global_objects/array/foreach"><code>Array.prototype.forEach()</code></a></li> <li><a href="../global_objects/array/foreach">Map.prototype.forEach()</a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Statements/for...of" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Statements/for...of</a>
+  </p>
+</div>

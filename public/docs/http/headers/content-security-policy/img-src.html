@@ -1,0 +1,39 @@
+<h1>CSP: img-src</h1>
+<header><h1>CSP: img-src</h1></header><div class="section-content">
+<p>The HTTP <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy" class="only-in-en-us"><code>Content-Security-Policy</code> <small>(en-US)</small></a><code>:</code> <code>img-src</code> 지시어는 이미지 및 파비콘에 대하여 유효한 출처를 지정합니다.</p> <figure class="table-container"><div class="_table"><table class="properties"> <tbody> <tr> <th scope="row">CSP version</th> <td>1</td> </tr> <tr> <th scope="row">Directive type</th> <td><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Glossary/Fetch_directive">Fetch directive <small>(en-US)</small></a></td> </tr> <tr> <th scope="row">
+<a href="default-src"><code>default-src</code></a> fallback</th> <td> Yes. If this directive is absent, the user agent will look for the <code>default-src</code> directive. </td> </tr> </tbody> </table></div></figure>
+</div>
+<section aria-labelledby="syntax"><h2 id="syntax">Syntax</h2>
+<div class="section-content">
+<p><code>img-src</code> 정책에 대해 하나 이상의 출처를 허용 할 수 있습니다.</p> <pre class="notranslate">Content-Security-Policy: img-src &lt;source&gt;;
+Content-Security-Policy: img-src &lt;source&gt; &lt;source&gt;;
+</pre>
+</div></section><section aria-labelledby="sources"><h3 id="sources">Sources</h3>
+<div class="section-content">
+<p><code>&lt;source&gt;</code> can be any one of the values listed in <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/Sources" class="only-in-en-us">CSP Source Values <small>(en-US)</small></a>.</p> <p>Note that this same set of values can be used in all <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Glossary/Fetch_directive">fetch directives <small>(en-US)</small></a> (and a <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/Sources" class="only-in-en-us">number of other directives <small>(en-US)</small></a>).</p>
+</div></section><section aria-labelledby="examples"><h2 id="examples">Examples</h2>
+</section><section aria-labelledby="violation_cases"><h3 id="violation_cases">Violation cases</h3>
+<div class="section-content">
+<p>CSP 헤더가 주어질 때:</p> <div class="code-example">
+<p class="example-header"><span class="language-name">bash</span></p>
+<pre data-signature="RPc1Gl5FHeCq/yXggPL+54DWgrVM/3Bwkl9ls2Hfy2Y=" data-language="bash">Content-Security-Policy: img-src https://example.com/
+</pre>
+</div> <p>아래의 <a href="https://developer.mozilla.org/ko/docs/Web/HTML/Element/img"><code>&lt;img&gt;</code></a> 태그가 차단되어 불러오지 않습니다:</p> <div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="M5rkr3E+R/ctGQWlSMEMDsNu0MKcGv+bo/ip5P8xZzQ=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>https://not-example.com/foo.jpg<span class="token punctuation">"</span></span> <span class="token attr-name">alt</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>example picture<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div>
+</div></section><h2 id="명세서">명세서</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://w3c.github.io/webappsec-csp/#directive-img-src">Content Security Policy Level 3 <br><small># directive-img-src</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="see_also"><h2 id="see_also">See also</h2>
+<div class="section-content"><ul> <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy" class="only-in-en-us"><code>Content-Security-Policy</code> <small>(en-US)</small></a></li> <li><a href="https://developer.mozilla.org/ko/docs/Web/HTML/Element/img"><code>&lt;img&gt;</code></a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/HTTP/Headers/Content-Security-Policy/img-src" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/HTTP/Headers/Content-Security-Policy/img-src</a>
+  </p>
+</div>

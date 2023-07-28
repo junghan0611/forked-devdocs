@@ -1,0 +1,35 @@
+<header><h1>Math.acosh()</h1></header><div class="section-content">
+<p><code>Math.acosh()</code> 정적 메서드는 숫자의 역 쌍곡선 코사인를 반환합니다. 아래와 같습니다.</p> <p> <math display="block"> <semantics> <mtable columnalign="right left right left right left right left right left" columnspacing="0em" displaystyle="true"> <mtr> <mtd> <mo>∀</mo> <mi>x</mi> <mo>≥</mo> <mn>1</mn> <mo>,</mo> <mspace width="0.2777777777777778em"></mspace> <mrow> <mo lspace="0em" rspace="0.16666666666666666em">𝙼𝚊𝚝𝚑.𝚊𝚌𝚘𝚜𝚑</mo> <mo stretchy="false">(</mo> <mi>𝚡</mi> <mo stretchy="false">)</mo> </mrow> </mtd> <mtd> <mo>=</mo> <mo lspace="0em" rspace="0.16666666666666666em">arcosh</mo> <mo stretchy="false">(</mo> <mi>x</mi> <mo stretchy="false">)</mo> <mo>=</mo> <mtext>the unique </mtext> <mi>y</mi> <mo>≥</mo> <mn>0</mn> <mtext> such that </mtext> <mo lspace="0em" rspace="0em">cosh</mo> <mo stretchy="false">(</mo> <mi>y</mi> <mo stretchy="false">)</mo> <mo>=</mo> <mi>x</mi> </mtd> </mtr> <mtr>  <mtd> <mo>=</mo> <mo lspace="0em" rspace="0em">ln</mo> <mrow> <mo>(</mo> <mrow> <mi>x</mi> <mo>+</mo> <msqrt> <mrow> <msup> <mi>x</mi> <mn>2</mn> </msup> <mo>−</mo> <mn>1</mn> </mrow> </msqrt> </mrow> <mo>)</mo> </mrow> </mtd> </mtr> </mtable> <annotation encoding="TeX">\begin{aligned}\forall x \geq 1,;\mathtt{\operatorname{Math.acosh}(x)} &amp;= \operatorname{arcosh}(x) = \text{the unique } y \geq 0 \text{ such that } \cosh(y) = x\&amp;= \ln\left(x + \sqrt{x^2 - 1}\right)\end{aligned}</annotation> </semantics> </math> </p>
+</div>
+<section aria-labelledby="시도해보기"><h2 id="시도해보기">시도해보기</h2>
+<div class="section-content"><iframe class="interactive is-js-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/js/math-acosh.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe></div></section><section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="Go0Lnu4cvCtwihDMQYFXYMALsvrnuGmstkxGCVygS8Q=" data-language="js">Math<span class="token punctuation">.</span><span class="token function">acosh</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span>
+</pre>
+</div></div></section><section aria-labelledby="매개변수"><h3 id="매개변수">매개변수</h3>
+<div class="section-content"><dl> <dt id="x"><code>x</code></dt> <dd> <p>1보다 크거나 같은 숫자.</p> </dd> </dl></div></section><section aria-labelledby="반환_값"><h3 id="반환_값">반환 값</h3>
+<div class="section-content"><p><code>x</code>의 역 쌍곡선 코사인. <code>x</code>가 1보다 작으면 <a href="../nan"><code>NaN</code></a>를 반환합니다.</p></div></section><section aria-labelledby="설명"><h2 id="설명">설명</h2>
+<div class="section-content"><p><code>acosh()</code>는 <code>Math</code>의 정적 메서드이기 때문에, 생성한 <code>Math</code> 객체 메서드보다 <code>Math.acosh()</code>를 항상 사용합니다 (<code>Math</code>는 생성자가 아닙니다).</p></div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+</section><section aria-labelledby="math.acosh_사용"><h3 id="math.acosh_사용">Math.acosh() 사용</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="oP9+ufKL5vUZKt3AhG1DOjaC2CYmoNkVO1ScUa1AE5Q=" data-language="js">Math<span class="token punctuation">.</span><span class="token function">acosh</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// NaN</span>
+Math<span class="token punctuation">.</span><span class="token function">acosh</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 0</span>
+Math<span class="token punctuation">.</span><span class="token function">acosh</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 1.3169578969248166</span>
+Math<span class="token punctuation">.</span><span class="token function">acosh</span><span class="token punctuation">(</span><span class="token number">Infinity</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Infinity</span>
+</pre>
+</div></div></section><h2 id="명세서">명세서</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://tc39.es/ecma262/multipage/numbers-and-dates.html#sec-math.acosh">ECMAScript Language Specification <br><small># sec-math.acosh</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="https://github.com/zloirock/core-js#ecmascript-math" target="_blank"><code>core-js</code>의 <code>Math.acosh</code>의 폴리필</a></li> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/asinh"><code>Math.asinh()</code> <small>(en-US)</small></a></li> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/atanh"><code>Math.atanh()</code> <small>(en-US)</small></a></li> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/cosh"><code>Math.cosh()</code> <small>(en-US)</small></a></li> <li><a href="sinh"><code>Math.sinh()</code></a></li> <li><a href="tanh"><code>Math.tanh()</code></a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Math/acosh" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Math/acosh</a>
+  </p>
+</div>

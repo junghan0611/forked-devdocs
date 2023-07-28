@@ -1,0 +1,42 @@
+<h1>Content-Language</h1>
+<header><h1>Content-Language</h1></header><div class="section-content">
+<p><code>Content-Language</code> <a href="https://developer.mozilla.org/ko/docs/Glossary/Entity_header">entity header</a>는 청중을 위한 언어를 설명하기 위해 사용되는데, 사용자가 선호하는 언어에 따라 사용자를 구분하도록 해줍니다.</p> <p>예를 들어, "<code>Content-Language: de-DE</code>"가 설정되면, 이는 문서가 독일어 발표자를 위해 만들어졌음을 의미합니다(하지만, 그것이 문서가 독일어로 쓰여졌음을 나타내지는 않습니다. 예를 들어, 독일인 발표자를 위한 언어 코스의 일부분이 영어로 작성된 것일 수도 있습니다).</p> <p><code>Content-Language</code>이 지정되지 않는다면, 모든 언어의 청중을 위해 만들어진 내용이라고 간주합니다. 다중 언어 태그 또한 가능한데다, 텍스트로 이루어진 문서 뿐만 아니라 여러 가지 미디어 타입에도 <code>Content-Language</code> 헤더가 적용됩니다.</p> <figure class="table-container"><div class="_table"><table class="properties"> <tbody> <tr> <th scope="row">Header type</th> <td><a href="https://developer.mozilla.org/ko/docs/Glossary/Entity_header">Entity header</a></td> </tr> <tr> <th scope="row"><a href="https://developer.mozilla.org/ko/docs/Glossary/Forbidden_header_name">Forbidden header name</a></th> <td>no</td> </tr> </tbody> </table></div></figure>
+</div>
+<section aria-labelledby="문법"><h2 id="문법">문법</h2>
+<div class="section-content"><pre class="notranslate">Content-Language: de-DE
+Content-Language: en-US
+Content-Language: de-DE, en-CA
+</pre></div></section><section aria-labelledby="디렉티브"><h2 id="디렉티브">디렉티브</h2>
+<div class="section-content">
+<dl> <dt id="language-tag"><code>language-tag</code></dt> <dd> <p>다중 언어 태그는 쉼표로 구분됩니다. 각 언어 태그는 하이프 문자("<code>-</code>", <code>%x2D</code>)로 구분되는, 한 개 이상의 대소문자를 구분하지 않는 서브태그의 연속입니다. 대부분의 경우, 언어 태그는 관련 언어군 (예를 들어, "<code>en</code>" = English)을 나타내는 주요 언어로 구성되는데, 그 뒤에는 해당 언어의 범위를 정제하거나 좁혀주는 d일련의 서브태그가 올 수 있습니다 (예, "<code>en-CA</code>" = 캐나다에서 사용되는 영어의 변종).</p> </dd> </dl> <div class="notecard note" id="sect1"> <p><strong>참고:</strong> <strong>알아둘 것:</strong> 언어 태그는 공식적으로 <a href="https://tools.ietf.org/html/rfc5646" target="_blank">RFC 5646</a>에 정의되어 있으며, 그에 이어 사용될 <a href="https://en.wikipedia.org/wiki/Language_code" target="_blank">언어 코드</a>에 대해서 <a href="https://en.wikipedia.org/wiki/ISO_639" target="_blank">ISO 639</a> 표준이 있습니다(더 정확히는 <a href="https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes" target="_blank">ISO 639-1 코드 목록</a>).</p> </div>
+</div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+</section><section aria-labelledby="문서가_작성된_언어_나타내기"><h3 id="문서가_작성된_언어_나타내기">문서가 작성된 언어 나타내기</h3>
+<div class="section-content">
+<p>글로벌 <a href="https://developer.mozilla.org/ko/docs/Web/HTML/Global_attributes/lang"><code>lang</code></a> 어트리뷰는 HTML 엘리먼트 상에서 전체 <a href="https://developer.mozilla.org/ko/docs/Web/HTML">HTML</a> 문서 혹은 그의 일부의 언어를 나타내기 위해 사용됩니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="AepCjHKe05IEGRv7cdQQwMJV2tpOrK9KrrzIkaP/smg=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span> <span class="token attr-name">lang</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>de<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div> <p>다음과 같이 문서 언어를 나타내기 위해 이와 같은 메타 엘리먼트를 사용하지 <strong>마세요</strong>:</p> <div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="S/5TKVfhS4GoR/MiDMjeu6gPUqghlIahbBFAkhZJcys=" data-language="html"><span class="token comment">&lt;!-- /!\ This is bad practice --&gt;</span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">http-equiv</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>content-language<span class="token punctuation">"</span></span> <span class="token attr-name">content</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>de<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div>
+</div></section><section aria-labelledby="리소스에_대해_대상_청중_나타내기"><h3 id="리소스에_대해_대상_청중_나타내기">리소스에 대해 대상 청중 나타내기</h3>
+<div class="section-content">
+<p><code>Content-Language</code> 헤더는 <strong>페이지의 대상 청중</strong>을 지정하는데 사용되며 한 개 이상의 언어를 나태낼 수 있습니다.</p> <pre class="notranslate">Content-Language: de, en
+</pre>
+</div></section><h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://www.rfc-editor.org/rfc/rfc9110#field.content-language">HTTP Semantics <br><small># field.content-language</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="함께_참고할_내용"><h2 id="함께_참고할_내용">함께 참고할 내용</h2>
+<div class="section-content"><ul> <li><a href="accept-language"><code>Accept-Language</code></a></li> <li><a href="https://www.w3.org/International/questions/qa-http-and-lang.en" target="_blank">HTTP 헤더, 메타 엘리먼트 그리고 언어 정보</a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/HTTP/Headers/Content-Language" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/HTTP/Headers/Content-Language</a>
+  </p>
+</div>

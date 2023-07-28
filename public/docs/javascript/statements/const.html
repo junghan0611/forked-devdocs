@@ -1,0 +1,88 @@
+<header><h1>const</h1></header><div class="section-content"><p><code>const</code>은 블록 범위의 상수를 선언합니다. 상수의 값은 재할당할 수 없으며 다시 선언할 수도 없습니다.</p></div>
+<section aria-labelledby="시도해보기"><h2 id="시도해보기">시도해보기</h2>
+<div class="section-content"><iframe class="interactive is-js-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/js/statement-const.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe></div></section><section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content">
+<div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="NN0hyF6CgB/Rt6Ubrs9Q7dovYoGoNRdJH8RZFBR4p/s=" data-language="js">    <span class="token keyword">const</span> name1 <span class="token operator">=</span> value1 <span class="token punctuation">[</span><span class="token punctuation">,</span> name2 <span class="token operator">=</span> value2 <span class="token punctuation">[</span><span class="token punctuation">,</span> <span class="token operator">...</span> <span class="token punctuation">[</span><span class="token punctuation">,</span> nameN <span class="token operator">=</span> valueN<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+</pre>
+</div> <dl> <dt id="namen"><code>nameN</code></dt> <dd> <p>상수의 이름. 아무 유효한 <a href="https://developer.mozilla.org/ko/docs/Glossary/Identifier">식별자</a>를 사용할 수 있습니다.</p> </dd> <dt id="valuen"><code>valueN</code></dt> <dd> <p>상수의 값. 아무 유효한 <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Guide/Expressions_and_operators#%ed%91%9c%ed%98%84%ec%8b%9d">표현식</a>이나 가능합니다.</p> </dd> </dl>
+</div></section><section aria-labelledby="설명"><h2 id="설명">설명</h2>
+<div class="section-content">
+<p>이 선언은 선언된 함수에 전역 또는 지역일 수 있는 상수를 만듭니다. 상수 초기자(initializer)가 필요합니다. 즉 선언되는 같은 문에 그 값을 지정해야 합니다(이는 나중에 변경될 수 없는 점을 감안하면 말이 됩니다).</p> <p>상수는 <a href="let"><code>let</code></a> 문을 사용하여 정의된 변수와 마찬가지로 블록 범위(block-scope)입니다. 상수의 값은 재할당을 통해 바뀔 수 없고 재선언될 수 없습니다.</p> <p><a href="let"><code>let</code></a>에 적용한 "<a href="let#temporal_dead_zone_and_errors_with_let">일시적 사각 지대</a>"에 관한 모든 고려는, <code>const</code>에도 적용합니다.</p> <p>상수는 같은 범위의 상수 또는 변수와 그 이름을 공유할 수 없습니다.</p>
+</div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+<div class="section-content">
+<p>다음 예제는 상수가 어떻게 동작하는지 보입니다. 브라우저 콘솔에서 따라해보세요.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="Qh+6ieKwFBgcfvpIA+dUs5fdw8un2shWjmj7NnrfEds=" data-language="js"><span class="token comment">// 주의: 상수 선언에는 대소문자 모두 사용할 수 있지만,</span>
+<span class="token comment">// 일반적인 관습은 모두 대문자를 사용하는 것입니다.</span>
+
+<span class="token comment">// MY_FAV를 상수로 정의하고 그 값을 7로 함</span>
+<span class="token keyword">const</span> <span class="token constant">MY_FAV</span> <span class="token operator">=</span> <span class="token number">7</span><span class="token punctuation">;</span>
+
+<span class="token comment">// 에러가 발생함</span>
+<span class="token constant">MY_FAV</span> <span class="token operator">=</span> <span class="token number">20</span><span class="token punctuation">;</span>
+
+<span class="token comment">// 7 출력</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"my favorite number is: "</span> <span class="token operator">+</span> <span class="token constant">MY_FAV</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// 상수를 재선언하려는 시도는 오류 발생 - Uncaught SyntaxError: Identifier 'MY_FAV' has already been declared</span>
+<span class="token keyword">const</span> <span class="token constant">MY_FAV</span> <span class="token operator">=</span> <span class="token number">20</span><span class="token punctuation">;</span>
+
+<span class="token comment">// MY_FAV라는 이름은 위에서 상수로 예약되어 있어서 역시 실패함.</span>
+<span class="token keyword">var</span> <span class="token constant">MY_FAV</span> <span class="token operator">=</span> <span class="token number">20</span><span class="token punctuation">;</span>
+
+<span class="token comment">// 역시 오류가 발생함</span>
+<span class="token keyword">let</span> <span class="token constant">MY_FAV</span> <span class="token operator">=</span> <span class="token number">20</span><span class="token punctuation">;</span>
+
+<span class="token comment">// 블록 범위의 특성을 아는게 중요</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token constant">MY_FAV</span> <span class="token operator">===</span> <span class="token number">7</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 블록 범위로 지정된 MY_FAV 라는 변수를 만드므로 괜찮습니다</span>
+    <span class="token comment">// (let으로 const 변수가 아닌 블록 범위를 선언하는 것과 똑같이 동작합니다)</span>
+    <span class="token keyword">let</span> <span class="token constant">MY_FAV</span> <span class="token operator">=</span> <span class="token number">20</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// MY_FAV는 이제 20입니다</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'my favorite number is '</span> <span class="token operator">+</span> <span class="token constant">MY_FAV</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// 이 선언은 전역으로 호이스트되고 에러가 발생합니다.</span>
+    <span class="token keyword">var</span> <span class="token constant">MY_FAV</span> <span class="token operator">=</span> <span class="token number">20</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// MY_FAV는 여전히 7</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'my favorite number is '</span> <span class="token operator">+</span> <span class="token constant">MY_FAV</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// const 선언시에 초기값을 생략해서 오류 발생</span>
+<span class="token keyword">const</span> <span class="token constant">FOO</span><span class="token punctuation">;</span>
+
+<span class="token comment">// const는 오브젝트에도 잘 동작합니다</span>
+<span class="token keyword">const</span> <span class="token constant">MY_OBJECT</span> <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string-property property">'key'</span><span class="token operator">:</span> <span class="token string">'value'</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token comment">// 오브젝트를 덮어쓰면 오류가 발생합니다</span>
+<span class="token constant">MY_OBJECT</span> <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string-property property">'OTHER_KEY'</span><span class="token operator">:</span> <span class="token string">'value'</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token comment">// 하지만 오브젝트의 키는 보호되지 않습니다.</span>
+<span class="token comment">// 그러므로 아래 문장은 문제없이 실행됩니다</span>
+<span class="token constant">MY_OBJECT</span><span class="token punctuation">.</span>key <span class="token operator">=</span> <span class="token string">'otherValue'</span><span class="token punctuation">;</span> <span class="token comment">// 오브젝트를 변경할 수 없게 하려면 Object.freeze() 를 사용해야 합니다</span>
+
+<span class="token comment">// 배열에도 똑같이 적용됩니다</span>
+<span class="token keyword">const</span> <span class="token constant">MY_ARRAY</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token comment">// 배열에 아이템을 삽입하는 건 가능합니다</span>
+<span class="token constant">MY_ARRAY</span><span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token string">'A'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// ["A"]</span>
+<span class="token comment">// 하지만 변수에 새로운 배열을 배정하면 에러가 발생합니다</span>
+<span class="token constant">MY_ARRAY</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'B'</span><span class="token punctuation">]</span>
+</pre>
+</div>
+</div></section><h2 id="명세서">명세서</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://tc39.es/ecma262/multipage/ecmascript-language-statements-and-declarations.html#sec-let-and-const-declarations">ECMAScript Language Specification <br><small># sec-let-and-const-declarations</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="var"><code>var</code></a></li> <li><a href="let"><code>let</code></a></li> <li><a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Guide/Grammar_and_types#constants">JavaScript 안내서의 상수</a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Statements/const" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Statements/const</a>
+  </p>
+</div>

@@ -1,0 +1,55 @@
+<header><h1>CustomEvent()</h1></header><div class="section-content"><p><code>CustomEvent()</code> 생성자는 새로운 <a href="../customevent"><code>CustomEvent</code></a>를 생성합니다.</p></div>
+<h2 id="구문">구문</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="pNbBxz/NXXfIY8IG79Z1UJJBL1BZ+1rCxIK8zodX9Og=" data-language="js"><span class="token function">CustomEvent</span><span class="token punctuation">(</span>typeArg<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">CustomEvent</span><span class="token punctuation">(</span>typeArg<span class="token punctuation">,</span> options<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div></div>
+<h3 id="매개변수">매개변수</h3>
+<div class="section-content"><dl> <dt id="typearg"><code>typeArg</code></dt> <dd> <p>이벤트의 이름을 나타내는 문자열입니다.</p> </dd> <dt id="options">
+<code>options</code> <span class="badge inline optional">Optional</span>
+</dt> <dd> <p>다음 속성을 포함하는 객체입니다.</p> <ul> <li>
+<code>"detail"</code>: 이 이벤트 내에 포함할, 이벤트의 세부 정보를 나타내는 값입니다. 기본 값은 <code>null</code>입니다. 처리기에서 <a href="detail"><code>CustomEvent.detail</code></a> 속성을 통해 이 값에 접근할 수 있습니다.</li> <li>
+<a href="../event/event"><code>Event()</code></a> 생성자의 옵션에 지정할 수 있는 모든 속성.</li> </ul> </dd> </dl></div>
+<h2 id="예제">예제</h2>
+<div class="section-content">
+<div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="K/tDAyiHj9s8596ndBmIlD5kywQjeeUMJ4s9M49iRxI=" data-language="js"><span class="token comment">// CustomEvent 생성</span>
+<span class="token keyword">const</span> catFound <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">CustomEvent</span><span class="token punctuation">(</span><span class="token string">'animalfound'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+  <span class="token literal-property property">detail</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">'cat'</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> dogFound <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">CustomEvent</span><span class="token punctuation">(</span><span class="token string">'animalfound'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+  <span class="token literal-property property">detail</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">'dog'</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// 적합한 이벤트 수신기 부착</span>
+obj<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">'animalfound'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">e</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>e<span class="token punctuation">.</span>detail<span class="token punctuation">.</span>name<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// 이벤트 발송</span>
+obj<span class="token punctuation">.</span><span class="token function">dispatchEvent</span><span class="token punctuation">(</span>catFound<span class="token punctuation">)</span><span class="token punctuation">;</span>
+obj<span class="token punctuation">.</span><span class="token function">dispatchEvent</span><span class="token punctuation">(</span>dogFound<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// 콘솔에 "cat"과 "dog"가 기록됨</span>
+</pre>
+</div> <p><a href="https://developer.mozilla.org/en-US/docs/Web/Events/Creating_and_triggering_events" class="only-in-en-us">이벤트 생성 및 발동 <small>(en-US)</small></a> 문서에서 더 많은 예제를 확인하세요.</p>
+</div>
+<h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://dom.spec.whatwg.org/#ref-for-dom-customevent-customevent">DOM Standard <br><small># ref-for-dom-customevent-customevent</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<h2 id="함께_보기">함께 보기</h2>
+<div class="section-content"><ul> <li><a href="../customevent"><code>CustomEvent</code></a></li> <li><a href="https://developer.mozilla.org/en-US/docs/Web/Events/Creating_and_triggering_events" class="only-in-en-us">이벤트 생성 및 발동 <small>(en-US)</small></a></li> </ul></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/CustomEvent/CustomEvent" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/CustomEvent/CustomEvent</a>
+  </p>
+</div>

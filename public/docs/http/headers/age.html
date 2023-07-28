@@ -1,0 +1,26 @@
+<h1>Age</h1>
+<header><h1>Age</h1></header><div class="section-content">
+<p><code>Age</code> 헤더는 객체가 프록시 캐시 내에 머무는 초단위의 시간을 가집니다.</p> <p> <code>Age</code> 헤더는 보통 0에 가깝습니다. 만약 <code>Age: 0라면</code>, 그것은 아마도 원 서버로부터 막 내려받은 것일 겁니다. 그게 아니라면 프록시의 현재 시간과 HTTP 응답 내에 포함된 <a href="date"><code>Date</code></a> 일반 헤더의 차로 계산됩니다. </p> <figure class="table-container"><div class="_table"><table class="properties"> <tbody> <tr> <th scope="row">헤더 타입</th> <td><a href="https://developer.mozilla.org/ko/docs/Glossary/Response_header">응답 헤더</a></td> </tr> <tr> <th scope="row"><a href="https://developer.mozilla.org/ko/docs/Glossary/Forbidden_header_name">금지된 헤더 이름</a></th> <td>no</td> </tr> </tbody> </table></div></figure>
+</div>
+<section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">http</span></p>
+<pre data-signature="3cNiHHMdoASTxXw7oX8ldnT8/ViyPqfTKhoHimk5Hgk=" data-language="http"><span class="token header"><span class="token header-name keyword">Age</span><span class="token punctuation">:</span> <span class="token header-value">&lt;delta-seconds&gt;</span></span>
+</pre>
+</div></div></section><section aria-labelledby="지시자"><h2 id="지시자">지시자</h2>
+<div class="section-content"><dl> <dt id="delta-seconds"><code>&lt;delta-seconds&gt;</code></dt> <dd> <p>음수가 아닌 정수형으로, 객체가 프록시 캐시 내에 머문 초단위 시간을 나타냅니다.</p> </dd> </dl></div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+<div class="section-content"><pre class="notranslate">Age: 24
+</pre></div></section><h2 id="명세서">명세서</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://www.rfc-editor.org/rfc/rfc9111#field.age">HTTP Caching <br><small># field.age</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="함께_참고할_내용"><h2 id="함께_참고할_내용">함께 참고할 내용</h2>
+<div class="section-content"><ul> <li><a href="cache-control"><code>Cache-Control</code></a></li> <li><a href="expires"><code>Expires</code></a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/HTTP/Headers/Age" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/HTTP/Headers/Age</a>
+  </p>
+</div>

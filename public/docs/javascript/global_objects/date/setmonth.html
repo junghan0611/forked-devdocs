@@ -1,0 +1,40 @@
+<header><h1>Date.prototype.setMonth()</h1></header><div class="section-content"><p><code>setMonth()</code> 메서드는 현재 설정된 연도에 따라 지정된 날짜의 월을 설정합니다.</p></div>
+<section aria-labelledby="시도해보기"><h2 id="시도해보기">시도해보기</h2>
+<div class="section-content"><iframe class="interactive is-js-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/js/date-setmonth.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe></div></section><section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="niFrdT14jX7/xe4UUjMj5tkNAdnEmHMSxAPcUpu35V4=" data-language="js"><span class="token function">setMonth</span><span class="token punctuation">(</span>monthValue<span class="token punctuation">)</span>
+<span class="token function">setMonth</span><span class="token punctuation">(</span>monthValue<span class="token punctuation">,</span> dayValue<span class="token punctuation">)</span>
+</pre>
+</div></div></section><section aria-labelledby="매개변수"><h3 id="매개변수">매개변수</h3>
+<div class="section-content"><dl> <dt id="monthvalue"><code>monthValue</code></dt> <dd> <p> 연도의 시작에서 오프셋된 연도의 월을 나타내는 0 기반 정수입니다. 그래서 0은 1월, 11은 12월, -1은 전년도의 12월, 12는 다음 해의 1월을 나타냅니다. </p> </dd> <dt id="dayvalue"><code>dayValue</code></dt> <dd> <p>선택 사항. 한 달의 날짜를 나타내는 1에서 31 사이의 정수입니다.</p> </dd> </dl></div></section><section aria-labelledby="반환_값"><h3 id="반환_값">반환 값</h3>
+<div class="section-content"><p>1970년 1월 1일 00:00:00 UTC와 업데이트 된 날짜 사이의 밀리 초 숫자입니다.</p></div></section><section aria-labelledby="설명"><h2 id="설명">설명</h2>
+<div class="section-content">
+<p> <code>dayValue</code> 매개 변수를 지정하지 않으면 <a href="getdate"><code>getDate()</code></a> 메서드에서 반환 된 값이 사용됩니다. </p> <p> 지정한 매개 변수가 예상 범위를 벗어나면 <code>setMonth()</code>는 그에 따라 <a href="../date"><code>Date</code></a> 객체의 날짜 정보를 업데이트하려고 시도합니다. 예를 들어 <code>monthValue</code>에 15를 사용하면 연도 값이 1 증가하고 월 값은 3이 됩니다. </p> <p> 현재 날짜가 이 메서드의 동작에 영향을 미칩니다. 개념적으로 새로운 날짜를 반환하기 위해 매개 변수로 지정된 새 달의 첫 번째 날에 해당 월의 현재 날짜로 지정된 일 수를 추가합니다. 예를 들어 현재 값이 2016년 8월 31일인 경우 setMonth의 매개 변수에 1을 넣고 함께 호출하면 2016년 3월 2일을 반환됩니다. 이는 2016년 2월에 29일이 있기 때문입니다. </p>
+</div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+</section><section aria-labelledby="setmonth_사용하기"><h3 id="setmonth_사용하기">
+<code>setMonth()</code> 사용하기</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="qjw/phjqLFt/BQ7YX1JM+iQu7U+Gx4SE0A76r59DoJ8=" data-language="js"><span class="token keyword">const</span> theBigDay <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+theBigDay<span class="token punctuation">.</span><span class="token function">setMonth</span><span class="token punctuation">(</span><span class="token number">6</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// Watch out for end of month transitions</span>
+<span class="token keyword">const</span> endOfMonth <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token number">2016</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">,</span> <span class="token number">31</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+endOfMonth<span class="token punctuation">.</span><span class="token function">setMonth</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>endOfMonth<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//Wed Mar 02 2016 00:00:00</span>
+</pre>
+</div></div></section><h2 id="명세서">명세서</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://tc39.es/ecma262/multipage/numbers-and-dates.html#sec-date.prototype.setmonth">ECMAScript Language Specification <br><small># sec-date.prototype.setmonth</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="getmonth"><code>Date.prototype.getMonth()</code></a></li> <li><a href="setutcmonth"><code>Date.prototype.setUTCMonth()</code></a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Date/setMonth" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Date/setMonth</a>
+  </p>
+</div>

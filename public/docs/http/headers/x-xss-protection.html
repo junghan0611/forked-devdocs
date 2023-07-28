@@ -1,0 +1,45 @@
+<h1>X-XSS-Protection</h1>
+<header><h1>X-XSS-Protection</h1></header><div class="section-content">
+<p>HTTP **<code>X-XSS-Protection</code>**헤더는 Internet Explorer, Chrome 및 Safari에서 제공하는 기능으로서, (<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Glossary/Cross-site_scripting">XSS <small>(en-US)</small></a>) 공격을 감지 할 때 페이지 로드를 중지시킬 수 있습니다. 최신 브라우저에서는 Inline Javascript(<code>'unsafe-inline')</code>사용을 못하게 하는 CSP(Content-Security-Policy) 보호기능이 있으나, 해당 기능을 지원하지 않는 구형 웹브라우저에서 사용자를 보호 할수 있는 기능을 제공할 수 있습니다.</p> <figure class="table-container"><div class="_table"><table class="properties"> <tbody> <tr> <th scope="row">Header type</th> <td><a href="https://developer.mozilla.org/ko/docs/Glossary/Response_header">Response header</a></td> </tr> <tr> <th scope="row"><a href="https://developer.mozilla.org/ko/docs/Glossary/Forbidden_header_name">Forbidden header name</a></th> <td>no</td> </tr> </tbody> </table></div></figure>
+</div>
+<section aria-labelledby="문법"><h2 id="문법">문법</h2>
+<div class="section-content">
+<pre class="notranslate">X-XSS-Protection: 0
+X-XSS-Protection: 1
+X-XSS-Protection: 1; mode=block
+X-XSS-Protection: 1; report=&lt;reporting-uri&gt;
+</pre> <dl> <dt id="0">0</dt> <dd> <p>XSS 필터링을 비활성화합니다.</p> </dd> <dt id="1">1</dt> <dd> <p>XSS 필터링을 사용합니다 (일반적으로 브라우저의 기본값입니다). 사이트 내에서 스크립팅 공격이 감지되면 브라우저는 안전하지 않은 영역을 제거 후에 렌더링을 하게 됩니다.</p> </dd> <dt id="1_modeblock">1; mode=block</dt> <dd> <p>XSS 필터링을 사용합니다. 공격이 탐지되면 안전하지 않는 영역을 제거하는게 아니라, 페이지 렌더링을 중단합니다.</p> </dd> <dt id="1_reportreporting-uri_chromium에서만_사용_가능">1; report=&lt;reporting-URI&gt; (Chromium에서만 사용 가능)</dt> <dd> <p>XSS 필터링을 사용합니다. XSS 공격을 탐지하면 브라우저는 페이지 렌더링을 차단하고 위반 사항을 보고합니다. 이것은 CSP <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/report-uri" class="only-in-en-us"><code>report-uri</code> <small>(en-US)</small></a> 지시문의 기능을 사용하여 보고서를 보냅니다.</p> </dd> </dl>
+</div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+<div class="section-content">
+<p>XSS 공격을 감지하면 페이지로드를 차단합니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">bash</span></p>
+<pre data-signature="GK5oR1lVhlVn6Cowws5DoqoYq+rFPrULqiYh32G3HEE=" data-language="bash">X-XSS-Protection: <span class="token number">1</span><span class="token punctuation">;</span> <span class="token assign-left variable">mode</span><span class="token operator">=</span>block
+</pre>
+</div> <p>PHP</p> <div class="code-example">
+<p class="example-header"><span class="language-name">php</span></p>
+<pre data-signature="DS937SdKyinAWIHUZrSL+B26TV0Qno0qzV4JTqgJ0OY=" data-language="php"><span class="token function">header</span><span class="token punctuation">(</span><span class="token string double-quoted-string">"X-XSS-Protection: 1; mode=block"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div> <p>Apache (.htaccess)</p> <div class="code-example">
+<p class="example-header"><span class="language-name">bash</span></p>
+<pre data-signature="N6LBgnvueZ4VAhJugTTPDahDRrkc+BcJj1TWwQGUJ8s=" data-language="bash"><span class="token operator">&lt;</span>IfModule mod_headers.c<span class="token operator">&gt;</span>
+  Header <span class="token builtin class-name">set</span> X-XSS-Protection <span class="token string">"1; mode=block"</span>
+<span class="token operator">&lt;</span>/IfModule<span class="token operator">&gt;</span>
+</pre>
+</div> <p>Nginx</p> <div class="code-example">
+<p class="example-header"><span class="language-name">bash</span></p>
+<pre data-signature="pmZ6jiJ9ENP3RRUnWZ0evZ6qBWeuDf4y0cCo86L+h3Y=" data-language="bash">add_header <span class="token string">"X-XSS-Protection"</span> <span class="token string">"1; mode=block"</span><span class="token punctuation">;</span>
+</pre>
+</div>
+</div></section><h2 id="명세서">명세서</h2>
+<div class="notecard warning">
+<strong>No specification found</strong><p>No specification data found for <code>http.headers.X-XSS-Protection</code>.<br><a href="#on-github">Check for problems with this page</a> or contribute a missing <code>spec_url</code> to <a href="https://github.com/mdn/browser-compat-data">mdn/browser-compat-data</a>. Also make sure the specification is included in <a href="https://github.com/w3c/browser-specs">w3c/browser-specs</a>.</p>
+</div>
+<h2 id="지원_브라우저">지원 브라우저</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="see_also"><h2 id="see_also">See also</h2>
+<div class="section-content"><ul> <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy" class="only-in-en-us"><code>Content-Security-Policy</code> <small>(en-US)</small></a></li> <li><a href="https://blogs.msdn.microsoft.com/ieinternals/2011/01/31/controlling-the-xss-filter/" target="_blank">Controlling the XSS Filter – Microsoft</a></li> <li><a href="https://www.virtuesecurity.com/blog/understanding-xss-auditor/" target="_blank">Understanding XSS Auditor – Virtue Security</a></li> <li><a href="http://blog.innerht.ml/the-misunderstood-x-xss-protection/" target="_blank">The misunderstood X-XSS-Protection – blog.innerht.ml</a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/HTTP/Headers/X-XSS-Protection" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/HTTP/Headers/X-XSS-Protection</a>
+  </p>
+</div>

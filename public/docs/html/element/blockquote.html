@@ -1,0 +1,54 @@
+<header><h1>&lt;blockquote&gt;: 인용 블록 요소</h1></header><div class="section-content"><p><code>&lt;blockquote&gt;</code>는 안쪽의 텍스트가 긴 인용문임을 나타냅니다. 주로 들여쓰기를 한 것으로 그려집니다. (외형을 바꾸는 법은 <a href="#%EC%82%AC%EC%9A%A9_%EC%9D%BC%EB%9E%8C">사용 일람</a>을 참고하세요) 인용문의 출처 URL은 <a href="blockquote#attr-cite" aria-current="page"><code>cite</code></a> 특성으로, 출처 텍스트는 <a href="cite"><code>&lt;cite&gt;</code></a> 요소로 제공할 수 있습니다.</p></div>
+<h2 id="시도해보기">시도해보기</h2>
+<div class="section-content">
+<iframe class="interactive is-tabbed-standard-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/tabbed/blockquote.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe>  <figure class="table-container"><div class="_table"><table class="properties"> <tbody> <tr> <th scope="row"><a href="../content_categories">콘텐츠 카테고리</a></th> <td>
+<a href="../content_categories#%ed%94%8c%eb%a1%9c%ec%9a%b0_%ec%bd%98%ed%85%90%ec%b8%a0">플로우 콘텐츠</a>, 구획 루트, 뚜렷한 콘텐츠.</td> </tr> <tr> <th scope="row">가능한 콘텐츠</th> <td>
+<a href="../content_categories#%ed%94%8c%eb%a1%9c%ec%9a%b0_%ec%bd%98%ed%85%90%ec%b8%a0">플로우 콘텐츠</a>.</td> </tr> <tr> <th scope="row">태그 생략</th> <td>불가능, 시작과 끝에 태그를 추가하는것은 필수입니다.</td> </tr> <tr> <th scope="row">가능한 부모 요소</th> <td>
+<a href="../content_categories#%ed%94%8c%eb%a1%9c%ec%9a%b0_%ec%bd%98%ed%85%90%ec%b8%a0">플로우 콘텐츠</a>를 허용하는 모든 요소</td> </tr> <tr> <th scope="row">암시적 ARIA 역할</th> <td><a href="https://www.w3.org/TR/html-aria/#dfn-no-corresponding-role" target="_blank">대응하는 역할 없음</a></td> </tr> <tr> <th scope="row">가능한 ARIA 역할</th> <td>모두</td> </tr> <tr> <th scope="row">DOM 인터페이스</th> <td><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLQuoteElement"><code>HTMLQuoteElement</code> <small>(en-US)</small></a></td> </tr> </tbody> </table></div></figure>
+</div>
+<h2 id="특성">특성</h2>
+<div class="section-content">
+<p>이 요소는 <a href="../global_attributes">전역 특성</a>을 포함합니다.</p> <dl> <dt id="cite"><a id="attr-cite" class="inline-block" href="#attr-cite"><b><code>cite</code></b></a></dt> <dd> <p>인용문의 출처 문서나 메시지를 가리키는 URL. 인용문의 맥락 혹은 출처 정보를 가리킬 용도입니다.</p> </dd> </dl>
+</div>
+<h2 id="사용_일람">사용 일람</h2>
+<div class="section-content">
+<p>인용문의 들여쓰기를 바꾸려면 <a href="https://developer.mozilla.org/ko/docs/Glossary/CSS">CSS</a> <a href="https://developer.mozilla.org/ko/docs/Web/CSS/margin-left"><code>margin-left</code></a>와 <a href="https://developer.mozilla.org/ko/docs/Web/CSS/margin-right"><code>margin-right</code></a>, 혹은 <a href="https://developer.mozilla.org/ko/docs/Web/CSS/margin"><code>margin</code></a> 단축 속성을 사용하세요.</p> <p>별도의 블록을 쓰지 않아도 될 짧은 인용문은 <a href="q"><code>&lt;q&gt;</code></a> 요소를 사용하세요.</p>
+</div>
+<h2 id="예제">예제</h2>
+<div class="section-content">
+<p>다음 예제는 <code>&lt;blockquote&gt;</code> 요소를 사용해 <a href="https://datatracker.ietf.org/doc/html/rfc1149" target="_blank">RFC 1149</a> A Standard for the Transmission of IP Datagrams on Avian Carriers의 문단을 인용합니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="VWXi9Dhv5mMnw+4/ua1Gup3tNHiPbkvwVEVmNtbZ4IE=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>blockquote</span> <span class="token attr-name">cite</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>https://tools.ietf.org/html/rfc1149<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>Avian carriers can provide high delay, low
+  throughput, and low altitude service.  The
+  connection topology is limited to a single
+  point-to-point path for each carrier, used with
+  standard carriers, but many carriers can be used
+  without significant interference with each other,
+  outside of early spring.  This is because of the 3D
+  ether space available to the carriers, in contrast
+  to the 1D ether used by IEEE802.3.  The carriers
+  have an intrinsic collision avoidance system, which
+  increases availability.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>blockquote</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div>
+<div class="code-example" id="sect1">
+
+<iframe class="sample-code-frame" title="예제 sample" id="frame_예제" width="640" height="180" src="https://live.mdnplay.dev/ko/docs/Web/HTML/Element/blockquote/runner.html?id=%EC%98%88%EC%A0%9C" loading="lazy"></iframe>
+</div>
+</div>
+<h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-blockquote-element">HTML Standard <br><small># the-blockquote-element</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li>인라인 인용문을 위한 <a href="q"><code>&lt;q&gt;</code></a> 요소.</li> <li>인용문 출처 표기를 위한 <a href="cite"><code>&lt;cite&gt;</code></a> 요소.</li> </ul></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/HTML/Element/blockquote" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/HTML/Element/blockquote</a>
+  </p>
+</div>

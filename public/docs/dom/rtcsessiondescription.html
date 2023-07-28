@@ -1,0 +1,59 @@
+<header><h1>RTCSessionDescription</h1></header><div class="section-content">
+<div class="notecard experimental" id="sect1"><p><strong>Experimental:</strong> <strong>This is an <a href="https://developer.mozilla.org/en-US/docs/MDN/Writing_guidelines/Experimental_deprecated_obsolete#experimental">experimental technology</a></strong><br>Check the <a href="#browser_compatibility">Browser compatibility table</a> carefully before using this in production.</p></div> <p>The <code>RTCSessionDescription</code> interface describes one end of a connection—or potential connection—and how it's configured. Each <code>RTCSessionDescription</code> consists of a description <a href="rtcsessiondescription/type"><code>type</code></a> indicating which part of the offer/answer negotiation process it describes and of the <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Glossary/SDP">SDP <small>(en-US)</small></a> descriptor of the session.</p> <p>The process of negotiating a connection between two peers involves exchanging <code>RTCSessionDescription</code> objects back and forth, with each description suggesting one combination of connection configuration options that the sender of the description supports. Once the two peers agree upon a configuration for the connection, negotiation is complete.</p>
+</div>
+<h2 id="properties">Properties</h2>
+<div class="section-content">
+<p><em>The <code>RTCSessionDescription</code> interface doesn't inherit any properties.</em></p> <dl> <dt id="rtcsessiondescription.type">
+<a href="rtcsessiondescription/type"><code>RTCSessionDescription.type</code></a> <span class="badge inline readonly">읽기 전용</span>
+</dt> <dd> <p>An enum of type <a href="#rtcsdptype"><code>RTCSdpType</code></a> describing the session description's type.</p> </dd> <dt id="rtcsessiondescription.sdp">
+<a href="rtcsessiondescription/sdp"><code>RTCSessionDescription.sdp</code></a> <span class="badge inline readonly">읽기 전용</span>
+</dt> <dd> <p>A <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/String"><code>DOMString</code></a> containing the <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Glossary/SDP">SDP <small>(en-US)</small></a> describing the session.</p> </dd> </dl>
+</div>
+<h2 id="constants">Constants</h2>
+
+<h3 id="rtcsdptype">RTCSdpType</h3>
+<div class="section-content">
+<p>This enum defines strings that describe the current state of the session description, as used in the <a href="rtcsessiondescription/type"><code>type</code></a> property. The session description's type will be specified using one of these values.</p> <figure class="table-container"><div class="_table"><table> <thead> <tr> <th>Value</th> <th>Description</th> </tr> </thead> <tbody> <tr> <td><code>answer</code></td> <td>The SDP contained in the <a href="rtcsessiondescription/sdp"><code>sdp</code></a> property is the definitive choice in the exchange. In other words, this session description describes the agreed-upon configuration, and is being sent to finalize negotiation.</td> </tr> <tr> <td><code>offer</code></td> <td>The session description object describes the initial proposal in an offer/answer exchange. The session negotiation process begins with an offer being sent from the caller to the callee.</td> </tr> <tr> <td><code>pranswer</code></td> <td>The session description object describes a provisional answer; that is, a response to a previous offer that is not the final answer. It is usually employed by legacy hardware.</td> </tr> <tr> <td><code>rollback</code></td> <td>This special type with an empty session description is used to roll back to the previous stable state.</td> </tr> </tbody> </table></div></figure>
+</div>
+<h2 id="methods">Methods</h2>
+<div class="section-content">
+<p><em>The <code>RTCSessionDescription</code> doesn't inherit any methods.</em></p> <dl> <dt id="rtcsessiondescription_en-us">
+<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/RTCSessionDescription/RTCSessionDescription"><code>RTCSessionDescription()</code> <small>(en-US)</small></a> <abbr class="icon icon-deprecated" title="지원이 중단되었습니다. 새로운 웹사이트에서 사용하지 마세요."> <span class="visually-hidden">지원이 중단되었습니다</span> </abbr>
+</dt> <dd> <p>This constructor returns a new <code>RTCSessionDescription</code>. The parameter is a <code>RTCSessionDescriptionInit</code> dictionary containing the values to assign the two properties.</p> </dd> <dt id="rtcsessiondescription.tojson_en-us"><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/RTCSessionDescription/toJSON"><code>RTCSessionDescription.toJSON()</code> <small>(en-US)</small></a></dt> <dd> <p>Returns a <a href="https://developer.mozilla.org/ko/docs/Glossary/JSON">JSON</a> description of the object. The values of both properties, <a href="rtcsessiondescription/type"><code>type</code></a> and <a href="rtcsessiondescription/sdp"><code>sdp</code></a>, are contained in the generated JSON.</p> </dd> </dl>
+</div>
+<h2 id="example">Example</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="zITumqsV3cTj3oCxOR+LazIL6vHgFHtFNXTFTchS6TE=" data-language="js">signalingChannel<span class="token punctuation">.</span><span class="token function-variable function">onmessage</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">evt</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>pc<span class="token punctuation">)</span>
+        <span class="token function">start</span><span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">var</span> message <span class="token operator">=</span> <span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span>evt<span class="token punctuation">.</span>data<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>message<span class="token punctuation">.</span>sdp<span class="token punctuation">)</span>
+        pc<span class="token punctuation">.</span><span class="token function">setRemoteDescription</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">RTCSessionDescription</span><span class="token punctuation">(</span>message<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token comment">// if we received an offer, we need to answer</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>pc<span class="token punctuation">.</span>remoteDescription<span class="token punctuation">.</span>type <span class="token operator">==</span> <span class="token string">"offer"</span><span class="token punctuation">)</span>
+                pc<span class="token punctuation">.</span><span class="token function">createAnswer</span><span class="token punctuation">(</span>localDescCreated<span class="token punctuation">,</span> logError<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span> logError<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">else</span>
+        pc<span class="token punctuation">.</span><span class="token function">addIceCandidate</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">RTCIceCandidate</span><span class="token punctuation">(</span>message<span class="token punctuation">.</span>candidate<span class="token punctuation">)</span><span class="token punctuation">,</span>
+            <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span> logError<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</pre>
+</div></div>
+<h2 id="명세서">명세서</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://w3c.github.io/webrtc-pc/#rtcsessiondescription-class">WebRTC: Real-Time Communication in Browsers <br><small># rtcsessiondescription-class</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<h2 id="see_also">See also</h2>
+<div class="section-content"><ul> <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/WebRTC_API" class="only-in-en-us">WebRTC <small>(en-US)</small></a></li> <li>
+<a href="rtcpeerconnection/setlocaldescription"><code>RTCPeerConnection.setLocalDescription()</code></a> and <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/RTCPeerConnection/setRemoteDescription"><code>RTCPeerConnection.setRemoteDescription()</code> <small>(en-US)</small></a>
+</li> </ul></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/RTCSessionDescription" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/RTCSessionDescription</a>
+  </p>
+</div>

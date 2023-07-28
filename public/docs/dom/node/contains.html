@@ -1,0 +1,31 @@
+<header><h1>Node.contains()</h1></header><div class="section-content"><p><code>Node.contains()</code> 메소드는 주어진 인자가 node 의 자손인지, 아닌지에 대한 <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Boolean"><code>Boolean</code></a> 값을 리턴합니다.</p></div>
+<h2 id="syntax">Syntax</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="7rukb5w2PSitqlgbSDKrxCbb4gwoBjYwsuHjj04a3PA=" data-language="js">node<span class="token punctuation">.</span><span class="token function">contains</span><span class="token punctuation">(</span> otherNode <span class="token punctuation">)</span>
+</pre>
+</div></div>
+<h2 id="example">Example</h2>
+<div class="section-content">
+<p>이 함수는 요소가 페이지의 body 안에 있는지 검사합니다. <code>contains</code> 는 포괄적이므로 node 가 body 자기 자신일 경우에도 true 가 반환됩니다. 만약 이걸 원하지 않는 경우에는 node 가 body 자기 자신인지 검사하여 <code>false</code> 를 반환하여 버리면 됩니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="x7RYM+XxIINf2/YP/GfptxdA5tuxpxPHPCyseIEVKEk=" data-language="js"><span class="token keyword">function</span> <span class="token function">isInPage</span><span class="token punctuation">(</span><span class="token parameter">node</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token punctuation">(</span>node <span class="token operator">===</span> document<span class="token punctuation">.</span>body<span class="token punctuation">)</span> <span class="token operator">?</span> <span class="token boolean">false</span> <span class="token operator">:</span> document<span class="token punctuation">.</span>body<span class="token punctuation">.</span><span class="token function">contains</span><span class="token punctuation">(</span>node<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div>
+</div>
+<h2 id="명세서">명세서</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="#">DOM Standard <br><small># ref-for-dom-node-contains①</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<h2 id="see_also">See also</h2>
+<div class="section-content"><ul> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/Node/compareDocumentPosition"><code>Node.compareDocumentPosition</code> <small>(en-US)</small></a></li> <li><a href="haschildnodes"><code>Node.hasChildNodes</code></a></li> </ul></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/Node/contains" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/Node/contains</a>
+  </p>
+</div>

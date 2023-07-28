@@ -1,0 +1,126 @@
+<header><h1>Document.getElementsByTagNameNS()</h1></header><div class="section-content"><p>주어진 네임스페이스에 속하는 태그명을 갖는 엘리먼트의 목록을 반환합니다. 루트 노드를 포함해 전체 다큐먼트를 대상으로 탐색합니다.</p></div>
+<h2 id="구문">구문</h2>
+<div class="section-content">
+<div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="QwFAeui/TTpYN0srhiq6K9Al+1gX7gHhF+/sZjqUijU=" data-language="js">elements <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementsByTagNameNS</span><span class="token punctuation">(</span>namespace<span class="token punctuation">,</span> name<span class="token punctuation">)</span>
+</pre>
+</div> <ul> <li>
+<em>elements</em> 는 트리에 나타난 순서로 발견된 살아있는 <a href="../nodelist"><code>NodeList</code></a> 입니다(하지만 아래를 확인하세요).</li> <li>
+<em>namespace</em> 는 탐색하기 위한 엘리먼트의 네임스페이스 URI 입니다(<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/Element/namespaceURI"><code>element.namespaceURI</code> <small>(en-US)</small></a>) 를 확인하세요).</li> <li>
+<em>name 은 탐색할 엘리먼트의 로컬명 또는 모든 엘리먼트에 일치하는 특별 값 <code>*</code> 입니다</em>(<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/Element/localName"><code>element.localName</code> <small>(en-US)</small></a> 를 확인하세요).</li> </ul> <div class="notecard note" id="sect1"> <p><strong>참고:</strong> <strong>노트:</strong> W3C 명세는 <code>elements</code> 를 <code>NodeList</code> 라고 하였지만, Gecko 와 Internet Explorer 에서는 <a href="../htmlcollection"><code>HTMLCollection</code></a> 을 반환합니다. Opera 는<code>NodeList</code> 를 반환하지만 <code>namedItem</code> 메소드를 구현해 <code>HTMLCollection</code> 과 유사하게 만듭니다. 2012 년 1월 기준으로, WebKit 브라우저만 순수한 <code>NodeList</code> 를 반환합니다. 자세한 내용은 <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=14869" target="_blank">bug 14869</a> 를 확인하세요.</p> </div> <div class="notecard note" id="sect2"> <p><strong>참고:</strong> <strong>노트:</strong> 현재 이 메소드의 파라미터는 대소문자를 구분하지만, Firefox 3.5 와 그 이전에는 그렇지 않았습니다. 자세한 내용은 <a href="https://developer.mozilla.org/en-US/docs/Mozilla/Firefox/Releases/3.6" class="only-in-en-us">Firefox 3.6 개발자 릴리즈 노트 <small>(en-US)</small></a>와 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/Element/getElementsByTagNameNS"><code>Element.getElementsByTagNameNS</code> <small>(en-US)</small></a> 의 브라우저 호환성 섹션을 확인하세요.</p> </div>
+</div>
+<h2 id="예시">예시</h2>
+<div class="section-content">
+<p>다음 예시에서 <code>getElementsByTagNameNS</code> 는 특정 부모 노트로부터 시작하고 위에서 아래로 해당 DOM 의 부모노드를 재귀적으로 탐색하여 태그 <code>name</code> 파라미터에 일치하는 자식 엘리먼트를 찾습니다.</p> <p><code>getElementByTagName</code> 이 실행된 노드가 <code>document</code> 노드가 아닐 때, <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/Element/getElementsByTagNameNS"><code>element.getElementsByTagNameNS</code> <small>(en-US)</small></a> 메소드가 사용됨을 유의하세요.</p> <p>다음 예시를 사용하려면, .xhtml 확장의 새 파일로 복사/붙여넣기 하세요.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="hUJZoc0piIjIdhdwdRu4AVpuhd95nComnVee0KsLU4I=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span> <span class="token attr-name">xmlns</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>http://www.w3.org/1999/xhtml<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>title</span><span class="token punctuation">&gt;</span></span>getElementsByTagNameNS example<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>title</span><span class="token punctuation">&gt;</span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>text/javascript<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token script"><span class="token language-javascript">
+
+<span class="token keyword">function</span> <span class="token function">getAllParaElems</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+  <span class="token keyword">var</span> allParas <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementsByTagNameNS</span><span class="token punctuation">(</span><span class="token string">"http://www.w3.org/1999/xhtml"</span><span class="token punctuation">,</span> <span class="token string">"p"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">var</span> num <span class="token operator">=</span> allParas<span class="token punctuation">.</span>length<span class="token punctuation">;</span>
+
+  <span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">"There are "</span> <span class="token operator">+</span> num <span class="token operator">+</span> <span class="token string">" &amp;lt;p&amp;gt; elements in this document"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+
+<span class="token keyword">function</span> <span class="token function">div1ParaElems</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+  <span class="token keyword">var</span> div1 <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">"div1"</span><span class="token punctuation">)</span>
+  <span class="token keyword">var</span> div1Paras <span class="token operator">=</span> div1<span class="token punctuation">.</span><span class="token function">getElementsByTagNameNS</span><span class="token punctuation">(</span><span class="token string">"http://www.w3.org/1999/xhtml"</span><span class="token punctuation">,</span> <span class="token string">"p"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">var</span> num <span class="token operator">=</span> div1Paras<span class="token punctuation">.</span>length<span class="token punctuation">;</span>
+
+  <span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">"There are "</span> <span class="token operator">+</span> num <span class="token operator">+</span> <span class="token string">" &amp;lt;p&amp;gt; elements in div1 element"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+
+<span class="token keyword">function</span> <span class="token function">div2ParaElems</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+  <span class="token keyword">var</span> div2 <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">"div2"</span><span class="token punctuation">)</span>
+  <span class="token keyword">var</span> div2Paras <span class="token operator">=</span> div2<span class="token punctuation">.</span><span class="token function">getElementsByTagNameNS</span><span class="token punctuation">(</span><span class="token string">"http://www.w3.org/1999/xhtml"</span><span class="token punctuation">,</span> <span class="token string">"p"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">var</span> num <span class="token operator">=</span> div2Paras<span class="token punctuation">.</span>length<span class="token punctuation">;</span>
+
+  <span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">"There are "</span> <span class="token operator">+</span> num <span class="token operator">+</span> <span class="token string">" &amp;lt;p&amp;gt; elements in div2 element"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">&gt;</span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span> <span class="token special-attr"><span class="token attr-name">style</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token value css language-css"><span class="token property">border</span><span class="token punctuation">:</span> solid green 3px</span><span class="token punctuation">"</span></span></span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>Some outer text<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>Some outer text<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>div1<span class="token punctuation">"</span></span> <span class="token special-attr"><span class="token attr-name">style</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token value css language-css"><span class="token property">border</span><span class="token punctuation">:</span> solid blue 3px</span><span class="token punctuation">"</span></span></span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>Some div1 text<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>Some div1 text<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>Some div1 text<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>div2<span class="token punctuation">"</span></span> <span class="token special-attr"><span class="token attr-name">style</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token value css language-css"><span class="token property">border</span><span class="token punctuation">:</span> solid red 3px</span><span class="token punctuation">"</span></span></span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>Some div2 text<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>Some div2 text<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>Some outer text<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>Some outer text<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token special-attr"><span class="token attr-name">onclick</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token value javascript language-javascript"><span class="token function">getAllParaElems</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span><span class="token punctuation">"</span></span></span><span class="token punctuation">&gt;</span></span>
+ show all p elements in document<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>br</span> <span class="token punctuation">/&gt;</span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token special-attr"><span class="token attr-name">onclick</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token value javascript language-javascript"><span class="token function">div1ParaElems</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span><span class="token punctuation">"</span></span></span><span class="token punctuation">&gt;</span></span>
+ show all p elements in div1 element<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>br</span> <span class="token punctuation">/&gt;</span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token special-attr"><span class="token attr-name">onclick</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token value javascript language-javascript"><span class="token function">div2ParaElems</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span><span class="token punctuation">"</span></span></span><span class="token punctuation">&gt;</span></span>
+ show all p elements in div2 element<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">&gt;</span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div>
+</div>
+<h2 id="지원하지_않는_다른_브라우저를_위한_잠재적인_대안">지원하지 않는 다른 브라우저를 위한 잠재적인 대안</h2>
+<div class="section-content">
+<p>원하는 브라우저가 XPath 를 지원하지 않는다면, 원하는 로컬명과 네임스페이스를 갖는 모든 태그를 찾기 위한 다른 접근법(모든 자식을 거쳐 DOM 을 횡단, 모든 @xmlns 인스턴스 식별 등)이 필요하지만, XPath 가 훨씬 빠릅니다(Explorer 에 적용하려면, 아래의 함수에서 XPath 대신 <a href="https://www.davidflanagan.com/javascript5/display.php?n=21-10&amp;f=21/10.js" target="_blank">이 래퍼 클래스같은</a> XPath 래퍼를 호출할 수 있습니다(Explorer 는 다른 API 로 XPath 를 지원합니다).)</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="g+CFAJxupLlUBQcdOxrbJmvpcwmKv7n3fRXK7pfrtLo=" data-language="js"><span class="token keyword">function</span> <span class="token function">getElementsByTagNameNSWrapper</span> <span class="token punctuation">(</span><span class="token parameter">ns<span class="token punctuation">,</span> elName<span class="token punctuation">,</span> doc<span class="token punctuation">,</span> context</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+ <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>doc<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  doc <span class="token operator">=</span> document<span class="token punctuation">;</span>
+ <span class="token punctuation">}</span>
+ <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>context<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  context <span class="token operator">=</span> doc<span class="token punctuation">;</span>
+ <span class="token punctuation">}</span>
+
+ <span class="token keyword">var</span> result <span class="token operator">=</span> doc<span class="token punctuation">.</span><span class="token function">evaluate</span><span class="token punctuation">(</span><span class="token string">'//*[local-name()="'</span><span class="token operator">+</span>elName<span class="token operator">+</span><span class="token string">'" and namespace-uri() = "'</span><span class="token operator">+</span>ns<span class="token operator">+</span><span class="token string">'"]'</span><span class="token punctuation">,</span> context<span class="token punctuation">,</span> <span class="token keyword">null</span><span class="token punctuation">,</span> XPathResult<span class="token punctuation">.</span><span class="token constant">ORDERED_NODE_SNAPSHOT_TYPE</span><span class="token punctuation">,</span> <span class="token keyword">null</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">var</span> a <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">var</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> result<span class="token punctuation">.</span>snapshotLength<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            a<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> result<span class="token punctuation">.</span><span class="token function">snapshotItem</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> a<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div>
+</div>
+<h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="#">DOM Standard <br><small># ref-for-dom-document-getelementsbytagnamens①</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<h2 id="함께_보기">함께 보기</h2>
+<div class="section-content"><ul> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/Element/getElementsByTagNameNS"><code>Element.getElementsByTagNameNS()</code> <small>(en-US)</small></a></li> </ul></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/Document/getElementsByTagNameNS" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/Document/getElementsByTagNameNS</a>
+  </p>
+</div>

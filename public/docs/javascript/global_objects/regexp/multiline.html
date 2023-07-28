@@ -1,0 +1,27 @@
+<header><h1>RegExp.prototype.multiline</h1></header><div class="section-content"><p><code>multiline</code> 접근자 속성은 <code>m</code> 플래그가 정규표현식에 사용되었는지 여부를 나타냅니다.</p></div>
+<section aria-labelledby="시도해보기"><h2 id="시도해보기">시도해보기</h2>
+<div class="section-content"><iframe class="interactive is-taller-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/js/regexp-prototype-multiline.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe></div></section><section aria-labelledby="설명"><h2 id="설명">설명</h2>
+<div class="section-content">
+<p> <code>m</code> 플래그가 사용된 경우 <code>RegExp.prototype.multiline</code>은 <code>true</code> 값을 가지며, 그렇지 않으면 <code>false</code> 값을 갖습니다. <code>m</code> 플래그는 여러 줄 입력 문자열을 여러 줄로 처리해야 함을 나타냅니다. 예를 들어, <code>m</code>이 사용되면 <code>^</code>와 <code>$</code>는 전체 문자열의 시작 또는 끝에서만 일치하는 것에서 문자열 내의 모든 줄의 시작 또는 끝에서 일치하는 것으로 변경됩니다. </p> <p><code>multiline</code>의 set 접근자는 <code>undefined</code>, 즉 정의되지 않았습니다. 이 속성은 직접 변경할 수 없습니다.</p>
+</div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+</section><section aria-labelledby="multiline_사용하기"><h3 id="multiline_사용하기">multiline 사용하기</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="W04dUThhXIkhw99AihY4qmjSFtUHLFlTHQS7HIqbpZM=" data-language="js"><span class="token keyword">const</span> regex <span class="token operator">=</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">foo</span><span class="token regex-delimiter">/</span><span class="token regex-flags">m</span></span><span class="token punctuation">;</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>regex<span class="token punctuation">.</span>multiline<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// true</span>
+</pre>
+</div></div></section><h2 id="명세서">명세서</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://tc39.es/ecma262/multipage/text-processing.html#sec-get-regexp.prototype.multiline">ECMAScript Language Specification <br><small># sec-get-regexp.prototype.multiline</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp/lastIndex"><code>RegExp.prototype.lastIndex</code> <small>(en-US)</small></a></li> <li><a href="dotall"><code>RegExp.prototype.dotAll</code></a></li> <li><a href="global"><code>RegExp.prototype.global</code></a></li> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp/hasIndices"><code>RegExp.prototype.hasIndices</code> <small>(en-US)</small></a></li> <li><a href="ignorecase"><code>RegExp.prototype.ignoreCase</code></a></li> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp/source"><code>RegExp.prototype.source</code> <small>(en-US)</small></a></li> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp/sticky"><code>RegExp.prototype.sticky</code> <small>(en-US)</small></a></li> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp/unicode"><code>RegExp.prototype.unicode</code> <small>(en-US)</small></a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/RegExp/multiline" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/RegExp/multiline</a>
+  </p>
+</div>

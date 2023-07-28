@@ -1,0 +1,101 @@
+<header><h1>undefined</h1></header><div class="section-content"><p> 전역 <code>undefined</code> 속성은 <code><a href="https://developer.mozilla.org/ko/docs/Glossary/Undefined">undefined</a></code> 원시 값을 나타내며, JavaScript의 <a href="https://developer.mozilla.org/ko/docs/Glossary/Primitive">원시 자료형</a> 중 하나입니다. </p></div>
+<section aria-labelledby="시도해보기"><h2 id="시도해보기">시도해보기</h2>
+<div class="section-content"><iframe class="interactive is-js-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/js/globalprops-undefined.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe></div></section><section aria-labelledby="값"><h2 id="값">값</h2>
+<div class="section-content">
+<p><code><a href="https://developer.mozilla.org/ko/docs/Glossary/Undefined">undefined</a></code>의 원시 값입니다.</p>
+<figure class="table-container"><div class="_table"><table class="standard-table"> <thead> <tr> <th class="header" colspan="2">Property attributes of <code>undefined</code>
+</th> </tr> </thead> <tbody> <tr> <td>Writable</td> <td>불가능</td> </tr> <tr> <td>Enumerable</td> <td>불가능</td> </tr> <tr> <td>Configurable</td> <td>불가능</td> </tr> </tbody> </table></div></figure>
+</div></section><section aria-labelledby="설명"><h2 id="설명">설명</h2>
+<div class="section-content">
+<p><code>undefined</code>는 전역 객체의 속성입니다. 즉, 전역 범위에서의 변수입니다.</p> <p>최신 브라우저에서 <code>undefined</code>는 설정 불가, 쓰기 불가한 속성입니다. 그렇지 않더라도 덮어쓰는건 피하는게 좋습니다.</p> <p>값을 할당하지 않은 변수는 <code>undefined</code> 자료형입니다. 메서드나 선언도 평가할 변수가 값을 할당받지 않은 경우에 <code>undefined</code>를 반환합니다. 함수는 값을 명시적으로 <a href="../statements/return"><code>반환</code></a>하지 않으면 <code>undefined</code>를 반환합니다.</p> <div class="notecard note" id="sect1"> <p><strong>참고:</strong> 전역 범위 이외의 모든 범위에서 <a href="https://developer.mozilla.org/ko/docs/Glossary/Identifier">식별자</a> (변수 이름)로 <code>undefined</code>를 사용할 수 있지만(<code>undefined</code>는 <a href="../lexical_grammar#reserved_words">예약어</a>가 아니기 때문에), 그렇게 하는 것은 매우 나쁜 생각입니다. 코드를 유지보수하고 디버깅하기 어렵게 만듭니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="Rf2atgPXLe9R2ozviWsAf8Uv58M5SVpUES+1O90xuCY=" data-language="js"><span class="token comment">// DON'T DO THIS</span>
+
+<span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> <span class="token keyword">undefined</span> <span class="token operator">=</span> <span class="token string">"foo"</span><span class="token punctuation">;</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">undefined</span><span class="token punctuation">,</span> <span class="token keyword">typeof</span> <span class="token keyword">undefined</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// foo string</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter"><span class="token keyword">undefined</span></span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">undefined</span><span class="token punctuation">,</span> <span class="token keyword">typeof</span> <span class="token keyword">undefined</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// foo string</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token string">"foo"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div> </div>
+</div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+</section><section aria-labelledby="엄격한_일치_연산과_undefined"><h3 id="엄격한_일치_연산과_undefined">엄격한 일치 연산과 <code>undefined</code>
+</h3>
+<div class="section-content">
+<p><code>undefined</code>와 엄격한 일치, 불일치 연산자를 사용해 변수에 값이 있는지 확인할 수 있습니다. 다음 코드에서 변수 <code>x</code>는 초기화되지 않았으며, <code>if</code>문은 참으로 평가됩니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="n82ONv1Q3J6+j/uP2Yk9B6f2ZnA+1p2wvtws6E27AtA=" data-language="js"><span class="token keyword">let</span> x<span class="token punctuation">;</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span>x <span class="token operator">===</span> <span class="token keyword">undefined</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+   <span class="token comment">// 이 문이 실행됨</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">else</span> <span class="token punctuation">{</span>
+   <span class="token comment">// 이 문이 실행되지 않음</span>
+<span class="token punctuation">}</span>
+</pre>
+</div> <div class="notecard note" id="sect2"> <p> <strong>참고:</strong>: <code>x == undefined</code>는 <code>x</code>가 <code>null</code>일 때도 참이기 때문에, 엄격한 동등 연산자(표준 동등 연산자와 반대로)를 사용해야 합니다. 반면에, 엄격한 동등 연산자는 그렇지 않습니다. 이것은 <code>null</code>이 <code>undefined</code>하고 동일하지 않기 때문입니다. </p> <p>자세한 내용은 <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Equality_comparisons_and_sameness">Equality comparison and sameness</a> 문서를 확인하세요.</p> </div>
+</div></section><section aria-labelledby="typeof_연산자와_undefined"><h3 id="typeof_연산자와_undefined">
+<code>typeof</code> 연산자와 <code>undefined</code>
+</h3>
+<div class="section-content">
+<p>위의 예제 대신 <a href="../operators/typeof"><code>typeof</code></a>를 사용할 수도 있습니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="/n0UnR/S/qArf7jNly9oJaTPGL7vqrIadIwK2juUhnc=" data-language="js"><span class="token keyword">let</span> x<span class="token punctuation">;</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">typeof</span> x <span class="token operator">===</span> <span class="token string">'undefined'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+   <span class="token comment">// 이 문이 실행됨</span>
+<span class="token punctuation">}</span>
+</pre>
+</div> <p><a href="../operators/typeof"><code>typeof</code></a>를 사용하는 한 가지 이유는 변수가 선언되지 않은 경우 오류를 발생시키지 않기 때문입니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="FaP+6zWS6NOeGO+i9ekvkwPfqAycu6Rkiyzh0dO/0yU=" data-language="js"><span class="token comment">// x를 선언한 적 없음</span>
+<span class="token comment">// 오류 없이 true로 평가</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">typeof</span> x <span class="token operator">===</span> <span class="token string">'undefined'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+   <span class="token comment">// 이 문이 실행됨</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// ReferenceError 발생</span>
+<span class="token keyword">if</span><span class="token punctuation">(</span>x <span class="token operator">===</span> <span class="token keyword">undefined</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+<span class="token punctuation">}</span>
+</pre>
+</div> <p>그러나 다른 방법도 있습니다. JavaScript는 정적 범위를 가지는 언어이므로, 변수의 선언 여부는 현재 컨텍스트의 코드를 읽어 알 수 있습니다.</p> <p>전역 범위는 <a href="globalthis">전역 객체</a>에 바인딩되므로, 전역 컨텍스트에서 변수의 존재 유무는 <a href="../operators/in"><code>in</code></a> 연산자를 전역 객체 대상으로 실행해 알 수 있습니다. 예를들어,</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="0L+tYVMgUqkvYb2MYZdspIlgxZDVg/S5IltYWZW3cFE=" data-language="js"><span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token string">"x"</span> <span class="token keyword">in</span> window<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">// x가 전역으로 정의된 경우 이 문이 실행됨</span>
+<span class="token punctuation">}</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="void_연산자와_undefined"><h3 id="void_연산자와_undefined">
+<code>void</code> 연산자와 <code>undefined</code>
+</h3>
+<div class="section-content">
+<p><a href="../operators/void"><code>void</code></a> 연산자는 세번째 대안입니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="psj7b/+ym7GvZnqH2Zwum6koS+DL5kYFW4laEd42hm0=" data-language="js"><span class="token keyword">let</span> x<span class="token punctuation">;</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span>x <span class="token operator">===</span> <span class="token keyword">void</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">// 이 문이 실행됨</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// y를 이전에 선언하지 않음</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span>y <span class="token operator">===</span> <span class="token keyword">void</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">// throws Uncaught ReferenceError: y is not defined</span>
+<span class="token punctuation">}</span>
+</pre>
+</div>
+</div></section><h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://tc39.es/ecma262/multipage/global-object.html#sec-undefined">ECMAScript Language Specification <br><small># sec-undefined</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li>JavaScript의 <a href="https://developer.mozilla.org/ko/docs/Glossary/Primitive">원시 값</a>
+</li> <li><a href="../operators/null"><code>null</code></a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/undefined" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/undefined</a>
+  </p>
+</div>

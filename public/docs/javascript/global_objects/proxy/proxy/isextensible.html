@@ -1,0 +1,62 @@
+<header><h1>handler.isExtensible()</h1></header><div class="section-content"><p><code>handler.isExtensible()</code> 메서드는 <a href="../../object/isextensible"><code>Object.isExtensible()</code></a>에 대한 트랩입니다.</p></div>
+<section aria-labelledby="시도해보기"><h2 id="시도해보기">시도해보기</h2>
+<div class="section-content"><iframe class="interactive is-taller-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/js/proxyhandler-isextensible.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe></div></section><section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="LAwcNPc5H6zA5+ALXuQpQO5ITYTJmBEqP9s9jUNIA8U=" data-language="js"><span class="token keyword">new</span> <span class="token class-name">Proxy</span><span class="token punctuation">(</span>target<span class="token punctuation">,</span> <span class="token punctuation">{</span>
+  <span class="token function">isExtensible</span><span class="token punctuation">(</span><span class="token parameter">target</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div></div></section><section aria-labelledby="매개_변수"><h3 id="매개_변수">매개 변수</h3>
+<div class="section-content">
+<p>다음 매개변수는 <code>isExtensible()</code> 메서드에 전달됩니다. <code>this</code>는 처리기에 바인딩됩니다.</p> <dl> <dt id="target"><code>target</code></dt> <dd> <p>대상 객체</p> </dd> </dl>
+</div></section><section aria-labelledby="반환_값"><h3 id="반환_값">반환 값</h3>
+<div class="section-content"><p><code>isExtensible()</code> 메서드는 불리언 값을 반환합니다.</p></div></section><section aria-labelledby="설명"><h2 id="설명">설명</h2>
+<div class="section-content"><p><code>handler.isExtensible()</code> 메서드는 <a href="../../object/isextensible"><code>Object.isExtensible()</code></a>에 대한 트랩입니다.</p></div></section><section aria-labelledby="가로채기"><h3 id="가로채기">가로채기</h3>
+<div class="section-content">
+<p>이 트랩은 다음 작업을 가로챌 수 있습니다.</p> <ul> <li><a href="../../object/isextensible"><code>Object.isExtensible()</code></a></li> <li><a href="../../reflect/isextensible"><code>Reflect.isExtensible()</code></a></li> </ul>
+</div></section><section aria-labelledby="불변_조건"><h3 id="불변_조건">불변 조건</h3>
+<div class="section-content">
+<p>다음 불변 조건이 위반되면 프록시에서 <a href="../../typeerror"><code>TypeError</code></a>가 발생합니다.</p> <ul> <li>
+<code>Object.isExtensible(proxy)</code>는 반드시 <code>Object.isExtensible(target)</code>와 같은 값을 반환해야합니다.</li> </ul>
+</div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+</section><section aria-labelledby="isextensible_트랩"><h3 id="isextensible_트랩">isExtensible 트랩</h3>
+<div class="section-content">
+<p>다음 코드는 <a href="../../object/isextensible"><code>Object.isExtensible()</code></a>를 트랩합니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="uEGRQ/bxZ59MXv3aXThC4r8MUwB3NjkZ8vNN4I30qDQ=" data-language="js"><span class="token keyword">const</span> p <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Proxy</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+  <span class="token function">isExtensible</span><span class="token punctuation">(</span><span class="token parameter">target</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'called'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>Object<span class="token punctuation">.</span><span class="token function">isExtensible</span><span class="token punctuation">(</span>p<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// "called"</span>
+                                     <span class="token comment">// true</span>
+</pre>
+</div> <p>다음 코드는 불변 조건을 위반합니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="3wB50UZ6ieziB9taFVTOoQvWi5qd9gpk5jYV7QBwZsA=" data-language="js"><span class="token keyword">const</span> p <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Proxy</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+  <span class="token function">isExtensible</span><span class="token punctuation">(</span><span class="token parameter">target</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+Object<span class="token punctuation">.</span><span class="token function">isExtensible</span><span class="token punctuation">(</span>p<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// TypeError is thrown</span>
+</pre>
+</div>
+</div></section><h2 id="명세서">명세서</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://tc39.es/ecma262/multipage/ordinary-and-exotic-objects-behaviours.html#sec-proxy-object-internal-methods-and-internal-slots-isextensible">ECMAScript Language Specification <br><small># sec-proxy-object-internal-methods-and-internal-slots-isextensible</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="../../proxy"><code>Proxy</code></a></li> <li><a href="../proxy"><code>Proxy()</code> 생성자</a></li> <li><a href="../../object/isextensible"><code>Object.isExtensible()</code></a></li> <li><a href="../../reflect/isextensible"><code>Reflect.isExtensible()</code></a></li> <li><a href="../../reflect/preventextensions"><code>Reflect.preventExtensions()</code></a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Proxy/Proxy/isExtensible" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Proxy/Proxy/isExtensible</a>
+  </p>
+</div>

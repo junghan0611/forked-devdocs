@@ -1,0 +1,42 @@
+<header><h1>FormData.keys()</h1></header><div class="section-content">
+<p><code>FormData.keys()</code> 메서드는 이 객체에 포함된 모든 키를 통과하는 <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Iteration_protocols"><code>iterator</code></a> 를 반환합니다. 키는 <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/String"><code>USVString</code></a> 객체입니다.</p> <div class="notecard note" id="sect1"> <p><strong>참고:</strong> 이 메서드는 <a href="../web_workers_api">Web Worker</a>에서 사용할 수 있습니다.</p> </div>
+</div>
+<h2 id="syntax">Syntax</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="V9uM4I+zpqtyIBLhdDc8PgiBsiPQ6hqUrbuV0RX9zug=" data-language="js">formData<span class="token punctuation">.</span><span class="token function">keys</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div></div>
+<h3 id="return_value">Return value</h3>
+<div class="section-content"><p><a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Iteration_protocols"><code>iterator</code></a>를 반환합니다.</p></div>
+<h2 id="example">Example</h2>
+<div class="section-content">
+<div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="zB1wNU4Fh6XaTqPbclBp0nzyTvrgQ3+kUwM96jUJ61M=" data-language="js"><span class="token comment">// Create a test FormData object</span>
+<span class="token keyword">var</span> formData <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">FormData</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+formData<span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span><span class="token string">'key1'</span><span class="token punctuation">,</span> <span class="token string">'value1'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+formData<span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span><span class="token string">'key2'</span><span class="token punctuation">,</span> <span class="token string">'value2'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// Display the keys</span>
+<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">var</span> key <span class="token keyword">of</span> formData<span class="token punctuation">.</span><span class="token function">keys</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+   console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>key<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div> <p>결과는 다음과 같습니다:</p> <pre class="notranslate">key1
+key2
+</pre>
+</div>
+<h2 id="명세서">명세서</h2>
+<div class="notecard warning">
+<strong>No specification found</strong><p>No specification data found for <code>api.FormData.keys</code>.<br><a href="#on-github">Check for problems with this page</a> or contribute a missing <code>spec_url</code> to <a href="https://github.com/mdn/browser-compat-data">mdn/browser-compat-data</a>. Also make sure the specification is included in <a href="https://github.com/w3c/browser-specs">w3c/browser-specs</a>.</p>
+</div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<h2 id="see_also">See also</h2>
+<div class="section-content"><ul> <li><a href="../xmlhttprequest"><code>XMLHTTPRequest</code></a></li> <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/Using_XMLHttpRequest" class="only-in-en-us">Using XMLHttpRequest <small>(en-US)</small></a></li> <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/FormData/Using_FormData_Objects" class="only-in-en-us">Using FormData objects <small>(en-US)</small></a></li> <li><a href="https://developer.mozilla.org/ko/docs/Web/HTML/Element/form"><code>&lt;form&gt;</code></a></li> </ul></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/FormData/keys" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/FormData/keys</a>
+  </p>
+</div>

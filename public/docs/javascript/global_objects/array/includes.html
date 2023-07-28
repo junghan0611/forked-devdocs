@@ -1,0 +1,127 @@
+<header><h1>Array.prototype.includes()</h1></header><div class="section-content"><p><code>includes()</code> 메서드는 배열이 특정 요소를 포함하고 있는지 판별합니다.</p></div>
+<section aria-labelledby="시도해보기"><h2 id="시도해보기">시도해보기</h2>
+<div class="section-content"><iframe class="interactive is-js-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/js/array-includes.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe></div></section><section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="N8BkUDfLKBWvpQJfc20IhuZezhmNVqKTCvl2mRpzArc=" data-language="js">    arr<span class="token punctuation">.</span><span class="token function">includes</span><span class="token punctuation">(</span>valueToFind<span class="token punctuation">[</span><span class="token punctuation">,</span> fromIndex<span class="token punctuation">]</span><span class="token punctuation">)</span>
+</pre>
+</div></div></section><section aria-labelledby="매개변수"><h3 id="매개변수">매개변수</h3>
+<div class="section-content"><dl> <dt id="valuetofind"><code>valueToFind</code></dt> <dd> <p>탐색할 요소.&gt; <strong>참고:</strong> 문자나 문자열을 비교할 때, <code>includes()</code>는 <strong>대소문자를 구분</strong>합니다.</p> </dd> <dt id="fromindex">
+<code>fromIndex</code> <span class="badge inline optional">Optional</span>
+</dt> <dd> <p>이 배열에서 searchElement 검색을 시작할 위치입니다. 음의 값은 array.length + fromIndex의 인덱스를 asc로 검색합니다. 기본값은 0입니다.</p> </dd> </dl></div></section><section aria-labelledby="반환_값"><h3 id="반환_값">반환 값</h3>
+<div class="section-content"><p><a href="../boolean"><code>Boolean</code></a>.</p></div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="awSklGx6WvYMwyQCIX+XfiiYXqih+HbkEOMLMj4pfbY=" data-language="js"><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">includes</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>     <span class="token comment">// true</span>
+<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">includes</span><span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">;</span>     <span class="token comment">// false</span>
+<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">includes</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// false</span>
+<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">includes</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// true</span>
+<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">NaN</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">includes</span><span class="token punctuation">(</span><span class="token number">NaN</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// true</span>
+</pre>
+</div></div></section><section aria-labelledby="fromindex_가_배열의_길이보다_같거나_큰_경우"><h3 id="fromindex_가_배열의_길이보다_같거나_큰_경우">
+<code>fromIndex</code> 가 배열의 길이보다 같거나 큰 경우</h3>
+<div class="section-content">
+<p><code>fromIndex</code> 가 배열의 길이보다 같거나 크다면, <code>false</code> 를 반환합니다. 배열은 검색되지 않을 것입니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="egdKC4KSxc5/b1uA6B3oyRhySc8As+7dVvWAObaYLo8=" data-language="js"><span class="token keyword">var</span> arr <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'a'</span><span class="token punctuation">,</span> <span class="token string">'b'</span><span class="token punctuation">,</span> <span class="token string">'c'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+arr<span class="token punctuation">.</span><span class="token function">includes</span><span class="token punctuation">(</span><span class="token string">'c'</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment">// false</span>
+arr<span class="token punctuation">.</span><span class="token function">includes</span><span class="token punctuation">(</span><span class="token string">'c'</span><span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// false</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="0보다_작은_인덱스의_계산"><h3 id="0보다_작은_인덱스의_계산">0보다 작은 인덱스의 계산</h3>
+<div class="section-content">
+<p><code>fromIndex</code> 가 음수라면, 이 계산된 인덱스는 <code>valueToFind</code> 를 찾기 시작할 배열의 위치로 사용되기 위해 연산됩니다. 만약 계산된 인덱스가 <code>-1 * array.length</code> 보다 작거나 같다면, 전체 배열이 검색될 것입니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="af0FOzhaF7OwVvrUaZR2tl5N/IcYj2VdNLpqPH2XqIc=" data-language="js"><span class="token comment">// array length is 3</span>
+<span class="token comment">// fromIndex is -100</span>
+<span class="token comment">// computed index is 3 + (-100) = -97</span>
+
+<span class="token keyword">var</span> arr <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'a'</span><span class="token punctuation">,</span> <span class="token string">'b'</span><span class="token punctuation">,</span> <span class="token string">'c'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+arr<span class="token punctuation">.</span><span class="token function">includes</span><span class="token punctuation">(</span><span class="token string">'a'</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// true</span>
+arr<span class="token punctuation">.</span><span class="token function">includes</span><span class="token punctuation">(</span><span class="token string">'b'</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// true</span>
+arr<span class="token punctuation">.</span><span class="token function">includes</span><span class="token punctuation">(</span><span class="token string">'c'</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// true</span>
+arr<span class="token punctuation">.</span><span class="token function">includes</span><span class="token punctuation">(</span><span class="token string">'a'</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// false</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="제네릭_메소드로_사용되는_includes"><h3 id="제네릭_메소드로_사용되는_includes">제네릭 메소드로 사용되는 <code>includes()</code>
+</h3>
+<div class="section-content">
+<p><code>includes()</code> 메서드는 의도적으로 제네릭입니다. 배열 객체가 되기 위한 <code>this</code> 값을 요구하지 않아, 다른 종류의 객체에 적용될 수 있습니다 (e.g. 유사 배열 객체). 아래 예시는 이 함수의 <a href="../../functions/arguments">arguments</a> 객체로 호출되는 <code>includes()</code> 메소드를 보여줍니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="/G5dnBHJwOEp8HGuJvUhS68/oV6f5EBcy1k56Bm/OW0=" data-language="js"><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">includes</span><span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span>arguments<span class="token punctuation">,</span> <span class="token string">'a'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// true</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">includes</span><span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span>arguments<span class="token punctuation">,</span> <span class="token string">'d'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// false</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token string">'a'</span><span class="token punctuation">,</span><span class="token string">'b'</span><span class="token punctuation">,</span><span class="token string">'c'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="폴리필"><h2 id="폴리필">폴리필</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="RVZMktlQqARziLA8ME7jyKV5SyFhPunT+YC1HWv+fyk=" data-language="js"><span class="token comment">// https://tc39.github.io/ecma262/#sec-array.prototype.includes</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token class-name">Array</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span>includes<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  Object<span class="token punctuation">.</span><span class="token function">defineProperty</span><span class="token punctuation">(</span><span class="token class-name">Array</span><span class="token punctuation">.</span>prototype<span class="token punctuation">,</span> <span class="token string">'includes'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+    <span class="token function-variable function">value</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">searchElement<span class="token punctuation">,</span> fromIndex</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+      <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">this</span> <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">TypeError</span><span class="token punctuation">(</span><span class="token string">'"this" is null or not defined'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+
+      <span class="token comment">// 1. Let O be ? ToObject(this value).</span>
+      <span class="token keyword">var</span> o <span class="token operator">=</span> <span class="token function">Object</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+      <span class="token comment">// 2. Let len be ? ToLength(? Get(O, "length")).</span>
+      <span class="token keyword">var</span> len <span class="token operator">=</span> o<span class="token punctuation">.</span>length <span class="token operator">&gt;&gt;&gt;</span> <span class="token number">0</span><span class="token punctuation">;</span>
+
+      <span class="token comment">// 3. If len is 0, return false.</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span>len <span class="token operator">===</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+
+      <span class="token comment">// 4. Let n be ? ToInteger(fromIndex).</span>
+      <span class="token comment">//    (If fromIndex is undefined, this step produces the value 0.)</span>
+      <span class="token keyword">var</span> n <span class="token operator">=</span> fromIndex <span class="token operator">|</span> <span class="token number">0</span><span class="token punctuation">;</span>
+
+      <span class="token comment">// 5. If n ≥ 0, then</span>
+      <span class="token comment">//  a. Let k be n.</span>
+      <span class="token comment">// 6. Else n &lt; 0,</span>
+      <span class="token comment">//  a. Let k be len + n.</span>
+      <span class="token comment">//  b. If k &lt; 0, let k be 0.</span>
+      <span class="token keyword">var</span> k <span class="token operator">=</span> Math<span class="token punctuation">.</span><span class="token function">max</span><span class="token punctuation">(</span>n <span class="token operator">&gt;=</span> <span class="token number">0</span> <span class="token operator">?</span> n <span class="token operator">:</span> len <span class="token operator">-</span> Math<span class="token punctuation">.</span><span class="token function">abs</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+      <span class="token keyword">function</span> <span class="token function">sameValueZero</span><span class="token punctuation">(</span><span class="token parameter">x<span class="token punctuation">,</span> y</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> x <span class="token operator">===</span> y <span class="token operator">||</span> <span class="token punctuation">(</span><span class="token keyword">typeof</span> x <span class="token operator">===</span> <span class="token string">'number'</span> <span class="token operator">&amp;&amp;</span> <span class="token keyword">typeof</span> y <span class="token operator">===</span> <span class="token string">'number'</span> <span class="token operator">&amp;&amp;</span> <span class="token function">isNaN</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> <span class="token function">isNaN</span><span class="token punctuation">(</span>y<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+
+      <span class="token comment">// 7. Repeat, while k &lt; len</span>
+      <span class="token keyword">while</span> <span class="token punctuation">(</span>k <span class="token operator">&lt;</span> len<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">// a. Let elementK be the result of ? Get(O, ! ToString(k)).</span>
+        <span class="token comment">// b. If SameValueZero(searchElement, elementK) is true, return true.</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">sameValueZero</span><span class="token punctuation">(</span>o<span class="token punctuation">[</span>k<span class="token punctuation">]</span><span class="token punctuation">,</span> searchElement<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+          <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token comment">// c. Increase k by 1.</span>
+        k<span class="token operator">++</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+
+      <span class="token comment">// 8. Return false</span>
+      <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div></div></section><h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://tc39.es/ecma262/multipage/indexed-collections.html#sec-array.prototype.includes">ECMAScript Language Specification <br><small># sec-array.prototype.includes</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray/includes"><code>TypedArray.prototype.includes()</code> <small>(en-US)</small></a></li> <li><a href="../string/includes"><code>String.prototype.includes()</code></a></li> <li><a href="indexof"><code>Array.prototype.indexOf()</code></a></li> <li><a href="find"><code>Array.prototype.find()</code></a></li> <li><a href="findindex"><code>Array.prototype.findIndex()</code></a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/includes" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/includes</a>
+  </p>
+</div>

@@ -1,0 +1,28 @@
+<header><h1>orientationchange</h1></header><div class="section-content"><p><code>orientationchange</code> 이벤트는 장치의 방향이 바뀔 때 호출 된다.</p></div>
+<h2 id="general_info">General info</h2>
+<div class="section-content"><dl> <dt id="specification">Specification</dt> <dd> <p><a href="https://www.w3.org/TR/screen-orientation/#event-handlers" target="_blank">Screen Orientation</a></p> </dd> <dt id="interface">Interface</dt> <dd> <p>Event</p> </dd> <dt id="bubbles">Bubbles</dt> <dd> <p>No</p> </dd> <dt id="cancelable">Cancelable</dt> <dd> <p>No</p> </dd> <dt id="target">Target</dt> <dd> <p>Screen</p> </dd> <dt id="default_action">Default Action</dt> <dd> <p>None</p> </dd> </dl></div>
+<h2 id="properties">Properties</h2>
+<div class="section-content"><figure class="table-container"><div class="_table"><table> <thead> <tr> <th>Property</th> <th>Type</th> <th>Description</th> </tr> </thead> <tbody> <tr> <td>
+<code>target</code> <span class="badge inline readonly">읽기 전용</span>
+</td> <td><a href="../eventtarget"><code>EventTarget</code></a></td> <td>The event target (the topmost target in the DOM tree).</td> </tr> <tr> <td>
+<code>type</code> <span class="badge inline readonly">읽기 전용</span>
+</td> <td><a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/String"><code>DOMString</code></a></td> <td>The type of event.</td> </tr> <tr> <td>
+<code>bubbles</code> <span class="badge inline readonly">읽기 전용</span>
+</td> <td><a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Boolean"><code>Boolean</code></a></td> <td>Whether the event normally bubbles or not.</td> </tr> <tr> <td>
+<code>cancelable</code> <span class="badge inline readonly">읽기 전용</span>
+</td> <td><a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Boolean"><code>Boolean</code></a></td> <td>Whether the event is cancellable or not.</td> </tr> </tbody> </table></div></figure></div>
+<h2 id="example">Example</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="DBhTiuBynzFkMNB8VzsBfHdCjG4MAC8v5zDsYOdGQv4=" data-language="js"><span class="token comment">// Note that "orientationchange" and screen.orientation are unprefixed in the following</span>
+<span class="token comment">// code although this API is still vendor-prefixed browsers implementing it.</span>
+screen<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">"orientationchange"</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">"the orientation of the device is now "</span> <span class="token operator">+</span> screen<span class="token punctuation">.</span>orientation<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/Window/orientationchange_event" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/Window/orientationchange_event</a>
+  </p>
+</div>

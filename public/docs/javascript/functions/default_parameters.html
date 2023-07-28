@@ -1,0 +1,192 @@
+<header><h1>기본값 매개변수</h1></header><div class="section-content"><p>기본값 함수 매개변수 (<strong>default function parameter</strong>)를 사용하면 값이 없거나 <code>undefined</code>가 전달될 경우 이름붙은 매개변수를 기본값으로 초기화할 수 있습니다.</p></div>
+<section aria-labelledby="시도해보기"><h2 id="시도해보기">시도해보기</h2>
+<div class="section-content"><iframe class="interactive is-js-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/js/functions-default.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe></div></section><section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="0DPIFB4s9j7RSfwLejgqIc5ZWRjMj9iT99aaE3f2DlU=" data-language="js"><span class="token keyword">function</span> <span class="token function">fnName</span><span class="token punctuation">(</span><span class="token parameter">param1 <span class="token operator">=</span> defaultValue1<span class="token punctuation">,</span> <span class="token operator">...</span><span class="token punctuation">,</span> paramN <span class="token operator">=</span> defaultValueN</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token operator">...</span> <span class="token punctuation">}</span>
+</pre>
+</div></div></section><section aria-labelledby="설명"><h2 id="설명">설명</h2>
+<div class="section-content">
+<p>JavaScript에서, 함수의 매개변수는 <code><a href="../global_objects/undefined"><code>undefined</code></a></code>가 기본입니다. 그러나, 일부 상황에서는 다른 기본 값을 설정하는 것이 유용할 수 있습니다. 이때가 바로 기본값 매개변수가 필요할 때 입니다.</p> <p>과거에 기본값 설정을 위한 일반적인 방법은 함수 내부(body)에서 매개변수 값을 검사해 <code>undefined</code>인 경우 값을 할당하는 것이었습니다.</p> <p>다음 예제에서, <code>multiply</code>호출시 <code>b</code>에 할당된 값이 없다면, <code>b</code> 값은 <code>a*b</code>를 평가할 때 <code>undefined</code>일 거고 <code>multiply</code> 호출은 <code>NaN</code>이 반환됩니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="np+3/Ybr4XZhPGW5qlMYjk0Xk8dAUKsoi3OifhrUVfQ=" data-language="js"><span class="token keyword">function</span> <span class="token function">multiply</span><span class="token punctuation">(</span><span class="token parameter">a<span class="token punctuation">,</span> b</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> a <span class="token operator">*</span> b
+<span class="token punctuation">}</span>
+
+<span class="token function">multiply</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span>  <span class="token comment">// 10</span>
+<span class="token function">multiply</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span>     <span class="token comment">// NaN !</span>
+</pre>
+</div> <p>이를 방지하기 위해서, 아래 두번째 줄과 같이 <code>multiply</code> 함수가 오직 한 개의 인수만 있다면 <code>b</code>를 <code>1</code>로 설정하는 방식을 사용하곤 했습니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="NF3+lepGo5amQaklr1stXjamC8sb6ae+f+dRArZIGjo=" data-language="js"><span class="token keyword">function</span> <span class="token function">multiply</span><span class="token punctuation">(</span><span class="token parameter">a<span class="token punctuation">,</span> b</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  b <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">typeof</span> b <span class="token operator">!==</span> <span class="token string">'undefined'</span><span class="token punctuation">)</span> <span class="token operator">?</span>  b <span class="token operator">:</span> <span class="token number">1</span>
+  <span class="token keyword">return</span> a<span class="token operator">*</span>b
+<span class="token punctuation">}</span>
+
+<span class="token function">multiply</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span>   <span class="token comment">// 10</span>
+<span class="token function">multiply</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span>      <span class="token comment">// 5</span>
+</pre>
+</div> <p>ES2015의 기본값 매개변수로 함수 내부 에서의 검사는 더 이상 필요치 않습니다. 이제, 간단히 함수 머리(head)에서 <code>b</code>의 기본값으로 <code>1</code> 로 설정할 수 있습니다:</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="WHab0Pw4tjfUacyVuxQXWJG15U8IJLrDAAQCYqp4TBA=" data-language="js"><span class="token keyword">function</span> <span class="token function">multiply</span><span class="token punctuation">(</span><span class="token parameter">a<span class="token punctuation">,</span> b <span class="token operator">=</span> <span class="token number">1</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> a<span class="token operator">*</span>b
+<span class="token punctuation">}</span>
+
+<span class="token function">multiply</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span>          <span class="token comment">// 10</span>
+<span class="token function">multiply</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span>             <span class="token comment">// 5</span>
+<span class="token function">multiply</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">,</span> <span class="token keyword">undefined</span><span class="token punctuation">)</span>  <span class="token comment">// 5</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+</section><section aria-labelledby="undefined_vs._다른_거짓같은_값falsy_values_전달하기"><h3 id="undefined_vs._다른_거짓같은_값falsy_values_전달하기">
+<code>undefined</code> vs. 다른 거짓같은 값(falsy values) 전달하기</h3>
+<div class="section-content">
+<p>아래 예제중 두 번째 호출에서, 설사 두 번째 인수를 호출할 때 명시해서 <code>undefined</code> (<code>null</code> 혹은 <a href="https://developer.mozilla.org/ko/docs/Glossary/Falsy">falsy</a> 값이 아니긴 하지만 )로 설정하더라도 , <code>num</code> 인수의 값은 여전히 기본값입니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="1Y/ZvpNCR4U4B2yPsRgEu6NBcTjtge7TR3I3h1WJBLw=" data-language="js"><span class="token keyword">function</span> <span class="token function">test</span><span class="token punctuation">(</span><span class="token parameter">num <span class="token operator">=</span> <span class="token number">1</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">typeof</span> num<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token function">test</span><span class="token punctuation">(</span><span class="token punctuation">)</span>            <span class="token comment">// 'number' (num 은 1로 설정됨)</span>
+<span class="token function">test</span><span class="token punctuation">(</span><span class="token keyword">undefined</span><span class="token punctuation">)</span>   <span class="token comment">// 'number' (num 이 역시 1로 설정됨)</span>
+
+<span class="token comment">// 다른 falsy values로 테스트 하기:</span>
+<span class="token function">test</span><span class="token punctuation">(</span><span class="token string">''</span><span class="token punctuation">)</span>          <span class="token comment">// 'string' (num 은 ''로 설정됨)</span>
+<span class="token function">test</span><span class="token punctuation">(</span><span class="token keyword">null</span><span class="token punctuation">)</span>        <span class="token comment">// 'object' (num 은 null로 설정됨)</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="호출_시_평가"><h3 id="호출_시_평가">호출 시 평가</h3>
+<div class="section-content">
+<p>기본 인수는 <em>호출</em> <em>시</em> 에 평가됩니다, 그래서 Python의 경우 와는 달리, 함수가 호출될 때마다 새로운 객체가 생성됩니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="nJlV4OMnMWNugr8BzdeqiSUzvqUMpxmQJAiXr/tZP+0=" data-language="js"><span class="token keyword">function</span> <span class="token function">append</span><span class="token punctuation">(</span><span class="token parameter">value<span class="token punctuation">,</span> array <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  array<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span>
+  <span class="token keyword">return</span> array
+<span class="token punctuation">}</span>
+
+<span class="token function">append</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>  <span class="token comment">// [1]</span>
+<span class="token function">append</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span>  <span class="token comment">// [2], [1, 2]가 아니라</span>
+</pre>
+</div> <p>이는 심지어 함수 및 변수에도 적용됩니다:</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="46u8I984UN9bXu5/E+ctWhUs0NHZ7oz7SSDy8Il20i4=" data-language="js"><span class="token keyword">function</span> <span class="token function">callSomething</span><span class="token punctuation">(</span><span class="token parameter">thing <span class="token operator">=</span> <span class="token function">something</span><span class="token punctuation">(</span><span class="token punctuation">)</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> thing
+<span class="token punctuation">}</span>
+
+<span class="token keyword">let</span> numberOfTimesCalled <span class="token operator">=</span> <span class="token number">0</span>
+<span class="token keyword">function</span> <span class="token function">something</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+  numberOfTimesCalled <span class="token operator">+=</span> <span class="token number">1</span>
+  <span class="token keyword">return</span> numberOfTimesCalled
+<span class="token punctuation">}</span>
+
+<span class="token function">callSomething</span><span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token comment">// 1</span>
+<span class="token function">callSomething</span><span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token comment">// 2</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="앞쪽_매개변수는_뒷쪽의_매개변수_기본값에_사용할_수_있습니다"><h3 id="앞쪽_매개변수는_뒷쪽의_매개변수_기본값에_사용할_수_있습니다">앞쪽 매개변수는 뒷쪽의 매개변수 기본값에 사용할 수 있습니다</h3>
+<div class="section-content">
+<p>매개 변수가 여러개일 때 앞쪽에( 왼쪽 부분) 정의된 매개변수는 뒷쪽에 정의된 매개변수의 기본값에 바로 사용할 수 있습니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="i5KouDmzUPGd1kVNScxav/Smjz7ccUaJAotMPEM+/lg=" data-language="js"><span class="token keyword">function</span> <span class="token function">greet</span><span class="token punctuation">(</span>name<span class="token punctuation">,</span> greeting<span class="token punctuation">,</span> message <span class="token operator">=</span> greeting <span class="token operator">+</span> <span class="token string">' '</span> <span class="token operator">+</span> name<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token punctuation">[</span>name<span class="token punctuation">,</span> greeting<span class="token punctuation">,</span> message<span class="token punctuation">]</span>
+<span class="token punctuation">}</span>
+
+<span class="token function">greet</span><span class="token punctuation">(</span><span class="token string">'David'</span><span class="token punctuation">,</span> <span class="token string">'Hi'</span><span class="token punctuation">)</span>                      <span class="token comment">// ["David", "Hi", "HiDavid"]</span>
+<span class="token function">greet</span><span class="token punctuation">(</span><span class="token string">'David'</span><span class="token punctuation">,</span> <span class="token string">'Hi'</span><span class="token punctuation">,</span> <span class="token string">'Happy Birthday!'</span><span class="token punctuation">)</span>   <span class="token comment">// ["David", "Hi", "Happy Birthday!"]</span>
+</pre>
+</div> <p>이 기능은, 얼마나 많은 경계 조건(edge case)를 다룰수 있는지 보여주는, 아래 예제로 거의 설명 가능합니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="TzP+i3Vl5HzUa5QFedrKjZIIjc2M+0Fdb5D8t6MuA1Y=" data-language="js"><span class="token keyword">function</span> <span class="token function">go</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token string">':P'</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// 함수 정의가 간단해짐</span>
+<span class="token keyword">function</span> <span class="token function">withDefaults</span><span class="token punctuation">(</span><span class="token parameter">a<span class="token punctuation">,</span> b <span class="token operator">=</span> <span class="token number">5</span><span class="token punctuation">,</span> c <span class="token operator">=</span> b<span class="token punctuation">,</span> d <span class="token operator">=</span> <span class="token function">go</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> e <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">,</span>
+                      f <span class="token operator">=</span> arguments<span class="token punctuation">,</span> g <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>value</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token punctuation">[</span>a<span class="token punctuation">,</span>b<span class="token punctuation">,</span>c<span class="token punctuation">,</span>d<span class="token punctuation">,</span>e<span class="token punctuation">,</span>f<span class="token punctuation">,</span>g<span class="token punctuation">]</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// 함수 정의가 길고 장황함</span>
+<span class="token keyword">function</span> <span class="token function">withoutDefaults</span><span class="token punctuation">(</span><span class="token parameter">a<span class="token punctuation">,</span> b<span class="token punctuation">,</span> c<span class="token punctuation">,</span> d<span class="token punctuation">,</span> e<span class="token punctuation">,</span> f<span class="token punctuation">,</span> g</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+  <span class="token keyword">switch</span><span class="token punctuation">(</span>arguments<span class="token punctuation">.</span>length<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">case</span> <span class="token number">0</span><span class="token operator">:</span>
+      a<span class="token punctuation">;</span>
+    <span class="token keyword">case</span> <span class="token number">1</span><span class="token operator">:</span>
+      b <span class="token operator">=</span> <span class="token number">5</span><span class="token punctuation">;</span>
+    <span class="token keyword">case</span> <span class="token number">2</span><span class="token operator">:</span>
+      c <span class="token operator">=</span> b<span class="token punctuation">;</span>
+    <span class="token keyword">case</span> <span class="token number">3</span><span class="token operator">:</span>
+      d <span class="token operator">=</span> <span class="token function">go</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">case</span> <span class="token number">4</span><span class="token operator">:</span>
+      e <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">;</span>
+    <span class="token keyword">case</span> <span class="token number">5</span><span class="token operator">:</span>
+      f <span class="token operator">=</span> arguments<span class="token punctuation">;</span>
+    <span class="token keyword">case</span> <span class="token number">6</span><span class="token operator">:</span>
+      g <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>value<span class="token punctuation">;</span>
+    <span class="token keyword">default</span><span class="token operator">:</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword">return</span> <span class="token punctuation">[</span>a<span class="token punctuation">,</span>b<span class="token punctuation">,</span>c<span class="token punctuation">,</span>d<span class="token punctuation">,</span>e<span class="token punctuation">,</span>f<span class="token punctuation">,</span>g<span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// 아래와 같이 함수 호출하면 동일한 결과를 보임</span>
+
+<span class="token function">withDefaults</span><span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token literal-property property">value</span><span class="token operator">:</span><span class="token string">"=^_^="</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// [undefined, 5, 5, ":P", {value:"=^_^="}, arguments, "=^_^="]</span>
+
+<span class="token function">withoutDefaults</span><span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token literal-property property">value</span><span class="token operator">:</span><span class="token string">"=^_^="</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// [undefined, 5, 5, ":P", {value:"=^_^="}, arguments, "=^_^="]</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="유효범위_효과_scope_effects"><h3 id="유효범위_효과_scope_effects">유효범위 효과 (Scope Effects)</h3>
+<div class="section-content">
+<p>한개 이상의 매개변수에 기본값이 지정되면 특별히 매개변수 목록내의 식별자들(identifiers) 대상으로, <a href="https://tc39.es/ecma262/#sec-functiondeclarationinstantiation" target="_blank">두번째 스코프</a> (Environment Record) 가 생성됩니다.</p> <p>이 말은 함수 내부에 선언된 함수와 변수들은 매개변수 기본값 초기화시에 참조할 수 없다는 말입니다; 그렇게 하려고 하면 실행시간 에러인 <a href="../global_objects/referenceerror"><code>ReferenceError</code></a> 를 유발합니다.</p> <p>이 말은 또한 함수 내부에서 <code>var</code> 로 선언된 변수는 동일한 이름을 가진 매개변수를 가리게 되는, 중첩 <code>var</code> 선언 으로 인한 일반적인 동작이 일어나지 않는다는 말입니다.</p> <p>아래 함수는 호출되면 <code>ReferenceError</code> 를 발생시킵니다. 매개변수 기본값이 함수 내부의 자식 유효범위를 참조할 수 없기 때문입니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="GbXfTBTrv/vVW72AYHKOommm47TfW9lZEBDpTYKsaUM=" data-language="js"><span class="token keyword">function</span> <span class="token function">f</span><span class="token punctuation">(</span><span class="token parameter">a <span class="token operator">=</span> <span class="token function">go</span><span class="token punctuation">(</span><span class="token punctuation">)</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token comment">// `f`가 호출 되면 `ReferenceError` 발생</span>
+  <span class="token keyword">function</span> <span class="token function">go</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> <span class="token string">':P'</span> <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</pre>
+</div> <p>...그리고 아래 함수는 <code>undefined</code> 를 프린트 하는데, <code>var a</code> 가 함수 내부 대상의 유효범위내에서만 효과를 가지기 때문입니다. ( 매개변수 목록이 대상인 부모 스코프가 아니라)</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="OkqNlhiErrC8q7rrvHUOmHbL6upr7wefAtoOXzQzZyc=" data-language="js"><span class="token keyword">function</span> <span class="token function">f</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> <span class="token function-variable function">b</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">var</span> a <span class="token operator">=</span> <span class="token number">1</span>
+  <span class="token function">b</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">// `undefined`를 인쇄하는데, 매개변수 기본값이 자체 스코프에 있기 때문입니다</span>
+<span class="token punctuation">}</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="기본값_매개변수_뒤쪽의_기본값_없는_매개변수"><h3 id="기본값_매개변수_뒤쪽의_기본값_없는_매개변수">기본값 매개변수 뒤쪽의 기본값 없는 매개변수</h3>
+<div class="section-content">
+<p>매개변수는 여전히 왼쪽에서 오른쪽으로 설정됩니다. 아래 예제에서 뒷쪽에 기본값이 없는 매개변수가 있지만 기본값 매개변수를 덮어씁니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="LAuIpK2y9pfO1aNdiZudT597+x/WBiE2s11MS3v9dEk=" data-language="js"><span class="token keyword">function</span> <span class="token function">f</span><span class="token punctuation">(</span><span class="token parameter">x<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">,</span> y</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token punctuation">[</span>x<span class="token punctuation">,</span> y<span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token function">f</span><span class="token punctuation">(</span><span class="token punctuation">)</span>   <span class="token comment">// [1, undefined]</span>
+<span class="token function">f</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span>  <span class="token comment">// [2, undefined]</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="기본값_할당_있는_해체된_매개변수"><h3 id="기본값_할당_있는_해체된_매개변수">기본값 할당 있는 해체된 매개변수</h3>
+<div class="section-content">
+<p>기본값 할당을 <a href="../operators/destructuring_assignment">destructuring assignment</a> 표기와 함께 사용할 수 있습니다:</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="bgXlMWJiHQmy6yuKaJz+rnD9INOzYCEpgzwn/Gz2kbg=" data-language="js"><span class="token keyword">function</span> <span class="token function">f</span><span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">[</span>x<span class="token punctuation">,</span> y<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">{</span><span class="token literal-property property">z</span><span class="token operator">:</span> z<span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token literal-property property">z</span><span class="token operator">:</span> <span class="token number">3</span><span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> x <span class="token operator">+</span> y <span class="token operator">+</span> z
+<span class="token punctuation">}</span>
+
+<span class="token function">f</span><span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token comment">// 6</span>
+</pre>
+</div>
+</div></section><h2 id="명세서">명세서</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://tc39.es/ecma262/multipage/ecmascript-language-functions-and-classes.html#sec-function-definitions">ECMAScript Language Specification <br><small># sec-function-definitions</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="참조"><h2 id="참조">참조</h2>
+<div class="section-content"><ul> <li><a href="http://wiki.ecmascript.org/doku.php?id=harmony:parameter_default_values" target="_blank">Original proposal at ecmascript.org</a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Functions/Default_parameters" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Functions/Default_parameters</a>
+  </p>
+</div>

@@ -1,5 +1,77 @@
 [
   {
+    "name": "CSS",
+    "slug": "css",
+    "type": "mdn",
+    "links": {
+      "home": "https://developer.mozilla.org/ko/docs/Web/CSS",
+      "code": "https://github.com/mdn/translated-content/tree/main/files/ko/web/css"
+    },
+    "mtime": 1690551592,
+    "db_size": 5726322,
+    "attribution": "&copy; 2005&ndash;2023 MDN contributors.<br>\n      Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later."
+  },
+  {
+    "name": "Elisp",
+    "slug": "elisp",
+    "type": "elisp",
+    "links": {
+      "home": "https://www.gnu.org/software/emacs/manual/elisp",
+      "code": "https://git.savannah.gnu.org/cgit/emacs.git"
+    },
+    "release": "28.2",
+    "mtime": 1664309572,
+    "db_size": 4910863,
+    "attribution": "Copyright &copy; 1990-1996, 1998-2022 Free Software Foundation, Inc. <br>\n      Licensed under the GNU GPL license."
+  },
+  {
+    "name": "HTML",
+    "slug": "html",
+    "type": "mdn",
+    "links": {
+      "home": "https://developer.mozilla.org/ko/docs/Web/HTML",
+      "code": "https://github.com/mdn/translated-content/tree/main/files/ko/web/html"
+    },
+    "mtime": 1690551473,
+    "db_size": 2495240,
+    "attribution": "&copy; 2005&ndash;2023 MDN contributors.<br>\n      Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later."
+  },
+  {
+    "name": "HTTP",
+    "slug": "http",
+    "type": "mdn",
+    "links": {
+      "home": "https://developer.mozilla.org/ko/docs/Web/HTTP",
+      "code": "https://github.com/mdn/translated-content/tree/main/files/ko/web/http"
+    },
+    "mtime": 1690551843,
+    "db_size": 1975919
+  },
+  {
+    "name": "JavaScript",
+    "slug": "javascript",
+    "type": "mdn",
+    "links": {
+      "home": "https://developer.mozilla.org/ko/docs/Web/JavaScript",
+      "code": "https://github.com/mdn/translated-content/tree/main/files/ko/web/javascript"
+    },
+    "mtime": 1690550861,
+    "db_size": 7059841,
+    "attribution": "&copy; 2005&ndash;2023 MDN contributors.<br>\n      Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later."
+  },
+  {
+    "name": "SVG",
+    "slug": "svg",
+    "type": "mdn",
+    "links": {
+      "home": "https://developer.mozilla.org/ko/docs/Web/SVG",
+      "code": "https://github.com/mdn/translated-content/tree/main/files/ko/web/svg"
+    },
+    "mtime": 1690551618,
+    "db_size": 705514,
+    "attribution": "&copy; 2005&ndash;2023 MDN contributors.<br>\n      Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later."
+  },
+  {
     "name": "TypeScript",
     "slug": "typescript",
     "type": "typescript",
@@ -11,5 +83,29 @@
     "mtime": 1690436949,
     "db_size": 1306191,
     "attribution": "&copy; 2012-2023 Microsoft<br>\n      Licensed under the Apache License, Version 2.0."
+  },
+  {
+    "name": "Web APIs",
+    "slug": "dom",
+    "type": "mdn",
+    "links": {
+      "home": "https://developer.mozilla.org/ko/docs/Web/API",
+      "code": "https://github.com/mdn/translated-content/tree/main/files/ko/web/api"
+    },
+    "mtime": 1690551734,
+    "db_size": 10956735,
+    "attribution": "&copy; 2005&ndash;2023 MDN contributors.<br>\n      Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later."
+  },
+  {
+    "name": "Web Extensions",
+    "slug": "web_extensions",
+    "type": "mdn",
+    "links": {
+      "home": "https://developer.mozilla.org/ko/docs/Mozilla/Add-ons/WebExtensions",
+      "code": "https://github.com/mdn/translated-content/tree/main/files/ko/mozilla/add-ons/webextensions"
+    },
+    "mtime": 1690551776,
+    "db_size": 837968,
+    "attribution": "&copy; 2005&ndash;2023 MDN contributors.<br>\n      Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later."
   }
 ]

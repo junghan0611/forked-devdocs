@@ -1,0 +1,113 @@
+<header><h1>Worker.postMessage()</h1></header><div class="section-content">
+<p><a href="../worker"><code>Worker</code></a> interface의 메서드, <code>postMessage()</code> 는 <code>Worker</code> 자신의 내부 영역으로 메시지를 전달합니다. 이 메서드는 <code>Worker</code> 자신에게 보낼 하나의 매개변수를 받습니다. 매개변수로 들어갈 데이터는 순환 참조를 포함하는 <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Structured_clone_algorithm" class="only-in-en-us">structured clone <small>(en-US)</small></a> algorithm에 의해 다루어지는 JavaScript 객체를 포함에 어떤 값이든 들어갈 수 있습니다.</p> <p><code>Worker</code>는 정보를 다시 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/DedicatedWorkerGlobalScope/postMessage"><code>DedicatedWorkerGlobalScope.postMessage</code> <small>(en-US)</small></a> 메서드를 사용해 받은 정보를 산란시키는 스레드로 전달해줄 수 있다.</p>
+</div>
+<h2 id="syntax">Syntax</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="piRVoVzaj2nP5Sv/UXy7D3nQYW2UNMK/xmCOVt45w+Q=" data-language="js">myWorker<span class="token punctuation">.</span><span class="token function">postMessage</span><span class="token punctuation">(</span>aMessage<span class="token punctuation">,</span> transferList<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div></div>
+<h3 id="parameters">Parameters</h3>
+<div class="section-content"><dl> <dt id="amessage"><em>aMessage</em></dt> <dd>worker로 전해 줄 객체; 이 매개변수는 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/DedicatedWorkerGlobalScope/message_event"><code>DedicatedWorkerGlobalScope.onmessage</code> <small>(en-US)</small></a> 이벤트 핸들러로 전해질 이벤트의 데이터 필드에 들어갈 것이다. 순환 참조를 포함하는 <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Structured_clone_algorithm">structured clone</a> 알고리즘에 의해 다루어지는 JavaScript 객체 혹은 어떤 값이라도 이 매개변수에 들어갈 수 있다.</dd> <dt id="transferlist">
+<em>transferList</em> <span class="badge inline optional">Optional</span>
+</dt> <dd>An optional <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">array</a> of <a class="page-not-created"><code>Transferable</code></a> objects to transfer ownership of. If the ownership of an object is transferred, it becomes unusable (<em>neutered</em>) in the context it was sent from and becomes available only to the worker it was sent to.</dd> <dd>Transferable objects are instances of classes like <a class="page-not-created"><code>ArrayBuffer</code></a>, <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/MessagePort"><code>MessagePort</code> <small>(en-US)</small></a> or <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/ImageBitmap"><code>ImageBitmap</code> <small>(en-US)</small></a> objects can be transferred. <code>null</code> is not an acceptable value for the <code>transferList</code>.</dd> </dl></div>
+<h3 id="returns">Returns</h3>
+<div class="section-content"><p>Void.</p></div>
+<h2 id="example">Example</h2>
+<div class="section-content">
+<p>The following code snippet shows the creation of a <a href="../worker"><code>Worker</code></a> object using the <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/Worker/Worker"><code>Worker()</code> <small>(en-US)</small></a> constructor. When either of two form inputs (<code>first</code> and <code>second</code>) have their values changed, <code><a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event" class="only-in-en-us">change <small>(en-US)</small></a></code> events invoke <code>postMessage()</code> to send the value of both inputs to the current worker.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="jY1hGHsLnm9sGa10oLxZopOgtqi8kMdmCEHNDY4Osd0=" data-language="js"><span class="token keyword">var</span> myWorker <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Worker</span><span class="token punctuation">(</span><span class="token string">'worker.js'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+first<span class="token punctuation">.</span><span class="token function-variable function">onchange</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  myWorker<span class="token punctuation">.</span><span class="token function">postMessage</span><span class="token punctuation">(</span><span class="token punctuation">[</span>first<span class="token punctuation">.</span>value<span class="token punctuation">,</span>second<span class="token punctuation">.</span>value<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'Message posted to worker'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+second<span class="token punctuation">.</span><span class="token function-variable function">onchange</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  myWorker<span class="token punctuation">.</span><span class="token function">postMessage</span><span class="token punctuation">(</span><span class="token punctuation">[</span>first<span class="token punctuation">.</span>value<span class="token punctuation">,</span>second<span class="token punctuation">.</span>value<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'Message posted to worker'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div> <p>For a full example, see our<a href="https://github.com/mdn/simple-web-worker" target="_blank">Basic dedicated worker example</a> (<a href="https://mdn.github.io/simple-web-worker/" target="_blank">run dedicated worker</a>).</p> <div class="notecard note" id="sect1"> <p><strong>참고:</strong> <code>postMessage()</code> can only send a single object at once. As seen above, if you want to pass multiple values you can send an array.</p> </div>
+</div>
+<h3 id="transfer_example">Transfer Example</h3>
+<div class="section-content">
+<p>This example shows a Firefox add-on that transfers an <code>ArrayBuffer</code> from the main thread to the <code>ChromeWorker</code>, and then the <code>ChromeWorker</code> transfers it back to the main thread.</p> <h4 id="main_thread_code">Main thread code:</h4> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="0m/OjIAvthrKyHu4801KVqAGi+G2pIx3Ey/ZpEaooPI=" data-language="js"><span class="token keyword">var</span> myWorker <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ChromeWorker</span><span class="token punctuation">(</span>self<span class="token punctuation">.</span>path <span class="token operator">+</span> <span class="token string">'myWorker.js'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">function</span> <span class="token function">handleMessageFromWorker</span><span class="token punctuation">(</span><span class="token parameter">msg</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'incoming message from worker, msg:'</span><span class="token punctuation">,</span> msg<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">switch</span> <span class="token punctuation">(</span>msg<span class="token punctuation">.</span>data<span class="token punctuation">.</span>aTopic<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">case</span> <span class="token string">'do_sendMainArrBuff'</span><span class="token operator">:</span>
+            <span class="token function">sendMainArrBuff</span><span class="token punctuation">(</span>msg<span class="token punctuation">.</span>data<span class="token punctuation">.</span>aBuf<span class="token punctuation">)</span>
+            <span class="token keyword">break</span><span class="token punctuation">;</span>
+        <span class="token keyword">default</span><span class="token operator">:</span>
+            <span class="token keyword">throw</span> <span class="token string">'no aTopic on incoming message to ChromeWorker'</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+myWorker<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">'message'</span><span class="token punctuation">,</span> handleMessageFromWorker<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// Ok lets create the buffer and send it</span>
+<span class="token keyword">var</span> arrBuf <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayBuffer</span><span class="token punctuation">(</span><span class="token number">8</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">info</span><span class="token punctuation">(</span><span class="token string">'arrBuf.byteLength pre transfer:'</span><span class="token punctuation">,</span> arrBuf<span class="token punctuation">.</span>byteLength<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+myWorker<span class="token punctuation">.</span><span class="token function">postMessage</span><span class="token punctuation">(</span>
+    <span class="token punctuation">{</span>
+        <span class="token literal-property property">aTopic</span><span class="token operator">:</span> <span class="token string">'do_sendWorkerArrBuff'</span><span class="token punctuation">,</span>
+        <span class="token literal-property property">aBuf</span><span class="token operator">:</span> arrBuf <span class="token comment">// The array buffer that we passed to the transferrable section 3 lines below</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">[</span>
+        arrBuf <span class="token comment">// The array buffer we created 9 lines above</span>
+    <span class="token punctuation">]</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+console<span class="token punctuation">.</span><span class="token function">info</span><span class="token punctuation">(</span><span class="token string">'arrBuf.byteLength post transfer:'</span><span class="token punctuation">,</span> arrBuf<span class="token punctuation">.</span>byteLength<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div> <h4 id="worker_code">Worker code</h4> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="4gRDw9Qa1pq6QJOKPQiJCPeRIbf3Wt3eNFJJDsmTmUc=" data-language="js">self<span class="token punctuation">.</span><span class="token function-variable function">onmessage</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">msg</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">switch</span> <span class="token punctuation">(</span>msg<span class="token punctuation">.</span>data<span class="token punctuation">.</span>aTopic<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">case</span> <span class="token string">'do_sendWorkerArrBuff'</span><span class="token operator">:</span>
+                <span class="token function">sendWorkerArrBuff</span><span class="token punctuation">(</span>msg<span class="token punctuation">.</span>data<span class="token punctuation">.</span>aBuf<span class="token punctuation">)</span>
+            <span class="token keyword">break</span><span class="token punctuation">;</span>
+        <span class="token keyword">default</span><span class="token operator">:</span>
+            <span class="token keyword">throw</span> <span class="token string">'no aTopic on incoming message to ChromeWorker'</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">function</span> <span class="token function">sendWorkerArrBuff</span><span class="token punctuation">(</span><span class="token parameter">aBuf</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">info</span><span class="token punctuation">(</span><span class="token string">'from worker, PRE send back aBuf.byteLength:'</span><span class="token punctuation">,</span> aBuf<span class="token punctuation">.</span>byteLength<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    self<span class="token punctuation">.</span><span class="token function">postMessage</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token literal-property property">aTopic</span><span class="token operator">:</span><span class="token string">'do_sendMainArrBuff'</span><span class="token punctuation">,</span> <span class="token literal-property property">aBuf</span><span class="token operator">:</span>aBuf<span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">[</span>aBuf<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    console<span class="token punctuation">.</span><span class="token function">info</span><span class="token punctuation">(</span><span class="token string">'from worker, POST send back aBuf.byteLength:'</span><span class="token punctuation">,</span> aBuf<span class="token punctuation">.</span>byteLength<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div> <h4 id="output_logged">Output logged</h4> <pre class="notranslate">arrBuf.byteLength pre transfer: 8                              bootstrap.js:40
+arrBuf.byteLength post transfer: 0                             bootstrap.js:42
+
+from worker, PRE send back aBuf.byteLength: 8                  myWorker.js:5:2
+
+incoming message from worker, msg: message { ... }             bootstrap.js:20
+got back buf in main thread, aBuf.byteLength: 8                bootstrap.js:12
+
+from worker, POST send back aBuf.byteLength: 0                 myWorker.js:7:2
+</pre> <p><code>byteLength</code> goes to 0 as it is transferred. To see a full working example of this Firefox demo add-on see here: <a href="https://github.com/Noitidart/ChromeWorker/tree/aca57d9cadc4e68af16201bdecbfb6f9a6f9ca6b" target="_blank">GitHub :: ChromeWorker - demo-transfer-arraybuffer</a></p>
+</div>
+<h2 id="명세서">명세서</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://html.spec.whatwg.org/multipage/workers.html#dom-worker-postmessage-dev">HTML Standard <br><small># dom-worker-postmessage-dev</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<h2 id="see_also">See also</h2>
+<div class="section-content"><ul> <li>The <a href="../worker"><code>Worker</code></a> interface it belongs to.</li> </ul></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/Worker/postMessage" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/Worker/postMessage</a>
+  </p>
+</div>

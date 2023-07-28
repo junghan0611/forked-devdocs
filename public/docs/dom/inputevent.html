@@ -1,0 +1,39 @@
+<header><h1>InputEvent</h1></header><div class="section-content">
+<p><code>InputEvent</code> 인터페이스는 편집 가능한 콘텐츠의 변경 이벤트를 나타냅니다.</p>
+<svg viewbox="-1 -1 650 42" preserveaspectratio="xMinYMin meet"> <a style="text-decoration: none;" xlink:href="/ko/docs/Web/API/Event">  <text x="37.5" y="16" font-size="10px" fill="#4D4E53" text-anchor="middle"> Event </text> </a>   <a style="text-decoration: none;" xlink:href="/ko/docs/Web/API/UIEvent">  <text x="142.5" y="16" font-size="10px" fill="#4D4E53" text-anchor="middle"> UIEvent </text> </a>   <a style="text-decoration: none;" xlink:href="/ko/docs/Web/API/InputEvent" aria-current="page">  <text x="250" y="16" font-size="10px" fill="#4D4E53" text-anchor="middle"> InputEvent </text> </a></svg>
+</div>
+<h2 id="생성자">생성자</h2>
+<div class="section-content"><dl> <dt id="inputevent_en-us"><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/InputEvent/InputEvent"><code>InputEvent()</code> <small>(en-US)</small></a></dt> <dd> <p><code>InputEvent</code> 객체를 생성합니다.</p> </dd> </dl></div>
+<h2 id="인스턴스_속성">인스턴스 속성</h2>
+<div class="section-content">
+<p><a href="uievent"><code>UIEvent</code></a>와 <a href="event"><code>Event</code></a> 인터페이스의 속성을 상속합니다.</p> <dl> <dt id="inputevent.data_en-us">
+<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/InputEvent/data"><code>InputEvent.data</code> <small>(en-US)</small></a> <span class="badge inline readonly">읽기 전용</span>
+</dt> <dd> <p>삽입한 문자들로 구성된 문자열을 반환합니다. 문자를 삭제하는 등, 텍스트를 삽입하지 않는 변경 사항에서는 빈 문자열일 수 있습니다.</p> </dd> <dt id="inputevent.datatransfer_en-us">
+<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/InputEvent/dataTransfer"><code>InputEvent.dataTransfer</code> <small>(en-US)</small></a> <span class="badge inline readonly">읽기 전용</span>
+</dt> <dd> <p>편집 가능한 콘텐츠에 추가나 제거 중인 서식 텍스트 또는 평문 데이터의 정보가 포함된 <a href="datatransfer"><code>DataTransfer</code></a> 객체를 반환합니다.</p> </dd> <dt id="inputevent.inputtype_en-us">
+<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/InputEvent/inputType"><code>InputEvent.inputType</code> <small>(en-US)</small></a> <span class="badge inline readonly">읽기 전용</span>
+</dt> <dd> <p>편집 가능한 콘텐츠의 변경 유형을 반환합니다. 속성 문서에서 가능한 유형의 목록을 확인할 수 있습니다.</p> </dd> <dt id="inputevent.iscomposing_en-us">
+<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/InputEvent/isComposing"><code>InputEvent.isComposing</code> <small>(en-US)</small></a> <span class="badge inline readonly">읽기 전용</span>
+</dt> <dd> <p>이 이벤트가 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/Element/compositionstart_event"><code>compositionstart</code> <small>(en-US)</small></a> 이후, <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/Element/compositionend_event"><code>compositionend</code> <small>(en-US)</small></a> 이전에 발생했는지 나타내는 <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Boolean"><code>Boolean</code></a>을 반환합니다.</p> </dd> </dl>
+</div>
+<h2 id="인스턴스_메서드">인스턴스 메서드</h2>
+<div class="section-content">
+<p><a href="uievent"><code>UIEvent</code></a>와 <a href="event"><code>Event</code></a> 인터페이스의 메서드를 상속합니다.</p> <dl> <dt id="inputevent.gettargetranges_en-us"><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/InputEvent/getTargetRanges"><code>InputEvent.getTargetRanges()</code> <small>(en-US)</small></a></dt> <dd> <p>이 이벤트를 취소하지 않으면 영향을 받는 DOM 범위들의 배열을 반환합니다.</p> </dd> </dl>
+</div>
+<h2 id="명세서">명세서</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody>
+<tr><td><a href="https://w3c.github.io/input-events/#interface-InputEvent">Input Events Level 2 <br><small># interface-InputEvent</small></a></td></tr>
+<tr><td><a href="https://w3c.github.io/uievents/#interface-inputevent">UI Events <br><small># interface-inputevent</small></a></td></tr>
+</tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/beforeinput_event" class="only-in-en-us"><code>beforeinput</code> 이벤트 <small>(en-US)</small></a></li> <li><a href="htmlelement/input_event"><code>input</code> 이벤트</a></li> </ul></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/InputEvent" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/InputEvent</a>
+  </p>
+</div>

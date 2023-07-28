@@ -1,0 +1,62 @@
+<header><h1>FetchEvent</h1></header><div class="section-content">
+<div class="notecard experimental" id="sect1"><p><strong>Experimental:</strong> <strong>This is an <a href="https://developer.mozilla.org/en-US/docs/MDN/Writing_guidelines/Experimental_deprecated_obsolete#experimental">experimental technology</a></strong><br>Check the <a href="#browser_compatibility">Browser compatibility table</a> carefully before using this in production.</p></div> <p>This is the event type for <code>fetch</code> events dispatched on the <a href="serviceworkerglobalscope">service worker global scope</a>. It contains information about the fetch, including the request and how the receiver will treat the response. It provides the <a href="fetchevent/respondwith"><code>event.respondWith()</code></a> method, which allows us to provide a response to this fetch.</p>
+</div>
+<h2 id="constructor">Constructor</h2>
+<div class="section-content"><dl> <dt id="fetchevent_en-us"><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/FetchEvent/FetchEvent"><code>FetchEvent()</code> <small>(en-US)</small></a></dt> <dd> <p>Creates a new <code>FetchEvent</code> object. This constructor is not typically used. The browser creates these objects itself and provides them to <code>fetch</code> event callbacks.</p> </dd> </dl></div>
+<h2 id="properties">Properties</h2>
+<div class="section-content">
+<p><em>Inherits properties from its ancestor, <a href="event"><code>Event</code></a></em>.</p> <dl> <dt id="fetchevent.clientid_en-us">
+<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/FetchEvent/clientId"><code>fetchEvent.clientId</code> <small>(en-US)</small></a> <span class="badge inline readonly">읽기 전용</span>
+</dt> <dd> <p>The <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/Client/id"><code>id</code> <small>(en-US)</small></a> of the same-origin <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/Client"><code>client</code> <small>(en-US)</small></a> that initiated the fetch.</p> </dd> <dt id="fetchevent.preloadresponse_en-us">
+<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/FetchEvent/preloadResponse"><code>fetchEvent.preloadResponse</code> <small>(en-US)</small></a> <span class="badge inline readonly">읽기 전용</span>
+</dt> <dd> <p>A <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Promise"><code>Promise</code></a> for a <a href="response"><code>Response</code></a>, or void if this is not a navigation, or <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/NavigationPreloadManager">navigation preload <small>(en-US)</small></a> is not enabled.</p> </dd> <dt id="fetchevent.request_en-us">
+<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/FetchEvent/request"><code>fetchEvent.request</code> <small>(en-US)</small></a> <span class="badge inline readonly">읽기 전용</span>
+</dt> <dd> <p>The <a href="request"><code>Request</code></a> the browser intends to make.</p> </dd> </dl>
+</div>
+<h2 id="methods">Methods</h2>
+<div class="section-content">
+<p><em>Inherits methods from its parent,</em> <em><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/ExtendableEvent"><code>ExtendableEvent</code> <small>(en-US)</small></a></em>.</p> <dl> <dt id="fetchevent.respondwith"><a href="fetchevent/respondwith"><code>fetchEvent.respondWith()</code></a></dt> <dd> <p>Prevent the browser's default fetch handling, and provide (a promise for) a response yourself.</p> </dd> <dt id="extendableevent.waituntil_en-us"><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/ExtendableEvent/waitUntil"><code>extendableEvent.waitUntil()</code> <small>(en-US)</small></a></dt> <dd> <p>Extends the lifetime of the event. Used to notify the browser of tasks that extend beyond the returning of a response, such as streaming and caching.</p> </dd> </dl>
+</div>
+<h2 id="examples">Examples</h2>
+<div class="section-content">
+<p>This fetch event uses the browser default for non-GET requests. For GET requests it tries to return a match in the cache, and falls back to the network. If it finds a match in the cache, it asynchronously updates the cache for next time.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="lH+RBstOdxrYYiAPGCv+ocka/VfvXs74N9RlNysltGw=" data-language="js"><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">'fetch'</span><span class="token punctuation">,</span> <span class="token parameter">event</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token comment">// Let the browser do its default thing</span>
+  <span class="token comment">// for non-GET requests.</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>event<span class="token punctuation">.</span>request<span class="token punctuation">.</span>method <span class="token operator">!=</span> <span class="token string">'GET'</span><span class="token punctuation">)</span> <span class="token keyword">return</span><span class="token punctuation">;</span>
+
+  <span class="token comment">// Prevent the default, and handle the request ourselves.</span>
+  event<span class="token punctuation">.</span><span class="token function">respondWith</span><span class="token punctuation">(</span><span class="token keyword">async</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// Try to get the response from a cache.</span>
+    <span class="token keyword">const</span> cache <span class="token operator">=</span> <span class="token keyword">await</span> caches<span class="token punctuation">.</span><span class="token function">open</span><span class="token punctuation">(</span><span class="token string">'dynamic-v1'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">const</span> cachedResponse <span class="token operator">=</span> <span class="token keyword">await</span> cache<span class="token punctuation">.</span><span class="token function">match</span><span class="token punctuation">(</span>event<span class="token punctuation">.</span>request<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>cachedResponse<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token comment">// If we found a match in the cache, return it, but also</span>
+      <span class="token comment">// update the entry in the cache in the background.</span>
+      event<span class="token punctuation">.</span><span class="token function">waitUntil</span><span class="token punctuation">(</span>cache<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>event<span class="token punctuation">.</span>request<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token keyword">return</span> cachedResponse<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment">// If we didn't find a match in the cache, use the network.</span>
+    <span class="token keyword">return</span> <span class="token function">fetch</span><span class="token punctuation">(</span>event<span class="token punctuation">.</span>request<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div>
+</div>
+<h2 id="명세서">명세서</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://w3c.github.io/ServiceWorker/#fetchevent-interface">Service Workers <br><small># fetchevent-interface</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<h2 id="see_also">See also</h2>
+<div class="section-content"><ul> <li><a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Promise"><code>Promise</code></a></li> <li><a href="fetch_api">Fetch API</a></li> </ul></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/FetchEvent" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/FetchEvent</a>
+  </p>
+</div>

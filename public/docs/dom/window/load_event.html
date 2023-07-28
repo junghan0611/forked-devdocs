@@ -1,0 +1,61 @@
+<header><h1>load</h1></header><div class="section-content"><p><code>load</code> 이벤트는 리소스와 그것에 의존하는 리소스들의 로딩이 완료되면 실행됩니다.</p></div>
+<h2 id="예제">예제</h2>
+
+<h3 id="window">Window</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="lkwRNtvYlqZ0sQYzup2i/nctIixhJmfkz2GgPXlPVrM=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">&gt;</span></span><span class="token script"><span class="token language-javascript">
+  window<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">"load"</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">event</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"All resources finished loading!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div></div>
+<h3 id="script_엘리먼트">
+<code>script</code> 엘리먼트</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="tks0Gl4Az5VN2052XQwwIMt1XaWy8qSPAw2tM3ciSFI=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">&gt;</span></span><span class="token script"><span class="token language-javascript">
+  <span class="token keyword">var</span> script <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">createElement</span><span class="token punctuation">(</span><span class="token string">"script"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  script<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">"load"</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">event</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"Script finished loading and executing"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  script<span class="token punctuation">.</span>src <span class="token operator">=</span> <span class="token string">"http://example.com/example.js"</span><span class="token punctuation">;</span>
+  script<span class="token punctuation">.</span>async <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+  document<span class="token punctuation">.</span><span class="token function">getElementsByTagName</span><span class="token punctuation">(</span><span class="token string">"script"</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>parentNode<span class="token punctuation">.</span><span class="token function">appendChild</span><span class="token punctuation">(</span>script<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div></div>
+<h2 id="일반_정보">일반 정보</h2>
+<div class="section-content"><dl> <dt id="스펙">스펙</dt> <dd> <p><a href="https://www.w3.org/TR/DOM-Level-3-Events/#event-type-load" target="_blank">DOM L3</a></p> </dd> <dt id="인터페이스">인터페이스</dt> <dd> <p>UIEvent</p> </dd> <dt id="bubbles">Bubbles</dt> <dd> <p>No</p> </dd> <dt id="취소가능_여부">취소가능 여부</dt> <dd> <p>No</p> </dd> <dt id="타겟">타겟</dt> <dd> <p>Window,Document,Element</p> </dd> <dt id="기본_동작">기본 동작</dt> <dd> <p>None.</p> </dd> </dl></div>
+<h2 id="속성">속성</h2>
+<div class="section-content"><figure class="table-container"><div class="_table"><table> <thead> <tr> <th>속성</th> <th>타입</th> <th>설명</th> </tr> </thead> <tbody> <tr> <td>
+<code>target</code> <span class="badge inline readonly">읽기 전용</span>
+</td> <td><code><a href="../eventtarget"><code>EventTarget</code></a></code></td> <td>The event target (the topmost target in the DOM tree).</td> </tr> <tr> <td>
+<code>type</code> <span class="badge inline readonly">읽기 전용</span>
+</td> <td><code><a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/String"><code>DOMString</code></a></code></td> <td>The type of event.</td> </tr> <tr> <td>
+<code>bubbles</code> <span class="badge inline readonly">읽기 전용</span>
+</td> <td><code><a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Boolean"><code>Boolean</code></a></code></td> <td>Whether the event normally bubbles or not.</td> </tr> <tr> <td>
+<code>cancelable</code> <span class="badge inline readonly">읽기 전용</span>
+</td> <td><code><a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Boolean"><code>Boolean</code></a></code></td> <td>Whether the event is cancellable or not.</td> </tr> <tr> <td>
+<code>view</code> <span class="badge inline readonly">읽기 전용</span>
+</td> <td><code><a class="page-not-created"><code>WindowProxy</code></a></code></td> <td>
+<code><a href="../document/defaultview"><code>document.defaultView</code></a></code> (<code>window</code> of the document)</td> </tr> <tr> <td>
+<code>detail</code> <span class="badge inline readonly">읽기 전용</span>
+</td> <td>
+<code>long</code> (<code>float</code>)</td> <td>0.</td> </tr> </tbody> </table></div></figure></div>
+<h2 id="명세서">명세서</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody>
+<tr><td><a href="https://w3c.github.io/uievents/#event-type-load">UI Events <br><small># event-type-load</small></a></td></tr>
+<tr><td><a href="https://html.spec.whatwg.org/multipage/parsing.html#delay-the-load-event">HTML Standard <br><small># delay-the-load-event</small></a></td></tr>
+</tbody>
+</table></div>
+<h2 id="관련_이벤트">관련 이벤트</h2>
+<div class="section-content"><ul> <li><code><a href="domcontentloaded_event">DOMContentLoaded</a></code></li> <li><code><a href="https://developer.mozilla.org/en-US/docs/Web/API/Document/readystatechange_event" class="only-in-en-us">readystatechange <small>(en-US)</small></a></code></li> <li><code><a href="load_event">load</a></code></li> <li><code><a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/beforeunload_event" class="only-in-en-us">beforeunload <small>(en-US)</small></a></code></li> <li><code><a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/unload_event" class="only-in-en-us">unload <small>(en-US)</small></a></code></li> </ul></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/Window/load_event" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/Window/load_event</a>
+  </p>
+</div>

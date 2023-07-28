@@ -1,0 +1,154 @@
+<header><h1>margin</h1></header><div class="section-content"><p><code>margin</code> CSS 속성은 요소의 네 방향 <a href="css_box_model/introduction_to_the_css_box_model">바깥 여백 영역</a>을 설정합니다. <a href="margin-top"><code>margin-top</code></a>, <a href="margin-right"><code>margin-right</code></a>, <a href="margin-bottom"><code>margin-bottom</code></a>, <a href="margin-left"><code>margin-left</code></a>의 단축 속성입니다.</p></div>
+<section aria-labelledby="시도해보기"><h2 id="시도해보기">시도해보기</h2>
+<div class="section-content">
+<iframe class="interactive is-default-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/css/margin.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe> <p>위와 아래 여백은 <a href="replaced_element">대체 요소</a>가 아닌 <a href="https://developer.mozilla.org/ko/docs/Web/HTML/Element/span"><code>&lt;span&gt;</code></a>, <a href="https://developer.mozilla.org/ko/docs/Web/HTML/Element/code"><code>&lt;code&gt;</code></a> 등 인라인 요소에선 아무 효과도 없습니다.</p> <div class="notecard note" id="sect1"> <p><strong>참고:</strong> margin은 요소의 주위에 빈 공간을 추가합니다. 반면 <a href="padding"><code>padding</code></a>은 요소의 <strong>내부</strong>에 빈 공간을 만듭니다.</p> </div>
+</div></section><section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content">
+<pre class="notranslate">/* 네 면 모두 적용 */
+margin: 1em;
+margin: -3px;
+
+/* 세로방향 | 가로방향 */
+margin: 5% auto;
+
+/* 위 | 가로방향 | 아래 */
+margin: 1em auto 2em;
+
+/* 위 | 오른쪽 | 아래 | 왼쪽 */
+margin: 2px 1em 0 auto;
+
+/* 전역 값 */
+margin: inherit;
+margin: initial;
+margin: unset;
+</pre> <p><code>margin</code> 속성은 한 개, 두 개, 세 개, 혹은 네 개의 값으로 지정할 수 있습니다. 각 값은 <a href="length"><code>&lt;length&gt;</code></a>, <a href="percentage"><code>&lt;percentage&gt;</code></a> 또는 키워드 <a href="#auto"><code>auto</code></a> 중 하나입니다. 음수 값은 요소와 이웃의 거리가 더 가까워지도록 합니다.</p> <ul> <li>
+<strong>한 개의 값</strong>은 모든 네 면의 여백을 설정합니다.</li> <li>
+<strong>두 개의 값</strong>을 지정하면 첫 번째는 <strong>위와 아래</strong>, 두 번째는 <strong>왼쪽과 오른쪽</strong> 여백을 설정합니다.</li> <li>
+<strong>세 개의 값</strong>을 지정하면 첫 번째는 <strong>위</strong>, 두 번째는 <strong>왼쪽과 오른쪽,</strong> 세 번째 값은 <strong>아래</strong> 여백을 설정합니다.</li> <li>
+<strong>네 개의 값</strong>을 지정하면 각각 <strong>상, 우, 하, 좌</strong> 순서로 여백을 지정합니다. (시계방향)</li> </ul>
+</div></section><section aria-labelledby="값"><h3 id="값">값</h3>
+<div class="section-content"><dl> <dt id="length"><a href="length"><code>&lt;length&gt;</code></a></dt> <dd> <p>여백의 크기로 고정값 사용.</p> </dd> <dt id="percentage"><a href="percentage"><code>&lt;percentage&gt;</code></a></dt> <dd> <p>여백의 크기로 <a href="containing_block">컨테이닝 블록</a> 너비의 백분율 사용.</p> </dd> <dt id="auto"><code>auto</code></dt> <dd> <p>브라우저가 적절한 여백 크기를 선택. 예를 들어 요소를 중앙 정렬하고 싶을 때 사용할 수 있습니다.</p> </dd> </dl></div></section><section aria-labelledby="형식_구문"><h3 id="형식_구문">형식 구문</h3>
+<div class="section-content"><pre class="notranslate"><span class="token property" id="margin">margin = </span><br>  <span class="token property">&lt;'margin-top'&gt;</span><a href="value_definition_syntax#curly_braces">{1,4}</a>  <br><br></pre></div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+</section><section aria-labelledby="간단한_예제"><h3 id="간단한_예제">간단한 예제</h3>
+<div class="section-content">
+<h4 id="html">HTML</h4> <div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="ich3MCyHOz34yHbKjWc22BPaoKF9uuNLnM4DkhvX/ic=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>center<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>이 요소는 중앙 정렬입니다.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>outside<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>이 요소는 컨테이너 밖으로 빠져 나갔습니다.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div> <h4 id="css">CSS</h4> <div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="ZJ/W3WVctP0bZNDtzY0/5sVDHVMeXaIPIxVcpWsVHmc=" data-language="css"><span class="token selector">.center</span> <span class="token punctuation">{</span>
+  <span class="token property">margin</span><span class="token punctuation">:</span> auto<span class="token punctuation">;</span>
+  <span class="token property">background</span><span class="token punctuation">:</span> lime<span class="token punctuation">;</span>
+  <span class="token property">width</span><span class="token punctuation">:</span> 66%<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">.outside</span> <span class="token punctuation">{</span>
+  <span class="token property">margin</span><span class="token punctuation">:</span> 3rem 0 0 -3rem<span class="token punctuation">;</span>
+  <span class="token property">background</span><span class="token punctuation">:</span> cyan<span class="token punctuation">;</span>
+  <span class="token property">width</span><span class="token punctuation">:</span> 66%<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div>
+<div class="code-example" id="sect2">
+
+<iframe class="sample-code-frame" title="간단한 예제 sample" id="frame_간단한_예제" src="https://live.mdnplay.dev/ko/docs/Web/CSS/margin/runner.html?id=%EA%B0%84%EB%8B%A8%ED%95%9C_%EC%98%88%EC%A0%9C" loading="lazy"></iframe>
+</div>
+</div></section><section aria-labelledby="더_많은_예제"><h3 id="더_많은_예제">더 많은 예제</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="LMy1tm7V6pDlVRApBG5DCbLFMFjHebBfORzo7jeUlAA=" data-language="css"><span class="token property">margin</span><span class="token punctuation">:</span> 5%<span class="token punctuation">;</span>                 <span class="token comment">/* 모두 5% */</span>
+
+<span class="token property">margin</span><span class="token punctuation">:</span> 10px<span class="token punctuation">;</span>               <span class="token comment">/* 모두 10px */</span>
+
+<span class="token property">margin</span><span class="token punctuation">:</span> 1.6em 20px<span class="token punctuation">;</span>         <span class="token comment">/* 상하: 1.6em */</span>
+                            <span class="token comment">/* 좌우: 20px  */</span>
+
+<span class="token property">margin</span><span class="token punctuation">:</span> 10px 3% -1em<span class="token punctuation">;</span>       <span class="token comment">/* 상: 10px */</span>
+                            <span class="token comment">/* 좌우: 3% */</span>
+                            <span class="token comment">/* 하: -1em */</span>
+
+<span class="token property">margin</span><span class="token punctuation">:</span> 10px 3px 30px 5px<span class="token punctuation">;</span>  <span class="token comment">/* 상: 10px */</span>
+                            <span class="token comment">/* 우:  3px */</span>
+                            <span class="token comment">/* 하: 30px */</span>
+                            <span class="token comment">/* 좌:  5px */</span>
+
+<span class="token property">margin</span><span class="token punctuation">:</span> 2em auto<span class="token punctuation">;</span>           <span class="token comment">/* 상하: 2em */</span>
+                            <span class="token comment">/* 수평 중앙정렬 */</span>
+
+<span class="token property">margin</span><span class="token punctuation">:</span> auto<span class="token punctuation">;</span>               <span class="token comment">/* 상하: 0 */</span>
+                            <span class="token comment">/* 수평 중앙정렬 */</span>
+</pre>
+</div></div></section><section aria-labelledby="참고"><h2 id="참고">참고</h2>
+</section><section aria-labelledby="수평_중앙정렬"><h3 id="수평_중앙정렬">수평 중앙정렬</h3>
+<div class="section-content">
+<p>현대 브라우저에서 어떤 요소를 중앙에 배치하려면 <a href="display"><code>display</code></a><code>: flex;</code> <a href="justify-content"><code>justify-content</code></a><code>: center;</code>를 사용하면 됩니다.</p> <p>하지만 플렉스 박스 레이아웃을 지원하지 않는 Internet Explorer 8-9 등 오래된 브라우저를 지원해야 하면 <code>margin: 0 auto;</code>를 대신 사용하세요.</p>
+</div></section><section aria-labelledby="여백_상쇄"><h3 id="여백_상쇄">여백 상쇄</h3>
+<div class="section-content"><p>두 개 요소의 위와 아래 여백은 종종 합쳐져 하나의 여백이 되고, 그 크기는 둘 중 더 큰 여백과 같아집니다. 더 자세한 정보는 <a href="css_box_model/mastering_margin_collapsing">여백 상쇄 정복</a>을 참고하세요.</p></div></section><h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://drafts.csswg.org/css-box/#margin">CSS Box Model Module Level 3 <br><small># margin</small></a></td></tr></tbody>
+</table></div>
+<div class="section-content"><figure class="table-container"><div class="_table"><table class="properties"><tbody>
+<tr>
+<th scope="row"><a href="initial_value">초기값</a></th>
+<td>as each of the properties of the shorthand:<br><ul>
+<li>
+<a href="margin-bottom"><code>margin-bottom</code></a>: <code>0</code>
+</li>
+<li>
+<a href="margin-left"><code>margin-left</code></a>: <code>0</code>
+</li>
+<li>
+<a href="margin-right"><code>margin-right</code></a>: <code>0</code>
+</li>
+<li>
+<a href="margin-top"><code>margin-top</code></a>: <code>0</code>
+</li>
+</ul>
+</td>
+</tr>
+<tr>
+<th scope="row">적용대상</th>
+<td>all elements, except elements with table <a href="display"><code>display</code></a> types other than <code>table-caption</code>, <code>table</code> and <code>inline-table</code>. It also applies to <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/::first-letter" class="only-in-en-us"><code>::first-letter</code> <small>(en-US)</small></a> and <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/::first-line" class="only-in-en-us"><code>::first-line</code> <small>(en-US)</small></a>.</td>
+</tr>
+<tr>
+<th scope="row"><a href="inheritance">상속</a></th>
+<td>no</td>
+</tr>
+<tr>
+<th scope="row">Percentages</th>
+<td>refer to the width of the containing block</td>
+</tr>
+<tr>
+<th scope="row"><a href="computed_value">계산 값</a></th>
+<td>as each of the properties of the shorthand:<br><ul>
+<li>
+<a href="margin-bottom"><code>margin-bottom</code></a>: the percentage as specified or the absolute length</li>
+<li>
+<a href="margin-left"><code>margin-left</code></a>: the percentage as specified or the absolute length</li>
+<li>
+<a href="margin-right"><code>margin-right</code></a>: the percentage as specified or the absolute length</li>
+<li>
+<a href="margin-top"><code>margin-top</code></a>: the percentage as specified or the absolute length</li>
+</ul>
+</td>
+</tr>
+<tr>
+<th scope="row">Animation type</th>
+<td>a <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/length#interpolation">length</a>
+</td>
+</tr>
+</tbody></table></div></figure></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="css_box_model/introduction_to_the_css_box_model">CSS 기본 박스 모델 입문</a></li> <li><a href="css_box_model/mastering_margin_collapsing">여백 상쇄 정복</a></li> <li>
+<a href="margin-top"><code>margin-top</code></a>, <a href="margin-right"><code>margin-right</code></a>, <a href="margin-bottom"><code>margin-bottom</code></a>, <a href="margin-left"><code>margin-left</code></a>
+</li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/CSS/margin" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/CSS/margin</a>
+  </p>
+</div>

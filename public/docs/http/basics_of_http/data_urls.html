@@ -1,0 +1,33 @@
+<h1>Data URLs</h1>
+<header><h1>데이터 URIs</h1></header><div class="section-content"><p><strong>Data URIs</strong>, <code>data:</code> 스킴이 접두어로 붙은 URL은 컨텐츠 작성자가 작은 파일을 문서 내에 인라인으로 삽입할 수 있도록 해줍니다.</p></div>
+<section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content">
+<p>Data URIs는 접두사(<code>data:</code>), 데이터의 타입을 가리키는 MIME 타입, 텍스트가 아닌 경우 사용될 부가적인 <code>base64</code> 토큰 그리고 데이터 자체 총 네가지 부분으로 구성됩니다.</p> <pre class="notranslate">data:[&lt;mediatype&gt;][;base64],&lt;data&gt;
+</pre> <p><code>mediatype</code>이란, MIME 타입을 말합니다(JPEG 이미지의 경우 <code>'image/jpeg'</code>). 만약 생략된다면, 기본 값으로 <code>text/plain;charset=US-ASCII</code>이 사용됩니다.``</p> <p>데이터가 텍스트인 경우, 단순히 텍스트를 (포함된 문서 유형에 따라 적합한 엔티티 혹은 이스케이프를 사용하여) 임베드할 수 있습니다. 그게 아니라면, base64로 인코딩된 이진 데이터를 임베드하기 위해 <code>base64</code>를 지정할 수 있습니다.</p> <p>몇 가지 예제:</p> <dl> <dt id="datahello2c20world!"><code>data:,Hello%2C%20World!</code></dt> <dd> <p>간단한 text/plain 데이터</p> </dd> <dt id="datatextplainbase64sgvsbg8sifdvcmxkiq3d3d"><code>data:text/plain;base64,SGVsbG8sIFdvcmxkIQ%3D%3D</code></dt> <dd> <p>위 예제의 base64 인코딩 버전</p> </dd> <dt id="datatexthtml3ch13ehello2c20world!3c2fh13e"><code>data:text/html,%3Ch1%3EHello%2C%20World!%3C%2Fh1%3E</code></dt> <dd> <p><code>&lt;h1&gt;Hello, World!&lt;/h1&gt;인 HTML 문서</code></p> </dd> <dt id="datatexthtmlscriptalerthiscript"><code>data:text/html,&lt;script&gt;alert('hi');&lt;/script&gt;</code></dt> <dd> <p>자바스크립트 얼럿을 실행하는 HTML 문서입니다. 닫기 스크립트 태그가 필요하다는 것을 기억하세요.</p> </dd> </dl>
+</div></section><section aria-labelledby="base64_포맷으로_데이터_인코딩하기"><h2 id="base64_포맷으로_데이터_인코딩하기">base64 포맷으로 데이터 인코딩하기</h2>
+<div class="section-content">
+<p>리눅스와 Mac OS X 시스템의 명령줄에서 <code>uuencode</code> 유틸리티를 사용해 쉽게 인코딩할 수 있습니다:</p> <pre class="notranslate">uuencode -m infile remotename
+</pre> <p><code>infile</code> 파라메터는 base64 포맷으로 인코딩하려는 파일의 이름이며, <code>remotename</code>는 파일에 대한 원격지 이름으로 <code>data</code> URLs내에서는 실제로 사용되지 않습니다.</p> <p>출력은 다음과 같은 내용일 겁니다:</p> <pre class="notranslate">begin-base64 664 test
+YSBzbGlnaHRseSBsb25nZXIgdGVzdCBmb3IgdGV2ZXIK
+====
+</pre> <p>Data URI는 초기 헤더줄 다음의 인코딩된 데이터를 사용하게 됩니다.</p>
+</div></section><section aria-labelledby="웹_페이지에서_javascript_사용하기"><h3 id="웹_페이지에서_javascript_사용하기">웹 페이지에서 JavaScript 사용하기</h3>
+<div class="section-content"><p>웹 API는 base64로 인코딩하거나 디코딩하기 위한 프리미티브를 가지고 있습니다: <a href="https://developer.mozilla.org/en-US/docs/Glossary/Base64" class="only-in-en-us">Base64 인코딩과 디코딩 <small>(en-US)</small></a>.</p></div></section><section aria-labelledby="일반적인_문제점"><h2 id="일반적인_문제점">일반적인 문제점</h2>
+<div class="section-content">
+<p>이 섹션에서는 <code>data</code> URIs를 만들고 사용할 때 일반적으로 발생하는 문제점들에 대해 설명합니다.</p> <dl> <dt id="구문_2">구문</dt> <dd> <p><code>data</code> URIs를 위한 문법은 매우 간단하지만, "data" 세그먼트 앞에 콤마를 넣는 것을 쉽게 잊거나 데이터를 base64 포맷으로 부정확하게 인코딩하는 경우가 있습니다.</p> </dd> <dt id="html_내에_포맷시키기">HTML 내에 포맷시키기</dt> <dd> <p><code>data</code> URI는 동봉된 문서의 너비에 비례할 가능성이 높은 파일 내에 파일을 제공하게 됩니다. URL로 <code>data</code>를 공백 문자(라인 피드, 탭 혹은 스페이스)을 사용해 포맷이 가능해야 하지만 <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=73026#c12" target="_blank">base64 인코딩을 사용할 때</a> 일어나는 실질적인 문제가 있습니다.</p> </dd> <dt id="길이_제한">길이 제한</dt> <dd> <p>파이어폭스는 기본적으로 길이 제한이 없는 <code>data</code> URIs를 지원하지만, 브라우저들은 데이터의 개별적인 최대 길이를 제공해야 할 의무가 없습니다. 예를 들어, 오페라 11 브라우저는 <code>data</code> URL을 65529 문자로 제한하는 65535 개의 character long으로 제한합니다(MIME 타입을 지정하지 않고 plain <code>data</code>를 사용한다면, 소스가 아닌 인코딩된 데이터의 길이는 65529자가 됩니다).</p> </dd> <dt id="오류_처리의_부족">오류 처리의 부족</dt> <dd> <p>미디어 내의 유효하지 않은 파라메터들 또는 '<code>base64</code>'를 지정할 때 오타들은 무시되지만 오류가 발생하지는 않습니다.</p> </dd> <dt id="쿼리_문자열에_대한_미지원_등">쿼리 문자열에 대한 미지원 등</dt> <dd> <p>data URI의 data 일부는 불명확해서 데이터 URI를 이용해 쿼리 문자열(<code>&lt;url&gt;?parameter-data</code> 문법을 이용한 페이지 특정의 파라메터)을 사용하려는 시도는 URI가 나타내는 데이터 내에 쿼리 문자열을 포함하게 됩니다. 예를 들어:</p> <pre class="notranslate">data:text/html,lots of text...&lt;p&gt;&lt;a name%3D"bottom"&gt;bottom&lt;/a&gt;?arg=val
+</pre> <p>이는 내용이 다음과 같은 HTML 리소스를 나타냅니다:</p> <pre class="notranslate">lots of text...&lt;p&gt;&lt;a name="bottom"&gt;bottom&lt;/a&gt;?arg=val
+</pre> </dd> </dl>
+</div></section><h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://www.rfc-editor.org/rfc/rfc2397#section-2">The "data" URL scheme <br><small># section-2</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="함께_참고할_내용"><h2 id="함께_참고할_내용">함께 참고할 내용</h2>
+<div class="section-content"><ul> <li><a href="https://developer.mozilla.org/en-US/docs/Glossary/Base64" class="only-in-en-us">Base64 인코딩과 디코딩 <small>(en-US)</small></a></li> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/atob"><code>atob()</code> <small>(en-US)</small></a></li> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/btoa"><code>btoa()</code> <small>(en-US)</small></a></li> <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/url" class="only-in-en-us">CSS <code>url()</code> <small>(en-US)</small></a></li> <li><a href="https://developer.mozilla.org/en-US/docs/Glossary/URI" class="only-in-en-us">URI <small>(en-US)</small></a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/HTTP/Basics_of_HTTP/Data_URLs" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/HTTP/Basics_of_HTTP/Data_URLs</a>
+  </p>
+</div>

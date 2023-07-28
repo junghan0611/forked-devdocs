@@ -1,0 +1,37 @@
+<header><h1>Event.cancelable</h1></header><div class="section-content">
+<p><a href="../event"><code>Event</code></a> 인터페이스의 <code>cancelable</code> 읽기 전용 속성은 이벤트의 취소가 가능한지를 나타냅니다.</p> <p>이벤트가 취소 불가능한 경우, 해당 이벤트의 <code>cancelable</code> 속성은 <code>false</code>이며 수신기에서 이벤트의 발생을 멈출 수 없습니다.</p> <p>취소 가능한 브라우저 내장 이벤트는 대부분 사용자가 페이지와 상호작용해서 발생하는 이벤트입니다. 예컨대 <a href="../element/click_event"><code>click</code></a>, <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/Element/wheel_event"><code>wheel</code> <small>(en-US)</small></a>, <a href="../window/beforeunload_event"><code>beforeunload</code></a> 이벤트를 취소하게 되면, 각각 사용자가 어떤 요소를 클릭하는 것, 페이지를 스크롤하는 것, 페이지에서 나가는 것을 막게 됩니다.</p> <p>사용자 JavaScript 코드에서 생성하는 <a href="event">합성 이벤트</a>의 경우, 이벤트를 초기화할 때 취소 가능 여부를 지정할 수 있습니다.</p> <p>이벤트를 취소하려면 이벤트의 <a href="preventdefault"><code>preventDefault()</code></a> 메서드를 호출하세요. 해당 이벤트에 대한 기본 동작을 실행하지 않게 됩니다.</p> <p>다양한 종류의 이벤트를 처리해야 하는 처리기의 경우 <code>preventDefault()</code>를 호출하기 전에 먼저 <code>cancelable</code> 속성의 값을 검사해야 할 수 있습니다.</p>
+</div>
+<h2 id="값">값</h2>
+<div class="section-content"><p>이벤트를 취소할 수 있으면 <code>true</code>.</p></div>
+<h2 id="예제">예제</h2>
+<div class="section-content">
+<p>브라우저 제공자들은 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/Element/wheel_event"><code>wheel</code> <small>(en-US)</small></a> 이벤트를 <a href="https://github.com/WICG/interventions/issues/33" target="_blank">최초 수신 시점에만 취소할 수 있도록</a> 제안하고 있습니다. 즉, 두 번째 <code>wheel</code> 이벤트부터는 취소할 수 없습니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="OINAkV7MUK+yDb9uVXFO8ZMhBaGV+d8bjfcY9mo68bw=" data-language="js"><span class="token keyword">function</span> <span class="token function">preventScrollWheel</span><span class="token punctuation">(</span><span class="token parameter">event</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">typeof</span> event<span class="token punctuation">.</span>cancelable <span class="token operator">!==</span> <span class="token string">'boolean'</span> <span class="token operator">||</span> event<span class="token punctuation">.</span>cancelable<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 이벤트를 취소할 수 있으므로 취소함</span>
+    event<span class="token punctuation">.</span><span class="token function">preventDefault</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 이벤트를 취소할 수 없음</span>
+    <span class="token comment">// preventDefault() 호출이 안전하지 않음</span>
+    console<span class="token punctuation">.</span><span class="token function">warn</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">The following event couldn't be canceled:</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    console<span class="token punctuation">.</span><span class="token function">dir</span><span class="token punctuation">(</span>event<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+document<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">'wheel'</span><span class="token punctuation">,</span> preventScrollWheel<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div>
+</div>
+<h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="#">DOM Standard <br><small># ref-for-dom-event-cancelable②</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/Event/cancelable" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/Event/cancelable</a>
+  </p>
+</div>

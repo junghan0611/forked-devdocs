@@ -1,0 +1,34 @@
+<header><h1>Console API</h1></header><div class="section-content"><p><strong>Console API</strong>는 코드의 특정 지점에서 값이나 변수를 기록하고, 작업의 소요 시간을 알아내는 등 개발자가 사용할 수 있는 디버깅 기능을 제공합니다.</p></div>
+<h2 id="개념과_사용법">개념과 사용법</h2>
+<div class="section-content">
+<p>Console API는 사유 API로 시작하였으며, 브라우저가 각자 다른 구현을 했습니다. 이후 <a href="https://console.spec.whatwg.org/" target="_blank">Console API 명세</a>가 만들어져 일관적인 동작 방식을 정의하였으며, 결국 모든 최신 브라우저가 같은 동작을 따르게 되었습니다. 그러나 일부 구현체는 여전히 자신만의 사유 함수를 가지고 있습니다. 다음 링크에서 알아보세요.</p> <ul> <li><a href="https://developers.google.com/chrome-developer-tools/docs/console-api" target="_blank">Google Chrome DevTools implementation</a></li> <li><a href="https://developer.apple.com/library/safari/documentation/AppleApplications/Conceptual/Safari_Developer_Guide/Console/Console.html" target="_blank">Safari DevTools implementation</a></li> </ul> <p>사용은 매우 간단합니다. <a href="window/console"><code>Window.console</code></a>, 워커에서는 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/console"><code>WorkerGlobalScope.console</code> <small>(en-US)</small></a>, 아니면 그냥 <code>console</code>로 접근 가능한 <a href="console"><code>console</code></a> 객체는 브라우저의 <a href="https://firefox-source-docs.mozilla.org/devtools-user/web_console/index.html" target="_blank">웹 콘솔</a>에 값을 기록하는 등 기초적인 디버깅 작업에 사용할 수 있는 메서드를 제공합니다.</p> <p>가장 자주 쓰이는 메서드는 <a href="console/log"><code>console.log()</code></a>이며, 변수의 값을 기록할 때 사용합니다.</p>
+</div>
+<h2 id="인터페이스">인터페이스</h2>
+<div class="section-content"><dl> <dt id="console"><a href="console"><code>console</code></a></dt> <dd> <p>로깅, 스택 추적, 타이머, 카운터 등 기초적인 디버깅 기능을 제공합니다.</p> </dd> </dl></div>
+<h2 id="예제">예제</h2>
+<div class="section-content">
+<div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="rO4uc6qOqCxV7MgdaeTrVCi+aB5GNT0QvZ9bDIognmQ=" data-language="js"><span class="token keyword">let</span> myString <span class="token operator">=</span> <span class="token string">'Hello world'</span><span class="token punctuation">;</span>
+
+<span class="token comment">// Output "Hello world" to the console</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>myString<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div> <p><a href="console"><code>console</code></a> 문서의 <a href="console#%ec%98%88%ec%a0%9c">예제</a> 항목에서 더 많은 예제를 확인하세요.</p>
+</div>
+<h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://console.spec.whatwg.org/#console-namespace">Console Standard <br><small># console-namespace</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="https://firefox-source-docs.mozilla.org/devtools-user/index.html" target="_blank">Firefox Developer Tools</a></li> <li>
+<a href="https://firefox-source-docs.mozilla.org/devtools-user/web_console/index.html" target="_blank">Web Console</a> — how the Web Console in Firefox handles console API calls</li> <li>
+<a href="https://firefox-source-docs.mozilla.org/devtools-user/remote_debugging/index.html" target="_blank">Remote debugging</a> — how to see console output when the debugging target is a mobile device</li> </ul></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/Console_API" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/Console_API</a>
+  </p>
+</div>

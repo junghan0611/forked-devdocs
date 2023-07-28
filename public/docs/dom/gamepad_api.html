@@ -1,0 +1,32 @@
+<header><h1>Gamepad API</h1></header><div class="section-content"><p><strong>게임패드 API</strong>는 게임패드와 다른 게임 제어장치의 신호에 쉬운 일관된 방식으로 접근하고 응답하는 개발자들을 위한 수단이다. 게임패드 API는 세 가지 인터페이스와연결, 연결 해제되고 게임 패드 자체에 대한 다른 정보에 접근하고 어떤 버튼과 다른 조작 장치들이 현재 눌린 것에 응답하는 두 가지 이벤트 그리고 한 가지 특수 기능이 포함되어 있다.</p></div>
+<h2 id="인터페이스">인터페이스</h2>
+<div class="section-content"><dl> <dt id="gamepad_en-us"><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/Gamepad"><code>Gamepad</code> <small>(en-US)</small></a></dt> <dd> <p>컴퓨터에 연결된 게임패드나 조작장치를 표현한다.</p> </dd> <dt id="gamepadbutton_en-us"><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/GamepadButton"><code>GamepadButton</code> <small>(en-US)</small></a></dt> <dd> <p>연결된 조작장치들 중 하나에 있는 버튼을 표현한다.</p> </dd> <dt id="gamepadevent_en-us"><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/GamepadEvent"><code>GamepadEvent</code> <small>(en-US)</small></a></dt> <dd> <p>게임 패드와 연관된 이벤트를 나타내는 이벤트 객체이다.</p> </dd> </dl></div>
+<h3 id="게임패드_확장기능_실험">게임패드 확장기능 실험</h3>
+<div class="section-content">
+<dl> <dt id="gamepadhapticactuator_en-us"><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/GamepadHapticActuator"><code>GamepadHapticActuator</code> <small>(en-US)</small></a></dt> <dd> <p>Represents hardware in the controller designed to provide haptic feedback to the user (if available), most commonly vibration hardware.</p> </dd> <dt id="gamepadpose_en-us"><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/GamepadPose"><code>GamepadPose</code> <small>(en-US)</small></a></dt> <dd> <p>Represents the pose of a controller (e.g. position and orientation in 3D space) in the case of a <a href="https://developer.mozilla.org/en-US/docs/Web/API/WebVR_API" class="only-in-en-us">WebVR <small>(en-US)</small></a> controller.</p> </dd> </dl> <p>다음 정보를엑세스할 수 있는 <a href="https://developer.mozilla.org/en-US/docs/Web/API/Gamepad" class="only-in-en-us">게임패드 인터페이스 확장기능 <small>(en-US)</small></a> 더보기</p>
+</div>
+<h3 id="다른_인터페이스로_확장">다른 인터페이스로 확장</h3>
+<div class="section-content">
+<h4 id="navigator">Navigator</h4> <dl> <dt id="navigator.getgamepads_en-us"><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/Navigator/getGamepads"><code>Navigator.getGamepads()</code> <small>(en-US)</small></a></dt> <dd> <p>An extension to the <a href="navigator"><code>Navigator</code></a> object that returns an array of <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/Gamepad"><code>Gamepad</code> <small>(en-US)</small></a> objects, one for each connected gamepad.</p> </dd> </dl> <h4 id="window_events">Window events</h4> <dl> <dt id="window.ongamepadconnected_en-us"><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/Window/gamepadconnected_event"><code>Window.ongamepadconnected</code> <small>(en-US)</small></a></dt> <dd> <p>Represents an event handler that will run when a gamepad is connected (when the <code><a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/gamepadconnected_event" class="only-in-en-us">gamepadconnected <small>(en-US)</small></a></code> event fires).</p> </dd> <dt id="window.ongamepaddisconnected_en-us"><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/Window/gamepaddisconnected_event"><code>Window.ongamepaddisconnected</code> <small>(en-US)</small></a></dt> <dd> <p>Represents an event handler that will run when a gamepad is disconnected (when the <code><a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/gamepaddisconnected_event" class="only-in-en-us">gamepaddisconnected <small>(en-US)</small></a></code> event fires).</p> </dd> </dl>
+</div>
+<h2 id="튜토리얼과_가이드">튜토리얼과 가이드</h2>
+<div class="section-content"><ul> <li><a href="gamepad_api/using_the_gamepad_api">Using the Gamepad API</a></li> <li><a href="https://developer.mozilla.org/en-US/docs/Games/Techniques/Controls_Gamepad_API" class="only-in-en-us">Implementing controls using the Gamepad API <small>(en-US)</small></a></li> </ul></div>
+<h2 id="명세서">명세서</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody>
+<tr><td><a href="https://w3c.github.io/gamepad/#gamepad-interface">Gamepad <br><small># gamepad-interface</small></a></td></tr>
+<tr><td><a href="https://w3c.github.io/gamepad/extensions.html#partial-gamepad-interface">Gamepad Extensions <br><small># partial-gamepad-interface</small></a></td></tr>
+</tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<h2 id="더보기">더보기</h2>
+<div class="section-content"><ul> <li>
+<a href="https://hacks.mozilla.org/2013/12/the-gamepad-api/" target="_blank">The Gamepad API</a> by Ted Mielczarek and Robert Nyman</li> <li>
+<a href="http://luser.github.io/gamepadtest/" target="_blank">Simple API demo page</a> (<a href="https://github.com/luser/gamepadtest" target="_blank">source</a>)</li> </ul></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/Gamepad_API" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/Gamepad_API</a>
+  </p>
+</div>

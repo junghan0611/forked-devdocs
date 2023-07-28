@@ -1,0 +1,32 @@
+<header><h1>Date.prototype.setUTCMilliseconds()</h1></header><div class="section-content"><p><code>setUTCMilliseconds()</code> 메서드는 표준시에 따라 지정된 날짜의 밀리 초를 설정합니다.</p></div>
+<section aria-labelledby="시도해보기"><h2 id="시도해보기">시도해보기</h2>
+<div class="section-content"><iframe class="interactive is-js-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/js/date-setutcmilliseconds.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe></div></section><section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="hQPepEvZxqISJucB+NNYu9WBtPLzn9Z1rZOPUZFxLKM=" data-language="js"><span class="token function">setUTCMilliseconds</span><span class="token punctuation">(</span>millisecondsValue<span class="token punctuation">)</span>
+</pre>
+</div></div></section><section aria-labelledby="매개변수"><h3 id="매개변수">매개변수</h3>
+<div class="section-content"><dl> <dt id="millisecondsvalue"><code>millisecondsValue</code></dt> <dd> <p>밀리 초를 나타내는 0에서 999 사이의 숫자입니다.</p> </dd> </dl></div></section><section aria-labelledby="반환_값"><h3 id="반환_값">반환 값</h3>
+<div class="section-content"><p>1970년 1월 1일 00:00:00 UTC와 업데이트 된 날짜 사이의 밀리 초 숫자입니다.</p></div></section><section aria-labelledby="설명"><h2 id="설명">설명</h2>
+<div class="section-content"><p>지정한 매개 변수가 예상 범위를 벗어난 경우 <code>setUTCMilliseconds()</code>는 그에 따라 <a href="../date"><code>Date</code></a> 객체의 날짜 정보를 업데이트하려고 시도합니다. 예를 들어 <code>millisecondsValue</code>에 1100을 사용하면 <a href="../date"><code>Date</code></a> 객체에 저장된 초가 1씩 증가하고 100은 밀리 초 단위로 사용됩니다.</p></div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+</section><section aria-labelledby="setutcmilliseconds_사용하기"><h3 id="setutcmilliseconds_사용하기">
+<code>setUTCMilliseconds()</code> 사용하기</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="XRNoNze+n8aSWXyqMDTQNj87krh3sru4pV+rPSXmVc4=" data-language="js"><span class="token keyword">var</span> theBigDay <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+theBigDay<span class="token punctuation">.</span><span class="token function">setUTCMilliseconds</span><span class="token punctuation">(</span><span class="token number">500</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div></div></section><h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://tc39.es/ecma262/multipage/numbers-and-dates.html#sec-date.prototype.setutcmilliseconds">ECMAScript Language Specification <br><small># sec-date.prototype.setutcmilliseconds</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="getutcmilliseconds"><code>Date.prototype.getUTCMilliseconds()</code></a></li> <li><a href="setmilliseconds"><code>Date.prototype.setMilliseconds()</code></a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Date/setUTCMilliseconds" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Date/setUTCMilliseconds</a>
+  </p>
+</div>

@@ -1,0 +1,154 @@
+<header><h1>&lt;tbody&gt;: 표 본문 요소</h1></header><div class="section-content"><p><strong>HTML</strong> <code>&lt;tbody&gt;</code> 요소는 표의 여러 행(<a href="tr"><code>&lt;tr&gt;</code></a>)을 묶어서 표 본문을 구성합니다.</p></div>
+<h2 id="시도해보기">시도해보기</h2>
+<div class="section-content">
+<iframe class="interactive is-tabbed-taller-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/tabbed/tbody.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe>  <p><code>&lt;tbody&gt;</code> 요소와 그 사촌인 <a href="thead"><code>&lt;thead&gt;</code></a>, <a href="tfoot"><code>&lt;tfoot&gt;</code></a> 요소는 화면과 프린터에 렌더링 할 때 뿐만 아니라 <a href="https://developer.mozilla.org/ko/docs/Glossary/Accessibility">접근성</a> 차원에서도 유용한 의미를 표의 행에 부여합니다.</p> <figure class="table-container"><div class="_table"><table class="properties"> <tbody> <tr> <th scope="row"><a href="../content_categories">콘텐츠 카테고리</a></th> <td>없음.</td> </tr> <tr> <th scope="row">가능한 콘텐츠</th> <td>0개 이상의 <a href="tr"><code>&lt;tr&gt;</code></a> 요소.</td> </tr> <tr> <th scope="row">태그 생략</th> <td> <code>&lt;tbody&gt;</code> 요소는 부모 <a href="table"><code>&lt;table&gt;</code></a> 요소의 렌더링에 반드시 필요한 요소는 아닙니다. 그러나 <code>&lt;table&gt;</code> 요소의 자식 중 <a href="tr"><code>&lt;tr&gt;</code></a> 요소가 존재하면 사용할 수 없습니다. </td> </tr> <tr> <th scope="row">가능한 부모 요소</th> <td> <a href="table"><code>&lt;table&gt;</code></a> 요소. <a href="caption"><code>&lt;caption&gt;</code></a>, <a href="colgroup"><code>&lt;colgroup&gt;</code></a>, <a href="thead"><code>&lt;thead&gt;</code></a> 요소가 존재하는 경우, 그 뒤에 위치할 수 있습니다. </td> </tr> <tr> <th scope="row">가능한 ARIA 역할</th> <td>모두</td> </tr> <tr> <th scope="row">DOM 인터페이스</th> <td><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLTableSectionElement"><code>HTMLTableSectionElement</code> <small>(en-US)</small></a></td> </tr> </tbody> </table></div></figure>
+</div>
+<h2 id="특성">특성</h2>
+<div class="section-content">
+<p>이 요소는 <a href="../global_attributes">전역 특성</a>만 포함합니다.</p> </div>
+<h2 id="사용_일람">사용 일람</h2>
+<div class="section-content"><ul> <li>표의 헤더 행을 나타내기 위해 <a href="thead"><code>&lt;thead&gt;</code></a> 요소를 사용한 경우, <code>&lt;tbody&gt;</code> 요소는 반드시 그 뒤에 위치해야 합니다.</li> <li>
+<code>&lt;tbody&gt;</code>를 사용할 경우, <a href="table"><code>&lt;table&gt;</code></a>의 바로 밑 자식이면서 <code>&lt;tbody&gt;</code>에 속하지 않는 <a href="tr"><code>&lt;tr&gt;</code></a> 요소는 사용할 수 없습니다. 모든 비 헤더, 비 푸터 행은 반드시 <code>&lt;tbody&gt;</code>의 자식으로 존재해야 합니다.</li> <li>문서 출력 시, <code>&lt;thead&gt;</code>와 <a href="tfoot"><code>&lt;tfoot&gt;</code></a> 요소는 모든 페이지에서 같거나 거의 같은 정보를 나타내고, <code>&lt;tbody&gt;</code> 요소는 서로 다른 정보를 나타냅니다.</li> <li>표를 화면 맥락(브라우저 창 등)에서 표시할 때, 화면이 표 전체를 보여주기에 충분히 크지 않은 경우 <a href="https://developer.mozilla.org/ko/docs/Glossary/User_agent">사용자 에이전트</a>는 같은 부모의 <code>&lt;thead&gt;</code>, <code>&lt;tbody&gt;</code>, <code>&lt;tfoot&gt;</code>, <a href="caption"><code>&lt;caption&gt;</code></a> 요소를 서로 따로 스크롤 가능토록 설정할 수 있습니다.</li> <li>하나의 표에 다수의 <code>&lt;tbody&gt;</code>를 연속적으로 사용할 수 있으며, 이를 통해 커다란 표의 행을 구획으로 나눌 수 있습니다. 필요한 경우 각 구획에 서로 다른 서식을 적용할 수도 있습니다.</li> </ul></div>
+<h2 id="예제">예제</h2>
+<div class="section-content"><p>다음은 <code>&lt;tbody&gt;</code> 요소 사용법을 보이는 예제입니다. 더 많은 예제는 <a href="table#%EC%98%88%EC%A0%9C"><code>&lt;table&gt;</code></a>에서도 볼 수 있습니다.</p></div>
+<h3 id="기본_예제">기본 예제</h3>
+<div class="section-content">
+<p>이번 예제는 <a href="thead"><code>&lt;thead&gt;</code></a>와 <a href="tbody" aria-current="page"><code>&lt;tbody&gt;</code></a>를 사용해 학생 그룹의 정보를 나열하는 표를 생성합니다.</p> <h4 id="html">HTML</h4> <p>표의 HTML은 다음과 같습니다. 학생의 정보를 나타내는 표 본문 칸이 모두 하나의 <code>&lt;tbody&gt;</code> 요소에 속함에 주의하세요.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="qFb0zN6juxeSZ2o/sDmYvfb7FbHUv+0lqI4l3lTs988=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>table</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>thead</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>tr</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>th</span><span class="token punctuation">&gt;</span></span>Student ID<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>th</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>th</span><span class="token punctuation">&gt;</span></span>Name<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>th</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>th</span><span class="token punctuation">&gt;</span></span>Major<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>th</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>tr</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>thead</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>tbody</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>tr</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>td</span><span class="token punctuation">&gt;</span></span>3741255<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>td</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>td</span><span class="token punctuation">&gt;</span></span>Jones, Martha<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>td</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>td</span><span class="token punctuation">&gt;</span></span>Computer Science<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>td</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>tr</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>tr</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>td</span><span class="token punctuation">&gt;</span></span>3971244<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>td</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>td</span><span class="token punctuation">&gt;</span></span>Nim, Victor<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>td</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>td</span><span class="token punctuation">&gt;</span></span>Russian Literature<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>td</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>tr</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>tr</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>td</span><span class="token punctuation">&gt;</span></span>4100332<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>td</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>td</span><span class="token punctuation">&gt;</span></span>Petrov, Alexandra<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>td</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>td</span><span class="token punctuation">&gt;</span></span>Astrophysics<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>td</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>tr</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>tbody</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>table</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div> <h4 id="css">CSS</h4> <p>다음은 표에 적용할 CSS 스타일입니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="6q3dU69fdnra8KQA5Ca5M37AiIjRNIIFbYqDaRhPAf0=" data-language="css"><span class="token selector">table</span> <span class="token punctuation">{</span>
+  <span class="token property">border</span><span class="token punctuation">:</span> 2px solid #555<span class="token punctuation">;</span>
+  <span class="token property">border-collapse</span><span class="token punctuation">:</span> collapse<span class="token punctuation">;</span>
+  <span class="token property">font</span><span class="token punctuation">:</span> 16px <span class="token string">"Lucida Grande"</span><span class="token punctuation">,</span> <span class="token string">"Helvetica"</span><span class="token punctuation">,</span> <span class="token string">"Arial"</span><span class="token punctuation">,</span> sans-serif<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div> <p>우선 표의 전반적인 스타일을 설정합니다.외부 테두리의 굵기, 스타일, 색을 설정하고, <a href="https://developer.mozilla.org/ko/docs/Web/CSS/border-collapse"><code>border-collapse</code></a>를 이용해 각 칸의 테두리가 서로 분리되지 않고 공유하도록 지정합니다. <a href="https://developer.mozilla.org/ko/docs/Web/CSS/font"><code>font</code></a>를 사용해 표의 기본 글씨체도 설정합니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="KYUg9Cxr7bTvtAN4WO2mpwu5l00Ofp1srcLJ/r2Tk98=" data-language="css"><span class="token selector">th, td</span> <span class="token punctuation">{</span>
+  <span class="token property">border</span><span class="token punctuation">:</span> 1px solid #bbb<span class="token punctuation">;</span>
+  <span class="token property">padding</span><span class="token punctuation">:</span> 2px 8px 0<span class="token punctuation">;</span>
+  <span class="token property">text-align</span><span class="token punctuation">:</span> left<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div> <p>그 다음은 대부분의 칸에 적용할 스타일입니다. 1픽셀 두께의 밝은 회색 테두리를 추가하고 안쪽 여백을 조정하며, <a href="https://developer.mozilla.org/ko/docs/Web/CSS/text-align"><code>text-align</code></a>을 사용해 모두 좌측 정렬로 설정합니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="pTll3YqtLNvZflvBqdRZekXMNmjPmrI9ZcSxrc+jqCY=" data-language="css"><span class="token selector">thead &gt; tr &gt; th</span> <span class="token punctuation">{</span>
+  <span class="token property">background-color</span><span class="token punctuation">:</span> #cce<span class="token punctuation">;</span>
+  <span class="token property">font-size</span><span class="token punctuation">:</span> 18px<span class="token punctuation">;</span>
+  <span class="token property">border-bottom</span><span class="token punctuation">:</span> 2px solid #999<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div> <p>마지막으로 <a href="thead"><code>&lt;thead&gt;</code></a> 안에 위치하는 헤더 칸에 추가 스타일을 부여합니다. 보다 어두운 <a href="https://developer.mozilla.org/ko/docs/Web/CSS/background-color"><code>background-color</code></a>, 더 큰 글씨 크기, 그리고 다른 테두리보다 두껍고 어두운 아래쪽 테두리를 적용합니다.</p> <h4 id="결과">결과</h4> <p>결과는 다음과 같습니다.</p>
+<div class="code-example" id="sect3">
+
+<iframe class="sample-code-frame" title="기본 예제 sample" id="frame_기본_예제" width="650" height="150" src="https://live.mdnplay.dev/ko/docs/Web/HTML/Element/tbody/runner.html?id=%EA%B8%B0%EB%B3%B8_%EC%98%88%EC%A0%9C" loading="lazy"></iframe>
+</div>
+</div>
+<h3 id="다중_본문">다중 본문</h3>
+<div class="section-content">
+<p>You can create multiple sections within a table by using multiple <code>&lt;tbody&gt;</code> elements. Each may potentially have its own header row or rows; however, <em>there can be only one <a href="thead"><code>&lt;thead&gt;</code></a> per table!</em> Because of that, you need to use a <a href="tr"><code>&lt;tr&gt;</code></a> filled with <a href="th"><code>&lt;th&gt;</code></a> elements to create headers within each <code>&lt;tbody&gt;</code>. Let's see how that's done.</p> <p>Let's take the previous example, add some more students to the list, and update the table so that instead of listing each student's major on every row, the students are grouped by major, with heading rows for each major.</p> <h4 id="result">Result</h4> <p>First, the resulting table, so you know what we're building:</p>
+<div class="code-example" id="sect4">
+
+<iframe class="sample-code-frame" title="다중 본문 sample" id="frame_다중_본문" width="650" height="250" src="https://live.mdnplay.dev/ko/docs/Web/HTML/Element/tbody/runner.html?id=%EB%8B%A4%EC%A4%91_%EB%B3%B8%EB%AC%B8" loading="lazy"></iframe>
+</div> <h4 id="html_2">HTML</h4> <p>The revised HTML looks like this:</p> <div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="zxZQjptYuUSiwymia6bCfo3SO7/IOIBbqyJccBvLYY4=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>table</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>thead</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>tr</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>th</span><span class="token punctuation">&gt;</span></span>Student ID<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>th</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>th</span><span class="token punctuation">&gt;</span></span>Name<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>th</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>tr</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>thead</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>tbody</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>tr</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>th</span> <span class="token attr-name">colspan</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>2<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Computer Science<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>th</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>tr</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>tr</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>td</span><span class="token punctuation">&gt;</span></span>3741255<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>td</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>td</span><span class="token punctuation">&gt;</span></span>Jones, Martha<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>td</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>tr</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>tr</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>td</span><span class="token punctuation">&gt;</span></span>4077830<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>td</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>td</span><span class="token punctuation">&gt;</span></span>Pierce, Benjamin<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>td</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>tr</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>tr</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>td</span><span class="token punctuation">&gt;</span></span>5151701<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>td</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>td</span><span class="token punctuation">&gt;</span></span>Kirk, James<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>td</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>tr</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>tbody</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>tbody</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>tr</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>th</span> <span class="token attr-name">colspan</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>2<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Russian Literature<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>th</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>tr</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>tr</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>td</span><span class="token punctuation">&gt;</span></span>3971244<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>td</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>td</span><span class="token punctuation">&gt;</span></span>Nim, Victor<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>td</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>tr</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>tbody</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>tbody</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>tr</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>th</span> <span class="token attr-name">colspan</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>2<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Astrophysics<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>th</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>tr</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>tr</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>td</span><span class="token punctuation">&gt;</span></span>4100332<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>td</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>td</span><span class="token punctuation">&gt;</span></span>Petrov, Alexandra<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>td</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>tr</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>tr</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>td</span><span class="token punctuation">&gt;</span></span>8892377<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>td</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>td</span><span class="token punctuation">&gt;</span></span>Toyota, Hiroko<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>td</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>tr</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>tbody</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>table</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div> <p>Notice that each major is placed in a separate <code>&lt;tbody&gt;</code> block, the first row of which contains a single <a href="th"><code>&lt;th&gt;</code></a> element with a <a href="th#attr-colspan"><code>colspan</code></a> attribute that spans the entire width of the table. That heading lists the name of the major contained within the <code>&lt;tbody&gt;</code>.</p> <p>Then each remaining row in each major's <code>&lt;tbody&gt;</code> consists of two cells: the first for the student's ID and the second for their name.</p> <h4 id="css_2">CSS</h4>  <p>Most of the CSS is unchanged. We do, however, add a slightly more subtle style for header cells contained directly within a <code>&lt;tbody&gt;</code> (as opposed to those which reside in a <a href="thead"><code>&lt;thead&gt;</code></a>). This is used for the headers indicating each table section's corresponding major.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="qU/Xb0tdpYOyX1Zq/gc47rXCnzuRxf9bwtwB8PZJ1cU=" data-language="css"><span class="token selector">tbody &gt; tr &gt; th</span> <span class="token punctuation">{</span>
+  <span class="token property">background-color</span><span class="token punctuation">:</span> #dde<span class="token punctuation">;</span>
+  <span class="token property">border-bottom</span><span class="token punctuation">:</span> 1.5px solid #bbb<span class="token punctuation">;</span>
+  <span class="token property">font-weight</span><span class="token punctuation">:</span> normal<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div>
+</div>
+<h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://html.spec.whatwg.org/multipage/tables.html#the-tbody-element">HTML Standard <br><small># the-tbody-element</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li>CSS properties and <a href="https://developer.mozilla.org/ko/docs/Web/CSS/Pseudo-classes">pseudo-classes</a> that may be specially useful to style the <code>&lt;tbody&gt;</code> element: <ul> <li>the <a href="https://developer.mozilla.org/ko/docs/Web/CSS/:nth-child"><code>:nth-child</code></a> pseudo-class to set the alignment on the cells of the column;</li> <li>the <a href="https://developer.mozilla.org/ko/docs/Web/CSS/text-align"><code>text-align</code></a> property to align all cells content on the same character, like '.'.</li> </ul> </li> </ul></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/HTML/Element/tbody" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/HTML/Element/tbody</a>
+  </p>
+</div>

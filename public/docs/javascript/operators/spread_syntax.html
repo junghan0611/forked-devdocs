@@ -1,0 +1,181 @@
+<header><h1>전개 구문</h1></header><div class="section-content"><p><strong>전개 구문</strong>을 사용하면 배열이나 문자열과 같이 반복 가능한 문자를 0개 이상의 인수 (함수로 호출할 경우) 또는 요소 (배열 리터럴의 경우)로 확장하여, 0개 이상의 키-값의 쌍으로 객체로 확장시킬 수 있습니다.</p></div>
+<section aria-labelledby="시도해보기"><h2 id="시도해보기">시도해보기</h2>
+<div class="section-content"><iframe class="interactive is-js-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/js/expressions-spreadsyntax.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe></div></section><section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content">
+<p>함수 호출:</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="XDx6XOl+my4a84wrUmVjlVkQO93mXiQKqDKRBYxLsXc=" data-language="js">    <span class="token function">myFunction</span><span class="token punctuation">(</span><span class="token operator">...</span>iterableObj<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div> <p>배열 리터럴과 문자열:</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="V+h5dnOsjZ9dCLfzzmJwGr68k1AOVh0RUqCTtPjcx1A=" data-language="js">    <span class="token punctuation">[</span><span class="token operator">...</span>iterableObj<span class="token punctuation">,</span> <span class="token string">'4'</span><span class="token punctuation">,</span> <span class="token string">'five'</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+</pre>
+</div> <p>객체 리터럴(ECMAScript 2018에서 추가):</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="lLiudvrUlvofFsVbgy1gO7q1LoPMFzUkVt+dxA7mZbs=" data-language="js">    <span class="token keyword">let</span> objClone <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token operator">...</span>obj <span class="token punctuation">}</span><span class="token punctuation">;</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+</section><section aria-labelledby="함수_호출에서의_전개"><h3 id="함수_호출에서의_전개">함수 호출에서의 전개</h3>
+<div class="section-content">
+<h4 id="apply_대체">
+<code>apply()</code> 대체</h4> <p>일반적으로 배열의 엘리먼트를 함수의 인수로 사용하고자 할 때 <a href="../global_objects/function/apply"><code>Function.prototype.apply()</code></a> 를 사용하였습니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="npP7Hka/7onB3jXetPmTDZx/DRa/zdcvEyApUNWqY14=" data-language="js"><span class="token keyword">function</span> <span class="token function">myFunction</span><span class="token punctuation">(</span><span class="token parameter">x<span class="token punctuation">,</span> y<span class="token punctuation">,</span> z</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token punctuation">}</span>
+<span class="token keyword">var</span> args <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token function">myFunction</span><span class="token punctuation">.</span><span class="token function">apply</span><span class="token punctuation">(</span><span class="token keyword">null</span><span class="token punctuation">,</span> args<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div> <p>전개 구문을 사용해 위 코드는 다음과 같이 작성될 수 있습니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="qdE82Vmz5M5ioiNG2oqyXJpsBpYNGZmCKhqGUnHaMTw=" data-language="js"><span class="token keyword">function</span> <span class="token function">myFunction</span><span class="token punctuation">(</span><span class="token parameter">x<span class="token punctuation">,</span> y<span class="token punctuation">,</span> z</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token punctuation">}</span>
+<span class="token keyword">var</span> args <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token function">myFunction</span><span class="token punctuation">(</span><span class="token operator">...</span>args<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div> <p>인수 목록의 모든 인수는 전개 구문을 사용할 수 있으며, 여러번 사용될 수도 있습니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="wiUvmdDqbK+FSBEQUjN4w8WD73VXutgZAuFOEszh+/A=" data-language="js"><span class="token keyword">function</span> <span class="token function">myFunction</span><span class="token punctuation">(</span><span class="token parameter">v<span class="token punctuation">,</span> w<span class="token punctuation">,</span> x<span class="token punctuation">,</span> y<span class="token punctuation">,</span> z</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token punctuation">}</span>
+<span class="token keyword">var</span> args <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token function">myFunction</span><span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token operator">...</span>args<span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token operator">...</span><span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div> <h4 id="new에_적용">
+<code>new</code>에 적용</h4> <p><a href="new"><code>new</code></a>를 사용해 생성자를 호출 할 때, 배열과 <code>apply</code> (<code>apply</code> 는 <code>[[Call]]</code> 을 하지만 <code>[[Construct]]</code> 는 그렇지 않음) 를 <strong>직접</strong> 사용하는 것은 불가했습니다. 하지만, 전개 구문 덕분에 배열을 <code>new</code> 와 함께 쉽게 사용될 수 있습니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="g+4VroA/Mauvphr2/j5iBZgEa3ff0WSkFL2fqs8J/E4=" data-language="js"><span class="token keyword">var</span> dateFields <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1970</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>  <span class="token comment">// 1 Jan 1970</span>
+<span class="token keyword">var</span> d <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token operator">...</span>dateFields<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div> <p>전개 구문 없이 파라미터의 배열과 함께 <code>new</code>를 사용하려면, 부분적인 어플리케이션을 통해 <strong>간접적</strong>으로 해야 합니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="iRoBWDIPX1MzW+l7tkShifNdN4xaHVKlovz23nnnmOc=" data-language="js"><span class="token keyword">function</span> <span class="token function">applyAndNew</span><span class="token punctuation">(</span><span class="token parameter">constructor<span class="token punctuation">,</span> args</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+   <span class="token keyword">function</span> <span class="token function">partial</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">return</span> <span class="token function">constructor</span><span class="token punctuation">.</span><span class="token function">apply</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">,</span> args<span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="token punctuation">}</span><span class="token punctuation">;</span>
+   <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">typeof</span> constructor<span class="token punctuation">.</span>prototype <span class="token operator">===</span> <span class="token string">"object"</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      partial<span class="token punctuation">.</span>prototype <span class="token operator">=</span> Object<span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span>constructor<span class="token punctuation">.</span>prototype<span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="token punctuation">}</span>
+   <span class="token keyword">return</span> partial<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+
+<span class="token keyword">function</span> <span class="token function">myConstructor</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+   console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"arguments.length: "</span> <span class="token operator">+</span> arguments<span class="token punctuation">.</span>length<span class="token punctuation">)</span><span class="token punctuation">;</span>
+   console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>arguments<span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="token keyword">this</span><span class="token punctuation">.</span>prop1<span class="token operator">=</span><span class="token string">"val1"</span><span class="token punctuation">;</span>
+   <span class="token keyword">this</span><span class="token punctuation">.</span>prop2<span class="token operator">=</span><span class="token string">"val2"</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">var</span> myArguments <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">"hi"</span><span class="token punctuation">,</span> <span class="token string">"how"</span><span class="token punctuation">,</span> <span class="token string">"are"</span><span class="token punctuation">,</span> <span class="token string">"you"</span><span class="token punctuation">,</span> <span class="token string">"mr"</span><span class="token punctuation">,</span> <span class="token keyword">null</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> myConstructorWithArguments <span class="token operator">=</span> <span class="token function">applyAndNew</span><span class="token punctuation">(</span>myConstructor<span class="token punctuation">,</span> myArguments<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">myConstructorWithArguments</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// (internal log of myConstructor):           arguments.length: 6</span>
+<span class="token comment">// (internal log of myConstructor):           ["hi", "how", "are", "you", "mr", null]</span>
+<span class="token comment">// (log of "new myConstructorWithArguments"): {prop1: "val1", prop2: "val2"}</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="배열_리터럴에서의_전개"><h3 id="배열_리터럴에서의_전개">배열 리터럴에서의 전개</h3>
+<div class="section-content">
+<h4 id="더_강력한_배열_리터럴">더 강력한 배열 리터럴</h4> <p>전개 구문 없이, 이미 존재하는 배열을 일부로 하는 새로운 배열을 생성하기에, 배열 리터럴 문법은 더 이상 충분하지 않으며 <a href="../global_objects/array/push"><code>push()</code></a>, <a href="../global_objects/array/splice"><code>splice()</code></a>, <a href="../global_objects/array/concat"><code>concat()</code></a> 등의 조합을 사용하는 대신 명령형 코드를 사용해야 했습니다. 전개 구문으로 이는 훨씬 더 간결해졌습니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="/QjAX13ThdAZvt4UW2rea8Vl9kOiJIkih6LCFbHF8Tw=" data-language="js"><span class="token keyword">var</span> parts <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'shoulders'</span><span class="token punctuation">,</span> <span class="token string">'knees'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> lyrics <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'head'</span><span class="token punctuation">,</span> <span class="token operator">...</span>parts<span class="token punctuation">,</span> <span class="token string">'and'</span><span class="token punctuation">,</span> <span class="token string">'toes'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token comment">// ["head", "shoulders", "knees", "and", "toes"]</span>
+</pre>
+</div> <p>인수 목록을 위한 spread 처럼, <code>...</code> 은 배열 리터럴의 어디에서든 사용될 수 있으며 여러번 사용될 수도 있습니다.</p> <h4 id="배열_복사">배열 복사</h4> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="3j8YyQ+HVGTjpspoezLkFki/Hbj54PBc2OBkgXQxtgs=" data-language="js"><span class="token keyword">var</span> arr <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> arr2 <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token operator">...</span>arr<span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment">// arr.slice() 와 유사</span>
+arr2<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// arr2 은 [1, 2, 3, 4] 이 됨</span>
+<span class="token comment">// arr 은 영향을 받지 않고 남아 있음</span>
+</pre>
+</div> <div class="notecard note" id="sect1"> <p><strong>참고:</strong> Spread 문법은 배열을 복사할 때 1 레벨 깊이에서 효과적으로 동작합니다. 그러므로, 다음 예제와 같이 다차원 배열을 복사하는것에는 적합하지 않을 수 있습니다. (<a href="../global_objects/object/assign"><code>Object.assign()</code></a> 과 전개 구문이 동일합니다)</p> </div> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="VWscwbeL6Zm59JDEFlQb5b2nqH1O8/W253W5yjBUJW4=" data-language="js"><span class="token keyword">var</span> a <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> b <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token operator">...</span>a<span class="token punctuation">]</span><span class="token punctuation">;</span>
+b<span class="token punctuation">.</span><span class="token function">shift</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">shift</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 1</span>
+<span class="token comment">// 이제 배열 a 도 영향을 받음: [[], [2], [3]]</span>
+</pre>
+</div> <h4 id="배열을_연결하는_더_나은_방법">배열을 연결하는 더 나은 방법</h4> <p><a href="../global_objects/array/concat"><code>Array.prototype.concat()</code></a> 은 배열을 존재하는 배열의 끝에 이어붙이는데 종종 사용됩니다. 전개 구문 없이, 이는 다음과 같이 작성됩니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="BtM70xGjH45OCS7yQ3Az22ksdaNjSVfkWCWXWEXozjU=" data-language="js"><span class="token keyword">var</span> arr1 <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> arr2 <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token comment">// arr2 의 모든 항목을 arr1 에 붙임</span>
+arr1 <span class="token operator">=</span> arr1<span class="token punctuation">.</span><span class="token function">concat</span><span class="token punctuation">(</span>arr2<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div> <p>전개 구문을 사용해 이는 다음과 같아집니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="dQ4AXaZwmR4AnjkbUhfNe5hcIvby1aHaRy87EsBJ4sY=" data-language="js"><span class="token keyword">var</span> arr1 <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> arr2 <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+arr1 <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token operator">...</span>arr1<span class="token punctuation">,</span> <span class="token operator">...</span>arr2<span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment">// arr1 은 이제 [0, 1, 2, 3, 4, 5]</span>
+</pre>
+</div> <p><a href="../global_objects/array/unshift"><code>Array.prototype.unshift()</code></a>는 존재하는 배열의 시작 지점에 배열의 값들을 삽입하는데 종종 사용됩니다. 전개 구문 없이, 이는 다음과 같이 작성됩니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="AqsE0aHUJZz9f5RLjGyemKvcqWkdlYTSShrGc/K5zjo=" data-language="js"><span class="token keyword">var</span> arr1 <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> arr2 <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token comment">// arr2 의 모든 항목을 arr1 의 앞에 붙임</span>
+<span class="token class-name">Array</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function">unshift</span><span class="token punctuation">.</span><span class="token function">apply</span><span class="token punctuation">(</span>arr1<span class="token punctuation">,</span> arr2<span class="token punctuation">)</span> <span class="token comment">// arr1 은 이제 [3, 4, 5, 0, 1, 2] 가 됨</span>
+</pre>
+</div> <p>전개 구문으로, 이는 다음과 같아집니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="RLxIHa5lu2cVR6OLZ/54n1wr/lW8diaqaDMpTY17zU4=" data-language="js"><span class="token keyword">var</span> arr1 <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> arr2 <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+arr1 <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token operator">...</span>arr2<span class="token punctuation">,</span> <span class="token operator">...</span>arr1<span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment">// arr1 은 이제 [3, 4, 5, 0, 1, 2] 가 됨</span>
+</pre>
+</div> <div class="note notecard" id="sect2"> <p><strong>참고</strong>: <code>unshift()</code>와 달리, 위 예제는 새로운 <code>arr1</code>을 만들며 기존 배열을 변형하지 않습니다.</p> </div>
+</div></section><section aria-labelledby="객체_리터럴에서의_전개"><h3 id="객체_리터럴에서의_전개">객체 리터럴에서의 전개</h3>
+<div class="section-content">
+<p><a href="https://github.com/tc39/proposal-object-rest-spread" target="_blank">ECMAScript의 Rest/Spread 프로퍼티</a> 제안 (stage 4) 은 <a href="object_initializer">객체 리터럴</a>에 속성 전개를 추가합니다. 이는 제공된 객체가 소유한 열거형 프로퍼티를 새로운 객체로 복사합니다.</p> <p>얕은 복제(prototype 제외) 또는 객체의 병합은 이제 <a href="../global_objects/object/assign"><code>Object.assign()</code></a> 보다 더 짧은 문법을 사용해 가능합니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="sZSjIV1HYWzs/kUY7KLcxOsuQPjmG8Xi8xpaioX+Kmw=" data-language="js"><span class="token keyword">var</span> obj1 <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token literal-property property">foo</span><span class="token operator">:</span> <span class="token string">'bar'</span><span class="token punctuation">,</span> <span class="token literal-property property">x</span><span class="token operator">:</span> <span class="token number">42</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> obj2 <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token literal-property property">foo</span><span class="token operator">:</span> <span class="token string">'baz'</span><span class="token punctuation">,</span> <span class="token literal-property property">y</span><span class="token operator">:</span> <span class="token number">13</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">var</span> clonedObj <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token operator">...</span>obj1 <span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token comment">// Object { foo: "bar", x: 42 }</span>
+
+<span class="token keyword">var</span> mergedObj <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token operator">...</span>obj1<span class="token punctuation">,</span> <span class="token operator">...</span>obj2 <span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token comment">// Object { foo: "baz", x: 42, y: 13 }</span>
+</pre>
+</div> <p><a href="../global_objects/object/assign"><code>Object.assign()</code></a> 은 <a href="../functions/set">setters</a> 를 트리거하지만 전개 구문은 그렇지 않음을 유의합니다.</p> <p><a href="../global_objects/object/assign"><code>Object.assign()</code></a> 함수를 대체하거나 흉내낼 수 없음을 유의합니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="I5UtZtTIaoirQnXWoM2fkkMlaPY0k4cvbzT+Zi2FfBY=" data-language="js">    <span class="token keyword">var</span> obj1 <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token literal-property property">foo</span><span class="token operator">:</span> <span class="token string">'bar'</span><span class="token punctuation">,</span> <span class="token literal-property property">x</span><span class="token operator">:</span> <span class="token number">42</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
+    <span class="token keyword">var</span> obj2 <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token literal-property property">foo</span><span class="token operator">:</span> <span class="token string">'baz'</span><span class="token punctuation">,</span> <span class="token literal-property property">y</span><span class="token operator">:</span> <span class="token number">13</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
+    <span class="token keyword">const</span> <span class="token function-variable function">merge</span> <span class="token operator">=</span> <span class="token punctuation">(</span> <span class="token parameter"><span class="token operator">...</span>objects</span> <span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">(</span> <span class="token punctuation">{</span> <span class="token operator">...</span>objects <span class="token punctuation">}</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">var</span> mergedObj <span class="token operator">=</span> <span class="token function">merge</span> <span class="token punctuation">(</span> obj1<span class="token punctuation">,</span> obj2<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// Object { 0: { foo: 'bar', x: 42 }, 1: { foo: 'baz', y: 13 } }</span>
+
+    <span class="token keyword">var</span> mergedObj <span class="token operator">=</span> <span class="token function">merge</span> <span class="token punctuation">(</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span> obj1<span class="token punctuation">,</span> obj2<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// Object { 0: {}, 1: { foo: 'bar', x: 42 }, 2: { foo: 'baz', y: 13 } }</span>
+</pre>
+</div> <p>위 예제에서, 전개 구문은 예상대로 동작하지 않습니다. 나머지 매개변수로 인해, 인수 배열을 객체 리터럴로 전개합니다.</p>
+</div></section><section aria-labelledby="이터러블_전용"><h3 id="이터러블_전용">이터러블 전용</h3>
+<div class="section-content">
+<p>전개 구문 (spread 프로퍼티인 경우 제외) 은 <a href="../global_objects/symbol/iterator">iterable</a> 객체에만 적용됩니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="/HcpOrRngxfN+1KJa8s6JcDgXt6ttg77DVVmo4fQTrs=" data-language="js"><span class="token keyword">var</span> obj <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string-property property">'key1'</span><span class="token operator">:</span> <span class="token string">'value1'</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> array <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token operator">...</span>obj<span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment">// TypeError: obj is not iterable</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="많은_값과_spread"><h3 id="많은_값과_spread">많은 값과 Spread</h3>
+<div class="section-content"><p>함수 호출에서 spread 문법을 사용할 때, 자바스크립트 엔진의 인수 길이 제한을 초과하지 않도록 주의합니다. 자세한 내용은 <a href="../global_objects/function/apply"><code>apply()</code></a> 를 보세요.</p></div></section><section aria-labelledby="나머지_구문_매개변수"><h2 id="나머지_구문_매개변수">나머지 구문 (매개변수)</h2>
+<div class="section-content"><p>나머지 구문은 전개 구문과 정확히 같아보이지만, 대신 배열이나 객체를 분해할 때 사용됩니다. 어떤 면에서, 나머지 구문은 전개 구문과 반대입니다. 전개는 배열을 그 엘리먼트로 '확장' 하는 반면, 나머지는 여러 엘리먼트를 수집하며 이를 하나의 엘리먼트로 '압축' 합니다. <a href="../functions/rest_parameters">나머지 매개변수</a> 문서를 보세요.</p></div></section><h2 id="명세서">명세서</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody>
+<tr><td><a href="https://tc39.es/ecma262/multipage/ecmascript-language-expressions.html#prod-SpreadElement">ECMAScript Language Specification <br><small># prod-SpreadElement</small></a></td></tr>
+<tr><td><a href="https://tc39.es/ecma262/multipage/ecmascript-language-expressions.html#prod-ArgumentList">ECMAScript Language Specification <br><small># prod-ArgumentList</small></a></td></tr>
+<tr><td><a href="https://tc39.es/ecma262/multipage/ecmascript-language-expressions.html#prod-PropertyDefinition">ECMAScript Language Specification <br><small># prod-PropertyDefinition</small></a></td></tr>
+</tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li>
+<a href="../functions/rest_parameters">나머지 매개변수</a> (또한 ‘<code>...</code>’)</li> <li>
+<a href="../global_objects/function/apply">fn.apply</a> (또한 ‘<code>...</code>’)</li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Operators/Spread_syntax" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Operators/Spread_syntax</a>
+  </p>
+</div>

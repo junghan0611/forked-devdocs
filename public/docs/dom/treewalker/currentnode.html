@@ -1,0 +1,35 @@
+<header><h1>TreeWalker.currentNode</h1></header><div class="section-content"><p><code>TreeWalker.currentNode</code> 속성은 <a href="../treewalker"><code>TreeWalker</code></a>가 현재 가리키고 있는 <a href="../node"><code>Node</code></a>를 나타낸다.</p></div>
+<h2 id="구문">구문</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="iQYQtpaEGpcMY7zpIHBNp21XHbcf1K2oUWUM4x1yzEk=" data-language="js">node <span class="token operator">=</span> treeWalker<span class="token punctuation">.</span>currentNode<span class="token punctuation">;</span>
+treeWalker<span class="token punctuation">.</span>currentNode <span class="token operator">=</span> node<span class="token punctuation">;</span>
+</pre>
+</div></div>
+<h2 id="예제">예제</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="pfRJOBSS8aG6cOyFc/pPgCN5Q3RLo46BfdrTOqS87jg=" data-language="js"><span class="token keyword">var</span> treeWalker <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">createTreeWalker</span><span class="token punctuation">(</span>
+    document<span class="token punctuation">.</span>body<span class="token punctuation">,</span>
+    NodeFilter<span class="token punctuation">.</span><span class="token constant">SHOW_ELEMENT</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span> <span class="token function-variable function">acceptNode</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">node</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> NodeFilter<span class="token punctuation">.</span><span class="token constant">FILTER_ACCEPT</span><span class="token punctuation">;</span> <span class="token punctuation">}</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token boolean">false</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+root <span class="token operator">=</span> treeWalker<span class="token punctuation">.</span>currentNode<span class="token punctuation">;</span> <span class="token comment">// 첫번째 엘리먼트인 루트 엘리먼트!</span>
+</pre>
+</div></div>
+<h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="#">DOM Standard <br><small># ref-for-dom-treewalker-currentnode①</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li>
+<a href="../treewalker"><code>TreeWalker</code></a> 인터페이스</li> </ul></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/TreeWalker/currentNode" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/TreeWalker/currentNode</a>
+  </p>
+</div>

@@ -1,0 +1,184 @@
+<header><h1>&lt;details&gt;</h1></header><div class="section-content">
+<p><code>&lt;details&gt;</code>는 "열림" 상태일 때만 내부 정보를 보여주는 정보 공개 위젯을 생성합니다. 요약이나 레이블은 <a href="summary"><code>&lt;summary&gt;</code></a> 요소를 통해 제공할 수 있습니다.</p> <p>정보 공개 위젯은 보통 레이블 옆의 작은 삼각형이 돌아가면서 열림/닫힘 상태를 나타냅니다. <code>&lt;details&gt;</code> 요소의 첫 번째 자식이 <code>&lt;summary&gt;</code> 요소라면, <code>&lt;summary&gt;</code>의 콘텐츠를 위젯의 레이블로 사용합니다.</p>
+</div>
+<h2 id="시도해보기">시도해보기</h2>
+<div class="section-content">
+<iframe class="interactive is-tabbed-shorter-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/tabbed/details.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe> <p>A <code>&lt;details&gt;</code> widget can be in one of two states. The default <em>closed</em> state displays only the triangle and the label inside <code>&lt;summary&gt;</code> (or a <a href="https://developer.mozilla.org/ko/docs/Glossary/User_agent">user agent</a>-defined default string if no <code>&lt;summary&gt;</code>).</p> <p>When the user clicks on the widget or focuses it then presses the space bar, it "twists" open, revealing its contents. The common use of a triangle which rotates or twists around to represent opening or closing the widget is why these are sometimes called "twisty".</p> <p>You can use CSS to style the disclosure widget, and you can programmatically open and close the widget by setting/removing its <a href="details#attr-open" aria-current="page"><code>open</code></a> attribute. Unfortunately, at this time there's no built-in way to animate the transition between open and closed.</p> <p>By default when closed, the widget is only tall enough to display the disclosure triangle and summary. When open, it expands to display the details contained within.</p> <p>Fully standards-compliant implementations automatically apply the CSS <code><a href="https://developer.mozilla.org/ko/docs/Web/CSS/display"><code>display</code></a>: list-item</code> to the <a href="summary"><code>&lt;summary&gt;</code></a> element. You can use this to customize its appearance further. See <a href="#customizing_the_disclosure_widget">Customizing the disclosure widget</a> for further details.</p> <figure class="table-container"><div class="_table"><table class="properties"> <tbody> <tr> <th scope="row"><a href="../content_categories">콘텐츠 카테고리</a></th> <td>플로우 콘텐츠, 구획 루트, 대화형 콘텐츠, 뚜렷한 콘텐츠.</td> </tr> <tr> <th scope="row">가능한 콘텐츠</th> <td>하나의 <a href="summary"><code>&lt;summary&gt;</code></a>와, 그 뒤의 플로우 콘텐츠.</td> </tr> <tr> <th scope="row">태그 생략</th> <td>불가능, 시작과 끝에 태그를 추가하는것은 필수입니다.</td> </tr> <tr> <th scope="row">가능한 부모 요소</th> <td>
+<a href="../content_categories#Flow_content">플로우 콘텐츠</a>를 허용하는 모든 요소.</td> </tr> <tr> <th scope="row">암시적 ARIA 역할</th> <td><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/group_role" class="only-in-en-us"><code>group</code> <small>(en-US)</small></a></td> </tr> <tr> <th scope="row">가능한 ARIA 역할</th> <td>없음</td> </tr> <tr> <th scope="row">DOM 인터페이스</th> <td><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLDetailsElement"><code>HTMLDetailsElement</code> <small>(en-US)</small></a></td> </tr> </tbody> </table></div></figure>
+</div>
+<h2 id="특성">특성</h2>
+<div class="section-content">
+<p>이 요소는 <a href="../global_attributes">전역 특성</a>을 포함합니다.</p> <dl> <dt id="open"><a id="attr-open" class="inline-block" href="#attr-open"><b><code>open</code></b></a></dt> <dd> <p>상세 정보, 즉 <code>&lt;details&gt;</code> 요소의 콘텐츠가 현재 보이는 상태인지 나타냅니다. 기본값 <code>false</code>는 정보가 보이지 않는다는 뜻입니다.</p> </dd> </dl>
+</div>
+<h2 id="이벤트">이벤트</h2>
+<div class="section-content">
+<p><code>&lt;details&gt;</code> 요소는 HTML 요소가 지원하는 일반적인 이벤트 외에도, <code>&lt;details&gt;</code> 요소의 상태가 열기와 닫기로 바뀔 때 발생하는 <code><a href="https://developer.mozilla.org/ko/docs/Web/Reference/Events/toggle" class="page-not-created">toggle</a></code> 이벤트도 지원합니다. 이벤트는 상태가 변한 후 발생하며, 브라우저에서 이벤트를 쏘기 전에 상태가 여러 번 바뀌는 경우 모두 통합하여 하나의 이벤트만 전송합니다.</p> <p><code>toggle</code> 이벤트 처리기를 부착해 위젯의 상태 변화를 감지할 수 있습니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="mYpgTMEHE+5yHvTHb3LMxk+QB9VawYAj3XRaz0m6GI8=" data-language="js">details<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">"toggle"</span><span class="token punctuation">,</span> <span class="token parameter">event</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>details<span class="token punctuation">.</span>open<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">/* the element was toggled open */</span>
+  <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+    <span class="token comment">/* the element was toggled closed */</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div>
+</div>
+<h2 id="예제">예제</h2>
+
+<h3 id="간단한_예제">간단한 예제</h3>
+<div class="section-content">
+<p>이번 예제는 요약 없는 <code>&lt;details&gt;</code> 요소를 보입니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="bcFbSkJ1ue6iGcDYnuKkgdmVHmMg4U9+HjrnS3KzipU=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>details</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>Requires a computer running an operating system. The computer
+  must have some memory and ideally some kind of long-term storage.
+  An input device as well as some form of output device is
+  recommended.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>details</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div> <p>이렇게 사용하는 경우, 브라우저는 기본 요약 문자열("상세", "세부정보" 등)을 사용합니다. 아래에서 직접 확인해보세요.</p>
+<div class="code-example" id="sect1">
+
+<iframe class="sample-code-frame" title="간단한 예제 sample" id="frame_간단한_예제" width="650" height="150" src="https://live.mdnplay.dev/ko/docs/Web/HTML/Element/details/runner.html?id=%EA%B0%84%EB%8B%A8%ED%95%9C_%EC%98%88%EC%A0%9C" loading="lazy"></iframe>
+</div>
+</div>
+<h3 id="요약_제공하기">요약 제공하기</h3>
+<div class="section-content">
+<p>이번 예제는 이전 코드에 <a href="summary"><code>&lt;summary&gt;</code></a> 요소를 추가합니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="MoXyYPEoG5TtW1BKK8lxWxQel1x1wd0oKVGwpCPYyR4=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>details</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>summary</span><span class="token punctuation">&gt;</span></span>System Requirements<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>summary</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>Requires a computer running an operating system. The computer
+  must have some memory and ideally some kind of long-term storage.
+  An input device as well as some form of output device is
+  recommended.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>details</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div> <p>결과는 다음과 같습니다.</p>
+<div class="code-example" id="sect2">
+
+<iframe class="sample-code-frame" title="요약 제공하기 sample" id="frame_요약_제공하기" width="650" height="150" src="https://live.mdnplay.dev/ko/docs/Web/HTML/Element/details/runner.html?id=%EC%9A%94%EC%95%BD_%EC%A0%9C%EA%B3%B5%ED%95%98%EA%B8%B0" loading="lazy"></iframe>
+</div>
+</div>
+<h3 id="열려있는_상태로_만들기">열려있는 상태로 만들기</h3>
+<div class="section-content">
+<p><code>&lt;details&gt;</code>가 처음부터 열려있는 상태로 나타나게 하려면 <code>open</code> 특성을 지정하세요.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="yx5Mf2GGnznXAZMRv6zUzKdVc3mHTscdpPH12zPc5M0=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>details</span> <span class="token attr-name">open</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>summary</span><span class="token punctuation">&gt;</span></span>System Requirements<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>summary</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>Requires a computer running an operating system. The computer
+  must have some memory and ideally some kind of long-term storage.
+  An input device as well as some form of output device is
+  recommended.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>details</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div> <p>결과는 다음과 같습니다.</p>
+<div class="code-example" id="sect3">
+
+<iframe class="sample-code-frame" title="열려있는 상태로 만들기 sample" id="frame_열려있는_상태로_만들기" width="650" height="150" src="https://live.mdnplay.dev/ko/docs/Web/HTML/Element/details/runner.html?id=%EC%97%B4%EB%A0%A4%EC%9E%88%EB%8A%94_%EC%83%81%ED%83%9C%EB%A1%9C_%EB%A7%8C%EB%93%A4%EA%B8%B0" loading="lazy"></iframe>
+</div>
+</div>
+<h3 id="외형_바꾸기">외형 바꾸기</h3>
+<div class="section-content">
+<p>이제 CSS를 추가해서 외형을 바꿔보겠습니다.</p> <h4 id="css">CSS</h4> <div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="y0d4s8i1aP0taq2+/ztxn7upRjxjeUDsAbU+62zvTZM=" data-language="css"><span class="token selector">details</span> <span class="token punctuation">{</span>
+  <span class="token property">font</span><span class="token punctuation">:</span> 16px <span class="token string">"Open Sans"</span><span class="token punctuation">,</span> Calibri<span class="token punctuation">,</span> sans-serif<span class="token punctuation">;</span>
+  <span class="token property">width</span><span class="token punctuation">:</span> 620px<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">details &gt; summary</span> <span class="token punctuation">{</span>
+  <span class="token property">padding</span><span class="token punctuation">:</span> 2px 6px<span class="token punctuation">;</span>
+  <span class="token property">width</span><span class="token punctuation">:</span> 15em<span class="token punctuation">;</span>
+  <span class="token property">background-color</span><span class="token punctuation">:</span> #ddd<span class="token punctuation">;</span>
+  <span class="token property">border</span><span class="token punctuation">:</span> none<span class="token punctuation">;</span>
+  <span class="token property">box-shadow</span><span class="token punctuation">:</span> 3px 3px 4px black<span class="token punctuation">;</span>
+  <span class="token property">cursor</span><span class="token punctuation">:</span> pointer<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">details &gt; p</span> <span class="token punctuation">{</span>
+  <span class="token property">border-radius</span><span class="token punctuation">:</span> 0 0 10px 10px<span class="token punctuation">;</span>
+  <span class="token property">background-color</span><span class="token punctuation">:</span> #ddd<span class="token punctuation">;</span>
+  <span class="token property">padding</span><span class="token punctuation">:</span> 2px 6px<span class="token punctuation">;</span>
+  <span class="token property">margin</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
+  <span class="token property">box-shadow</span><span class="token punctuation">:</span> 3px 3px 4px black<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div> <p>위의 CSS는 탭 인터페이스 같은 외형을 적용합니다.</p> <h4 id="html">HTML</h4> <div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="MoXyYPEoG5TtW1BKK8lxWxQel1x1wd0oKVGwpCPYyR4=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>details</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>summary</span><span class="token punctuation">&gt;</span></span>System Requirements<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>summary</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>Requires a computer running an operating system. The computer
+  must have some memory and ideally some kind of long-term storage.
+  An input device as well as some form of output device is
+  recommended.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>details</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div> <h4 id="결과">결과</h4>
+<div class="code-example" id="sect4">
+
+<iframe class="sample-code-frame" title="외형 바꾸기 sample" id="frame_외형_바꾸기" width="650" height="150" src="https://live.mdnplay.dev/ko/docs/Web/HTML/Element/details/runner.html?id=%EC%99%B8%ED%98%95_%EB%B0%94%EA%BE%B8%EA%B8%B0" loading="lazy"></iframe>
+</div>
+</div>
+<h3 id="위젯_바꾸기">위젯 바꾸기</h3>
+<div class="section-content">
+<p>넓게 지원되지는 않지만, 열림/닫힘을 나타내는 삼각형의 외형도 바꿀 수 있습니다. 요소의 표준화 과정 중 추가된 실험적 구현이기 때문에 브라우저의 지원에 차이가 있으므로, 당분간 여러 방식을 함께 사용해야 합니다.</p> <p><a href="summary"><code>&lt;summary&gt;</code></a> 요소는 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/list-style"><code>list-style</code> <small>(en-US)</small></a> 단축 속성과, 그 본디 속성인 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/list-style-type"><code>list-style-type</code> <small>(en-US)</small></a> 등을 지원하므로, <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/list-style-image"><code>list-style-image</code> <small>(en-US)</small></a> 속성 등을 사용해 삼각형을 원하는대로 바꿀 수 있습니다. 삼각형을 아예 제거하려면 <code>list-style: none</code>을 지정하면 됩니다.</p> <p>그러나 Chrome은 위의 방법을 아직 지원하지 않습니다. 따라서 비표준 <code>::-webkit-details-marker</code> <a href="https://developer.mozilla.org/ko/docs/Web/CSS/Pseudo-elements">의사 요소</a>를 사용해야 합니다.</p> <h4 id="css_2">CSS</h4> <div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="Ho/S0/79zE8U7L1cHcX6wXuXK1a2b2djfmDv8kM/y30=" data-language="css"><span class="token selector">details</span> <span class="token punctuation">{</span>
+  <span class="token property">font</span><span class="token punctuation">:</span> 16px <span class="token string">"Open Sans"</span><span class="token punctuation">,</span> Calibri<span class="token punctuation">,</span> sans-serif<span class="token punctuation">;</span>
+  <span class="token property">width</span><span class="token punctuation">:</span> 620px<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">details &gt; summary</span> <span class="token punctuation">{</span>
+  <span class="token property">padding</span><span class="token punctuation">:</span> 2px 6px<span class="token punctuation">;</span>
+  <span class="token property">width</span><span class="token punctuation">:</span> 15em<span class="token punctuation">;</span>
+  <span class="token property">background-color</span><span class="token punctuation">:</span> #ddd<span class="token punctuation">;</span>
+  <span class="token property">border</span><span class="token punctuation">:</span> none<span class="token punctuation">;</span>
+  <span class="token property">box-shadow</span><span class="token punctuation">:</span> 3px 3px 4px black<span class="token punctuation">;</span>
+  <span class="token property">cursor</span><span class="token punctuation">:</span> pointer<span class="token punctuation">;</span>
+  <span class="token property">list-style</span><span class="token punctuation">:</span> none<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">details &gt; summary::-webkit-details-marker</span> <span class="token punctuation">{</span>
+  <span class="token property">display</span><span class="token punctuation">:</span> none<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">details &gt; p</span> <span class="token punctuation">{</span>
+  <span class="token property">border-radius</span><span class="token punctuation">:</span> 0 0 10px 10px<span class="token punctuation">;</span>
+  <span class="token property">background-color</span><span class="token punctuation">:</span> #ddd<span class="token punctuation">;</span>
+  <span class="token property">padding</span><span class="token punctuation">:</span> 2px 6px<span class="token punctuation">;</span>
+  <span class="token property">margin</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
+  <span class="token property">box-shadow</span><span class="token punctuation">:</span> 3px 3px 4px black<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div> <p>위의 CSS도 탭 인터페이스같은 외형을 적용하며, 이에 더해 삼각형을 제거합니다.</p> <h4 id="html_2">HTML</h4> <div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="MoXyYPEoG5TtW1BKK8lxWxQel1x1wd0oKVGwpCPYyR4=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>details</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>summary</span><span class="token punctuation">&gt;</span></span>System Requirements<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>summary</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>Requires a computer running an operating system. The computer
+  must have some memory and ideally some kind of long-term storage.
+  An input device as well as some form of output device is
+  recommended.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>details</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div> <h4 id="결과_2">결과</h4>
+<div class="code-example" id="sect5">
+
+<iframe class="sample-code-frame" title="위젯 바꾸기 sample" id="frame_위젯_바꾸기" width="650" height="150" src="https://live.mdnplay.dev/ko/docs/Web/HTML/Element/details/runner.html?id=%EC%9C%84%EC%A0%AF_%EB%B0%94%EA%BE%B8%EA%B8%B0" loading="lazy"></iframe>
+</div>
+</div>
+<h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://html.spec.whatwg.org/multipage/interactive-elements.html#the-details-element">HTML Standard <br><small># the-details-element</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="summary"><code>&lt;summary&gt;</code></a></li> </ul></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/HTML/Element/details" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/HTML/Element/details</a>
+  </p>
+</div>

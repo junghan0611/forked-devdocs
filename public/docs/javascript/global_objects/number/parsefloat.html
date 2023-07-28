@@ -1,0 +1,35 @@
+<header><h1>Number.parseFloat()</h1></header><div class="section-content"><p><code>Number.parseFloat()</code> 메서드는 주어진 값을 필요한 경우 문자열로 변환한 후 부동소수점 실수로 파싱해 반환합니다. 숫자를 파싱할 수 없는 경우 <a href="../nan"><code>NaN</code></a>을 반환합니다.</p></div>
+<section aria-labelledby="시도해보기"><h2 id="시도해보기">시도해보기</h2>
+<div class="section-content"><iframe class="interactive is-js-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/js/number-parsefloat.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe></div></section><section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="jQK5EM/oMhHBVwVbJs767CVdCaqhEGvtKyHtWRmFPGE=" data-language="js">Number<span class="token punctuation">.</span><span class="token function">parseFloat</span><span class="token punctuation">(</span>string<span class="token punctuation">)</span>
+</pre>
+</div></div></section><section aria-labelledby="매개변수"><h3 id="매개변수">매개변수</h3>
+<div class="section-content"><dl> <dt id="string"><code>string</code></dt> <dd> <p>파싱할 값입니다. 문자열이 아닐 경우 <a href="https://tc39.es/ecma262/#sec-tostring" target="_blank"><code>ToString</code></a> 추상 연산을 사용해 문자열로 변환합니다. 문자열의 선행 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Glossary/Whitespace">공백 <small>(en-US)</small></a>은 무시합니다.</p> </dd> </dl></div></section><section aria-labelledby="반환_값"><h3 id="반환_값">반환 값</h3>
+<div class="section-content">
+<p>주어진 문자열에서 파싱한 부동소수점 실수입니다.</p> <p>공백이 아닌 첫 글자를 숫자로 변환할 수 없는 경우 <a href="../nan"><code>NaN</code></a>을 반환합니다.</p>
+</div></section><section aria-labelledby="설명"><h2 id="설명">설명</h2>
+</section><section aria-labelledby="number.parsefloat_vs_parsefloat"><h3 id="number.parsefloat_vs_parsefloat">Number.parseFloat vs parseFloat</h3>
+<div class="section-content">
+<p><code>Number.parseFloat()</code>은 전역 <a href="../parsefloat"><code>parseFloat()</code></a> 함수와 같은 기능을 가지고 있습니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="2zKcTY89YAzzQ+n78DPjTntM4EqM0oKosgbjLhUiVXc=" data-language="js">Number<span class="token punctuation">.</span>parseFloat <span class="token operator">===</span> parseFloat<span class="token punctuation">;</span> <span class="token comment">// true</span>
+</pre>
+</div> <p><code>Number.parseFloat()</code>은 ECMAScript 2015에서 전역 객체의 모듈화를 위해 추가됐습니다. 상세한 정보와 예제는 <a href="../parsefloat"><code>parseFloat()</code></a>를 참고하세요.</p>
+</div></section><h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://tc39.es/ecma262/multipage/numbers-and-dates.html#sec-number.parsefloat">ECMAScript Language Specification <br><small># sec-number.parsefloat</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li>
+<code>core-js</code>의 <a href="https://github.com/zloirock/core-js#ecmascript-number" target="_blank"><code>Number.parseFloat</code> 폴리필</a>
+</li> <li>이 메서드가 속한 <a href="../number"><code>Number</code></a> 객체</li> <li>전역 <a href="../parsefloat"><code>parseFloat()</code></a> 메서드</li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Number/parseFloat" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Number/parseFloat</a>
+  </p>
+</div>

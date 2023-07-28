@@ -1,0 +1,76 @@
+<header><h1>:active</h1></header><div class="section-content">
+<p><code>:active</code> <a href="https://developer.mozilla.org/ko/docs/Web/API/CSS">CSS</a> <a href="pseudo-classes">의사 클래스</a>는 사용자가 활성화한 요소(버튼 등)를 나타냅니다. 마우스를 사용하는 경우, "활성"이란 보통 마우스 버튼을 누르는 순간부터 떼는 시점까지를 의미합니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="mI2xbmYqkg36Fcz2Au/ISHNbjyVkwa6u4C6UfBAXir4=" data-language="css"><span class="token comment">/* 활성화된 모든 &lt;a&gt; 태그를 선택 */</span>
+<span class="token selector">a:active</span> <span class="token punctuation">{</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> red<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div> <p><code>:active</code> 의사 클래스는 대개 <a href="https://developer.mozilla.org/ko/docs/Web/HTML/Element/a"><code>&lt;a&gt;</code></a>, <a href="https://developer.mozilla.org/ko/docs/Web/HTML/Element/button"><code>&lt;button&gt;</code></a>과 함께 사용합니다. 다른 흔한 대상으로는 활성화된 요소를 포함한 다른 요소와, 연결된 <a href="https://developer.mozilla.org/ko/docs/Web/HTML/Element/label"><code>&lt;label&gt;</code></a>로 선택한 입력 폼 요소 등이 있습니다.</p> <p><code>:active</code> 의사 클래스로 정의한 스타일은 자신보다 뒤에 위치하고 동등한 명시성을 가진 다른 링크 의사 클래스(<a href=":link"><code>:link</code></a>, <a href=":hover"><code>:hover</code></a>, <a href=":visited"><code>:visited</code></a>)가 덮어씁니다. 링크를 적절히 디자인하려면 <em>LVHA-순서(</em><code>:link</code> — <code>:visited</code> — <code>:hover</code> — <code>:active</code>)를 따라, <code>:active</code> 규칙을 다른 모든 링크 규칙들보다 뒤에 배치하세요.</p> <div class="notecard note" id="sect1"> <p><strong>참고:</strong> CSS3 명세에 따르면, 다수의 버튼을 가진 마우스라도 <code>:active</code> 의사 클래스는 주 버튼에만 적용돼야 합니다. 오른손잡이 마우스 기준, 주 버튼은 보통 맨 왼쪽 버튼입니다.</p> </div>
+</div>
+<section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content">Error: could not find syntax for this item</div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+</section><section aria-labelledby="활성화_링크"><h3 id="활성화_링크">활성화 링크</h3>
+<div class="section-content">
+<h4 id="html">HTML</h4> <div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="38XPKcTLWvIB0uaaz8qboSA5QMWNl0zZeVR5bkmAAnk=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>링크를 포함하는 문단입니다.
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>#<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>이 링크는 클릭하는 동안 색이 빨갛게 됩니다.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">&gt;</span></span>
+  이 문단은 클릭하는 동안 배경색이 회색이 됩니다.
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div> <h4 id="css">CSS</h4> <div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="xzqZETvQ2rpmpKunYwSiQf8JZytSdseH7LVeZkxQNms=" data-language="css"><span class="token selector">a:link</span> <span class="token punctuation">{</span> <span class="token property">color</span><span class="token punctuation">:</span> blue<span class="token punctuation">;</span> <span class="token punctuation">}</span>          <span class="token comment">/* 방문하지 않은 링크 */</span>
+<span class="token selector">a:visited</span> <span class="token punctuation">{</span> <span class="token property">color</span><span class="token punctuation">:</span> purple<span class="token punctuation">;</span> <span class="token punctuation">}</span>     <span class="token comment">/* 방문한 링크 */</span>
+<span class="token selector">a:hover</span> <span class="token punctuation">{</span> <span class="token property">background</span><span class="token punctuation">:</span> yellow<span class="token punctuation">;</span> <span class="token punctuation">}</span>  <span class="token comment">/* 마우스를 올린 링크 */</span>
+<span class="token selector">a:active</span> <span class="token punctuation">{</span> <span class="token property">color</span><span class="token punctuation">:</span> red<span class="token punctuation">;</span> <span class="token punctuation">}</span>         <span class="token comment">/* 활성화한 링크 */</span>
+
+<span class="token selector">p:active</span> <span class="token punctuation">{</span> <span class="token property">background</span><span class="token punctuation">:</span> #eee<span class="token punctuation">;</span> <span class="token punctuation">}</span>   <span class="token comment">/* 활성화한 문단 */</span>
+</pre>
+</div> <h4 id="결과">결과</h4>
+<div class="code-example" id="sect2">
+
+<iframe class="sample-code-frame" title="활성화 링크 sample" id="frame_활성화_링크" src="https://live.mdnplay.dev/ko/docs/Web/CSS/:active/runner.html?id=%ED%99%9C%EC%84%B1%ED%99%94_%EB%A7%81%ED%81%AC" loading="lazy"></iframe>
+</div>
+</div></section><section aria-labelledby="활성화_폼_요소"><h3 id="활성화_폼_요소">활성화 폼 요소</h3>
+<div class="section-content">
+<h4 id="html_2">HTML</h4> <div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="IpzJ9pH9nYIa6P9xO6wlQSX1NcfQy7GM/KsKOwWkfqI=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>form</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>label</span> <span class="token attr-name">for</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>my-button<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>내 버튼: <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>label</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>my-button<span class="token punctuation">"</span></span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>button<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>제 라벨이나 저를 클릭해보세요!<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>form</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div> <h4 id="css_2">CSS</h4> <div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="D1t7cZBDygqEqU+Ey2Om0v8Yp+PPsLLx3NUeJkvy804=" data-language="css"><span class="token selector">form :active</span> <span class="token punctuation">{</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> red<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">form button</span> <span class="token punctuation">{</span>
+  <span class="token property">background</span><span class="token punctuation">:</span> white<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div> <h4 id="결과_2">결과</h4>
+<div class="code-example" id="sect3">
+
+<iframe class="sample-code-frame" title="활성화 폼 요소 sample" id="frame_활성화_폼_요소" src="https://live.mdnplay.dev/ko/docs/Web/CSS/:active/runner.html?id=%ED%99%9C%EC%84%B1%ED%99%94_%ED%8F%BC_%EC%9A%94%EC%86%8C" loading="lazy"></iframe>
+</div>
+</div></section><h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody>
+<tr><td><a href="https://html.spec.whatwg.org/multipage/semantics-other.html#selector-active">HTML Standard <br><small># selector-active</small></a></td></tr>
+<tr><td><a href="https://drafts.csswg.org/selectors/#the-active-pseudo">Selectors Level 4 <br><small># the-active-pseudo</small></a></td></tr>
+</tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li>링크 관련 의사 클래스: <a href=":link"><code>:link</code></a>, <a href=":visited"><code>:visited</code></a>, <a href=":hover"><code>:hover</code></a>.</li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/CSS/:active" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/CSS/:active</a>
+  </p>
+</div>

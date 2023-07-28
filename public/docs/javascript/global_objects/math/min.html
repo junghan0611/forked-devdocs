@@ -1,0 +1,51 @@
+<header><h1>Math.min()</h1></header><div class="section-content"><p><code>Math.min()</code> 함수는 주어진 숫자들 중 가장 작은 값을 반환합니다.</p></div>
+<section aria-labelledby="syntax"><h2 id="syntax">Syntax</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="Lzq9JRQkb98XlY/1qUDz8h3eN/RZWgCC2UHvJuw1rn0=" data-language="js">    Math<span class="token punctuation">.</span><span class="token function">min</span><span class="token punctuation">(</span><span class="token punctuation">[</span>value1<span class="token punctuation">[</span><span class="token punctuation">,</span> value2<span class="token punctuation">[</span><span class="token punctuation">,</span> <span class="token operator">...</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+</pre>
+</div></div></section><section aria-labelledby="parameters"><h3 id="parameters">Parameters</h3>
+<div class="section-content"><dl> <dt id="value1_value2_"><code>value1, value2, ...</code></dt> <dd> <p>숫자형</p> </dd> </dl></div></section><section aria-labelledby="return_value"><h3 id="return_value">Return value</h3>
+<div class="section-content"><p>주어진 숫자들 중 가장 작은 값. 만약 적어도 1개 이상의 인자값이 숫자형으로 변환이 불가능 한 경우 이 함수는 <a href="../nan"><code>NaN</code></a> 를 반환 합니다.</p></div></section><section aria-labelledby="description"><h2 id="description">Description</h2>
+<div class="section-content">
+<p><code>min()</code> 함수는 <code>Math</code> 의 정적 메소드 이므로, 사용자가 생성한 <code>Math</code> 객체의 메소드로 호출하는 것이 아닌 항상 <code>Math.min()</code> 으로 호출되어야 합니다. (<code>Math</code> 는 생성자가 아닙니다).</p> <p>만약 주어진 인자값이 없을 경우, <a href="../infinity"><code>Infinity</code></a> 가 반환됩니다.</p> <p>만약 적어도 1개 이상의 인자값이 숫자형으로 변환이 불가능 한 경우, <a href="../nan"><code>NaN</code></a> 가 반환됩니다.</p>
+</div></section><section aria-labelledby="examples"><h2 id="examples">Examples</h2>
+</section><section aria-labelledby="using_math.min"><h3 id="using_math.min">Using <code>Math.min()</code>
+</h3>
+<div class="section-content">
+<p>아래 수식은 <code>x</code> 와<code>y</code> 중 작은 값을 찾아 <code>z</code> 에 할당 합니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="sia52UUwVH3NlHHdLJMlnz5eIJPLWunBxL6cF1HRuzg=" data-language="js"><span class="token keyword">var</span> x <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">,</span> y <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">20</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> z <span class="token operator">=</span> Math<span class="token punctuation">.</span><span class="token function">min</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="clipping_a_value_with_math.min"><h3 id="clipping_a_value_with_math.min">Clipping a value with <code>Math.min()</code>
+</h3>
+<div class="section-content">
+<p><code>Math.min()</code> 함수는 때때로 값 제한, 즉 항상 기준 보다 작거나 같은 값으로 제한하는 용도로 사용됩니다. 예를 들면,</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="YF9+mWa7VTOYN8mwpur1MT009pjM275Cmk4nCl7+pXA=" data-language="js"><span class="token keyword">var</span> x <span class="token operator">=</span> <span class="token function">f</span><span class="token punctuation">(</span>foo<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">if</span> <span class="token punctuation">(</span>x <span class="token operator">&gt;</span> boundary<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  x <span class="token operator">=</span> boundary<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div> <p>위 코드는 다음과 같이 쓸 수 있습니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="4qcV1wHRjUsOSOxcW4hlleIFCGlWTvSgPYT/VnIn7nM=" data-language="js"><span class="token keyword">var</span> x <span class="token operator">=</span> Math<span class="token punctuation">.</span><span class="token function">min</span><span class="token punctuation">(</span><span class="token function">f</span><span class="token punctuation">(</span>foo<span class="token punctuation">)</span><span class="token punctuation">,</span> boundary<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div> <p><a href="max"><code>Math.max()</code></a> 함수 또한 같은 방식으로 기준보다 크거나 같은 값으로 제한하는 용도로 사용할 수 있습니다.</p>
+</div></section><h2 id="명세서">명세서</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://tc39.es/ecma262/multipage/numbers-and-dates.html#sec-math.min">ECMAScript Language Specification <br><small># sec-math.min</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="see_also"><h2 id="see_also">See also</h2>
+<div class="section-content"><ul> <li><a href="max"><code>Math.max()</code></a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Math/min" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Math/min</a>
+  </p>
+</div>

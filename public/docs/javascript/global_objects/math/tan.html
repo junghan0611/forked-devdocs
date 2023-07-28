@@ -1,0 +1,42 @@
+<header><h1>Math.tan()</h1></header><div class="section-content"><p><code>Math.tan()</code> 함수는 탄젠트 값을 반환합니다</p></div>
+<section aria-labelledby="시도해보기"><h2 id="시도해보기">시도해보기</h2>
+<div class="section-content"><iframe class="interactive is-js-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/js/math-tan.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe></div></section><section aria-labelledby="문법"><h2 id="문법">문법</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="or//VHeDTsNRjqT1+/HK4hlbE5CbdXhXfbJLUn+T5KI=" data-language="js">Math<span class="token punctuation">.</span><span class="token function">tan</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span>
+</pre>
+</div></div></section><section aria-labelledby="매개변수"><h3 id="매개변수">매개변수</h3>
+<div class="section-content"><dl> <dt id="x"><code>x</code></dt> <dd> <p>라디안 각도를 표현한 수.</p> </dd> </dl></div></section><section aria-labelledby="반환_값"><h3 id="반환_값">반환 값</h3>
+<div class="section-content"><p>주어진 수의 탄젠트 값</p></div></section><section aria-labelledby="설명"><h2 id="설명">설명</h2>
+<div class="section-content">
+<p><code>Math.tan()</code> 메서드는 각도의 탄젠트 값을 표현하는 수를 반환합니다.</p> <p><code>tan()</code>은 <code>Math</code>의 정적 메서드이므로 사용자가 만든 <code>Math</code> 객체의 메서드가 아닌 항상 <code>Math.tan()</code>으로 사용합니다 (<code>Math</code> 는 생성자가 아닙니다).</p>
+</div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+</section><section aria-labelledby="math.tan사용하기"><h3 id="math.tan사용하기">
+<code>Math.tan()</code>사용하기</h3>
+<div class="section-content">
+<div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="vaz+zQRsjZX0OiiIysVKwiQwghBRBCEf0WV/k1yJ6cQ=" data-language="js">Math<span class="token punctuation">.</span><span class="token function">tan</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 1.5574077246549023</span>
+</pre>
+</div> <p><code>Math.tan()</code>함수는 라디안 값으로 받지만 각도로 작업하는 것이 더 쉽기 때문에 다음 함수는 각도로 값을 받아서 라디안으로 변환하고 탄젠트를 반환합니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="uM1KKOkf//rz2gyOwCHuZI8qRRAl70PerHpAMmTqT1E=" data-language="js"><span class="token keyword">function</span> <span class="token function">getTanDeg</span><span class="token punctuation">(</span><span class="token parameter">deg</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">var</span> rad <span class="token operator">=</span> deg <span class="token operator">*</span> Math<span class="token punctuation">.</span><span class="token constant">PI</span><span class="token operator">/</span><span class="token number">180</span><span class="token punctuation">;</span>
+  <span class="token keyword">return</span> Math<span class="token punctuation">.</span><span class="token function">tan</span><span class="token punctuation">(</span>rad<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div>
+</div></section><h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://tc39.es/ecma262/multipage/numbers-and-dates.html#sec-math.tan">ECMAScript Language Specification <br><small># sec-math.tan</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="acos"><code>Math.acos()</code></a></li> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/asin"><code>Math.asin()</code> <small>(en-US)</small></a></li> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/atan"><code>Math.atan()</code> <small>(en-US)</small></a></li> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/atan2"><code>Math.atan2()</code> <small>(en-US)</small></a></li> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/cos"><code>Math.cos()</code> <small>(en-US)</small></a></li> <li><a href="sin"><code>Math.sin()</code></a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Math/tan" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Math/tan</a>
+  </p>
+</div>

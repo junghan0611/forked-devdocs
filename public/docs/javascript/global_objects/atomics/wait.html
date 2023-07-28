@@ -1,0 +1,50 @@
+<header><h1>Atomics.wait()</h1></header><div class="section-content">
+<p> <code>Atomics.wait()</code> 정적 메서드는 <a href="../int32array"><code>Int32Array</code></a>의 지정된 위치에 지정된 값이 여전히 포함되어 있는지 확인합니다. 만약 그러하다면 잠자기 상태로 있으면서 깨우기(wake-up) 알림을 기다리거나 시간이 만료됩니다. 이 함수는 <code>"ok"</code>, <code>"not-equal"</code> 또는 <code>"timed-out"</code> 문자열을 반환합니다. </p> <blockquote> <p> <strong>Note:</strong> 이 연산은 공유 <a href="../int32array"><code>Int32Array</code></a> 또는 <a href="../bigint64array"><code>BigInt64Array</code></a>에서만 작동하며 메인 스레드에서는 허용되지 않을 수 있습니다. 이 메서드의 비차단, 비동기 버전에 대해서는 <a href="waitasync"><code>Atomics.waitAsync()</code></a>를 참조하세요. </p> </blockquote>
+</div>
+<section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="N5wdaGHMkPMgrwmkDCCJuKNG2W3MOAzotsm6KbVsmDc=" data-language="js">Atomics<span class="token punctuation">.</span><span class="token function">wait</span><span class="token punctuation">(</span>typedArray<span class="token punctuation">,</span> index<span class="token punctuation">,</span> value<span class="token punctuation">)</span>
+Atomics<span class="token punctuation">.</span><span class="token function">wait</span><span class="token punctuation">(</span>typedArray<span class="token punctuation">,</span> index<span class="token punctuation">,</span> value<span class="token punctuation">,</span> timeout<span class="token punctuation">)</span>
+</pre>
+</div></div></section><section aria-labelledby="매개변수"><h3 id="매개변수">매개변수</h3>
+<div class="section-content"><dl> <dt id="typedarray"><code>typedArray</code></dt> <dd> <p>공유된 <a href="../int32array"><code>Int32Array</code></a> 혹은 <a href="../bigint64array"><code>BigInt64Array</code></a>.</p> </dd> <dt id="index"><code>index</code></dt> <dd> <p><code>typedArray</code>에서의 대기하고 있는 인덱스.</p> </dd> <dt id="value"><code>value</code></dt> <dd> <p>테스트할 기대값.</p> </dd> <dt id="timeout">
+<code>timeout</code> <span class="badge inline optional">Optional</span>
+</dt> <dd> <p>대기 시간(밀리초). 시간이 명시되지 않으면 <a href="../infinity"><code>Infinity</code></a>입니다.</p> </dd> </dl></div></section><section aria-labelledby="반환_값"><h3 id="반환_값">반환 값</h3>
+<div class="section-content"><p><code>"ok"</code>, <code>"not-equal"</code> 혹은 <code>"timed-out"</code> 문자열</p></div></section><section aria-labelledby="예외"><h3 id="예외">예외</h3>
+<div class="section-content"><ul> <li>
+<code>typedArray</code>가 허용된 정수형이 아닐 경우 <a href="../typeerror"><code>TypeError</code></a>가 발생합니다.</li> <li>
+<code>index</code>가 <code>typedArray</code>의 범위를 벗어날 경우 <a href="../rangeerror"><code>RangeError</code></a>가 발생합니다.</li> </ul></div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+</section><section aria-labelledby="wait_사용하기"><h3 id="wait_사용하기">wait() 사용하기</h3>
+<div class="section-content">
+<p>공유된 <code>Int32Array</code>에서</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="oKIjep0hXMO6zfAKVMKOEySwh+mGkkqcgq96HSdwiGw=" data-language="js"><span class="token keyword">const</span> sab <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">SharedArrayBuffer</span><span class="token punctuation">(</span><span class="token number">1024</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> int32 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Int32Array</span><span class="token punctuation">(</span>sab<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div> <p> 읽기 스레드는 0이 될 것으로 예상되는 위치 0에서 잠자기 상태로 대기 중입니다. 이 값이 유지되는 한 계속 진행되지 않습니다. 그러나 쓰기 스레드가 새 값을 저장하면 쓰기 스레드에서 알림을 받고 새 값(123)을 반환합니다. </p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="yPXZjAwb8Dbut3aX6XedjJclrSZ6lG8RuXKCy+DJ3Pc=" data-language="js">Atomics<span class="token punctuation">.</span><span class="token function">wait</span><span class="token punctuation">(</span>int32<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>int32<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 123</span>
+</pre>
+</div> <p>쓰기 스레드는 새 값을 저장하고 쓰기가 완료되면 대기 중인 스레드에 알립니다:</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="18P2HG9HcRIPYM3inHAWmTkZBy8rQENRZlBSYKYBNzE=" data-language="js">console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>int32<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 0;</span>
+Atomics<span class="token punctuation">.</span><span class="token function">store</span><span class="token punctuation">(</span>int32<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">123</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+Atomics<span class="token punctuation">.</span><span class="token function">notify</span><span class="token punctuation">(</span>int32<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div>
+</div></section><h2 id="명세서">명세서</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://tc39.es/ecma262/multipage/structured-data.html#sec-atomics.wait">ECMAScript Language Specification <br><small># sec-atomics.wait</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="../atomics"><code>Atomics</code></a></li> <li><a href="waitasync"><code>Atomics.waitAsync()</code></a></li> <li><a href="notify"><code>Atomics.notify()</code></a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Atomics/wait" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Atomics/wait</a>
+  </p>
+</div>

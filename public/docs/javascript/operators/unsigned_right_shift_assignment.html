@@ -1,0 +1,35 @@
+<header><h1>Unsigned 오른쪽 시프트 할당 연산자 (&gt;&gt;&gt;=)</h1></header><div class="section-content"><p><code>&gt;&gt;&gt;=</code> 연산자는 지정된 수 만큼 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Unsigned_right_shift" class="only-in-en-us">unsigned 오른쪽 시프트 연산 <small>(en-US)</small></a>을 수행하고 그 결과를 왼쪽 피연산자에 할당합니다.</p></div>
+<section aria-labelledby="시도해보기"><h2 id="시도해보기">시도해보기</h2>
+<div class="section-content"><iframe class="interactive is-js-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/js/expressions-unsigned-right-shift-assignment.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe></div></section><section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="55T4ImmZF+l9QKmiD5v5kvrAcB5t8RSwD06jCLvx+/E=" data-language="js">x <span class="token operator">&gt;&gt;&gt;=</span> y
+</pre>
+</div></div></section><section aria-labelledby="설명"><h2 id="설명">설명</h2>
+<div class="section-content"><p><code>x &gt;&gt;&gt;= y</code> 는 <code>x = x &gt;&gt;&gt; y</code>와 같은 의미를 가집니다.</p></div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+</section><section aria-labelledby="unsigned_오른쪽_시프트_할당_연산자_사용"><h3 id="unsigned_오른쪽_시프트_할당_연산자_사용">unsigned 오른쪽 시프트 할당 연산자 사용</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="0fDZhxUlDdHluhPjF4B1EMuI7DJbV2VgltUozRHGFaY=" data-language="js"><span class="token keyword">let</span> a <span class="token operator">=</span> <span class="token number">5</span><span class="token punctuation">;</span> <span class="token comment">//   (00000000000000000000000000000101)</span>
+a <span class="token operator">&gt;&gt;&gt;=</span> <span class="token number">2</span><span class="token punctuation">;</span>  <span class="token comment">// 1 (00000000000000000000000000000001)</span>
+
+<span class="token keyword">let</span> b <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">5</span><span class="token punctuation">;</span> <span class="token comment">// (-00000000000000000000000000000101)</span>
+b <span class="token operator">&gt;&gt;&gt;=</span> <span class="token number">2</span><span class="token punctuation">;</span>   <span class="token comment">// 1073741822 (00111111111111111111111111111110)</span>
+
+<span class="token keyword">let</span> c <span class="token operator">=</span> <span class="token number">5n</span><span class="token punctuation">;</span>
+c <span class="token operator">&gt;&gt;&gt;=</span> <span class="token number">2n</span><span class="token punctuation">;</span> <span class="token comment">// 1n</span>
+</pre>
+</div></div></section><h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://tc39.es/ecma262/multipage/ecmascript-language-expressions.html#sec-assignment-operators">ECMAScript Language Specification <br><small># sec-assignment-operators</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Guide/Expressions_and_operators#%ed%95%a0%eb%8b%b9_%ec%97%b0%ec%82%b0%ec%9e%90">Assignment operators in the JS guide</a></li> <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Unsigned_right_shift" class="only-in-en-us">Unsigned 오른쪽 시프트 연산자 <small>(en-US)</small></a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Operators/Unsigned_right_shift_assignment" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Operators/Unsigned_right_shift_assignment</a>
+  </p>
+</div>

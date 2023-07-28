@@ -1,0 +1,181 @@
+<header><h1>Element.getClientRects()</h1></header><div class="section-content">
+<p><a href="../element"><code>Element</code></a> 인터페이스의 <code>getClientRects()</code> 메서드는 클라이언트에 있는 각 <a href="https://developer.mozilla.org/ko/docs/Web/CSS/CSS_box_model/Introduction_to_the_CSS_box_model">CSS 테두리 박스</a>에 대한 경계 사각형을 나타내는 <a href="../domrect"><code>DOMRect</code></a> 객체의 컬렉션을 반환합니다.</p> <p>대부분의 엘리먼트는 각각 하나의 border box만을 갖지만, 여러 줄의 <a href="https://developer.mozilla.org/ko/docs/Glossary/Inline-level_content">인라인 엘리먼트</a>(예를 들면, 여러 줄의 <a href="https://developer.mozilla.org/ko/docs/Web/HTML/Element/span"><code>&lt;span&gt;</code></a> 엘리먼트)는 각각의 줄을 감싸는 테두리 박스를 갖습니다.</p>
+</div>
+<h2 id="구문">구문</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="a7f/4v2alh8fXX16BL/MIJgVlca/GJIzoaW0UI7HeNk=" data-language="js"><span class="token keyword">let</span> rectCollection <span class="token operator">=</span> object<span class="token punctuation">.</span><span class="token function">getClientRects</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div></div>
+<h3 id="반환_값">반환 값</h3>
+<div class="section-content">
+<p>반환 값은 각 엘리먼트와 관계된 CSS 테두리 박스인 <a href="../domrect"><code>DOMRect</code></a> 객체의 컬렉션입니다. 각각의 <a href="../domrect"><code>DOMRect</code></a> 객체는 뷰포트의 top-left에 상대적인 top-left인 픽셀 단위의 테두리 박스를 나타내는 읽기 전용 <code>left</code>, <code>top</code>, <code>right</code>, <code>bottom</code> 프로퍼티를 갖습니다. 캡션이 있는 테이블의 경우, 캡션이 테이블의 테두리 영역 밖에 있더라도 포함됩니다. 외부-<code>&lt;svg&gt;</code> 이외의 SVG 엘리먼트에서 호출될 때, 결과 사각형이 상대적인 "뷰포트"는 엘리먼트의 외부-<code>&lt;svg&gt;</code>가 설정하는 뷰포트입니다(명확히 하자면, 사각형은 외부-<code>&lt;svg&gt;</code>의 <code>viewBox</code> transform이 존재할 경우, 이에 의해 변형되기도 합니다).</p> <p>원래 Microsoft는 각각의 텍스트 <em>줄</em> 에 대한 <code>TextRectangle</code> 객체를 반환하기 위해 이 메서드를 만들었습니다. 하지만 CSSOM 작업 초안은 이 메서드가 각각의 <em>테두리 박스</em> 에 대한 <a href="../domrect"><code>DOMRect</code></a>를 반환하도록 명세합니다. 인라인 엘리먼트의 경우 두 정의가 동일합니다. 하지만 블록 엘리먼트의 경우 Mozilla는 단 하나의 사각형만 반환합니다.</p> <div class="notecard note" id="sect1"> <p><strong>참고:</strong> Firefox 3.5는 <code>width</code>와 <code>height</code> 속성을 <code>TextRectangle</code> 객체에 추가합니다.</p> </div> <p>뷰포트 영역(또는 기타 스크롤 가능한 엘리먼트)에서 수행된 스크롤 양은 사각형을 계산할 때 고려됩니다.</p> <p>반환된 사각형은 오버플로우가 발생할 수도 있는 모든 하위 엘리먼트의 경계를 포함하지 않습니다.</p> <p>HTML <a href="https://developer.mozilla.org/ko/docs/Web/HTML/Element/area"><code>&lt;area&gt;</code></a> 엘리먼트, 스스로는 어떠한 것도 렌더링 하지 않는 SVG 엘리먼트, <code>display:none</code> 엘리먼트 및 일반적으로 직접 렌더링 되지 않는 엘리먼트의 경우, 빈 목록이 반환됩니다.</p> <p>테두리 박스가 비어있는 CSS 박스의 경우에도 사각형은 반환됩니다. <code>left</code>, <code>top</code>, <code>right</code>, <code>bottom</code> 좌표는 여전히 의미가 있습니다.</p> <p>소수점 단위의 픽셀 오프셋도 가능합니다.</p>
+</div>
+<h2 id="예제">예제</h2>
+<div class="section-content"><p>다음 예제들은 다양한 색상으로 클라이언트 사각형을 그립니다. 클라이언트 사각형을 칠하는 JavaScript 함수는 <code>withClientRectsOverlay</code> 클래스를 통해 마크업과 연결되어 있음을 참고하세요.</p></div>
+<h3 id="html">HTML</h3>
+<div class="section-content">
+<p>예제 1: 다음 HTML은 세 개의 단락을 생성합니다. 각각은 <code>&lt;div&gt;</code> 블록 안에 있고, <code>&lt;span&gt;</code>을 안쪽에 포함하고 있습니다. 클라이언트 사각형은 두 번째 블록의 단락과 세 번째 블록의 <code>&lt;span&gt;</code> 엘리먼트를 칠합니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="AN3xhL190O+rMEOHaN1TuVSzpwblHFjpguX2xQAdbvg=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h3</span><span class="token punctuation">&gt;</span></span>span을 안쪽에 포함하는 단락<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h3</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>span과 단락 모두 테두리가 설정되어 있습니다. 클라이언트 사각형은 빨간색입니다. p는 단 하나의 테두리 박스를 갖는 반면 span은 여러 테두리 박스를 갖는다는 점을 유의하세요.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>strong</span><span class="token punctuation">&gt;</span></span>원본<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>strong</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span><span class="token punctuation">&gt;</span></span>여러 줄에 걸쳐있는 단락<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>strong</span><span class="token punctuation">&gt;</span></span>p의 사각형<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>strong</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>withClientRectsOverlay<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span><span class="token punctuation">&gt;</span></span>여러 줄에 걸쳐있는 단락<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>strong</span><span class="token punctuation">&gt;</span></span>span의 사각형<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>strong</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>withClientRectsOverlay<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>여러 줄에 걸쳐있는 단락<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div> <p>예제 2: 다음 HTML은 세 개의 정렬된 목록을 생성합니다. 클라이언트 사각형은 두 번째 블록의 <code>&lt;ol&gt;</code>, 세 번째 블록의 각 <code>&lt;li&gt;</code> 엘리먼트를 칠합니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="RnpanVjVO3Bb9k6gVPnvr/Leq1iBI4Qhfez6dzow5DU=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h3</span><span class="token punctuation">&gt;</span></span>목록<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h3</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>테두리 박스는 숫자를 포함하지 않으므로 클라이언트 사각형에 대해서도 숫자를 포함하지 않음을 유의하세요.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>strong</span><span class="token punctuation">&gt;</span></span>원본<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>strong</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ol</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">&gt;</span></span>Item 1<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">&gt;</span></span>Item 2<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>ol</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>strong</span><span class="token punctuation">&gt;</span></span>ol의 사각형<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>strong</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ol</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>withClientRectsOverlay<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">&gt;</span></span>Item 1<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">&gt;</span></span>Item 2<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>ol</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>strong</span><span class="token punctuation">&gt;</span></span>각 li의 사각형<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>strong</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ol</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>withClientRectsOverlay<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Item 1<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>withClientRectsOverlay<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Item 2<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>ol</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div> <p>예제 3: 다음 HTML은 캡션을 갖는 두 개의 테이블을 생성합니다. 클라이언트 사각형은 두 번째 블록의 <code>&lt;table&gt;</code>을 칠합니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="qLm3TGMwCofcVIzTS16egodvKUbjq8KCEe+dcAZvOHY=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h3</span><span class="token punctuation">&gt;</span></span>캡션을 갖는 테이블<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h3</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>테이블의 테두리 박스가 캡션을 포함하지는 않지만, 클라이언트 사각형은 캡션을 포함합니다.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>strong</span><span class="token punctuation">&gt;</span></span>원본<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>strong</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>table</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>caption</span><span class="token punctuation">&gt;</span></span>캡션<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>caption</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>thead</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>tr</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>th</span><span class="token punctuation">&gt;</span></span>thead<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>th</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>tr</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>thead</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>tbody</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>tr</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>td</span><span class="token punctuation">&gt;</span></span>tbody<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>td</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>tr</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>tbody</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>table</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>strong</span><span class="token punctuation">&gt;</span></span>table의 사각형<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>strong</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>table</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>withClientRectsOverlay<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>caption</span><span class="token punctuation">&gt;</span></span>캡션<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>caption</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>thead</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>tr</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>th</span><span class="token punctuation">&gt;</span></span>thead<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>th</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>tr</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>thead</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>tbody</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>tr</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>td</span><span class="token punctuation">&gt;</span></span>tbody<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>td</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>tr</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>tbody</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>table</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div>
+</div>
+<h3 id="css">CSS</h3>
+<div class="section-content">
+<p>CSS는 첫 번째 예제에서 각 <code>&lt;div&gt;</code> 블록 안쪽의 <code>&lt;span&gt;</code>과 문단을 감싸는 테두리를, 두 번째 예제에서 <code>&lt;ol&gt;</code>과 <code>&lt;li&gt;</code>를 감싸는 테두리를, 세 번째 예제에서 <code>&lt;table&gt;</code>, <code>&lt;th&gt;</code>, <code>&lt;td&gt;</code> 엘리먼트를 감싸는 테두리를 그립니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="R5xcHE5w5IWvAD3w9D8Ydf/y6w/EJzjbX1lOU+gr9TU=" data-language="css"><span class="token selector">strong</span> <span class="token punctuation">{</span>
+  <span class="token property">text-align</span><span class="token punctuation">:</span> center<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token selector">div</span> <span class="token punctuation">{</span>
+  <span class="token property">display</span><span class="token punctuation">:</span> inline-block<span class="token punctuation">;</span>
+  <span class="token property">width</span><span class="token punctuation">:</span> 150px<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token selector">div p, ol, table</span> <span class="token punctuation">{</span>
+  <span class="token property">border</span><span class="token punctuation">:</span> 1px solid blue<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token selector">span, li, th, td</span> <span class="token punctuation">{</span>
+  <span class="token property">border</span><span class="token punctuation">:</span> 1px solid green<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div>
+</div>
+<h3 id="javascript">JavaScript</h3>
+<div class="section-content">
+<p>JavaScript 코드는 <code>withClientRectsOverlay</code> CSS 클래스가 할당된 모든 HTML 엘리먼트에 대해 클라이언트 사각형을 그립니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="wOQKfTRP/1RGEbGZw2AokiwoQwDjKIl0nfQt4g5Fyao=" data-language="js"><span class="token keyword">function</span> <span class="token function">addClientRectsOverlay</span><span class="token punctuation">(</span><span class="token parameter">elt</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">/* 각 클라이언트 사각형에서 div를 절대적으로 배치하였기 때문에 div의 테두리 너비는 사각형의 너비와 동일합니다.
+     Note: 유저가 크기를 조정하거나 확대/축소하는 경우 오버레이가 제 위치를 벗어날 수 있습니다. */</span>
+  <span class="token keyword">var</span> rects <span class="token operator">=</span> elt<span class="token punctuation">.</span><span class="token function">getClientRects</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">var</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">!=</span> rects<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">var</span> rect <span class="token operator">=</span> rects<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">var</span> tableRectDiv <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">createElement</span><span class="token punctuation">(</span><span class="token string">'div'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    tableRectDiv<span class="token punctuation">.</span>style<span class="token punctuation">.</span>position <span class="token operator">=</span> <span class="token string">'absolute'</span><span class="token punctuation">;</span>
+    tableRectDiv<span class="token punctuation">.</span>style<span class="token punctuation">.</span>border <span class="token operator">=</span> <span class="token string">'1px solid red'</span><span class="token punctuation">;</span>
+    <span class="token keyword">var</span> scrollTop <span class="token operator">=</span> document<span class="token punctuation">.</span>documentElement<span class="token punctuation">.</span>scrollTop <span class="token operator">||</span> document<span class="token punctuation">.</span>body<span class="token punctuation">.</span>scrollTop<span class="token punctuation">;</span>
+    <span class="token keyword">var</span> scrollLeft <span class="token operator">=</span> document<span class="token punctuation">.</span>documentElement<span class="token punctuation">.</span>scrollLeft <span class="token operator">||</span> document<span class="token punctuation">.</span>body<span class="token punctuation">.</span>scrollLeft<span class="token punctuation">;</span>
+    tableRectDiv<span class="token punctuation">.</span>style<span class="token punctuation">.</span>margin <span class="token operator">=</span> tableRectDiv<span class="token punctuation">.</span>style<span class="token punctuation">.</span>padding <span class="token operator">=</span> <span class="token string">'0'</span><span class="token punctuation">;</span>
+    tableRectDiv<span class="token punctuation">.</span>style<span class="token punctuation">.</span>top <span class="token operator">=</span> <span class="token punctuation">(</span>rect<span class="token punctuation">.</span>top <span class="token operator">+</span> scrollTop<span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">'px'</span><span class="token punctuation">;</span>
+    tableRectDiv<span class="token punctuation">.</span>style<span class="token punctuation">.</span>left <span class="token operator">=</span> <span class="token punctuation">(</span>rect<span class="token punctuation">.</span>left <span class="token operator">+</span> scrollLeft<span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">'px'</span><span class="token punctuation">;</span>
+    <span class="token comment">// rect.width가 테두리 너비가 되어야 하므로 콘텐츠 너비는 2px 더 작습니다.</span>
+    tableRectDiv<span class="token punctuation">.</span>style<span class="token punctuation">.</span>width <span class="token operator">=</span> <span class="token punctuation">(</span>rect<span class="token punctuation">.</span>width <span class="token operator">-</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">'px'</span><span class="token punctuation">;</span>
+    tableRectDiv<span class="token punctuation">.</span>style<span class="token punctuation">.</span>height <span class="token operator">=</span> <span class="token punctuation">(</span>rect<span class="token punctuation">.</span>height <span class="token operator">-</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">'px'</span><span class="token punctuation">;</span>
+    document<span class="token punctuation">.</span>body<span class="token punctuation">.</span><span class="token function">appendChild</span><span class="token punctuation">(</span>tableRectDiv<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">/* "withClientRectsOverlay" 클래스가 할당된 모든 엘리먼트에 대해 addClientRectsOverlay(elt) 함수를 호출합니다 */</span>
+  <span class="token keyword">var</span> elt <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementsByClassName</span><span class="token punctuation">(</span><span class="token string">'withClientRectsOverlay'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">var</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> elt<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">addClientRectsOverlay</span><span class="token punctuation">(</span>elt<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div>
+</div>
+<h3 id="결과">결과</h3>
+<div class="section-content"><div class="code-example" id="sect2">
+
+<iframe class="sample-code-frame" title="예제 sample" id="frame_예제" width="680" height="650" src="https://live.mdnplay.dev/ko/docs/Web/API/Element/getClientRects/runner.html?id=%EC%98%88%EC%A0%9C" loading="lazy"></iframe>
+</div></div>
+<h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://drafts.csswg.org/cssom-view/#dom-element-getclientrects">CSSOM View Module <br><small># dom-element-getclientrects</small></a></td></tr></tbody>
+</table></div>
+<h3 id="노트">노트</h3>
+<div class="section-content"><p><code>getClientRects()</code>는 MS IE DHTML 객체 모델에서 처음으로 소개되었습니다.</p></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="getboundingclientrect"><code>Element.getBoundingClientRect()</code></a></li> </ul></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/Element/getClientRects" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/Element/getClientRects</a>
+  </p>
+</div>

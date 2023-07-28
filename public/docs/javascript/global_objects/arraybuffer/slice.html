@@ -1,0 +1,36 @@
+<header><h1>ArrayBuffer.prototype.slice()</h1></header><div class="section-content"><p><code>slice()</code> 메서드는 현재 <code>ArrayBuffer</code>를 주어진 시작과 끝점에 맞춰 자른 새로운 <code>ArrayBuffer</code>를 반환합니다.</p></div>
+<section aria-labelledby="시도해보기"><h2 id="시도해보기">시도해보기</h2>
+<div class="section-content"><iframe class="interactive is-js-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/js/arraybuffer-slice.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe></div></section><section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="W3hg1Oc6YB/ifDhSMOtkapEBECyx3GvtPrb/AkBDnO0=" data-language="js">    arraybuffer<span class="token punctuation">.</span><span class="token function">slice</span><span class="token punctuation">(</span>begin<span class="token punctuation">[</span><span class="token punctuation">,</span> end<span class="token punctuation">]</span><span class="token punctuation">)</span>
+</pre>
+</div></div></section><section aria-labelledby="매개변수"><h3 id="매개변수">매개변수</h3>
+<div class="section-content"><dl> <dt id="begin"><code>begin</code></dt> <dd> <p>자르기 시작할 지점을 나타내는 0 기반 인덱스.</p> </dd> <dt id="end">
+<code>end</code> <span class="badge inline optional">Optional</span>
+</dt> <dd> <p>자르기 끝낼 지점을 나타내는 바이트 인덱스. 지정하지 않은 경우 새로운 <code>ArrayBuffer</code>는 지정한 시작점부터 현재 <code>ArrayBuffer</code>의 끝까지 가지게 됩니다.</p> </dd> </dl></div></section><section aria-labelledby="반환_값"><h3 id="반환_값">반환 값</h3>
+<div class="section-content"><p>새로운 <a href="../arraybuffer"><code>ArrayBuffer</code></a> 객체.</p></div></section><section aria-labelledby="설명"><h2 id="설명">설명</h2>
+<div class="section-content">
+<p><code>slice()</code> 메서드는 <code>end</code> 매개변수로 지정한 바이트 위치 바로 앞까지 현재 배열 버퍼를 복사합니다. <code>begin</code>과 <code>end</code>는 음의 값인 경우 배열의 시작부터 위치를 세지 않고 끝에서부터 셉니다.</p> <p><code>end</code> 값이 유효한 범위를 벗어날 경우 버퍼 길이에 맞춰 잘라냅니다. 또한 새로운 ArrayBuffer의 길이가 음의 값이 나올 경우 0으로 처리합니다.</p>
+</div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+</section><section aria-labelledby="arraybuffer_복사하기"><h3 id="arraybuffer_복사하기">
+<code>ArrayBuffer</code> 복사하기</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="xKAmHAtmB0R5l9TfEq+3fJ43hZgCq/C4mRPy4a8deCo=" data-language="js"><span class="token keyword">const</span> buf1 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayBuffer</span><span class="token punctuation">(</span><span class="token number">8</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> buf2 <span class="token operator">=</span> buf1<span class="token punctuation">.</span><span class="token function">slice</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div></div></section><h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://tc39.es/ecma262/multipage/structured-data.html#sec-arraybuffer.prototype.slice">ECMAScript Language Specification <br><small># sec-arraybuffer.prototype.slice</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="../arraybuffer"><code>ArrayBuffer</code></a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer/slice" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer/slice</a>
+  </p>
+</div>

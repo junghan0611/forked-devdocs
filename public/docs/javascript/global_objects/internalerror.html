@@ -1,0 +1,41 @@
+<header><h1>InternalError</h1></header><div class="section-content">
+<div class="notecard nonstandard" id="sect1"><p><strong>비표준:</strong> 이 기능은 비표준이므로 실제 프로덕션에서 사용하지 마세요. 모든 사용자 환경에서 작동하지 않을 수 도 있으며, 미래에 호환성 문제가 생길 수 있습니다.</p></div> <p><code>InternalError</code> 객체는 JavaScript 엔진 내부에서 발생한 오류를 나타냅니다.</p> <p>다음의 오류 예시의 경우는 일반적으로 어떤 값이 너무 큰 경우입니다.</p> <ul> <li>"too many switch cases", (swich case의 수가 너무 많음)</li> <li>"too many parentheses in regular expression", (정규표현식에 너무 많은 괄호가 있음)</li> <li>"array initializer too large", (배열 초기화 값이 너무 큼)</li> <li>"too much recursion". (너무 많은 재귀 호출)</li> </ul>
+</div>
+<section aria-labelledby="생성자"><h2 id="생성자">생성자</h2>
+<div class="section-content"><dl> <dt id="internalerror_en-us"><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/InternalError/InternalError"><code>InternalError()</code> <small>(en-US)</small></a></dt> <dd> <p>새로운 <code>InternalError</code> 객체를 만듭니다.</p> </dd> </dl></div></section><section aria-labelledby="인스턴스_속성"><h2 id="인스턴스_속성">인스턴스 속성</h2>
+<div class="section-content"><dl> <dt id="internalerror.prototype.message"><a href="error/message"><code>InternalError.prototype.message</code></a></dt> <dd> <p>오류 메시지. <a href="error"><code>Error</code></a>로부터 상속되었습니다.</p> </dd> <dt id="internalerror.prototype.name"><a href="error/name"><code>InternalError.prototype.name</code></a></dt> <dd> <p>오류 이름. <a href="error"><code>Error</code></a>로부터 상속되었습니다.</p> </dd> <dt id="internalerror.prototype.filename"><a href="error/filename"><code>InternalError.prototype.fileName</code></a></dt> <dd> <p>오류가 발생한 파일 경로. <a href="error"><code>Error</code></a>로부터 상속되었습니다.</p> </dd> <dt id="internalerror.prototype.linenumber"><a href="error/linenumber"><code>InternalError.prototype.lineNumber</code></a></dt> <dd> <p>오류가 발생한 곳의 줄 번호. <a href="error"><code>Error</code></a>로부터 상속되었습니다.</p> </dd> <dt id="internalerror.prototype.columnnumber"><a href="error/columnnumber"><code>InternalError.prototype.columnNumber</code></a></dt> <dd> <p>오류가 발생한 행의 열 번호. <a href="error"><code>Error</code></a>로부터 상속되었습니다.</p> </dd> <dt id="internalerror.prototype.stack_en-us"><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error/stack"><code>InternalError.prototype.stack</code> <small>(en-US)</small></a></dt> <dd> <p>스택 추적. <a href="error"><code>Error</code></a>로부터 상속되었습니다.</p> </dd> </dl></div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+</section><section aria-labelledby="너무_많은_재귀_호출"><h3 id="너무_많은_재귀_호출">너무 많은 재귀 호출</h3>
+<div class="section-content">
+<p>이 재귀 함수는 종료 조건에 따라 10번 수행됩니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="iXo5+EfemjP8Oss+2y/ctUOuNbjnanMQ+iDnBmX1v2o=" data-language="js"><span class="token keyword">function</span> <span class="token function">loop</span><span class="token punctuation">(</span><span class="token parameter">x</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>x <span class="token operator">&gt;=</span> <span class="token number">10</span><span class="token punctuation">)</span> <span class="token comment">// "x &gt;= 10" 는 종료 조건입니다.</span>
+    <span class="token keyword">return</span><span class="token punctuation">;</span>
+  <span class="token comment">// 어떤 코드</span>
+  <span class="token function">loop</span><span class="token punctuation">(</span>x <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 재귀 호출</span>
+<span class="token punctuation">}</span>
+<span class="token function">loop</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div> <p>이 조건을 매우 높은 값으로 설정하면 작동하지 않습니다:</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="TWoIFCXXOa6ZZZ2AfKaq9D5V5+MhIzWIvp/qnM3o4GE=" data-language="js"><span class="token keyword">function</span> <span class="token function">loop</span><span class="token punctuation">(</span><span class="token parameter">x</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>x <span class="token operator">&gt;=</span> <span class="token number">1000000000000</span><span class="token punctuation">)</span>
+    <span class="token keyword">return</span><span class="token punctuation">;</span>
+  <span class="token comment">// 어떤 코드</span>
+  <span class="token function">loop</span><span class="token punctuation">(</span>x <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token function">loop</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// InternalError: too much recursion(너무 많은 재귀 호출)</span>
+</pre>
+</div> <p>더 많은 정보를 보려면 <a href="../errors/too_much_recursion">InternalError: too much recursion(너무 많은 재귀 호출)</a>를 보시길 바랍니다.</p>
+</div></section><section aria-labelledby="명세"><h2 id="명세">명세</h2>
+<div class="section-content"><p>어떤 표준에도 속하지 않습니다.</p></div></section><h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="error"><code>Error</code></a></li> <li><a href="../errors/too_much_recursion">InternalError: too much recursion(너무 많은 재귀 호출)</a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/InternalError" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/InternalError</a>
+  </p>
+</div>

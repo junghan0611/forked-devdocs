@@ -1,0 +1,66 @@
+<header><h1>void</h1></header><div class="section-content"><p><code>void</code>는 주어진 표현식을 평가하고 <a href="../global_objects/undefined"><code>undefined</code></a>를 반환합니다.</p></div>
+<section aria-labelledby="시도해보기"><h2 id="시도해보기">시도해보기</h2>
+<div class="section-content"><iframe class="interactive is-js-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/js/expressions-voidoperator.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe></div></section><section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="aDYpx/GTZzcIKI09Ifllikeq1T98HZbrMJjLiWR1MG0=" data-language="js">    <span class="token keyword">void</span> expression
+</pre>
+</div></div></section><section aria-labelledby="설명"><h2 id="설명">설명</h2>
+<div class="section-content">
+<p><code>void</code>는 값을 생성하는 표현식을 평가해서 <a href="../global_objects/undefined"><code>undefined</code></a>를 반환합니다.</p> <p>오직 <code>undefined</code> 원시값을 얻기 위해 <code>void 0</code> 또는 <code>void(0)</code>처럼 사용하는 경우도 볼 수 있습니다. 이런 경우 전역 <a href="../global_objects/undefined"><code>undefined</code></a>를 대신 사용해도 됩니다.</p> <p><code>void</code> 연산자의 <a href="operator_precedence">우선순위</a>도 유념해야 합니다. <a href="grouping">그룹 연산자</a>(괄호)를 사용하면 <code>void</code> 연산자를 사용한 식의 평가 과정을 더 명확하게 보일 수 있습니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="8kSChlbY0XSPBKamVJ8MHqFi7YKJgl0OouWNtBMUm+o=" data-language="js"><span class="token keyword">void</span> <span class="token number">2</span> <span class="token operator">==</span> <span class="token string">'2'</span><span class="token punctuation">;</span> <span class="token comment">// undefined == '2', false</span>
+<span class="token keyword">void</span> <span class="token punctuation">(</span><span class="token number">2</span> <span class="token operator">==</span> <span class="token string">'2'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// void true, undefined</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="iife"><h2 id="iife">IIFE</h2>
+<div class="section-content">
+<p>즉시 실행 함수 표현식(<a href="https://developer.mozilla.org/ko/docs/Glossary/IIFE">IIFE</a>)을 사용할 때 <code>void</code>를 사용하면 <code>function</code> 키워드를 선언문이 아니라 표현식처럼 간주하도록 강제할 수 있습니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="YXC65MffOx/JdkR6cmafCYeK+Wco18OKr29Wq2JJdEI=" data-language="js"><span class="token keyword">void</span> <span class="token keyword">function</span> <span class="token function">iife</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">var</span> <span class="token function-variable function">bar</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+    <span class="token keyword">var</span> <span class="token function-variable function">baz</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+    <span class="token keyword">var</span> <span class="token function-variable function">foo</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token function">bar</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">baz</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+     <span class="token punctuation">}</span><span class="token punctuation">;</span>
+    <span class="token keyword">var</span> <span class="token function-variable function">biz</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+    <span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">biz</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="javascript_uri"><h2 id="javascript_uri">JavaScript URI</h2>
+<div class="section-content">
+<p><code>javascript:</code>로 시작하는 URI를 지원하는 브라우저에서는, URI에 있는 코드의 평가 결과가 <a href="../global_objects/undefined"><code>undefined</code></a>가 아니라면 페이지의 콘텐츠를 반환 값으로 대체합니다. <code>void</code> 연산자를 사용하면 <code>undefined</code>를 반환할 수 있습니다. 다음 예제를 확인하세요.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="KpapSoZK0S1d9PSvgsWPfzjfq/rllGZUPzAjE4LVVPc=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>javascript:void(0);<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+  클릭해도 아무 일도 없음
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>javascript:void(document.body.style.backgroundColor='green');<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+  클릭하면 배경색이 녹색으로
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div> <div class="note notecard" id="sect1"> <p><strong>참고</strong>: <code>javascript:</code> 의사 프로토콜보다 이벤트 처리기와 같은 대체재 사용을 권장합니다.</p> </div>
+</div></section><section aria-labelledby="새지_않는_화살표_함수"><h2 id="새지_않는_화살표_함수">새지 않는 화살표 함수</h2>
+<div class="section-content">
+<p>Arrow functions introduce a short-hand braceless syntax that returns an expression. This can cause unintended side effects by returning the result of a function call that previously returned nothing. To be safe, when the return value of a function is not intended to be used, it can be passed to the void operator to ensure that (for example) changing APIs do not cause arrow functions' behaviors to change.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="Aj1GV/3K/7yC76SHfz21H1so7zXVP3oXcVHln7aj4DE=" data-language="js">button<span class="token punctuation">.</span><span class="token function-variable function">onclick</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token keyword">void</span> <span class="token function">doSomething</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div> <p>This ensures the return value of <code>doSomething</code> changing from <code>undefined</code> to <code>true</code> will not change the behavior of this code.</p>
+</div></section><h2 id="명세서">명세서</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://tc39.es/ecma262/multipage/ecmascript-language-expressions.html#sec-void-operator">ECMAScript Language Specification <br><small># sec-void-operator</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="../global_objects/undefined"><code>undefined</code></a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Operators/void" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Operators/void</a>
+  </p>
+</div>

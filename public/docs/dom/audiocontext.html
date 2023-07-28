@@ -1,0 +1,50 @@
+<header><h1>AudioContext</h1></header><div class="section-content">
+<p><code>AudioContext</code> 인터페이스는 <a href="audionode"><code>AudioNode</code></a>에 의해 각각 표현되는, 함께 연결된 오디오 모듈로부터 만들어진 오디오 프로세싱 그래프를 표현합니다. 오디오 컨텍스트는 이것이 포함하는 노드의 생성과 오디오 프로세싱 혹은 디코딩의 실행 둘 다를 제어합니다. 여러분은 다른 무언가를 하기 전에 <code>AudioContext</code>를 생성할 필요가 있습니다. 왜냐하면 모든 것은 컨텍스트 내에서 발생하기 때문입니다. 매번 새로운 컨텍스트를 초기화하는 대신 하나의 AudioContext를 생성하고 재사용하는 것이 추천되며, 몇 개의 다른 오디오 소스에 대해 하나의 <code>AudioContext</code>를 사용하고 동시에 연결하는 것은 문제없습니다.</p>
+<svg viewbox="-1 -1 650 42" preserveaspectratio="xMinYMin meet"> <a style="text-decoration: none;" xlink:href="/ko/docs/Web/API/EventTarget">  <text x="44" y="16" font-size="10px" fill="#4D4E53" text-anchor="middle"> EventTarget </text> </a>   <a style="text-decoration: none;" xlink:href="/ko/docs/Web/API/BaseAudioContext">  <text x="182" y="16" font-size="10px" fill="#4D4E53" text-anchor="middle"> BaseAudioContext </text> </a>   <a style="text-decoration: none;" xlink:href="/ko/docs/Web/API/AudioContext" aria-current="page">  <text x="324" y="16" font-size="10px" fill="#4D4E53" text-anchor="middle"> AudioContext </text> </a></svg>
+</div>
+<h2 id="생성자">생성자</h2>
+<div class="section-content"><dl> <dt id="audiocontext_en-us"><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/AudioContext/AudioContext"><code>AudioContext()</code> <small>(en-US)</small></a></dt> <dd> <p>새로운 <code>AudioContext</code> 객체를 생성하고 반환합니다.</p> </dd> </dl></div>
+<h2 id="속성">속성</h2>
+<div class="section-content">
+<p><em>또한 부모 인터페이스인 <a href="baseaudiocontext"><code>BaseAudioContext</code></a>로부터 속성을 상속받습니다.</em></p> <dl> <dt id="audiocontext.baselatency_en-us">
+<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/AudioContext/baseLatency"><code>AudioContext.baseLatency</code> <small>(en-US)</small></a> <span class="badge inline readonly">읽기 전용</span> <abbr class="icon icon-experimental" title="Experimental. 예상되는 동작은 향후 변경될 수 있습니다."> <span class="visually-hidden">Experimental</span> </abbr>
+</dt> <dd> <p><a href="audiodestinationnode"><code>AudioDestinationNode</code></a>에서 오디오 서브시스템으로 오디오를 전달하는 <a href="audiocontext" aria-current="page"><code>AudioContext</code></a>에 의해 초래된 프로세싱 레이턴시의 초를 반환합니다.</p> </dd> <dt id="audiocontext.outputlatency_en-us">
+<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/AudioContext/outputLatency"><code>AudioContext.outputLatency</code> <small>(en-US)</small></a> <span class="badge inline readonly">읽기 전용</span> <abbr class="icon icon-experimental" title="Experimental. 예상되는 동작은 향후 변경될 수 있습니다."> <span class="visually-hidden">Experimental</span> </abbr>
+</dt> <dd> <p>현재 오디오 컨텍스트의 출력 레이턴시의 평가치를 반환합니다.</p> </dd> </dl>
+</div>
+<h2 id="메서드">메서드</h2>
+<div class="section-content">
+<p><em>또한 부모 인터페이스인 <a href="baseaudiocontext"><code>BaseAudioContext</code></a>로부터 메서드를 상속받습니다.</em></p> <dl> <dt id="audiocontext.close_en-us"><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/AudioContext/close"><code>AudioContext.close()</code> <small>(en-US)</small></a></dt> <dd> <p>오디오 컨텍스트가 사용하는 모든 시스템 오디오 자원을 해제하며, 오디오 컨텍스트를 닫습니다.</p> </dd> <dt id="audiocontext.createmediaelementsource_en-us"><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/AudioContext/createMediaElementSource"><code>AudioContext.createMediaElementSource()</code> <small>(en-US)</small></a></dt> <dd> <p><a href="htmlmediaelement"><code>HTMLMediaElement</code></a>와 연관된 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/MediaElementAudioSourceNode"><code>MediaElementAudioSourceNode</code> <small>(en-US)</small></a>를 생성합니다. 이것은 <a href="https://developer.mozilla.org/ko/docs/Web/HTML/Element/video"><code>&lt;video&gt;</code></a> 혹은 <a href="https://developer.mozilla.org/ko/docs/Web/HTML/Element/audio"><code>&lt;audio&gt;</code></a> 요소로부터 오디오를 재생하거나 조작하기 위해 사용될 수 있습니다.</p> </dd> <dt id="audiocontext.createmediastreamsource_en-us"><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/AudioContext/createMediaStreamSource"><code>AudioContext.createMediaStreamSource()</code> <small>(en-US)</small></a></dt> <dd> <p>로컬 컴퓨터 마이크나 다른 소스로부터 올 지도 모르는 오디오 스트림을 나타내는 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/MediaStream"><code>MediaStream</code> <small>(en-US)</small></a>과 연관된 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/MediaStreamAudioSourceNode"><code>MediaStreamAudioSourceNode</code> <small>(en-US)</small></a>를 생성합니다.</p> </dd> <dt id="audiocontext.createmediastreamdestination_en-us"><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/AudioContext/createMediaStreamDestination"><code>AudioContext.createMediaStreamDestination()</code> <small>(en-US)</small></a></dt> <dd> <p>로컬 파일에 저장되거나 다른 컴퓨터로 전송될지도 모르는 오디오 스트림을 나타내는 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/MediaStream"><code>MediaStream</code> <small>(en-US)</small></a>과 연관된 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/MediaStreamAudioDestinationNode"><code>MediaStreamAudioDestinationNode</code> <small>(en-US)</small></a>를 생성합니다.</p> </dd> <dt id="audiocontext.createmediastreamtracksource_en-us"><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/AudioContext/createMediaStreamTrackSource"><code>AudioContext.createMediaStreamTrackSource()</code> <small>(en-US)</small></a></dt> <dd> <p>미디어 스트림 트랙을 나타내는 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/MediaStream"><code>MediaStream</code> <small>(en-US)</small></a>과 연관된 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/MediaStreamTrackAudioSourceNode"><code>MediaStreamTrackAudioSourceNode</code> <small>(en-US)</small></a>를 생성합니다.</p> </dd> <dt id="audiocontext.getoutputtimestamp_en-us"><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/AudioContext/getOutputTimestamp"><code>AudioContext.getOutputTimestamp()</code> <small>(en-US)</small></a></dt> <dd> <p>현재 오디오 컨텍스트에 관련된 두 개의 오디오 타임스탬프 값을 포함하는 새로운 <code>AudioTimestamp</code> 객체를 반환합니다.</p> </dd> <dt id="audiocontext.resume_en-us"><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/AudioContext/resume"><code>AudioContext.resume()</code> <small>(en-US)</small></a></dt> <dd> <p>이전에 연기되거나/정지된 오디오 컨텍스트의 시간 진행을 다시 시작합니다.</p> </dd> <dt id="audiocontext.suspend_en-us"><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/AudioContext/suspend"><code>AudioContext.suspend()</code> <small>(en-US)</small></a></dt> <dd> <p>일시적으로 오디오 하드웨어 접근을 멈추고 프로세스에서의 CPU/배터리 사용을 줄이며, 오디오 컨텍스트에서의 시간 진행을 연기합니다.</p> </dd> </dl>
+</div>
+<h2 id="예제">예제</h2>
+<div class="section-content">
+<p>기본적인 오디오 컨텍스트 선언:</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="lr/VAeNlB7bO0ZVQ7dhZqM8tZHVh+/p1GPUFF1TkpYM=" data-language="js"><span class="token keyword">var</span> audioCtx <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">AudioContext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div> <p>크로스 브라우저를 위한 다른 형태:</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="2KAsJ6bLIIXTCkd8htqPS6U+VsK+J1X44FDHfjo9z/A=" data-language="js"><span class="token keyword">var</span> AudioContext <span class="token operator">=</span> window<span class="token punctuation">.</span>AudioContext <span class="token operator">||</span> window<span class="token punctuation">.</span>webkitAudioContext<span class="token punctuation">;</span>
+<span class="token keyword">var</span> audioCtx <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">AudioContext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">var</span> oscillatorNode <span class="token operator">=</span> audioCtx<span class="token punctuation">.</span><span class="token function">createOscillator</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> gainNode <span class="token operator">=</span> audioCtx<span class="token punctuation">.</span><span class="token function">createGain</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> finish <span class="token operator">=</span> audioCtx<span class="token punctuation">.</span>destination<span class="token punctuation">;</span>
+<span class="token comment">// etc.</span>
+</pre>
+</div>
+</div>
+<h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://webaudio.github.io/web-audio-api/#AudioContext">Web Audio API <br><small># AudioContext</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="web_audio_api/using_web_audio_api">Web Audio API 사용하기</a></li> <li><a href="offlineaudiocontext"><code>OfflineAudioContext</code></a></li> </ul></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/AudioContext" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/AudioContext</a>
+  </p>
+</div>

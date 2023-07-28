@@ -1,0 +1,70 @@
+<header><h1>AnalyserNode.maxDecibels</h1></header><div class="section-content"><p><a href="../analysernode"><code>AnalyserNode</code></a> 인터페이스의 <code>maxDecibels</code> 속성은 unsigned byte 값으로의 전환에 대해서, FFT 분석 데이터의 스케일링 범위에서의 최대 power 값을 나타내는 double 값입니다 — 기본적으로, 이것은 <code>getByteFrequencyData()</code>를 사용할 때 결과의 범위에 대한 최대 값을 명시합니다.</p></div>
+<h2 id="구문">구문</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="IVmX4TibPVXBPEKBbafj+jDLlFLi0H/hQUFYMhtIueY=" data-language="js"><span class="token keyword">var</span> curValue <span class="token operator">=</span> analyserNode<span class="token punctuation">.</span>maxDecibels<span class="token punctuation">;</span>
+analyserNode<span class="token punctuation">.</span>maxDecibels <span class="token operator">=</span> newValue<span class="token punctuation">;</span>
+</pre>
+</div></div>
+<h3 id="값">값</h3>
+<div class="section-content">
+<p>FFT 분석 데이터를 스케일링하는 것에 대한 최대 <a href="https://en.wikipedia.org/wiki/Decibel" target="_blank">데시벨</a> 값을 나타내는 double인데, <code>0</code> dB는 가능한 가장 큰 소리를 나타내고, <code>-10</code> dB는 그것의 10번째, 등등입니다. 기본 값은 <code>-30</code> dB입니다.</p> <p><code>getByteFrequencyData()</code>로부터 데이터를 얻을 때, <code>maxDecibels</code> 또는 더 높은 진폭을 가진 모든 주파수는 <code>255</code>로 반환됩니다.</p> <div class="notecard note" id="sect1"> <p><strong>참고:</strong> 만약 <code>AnalyserNode.minDecibels</code>보다 더 작거나 같은 값이 설정된다면, <code>IndexSizeError</code> 예외가 발생합니다.</p> </div>
+</div>
+<h2 id="예제">예제</h2>
+<div class="section-content">
+<p>다음의 예제는 <code>AnalyserNode</code>를 생성하기 위한 <a href="../audiocontext"><code>AudioContext</code></a>와 그리고 나서 반복적으로 주파수 데이터를 수집하고 현재 오디오 입력의 "winamp 막대그래프 스타일의" 출력을 그리기 위한 <a href="../window/requestanimationframe"><code>requestAnimationFrame</code></a>과 <a href="https://developer.mozilla.org/ko/docs/Web/HTML/Element/canvas"><code>&lt;canvas&gt;</code></a>의 기본 사용을 보여줍니다. 더 완벽한 응용 예제/정보를 보려면 <a href="https://mdn.github.io/voice-change-o-matic/" target="_blank">Voice-change-O-matic</a> 데모를 확인하세요 (관련된 코드를 보려면 <a href="https://github.com/mdn/voice-change-o-matic/blob/gh-pages/scripts/app.js#L128-L205" target="_blank">app.js 라인 128–205</a>를 참고하세요).</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="c9HmEsSAFFRu4AKrB/IcH58ZLTwAymCi+z1LWa8AO+c=" data-language="js"><span class="token keyword">var</span> audioCtx <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token punctuation">(</span>window<span class="token punctuation">.</span>AudioContext <span class="token operator">||</span> window<span class="token punctuation">.</span>webkitAudioContext<span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> analyser <span class="token operator">=</span> audioCtx<span class="token punctuation">.</span><span class="token function">createAnalyser</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+analyser<span class="token punctuation">.</span>minDecibels <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">90</span><span class="token punctuation">;</span>
+analyser<span class="token punctuation">.</span>maxDecibels <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">10</span><span class="token punctuation">;</span>
+
+  <span class="token operator">...</span>
+
+analyser<span class="token punctuation">.</span>fftSize <span class="token operator">=</span> <span class="token number">256</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> bufferLength <span class="token operator">=</span> analyser<span class="token punctuation">.</span>frequencyBinCount<span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>bufferLength<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> dataArray <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Uint8Array</span><span class="token punctuation">(</span>bufferLength<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+canvasCtx<span class="token punctuation">.</span><span class="token function">clearRect</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token constant">WIDTH</span><span class="token punctuation">,</span> <span class="token constant">HEIGHT</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">function</span> <span class="token function">draw</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  drawVisual <span class="token operator">=</span> <span class="token function">requestAnimationFrame</span><span class="token punctuation">(</span>draw<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  analyser<span class="token punctuation">.</span><span class="token function">getByteFrequencyData</span><span class="token punctuation">(</span>dataArray<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  canvasCtx<span class="token punctuation">.</span>fillStyle <span class="token operator">=</span> <span class="token string">'rgb(0, 0, 0)'</span><span class="token punctuation">;</span>
+  canvasCtx<span class="token punctuation">.</span><span class="token function">fillRect</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token constant">WIDTH</span><span class="token punctuation">,</span> <span class="token constant">HEIGHT</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">var</span> barWidth <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token constant">WIDTH</span> <span class="token operator">/</span> bufferLength<span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token number">2.5</span><span class="token punctuation">;</span>
+  <span class="token keyword">var</span> barHeight<span class="token punctuation">;</span>
+  <span class="token keyword">var</span> x <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">var</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> bufferLength<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    barHeight <span class="token operator">=</span> dataArray<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+    canvasCtx<span class="token punctuation">.</span>fillStyle <span class="token operator">=</span> <span class="token string">'rgb('</span> <span class="token operator">+</span> <span class="token punctuation">(</span>barHeight<span class="token operator">+</span><span class="token number">100</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">',50,50)'</span><span class="token punctuation">;</span>
+    canvasCtx<span class="token punctuation">.</span><span class="token function">fillRect</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span><span class="token constant">HEIGHT</span><span class="token operator">-</span>barHeight<span class="token operator">/</span><span class="token number">2</span><span class="token punctuation">,</span>barWidth<span class="token punctuation">,</span>barHeight<span class="token operator">/</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    x <span class="token operator">+=</span> barWidth <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token function">draw</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div>
+</div>
+<h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://webaudio.github.io/web-audio-api/#dom-analysernode-maxdecibels">Web Audio API <br><small># dom-analysernode-maxdecibels</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="../web_audio_api/using_web_audio_api">Web Audio API 사용하기</a></li> </ul></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/AnalyserNode/maxDecibels" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/AnalyserNode/maxDecibels</a>
+  </p>
+</div>

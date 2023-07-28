@@ -1,0 +1,52 @@
+<header><h1>자식 결합자</h1></header><div class="section-content">
+<p><strong>자식 결합자</strong>(<code>&gt;</code>)는 두 개의 CSS 선택자 사이에 위치하여 뒤쪽 선택자의 요소가 앞쪽 선택자 요소의 바로 밑에 위치할 경우에만 선택합니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="Tpn3DNMHA8Hp8suab4zGoW3Lh/zc+NEHfGX0DwKwlDU=" data-language="css"><span class="token comment">/* List items that are children of the "my-things" list */</span>
+<span class="token selector">ul.my-things &gt; li</span> <span class="token punctuation">{</span>
+  <span class="token property">margin</span><span class="token punctuation">:</span> 2em<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div> <p>뒤쪽 선택자의 요소는 앞쪽 선택자 요소의 바로 아래에 위치해야 하므로, DOM 트리의 깊이에 상관하지 않고 아래의 모든 요소를 선택하는 <a href="descendant_combinator">자손 결합자</a>보다 더 엄격합니다.</p>
+</div>
+<section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content"><pre class="notranslate">selector1 &gt; selector2 { style properties }
+</pre></div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+</section><section aria-labelledby="css"><h3 id="css">CSS</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="bVhw5byr2xrKuzhZ7tWZXsevU77dVzQjoXyZIPf+9Yw=" data-language="css"><span class="token selector">span</span> <span class="token punctuation">{</span>
+  <span class="token property">background-color</span><span class="token punctuation">:</span> white<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">div &gt; span</span> <span class="token punctuation">{</span>
+  <span class="token property">background-color</span><span class="token punctuation">:</span> DodgerBlue<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div></div></section><section aria-labelledby="html"><h3 id="html">HTML</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="Q70yHMl0gS8YS5jvd+1SkjZo4h87WERlUo3ghNTa5tE=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span><span class="token punctuation">&gt;</span></span>Span #1, in the div.
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span><span class="token punctuation">&gt;</span></span>Span #2, in the span that's in the div.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span><span class="token punctuation">&gt;</span></span>Span #3, not in the div at all.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div></div></section><section aria-labelledby="결과"><h3 id="결과">결과</h3>
+<div class="section-content"><div class="code-example" id="sect1">
+
+<iframe class="sample-code-frame" title="예제 sample" id="frame_예제" width="100%" height="100" src="https://live.mdnplay.dev/ko/docs/Web/CSS/Child_combinator/runner.html?id=%EC%98%88%EC%A0%9C" loading="lazy"></iframe>
+</div></div></section><h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://drafts.csswg.org/selectors/#child-combinators">Selectors Level 4 <br><small># child-combinators</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="descendant_combinator">자손 결합자</a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/CSS/Child_combinator" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/CSS/Child_combinator</a>
+  </p>
+</div>

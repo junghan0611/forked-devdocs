@@ -1,0 +1,74 @@
+<header><h1>Array.prototype.at()</h1></header><div class="section-content">
+<p><code>at()</code> 메서드는 정수 값을 받아, 배열에서 해당 값에 해당하는 인덱스의 요소를 반환합니다. 양수와 음수 모두 지정할 수 있고, 음수 값의 경우 배열의 뒤에서부터 인덱스를 셉니다.</p> <p><code>at()</code> 메서드의 존재가 대괄호 표기법을 부정하는 것은 아닙니다. 예를 들어 <code>array[0]</code>은 문제 없이 배열의 첫 요소를 반환합니다. 그러나 맨 마지막 요소를 가져오고 싶을 때 <a href="length"><code>length</code></a> 속성을 사용해 <code>array[array.length - 1]</code>을 하는 대신, 짧게 <code>array.at(-1)</code>을 사용할 수 있습니다. <a href="#%EC%98%88%EC%A0%9C">(예제를 참고하세요)</a></p>
+</div>
+<section aria-labelledby="시도해보기"><h2 id="시도해보기">시도해보기</h2>
+<div class="section-content"><iframe class="interactive is-js-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/js/array-at.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe></div></section><section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="4HEhB6k9yIq9eChrIRw2EpGaGSd5UJ9XLpYpO9VnWVM=" data-language="js"><span class="token function">at</span><span class="token punctuation">(</span>index<span class="token punctuation">)</span>
+</pre>
+</div></div></section><section aria-labelledby="매개변수"><h3 id="매개변수">매개변수</h3>
+<div class="section-content"><dl> <dt id="index"><code>index</code></dt> <dd> <p>배열에서 반환할 요소의 인덱스(위치). 음수 값을 지정할 경우 배열의 마지막을 기준으로 한 인덱스입니다. 즉, 배열 앞 대신 끝에서부터 위치를 계산합니다.</p> </dd> </dl></div></section><section aria-labelledby="반환_값"><h3 id="반환_값">반환 값</h3>
+<div class="section-content"><p>주어진 인덱스에 위치한 배열 요소. 주어진 인덱스가 배열에 없으면 <a href="../undefined"><code>undefined</code></a>를 반환합니다.</p></div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+</section><section aria-labelledby="배열의_끝_값_반환"><h3 id="배열의_끝_값_반환">배열의 끝 값 반환</h3>
+<div class="section-content">
+<p>아래 예제는 주어진 배열에서 맨 마지막에 위치한 값을 반환하는 함수를 정의합니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="d3yetQx1PlsllHZI7TqqvCuad1YNhzWcDwYfpQ4TYWs=" data-language="js"><span class="token comment">// 대상 배열</span>
+<span class="token keyword">const</span> cart <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'사과'</span><span class="token punctuation">,</span> <span class="token string">'바나나'</span><span class="token punctuation">,</span> <span class="token string">'배'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+<span class="token comment">// 주어진 배열의 마지막 요소를 반환하는 함수</span>
+<span class="token keyword">function</span> <span class="token function">returnLast</span><span class="token punctuation">(</span><span class="token parameter">arr</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> arr<span class="token punctuation">.</span><span class="token function">at</span><span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// 위의 배열 'cart'에서 마지막 요소를 가져옴</span>
+<span class="token keyword">const</span> item1 <span class="token operator">=</span> <span class="token function">returnLast</span><span class="token punctuation">(</span>cart<span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>item1<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// '배' 기록</span>
+
+<span class="token comment">// 위의 배열 'cart'에 요소를 추가함</span>
+cart<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token string">'오렌지'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> item2 <span class="token operator">=</span> <span class="token function">returnLast</span><span class="token punctuation">(</span>cart<span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>item2<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// '오렌지' 기록</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="방법_비교"><h3 id="방법_비교">방법 비교</h3>
+<div class="section-content">
+<p>아래 예제에서는 <a href="../array"><code>Array</code></a>의 뒤에서 두 번째 요소를 가져오는 서로 다른 방법을 비교합니다. 모든 방법이 유효하긴 하지만 <code>at()</code> 메서드의 간결성과 가독성을 확인할 수 있습니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="oPiCzlyk/mRbLtkPQcTWXrHNRmWKJafPiY8P9PSiphc=" data-language="js"><span class="token comment">// 대상 배열</span>
+<span class="token keyword">const</span> colors <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'빨강'</span><span class="token punctuation">,</span> <span class="token string">'초록'</span><span class="token punctuation">,</span> <span class="token string">'파랑'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+<span class="token comment">// length 속성 사용</span>
+<span class="token keyword">const</span> lengthWay <span class="token operator">=</span> colors<span class="token punctuation">[</span>colors<span class="token punctuation">.</span>length<span class="token operator">-</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>lengthWay<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// '초록' 기록</span>
+
+<span class="token comment">// slice() 메서드 사용. 배열을 반환함에 주의</span>
+<span class="token keyword">const</span> sliceWay <span class="token operator">=</span> colors<span class="token punctuation">.</span><span class="token function">slice</span><span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>sliceWay<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// '초록' 기록</span>
+
+<span class="token comment">// at() 메서드 사용</span>
+<span class="token keyword">const</span> atWay <span class="token operator">=</span> colors<span class="token punctuation">.</span><span class="token function">at</span><span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>atWay<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// '초록' 기록</span>
+</pre>
+</div>
+</div></section><h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://tc39.es/ecma262/multipage/indexed-collections.html#sec-array.prototype.at">ECMAScript Language Specification <br><small># sec-array.prototype.at</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li>
+<code>core-js</code>의 <a href="https://github.com/zloirock/core-js#relative-indexing-method" target="_blank"><code>Array.prototype.at</code> 폴리필</a>
+</li> <li>
+<a href="https://github.com/tc39/proposal-relative-indexing-method#polyfill" target="_blank"><code>at()</code> 메서드 폴리필</a>.</li> <li>
+<a href="find"><code>Array.prototype.find()</code></a> – 판별식을 사용해 값을 반환합니다.</li> <li>
+<a href="includes"><code>Array.prototype.includes()</code></a> – 값이 배열에 존재하는지 판별합니다.</li> <li>
+<a href="indexof"><code>Array.prototype.indexOf()</code></a> – 주어진 요소의 인덱스를 반환합니다.</li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/at" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/at</a>
+  </p>
+</div>

@@ -1,0 +1,39 @@
+<header><h1>MutationRecord</h1></header><div class="section-content"><p><a href="mutationrecord" aria-current="page"><code>MutationRecord</code></a> 읽기 전용 인터페이스는 <a href="mutationobserver"><code>MutationObserver</code></a>에 의해 감지된 각각의 변화를 나타냅니다. <a href="mutationobserver"><code>MutationObserver</code></a>의 콜백 매개변수로 전달되는 배열의 요소로 사용됩니다.</p></div>
+<h2 id="인스턴스_속성">인스턴스 속성</h2>
+<div class="section-content"><dl> <dt id="mutationrecord.addednodes_en-us">
+<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/MutationRecord/addedNodes"><code>MutationRecord.addedNodes</code> <small>(en-US)</small></a> <span class="badge inline readonly">읽기 전용</span>
+</dt> <dd> <p>변경으로 인해 추가된 노드들입니다. 추가된 노드가 없으면 빈 <a href="nodelist"><code>NodeList</code></a>입니다.</p> </dd> <dt id="mutationrecord.attributename_en-us">
+<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/MutationRecord/attributeName"><code>MutationRecord.attributeName</code> <small>(en-US)</small></a> <span class="badge inline readonly">읽기 전용</span>
+</dt> <dd> <p>바뀐 특성의 이름을 나타내는 문자열 또는 <code>null</code>입니다.</p> </dd> <dt id="mutationrecord.attributenamespace_en-us">
+<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/MutationRecord/attributeNamespace"><code>MutationRecord.attributeNamespace</code> <small>(en-US)</small></a> <span class="badge inline readonly">읽기 전용</span>
+</dt> <dd> <p>바뀐 특성의 네임스페이스를 나타내는 문자열 또는 <code>null</code>입니다.</p> </dd> <dt id="mutationrecord.nextsibling_en-us">
+<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/MutationRecord/nextSibling"><code>MutationRecord.nextSibling</code> <small>(en-US)</small></a> <span class="badge inline readonly">읽기 전용</span>
+</dt> <dd> <p>추가됐거나 제거된 노드의 다음 형제 또는 <code>null</code>입니다.</p> </dd> <dt id="mutationrecord.oldvalue_en-us">
+<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/MutationRecord/oldValue"><code>MutationRecord.oldValue</code> <small>(en-US)</small></a> <span class="badge inline readonly">읽기 전용</span>
+</dt> <dd> <p><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/MutationRecord/type"><code>MutationRecord.type</code> <small>(en-US)</small></a>에 따라 다른 값입니다.</p> <ul> <li>
+<code>attributes</code>라면 변경 전 특성의 값입니다.</li> <li>
+<code>characterData</code>라면 변경 전 노드의 텍스트 데이터입니다.</li> <li>
+<code>childList</code>라면 <code>null</code>입니다.</li> </ul> </dd> <dt id="mutationrecord.previoussibling_en-us">
+<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/MutationRecord/previousSibling"><code>MutationRecord.previousSibling</code> <small>(en-US)</small></a> <span class="badge inline readonly">읽기 전용</span>
+</dt> <dd> <p>추가됐거나 제거된 노드의 이전 형제 또는 <code>null</code>입니다.</p> </dd> <dt id="mutationrecord.removednodes_en-us">
+<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/MutationRecord/removedNodes"><code>MutationRecord.removedNodes</code> <small>(en-US)</small></a> <span class="badge inline readonly">읽기 전용</span>
+</dt> <dd> <p>변경으로 인해 제거된 노드들입니다. 제거된 노드가 없으면 빈 <a href="nodelist"><code>NodeList</code></a>입니다.</p> </dd> <dt id="mutationrecord.target_en-us">
+<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/MutationRecord/target"><code>MutationRecord.target</code> <small>(en-US)</small></a> <span class="badge inline readonly">읽기 전용</span>
+</dt> <dd> <p>변경된 노드입니다. <code>MutationRecord.type</code>에 따라 다른 값입니다.</p> <ul> <li>
+<code>attributes</code>라면 특성이 변경된 노드입니다.</li> <li>
+<code>characterData</code>라면 <code>CharacterData</code> 노드입니다.</li> <li>
+<code>childList</code>라면 자식이 변경된 노드입니다.</li> </ul> </dd> <dt id="mutationrecord.type_en-us">
+<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/MutationRecord/type"><code>MutationRecord.type</code> <small>(en-US)</small></a> <span class="badge inline readonly">읽기 전용</span>
+</dt> <dd> <p>변경 유형을 나타내는 문자열입니다. 특성 변경이면 <code>attributes</code>, <code>CharacterData</code> 노드 변경이면 <code>characterData</code>, 노드 트리의 변경이면 <code>childList</code>입니다.</p> </dd> </dl></div>
+<h2 id="명세서">명세서</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://dom.spec.whatwg.org/#interface-mutationrecord">DOM Standard <br><small># interface-mutationrecord</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/MutationRecord" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/MutationRecord</a>
+  </p>
+</div>

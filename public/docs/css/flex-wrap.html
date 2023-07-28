@@ -1,0 +1,130 @@
+<header><h1>flex-wrap</h1></header><div class="section-content"><p><a href="https://developer.mozilla.org/ko/docs/Web/CSS">CSS</a> <code>flex-wrap</code> property는 <code>flex-item</code> 요소들이 강제로 한줄에 배치되게 할 것인지, 또는 가능한 영역 내에서 벗어나지 않고 여러행으로 나누어 표현 할 것인지 결정하는 속성입니다. 만약 영역 내에서 벗어나지 못하게 설정한다면, 동시에 요소의 방향 축을 결정할 수 있습니다.</p></div>
+<section aria-labelledby="시도해보기"><h2 id="시도해보기">시도해보기</h2>
+<div class="section-content">
+<iframe class="interactive is-default-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/css/flex-wrap.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe> <p>여기를 참고하면 관련된 더욱 자세한 정보를 얻을 수 있습니다. <a href="https://developer.mozilla.org/en-US/CSS/Using_CSS_flexible_boxes">Using CSS flexible boxes</a></p>
+</div></section><section aria-labelledby="syntax"><h2 id="syntax">Syntax</h2>
+<div class="section-content">
+<div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="HF/jo25lSmzDru5mpPabHvGakBfD7BUanYLROxaQP2o=" data-language="css"><span class="token property">flex-wrap</span><span class="token punctuation">:</span> nowrap<span class="token punctuation">;</span> <span class="token comment">/* Default value */</span>
+<span class="token property">flex-wrap</span><span class="token punctuation">:</span> wrap<span class="token punctuation">;</span>
+<span class="token property">flex-wrap</span><span class="token punctuation">:</span> wrap-reverse<span class="token punctuation">;</span>
+
+<span class="token comment">/* Global values */</span>
+<span class="token property">flex-wrap</span><span class="token punctuation">:</span> inherit<span class="token punctuation">;</span>
+<span class="token property">flex-wrap</span><span class="token punctuation">:</span> initial<span class="token punctuation">;</span>
+<span class="token property">flex-wrap</span><span class="token punctuation">:</span> unset<span class="token punctuation">;</span>
+</pre>
+</div> <p><code>flex-wrap</code> 속성의 값으로, 다음 목록 중 하나의 키워드를 선택할 수 있습니다.</p>
+</div></section><section aria-labelledby="values"><h3 id="values">Values</h3>
+<div class="section-content">
+<p>아래는 사용 가능한 속성값들입니다:</p> <dl> <dt id="nowrap"><code>nowrap</code></dt> <dd> <p>기본 설정값으로, <code>flex-container</code> 부모요소 영역을 벗어나더라도 <code>flex-item</code> 요소들을 <strong>한 줄</strong>에 배치합니다. 시작점은 <a href="flex-direction"><code>flex-direction</code></a> 에 의해 결정된 방향으로 적용됩니다.</p> </dd> <dt id="wrap"><code>wrap</code></dt> <dd> <p><code>flex-item</code> 요소들이 내부 로직에 의해 분할되어 여러 행에 걸쳐서 배치됩니다. <code>nowrap</code> 속성과 마찬가지로 요소가 배치되는 시작점은 <a href="flex-direction"><code>flex-direction</code></a> 에 의해 결정됩니다. 일반적으로 위에서 아래로 쌓이는 순서입니다.</p> </dd> <dt id="wrap-reverse"><code>wrap-reverse</code></dt> <dd> <p><code>wrap</code> 속성값과 동일하지만, 요소가 나열되는 시작점과 끝점의 기준이 반대로 배치됩니다.</p> </dd> </dl>
+</div></section><section aria-labelledby="formal_syntax"><h3 id="formal_syntax">Formal syntax</h3>
+<div class="section-content"><pre class="notranslate"><span class="token property" id="flex-wrap">flex-wrap = </span><br>  <span class="token keyword">nowrap</span>        <a href="value_definition_syntax#single_bar">|</a><br>  <span class="token keyword">wrap</span>          <a href="value_definition_syntax#single_bar">|</a><br>  <span class="token keyword">wrap-reverse</span>  <br><br></pre></div></section><section aria-labelledby="examples"><h2 id="examples">Examples</h2>
+</section><section aria-labelledby="html"><h3 id="html">HTML</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="+L2bFMGKaxV1DIdDm2RJ3UVhiKovGLJrw8tQRS7i3bc=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h4</span><span class="token punctuation">&gt;</span></span>This is an example for flex-wrap:wrap <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h4</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>content<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>red<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>1<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>green<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>2<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>blue<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>3<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h4</span><span class="token punctuation">&gt;</span></span>This is an example for flex-wrap:nowrap <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h4</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>content1<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>red<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>1<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>green<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>2<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>blue<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>3<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h4</span><span class="token punctuation">&gt;</span></span>This is an example for flex-wrap:wrap-reverse <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h4</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>content2<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>red<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>1<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>green<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>2<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>blue<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>3<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div></div></section><section aria-labelledby="css"><h3 id="css">CSS</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="Ib/EwaNSwmV/ziSsfSuaz5JvuV7Yrb6RfA1ot9KbRrg=" data-language="css"><span class="token comment">/* Common Styles */</span>
+<span class="token selector">.content,
+.content1,
+.content2</span> <span class="token punctuation">{</span>
+    <span class="token property">color</span><span class="token punctuation">:</span> #fff<span class="token punctuation">;</span>
+    <span class="token property">font</span><span class="token punctuation">:</span> 100 24px/100px sans-serif<span class="token punctuation">;</span>
+    <span class="token property">height</span><span class="token punctuation">:</span> 150px<span class="token punctuation">;</span>
+    <span class="token property">text-align</span><span class="token punctuation">:</span> center<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">.content div,
+.content1 div,
+.content2 div</span> <span class="token punctuation">{</span>
+    <span class="token property">height</span><span class="token punctuation">:</span> 50%<span class="token punctuation">;</span>
+    <span class="token property">width</span><span class="token punctuation">:</span> 50%<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token selector">.red</span> <span class="token punctuation">{</span>
+    <span class="token property">background</span><span class="token punctuation">:</span> orangered<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token selector">.green</span> <span class="token punctuation">{</span>
+    <span class="token property">background</span><span class="token punctuation">:</span> yellowgreen<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token selector">.blue</span> <span class="token punctuation">{</span>
+    <span class="token property">background</span><span class="token punctuation">:</span> steelblue<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">/* Flexbox Styles */</span>
+<span class="token selector">.content</span> <span class="token punctuation">{</span>
+    <span class="token property">display</span><span class="token punctuation">:</span> flex<span class="token punctuation">;</span>
+    <span class="token property">flex-wrap</span><span class="token punctuation">:</span> wrap<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token selector">.content1</span> <span class="token punctuation">{</span>
+    <span class="token property">display</span><span class="token punctuation">:</span> flex<span class="token punctuation">;</span>
+    <span class="token property">flex-wrap</span><span class="token punctuation">:</span> nowrap<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token selector">.content2</span> <span class="token punctuation">{</span>
+    <span class="token property">display</span><span class="token punctuation">:</span> flex<span class="token punctuation">;</span>
+    <span class="token property">flex-wrap</span><span class="token punctuation">:</span> wrap-reverse<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div></div></section><section aria-labelledby="results"><h3 id="results">Results</h3>
+<div class="section-content"><div class="code-example" id="sect1">
+
+<iframe class="sample-code-frame" title="Examples sample" id="frame_examples" width="700px" height="700px" src="https://live-samples.mdn.mozilla.net/ko/docs/Web/CSS/flex-wrap/_sample_.examples.html?id=examples&amp;url=%2Fko%2Fdocs%2FWeb%2FCSS%2Fflex-wrap" loading="lazy"></iframe>
+</div></div></section><h2 id="명세서">명세서</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://drafts.csswg.org/css-flexbox/#flex-wrap-property">CSS Flexible Box Layout Module Level 1 <br><small># flex-wrap-property</small></a></td></tr></tbody>
+</table></div>
+<div class="section-content"><figure class="table-container"><div class="_table"><table class="properties"><tbody>
+<tr>
+<th scope="row"><a href="initial_value">초기값</a></th>
+<td><code>nowrap</code></td>
+</tr>
+<tr>
+<th scope="row">적용대상</th>
+<td>flex containers</td>
+</tr>
+<tr>
+<th scope="row"><a href="inheritance">상속</a></th>
+<td>no</td>
+</tr>
+<tr>
+<th scope="row"><a href="computed_value">계산 값</a></th>
+<td>as specified</td>
+</tr>
+<tr>
+<th scope="row">Animation type</th>
+<td>discrete</td>
+</tr>
+</tbody></table></div></figure></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="see_also"><h2 id="see_also">See also</h2>
+<div class="section-content"><ul> <li>CSS Flexbox Guide: <em><a href="css_flexible_box_layout/basic_concepts_of_flexbox">Basic Concepts of Flexbox</a></em>
+</li> <li>CSS Flexbox Guide: <em><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_flexible_box_layout/Mastering_wrapping_of_flex_items" class="only-in-en-us">Mastering wrapping of flex items <small>(en-US)</small></a></em>
+</li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/CSS/flex-wrap" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/CSS/flex-wrap</a>
+  </p>
+</div>

@@ -1,0 +1,23 @@
+<header><h1>&lt;option&gt;</h1></header><div class="section-content"><p><code>&lt;option&gt;</code>는 <a href="select"><code>&lt;select&gt;</code></a>, <a href="optgroup"><code>&lt;optgroup&gt;</code></a>, <a href="datalist"><code>&lt;datalist&gt;</code></a> 요소의 항목을 정의합니다. 그러므로, <code>&lt;option&gt;</code>을 사용해 팝업 메뉴 등 목록에서 하나의 항목을 나타낼 수 있습니다.</p></div>
+<h2 id="시도해보기">시도해보기</h2>
+<div class="section-content">
+<iframe class="interactive is-tabbed-standard-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/tabbed/option.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe>  <figure class="table-container"><div class="_table"><table class="properties"> <tbody> <tr> <th scope="row"><a href="../content_categories">콘텐츠 카테고리</a></th> <td>없음.</td> </tr> <tr> <th scope="row">가능한 콘텐츠</th> <td>텍스트. 이스케이프 처리한 문자(<code>&amp;eacute;</code> 등)도 가능.</td> </tr> <tr> <th scope="row">태그 생략</th> <td> 여는 태그는 필수입니다. 바로 뒤따르는 요소가 <a href="optgroup"><code>&lt;optgroup&gt;</code></a>, 다른 <code>&lt;option&gt;</code>이거나, 자신이 부모의 마지막 자식이라면 닫는 태그를 생략할 수 있습니다. </td> </tr> <tr> <th scope="row">가능한 부모 요소</th> <td> <a href="select"><code>&lt;select&gt;</code></a>, <a href="optgroup"><code>&lt;optgroup&gt;</code></a>, <a href="datalist"><code>&lt;datalist&gt;</code></a> 요소. </td> </tr> <tr> <th scope="row">가능한 ARIA 역할</th> <td>없음</td> </tr> <tr> <th scope="row">DOM 인터페이스</th> <td><a href="https://developer.mozilla.org/ko/docs/Web/API/HTMLOptionElement"><code>HTMLOptionElement</code></a></td> </tr> </tbody> </table></div></figure>
+</div>
+<h2 id="특성">특성</h2>
+<div class="section-content">
+<p>이 요소는 <a href="../global_attributes">전역 특성</a>을 포함합니다.</p> <dl> <dt id="disabled"><a id="attr-disabled" class="inline-block" href="#attr-disabled"><b><code>disabled</code></b></a></dt> <dd> <p>지정한 경우 이 옵션을 선택할 수 없습니다. 브라우저에서, 비활성화 옵션은 주로 회색으로 보이며, 클릭과 포커스 등 모든 이벤트를 받지 않습니다. <code>&lt;option&gt;</code>에 <code>disabled</code> 특성을 추가하지 않더라도, <a href="optgroup"><code>&lt;optgroup&gt;</code></a> 등 조상 요소로 인해 비활성화될 수 있습니다.</p> </dd> <dt id="label"><a id="attr-label" class="inline-block" href="#attr-label"><b><code>label</code></b></a></dt> <dd> <p>옵션의 뜻을 나타내는 텍스트. 지정하지 않은 경우, 요소의 텍스트 콘텐츠를 대신 사용합니다.</p> </dd> <dt id="selected"><a id="attr-selected" class="inline-block" href="#attr-selected"><b><code>selected</code></b></a></dt> <dd> <p>지정한 경우 초기에 이 옵션을 선택한 상태로 설정합니다. <a href="select#attr-multiple"><code>multiple</code></a>를 지정하지 않은 <a href="select"><code>&lt;select&gt;</code></a> 요소의 자손인 경우, 하나의 <code>&lt;option&gt;</code>만 <code>selected</code> 특성을 가질 수 있습니다.</p> </dd> <dt id="value"><a id="attr-value" class="inline-block" href="#attr-value"><b><code>value</code></b></a></dt> <dd> <p>양식 데이터를 구성할 때 사용할 값. 지정하지 않은 경우, 요소의 텍스트 콘텐츠를 대신 사용합니다.</p> </dd> </dl>
+</div>
+<h2 id="예제">예제</h2>
+<div class="section-content"><p><a href="select"><code>&lt;select&gt;</code></a> 요소를 참고하세요.</p></div>
+<h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://html.spec.whatwg.org/multipage/form-elements.html#the-option-element">HTML Standard <br><small># the-option-element</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/HTML/Element/option" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/HTML/Element/option</a>
+  </p>
+</div>

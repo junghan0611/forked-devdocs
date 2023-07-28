@@ -1,0 +1,37 @@
+<header><h1>Blob()</h1></header><div class="section-content"><p><code>Blob()</code> 생성자는 새로운 <a href="../blob"><code>Blob</code></a> 객체를 반환합니다. 반환하는 블롭의 데이터는 <code>array</code> 매개변수에 제공한 배열을 이어붙인 값입니다.</p></div>
+<h2 id="구문">구문</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="1R+ftkUFtOL2PJOtkJ3S1Ufy0WR8k1gGqBC7vugS1Cw=" data-language="js"><span class="token keyword">new</span> <span class="token class-name">Blob</span><span class="token punctuation">(</span>array<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">new</span> <span class="token class-name">Blob</span><span class="token punctuation">(</span>array<span class="token punctuation">,</span> options<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div></div>
+<h3 id="매개변수">매개변수</h3>
+<div class="section-content"><dl> <dt id="array"><code>array</code></dt> <dd> <p><a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer"><code>ArrayBuffer</code></a>, <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray"><code>ArrayBufferView</code> <small>(en-US)</small></a>, <a href="../blob"><code>Blob</code></a>, <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/String"><code>USVString</code></a> 또는 이 값들을 혼합해 구성한 <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array"><code>Array</code></a>입니다. <a href="../blob"><code>Blob</code></a>의 데이터를 구성하게 됩니다. <code>USVString</code>은 UTF-8로 인코딩됩니다.</p> </dd> <dt id="options">
+<code>options</code> <span class="badge inline optional">Optional</span>
+</dt> <dd> <p>다음 속성을 지정할 수 있는 <a class="page-not-created"><code>BlobPropertyBag</code></a> 객체입니다.</p> <dl> <dt id="type">
+<code>type</code> <span class="badge inline optional">Optional</span>
+</dt> <dd> <p>블롭에 저장할 데이터의 <a href="https://developer.mozilla.org/ko/docs/Glossary/MIME_type">MIME 유형</a>입니다. 기본 값은 빈 문자열(<code>''</code>)입니다.</p> </dd> <dt id="endings">
+<code>endings</code> <span class="badge inline optional">Optional</span> <abbr class="icon icon-nonstandard" title="비표준. 사용하기전에 다른 브라우저에서도 사용 가능한지 확인 해주세요."> <span class="visually-hidden">비표준</span> </abbr>
+</dt> <dd> <p>데이터가 텍스트일 때, 개행 문자(<code>\n</code>)를 어떻게 해석할지 지정합니다. 기본 값인 <code>transparent</code>는 개행 문자를 바꾸지 않고 블롭 데이터로 복사합니다. <code>native</code>를 지정하면 호스트 시스템 컨벤션에 맞춰서 변환합니다.</p> </dd> </dl> </dd> </dl></div>
+<h3 id="반환_값">반환 값</h3>
+<div class="section-content"><p>지정한 데이터를 담은 새로운 <a href="../blob"><code>Blob</code></a> 객체.</p></div>
+<h2 id="예제">예제</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="63v3+opo9wFuF9sGvQzlc1f8UN652DhGjgFayjQG9Rw=" data-language="js"><span class="token keyword">const</span> array <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'&lt;a id="a"&gt;&lt;b id="b"&gt;hey!&lt;/b&gt;&lt;/a&gt;'</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment">// 하나의 DOMString을 포함한 배열</span>
+<span class="token keyword">const</span> blob <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Blob</span><span class="token punctuation">(</span>array<span class="token punctuation">,</span> <span class="token punctuation">{</span><span class="token literal-property property">type</span> <span class="token operator">:</span> <span class="token string">'text/html'</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 생성한 블롭</span>
+</pre>
+</div></div>
+<h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://w3c.github.io/FileAPI/#constructorBlob">File API <br><small># constructorBlob</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/Blob/Blob" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/Blob/Blob</a>
+  </p>
+</div>

@@ -1,0 +1,53 @@
+<header><h1>String.prototype.includes()</h1></header><div class="section-content"><p><code>includes()</code> 메서드는 하나의 문자열이 다른 문자열에 포함되어 있는지를 판별하고, 결과를 <code>true</code> 또는 <code>false</code> 로 반환합니다. 검색 시 대소문자를 구분합니다.</p></div>
+<section aria-labelledby="시도해보기"><h2 id="시도해보기">시도해보기</h2>
+<div class="section-content"><iframe class="interactive is-shorter-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/js/string-includes.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe></div></section><section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="5lowqwfv4II4x/BrM57ky6QhPlOdHKhnh1fyEC302y8=" data-language="js"><span class="token function">includes</span><span class="token punctuation">(</span>searchString<span class="token punctuation">)</span>
+<span class="token function">includes</span><span class="token punctuation">(</span>searchString<span class="token punctuation">,</span> position<span class="token punctuation">)</span>
+</pre>
+</div></div></section><section aria-labelledby="매개변수"><h3 id="매개변수">매개변수</h3>
+<div class="section-content"><dl> <dt id="searchstring"><code>searchString</code></dt> <dd> <p>이 문자열에서 찾을 다른 문자열. 정규표현식이 올 수 없습니다.</p> </dd> <dt id="position">
+<code>position</code> <span class="badge inline optional">Optional</span>
+</dt> <dd> <p><code>searchString</code>을 찾기 시작할 위치. (기본값 <code>0</code>).</p> </dd> </dl></div></section><section aria-labelledby="반환값"><h3 id="반환값">반환값</h3>
+<div class="section-content"><p>문자열을 찾아내면 <code>true</code> . 실패하면 <code>false</code> .</p></div></section><section aria-labelledby="예외"><h3 id="예외">예외</h3>
+<div class="section-content"><dl> <dt id="typeerror"><a href="../typeerror"><code>TypeError</code></a></dt> <dd> <p><code>searchString</code>이 <a href="../regexp#special_handling_for_regexes">정규식일 경우</a>.</p> </dd> </dl></div></section><section aria-labelledby="설명"><h2 id="설명">설명</h2>
+<div class="section-content"><p>이 메서드를 사용해 문자열 내에 찾고자 하는 다른 문자열이 있는지 확인할 수 있습니다.</p></div></section><section aria-labelledby="대소문자_구분"><h3 id="대소문자_구분">대소문자 구분</h3>
+<div class="section-content">
+<p><code>includes()</code> 메서드는 대소문자를 구별합니다. 예를 들어 아래 코드는 <code>false</code>를 반환합니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="XRcmIXev6mSFtQ9SGX5Tc4huta3oPFF/vcRSMnwASx0=" data-language="js"><span class="token string">'Blue Whale'</span><span class="token punctuation">.</span><span class="token function">includes</span><span class="token punctuation">(</span><span class="token string">'blue'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// returns false</span>
+</pre>
+</div> <p>아래와 같이 원본 문자열과 검색 문자열을 모두 소문자로 변환하여 이 제약 조건을 해결할 수 있습니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="ucYj0JDKxr17077mmjUHPgPp52RALIXrfsdzOK6rkMo=" data-language="js"><span class="token string">"Blue Whale"</span><span class="token punctuation">.</span><span class="token function">toLowerCase</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">includes</span><span class="token punctuation">(</span><span class="token string">"blue"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// returns true</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+</section><section aria-labelledby="includes_사용하기"><h3 id="includes_사용하기">
+<code>includes()</code> 사용하기</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="9rs07H2C5FKE0S0L5MmgWwceWiATR7eZpf7tG7D92+M=" data-language="js"><span class="token keyword">const</span> str <span class="token operator">=</span> <span class="token string">'To be, or not to be, that is the question.'</span><span class="token punctuation">;</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>str<span class="token punctuation">.</span><span class="token function">includes</span><span class="token punctuation">(</span><span class="token string">"To be"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// true</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>str<span class="token punctuation">.</span><span class="token function">includes</span><span class="token punctuation">(</span><span class="token string">"question"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// true</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>str<span class="token punctuation">.</span><span class="token function">includes</span><span class="token punctuation">(</span><span class="token string">"nonexistent"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// false</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>str<span class="token punctuation">.</span><span class="token function">includes</span><span class="token punctuation">(</span><span class="token string">"To be"</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// false</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>str<span class="token punctuation">.</span><span class="token function">includes</span><span class="token punctuation">(</span><span class="token string">"TO BE"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// false</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>str<span class="token punctuation">.</span><span class="token function">includes</span><span class="token punctuation">(</span><span class="token string">""</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// true</span>
+</pre>
+</div></div></section><h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://tc39.es/ecma262/multipage/text-processing.html#sec-string.prototype.includes">ECMAScript Language Specification <br><small># sec-string.prototype.includes</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="https://github.com/zloirock/core-js#ecmascript-string-and-regexp" target="_blank"><code>core-js</code>에서 <code>String.prototype.includes</code>의 폴리필</a></li> <li><a href="../array/includes"><code>Array.prototype.includes()</code></a></li> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray/includes"><code>TypedArray.prototype.includes()</code> <small>(en-US)</small></a></li> <li><a href="indexof"><code>String.prototype.indexOf()</code></a></li> <li><a href="lastindexof"><code>String.prototype.lastIndexOf()</code></a></li> <li><a href="startswith"><code>String.prototype.startsWith()</code></a></li> <li><a href="endswith"><code>String.prototype.endsWith()</code></a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/String/includes" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/String/includes</a>
+  </p>
+</div>

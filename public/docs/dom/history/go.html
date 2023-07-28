@@ -1,0 +1,53 @@
+<header><h1>History.go()</h1></header><div class="section-content">
+<p><code>History.go()</code> 메서드는 history 세션에서 특정한 페이지를 로딩합니다. 인자로 전달하는 파라미터 값에 따라 history를 통해서 페이지를 앞 뒤로 이동할 수 있습니다.</p> <p>이 메서드는 <a href="https://developer.mozilla.org/ko/docs/Glossary/Asynchronous">asynchronous</a>(비동기)로 동작합니다. 페이지 앞, 뒤 이동이 언제 이뤄지는지 알려면 <code><a href="../window/popstate_event">popstate</a></code> event에 대한 listener를 등록합니다.</p>
+</div>
+<h2 id="구문">구문</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="q8YLQvKTfJkHur5k8POFQadbD2xXvCUNvRfqRT6PL1s=" data-language="js">history<span class="token punctuation">.</span><span class="token function">go</span><span class="token punctuation">(</span><span class="token punctuation">[</span>delta<span class="token punctuation">]</span><span class="token punctuation">)</span>
+</pre>
+</div></div>
+<h3 id="parameters">Parameters</h3>
+<div class="section-content"><dl> <dt id="delta">
+<code>delta</code> <span class="badge inline optional">Optional</span>
+</dt> <dd> <p>현재 페이지에서 상대적으로 이동하려고 하는 history의 위치 값. 음수 값은 뒤로 이동하고, 양수 값은 앞으로 이동합니다. 예를 들면 <code>history.go(2)</code> 는 현재 페이지에서 2 페이지 앞으로 이동하고, <code>history.go(-2)</code> 는 현재 페이지에서 2 페이지 뒤로 이동합니다. 만약 값을 전달하지 않거나, <code>delta</code> 값을 0으로 전달한다면, 이는 <code>location.reload()</code>를 동작시켰을 때와 동일한 결과를 보입니다. (새로고침)</p> </dd> </dl></div>
+<h2 id="예제">예제</h2>
+<div class="section-content">
+<p>한 페이지 뒤로 가기 (<a href="back"><code>back()</code></a>를 호출한 것과 동일):</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="1J7KAsVbI2FUeQt2hLornmPoQw0DTr6yyscZRYgOZjc=" data-language="js">history<span class="token punctuation">.</span><span class="token function">go</span><span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span>
+</pre>
+</div> <p><a href="forward"><code>forward()</code></a>와 동일한 한 페이지 앞으로 가기:</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="csBaZkU8rzP8mAvWPNWKR3si0MalVc23B0bwTuuUJeA=" data-language="js">history<span class="token punctuation">.</span><span class="token function">go</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+</pre>
+</div> <p>두 페이지 앞으로 가기:</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="JZdk3XYGijcvB1AszFDhTEiKs29xea884jGjrTl2crE=" data-language="js">history<span class="token punctuation">.</span><span class="token function">go</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div> <p>두 페이지 뒤로 가기:</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="2B9rXxXz9G9JViUt28lcLWEqvZeGZi55nab5CVIIYYY=" data-language="js">history<span class="token punctuation">.</span><span class="token function">go</span><span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div> <p>마지막으로, 아래 구문들은 현재 페이지를 새로고침 합니다:</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="W2kudXBGXL89aNTPs/H9mt/GqidwBj/1SqN/sfXQu68=" data-language="js">history<span class="token punctuation">.</span><span class="token function">go</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+history<span class="token punctuation">.</span><span class="token function">go</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div>
+</div>
+<h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://html.spec.whatwg.org/multipage/nav-history-apis.html#dom-history-go-dev">HTML Standard <br><small># dom-history-go-dev</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<h2 id="see_also">See also</h2>
+<div class="section-content"><ul> <li><a href="../history"><code>History</code></a></li> <li><a href="back"><code>back()</code></a></li> <li><a href="forward"><code>forward()</code></a></li> <li>
+<code><a href="../window/popstate_event">popstate</a></code> event</li> <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/History_API/Working_with_the_History_API" class="only-in-en-us">Working with the History API <small>(en-US)</small></a></li> </ul></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/History/go" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/History/go</a>
+  </p>
+</div>

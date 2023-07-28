@@ -1,0 +1,68 @@
+<header><h1>전체 선택자</h1></header><div class="section-content">
+<p><a href="https://developer.mozilla.org/ko/docs/Web/CSS">CSS</a> <strong>전체 선택자</strong>(<code>*</code>)는 모든 형태의 모든 요소를 선택합니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="uA0DJNWENBNcK1HfyRAvyZOP1whIcuzzolcp6c7GSuM=" data-language="css"><span class="token comment">/* Selects all elements */</span>
+<span class="token selector">*</span> <span class="token punctuation">{</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> green<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div> <p>CSS 3부터는 별표를 <a href="css_namespaces"><code>네임스페이스</code></a>와 함께 사용할 수 있습니다.</p> <ul> <li>
+<code>ns|*</code> - 네임스페이스 ns 안의 모든 요소 선택</li> <li>
+<code>*|*</code> - 모든 요소 선택</li> <li>
+<code>|*</code> - 네임스페이스 없는 모든 요소 선택</li> </ul>
+</div>
+<section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content">
+<pre class="notranslate">* { style properties }
+</pre> <p>단순 선택자에서 별표는 선택사항입니다. 즉 <code>*.warning</code>과 <code>.warning</code>은 같습니다.</p>
+</div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+</section><section aria-labelledby="css"><h3 id="css">CSS</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="pXVnHQ6PVCuLSjZJ+p1fmOGQD1FYkl09cKi4a0rmpos=" data-language="css"><span class="token selector">* [lang^=en]</span> <span class="token punctuation">{</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> green<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">*.warning</span> <span class="token punctuation">{</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> red<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">*#maincontent</span> <span class="token punctuation">{</span>
+  <span class="token property">border</span><span class="token punctuation">:</span> 1px solid blue<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">.floating</span> <span class="token punctuation">{</span>
+  <span class="token property">float</span><span class="token punctuation">:</span> left
+<span class="token punctuation">}</span>
+
+<span class="token comment">/* automatically clear the next sibling after a floating element */</span>
+<span class="token selector">.floating + *</span> <span class="token punctuation">{</span>
+  <span class="token property">clear</span><span class="token punctuation">:</span> left<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div></div></section><section aria-labelledby="html"><h3 id="html">HTML</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="2LhungYwKiEmYkDm9SOkGe2aaUzDW45nIiTAkPvohlQ=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>warning<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span> <span class="token attr-name">lang</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>en-us<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>A green span<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">&gt;</span></span> in a red paragraph.
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>maincontent<span class="token punctuation">"</span></span> <span class="token attr-name">lang</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>en-gb<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>warning<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>A red span<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">&gt;</span></span> in a green paragraph.
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div></div></section><section aria-labelledby="결과"><h3 id="결과">결과</h3>
+<div class="section-content"><div class="code-example" id="sect1">
+
+<iframe class="sample-code-frame" title="예제 sample" id="frame_예제" src="https://live.mdnplay.dev/ko/docs/Web/CSS/Universal_selectors/runner.html?id=%EC%98%88%EC%A0%9C" loading="lazy"></iframe>
+</div></div></section><h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://drafts.csswg.org/selectors/#the-universal-selector">Selectors Level 4 <br><small># the-universal-selector</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/CSS/Universal_selectors" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/CSS/Universal_selectors</a>
+  </p>
+</div>

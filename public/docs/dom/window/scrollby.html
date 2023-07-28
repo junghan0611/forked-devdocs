@@ -1,0 +1,50 @@
+<header><h1>Window.scrollBy()</h1></header><div class="section-content"><p><code>Window.scrollBy()</code> 메서드는 창에 있는 문서를 지정된 양만큼 스크롤합니다.</p></div>
+<h2 id="구문">구문</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="mHjxn6ICJ9NT73AYeeGrnugQD1/q9GeSbAu0JjrTE7g=" data-language="js"><span class="token function">scrollBy</span><span class="token punctuation">(</span>x<span class="token operator">-</span>coord<span class="token punctuation">,</span> y<span class="token operator">-</span>coord<span class="token punctuation">)</span>
+<span class="token function">scrollBy</span><span class="token punctuation">(</span>options<span class="token punctuation">)</span>
+</pre>
+</div></div>
+<h3 id="매개변수">매개변수</h3>
+<div class="section-content">
+<ul> <li>
+<code>x-coord</code>는 스크롤할 수평 픽셀 값입니다.</li> <li>
+<code>y-coord</code>는 스크롤할 수직 픽셀 값입니다.</li> </ul> <p>- 혹은 -</p> <dl> <dt id="options"><code>options</code></dt> <dd> <p>다음 매개변수가 포함된 사전.</p> <dl> <dt id="top"><code>top</code></dt> <dd> <p>창 또는 요소를 스크롤할 Y축을 따라 픽셀 수를 지정합니다.</p> </dd> <dt id="left"><code>left</code></dt> <dd> <p>창 또는 요소를 스크롤할 X축을 따라 픽셀 수를 지정합니다.</p> </dd> <dt id="behavior"><code>behavior</code></dt> <dd> <p>스크롤이 부드럽게 애니메이션되는지 (<code>smooth</code>), 한 번의 점프로 즉시 실행되는지 (<code>instant</code>), 또는 브라우저가 선택하도록 할지 (<code>auto</code>, 기본)를 지정합니다.</p> </dd> </dl> </dd> </dl>
+</div>
+<h3 id="반환_값">반환 값</h3>
+<div class="section-content"><p>없음 (<a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/undefined"><code>undefined</code></a>).</p></div>
+<h2 id="예제">예제</h2>
+<div class="section-content">
+<p>한 페이지 아래로 스크롤하려면.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="u37qnfdEw79x+Pi5U0/WLmjMh/u1bqT+RqBSi0/heuE=" data-language="js">window<span class="token punctuation">.</span><span class="token function">scrollBy</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> window<span class="token punctuation">.</span>innerHeight<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div> <p>위로 스크롤하려면.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="0tEYz25Yds6izYq/ZSTGn4rF6f9nqxPvoaNkG7PIpcA=" data-language="js">window<span class="token punctuation">.</span><span class="token function">scrollBy</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token operator">-</span>window<span class="token punctuation">.</span>innerHeight<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div> <p><code>options</code> 사용.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="RZ8dpdeN1v4QlZwPelyu5MTqAPbHhQqoNf5gMFEs0/Y=" data-language="js">window<span class="token punctuation">.</span><span class="token function">scrollBy</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  <span class="token literal-property property">top</span><span class="token operator">:</span> <span class="token number">100</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">left</span><span class="token operator">:</span> <span class="token number">100</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">behavior</span><span class="token operator">:</span> <span class="token string">'smooth'</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div>
+</div>
+<h2 id="참고">참고</h2>
+<div class="section-content"><p> <a href="scroll"><code>window.scroll()</code></a>가 문서의 절대 위치로 스크롤하는데 반해, <code>window.scrollBy()</code>는 특정 양만큼 스크롤합니다. <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/Window/scrollByLines"><code>window.scrollByLines()</code> <small>(en-US)</small></a>와 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/Window/scrollByPages"><code>window.scrollByPages()</code> <small>(en-US)</small></a>를 참조하십시오. </p></div>
+<h2 id="명세서">명세서</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://drafts.csswg.org/cssom-view/#dom-window-scrollby">CSSOM View Module <br><small># dom-window-scrollby</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/Window/scrollBy" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/Window/scrollBy</a>
+  </p>
+</div>

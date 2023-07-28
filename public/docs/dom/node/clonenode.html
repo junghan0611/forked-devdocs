@@ -1,0 +1,35 @@
+<header><h1>Node.cloneNode()</h1></header><div class="section-content">
+
+<code>Node.cloneNode()</code> 메서드는 이 메서드를 호출한 Node 의 복제된 Node를 반환합니다.
+</div>
+<h2 id="syntax">Syntax</h2>
+<div class="section-content">
+<div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="sZvJulHLhdgGZkvVSaJIhWQomp0QSdgNlHbRYX7ceak=" data-language="js"><span class="token keyword">var</span> dupNode <span class="token operator">=</span> node<span class="token punctuation">.</span><span class="token function">cloneNode</span><span class="token punctuation">(</span>deep<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div> <dl> <dt id="node"><em>node</em></dt> <dd> <p>복제되어야 할 node.</p> </dd> <dt id="dupnode"><em>dupNode</em></dt> <dd> <p><em>복제된 새로운 node.</em></p> </dd> <dt id="deep_optional"><em>deep <span class="badge inline optional">Optional</span></em></dt> <dd> <p><em>해당 node의 children 까지 복제하려면 true, 해당 node 만 복제하려면 false</em></p> </dd> </dl>
+</div>
+<h2 id="example">Example</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="tlU3r3MvRA+v4O8nLfX8tw5cZMOClMX71yRmaWlpNbE=" data-language="js"><span class="token keyword">var</span> p <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">"para1"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> p_prime <span class="token operator">=</span> p<span class="token punctuation">.</span><span class="token function">cloneNode</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div></div>
+<h2 id="notes">Notes</h2>
+<div class="section-content">
+<p>Cloning a node copies all of its attributes and their values, including intrinsic (in–line) listeners. It does not copy event listeners added using <a href="https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener" class="only-in-en-us"><code>addEventListener()</code> <small>(en-US)</small></a> or those assigned to element properties. (e.g. <code>node.onclick = fn</code>) Moreover, for a &lt;canvas&gt; element, the painted image is not copied.</p> <p>The duplicate node returned by <code>cloneNode()</code> is not part of the document until it is added to another node that is part of the document using <a href="appendchild"><code>Node.appendChild()</code></a> or a similar method. It also has no parent until it is appended to another node.</p> <p>If <code>deep</code> is set to <code>false</code>, child nodes are not cloned. Any text that the node contains is not cloned either, as it is contained in one or more child <a href="../text"><code>Text</code></a> nodes.</p> <p>If <code>deep</code> evaluates to <code>true</code>, the whole subtree (including text that may be in child <a href="../text"><code>Text</code></a> nodes) is copied too. For empty nodes (e.g. <a href="https://developer.mozilla.org/ko/docs/Web/HTML/Element/img"><code>&lt;img&gt;</code></a> and <a href="https://developer.mozilla.org/ko/docs/Web/HTML/Element/input"><code>&lt;input&gt;</code></a> elements) it doesn't matter whether <code>deep</code> is set to <code>true</code> or <code>false</code>.</p> <div class="notecard warning" id="sect1"> <p><strong>경고:</strong> <code>cloneNode()</code> may lead to duplicate element IDs in a document.</p> </div> <p>If the original node has an ID and the clone is to be placed in the same document, the ID of the clone should be modified to be unique. Name attributes may need to be modified also, depending on whether duplicate names are expected.</p> <p>To clone a node for appending to a different document, use <a href="../document/importnode"><code>Document.importNode()</code></a> instead.</p>
+</div>
+<h2 id="명세서">명세서</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="#">DOM Standard <br><small># ref-for-dom-node-clonenode①</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/Node/cloneNode" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/Node/cloneNode</a>
+  </p>
+</div>

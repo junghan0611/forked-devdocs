@@ -1,0 +1,35 @@
+<header><h1>Selection.toString()</h1></header><div class="section-content">
+<div class="notecard experimental" id="sect1"><p><strong>Experimental:</strong> <strong>This is an <a href="https://developer.mozilla.org/en-US/docs/MDN/Writing_guidelines/Experimental_deprecated_obsolete#experimental">experimental technology</a></strong><br>Check the <a href="#browser_compatibility">Browser compatibility table</a> carefully before using this in production.</p></div> <p><code>Selection.toString()</code> 메소드는 selection 객체가 현재 나타내는 문자열을 반환합니다. 즉, 현재 선택된 텍스트의 문자열.</p>
+</div>
+<h2 id="syntax">Syntax</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="t/L1Ha9pMsziy9GBQTEobUqgU0ygBmkIEtjknPFvuuY=" data-language="js">str <span class="token operator">=</span> sel<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+</pre>
+</div></div>
+<h3 id="return_value">Return value</h3>
+<div class="section-content"><p>A string representing the selection.</p></div>
+<h2 id="description">Description</h2>
+<div class="section-content">
+<p>This method returns the currently selected text.</p> <p>In <a href="en/javascript">JavaScript</a>, this method is called automatically when a function the selection object is passed to requires a string:</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="3Jrxr5ZMWvGB1wapYAE4u+1JCipez1/mukvz6KbHDgg=" data-language="js"><span class="token function">alert</span><span class="token punctuation">(</span>window<span class="token punctuation">.</span><span class="token function">getSelection</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">// What is called</span>
+<span class="token function">alert</span><span class="token punctuation">(</span>window<span class="token punctuation">.</span><span class="token function">getSelection</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment">// What is actually being effectively called.</span>
+</pre>
+</div>
+</div>
+<h2 id="명세서">명세서</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://w3c.github.io/selection-api/#dom-selection-stringifier">Selection API <br><small># dom-selection-stringifier</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<h2 id="see_also">See also</h2>
+<div class="section-content"><ul> <li>
+<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/Selection"><code>Selection</code> <small>(en-US)</small></a>, the interface it belongs to.</li> </ul></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/Selection/toString" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/Selection/toString</a>
+  </p>
+</div>

@@ -1,0 +1,47 @@
+<h1>CSP: worker-src</h1>
+<header><h1>CSP: worker-src</h1></header><div class="section-content">
+<p>HTTP <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy" class="only-in-en-us"><code>Content-Security-Policy</code> <small>(en-US)</small></a> (CSP) <code>worker-src</code> 지시문은 <a href="https://developer.mozilla.org/ko/docs/Web/API/Worker"><code>Worker</code></a>, <a href="https://developer.mozilla.org/ko/docs/Web/API/SharedWorker"><code>SharedWorker</code></a>, 또는 <a href="https://developer.mozilla.org/ko/docs/Web/API/ServiceWorker"><code>ServiceWorker</code></a>의 유효한 스크립트 소스를 지정합니다.</p> <figure class="table-container"><div class="_table"><table class="properties"> <tbody> <tr> <th scope="row">CSP 버전</th> <td>3</td> </tr> <tr> <th scope="row">지시 형식</th> <td><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Glossary/Fetch_directive">Fetch directive <small>(en-US)</small></a></td> </tr> <tr> <th scope="row">대비책</th> <td> <p>이 지시문이 없으면 사용자 에이전트는 먼저 <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/child-src" class="only-in-en-us"><code>child-src</code> <small>(en-US)</small></a> 지시문을 찾은 다음 <a href="script-src"><code>script-src</code></a> 지시문을 찾고, 마지막으로 <a href="default-src"><code>default-src</code></a> 지시문을 찾습니다.</p> </td> </tr> </tbody> </table></div></figure>
+</div>
+<section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content">
+<p><code>worker-src</code> 정책에 대해 하나 이상의 소스를 허용할 수 있습니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">http</span></p>
+<pre data-signature="JO/Z8+UgFjzlQKg38aEZF+juFk5GqAM5bNg5bpik7uE=" data-language="http"><span class="token header"><span class="token header-name keyword">Content-Security-Policy</span><span class="token punctuation">:</span> <span class="token header-value csp languages-csp">worker-src &lt;source&gt;;</span></span>
+<span class="token header"><span class="token header-name keyword">Content-Security-Policy</span><span class="token punctuation">:</span> <span class="token header-value csp languages-csp">worker-src &lt;source&gt; &lt;source&gt;;</span></span>
+</pre>
+</div>
+</div></section><section aria-labelledby="소스"><h3 id="소스">소스</h3>
+<div class="section-content">
+<p><code>&lt;source&gt;</code>는 <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/Sources" class="only-in-en-us">CSP Source Values <small>(en-US)</small></a>에 나열된 값 중 하나입니다.</p> <p>이 값은 모든 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Glossary/Fetch_directive">fetch 지시문 <small>(en-US)</small></a> 및 <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/Sources" class="only-in-en-us">기타 여러 지시문 <small>(en-US)</small></a>에서 사용할 수 있습니다.</p>
+</div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+</section><section aria-labelledby="위반_사례"><h3 id="위반_사례">위반 사례</h3>
+<div class="section-content">
+<p>주어진 CSP 해더가 다음과 같다면</p> <div class="code-example">
+<p class="example-header"><span class="language-name">http</span></p>
+<pre data-signature="I81bjrbWNbhDMe2+ZseTHrLZWf0Pd6XIH4+sfGwGgW4=" data-language="http"><span class="token header"><span class="token header-name keyword">Content-Security-Policy</span><span class="token punctuation">:</span> <span class="token header-value csp languages-csp">worker-src https://example.com/</span></span>
+</pre>
+</div> <p>아래에서 <a href="https://developer.mozilla.org/ko/docs/Web/API/Worker"><code>Worker</code></a>, <a href="https://developer.mozilla.org/ko/docs/Web/API/SharedWorker"><code>SharedWorker</code></a>, <a href="https://developer.mozilla.org/ko/docs/Web/API/ServiceWorker"><code>ServiceWorker</code></a>는 차단되어 로드되지 않습니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="qB1X5RvzEi3MmT/TqkRHbCd3TOip2gEmCBj3zela728=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">&gt;</span></span><span class="token script"><span class="token language-javascript">
+  <span class="token keyword">let</span> blockedWorker <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Worker</span><span class="token punctuation">(</span><span class="token string">"data:application/javascript,…"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  blockedWorker <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">SharedWorker</span><span class="token punctuation">(</span><span class="token string">"https://not-example.com/"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  navigator<span class="token punctuation">.</span>serviceWorker<span class="token punctuation">.</span><span class="token function">register</span><span class="token punctuation">(</span><span class="token string">"https://not-example.com/sw.js"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div>
+</div></section><h2 id="명세서">명세서</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://w3c.github.io/webappsec-csp/#directive-worker-src">Content Security Policy Level 3 <br><small># directive-worker-src</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy" class="only-in-en-us"><code>Content-Security-Policy</code> <small>(en-US)</small></a></li> <li><a href="https://developer.mozilla.org/ko/docs/Web/API/Web_Workers_API/Using_web_workers#content_security_policy">웹 워커를 위한 CSP</a></li> <li>
+<a href="https://developer.mozilla.org/ko/docs/Web/API/Worker"><code>Worker</code></a>, <a href="https://developer.mozilla.org/ko/docs/Web/API/SharedWorker"><code>SharedWorker</code></a>, <a href="https://developer.mozilla.org/ko/docs/Web/API/ServiceWorker"><code>ServiceWorker</code></a>
+</li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/HTTP/Headers/Content-Security-Policy/worker-src" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/HTTP/Headers/Content-Security-Policy/worker-src</a>
+  </p>
+</div>

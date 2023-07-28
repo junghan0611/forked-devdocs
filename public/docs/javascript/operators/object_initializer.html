@@ -1,0 +1,247 @@
+<header><h1>객체 초기자</h1></header><div class="section-content"><p>객체는 <a href="../global_objects/object/object"><code>new Object()</code></a>, <a href="../global_objects/object/create"><code>Object.create()</code></a> 또는 <em>literal</em> 표기법(<em>initializer</em> 표기법)을 사용해 초기화될 수 있습니다. 객체 초기자는 중괄호(<code>{}</code>)로 묶인 0개 이상의 객체의 프로퍼티명과 관련 값의 쌍을 콤마로 구분한 목록입니다.</p></div>
+<section aria-labelledby="시도해보기"><h2 id="시도해보기">시도해보기</h2>
+<div class="section-content"><iframe class="interactive is-taller-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/js/expressions-objectinitializer.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe></div></section><section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="megb5ZWXdnEZMlVpRHDR+auSHNHpM6rl5RJg6vBaU6Q=" data-language="js"><span class="token keyword">let</span> o <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+<span class="token keyword">let</span> o <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token literal-property property">a</span><span class="token operator">:</span> <span class="token string">'foo'</span><span class="token punctuation">,</span> <span class="token literal-property property">b</span><span class="token operator">:</span> <span class="token number">42</span><span class="token punctuation">,</span> <span class="token literal-property property">c</span><span class="token operator">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">}</span>
+
+<span class="token keyword">let</span> a <span class="token operator">=</span> <span class="token string">'foo'</span><span class="token punctuation">,</span> b <span class="token operator">=</span> <span class="token number">42</span><span class="token punctuation">,</span> c <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+<span class="token keyword">let</span> o <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token literal-property property">a</span><span class="token operator">:</span> a<span class="token punctuation">,</span> <span class="token literal-property property">b</span><span class="token operator">:</span> b<span class="token punctuation">,</span> <span class="token literal-property property">c</span><span class="token operator">:</span> c<span class="token punctuation">}</span>
+
+<span class="token keyword">let</span> o <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token function-variable function">property</span><span class="token operator">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">parameters</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token keyword">get</span> <span class="token function">property</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token keyword">set</span> <span class="token function">property</span><span class="token punctuation">(</span><span class="token parameter">value</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</pre>
+</div></div></section><section aria-labelledby="ecmascript_2015의_새로운_표기법"><h3 id="ecmascript_2015의_새로운_표기법">ECMAScript 2015의 새로운 표기법</h3>
+<div class="section-content">
+<p>이러한 표기법의 지원에 대해서는 호환성 테이블을 확인해주세요. 지원하지 않는 환경에서는 이러한 표기법들은 구문 에러를 유발합니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="KC+PMaIlONCR2DXeb5JJqWHDAy3env0OT6TWKiegrfM=" data-language="js"><span class="token comment">// 프로퍼티명 약식 (ES2015)</span>
+<span class="token keyword">let</span> a <span class="token operator">=</span> <span class="token string">'foo'</span><span class="token punctuation">,</span> b <span class="token operator">=</span> <span class="token number">42</span><span class="token punctuation">,</span> c <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token keyword">let</span> o <span class="token operator">=</span> <span class="token punctuation">{</span>a<span class="token punctuation">,</span> b<span class="token punctuation">,</span> c<span class="token punctuation">}</span>
+
+<span class="token comment">// 메서드명 약식 (ES2015)</span>
+<span class="token keyword">let</span> o <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token function">property</span><span class="token punctuation">(</span><span class="token parameter">parameters</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// 계산된 프로퍼티명 (ES2015)</span>
+<span class="token keyword">let</span> prop <span class="token operator">=</span> <span class="token string">'foo'</span><span class="token punctuation">;</span>
+<span class="token keyword">let</span> o <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token punctuation">[</span>prop<span class="token punctuation">]</span><span class="token operator">:</span> <span class="token string">'hey'</span><span class="token punctuation">,</span>
+  <span class="token punctuation">[</span><span class="token string">'b'</span> <span class="token operator">+</span> <span class="token string">'ar'</span><span class="token punctuation">]</span><span class="token operator">:</span> <span class="token string">'there'</span>
+<span class="token punctuation">}</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="설명"><h2 id="설명">설명</h2>
+<div class="section-content"><p>객체 초기자는 <a href="../global_objects/object"><code>Object</code></a>의 초기화를 나타내는 표현입니다. 객체는 객체를 나타내는 데 사용되는 _properties_로 구성됩니다. 객체 프로퍼티의 값은 <a href="https://developer.mozilla.org/ko/docs/Glossary/Primitive">원시 값</a> 데이터 타입 또는 다른 객체를 포함할 수 있습니다.</p></div></section><section aria-labelledby="객체_리터럴_표기법_vs_json"><h3 id="객체_리터럴_표기법_vs_json">객체 리터럴 표기법 vs JSON</h3>
+<div class="section-content">
+<p>객체 리터럴 표기법은 <strong>J</strong>ava<strong>S</strong>cript <strong>O</strong>bject <strong>N</strong>otation(<a href="https://developer.mozilla.org/ko/docs/Glossary/JSON">JSON</a>)과 동일하지 않습니다. 비슷하게 보이지만 다음과 같은 차이가 있습니다.</p> <ul> <li>JSON은 <em>오직</em> <code>"property": value</code> 구문을 사용해 정의한 프로퍼티만 허용합니다. 프로퍼티명에는 반드시 큰따옴표를 사용해야 하며 약식으로 정의할 수 없습니다.</li> <li>JSON에서 값은 문자열, 숫자, 배열, <code>true</code>, <code>false</code>, <code>null</code>, 또는 다른 (JSON) 객체만 사용할 수 있습니다.</li> <li>함수 값(아래 "메서드"를 보세요)은 JSON의 값으로 할당할 수 없습니다.</li> <li>
+<a href="../global_objects/date"><code>Date</code></a>와 같은 객체는 <a href="../global_objects/json/parse"><code>JSON.parse()</code></a> 이후의 문자열이 됩니다.</li> <li>
+<a href="../global_objects/json/parse"><code>JSON.parse()</code></a>는 계산된 프로퍼티명을 거부하며 에러가 발생합니다.</li> </ul>
+</div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+</section><section aria-labelledby="객체_생성하기"><h3 id="객체_생성하기">객체 생성하기</h3>
+<div class="section-content">
+<p>프로퍼티가 없는 빈 객체는 다음과 같이 생성합니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="XGyq1HoJQyhRVj+iQxLNC/GA2qRSDwGrWXPGSmr+Jtg=" data-language="js"><span class="token keyword">let</span> object <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+</pre>
+</div> <p><em>literal</em> 또는 <em>initializer</em> 표기법의 장점은 중괄호 안에 프로퍼티를 갖는 객체를 빠르게 생성할 수 있다는 것입니다. 콤마로 구분하여 <code>key: value</code> 상의 목록을 작성하면 됩니다.</p> <p>다음 코드는 세 개의 프로퍼티를 갖는 객체를 생성하며 키는 <code>"foo"</code>, <code>"age"</code>, <code>"baz"</code>입니다. 다음 세 키의 값은 문자열 <code>"bar"</code>, 숫자 <code>42</code>, 그리고 다른 객체입니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="2m4eXv4mQwp+OY91YNkbu6+2S4wkMJdbSL/4FtkjZ84=" data-language="js"><span class="token keyword">let</span> object <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token literal-property property">foo</span><span class="token operator">:</span> <span class="token string">'bar'</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">age</span><span class="token operator">:</span> <span class="token number">42</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">baz</span><span class="token operator">:</span> <span class="token punctuation">{</span><span class="token literal-property property">myProp</span><span class="token operator">:</span> <span class="token number">12</span><span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="프로퍼티에_접근하기"><h3 id="프로퍼티에_접근하기">프로퍼티에 접근하기</h3>
+<div class="section-content">
+<p>객체를 생성한 후에는 이를 읽거나 변경할 수 있습니다. 객체 프로퍼티는 점 표기법 또는 대괄호 표기법을 사용해 접근할 수 있습니다(자세한 정보는 <a href="property_accessors">프로퍼티 접근자</a>를 보세요).</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="kTdatgq4+praLTe2ctIEMG58bqjP2PhxGzypnm5NV1g=" data-language="js">object<span class="token punctuation">.</span>foo <span class="token comment">// "bar"</span>
+object<span class="token punctuation">[</span><span class="token string">'age'</span><span class="token punctuation">]</span> <span class="token comment">// 42</span>
+object<span class="token punctuation">.</span>baz          <span class="token comment">// {myProp: 12}</span>
+object<span class="token punctuation">.</span>baz<span class="token punctuation">.</span>myProp   <span class="token comment">//12</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="프로퍼티_정의"><h3 id="프로퍼티_정의">프로퍼티 정의</h3>
+<div class="section-content">
+<p>우리는 초기자 구문을 사용해 프로퍼티를 작성하는 방법을 이미 배웠습니다. 때때로 코드의 변수를 객체로 넣고 싶은 경우가 있습니다. 다음과 같은 코드를 보게 될 수 있습니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="pFxQelRi44Q1Grcj0KcBvjx4L9gaSx6k1RyP5HRBwT0=" data-language="js"><span class="token keyword">let</span> a <span class="token operator">=</span> <span class="token string">'foo'</span><span class="token punctuation">,</span>
+    b <span class="token operator">=</span> <span class="token number">42</span><span class="token punctuation">,</span>
+    c <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">let</span> o <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token literal-property property">a</span><span class="token operator">:</span> a<span class="token punctuation">,</span>
+  <span class="token literal-property property">b</span><span class="token operator">:</span> b<span class="token punctuation">,</span>
+  <span class="token literal-property property">c</span><span class="token operator">:</span> c
+<span class="token punctuation">}</span>
+</pre>
+</div> <p>ECMAScript 2015를 사용하면 더 짧은 표기법을 사용해 동일한 결과를 얻을 수 있습니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="Hy8yQ6jkhfFdUg6ZJFB2dFc5xCXoQUMgHuJoXJMVXXQ=" data-language="js"><span class="token keyword">let</span> a <span class="token operator">=</span> <span class="token string">'foo'</span><span class="token punctuation">,</span>
+    b <span class="token operator">=</span> <span class="token number">42</span><span class="token punctuation">,</span>
+    c <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token comment">// 프로퍼티명 약식 (ES2015)</span>
+<span class="token keyword">let</span> o <span class="token operator">=</span> <span class="token punctuation">{</span>a<span class="token punctuation">,</span> b<span class="token punctuation">,</span> c<span class="token punctuation">}</span>
+
+<span class="token comment">// 다르게 작성하면,</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token punctuation">(</span>o<span class="token punctuation">.</span>a <span class="token operator">===</span> <span class="token punctuation">{</span>a<span class="token punctuation">}</span><span class="token punctuation">.</span>a<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">// true</span>
+</pre>
+</div> <h4 id="중복된_프로퍼티명">중복된 프로퍼티명</h4> <p>동일한 프로퍼티명을 사용하면 두 번째 프로퍼티가 첫 번째 프로퍼티를 덮어씁니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="FOYhF9CXwAhXidlXg7UALukTM2FM7sEx+1qXpVjNkpQ=" data-language="js"><span class="token keyword">let</span> a <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token literal-property property">x</span><span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token literal-property property">x</span><span class="token operator">:</span> <span class="token number">2</span><span class="token punctuation">}</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span> <span class="token comment">// {x: 2}</span>
+</pre>
+</div> <p>ECMAScript 5 엄격 모드 코드에서는 중복된 프로퍼티명을 <a href="../global_objects/syntaxerror"><code>SyntaxError</code></a>로 간주합니다. 런타임 시 복제를 가능하게 한 계산된 프로퍼티 명의 도입으로 ECMScript 2015는 이 제한을 제거했습니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="7RP2SoT0ZkVqwZ9H1nRqjpAn7auB+oBM/8YsGYAEN8o=" data-language="js"><span class="token keyword">function</span> <span class="token function">haveES2015DuplicatePropertySemantics</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token string">'use strict'</span><span class="token punctuation">;</span>
+  <span class="token keyword">try</span> <span class="token punctuation">{</span>
+    <span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token literal-property property">prop</span><span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token literal-property property">prop</span><span class="token operator">:</span> <span class="token number">2</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// 에러가 발생하지 않음, 중복된 프로퍼티명이 엄격 모드에서 허용됨</span>
+    <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span> <span class="token keyword">catch</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 에러가 발생함, 엄격 모드에서 중복이 금지됨</span>
+    <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="메서드_정의"><h3 id="메서드_정의">메서드 정의</h3>
+<div class="section-content">
+<p>객체의 프로퍼티는 <a href="../functions">function</a> 또는 <a href="../functions/get">getter</a> 또는 <a href="../functions/set">setter</a> 메서드를 참조할 수도 있습니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="LKBwB0GDcyfEDMlVOqrHIyXiwBsoXot6BOQWvTYqVbc=" data-language="js"><span class="token keyword">let</span> o <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token function-variable function">property</span><span class="token operator">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">parameters</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token keyword">get</span> <span class="token function">property</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token keyword">set</span> <span class="token function">property</span><span class="token punctuation">(</span><span class="token parameter">value</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</pre>
+</div> <p>ECMAScript 2015에서는 약식 표기법을 사용할 수 있으므로 "<code>function</code>" 키워드는 필요하지 않습니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="+Y0EiBVUczlxKSzDzUfhEOACtvX0LhbPP2rpyeADFu0=" data-language="js"><span class="token comment">// 약식 메서드명(ES2015)</span>
+<span class="token keyword">let</span> o <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token function">property</span><span class="token punctuation">(</span><span class="token parameter">parameters</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span>
+</pre>
+</div> <p>ECMAScript 2015에서는 값이 generator 함수인 프로퍼티를 간결하게 정의하는 방법이 있습니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="f4n4YSVYCXEEagaoZK6lZwzViST0luyYKaP2HlPN+ZU=" data-language="js"><span class="token keyword">let</span> o <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token operator">*</span><span class="token function">generator</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token operator">...</span><span class="token operator">...</span><span class="token operator">...</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</pre>
+</div> <p>다음의 ES5와 유사한 표기법과 동일합니다(하지만 ECMAScript 5에는 generator가 없음을 유의하세요).</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="IH8mSehvntRLezfOwbIsSkeJpTplo8yQpyQkmjpAbIk=" data-language="js"><span class="token keyword">let</span> o <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token function-variable function">generator</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token operator">*</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token operator">...</span><span class="token operator">...</span><span class="token operator">...</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</pre>
+</div> <p>메서드에 대한 상세 정보와 예제는 <a href="../functions/method_definitions">메서드 정의</a>를 보세요.</p>
+</div></section><section aria-labelledby="계산된_프로퍼티명"><h3 id="계산된_프로퍼티명">계산된 프로퍼티명</h3>
+<div class="section-content">
+<p>ECMAScript 2015부터 객체 초기자 구문은 계산된 프로퍼티 명도 지원합니다. 대괄호 <code>[]</code> 안에서 표현식을 허용하며, 표현식은 프로퍼티명으로 계산되어 사용됩니다. 이는 이미 프로퍼티를 읽고 설정하는 데 사용하는 <a href="property_accessors">프로퍼티 접근자</a> 구문의 대괄호 표기법을 연상시킵니다.</p> <p>이제 객체 리터럴에서도 유사한 구문을 사용할 수 있습니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="PQ1IXhB1V5u20sxI2nFgJyRyuWhgmUnqc0icRO/NXO0=" data-language="js"><span class="token comment">// 계산된 프로퍼티명(ES2015)</span>
+<span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">0</span>
+<span class="token keyword">let</span> a <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token punctuation">[</span><span class="token string">'foo'</span> <span class="token operator">+</span> <span class="token operator">++</span>i<span class="token punctuation">]</span><span class="token operator">:</span> i<span class="token punctuation">,</span>
+  <span class="token punctuation">[</span><span class="token string">'foo'</span> <span class="token operator">+</span> <span class="token operator">++</span>i<span class="token punctuation">]</span><span class="token operator">:</span> i<span class="token punctuation">,</span>
+  <span class="token punctuation">[</span><span class="token string">'foo'</span> <span class="token operator">+</span> <span class="token operator">++</span>i<span class="token punctuation">]</span><span class="token operator">:</span> i
+<span class="token punctuation">}</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>a<span class="token punctuation">.</span>foo1<span class="token punctuation">)</span> <span class="token comment">// 1</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>a<span class="token punctuation">.</span>foo2<span class="token punctuation">)</span> <span class="token comment">// 2</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>a<span class="token punctuation">.</span>foo3<span class="token punctuation">)</span> <span class="token comment">// 3</span>
+
+<span class="token keyword">const</span> items <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">"A"</span><span class="token punctuation">,</span><span class="token string">"B"</span><span class="token punctuation">,</span><span class="token string">"C"</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> obj <span class="token operator">=</span> <span class="token punctuation">{</span>
+<span class="token punctuation">[</span>items<span class="token punctuation">]</span><span class="token operator">:</span> <span class="token string">"Hello"</span>
+<span class="token punctuation">}</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// A,B,C: "Hello"</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>obj<span class="token punctuation">[</span><span class="token string">"A,B,C"</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token comment">// "Hello"</span>
+
+<span class="token keyword">let</span> param <span class="token operator">=</span> <span class="token string">'size'</span>
+<span class="token keyword">let</span> config <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token punctuation">[</span>param<span class="token punctuation">]</span><span class="token operator">:</span> <span class="token number">12</span><span class="token punctuation">,</span>
+  <span class="token punctuation">[</span><span class="token string">'mobile'</span> <span class="token operator">+</span> param<span class="token punctuation">.</span><span class="token function">charAt</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toUpperCase</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> param<span class="token punctuation">.</span><span class="token function">slice</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token operator">:</span> <span class="token number">4</span>
+<span class="token punctuation">}</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>config<span class="token punctuation">)</span> <span class="token comment">// {size: 12, mobileSize: 4}</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="전개_프로퍼티"><h3 id="전개_프로퍼티">전개 프로퍼티</h3>
+<div class="section-content">
+<p><a href="https://github.com/tc39/proposal-object-rest-spread" target="_blank">ECMAScript의 나머지/전개 프로퍼티</a> 제안(stage 4)은 객체 리터럴에 <a href="spread_syntax">전개</a> 프로퍼티를 추가합니다. 이는 제공된 객체로부터 새로운 객체로 자신만의 열거형 프로퍼티를 복사합니다.</p> <p>이제 <a href="../global_objects/object/assign"><code>Object.assign()</code></a> 보다 더 짧은 구문을 사용해 얕은 복제(<code>prototype</code> 제외) 또는 객체 병합이 가능합니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="cVbAQJEag5/iFDL9TQncyAyqZ28YTBqmdfB2iUOF5EY=" data-language="js"><span class="token keyword">let</span> obj1 <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token literal-property property">foo</span><span class="token operator">:</span> <span class="token string">'bar'</span><span class="token punctuation">,</span> <span class="token literal-property property">x</span><span class="token operator">:</span> <span class="token number">42</span> <span class="token punctuation">}</span>
+<span class="token keyword">let</span> obj2 <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token literal-property property">foo</span><span class="token operator">:</span> <span class="token string">'baz'</span><span class="token punctuation">,</span> <span class="token literal-property property">y</span><span class="token operator">:</span> <span class="token number">13</span> <span class="token punctuation">}</span>
+
+<span class="token keyword">let</span> clonedObj <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token operator">...</span>obj1 <span class="token punctuation">}</span>
+<span class="token comment">// Object { foo: "bar", x: 42 }</span>
+
+<span class="token keyword">let</span> mergedObj <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token operator">...</span>obj1<span class="token punctuation">,</span> <span class="token operator">...</span>obj2 <span class="token punctuation">}</span>
+<span class="token comment">// Object { foo: "baz", x: 42, y: 13 }</span>
+</pre>
+</div> <div class="notecard warning" id="sect1"> <p><strong>경고:</strong> <a href="../global_objects/object/assign"><code>Object.assign()</code></a>은 <a href="../functions/set">setters</a>를 트리거하는 반면 전개 연산자는 그렇지 않음을 유의하세요!</p> </div>
+</div></section><section aria-labelledby="프로토타입_변형"><h3 id="프로토타입_변형">프로토타입 변형</h3>
+<div class="section-content">
+<p><code>__proto__: value</code> 또는 <code>"__proto__": value</code> 형태의 프로토타입 정의는 <code>__proto__</code> 이름을 갖는 프로퍼티를 생성하지 않습니다. 대신에, 제공된 값이 객체 또는 <a href="null"><code>null</code></a>인 경우, 생성된 객체의 <code>[[Prototype]]</code>을 해당 값으로 변경합니다(값이 객체 또는 <code>null</code>이 아닌 경우, 객체는 변경되지 않습니다).</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="aFpN5pmpY3/Qtg/8r128AOrnqvBHuG15jV0KLS9oBQw=" data-language="js"><span class="token keyword">let</span> obj1 <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+<span class="token function">assert</span><span class="token punctuation">(</span>Object<span class="token punctuation">.</span><span class="token function">getPrototypeOf</span><span class="token punctuation">(</span>obj1<span class="token punctuation">)</span> <span class="token operator">===</span> <span class="token class-name">Object</span><span class="token punctuation">.</span>prototype<span class="token punctuation">)</span>
+
+<span class="token keyword">let</span> obj2 <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token literal-property property">__proto__</span><span class="token operator">:</span> <span class="token keyword">null</span><span class="token punctuation">}</span>
+<span class="token function">assert</span><span class="token punctuation">(</span>Object<span class="token punctuation">.</span><span class="token function">getPrototypeOf</span><span class="token punctuation">(</span>obj2<span class="token punctuation">)</span> <span class="token operator">===</span> <span class="token keyword">null</span><span class="token punctuation">)</span>
+
+<span class="token keyword">let</span> protoObj <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+<span class="token keyword">let</span> obj3 <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string-property property">'__proto__'</span><span class="token operator">:</span> protoObj<span class="token punctuation">}</span>
+<span class="token function">assert</span><span class="token punctuation">(</span>Object<span class="token punctuation">.</span><span class="token function">getPrototypeOf</span><span class="token punctuation">(</span>obj3<span class="token punctuation">)</span> <span class="token operator">===</span> protoObj<span class="token punctuation">)</span>
+
+<span class="token keyword">let</span> obj4 <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token literal-property property">__proto__</span><span class="token operator">:</span> <span class="token string">'not an object or null'</span><span class="token punctuation">}</span>
+<span class="token function">assert</span><span class="token punctuation">(</span>Object<span class="token punctuation">.</span><span class="token function">getPrototypeOf</span><span class="token punctuation">(</span>obj4<span class="token punctuation">)</span> <span class="token operator">===</span> <span class="token class-name">Object</span><span class="token punctuation">.</span>prototype<span class="token punctuation">)</span>
+<span class="token function">assert</span><span class="token punctuation">(</span><span class="token operator">!</span>obj4<span class="token punctuation">.</span><span class="token function">hasOwnProperty</span><span class="token punctuation">(</span><span class="token string">'__proto__'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+</pre>
+</div> <p>객체 리터럴에서는 단일 프로토타입 변형만 허용됩니다. 다중 프로토타입 변형은 구문 에러입니다.</p> <p>"콜론" 표기법을 사용하지 않는 프로퍼티 정의는 프로토타입 변형이 아닙니다. 이는 다른 이름을 사용하여 유사한 정의와 동일하게 동작하는 프로퍼티 정의입니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="sxGDqvvrgqg+1NmMtJu4p1qgOihWmEF+2wfmVRRvO5Y=" data-language="js"><span class="token keyword">let</span> __proto__ <span class="token operator">=</span> <span class="token string">'variable'</span>
+
+<span class="token keyword">let</span> obj1 <span class="token operator">=</span> <span class="token punctuation">{</span>__proto__<span class="token punctuation">}</span>
+<span class="token function">assert</span><span class="token punctuation">(</span>Object<span class="token punctuation">.</span><span class="token function">getPrototypeOf</span><span class="token punctuation">(</span>obj1<span class="token punctuation">)</span> <span class="token operator">===</span> <span class="token class-name">Object</span><span class="token punctuation">.</span>prototype<span class="token punctuation">)</span>
+<span class="token function">assert</span><span class="token punctuation">(</span>obj1<span class="token punctuation">.</span><span class="token function">hasOwnProperty</span><span class="token punctuation">(</span><span class="token string">'__proto__'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token function">assert</span><span class="token punctuation">(</span>obj1<span class="token punctuation">.</span>__proto__ <span class="token operator">===</span> <span class="token string">'variable'</span><span class="token punctuation">)</span>
+
+<span class="token keyword">let</span> obj2 <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token function">__proto__</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> <span class="token string">'hello'</span><span class="token punctuation">;</span> <span class="token punctuation">}</span><span class="token punctuation">}</span>
+<span class="token function">assert</span><span class="token punctuation">(</span>obj2<span class="token punctuation">.</span><span class="token function">__proto__</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">===</span> <span class="token string">'hello'</span><span class="token punctuation">)</span>
+
+<span class="token keyword">let</span> obj3 <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">[</span><span class="token string">'__prot'</span> <span class="token operator">+</span> <span class="token string">'o__'</span><span class="token punctuation">]</span><span class="token operator">:</span> <span class="token number">17</span><span class="token punctuation">}</span>
+<span class="token function">assert</span><span class="token punctuation">(</span>obj3<span class="token punctuation">.</span>__proto__ <span class="token operator">===</span> <span class="token number">17</span><span class="token punctuation">)</span>
+</pre>
+</div>
+</div></section><h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://tc39.es/ecma262/multipage/ecmascript-language-expressions.html#sec-object-initializer">ECMAScript Language Specification <br><small># sec-object-initializer</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="property_accessors">프로퍼티 접근자</a></li> <li>
+<a href="../functions/get"><code>get</code></a> / <a href="../functions/set"><code>set</code></a>
+</li> <li><a href="../functions/method_definitions">메서드 정의</a></li> <li><a href="../lexical_grammar">Lexical grammar</a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Operators/Object_initializer" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Operators/Object_initializer</a>
+  </p>
+</div>

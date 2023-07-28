@@ -1,0 +1,113 @@
+<header><h1>Array.prototype.values()</h1></header><div class="section-content"><p><code>values()</code> 메서드는 배열에서 각 인덱스에 대한 값을 순회하는 <em>array <a href="../../iteration_protocols#the_iterator_protocol">iterator</a></em> 객체를 반환합니다.</p></div>
+<section aria-labelledby="시도해보기"><h2 id="시도해보기">시도해보기</h2>
+<div class="section-content"><iframe class="interactive is-js-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/js/array-values.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe></div></section><section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="+rBQ+GXr2b3JGBuV92RrSPgw3eZusPR6EDFQhl/+tY8=" data-language="js"><span class="token function">values</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+</pre>
+</div></div></section><section aria-labelledby="반환_값"><h2 id="반환_값">반환 값</h2>
+<div class="section-content"><p>순회 가능한 새로운 반복자</p></div></section><section aria-labelledby="설명"><h2 id="설명">설명</h2>
+<div class="section-content">
+<p><code>Array.prototype.values()</code>는 <a href="@@iterator"><code>Array.prototype[@@iterator]()</code></a>의 기본 구현체입니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="ykGZZ8wsf+zPMyP1dlegP/J+uv29ICLEjNQzIAl2F9M=" data-language="js"><span class="token class-name">Array</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span>values <span class="token operator">===</span> <span class="token class-name">Array</span><span class="token punctuation">.</span>prototype<span class="token punctuation">[</span>Symbol<span class="token punctuation">.</span>iterator<span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment">// true</span>
+</pre>
+</div> <p><code>values()</code> 메소드는 <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Guide/Indexed_collections#sparse_arrays">희소 배열</a>에서도 유별나게 동작하지 않습니다. 빈 슬롯은 값이 <code>undefined</code>인 것처럼 방문합니다.</p>
+</div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+</section><section aria-labelledby="for...of_루프를_통한_반복"><h3 id="for...of_루프를_통한_반복">for...of 루프를 통한 반복</h3>
+<div class="section-content">
+<p><code>values()</code>는 순회 가능한 반복자를 반환하므로, <a href="../../statements/for...of"><code>for...of</code></a> 루프를 사용하여 순회할 수 있습니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="jQfea/GPtq+fTBk07dV7lU18iK371+k7m8Y3WVB0OvY=" data-language="js"><span class="token keyword">const</span> arr <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'a'</span><span class="token punctuation">,</span> <span class="token string">'b'</span><span class="token punctuation">,</span> <span class="token string">'c'</span><span class="token punctuation">,</span> <span class="token string">'d'</span><span class="token punctuation">,</span> <span class="token string">'e'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> iterator <span class="token operator">=</span> arr<span class="token punctuation">.</span><span class="token function">values</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">const</span> letter <span class="token keyword">of</span> iterator<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>letter<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span> <span class="token comment">// "a" "b" "c" "d" "e"</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="next를_사용한_순회"><h3 id="next를_사용한_순회">next()를 사용한 순회</h3>
+<div class="section-content">
+<p>반환 값도 반복자이므로 <code>next()</code> 메서드를 직접 호출할 수 있습니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="gEX1qm30jun1PRfzU7SJCTyt3gCa1K8rEUVQDBqmtMs=" data-language="js"><span class="token keyword">const</span> arr <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'a'</span><span class="token punctuation">,</span> <span class="token string">'b'</span><span class="token punctuation">,</span> <span class="token string">'c'</span><span class="token punctuation">,</span> <span class="token string">'d'</span><span class="token punctuation">,</span> <span class="token string">'e'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> iterator <span class="token operator">=</span> arr<span class="token punctuation">.</span><span class="token function">values</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+iterator<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// { value: "a", done: false }</span>
+iterator<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// { value: "b", done: false }</span>
+iterator<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// { value: "c", done: false }</span>
+iterator<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// { value: "d", done: false }</span>
+iterator<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// { value: "e", done: false }</span>
+iterator<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// { value: undefined, done: true }</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>iterator<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>value<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// undefined</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="반복자_재사용하기"><h3 id="반복자_재사용하기">반복자 재사용하기</h3>
+<div class="section-content">
+<blockquote> <p><strong>Warning:</strong> 배열 반복자 객체는 일회용 객체입니다. 재사용하지 마세요.</p> </blockquote> <p><code>values()</code>에서 반환되는 반복자는 재사용할 수 없습니다. <code>next().done = true</code> 또는 <code>currentIndex &gt; length</code>, <a href="../../iteration_protocols#interactions_between_the_language_and_iteration_protocols">the <code>for...of</code> loop ends</a> 그리고 추가적인 순회는 아무 효과가 없습니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="C784INaMsrNe9rhJWOD4z8J0xa9a+u3YsldlY9Ykfdo=" data-language="js"><span class="token keyword">const</span> arr <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'a'</span><span class="token punctuation">,</span> <span class="token string">'b'</span><span class="token punctuation">,</span> <span class="token string">'c'</span><span class="token punctuation">,</span> <span class="token string">'d'</span><span class="token punctuation">,</span> <span class="token string">'e'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> values <span class="token operator">=</span> arr<span class="token punctuation">.</span><span class="token function">values</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">const</span> letter <span class="token keyword">of</span> values<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>letter<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token comment">// "a" "b" "c" "d" "e"</span>
+<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">const</span> letter <span class="token keyword">of</span> values<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>letter<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token comment">// undefined</span>
+</pre>
+</div> <p><a href="../../statements/break"><code>break</code></a>문을 사용하여 순회를 조기에 종료하면, 나중에 순회를 다시 이어나가고자 할 때 현재 위치에서 반복자를 다시 사용할 수 있습니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="RPu6IjzfIVWm0A6NlFdWmUTjNhWO+0TccjIZDTKdiGw=" data-language="js"><span class="token keyword">const</span> arr <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'a'</span><span class="token punctuation">,</span> <span class="token string">'b'</span><span class="token punctuation">,</span> <span class="token string">'c'</span><span class="token punctuation">,</span> <span class="token string">'d'</span><span class="token punctuation">,</span> <span class="token string">'e'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> values <span class="token operator">=</span> arr<span class="token punctuation">.</span><span class="token function">values</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">const</span> letter <span class="token keyword">of</span> values<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>letter<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>letter <span class="token operator">===</span> <span class="token string">'b'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">break</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token comment">// "a" "b"</span>
+
+<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">const</span> letter <span class="token keyword">of</span> values<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>letter<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token comment">// "c" "d" "e"</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="순환_중_가변"><h3 id="순환_중_가변">순환 중 가변</h3>
+<div class="section-content">
+<p><code>values()</code>에서 반환되는 배열 반복자 객체에는 저장되어 있는 값이 없습니다. 대신 생성에 사용된 배열의 주소를 저장하고 각 순회에서 현재 방문 중인 인덱스를 읽습니다. 따라서 순회 시 출력은 순회할 때의 인덱스에 담겨있는 값에 따라 달라집니다. 배열의 값이 변경되면 배열 반복자 객체의 값도 변경됩니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="WX08SXJdNRrpBpp6yNlh/sCCsgefaR77SYFprKjDQss=" data-language="js"><span class="token keyword">const</span> arr <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'a'</span><span class="token punctuation">,</span> <span class="token string">'b'</span><span class="token punctuation">,</span> <span class="token string">'c'</span><span class="token punctuation">,</span> <span class="token string">'d'</span><span class="token punctuation">,</span> <span class="token string">'e'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> iterator <span class="token operator">=</span> arr<span class="token punctuation">.</span><span class="token function">values</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>iterator<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Array Iterator { }</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>iterator<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>value<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// "a"</span>
+arr<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">'n'</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>iterator<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>value<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// "n"</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="희소_배열_순회하기"><h3 id="희소_배열_순회하기">희소 배열 순회하기</h3>
+<div class="section-content">
+<p><code>values()</code>은 빈 슬롯을 마치 <code>undefined</code>인 것처럼 방문합니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="wGApnEL0VQ+fio69OLbRNabps8mUtywfodaD6SSmpLI=" data-language="js"><span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">const</span> element <span class="token keyword">of</span> <span class="token punctuation">[</span><span class="token punctuation">,</span> <span class="token string">'a'</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">values</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>element<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token comment">// undefined</span>
+<span class="token comment">// 'a'</span>
+</pre>
+</div>
+</div></section><h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://tc39.es/ecma262/multipage/indexed-collections.html#sec-array.prototype.values">ECMAScript Language Specification <br><small># sec-array.prototype.values</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="https://github.com/zloirock/core-js#ecmascript-array" target="_blank">Polyfill of <code>Array.prototype.values</code> in <code>core-js</code></a></li> <li><a href="keys"><code>Array.prototype.keys()</code></a></li> <li><a href="entries"><code>Array.prototype.entries()</code></a></li> <li><a href="foreach"><code>Array.prototype.forEach()</code></a></li> <li><a href="every"><code>Array.prototype.every()</code></a></li> <li><a href="some"><code>Array.prototype.some()</code></a></li> <li><a href="https://github.com/behnammodi/polyfill/blob/master/array.polyfill.js" target="_blank">A polyfill</a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/values" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/values</a>
+  </p>
+</div>

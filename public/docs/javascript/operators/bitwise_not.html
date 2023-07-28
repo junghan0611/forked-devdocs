@@ -1,0 +1,37 @@
+<header><h1>비트 NOT (~)</h1></header><div class="section-content"><p>비트 NOT 연산자(<code>~</code>)는 피연산자의 비트를 반전시킵니다. 다른 비트 연산자와 마찬가지로 피연산자를 32비트 정수로 변환합니다.</p></div>
+<section aria-labelledby="시도해보기"><h2 id="시도해보기">시도해보기</h2>
+<div class="section-content"><iframe class="interactive is-js-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/js/expressions-bitwise-not.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe></div></section><section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content"><pre class="notranslate">~a
+</pre></div></section><section aria-labelledby="설명"><h2 id="설명">설명</h2>
+<div class="section-content">
+<p>피연산자는 32비트 정수로 변환되며 일련의 비트(0과 1)로 표현됩니다. 32비트를 넘어가는 숫자는 최상위 비트를 기준으로 하여 삭제합니다. 예를 들어 다음과 같은 32비트 이상인 정수는 32비트 정수로 변환됩니다.</p> <pre class="notranslate">Before: 11100110111110100000000000000110000000000001
+After:              10100000000000000110000000000001
+</pre> <p>피연산자의 각 비트는 반전됩니다.</p> <p><code>NOT</code> 연산에 대한 진리표는 다음과 같습니다.</p> <figure class="table-container"><div class="_table"><table> <thead> <tr> <th>a</th> <th>NOT a</th> </tr> </thead> <tbody> <tr> <td>0</td> <td>1</td> </tr> <tr> <td>1</td> <td>0</td> </tr> </tbody> </table></div></figure> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="vH8N4rsO2j0+OQyPubgKrSw/8CkjFkwru3F6qr2mDhs=" data-language="js"> <span class="token number">9</span> <span class="token punctuation">(</span>base <span class="token number">10</span><span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token number">00000000000000000000000000001001</span> <span class="token punctuation">(</span>base <span class="token number">2</span><span class="token punctuation">)</span>
+               <span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span>
+<span class="token operator">~</span><span class="token number">9</span> <span class="token punctuation">(</span>base <span class="token number">10</span><span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token number">11111111111111111111111111110110</span> <span class="token punctuation">(</span>base <span class="token number">2</span><span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">10</span> <span class="token punctuation">(</span>base <span class="token number">10</span><span class="token punctuation">)</span>
+</pre>
+</div> <p>32비트 정수 피연산자는 <a href="https://ko.wikipedia.org/wiki/2%EC%9D%98_%EB%B3%B4%EC%88%98" target="_blank">2의 보수</a>에 따라 반전됩니다. 즉, 최상위 비트는 음수인 정수를 표현하는 데 사용합니다.</p> <p>어떤 수 <code>x</code>에 대해 NOT 비트 연산을 하면 <code>-(x + 1)</code>의 결과를 도출합니다. 예를 들면 <code>~-5</code>는 <code>4</code>로 계산됩니다.</p> <p>32비트 표현을 사용하기 때문에 <code>~-1</code>과 <code>~4294967295</code> (2<sup>32</sup> - 1) 의 결과가 둘 다 <code>0</code>으로 계산되는 점을 유의해주세요.</p>
+</div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+</section><section aria-labelledby="비트_not_연산_사용하기"><h3 id="비트_not_연산_사용하기">비트 NOT 연산 사용하기</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="Kq6AvMf8G3F2vij99PNS2oML1F4MVCjUL7IY5cKYUj8=" data-language="js"><span class="token operator">~</span><span class="token number">0</span><span class="token punctuation">;</span> <span class="token comment">// -1</span>
+<span class="token operator">~</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span> <span class="token comment">// 0</span>
+<span class="token operator">~</span><span class="token number">1</span><span class="token punctuation">;</span> <span class="token comment">// -2</span>
+</pre>
+</div></div></section><h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://tc39.es/ecma262/multipage/ecmascript-language-expressions.html#sec-bitwise-not-operator">ECMAScript Language Specification <br><small># sec-bitwise-not-operator</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Guide/Expressions_and_operators#%ed%95%a0%eb%8b%b9_%ec%97%b0%ec%82%b0%ec%9e%90">비트 연산자</a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Operators/Bitwise_NOT" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Operators/Bitwise_NOT</a>
+  </p>
+</div>

@@ -1,0 +1,55 @@
+<header><h1>Symbol() 생성자</h1></header><div class="section-content"><p><code>Symbol()</code> 함수는 타입 Symbol의 원시 값을 반환합니다.</p></div>
+<section aria-labelledby="시도해보기"><h2 id="시도해보기">시도해보기</h2>
+<div class="section-content"><iframe class="interactive is-taller-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/js/symbol-constructor.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe></div></section><section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content">
+<div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="izmUpzfu/4F3hS0rIJcjRLzbtZOK/+tLnxbe65qEhY4=" data-language="js"><span class="token function">Symbol</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token function">Symbol</span><span class="token punctuation">(</span>description<span class="token punctuation">)</span>
+</pre>
+</div> <div class="notecard note" id="sect1"> <p> <strong>참고:</strong> <code>Symbol()</code>은 오직 <a href="../../operators/new"><code>new</code></a>를 사용하지 않고 호출해야 합니다. <code>new</code>와 함께 생성하려하면 <a href="../typeerror"><code>TypeError</code></a>가 발생합니다. </p> </div>
+</div></section><section aria-labelledby="매개변수"><h3 id="매개변수">매개변수</h3>
+<div class="section-content"><dl> <dt id="description">
+<code>description</code> <span class="badge inline optional">Optional</span>
+</dt> <dd> <p>문자열. 디버깅에는 사용할 수 있지만 심볼 자체에 접근하기 위해 사용할 수 없는, 심볼에 대한 설명입니다.</p> </dd> </dl></div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+</section><section aria-labelledby="symbol_생성하기"><h3 id="symbol_생성하기">Symbol 생성하기</h3>
+<div class="section-content">
+<p>새로운 원시 심볼을 만들기 위해서는 아래와 같이 설명으로 사용할 선택적 문자열과 함께 <code>Symbol()</code>을 사용하면 됩니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="mYxOVcZtWAKfOKy65KWHR/pXUKZHUyOdkwUpJD93XAk=" data-language="js"><span class="token keyword">const</span> sym1 <span class="token operator">=</span> <span class="token function">Symbol</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> sym2 <span class="token operator">=</span> <span class="token function">Symbol</span><span class="token punctuation">(</span><span class="token string">"foo"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> sym3 <span class="token operator">=</span> <span class="token function">Symbol</span><span class="token punctuation">(</span><span class="token string">"foo"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div> <p> 위의 코드는 세 개의 새로운 심볼을 생성합니다. <code>Symbol("foo")</code>는 문자열 <code>"foo"</code>를 강제로 심볼로 만들지 않습니다. 매번 새로운 심볼을 생성합니다. </p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="FXJDjqtThx+GXYx5g8KeRXG+J7t+EixrkjxUhcClI2E=" data-language="js"><span class="token function">Symbol</span><span class="token punctuation">(</span><span class="token string">"foo"</span><span class="token punctuation">)</span> <span class="token operator">===</span> <span class="token function">Symbol</span><span class="token punctuation">(</span><span class="token string">"foo"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// false</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="new_symbol"><h3 id="new_symbol">new Symbol()</h3>
+<div class="section-content">
+<p><a href="../../operators/new"><code>new</code></a> 연산자를 사용한 아래 구문은 <a href="../typeerror"><code>TypeError</code></a>를 발생시킵니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="WjSTUFMXl3puSVhxUyvjFQcLM6r9f/jKOwUYpwzdZiI=" data-language="js"><span class="token keyword">const</span> sym <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Symbol</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// TypeError</span>
+</pre>
+</div> <p> 이는 작성자가 새 심볼 값 대신 명시적인 <code>Symbol</code> 래퍼 개체를 만드는 것을 방지하며 원시 데이터 타입을 중심으로 명시적인 래퍼 개체를 만드는 것이 일반적으로 가능하기 때문에 놀랄 수 있습니다(예: <code>new Boolean</code>, <code>new String</code> and <code>new Number</code>). </p> <p>정말로 <code>Symbol</code> 래퍼 객체를 생성하려면 <code>Object()</code> 함수를 사용할 수 있습니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="kjdvXo0prcOEhiAyXSeb5JkOqONWiNPnH6QOq2nhAak=" data-language="js"><span class="token keyword">const</span> sym <span class="token operator">=</span> <span class="token function">Symbol</span><span class="token punctuation">(</span><span class="token string">"foo"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> symObj <span class="token operator">=</span> <span class="token function">Object</span><span class="token punctuation">(</span>sym<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">typeof</span> sym<span class="token punctuation">;</span> <span class="token comment">// "symbol"</span>
+<span class="token keyword">typeof</span> symObj<span class="token punctuation">;</span> <span class="token comment">// "object"</span>
+</pre>
+</div>
+</div></section><h2 id="명세서">명세서</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://tc39.es/ecma262/multipage/fundamental-objects.html#sec-symbol-constructor">ECMAScript Language Specification <br><small># sec-symbol-constructor</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="https://github.com/zloirock/core-js#ecmascript-symbol" target="_blank">Polyfill of <code>Symbol</code> in <code>core-js</code></a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Symbol/Symbol" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Symbol/Symbol</a>
+  </p>
+</div>

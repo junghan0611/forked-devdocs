@@ -1,0 +1,29 @@
+<header><h1>Window.frameElement</h1></header><div class="section-content">
+<p><code>Window.frameElement</code> 속성은 <a href="https://developer.mozilla.org/ko/docs/Web/HTML/Element/iframe"><code>&lt;iframe&gt;</code></a>이나 <a href="https://developer.mozilla.org/ko/docs/Web/HTML/Element/object"><code>&lt;object&gt;</code></a>처럼 현재 창을 포함한 요소를 반환합니다. 창이 다른 문서에 포함된 것이 아니거나, 문서의 출처가 다른 경우, 즉 창과 해당 문서의 도메인이 서로 다른 경우 <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Operators/null"><code>null</code></a>을 반환합니다.</p> <div class="notecard note" id="sect1"> <p><strong>참고:</strong> 속성 이름("frame")과는 달리, <a href="https://developer.mozilla.org/ko/docs/Web/HTML/Element/object"><code>&lt;object&gt;</code></a>, <a href="https://developer.mozilla.org/ko/docs/Web/HTML/Element/iframe"><code>&lt;iframe&gt;</code></a>, <a href="https://developer.mozilla.org/ko/docs/Web/HTML/Element/embed"><code>&lt;embed&gt;</code></a>를 포함한 모든 포함 지점에서 사용할 수 있습니다.</p> </div>
+</div>
+<h2 id="예제">예제</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="f7AD+CvUfDSHYP0d1fQ63AgF3YlWeOp/HBjO3kR6HPI=" data-language="js"><span class="token keyword">var</span> frameEl <span class="token operator">=</span> window<span class="token punctuation">.</span>frameElement<span class="token punctuation">;</span>
+<span class="token comment">// If we're embedded, change the containing element's URL to 'http://mozilla.org/'</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span>frameEl<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  frameEl<span class="token punctuation">.</span>src <span class="token operator">=</span> <span class="token string">'http://mozilla.org/'</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div></div>
+<h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://html.spec.whatwg.org/multipage/nav-history-apis.html#dom-frameelement-dev">HTML Standard <br><small># dom-frameelement-dev</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li>
+<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/Window/frames"><code>window.frames</code> <small>(en-US)</small></a>는 현재 창의 모든 자식 프레임을 배열형 객체로 나열합니다.</li> <li>
+<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/Window/parent"><code>window.parent</code> <small>(en-US)</small></a>는 부모 창, 즉 <code>frameElement</code>를 담고 있는 창을 반환합니다.</li> </ul></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/Window/frameElement" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/Window/frameElement</a>
+  </p>
+</div>

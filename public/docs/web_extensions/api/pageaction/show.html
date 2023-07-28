@@ -1,0 +1,71 @@
+<header><h1>pageAction.show()</h1></header><div class="section-content">
+<p>지정한 탭의 페이지 액션을 보인다. 페이지 액션은 해당 탭이 활성일 때 표시된다.</p> <p><code>show()</code>는 설정된 URL 패턴과 상관없이 동작한다. 따라서 <a href="https://developer.mozilla.org/docs/Mozilla/Add-ons/WebExtensions/manifest.json/page_action"><code>show_matches</code></a>와 일치하지 않아도 <a href="https://developer.mozilla.org/docs/Mozilla/Add-ons/WebExtensions/manifest.json/page_action"><code>hide_matches</code></a>여도 표시된다.</p> <p><code>show()</code>는 아무런 내용도 없는 탭에는 효과가 없다.</p>
+</div>
+<section aria-labelledby="문법"><h2 id="문법">문법</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="r9kZYEfD6uHtxxsFAApzdMb+HmIKfQM5MWjbVtkCOAk=" data-language="js">browser<span class="token punctuation">.</span>pageAction<span class="token punctuation">.</span><span class="token function">show</span><span class="token punctuation">(</span>
+  tabId <span class="token comment">// integer</span>
+<span class="token punctuation">)</span>
+</pre>
+</div></div></section><section aria-labelledby="매개변수"><h3 id="매개변수">매개변수</h3>
+<div class="section-content"><dl> <dt id="details"><code>details</code></dt> <dd> <p><code>object</code>. An object containing the <code>tabId</code> to check.</p> <dl> <dt id="tabid"><code>tabId</code></dt> <dd> <p><code>integer</code>. ID of the tab to check.</p> </dd> </dl> </dd> </dl></div></section><section aria-labelledby="반환_값"><h3 id="반환_값">반환 값</h3>
+<div class="section-content"><p>A <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Promise"><code>Promise</code></a> that will be fulfilled with <code>true</code> if the extension's page action is being shown for the given tab, and <code>false</code> otherwise.</p></div></section><h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="예제"><h2 id="예제">예제</h2>
+<div class="section-content">
+<p>콘텍스트 메뉴가 선택되면 페이지 액션을 보이는 예제다. 메뉴를 만들려면 <code>contextMenus</code> <a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/manifest.json/permissions" class="only-in-en-us">권한 <small>(en-US)</small></a>이 <a href="../../manifest.json">manifest</a>에 필요하다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="zelare64YTOo8VRflzNN1Aryz/4bNu19guxUagwVqu4=" data-language="js">browser<span class="token punctuation">.</span>contextMenus<span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  <span class="token literal-property property">id</span><span class="token operator">:</span> <span class="token string">"show"</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">title</span><span class="token operator">:</span> <span class="token string">"Show page action"</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+browser<span class="token punctuation">.</span>contextMenus<span class="token punctuation">.</span>onClicked<span class="token punctuation">.</span><span class="token function">addListener</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">info<span class="token punctuation">,</span> tab</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>info<span class="token punctuation">.</span>menuItemId <span class="token operator">==</span> <span class="token string">"show"</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    browser<span class="token punctuation">.</span>pageAction<span class="token punctuation">.</span><span class="token function">show</span><span class="token punctuation">(</span>tab<span class="token punctuation">.</span>id<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="example_extensions"><h3 id="example_extensions">Example extensions</h3>
+<div class="section-content">
+<ul>
+<li><a href="https://github.com/mdn/webextensions-examples/tree/master/apply-css" target="_blank">apply-css</a></li>
+<li><a href="https://github.com/mdn/webextensions-examples/tree/master/chill-out" target="_blank">chill-out</a></li>
+<li><a href="https://github.com/mdn/webextensions-examples/tree/master/history-deleter" target="_blank">history-deleter</a></li>
+<li><a href="https://github.com/mdn/webextensions-examples/tree/master/menu-remove-element" target="_blank">menu-remove-element</a></li>
+</ul> <div class="notecard note" id="sect2"> <p><strong>참고:</strong> <strong>Acknowledgements</strong>This API is based on Chromium's <a href="https://developer.chrome.com/extensions/pageAction#method-show" target="_blank"><code>chrome.pageAction</code></a> API. This documentation is derived from <a href="https://chromium.googlesource.com/chromium/src/+/master/chrome/common/extensions/api/page_action.json" target="_blank"><code>page_action.json</code></a> in the Chromium code.Microsoft Edge compatibility data is supplied by Microsoft Corporation and is included here under the Creative Commons Attribution 3.0 United States License.</p> </div> <pre class="notranslate">// Copyright 2015 The Chromium Authors. All rights reserved.
+//
+// Redistribution and use in source and binary forms, with or without
+// modification, are permitted provided that the following conditions are
+// met:
+//
+//    * Redistributions of source code must retain the above copyright
+// notice, this list of conditions and the following disclaimer.
+//    * Redistributions in binary form must reproduce the above
+// copyright notice, this list of conditions and the following disclaimer
+// in the documentation and/or other materials provided with the
+// distribution.
+//    * Neither the name of Google Inc. nor the names of its
+// contributors may be used to endorse or promote products derived from
+// this software without specific prior written permission.
+//
+// THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+// "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+// LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+// A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+// OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+// SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+// LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+// DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+// THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+// (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+// OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+</pre>
+</div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Mozilla/Add-ons/WebExtensions/API/pageAction/show" class="_attribution-link">https://developer.mozilla.org/ko/docs/Mozilla/Add-ons/WebExtensions/API/pageAction/show</a>
+  </p>
+</div>

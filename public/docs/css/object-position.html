@@ -1,0 +1,92 @@
+<header><h1>object-position</h1></header><div class="section-content">
+<p><a href="https://developer.mozilla.org/ko/docs/Web/CSS">CSS</a> <code>object-position</code> 속성은 <a href="replaced_element">대체 요소</a>의 콘텐츠 정렬 방식을 지정합니다. 대체 요소의 객체가 덮지 않은 부분은 요소의 배경이 보이게 됩니다.</p> <p>대체 요소 객체의 고유 크기(수정을 가하지 않은 원래 크기)를 조정해 요소 박스에 맞추는 방법은 <a href="object-fit"><code>object-fit</code></a> 속성으로 지정할 수 있습니다.</p>
+</div>
+<section aria-labelledby="시도해보기"><h2 id="시도해보기">시도해보기</h2>
+<div class="section-content"><iframe class="interactive is-default-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/css/object-position.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe></div></section><section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="3SFm8ty2lKAl/KQ32MUamnvKoqqAucQ0JOzvr4dMZj0=" data-language="css"><span class="token comment">/* &lt;position&gt; 값 */</span>
+<span class="token property">object-position</span><span class="token punctuation">:</span> center top<span class="token punctuation">;</span>
+<span class="token property">object-position</span><span class="token punctuation">:</span> 100px 50px<span class="token punctuation">;</span>
+
+<span class="token comment">/* 전역 값 */</span>
+<span class="token property">object-position</span><span class="token punctuation">:</span> inherit<span class="token punctuation">;</span>
+<span class="token property">object-position</span><span class="token punctuation">:</span> initial<span class="token punctuation">;</span>
+<span class="token property">object-position</span><span class="token punctuation">:</span> unset<span class="token punctuation">;</span>
+</pre>
+</div></div></section><section aria-labelledby="값"><h3 id="값">값</h3>
+<div class="section-content">
+<dl> <dt id="position"><a href="position_value"><code>&lt;position&gt;</code></a></dt> <dd> <p>객체의 2D 위치를 지정하는 한 개에서 네 개의 값. 상대와 절대 오프셋을 사용할 수 있습니다.</p> </dd> </dl> <div class="notecard note" id="sect1"> <p><strong>참고:</strong> 콘텐츠가 대체 요소의 박스 바깥으로 나가도록 지정할 수도 있습니다.</p> </div>
+</div></section><section aria-labelledby="형식_정의"><h2 id="형식_정의">형식 정의</h2>
+<div class="section-content"><figure class="table-container"><div class="_table"><table class="properties"><tbody>
+<tr>
+<th scope="row"><a href="initial_value">초기값</a></th>
+<td><code>50% 50%</code></td>
+</tr>
+<tr>
+<th scope="row">적용대상</th>
+<td>replaced elements</td>
+</tr>
+<tr>
+<th scope="row"><a href="inheritance">상속</a></th>
+<td>yes</td>
+</tr>
+<tr>
+<th scope="row">Percentages</th>
+<td>refer to width and height of element itself</td>
+</tr>
+<tr>
+<th scope="row"><a href="computed_value">계산 값</a></th>
+<td>as specified</td>
+</tr>
+<tr>
+<th scope="row">Animation type</th>
+<td>a repeatable list of </td>
+</tr>
+</tbody></table></div></figure></div></section><section aria-labelledby="형식_구문"><h2 id="형식_구문">형식 구문</h2>
+<div class="section-content"><pre class="notranslate"><span class="token property" id="object-position">object-position = </span><br>  <span class="token property">&lt;position&gt;</span>  <br><br><span class="token property" id="&lt;position&gt;">&lt;position&gt; = </span><br>  <a href="value_definition_syntax#brackets">[</a> <span class="token keyword">left</span> <a href="value_definition_syntax#single_bar">|</a> <span class="token keyword">center</span> <a href="value_definition_syntax#single_bar">|</a> <span class="token keyword">right</span> <a href="value_definition_syntax#brackets">]</a> <a href="value_definition_syntax#double_bar">||</a> <a href="value_definition_syntax#brackets">[</a> <span class="token keyword">top</span> <a href="value_definition_syntax#single_bar">|</a> <span class="token keyword">center</span> <a href="value_definition_syntax#single_bar">|</a> <span class="token keyword">bottom</span> <a href="value_definition_syntax#brackets">]</a>  <a href="value_definition_syntax#single_bar">|</a><br>  <a href="value_definition_syntax#brackets">[</a> <span class="token keyword">left</span> <a href="value_definition_syntax#single_bar">|</a> <span class="token keyword">center</span> <a href="value_definition_syntax#single_bar">|</a> <span class="token keyword">right</span> <a href="value_definition_syntax#single_bar">|</a> <span class="token property">&lt;length-percentage&gt;</span> <a href="value_definition_syntax#brackets">]</a> <a href="value_definition_syntax#brackets">[</a> <span class="token keyword">top</span> <a href="value_definition_syntax#single_bar">|</a> <span class="token keyword">center</span> <a href="value_definition_syntax#single_bar">|</a> <span class="token keyword">bottom</span> <a href="value_definition_syntax#single_bar">|</a> <span class="token property">&lt;length-percentage&gt;</span> <a href="value_definition_syntax#brackets">]</a><a href="value_definition_syntax#question_mark">?</a>  <a href="value_definition_syntax#single_bar">|</a><br>  <a href="value_definition_syntax#brackets">[</a> <a href="value_definition_syntax#brackets">[</a> <span class="token keyword">left</span> <a href="value_definition_syntax#single_bar">|</a> <span class="token keyword">right</span> <a href="value_definition_syntax#brackets">]</a> <span class="token property">&lt;length-percentage&gt;</span> <a href="value_definition_syntax#brackets">]</a> <a href="value_definition_syntax#double_ampersand">&amp;&amp;</a> <a href="value_definition_syntax#brackets">[</a> <a href="value_definition_syntax#brackets">[</a> <span class="token keyword">top</span> <a href="value_definition_syntax#single_bar">|</a> <span class="token keyword">bottom</span> <a href="value_definition_syntax#brackets">]</a> <span class="token property">&lt;length-percentage&gt;</span> <a href="value_definition_syntax#brackets">]</a>  <br><br><span class="token property" id="&lt;length-percentage&gt;">&lt;length-percentage&gt; = </span><br>  <a href="length"><span class="token property">&lt;length&gt;</span></a>      <a href="value_definition_syntax#single_bar">|</a><br>  <a href="percentage"><span class="token property">&lt;percentage&gt;</span></a>  <br><br></pre></div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+</section><section aria-labelledby="이미지_콘텐츠_위치_지정"><h3 id="이미지_콘텐츠_위치_지정">이미지 콘텐츠 위치 지정</h3>
+<div class="section-content">
+<h4 id="html">HTML</h4> <p>두 개의 <a href="https://developer.mozilla.org/ko/docs/Web/HTML/Element/img"><code>&lt;img&gt;</code></a> 요소가 MDN 로고를 가리키는 코드입니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="rYJcNx/pEycd1UM7bsH+NXYjv0N7rJ2cUSmohbMGWPw=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>object-position-1<span class="token punctuation">"</span></span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>mdn.svg<span class="token punctuation">"</span></span> <span class="token attr-name">alt</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>MDN Logo<span class="token punctuation">"</span></span><span class="token punctuation">/&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>object-position-2<span class="token punctuation">"</span></span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>mdn.svg<span class="token punctuation">"</span></span> <span class="token attr-name">alt</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>MDN Logo<span class="token punctuation">"</span></span><span class="token punctuation">/&gt;</span></span>
+</pre>
+</div> <h4 id="css">CSS</h4> <p>다음 CSS는 두 <code>&lt;img&gt;</code> 요소 모두에 적용할 스타일과 함께, 각각 별도로 적용할 <code>object-position</code> 속성도 지정하고 있습니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="TpmyyaTx10eonh0YMycGwqXdU01TPn3E/fGuJmJmgO0=" data-language="css"><span class="token selector">img</span> <span class="token punctuation">{</span>
+  <span class="token property">width</span><span class="token punctuation">:</span> 300px<span class="token punctuation">;</span>
+  <span class="token property">height</span><span class="token punctuation">:</span> 250px<span class="token punctuation">;</span>
+  <span class="token property">border</span><span class="token punctuation">:</span> 1px solid black<span class="token punctuation">;</span>
+  <span class="token property">background-color</span><span class="token punctuation">:</span> silver<span class="token punctuation">;</span>
+  <span class="token property">margin-right</span><span class="token punctuation">:</span> 1em<span class="token punctuation">;</span>
+  <span class="token property">object-fit</span><span class="token punctuation">:</span> none<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">#object-position-1</span> <span class="token punctuation">{</span>
+  <span class="token property">object-position</span><span class="token punctuation">:</span> 10px<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">#object-position-2</span> <span class="token punctuation">{</span>
+  <span class="token property">object-position</span><span class="token punctuation">:</span> 100% 10%<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div> <p>첫 번째 이미지는 요소 박스의 왼쪽 경계로부터 10픽셀 떨어진 곳으로 배치됩니다. 두 번째 이미지는 요소 박스의 오른쪽 경계와 자신의 오른쪽 모서리를 서로 겹치고, 박스의 위쪽 경계로부터 박스 높이의 10% 떨어진 지점으로 배치됩니다.</p> <h4 id="결과">결과</h4>
+<div class="code-example" id="sect2">
+
+<iframe class="sample-code-frame" title="이미지 콘텐츠 위치 지정 sample" id="frame_이미지_콘텐츠_위치_지정" width="100%" height="600px" src="https://live.mdnplay.dev/ko/docs/Web/CSS/object-position/runner.html?id=%EC%9D%B4%EB%AF%B8%EC%A7%80_%EC%BD%98%ED%85%90%EC%B8%A0_%EC%9C%84%EC%B9%98_%EC%A7%80%EC%A0%95" loading="lazy"></iframe>
+</div>
+</div></section><h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://drafts.csswg.org/css-images/#the-object-position">CSS Images Module Level 3 <br><small># the-object-position</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li>이미지 관련 다른 CSS 속성: <a href="object-fit"><code>object-fit</code></a>, <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/image-orientation"><code>image-orientation</code> <small>(en-US)</small></a>, <a href="image-rendering"><code>image-rendering</code></a>, <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/image-resolution"><code>image-resolution</code> <small>(en-US)</small></a>.</li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/CSS/object-position" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/CSS/object-position</a>
+  </p>
+</div>

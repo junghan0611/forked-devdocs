@@ -1,0 +1,31 @@
+<header><h1>Document.links</h1></header><div class="section-content"><p><code>links</code> 속성은 document 내에서 <a href="../urlutils.href" class="page-not-created">href</a> attribute 를 가지는 모든 <a href="https://developer.mozilla.org/ko/docs/Web/HTML/Element/area"><code>&lt;area&gt;</code></a> 과 <a href="https://developer.mozilla.org/ko/docs/Web/HTML/Element/a"><code>&lt;a&gt;</code></a> element 들의 collection 을 반환한다.</p></div>
+<h2 id="syntax">Syntax</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="sp4brk2A1VgjIl76STZgBR2DjOQ5jm7wDLk+370PYQM=" data-language="js">nodeList <span class="token operator">=</span> document<span class="token punctuation">.</span>links
+</pre>
+</div></div>
+<h2 id="example">Example</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="t6heOXxAh1dkA5jRIKfSS4iRQEw/wLoy9ReeQzdmBVc=" data-language="js"><span class="token keyword">var</span> links <span class="token operator">=</span> document<span class="token punctuation">.</span>links<span class="token punctuation">;</span>
+<span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">var</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> links<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">var</span> linkHref <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">createTextNode</span><span class="token punctuation">(</span>links<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>href<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">var</span> lineBreak <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">createElement</span><span class="token punctuation">(</span><span class="token string">"br"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  document<span class="token punctuation">.</span>body<span class="token punctuation">.</span><span class="token function">appendChild</span><span class="token punctuation">(</span>linkHref<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  document<span class="token punctuation">.</span>body<span class="token punctuation">.</span><span class="token function">appendChild</span><span class="token punctuation">(</span>lineBreak<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div></div>
+<h2 id="명세서">명세서</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://html.spec.whatwg.org/multipage/dom.html#dom-document-links-dev">HTML Standard <br><small># dom-document-links-dev</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/Document/links" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/Document/links</a>
+  </p>
+</div>

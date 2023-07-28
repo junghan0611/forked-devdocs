@@ -1,0 +1,146 @@
+<header><h1>text-decoration</h1></header><div class="section-content"><p><a href="https://developer.mozilla.org/ko/docs/Web/CSS">CSS</a> <code>text-decoration</code> <a href="shorthand_properties">단축 속성</a>은 텍스트에 장식용 선을 추가합니다. 이 속성은 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/text-decoration-line"><code>text-decoration-line</code> <small>(en-US)</small></a>, <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/text-decoration-color"><code>text-decoration-color</code> <small>(en-US)</small></a>, <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/text-decoration-style"><code>text-decoration-style</code> <small>(en-US)</small></a>, <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/text-decoration-thickness"><code>text-decoration-thickness</code> <small>(en-US)</small></a>의 단축 속성입니다.</p></div>
+<section aria-labelledby="시도해보기"><h2 id="시도해보기">시도해보기</h2>
+<div class="section-content">
+<iframe class="interactive is-default-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/css/text-decoration.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe> <p>텍스트 장식은 모든 자손 텍스트 요소에 걸쳐서 적용됩니다. 달리 말하면, 자식 요소에서는 부모가 적용한 텍스트 장식을 제거할 수 없습니다. 예를 들어 <code>&lt;p&gt;이 문단에 &lt;em&gt;강조 표시&lt;/em&gt;가 있어요.&lt;/p&gt;</code> 마크업에 <code>p { text-decoration: underline; }</code> 스타일을 적용하면 전체 문단에 밑줄이 추가됩니다. 그다음 <code>em { text-decoration: none; }</code> 스타일 규칙을 추가해도 밑줄은 계속 보입니다. 다만 <code>em { text-decoration: overline; }</code> 스타일은 "강조 표시" 텍스트가 윗줄과 밑줄을 모두 갖게 합니다.</p>
+</div></section><section aria-labelledby="구성_속성"><h2 id="구성_속성">구성 속성</h2>
+<div class="section-content">
+<p>이 속성은 다음 CSS 속성의 단축 속성입니다.</p> <ul> <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/text-decoration-color" class="only-in-en-us"><code>text-decoration-color</code> <small>(en-US)</small></a></li> <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/text-decoration-line" class="only-in-en-us"><code>text-decoration-line</code> <small>(en-US)</small></a></li> <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/text-decoration-style" class="only-in-en-us"><code>text-decoration-style</code> <small>(en-US)</small></a></li> <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/text-decoration-thickness" class="only-in-en-us"><code>text-decoration-thickness</code> <small>(en-US)</small></a></li> </ul>
+</div></section><section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content">
+<div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="ovUcw2VoygIvkH/DMuQ1DqRpqjDMYy1otIhc1jy0n7k=" data-language="css"><span class="token property">text-decoration</span><span class="token punctuation">:</span> underline<span class="token punctuation">;</span>
+<span class="token property">text-decoration</span><span class="token punctuation">:</span> overline red<span class="token punctuation">;</span>
+<span class="token property">text-decoration</span><span class="token punctuation">:</span> none<span class="token punctuation">;</span>
+
+<span class="token comment">/* 전역 값 */</span>
+<span class="token property">text-decoration</span><span class="token punctuation">:</span> inherit<span class="token punctuation">;</span>
+<span class="token property">text-decoration</span><span class="token punctuation">:</span> initial<span class="token punctuation">;</span>
+<span class="token property">text-decoration</span><span class="token punctuation">:</span> revert<span class="token punctuation">;</span>
+<span class="token property">text-decoration</span><span class="token punctuation">:</span> unset<span class="token punctuation">;</span>
+</pre>
+</div> <p><code>text-decoration</code> 속성은 한 개 이상의 공백으로 구분한 값으로 지정할 수 있습니다. 각각의 값은 본디 속성에서 사용하는 값과 동일합니다.</p>
+</div></section><section aria-labelledby="값"><h3 id="값">값</h3>
+<div class="section-content"><dl> <dt id="text-decoration-line_en-us"><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/text-decoration-line"><code>text-decoration-line</code> <small>(en-US)</small></a></dt> <dd> <p><code>underline</code>, <code>line-through</code> 등 장식의 종류를 설정합니다.</p> </dd> <dt id="text-decoration-color_en-us"><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/text-decoration-color"><code>text-decoration-color</code> <small>(en-US)</small></a></dt> <dd> <p>장식의 색을 설정합니다.</p> </dd> <dt id="text-decoration-style_en-us"><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/text-decoration-style"><code>text-decoration-style</code> <small>(en-US)</small></a></dt> <dd> <p><code>solid</code>, <code>wavy</code>, <code>dashed</code> 등 장식에 사용할 선의 스타일을 설정합니다.</p> </dd> <dt id="text-decoration-thickness_en-us"><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/text-decoration-thickness"><code>text-decoration-thickness</code> <small>(en-US)</small></a></dt> <dd> <p>장식에 사용할 선의 두께를 설정합니다.</p> </dd> </dl></div></section><section aria-labelledby="형식_정의"><h2 id="형식_정의">형식 정의</h2>
+<div class="section-content"><figure class="table-container"><div class="_table"><table class="properties"><tbody>
+<tr>
+<th scope="row"><a href="initial_value">초기값</a></th>
+<td>as each of the properties of the shorthand:<br><ul>
+<li>
+<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/text-decoration-color" class="only-in-en-us"><code>text-decoration-color</code> <small>(en-US)</small></a>: <code>currentcolor</code>
+</li>
+<li>
+<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/text-decoration-style" class="only-in-en-us"><code>text-decoration-style</code> <small>(en-US)</small></a>: <code>solid</code>
+</li>
+<li>
+<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/text-decoration-line" class="only-in-en-us"><code>text-decoration-line</code> <small>(en-US)</small></a>: <code>none</code>
+</li>
+</ul>
+</td>
+</tr>
+<tr>
+<th scope="row">적용대상</th>
+<td>all elements. It also applies to <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/::first-letter" class="only-in-en-us"><code>::first-letter</code> <small>(en-US)</small></a> and <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/::first-line" class="only-in-en-us"><code>::first-line</code> <small>(en-US)</small></a>.</td>
+</tr>
+<tr>
+<th scope="row"><a href="inheritance">상속</a></th>
+<td>no</td>
+</tr>
+<tr>
+<th scope="row"><a href="computed_value">계산 값</a></th>
+<td>as each of the properties of the shorthand:<br><ul>
+<li>
+<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/text-decoration-line" class="only-in-en-us"><code>text-decoration-line</code> <small>(en-US)</small></a>: as specified</li>
+<li>
+<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/text-decoration-style" class="only-in-en-us"><code>text-decoration-style</code> <small>(en-US)</small></a>: as specified</li>
+<li>
+<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/text-decoration-color" class="only-in-en-us"><code>text-decoration-color</code> <small>(en-US)</small></a>: computed color</li>
+<li>
+<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/text-decoration-thickness" class="only-in-en-us"><code>text-decoration-thickness</code> <small>(en-US)</small></a>: as specified</li>
+</ul>
+</td>
+</tr>
+<tr>
+<th scope="row">Animation type</th>
+<td>as each of the properties of the shorthand:<br><ul>
+<li>
+<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/text-decoration-color" class="only-in-en-us"><code>text-decoration-color</code> <small>(en-US)</small></a>: a <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#interpolation">color</a>
+</li>
+<li>
+<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/text-decoration-style" class="only-in-en-us"><code>text-decoration-style</code> <small>(en-US)</small></a>: discrete</li>
+<li>
+<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/text-decoration-line" class="only-in-en-us"><code>text-decoration-line</code> <small>(en-US)</small></a>: discrete</li>
+<li>
+<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/text-decoration-thickness" class="only-in-en-us"><code>text-decoration-thickness</code> <small>(en-US)</small></a>: by computed value type</li>
+</ul>
+</td>
+</tr>
+</tbody></table></div></figure></div></section><section aria-labelledby="형식_구문"><h2 id="형식_구문">형식 구문</h2>
+<div class="section-content"><pre class="notranslate"><span class="token property" id="text-decoration">text-decoration = </span><br>  <span class="token property">&lt;'text-decoration-line'&gt;</span>   <a href="value_definition_syntax#double_bar">||</a><br>  <span class="token property">&lt;'text-decoration-style'&gt;</span>  <a href="value_definition_syntax#double_bar">||</a><br>  <span class="token property">&lt;'text-decoration-color'&gt;</span>  <br><br></pre></div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+</section><section aria-labelledby="text-decoration_값_시연"><h3 id="text-decoration_값_시연">text-decoration 값 시연</h3>
+<div class="section-content">
+<div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="3hW+2F9mFXgn4cxBWxp7InaeiJUJF+4B6lX+Mxmyy6I=" data-language="css"><span class="token selector">.under</span> <span class="token punctuation">{</span>
+  <span class="token property">text-decoration</span><span class="token punctuation">:</span> underline red<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">.over</span> <span class="token punctuation">{</span>
+  <span class="token property">text-decoration</span><span class="token punctuation">:</span> wavy overline lime<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">.line</span> <span class="token punctuation">{</span>
+  <span class="token property">text-decoration</span><span class="token punctuation">:</span> line-through<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">.plain</span> <span class="token punctuation">{</span>
+  <span class="token property">text-decoration</span><span class="token punctuation">:</span> none<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">.underover</span> <span class="token punctuation">{</span>
+  <span class="token property">text-decoration</span><span class="token punctuation">:</span> dashed underline overline<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">.thick</span> <span class="token punctuation">{</span>
+  <span class="token property">text-decoration</span><span class="token punctuation">:</span> solid underline purple 4px<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">.blink</span> <span class="token punctuation">{</span>
+  <span class="token property">text-decoration</span><span class="token punctuation">:</span> blink<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div> <div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="tucs3STQmyTyukCV0uGXbGt+keg83T6QSRFwJV4cwI8=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>under<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>밑줄을 가지는 텍스트입니다.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>over<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>윗줄을 가지는 텍스트입니다.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>line<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>취소선을 가지는 텍스트입니다.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>기본 스타일과 달리
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>plain<span class="token punctuation">"</span></span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>#<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>이 링크에는 밑줄이 없을 것입니다.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">&gt;</span></span>
+  사용자들은 보통 하이퍼링크 여부를 밑줄로 구분하므로, 앵커에서
+  밑줄을 제거할 때는 주의해야 합니다.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>underover<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>밑줄과 윗줄 모두 가지는 텍스트입니다.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>thick<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>브라우저가 지원하는 경우 아주 두꺼운 보라색
+  밑줄을 가지게 될 텍스트입니다.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>blink<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>이 텍스트는 브라우저에 따라서 깜빡일 수 있습니다.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div>
+<div class="code-example" id="sect1">
+
+<iframe class="sample-code-frame" title="예제 sample" id="frame_예제" width="auto" height="320" src="https://live.mdnplay.dev/ko/docs/Web/CSS/text-decoration/runner.html?id=%EC%98%88%EC%A0%9C" loading="lazy"></iframe>
+</div>
+</div></section><h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://drafts.csswg.org/css-text-decor/#text-decoration-property">CSS Text Decoration Module Level 3 <br><small># text-decoration-property</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li>개별 텍스트 장식 속성은 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/text-decoration-line"><code>text-decoration-line</code> <small>(en-US)</small></a>, <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/text-decoration-color"><code>text-decoration-color</code> <small>(en-US)</small></a>, <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/text-decoration-style"><code>text-decoration-style</code> <small>(en-US)</small></a>, <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/text-decoration-thickness"><code>text-decoration-thickness</code> <small>(en-US)</small></a>입니다.</li> <li>
+<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/text-decoration-skip-ink"><code>text-decoration-skip-ink</code> <small>(en-US)</small></a>, <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/text-underline-offset"><code>text-underline-offset</code> <small>(en-US)</small></a>, <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/text-underline-position"><code>text-underline-position</code> <small>(en-US)</small></a> 속성은 텍스트 장식에 영향을 주지만 이 단축 속성은 포함하지 않습니다.</li> <li>
+<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/list-style"><code>list-style</code> <small>(en-US)</small></a> 속성은 HTML <a href="https://developer.mozilla.org/ko/docs/Web/HTML/Element/ol"><code>&lt;ol&gt;</code></a>과 <a href="https://developer.mozilla.org/ko/docs/Web/HTML/Element/ul"><code>&lt;ul&gt;</code></a> 목록에서 항목들의 모습을 조절합니다.</li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/CSS/text-decoration" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/CSS/text-decoration</a>
+  </p>
+</div>

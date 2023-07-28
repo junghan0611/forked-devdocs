@@ -1,0 +1,21 @@
+<h1>501 Not Implemented</h1>
+<header><h1>501 Not Implemented</h1></header><div class="section-content">
+<p> 하이퍼텍스트 전송 프로토콜(HTTP) <code>501 Not Implemented</code> 서버 응답 코드는 <strong>요청을 수행할 수 있는 기능을 서버가 지원하지 않는다</strong>는 것을 의미합니다. </p> <p> 서버에서 추후 기능이 지원된다면 요청자에게 다시 확인해볼 수 있는 시점을 알려줄 수 있도록 <a href="../headers/retry-after"><code>Retry-After</code></a> 헤더를 전송해줄 수 있습니다. </p> <p> <code>501</code> 은 서버가 요청 방법을 이해하지 못하거나 어떤 리소스를 지원하지 않은 경우에 적절합니다. 서버가 필수적으로 지원하는 메서드에는 <a href="../methods/get"><code>GET</code></a> 와 <a href="../methods/head"><code>HEAD</code></a>가 있습니다. </p> <p> 서버가 메서드를 이해하지만 고의적으로 지원하지 않는 경우에는 <a href="405"><code>405 Method Not Allowed</code></a> 응답이 적합합니다. </p> <div class="notecard note" id="sect1"> <p><strong>참고:</strong></p> <ul> <li>501 오류는 사용자가 수정할 수 없고 접근하려는 서버에서 수정이 필요합니다.</li> <li>캐시 헤더가 달리 지시가 있지 않는 이상, 501 응답은 기본적으로 캐시할 수 있습니다.</li> </ul> </div>
+</div>
+<section aria-labelledby="상태"><h2 id="상태">상태</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">http</span></p>
+<pre data-signature="If8q1WubuSkBC/seu3f9DB+dR79SVEX7/sHkvoEuPgw=" data-language="http">501 Not Implemented
+</pre>
+</div></div></section><h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://www.rfc-editor.org/rfc/rfc9110#status.501">HTTP Semantics <br><small># status.501</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/HTTP/Status/501" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/HTTP/Status/501</a>
+  </p>
+</div>

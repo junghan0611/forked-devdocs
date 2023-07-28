@@ -1,0 +1,71 @@
+<header><h1>Object.keys()</h1></header><div class="section-content"><p> <code>Object.keys()</code> 메서드는 주어진 객체의 속성 이름들을 일반적인 반복문과 동일한 순서로 순회되는 열거할 수 있는 배열로 반환합니다. </p></div>
+<section aria-labelledby="시도해보기"><h2 id="시도해보기">시도해보기</h2>
+<div class="section-content"><iframe class="interactive is-js-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/js/object-keys.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe></div></section><section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="m8rVh0K4tiKmPJ1CDauXa7nAk6jljl1NOxBRKHeor4g=" data-language="js">Object<span class="token punctuation">.</span><span class="token function">keys</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span>
+</pre>
+</div></div></section><section aria-labelledby="매개변수"><h3 id="매개변수">매개변수</h3>
+<div class="section-content"><dl> <dt id="obj"><code>obj</code></dt> <dd> <p>객체</p> </dd> </dl></div></section><section aria-labelledby="반환_값"><h3 id="반환_값">반환 값</h3>
+<div class="section-content"><p>주어진 객체 자체의 열거 가능한 문자열로된 속성 키를 나타내는 문자열 배열.</p></div></section><section aria-labelledby="설명"><h2 id="설명">설명</h2>
+<div class="section-content">
+<p> <code>Object.keys()</code>는 <code>object</code> 에서 직접 찾은 열거 가능한 문자열 키 속성 이름에 해당하는 문자열을 요소로 하는 배열을 반환합니다. 이는 <code>for...in</code> 루프가 프로토타입 체인의 속성도 열거한다는 점을 제외하면 <a href="../../statements/for...in"><code>for...in</code></a> 루프를 사용하여 반복하는 것과 동일합니다. <code>Object.keys()</code>가 반환하는 배열의 순서는 <a href="../../statements/for...in"><code>for...in</code></a> 루프에서 제공하는 것과 동일합니다. </p> <p> 속성 값이 필요한 경우 <a href="values"><code>Object.values()</code></a>를 대신 사용하시기 바랍니다. 속성 키와 값이 모두 필요한 경우 <a href="entries"><code>Object.entries()</code></a>를 대신 사용하시기 바랍니다. </p>
+</div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+</section><section aria-labelledby="object.keys_사용하기"><h3 id="object.keys_사용하기">Object.keys() 사용하기</h3>
+<div class="section-content">
+<div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="XZVXrq4uYc+Kg7tzeOagQKCkUHrkNa+x+HolRY+0IBE=" data-language="js"><span class="token comment">// 단순 배열</span>
+<span class="token keyword">const</span> arr <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'a'</span><span class="token punctuation">,</span> <span class="token string">'b'</span><span class="token punctuation">,</span> <span class="token string">'c'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>Object<span class="token punctuation">.</span><span class="token function">keys</span><span class="token punctuation">(</span>arr<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// console: ['0', '1', '2']</span>
+
+<span class="token comment">// 배열형 객체</span>
+<span class="token keyword">const</span> obj <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token number">0</span><span class="token operator">:</span> <span class="token string">'a'</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token operator">:</span> <span class="token string">'b'</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token operator">:</span> <span class="token string">'c'</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>Object<span class="token punctuation">.</span><span class="token function">keys</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// console: ['0', '1', '2']</span>
+
+<span class="token comment">// 키와 순서가 무작위인 유사 배열 객체</span>
+<span class="token keyword">const</span> anObj <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token number">100</span><span class="token operator">:</span> <span class="token string">'a'</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token operator">:</span> <span class="token string">'b'</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token operator">:</span> <span class="token string">'c'</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>Object<span class="token punctuation">.</span><span class="token function">keys</span><span class="token punctuation">(</span>anObj<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// console: ['2', '7', '100']</span>
+
+<span class="token comment">// getFoo 는 열거할 수 없는 속성입니다.</span>
+<span class="token keyword">const</span> myObj <span class="token operator">=</span> Object<span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span>
+  <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">{</span>
+    <span class="token literal-property property">getFoo</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token function">value</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span>foo<span class="token punctuation">;</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+myObj<span class="token punctuation">.</span>foo <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>Object<span class="token punctuation">.</span><span class="token function">keys</span><span class="token punctuation">(</span>myObj<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// ['foo']</span>
+</pre>
+</div> <p> 만약 열거할 수 없는 속성도 포함한 문자열이 키인 객체 자체 속성을 원한다면, <a href="getownpropertynames"><code>Object.getOwnPropertyNames()</code></a>을 참고하시기 바랍니다. </p>
+</div></section><section aria-labelledby="원시형애서_object.keys_사용하기"><h3 id="원시형애서_object.keys_사용하기">원시형애서 Object.keys() 사용하기</h3>
+<div class="section-content">
+<p> 객체가 아닌 인수는 <a href="../object#object_coercion">강제로 객체로 변환</a>됩니다. 문자열만 자체 열거 가능한 속성을 가질 수 있으며, 다른 모든 원시형은 빈 배열을 반환합니다. </p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="8dTMc43cOo4ZgG+bAC12sS0blebVhEkFz0k8/NnCGYo=" data-language="js"><span class="token comment">// 문자열은 열거가능한 자체 속성처럼 인덱스를 가지고 있습니다.</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>Object<span class="token punctuation">.</span><span class="token function">keys</span><span class="token punctuation">(</span><span class="token string">"foo"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// ['0', '1', '2']</span>
+
+<span class="token comment">// 다른 원시형은 자체 속성이 없숩니다.</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>Object<span class="token punctuation">.</span><span class="token function">keys</span><span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// []</span>
+</pre>
+</div> <div class="notecard note" id="sect1"> <p><strong>참고:</strong> ES5에서는 비객체를 <code>Object.keys()</code>에 전달하면 <a href="../typeerror"><code>TypeError</code></a>가 발생합니다.</p> </div>
+</div></section><h2 id="명세서">명세서</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://tc39.es/ecma262/multipage/fundamental-objects.html#sec-object.keys">ECMAScript Language Specification <br><small># sec-object.keys</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li>
+<code>Object.keys</code> 의 폴리필 코드는 아래에서 확인할 수 있습니다. <a href="https://github.com/zloirock/core-js#ecmascript-object" target="_blank"><code>core-js</code></a>
+</li> <li><a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Enumerability_and_ownership_of_properties">Enumerability and ownership of properties</a></li> <li><a href="entries"><code>Object.entries()</code></a></li> <li><a href="values"><code>Object.values()</code></a></li> <li><a href="propertyisenumerable"><code>Object.prototype.propertyIsEnumerable()</code></a></li> <li><a href="create"><code>Object.create()</code></a></li> <li><a href="getownpropertynames"><code>Object.getOwnPropertyNames()</code></a></li> <li><a href="../map/keys"><code>Map.prototype.keys()</code></a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Object/keys" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Object/keys</a>
+  </p>
+</div>

@@ -1,0 +1,164 @@
+<header><h1>border-radius</h1></header><div class="section-content"><p><a href="https://developer.mozilla.org/ko/docs/Web/CSS">CSS</a> <code>border-radius</code> 속성은 요소 테두리 경계의 꼭짓점을 둥글게 만듭니다. 하나의 값을 사용해 원형 꼭짓점을, 두 개의 값을 사용해 타원형 꼭짓점을 적용할 수 있습니다.</p></div>
+<section aria-labelledby="시도해보기"><h2 id="시도해보기">시도해보기</h2>
+<div class="section-content">
+<iframe class="interactive is-default-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/css/border-radius.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe>  <p>꼭짓점 반경은 요소의 테두리 존재 여부와는 별개로 전체 <a href="background"><code>background</code></a>에 적용됩니다. 원형 꼭짓점으로 인해 배경이 잘리는 지점은 <a href="background-clip"><code>background-clip</code></a> 속성이 지정합니다.</p> <p><a href="border-collapse"><code>border-collapse</code></a>의 값이 <code>collapse</code>인 표 요소는 <code>border-radius</code> 속성의 영향을 받지 않습니다.</p> <div class="notecard note" id="sect2"> <p><strong>참고:</strong> 다른 단축 속성과 마찬가지로, 각각의 하위 속성이 부모를 상속하도록 할 수는 없습니다. 즉, <code>border-radius: 0 0 inherit inherit</code>처럼 일부만 재정의할 수 없습니다. 대신, 원래의 본디속성을 하나씩 사용하세요.</p> </div>
+</div></section><section aria-labelledby="구성_속성"><h2 id="구성_속성">구성 속성</h2>
+<div class="section-content">
+<p><code>border-radius</code>는 다음 CSS 속성의 단축 속성입니다.</p> <ul> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/border-bottom-left-radius"><code>border-bottom-left-radius</code> <small>(en-US)</small></a></li> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/border-bottom-right-radius"><code>border-bottom-right-radius</code> <small>(en-US)</small></a></li> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/border-top-left-radius"><code>border-top-left-radius</code> <small>(en-US)</small></a></li> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/border-top-right-radius"><code>border-top-right-radius</code> <small>(en-US)</small></a></li> </ul>
+</div></section><section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content">
+<div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="p1JMrQD8VEZaW3hJWJR41B/BjvsvmBhrArkR/wNOUDo=" data-language="css"><span class="token comment">/* The syntax of the first radius allows one to four values */</span>
+<span class="token comment">/* Radius is set for all 4 sides */</span>
+<span class="token property">border-radius</span><span class="token punctuation">:</span> 10px<span class="token punctuation">;</span>
+
+<span class="token comment">/* top-left-and-bottom-right | top-right-and-bottom-left */</span>
+<span class="token property">border-radius</span><span class="token punctuation">:</span> 10px 5%<span class="token punctuation">;</span>
+
+<span class="token comment">/* top-left | top-right-and-bottom-left | bottom-right */</span>
+<span class="token property">border-radius</span><span class="token punctuation">:</span> 2px 4px 2px<span class="token punctuation">;</span>
+
+<span class="token comment">/* top-left | top-right | bottom-right | bottom-left */</span>
+<span class="token property">border-radius</span><span class="token punctuation">:</span> 1px 0 3px 4px<span class="token punctuation">;</span>
+
+<span class="token comment">/* The syntax of the second radius allows one to four values */</span>
+<span class="token comment">/* (first radius values) / radius */</span>
+<span class="token property">border-radius</span><span class="token punctuation">:</span> 10px 5% / 20px<span class="token punctuation">;</span>
+
+<span class="token comment">/* (first radius values) / top-left-and-bottom-right | top-right-and-bottom-left */</span>
+<span class="token property">border-radius</span><span class="token punctuation">:</span> 10px 5% / 20px 30px<span class="token punctuation">;</span>
+
+<span class="token comment">/* (first radius values) / top-left | top-right-and-bottom-left | bottom-right */</span>
+<span class="token property">border-radius</span><span class="token punctuation">:</span> 10px 5px 2em / 20px 25px 30%<span class="token punctuation">;</span>
+
+<span class="token comment">/* (first radius values) / top-left | top-right | bottom-right | bottom-left */</span>
+<span class="token property">border-radius</span><span class="token punctuation">:</span> 10px 5% / 20px 25em 30px 35em<span class="token punctuation">;</span>
+
+<span class="token comment">/* Global values */</span>
+<span class="token property">border-radius</span><span class="token punctuation">:</span> inherit<span class="token punctuation">;</span>
+<span class="token property">border-radius</span><span class="token punctuation">:</span> initial<span class="token punctuation">;</span>
+<span class="token property">border-radius</span><span class="token punctuation">:</span> unset<span class="token punctuation">;</span>
+</pre>
+</div> <p><code>border-radius</code> 속성은 다음 방법으로 지정할 수 있습니다.</p> <ul> <li>한 개에서 네 개의 <a href="length"><code>&lt;length&gt;</code></a> 또는 <a href="percentage"><code>&lt;percentage&gt;</code></a> 값은 꼭짓점의 단일 반지름을 설정합니다.</li> <li>선택적으로 "<code>/</code>" 이후에 한 개에서 네 개의 <code>&lt;length&gt;</code> 또는 <code>&lt;percentage&gt;</code> 값을 사용해 추가 반지름을 설정해서 타원형 꼭짓점을 만들 수 있습니다.</li> </ul>
+</div></section><section aria-labelledby="값"><h3 id="값">값</h3>
+<div class="section-content">
+<figure class="table-container"><div class="_table"><table> <thead> <tr> <th><em>radius</em></th> <th> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEUAAAA8BAMAAADCjmoTAAAAG1BMVEX////P5+YAAACAgIDQ6Obs7OxZWVnB2ddpaWkCF9iNAAAAcUlEQVRIx2NgUAIDBiwAIQNhGWMB6GoEsQC4GlZCahSIVqMoiBMIKamNqiGohoGAGlA4MzAL4gMiBgyjakbVjKoZSWrwly3iRJTPo2qIVIOrHhSC1YMMxKvBVncboanB1gZggqtRSwOCJKxqOkCAOHMAP4+YU9vmCzcAAAAASUVORK5CYII=" alt="all-corner.png" width="69" height="60" loading="lazy"> </th> <th>테두리의 각 꼭짓점 반지름을 나타내는 <a href="length"><code>&lt;length&gt;</code></a> 또는 <a href="percentage"><code>&lt;percentage&gt;</code></a>. 한 개 값 구문에서만 사용합니다.</th> </tr> </thead> <tbody> <tr> <td><em>top-left-and-bottom-right</em></td> <td> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEUAAAA7BAMAAADfi1qrAAAAGFBMVEX////P5+YAAACAgIDQ6Obs7OzB2ddpaWlnBVd8AAAAVklEQVRIx+3VMQqAQBBD0aB4gBGxXucEoofz+rIraBVJoV1+/foPZAuvXWZnrY8J0lTN8J1ZgmcjGCimj7CxsbHRzJxZbH42YzukbOi2t9vwOsUctYITrFyNJI1QPzYAAAAASUVORK5CYII=" alt="top-left-bottom-right.png" width="69" height="59" loading="lazy"> </td> <td>왼쪽 위와 오른쪽 아래 꼭짓점의 반지름을 나타내는 <a href="length"><code>&lt;length&gt;</code></a> 또는 <a href="percentage"><code>&lt;percentage&gt;</code></a>. 두 개 값 구문에서만 사용합니다.</td> </tr> <tr> <td><em>top-right-and-bottom-left</em></td> <td> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEUAAAA7BAMAAADfi1qrAAAAGFBMVEX////P5+YAAACAgIDQ6Obs7OxpaWlUVFRhE4cuAAAAVUlEQVRIx2NgwA2UwADEYjbGBZDUCOICxKtRoFgNEAgpqY+qoVgN4XAWFDFgGFUzqmZUzUhSw6qkpDiqhi5qQAB/fBGvBmcFboBa0+MGamlAkIRPBQA8Y4yUecRbkAAAAABJRU5ErkJggg==" alt="top-right-bottom-left.png" width="69" height="59" loading="lazy"> </td> <td>오른쪽 위와 왼쪽 아래 꼭짓점의 반지름을 나타내는 <a href="length"><code>&lt;length&gt;</code></a> 또는 <a href="percentage"><code>&lt;percentage&gt;</code></a>. 두 개 또는 세 개 값 구문에서만 사용합니다.</td> </tr> <tr> <td><em>top-left</em></td> <td> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEEAAAA5BAMAAACbqFvaAAAAElBMVEXP5+aAgID///8AAADS6efs7Oy3ipf4AAAAQUlEQVQ4y2NQMgYDJVxAgQGqQhAXEICpYMABWAQYVKmjwoABNxhVgaFCibAKRQaGURWjKkZVjKoYVUEfFYJ4gQAA8LAkZWxB+wkAAAAASUVORK5CYII=" alt="top-left.png" width="65" height="57" loading="lazy"> </td> <td>왼쪽 위 꼭짓점의 반지름을 나타내는 <a href="length"><code>&lt;length&gt;</code></a> 또는 <a href="percentage"><code>&lt;percentage&gt;</code></a>. 세 개 또는 네 개 값 구문에서만 사용합니다.</td> </tr> <tr> <td><em>top-right</em></td> <td> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEEAAAA5BAMAAACbqFvaAAAAFVBMVEX///+AgIDP5+YAAADd7u2/1tXJ4d/jxhoXAAAAPklEQVR42mPACZiNQcCAgUEQFxCGqRBSwgGUaasCAVRHVZCoQg2hAidwZBhVMapiVMWoilEV1FIhiB8wMAAAMvfq/Uh297oAAAAASUVORK5CYII=" alt="top-right.png" width="65" height="57" loading="lazy"> </td> <td>오른쪽 위 꼭짓점의 반지름을 나타내는 <a href="length"><code>&lt;length&gt;</code></a> 또는 <a href="percentage"><code>&lt;percentage&gt;</code></a>. 네 개 값 구문에서만 사용합니다.</td> </tr> <tr> <td><em>bottom-right</em></td> <td> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEIAAAA6CAMAAAAz+392AAAAM1BMVEXP5+YfHx/O5uSesa/c7uyEkpLJ4N7///+AgIAAAABiYmJ9fX3a6+n8/Px/jo3q6urDw8Pmk6+OAAAAVUlEQVRIx+3PSQ6AIBAAwWFRFtf/v1bhohxxuJh0P6CSlqgq3EmU73kICAgICAgICAiIXxB2XTYdMaUSBMQ4ws61XUG49GoQ0V9+AFOI0N+pJ4525AJ5/hPyesqFIAAAAABJRU5ErkJggg==" alt="bottom-right.png" width="66" height="58" loading="lazy"> </td> <td>오른쪽 아래 꼭짓점의 반지름을 나타내는 <a href="length"><code>&lt;length&gt;</code></a> 또는 <a href="percentage"><code>&lt;percentage&gt;</code></a>. 네 개 값 구문에서만 사용합니다.</td> </tr> <tr> <td><em>bottom-left</em></td> <td> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEEAAAA6BAMAAAAdPCl0AAAAElBMVEXP5+b///+AgIAAAADS6efs7Oz4Z0ZuAAAAPElEQVQ4y2MQFFLCCxQYBIUY8AGWURWjKkZVjKoYVUE/FaLGxgajKqiuAgTwxQuxKvDVphAVgriAAGEVADqiJXuTiQOaAAAAAElFTkSuQmCC" alt="bottom-left.png" width="65" height="58" loading="lazy"> </td> <td>왼쪽 아래 꼭짓점의 반지름을 나타내는 <a href="length"><code>&lt;length&gt;</code></a> 또는 <a href="percentage"><code>&lt;percentage&gt;</code></a>. 네 개 값 구문에서만 사용합니다.</td> </tr> </tbody> </table></div></figure> <dl> <dt id="length"><a href="length"><code>&lt;length&gt;</code></a></dt> <dd> <p>길이 값을 사용해 원의 반지름 또는 타원의 짧은반지름과 긴반지름을 지정합니다. 음의 값은 유효하지 않습니다.</p> </dd> <dt id="percentage"><a href="percentage"><code>&lt;percentage&gt;</code></a></dt> <dd> <p>백분율 값을 사용해 원의 반지름 또는 타원의 짧은반지름과 긴반지름을 지정합니다. 가로축 값은 요소 박스의 너비에 대한 백분율이고, 세로축 값은 박스의 높이에 대한 백분율입니다. 음의 값은 유효하지 않습니다.</p> </dd> </dl> <p>예를 들어...</p> <div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="SI2PjoJqBDmYIID4bGECmkfYMD1Hx9uLZO8TBICFSc0=" data-language="css"><span class="token property">border-radius</span><span class="token punctuation">:</span> 1em/5em<span class="token punctuation">;</span>
+
+<span class="token comment">/* 아래와 같음 */</span>
+<span class="token property">border-top-left-radius</span><span class="token punctuation">:</span>     1em 5em<span class="token punctuation">;</span>
+<span class="token property">border-top-right-radius</span><span class="token punctuation">:</span>    1em 5em<span class="token punctuation">;</span>
+<span class="token property">border-bottom-right-radius</span><span class="token punctuation">:</span> 1em 5em<span class="token punctuation">;</span>
+<span class="token property">border-bottom-left-radius</span><span class="token punctuation">:</span>  1em 5em<span class="token punctuation">;</span>
+</pre>
+</div> <div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="B/03+uJUXfaG4uyiOm5J+waCOJzHXrmV236i7w+4lWE=" data-language="css"><span class="token property">border-radius</span><span class="token punctuation">:</span> 4px 3px 6px / 2px 4px<span class="token punctuation">;</span>
+
+<span class="token comment">/* 아래와 같음 */</span>
+<span class="token property">border-top-left-radius</span><span class="token punctuation">:</span>     4px 2px<span class="token punctuation">;</span>
+<span class="token property">border-top-right-radius</span><span class="token punctuation">:</span>    3px 4px<span class="token punctuation">;</span>
+<span class="token property">border-bottom-right-radius</span><span class="token punctuation">:</span> 6px 2px<span class="token punctuation">;</span>
+<span class="token property">border-bottom-left-radius</span><span class="token punctuation">:</span>  3px 4px<span class="token punctuation">;</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="형식_정의"><h2 id="형식_정의">형식 정의</h2>
+<div class="section-content"><figure class="table-container"><div class="_table"><table class="properties"><tbody>
+<tr>
+<th scope="row"><a href="initial_value">초기값</a></th>
+<td>as each of the properties of the shorthand:<br><ul>
+<li>
+<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/border-top-left-radius" class="only-in-en-us"><code>border-top-left-radius</code> <small>(en-US)</small></a>: <code>0</code>
+</li>
+<li>
+<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/border-top-right-radius" class="only-in-en-us"><code>border-top-right-radius</code> <small>(en-US)</small></a>: <code>0</code>
+</li>
+<li>
+<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/border-bottom-right-radius" class="only-in-en-us"><code>border-bottom-right-radius</code> <small>(en-US)</small></a>: <code>0</code>
+</li>
+<li>
+<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/border-bottom-left-radius" class="only-in-en-us"><code>border-bottom-left-radius</code> <small>(en-US)</small></a>: <code>0</code>
+</li>
+</ul>
+</td>
+</tr>
+<tr>
+<th scope="row">적용대상</th>
+<td>all elements; but User Agents are not required to apply to <code>table</code> and <code>inline-table</code> elements when <a href="border-collapse"><code>border-collapse</code></a> is <code>collapse</code>. The behavior on internal table elements is undefined for the moment.. It also applies to <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/::first-letter" class="only-in-en-us"><code>::first-letter</code> <small>(en-US)</small></a>.</td>
+</tr>
+<tr>
+<th scope="row"><a href="inheritance">상속</a></th>
+<td>no</td>
+</tr>
+<tr>
+<th scope="row">Percentages</th>
+<td>refer to the corresponding dimension of the border box</td>
+</tr>
+<tr>
+<th scope="row"><a href="computed_value">계산 값</a></th>
+<td>as each of the properties of the shorthand:<br><ul>
+<li>
+<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/border-bottom-left-radius" class="only-in-en-us"><code>border-bottom-left-radius</code> <small>(en-US)</small></a>: two absolute <a href="length"><code>length</code></a>s or <a href="percentage"><code>percentage</code></a>s</li>
+<li>
+<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/border-bottom-right-radius" class="only-in-en-us"><code>border-bottom-right-radius</code> <small>(en-US)</small></a>: two absolute <a href="length"><code>length</code></a>s or <a href="percentage"><code>percentage</code></a>s</li>
+<li>
+<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/border-top-left-radius" class="only-in-en-us"><code>border-top-left-radius</code> <small>(en-US)</small></a>: two absolute <a href="length"><code>length</code></a>s or <a href="percentage"><code>percentage</code></a>s</li>
+<li>
+<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/border-top-right-radius" class="only-in-en-us"><code>border-top-right-radius</code> <small>(en-US)</small></a>: two absolute <a href="length"><code>length</code></a>s or <a href="percentage"><code>percentage</code></a>s</li>
+</ul>
+</td>
+</tr>
+<tr>
+<th scope="row">Animation type</th>
+<td>as each of the properties of the shorthand:<br><ul>
+<li>
+<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/border-top-left-radius" class="only-in-en-us"><code>border-top-left-radius</code> <small>(en-US)</small></a>: a <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/length#interpolation">length</a>, <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/percentage#interpolation">percentage</a> or calc();</li>
+<li>
+<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/border-top-right-radius" class="only-in-en-us"><code>border-top-right-radius</code> <small>(en-US)</small></a>: a <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/length#interpolation">length</a>, <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/percentage#interpolation">percentage</a> or calc();</li>
+<li>
+<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/border-bottom-right-radius" class="only-in-en-us"><code>border-bottom-right-radius</code> <small>(en-US)</small></a>: a <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/length#interpolation">length</a>, <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/percentage#interpolation">percentage</a> or calc();</li>
+<li>
+<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/border-bottom-left-radius" class="only-in-en-us"><code>border-bottom-left-radius</code> <small>(en-US)</small></a>: a <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/length#interpolation">length</a>, <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/percentage#interpolation">percentage</a> or calc();</li>
+</ul>
+</td>
+</tr>
+</tbody></table></div></figure></div></section><section aria-labelledby="형식_구문"><h2 id="형식_구문">형식 구문</h2>
+<div class="section-content"><pre class="notranslate"><span class="token property" id="border-radius">border-radius = </span><br>  <a href="length-percentage"><span class="token property">&lt;length-percentage [0,∞]&gt;</span></a><a href="value_definition_syntax#curly_braces">{1,4}</a> <a href="value_definition_syntax#brackets">[</a> / <a href="length-percentage"><span class="token property">&lt;length-percentage [0,∞]&gt;</span></a><a href="value_definition_syntax#curly_braces">{1,4}</a> <a href="value_definition_syntax#brackets">]</a><a href="value_definition_syntax#question_mark">?</a>  <br><br><span class="token property" id="&lt;length-percentage&gt;">&lt;length-percentage&gt; = </span><br>  <a href="length"><span class="token property">&lt;length&gt;</span></a>      <a href="value_definition_syntax#single_bar">|</a><br>  <a href="percentage"><span class="token property">&lt;percentage&gt;</span></a>  <br><br></pre></div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+<div class="section-content">
+<pre class="notranslate">  border: solid 10px;
+  /* 테두리가 'D'형태가 됨 */
+  border-radius: 10px 40px 40px 10px;
+</pre> <pre class="notranslate">  border: groove 1em red;
+  border-radius: 2em;
+</pre> <pre class="notranslate">  background: gold;
+  border: ridge gold;
+  border-radius: 13em/3em;
+</pre> <pre class="notranslate">  border: none;
+  border-radius: 40px 10px;
+</pre> <pre class="notranslate">  border: none;
+  border-radius: 50%;
+</pre> <pre class="notranslate">  border: dotted;
+  border-width: 10px 4px;
+  border-radius: 10px 40px;
+</pre> <pre class="notranslate">  border: dashed;
+  border-width: 2px 4px;
+  border-radius: 40px;
+</pre>
+</div></section><section aria-labelledby="라이브_샘플"><h3 id="라이브_샘플">라이브 샘플</h3>
+<div class="section-content"><ol> <li><a href="https://jsfiddle.net/Tripad/qnGKj/2/" target="_blank">https://jsfiddle.net/Tripad/qnGKj/2/</a></li> <li><a href="https://jsfiddle.net/Tripad/qnGKj/3/" target="_blank">https://jsfiddle.net/Tripad/qnGKj/3/</a></li> <li><a href="https://jsfiddle.net/Tripad/qnGKj/4/" target="_blank">https://jsfiddle.net/Tripad/qnGKj/4/</a></li> <li><a href="https://jsfiddle.net/Tripad/qnGKj/5/" target="_blank">https://jsfiddle.net/Tripad/qnGKj/5/</a></li> <li><a href="https://jsfiddle.net/Tripad/qnGKj/6/" target="_blank">https://jsfiddle.net/Tripad/qnGKj/6/</a></li> </ol></div></section><h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://drafts.csswg.org/css-backgrounds/#border-radius">CSS Backgrounds and Borders Module Level 3 <br><small># border-radius</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li>꼭짓점 반경 관련 CSS 속성: <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/border-top-left-radius"><code>border-top-left-radius</code> <small>(en-US)</small></a>, <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/border-top-right-radius"><code>border-top-right-radius</code> <small>(en-US)</small></a>, <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/border-bottom-right-radius"><code>border-bottom-right-radius</code> <small>(en-US)</small></a>, <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/border-bottom-left-radius"><code>border-bottom-left-radius</code> <small>(en-US)</small></a>
+</li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/CSS/border-radius" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/CSS/border-radius</a>
+  </p>
+</div>

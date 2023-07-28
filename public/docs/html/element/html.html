@@ -1,0 +1,41 @@
+<header><h1>&lt;html&gt;: HTML 문서 / 루트 요소</h1></header><div class="section-content">
+<p><code>&lt;html&gt;</code>는 HTML 문서의 루트(최상단 요소)를 나타내며, "루트 요소"라고도 부릅니다. 모든 다른 요소는 <code>&lt;html&gt;</code> 요소의 후손이어야 합니다.</p> <figure class="table-container"><div class="_table"><table class="properties"> <tbody> <tr> <th scope="row"><a href="../content_categories">콘텐츠 카테고리</a></th> <td>없음.</td> </tr> <tr> <th scope="row">가능한 콘텐츠</th> <td> 하나의 <a href="head"><code>&lt;head&gt;</code></a> 요소와 그 뒤를 따르는 하나의 <a href="body"><code>&lt;body&gt;</code></a> 요소. </td> </tr> <tr> <th scope="row">태그 생략</th> <td> <code>&lt;html&gt;</code> 요소 내부의 첫 번째 것이 주석이 아니라면 시작 태그를 생략할 수 있습니다.<br><code>&lt;html&gt;</code> 요소 바로 뒤에 주석이 따라오지 않는다면 종료 태그를 생략할 수 있습니다. </td> </tr> <tr> <th scope="row">가능한 부모 요소</th> <td>없음. <code>&lt;html&gt;</code>이 문서의 루트 요소입니다.</td> </tr> <tr> <th scope="row">암시적 ARIA 역할</th> <td><a href="https://www.w3.org/TR/html-aria/#dfn-no-corresponding-role" target="_blank">대응하는 역할 없음</a></td> </tr> <tr> <th scope="row">가능한 ARIA 역할</th> <td>없음</td> </tr> <tr> <th scope="row">DOM 역할</th> <td><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLHtmlElement"><code>HTMLHtmlElement</code> <small>(en-US)</small></a></td> </tr> </tbody> </table></div></figure>
+</div>
+<h2 id="특성">특성</h2>
+<div class="section-content">
+<p>이 요소는 <a href="../global_attributes">전역 특성</a>을 포함합니다.</p> <dl> <dt id="manifest">
+<a id="attr-manifest" class="inline-block" href="#attr-manifest"><b><code>manifest</code></b></a> <abbr class="icon icon-deprecated" title="지원이 중단되었습니다. 새로운 웹사이트에서 사용하지 마세요."> <span class="visually-hidden">지원이 중단되었습니다</span> </abbr>
+</dt> <dd> <p>지역적으로 캐시되어야하는 리소스를 가리키는 매니페스트 리소스의 URI를 나타냅니다. 자세한 내용은 <a href="https://developer.mozilla.org/ko/docs/Web/HTML/Using_the_application_cache" class="page-not-created">애플리케이션 캐시 사용하기</a>를 보세요.</p> </dd> <dt id="version">
+<a id="attr-version" class="inline-block" href="#attr-version"><b><code>version</code></b></a> <abbr class="icon icon-deprecated" title="지원이 중단되었습니다. 새로운 웹사이트에서 사용하지 마세요."> <span class="visually-hidden">지원이 중단되었습니다</span> </abbr>
+</dt> <dd> <p>현재 문서를 제어하는 HTML 문서 타입 정의의 버전을 나타냅니다. 하지만 이미 문서 타입 선언이 버전을 나타내고 있기 떄문에 이 속성은 필요하지 않습니다.</p> </dd> <dt id="xmlns"><a id="attr-xmlns" class="inline-block" href="#attr-xmlns"><b><code>xmlns</code></b></a></dt> <dd> <p>문서의 <a href="https://developer.mozilla.org/ko/docs/Glossary/XML">XML</a> <a class="page-not-created">네임스페이스</a>를 지정합니다. 기본값은 <code>"http://www.w3.org/1999/xhtml"</code>입니다. XML <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Glossary/Parser">구문 분석기 <small>(en-US)</small></a>로 분석한 문서에는 필수이고, <code>text/html</code> 문서에서는 선택사항입니다.</p> </dd> </dl>
+</div>
+<h2 id="예제">예제</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="8nGmg6FCtH1TL+CWlVHdxkAiOHSehDtC9JP0v8Mrous=" data-language="html"><span class="token doctype"><span class="token punctuation">&lt;!</span><span class="token doctype-tag">DOCTYPE</span> <span class="token name">html</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span> <span class="token attr-name">lang</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>ko<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">&gt;</span></span>...<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">&gt;</span></span>...<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div></div>
+<h2 id="접근성_고려사항">접근성 고려사항</h2>
+<div class="section-content">
+<p><code>html</code> 요소의 <a href="../global_attributes#lang"><code>lang</code></a> 특성에 <a href="https://www.ietf.org/rfc/bcp/bcp47.txt" target="_blank">유효한 IETF 언어 식별 태그</a>를 지정하면 스크린 리더가 음성 표현에 사용할 언어를 선택할 때 도움이 됩니다. 언어 식별 태그는 페이지의 주 언어를 가리켜야 합니다. 아무런 값도 지정하지 않을 시 보통 운영체제의 언어 설정을 따라가므로, 잘못된 발음을 사용할 수 있습니다.</p> <p>또한 <code>&lt;html&gt;</code> 요소에 유효한 <code>lang</code> 선언이 존재해야 <a href="title"><code>&lt;title&gt;</code></a>과 같은 <a href="head"><code>&lt;head&gt;</code></a> 내부의 중요한 메타데이터를 정확한 발음으로 표현할 수 있습니다.</p> <ul> <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/Understanding_WCAG/Understandable" class="only-in-en-us">MDN Understanding WCAG, Guideline 3.1 explanations <small>(en-US)</small></a></li> <li><a href="https://www.w3.org/TR/2016/NOTE-UNDERSTANDING-WCAG20-20161007/meaning-doc-lang-id.html" target="_blank">Understanding Success Criterion 3.1.1 | W3C Understanding WCAG 2.0</a></li> </ul>
+</div>
+<h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://html.spec.whatwg.org/multipage/semantics.html#the-html-element">HTML Standard <br><small># the-html-element</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li>MathML 최상위 요소 <code><a href="https://developer.mozilla.org/en-US/docs/Web/MathML/Element/math" class="only-in-en-us">&lt;math&gt; <small>(en-US)</small></a></code>
+</li> <li>SVG 최상위 요소 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/SVG/Element/svg"><code>&lt;svg&gt;</code> <small>(en-US)</small></a>
+</li> </ul></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/HTML/Element/html" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/HTML/Element/html</a>
+  </p>
+</div>

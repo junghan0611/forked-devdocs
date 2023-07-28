@@ -1,0 +1,35 @@
+<header><h1>OffscreenCanvas()</h1></header><div class="section-content">
+<div class="notecard experimental" id="sect1"><p><strong>Experimental:</strong> <strong>This is an <a href="https://developer.mozilla.org/en-US/docs/MDN/Writing_guidelines/Experimental_deprecated_obsolete#experimental">experimental technology</a></strong><br>Check the <a href="#browser_compatibility">Browser compatibility table</a> carefully before using this in production.</p></div> <p><code>OffscreenCanvas()</code> 생성자는 새롭게 초기화된 <a href="../offscreencanvas"><code>OffscreenCanvas</code></a> 객체를 반환합니다.</p>
+</div>
+<h2 id="구문">구문</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="ARSwuM1od4STChLfW7EkGve7SsO/azK3+uYcomBnRik=" data-language="js"><span class="token keyword">new</span> <span class="token class-name">OffscreenCanvas</span><span class="token punctuation">(</span>width<span class="token punctuation">,</span> height<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div></div>
+<h3 id="매개_변수">매개 변수</h3>
+<div class="section-content"><dl> <dt id="width"><code>width</code></dt> <dd> <p>offscreen 캔버스의 너비</p> </dd> <dt id="height"><code>height</code></dt> <dd> <p>offscreen 캔버스의 높이</p> </dd> </dl></div>
+<h2 id="예시">예시</h2>
+<div class="section-content">
+<p>이 예시는 <code>OffscreenCanvas()</code> 생성자를 이용해 새로운 offscreen 캔버스를 생성하고, <a href="../webgl_api">WebGL</a> 컨텍스트의 <a href="getcontext"><code>getContext()</code></a> 메소드를 사용해 초기화합니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="xmYwJzZiQ806IG2a3mGAFKjyvPIoh94xyNlcJKtKSWc=" data-language="js"><span class="token keyword">let</span> offscreen <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">OffscreenCanvas</span><span class="token punctuation">(</span><span class="token number">256</span><span class="token punctuation">,</span> <span class="token number">256</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">let</span> gl <span class="token operator">=</span> offscreen<span class="token punctuation">.</span><span class="token function">getContext</span><span class="token punctuation">(</span><span class="token string">'webgl'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div>
+</div>
+<h2 id="명세서">명세서</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://html.spec.whatwg.org/multipage/canvas.html#dom-offscreencanvas-dev">HTML Standard <br><small># dom-offscreencanvas-dev</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<h2 id="더_보기">더 보기</h2>
+<div class="section-content"><ul> <li>
+<a href="../offscreencanvas"><code>OffscreenCanvas</code></a>, 생성자가 속한 인터페이스</li> </ul></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/OffscreenCanvas/OffscreenCanvas" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/OffscreenCanvas/OffscreenCanvas</a>
+  </p>
+</div>

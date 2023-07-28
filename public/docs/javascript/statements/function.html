@@ -1,0 +1,101 @@
+<header><h1>함수 선언</h1></header><div class="section-content">
+<p><strong>함수 선언</strong>(<strong>function declaration</strong>)은 지정된 매개변수(parameter)를 갖는 함수를 정의합니다.</p> <p><a href="../global_objects/function"><code>Function</code></a> 생성자나 <a href="../operators/function"><code>함수 표현식(function expression)</code></a>을 사용해서 정의할 수도 있습니다.</p>
+</div>
+<section aria-labelledby="시도해보기"><h2 id="시도해보기">시도해보기</h2>
+<div class="section-content"><iframe class="interactive is-js-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/js/statement-function.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe></div></section><section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content">
+<div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="WpVTWnypEdp+TiRHdR/qPurh45H7w6FWolkG50jID/s=" data-language="js">    <span class="token keyword">function</span> <span class="token function">name</span><span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">[</span>param<span class="token punctuation">[</span><span class="token punctuation">,</span> param<span class="token punctuation">,</span><span class="token punctuation">[</span><span class="token operator">...</span><span class="token punctuation">,</span> param<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">]</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token punctuation">[</span>statements<span class="token punctuation">]</span> <span class="token punctuation">}</span>
+</pre>
+</div> <dl> <dt id="name"><code>name</code></dt> <dd> <p>함수 이름.</p> </dd> <dt id="param"><code>param</code></dt> <dd> <p>함수로 전달되는 인수(argument)의 이름. 인수의 최대 개수는 엔진마다 다름.</p> </dd> <dt id="statements"><code>statements</code></dt> <dd> <p>함수의 몸통(body)을 구성하는 문(statement).</p> </dd> </dl>
+</div></section><section aria-labelledby="설명"><h2 id="설명">설명</h2>
+<div class="section-content">
+<p>함수 선언으로 생성된 함수는 <code>Function</code> 객체로, <code>Function</code> 객체의 모든 속성(property), 메서드 및 행위 특성(behavior)을 갖습니다. 함수에 관한 더 자세한 정보는 <a href="../global_objects/function"><code>Function</code></a> 참조하시기 바랍니다.</p> <p>함수는 또한 표현식(<a href="../operators/function"><code>함수 표현식</code></a> 참조)을 사용하여 생성될 수 있습니다.</p> <p>기본적으로 함수는 <code>undefined</code>를 반환합니다. 다른 값을 반환하기 위해서는, 함수는 반환값을 지정하는 <a href="return"><code>return</code></a> 문이 있어야 합니다.</p>
+</div></section><section aria-labelledby="조건부로_생성되는_함수"><h3 id="조건부로_생성되는_함수">조건부로 생성되는 함수</h3>
+<div class="section-content">
+<p>함수는 조건부로 선언될 수 있습니다. 즉, function 문은 <code>if</code> 문 안에 들어갈 수 있습니다. 하지만, 구현에 따라 결과에 일관성이 없으므로 이 패턴은 실제 코드에서는 사용해선 안됩니다. 조건부로 함수를 생성하고자 한다면, 함수 표현식(function expression)을 대신 사용하세요.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="cyppN5HOTfNKhj2cMfrV26GWJtHgzXSK/eBqhjm+HVY=" data-language="js"><span class="token keyword">var</span> hoisted <span class="token operator">=</span> <span class="token string">"foo"</span> <span class="token keyword">in</span> <span class="token keyword">this</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">'foo' name </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>hoisted <span class="token operator">?</span> <span class="token string">"is"</span> <span class="token operator">:</span> <span class="token string">"is not"</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token string"> hoisted. typeof foo is </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span><span class="token keyword">typeof</span> foo<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">function</span> <span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span> <span class="token keyword">return</span> <span class="token number">1</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// In Chrome:</span>
+<span class="token comment">// 'foo' name is hoisted. typeof foo is undefined</span>
+<span class="token comment">//</span>
+<span class="token comment">// In Firefox:</span>
+<span class="token comment">// 'foo' name is hoisted. typeof foo is undefined</span>
+<span class="token comment">//</span>
+<span class="token comment">// In Edge:</span>
+<span class="token comment">// 'foo' name is not hoisted. typeof foo is undefined</span>
+<span class="token comment">//</span>
+<span class="token comment">// In Safari:</span>
+<span class="token comment">// 'foo' name is hoisted. typeof foo is function</span>
+</pre>
+</div> <p>결과는 참으로 평가되는 조건과 정확하게 일치합니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="Ydlr88hX5+Q0MLMnIJS1heMputfGvAkMtAa/bqU/MFM=" data-language="js"><span class="token keyword">var</span> hoisted <span class="token operator">=</span> <span class="token string">"foo"</span> <span class="token keyword">in</span> <span class="token keyword">this</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">'foo' name </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>hoisted <span class="token operator">?</span> <span class="token string">"is"</span> <span class="token operator">:</span> <span class="token string">"is not"</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token string"> hoisted. typeof foo is </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span><span class="token keyword">typeof</span> foo<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">function</span> <span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span> <span class="token keyword">return</span> <span class="token number">1</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// In Chrome:</span>
+<span class="token comment">// 'foo' name is hoisted. typeof foo is undefined</span>
+<span class="token comment">//</span>
+<span class="token comment">// In Firefox:</span>
+<span class="token comment">// 'foo' name is hoisted. typeof foo is undefined</span>
+<span class="token comment">//</span>
+<span class="token comment">// In Edge:</span>
+<span class="token comment">// 'foo' name is not hoisted. typeof foo is undefined</span>
+<span class="token comment">//</span>
+<span class="token comment">// In Safari:</span>
+<span class="token comment">// 'foo' name is hoisted. typeof foo is function</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="함수_선언_끌어올리기"><h3 id="함수_선언_끌어올리기">함수 선언 끌어올리기</h3>
+<div class="section-content">
+<p>자바스크립트에서 함수 선언은 그 선언을 둘러싼 함수의 최상부나 전역 범위(global scope)로 끌어올려집니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="SLwEBsig5fLlhQe4B7NxzfMWHSgo/asvuwYBiUXWzy8=" data-language="js"><span class="token function">hoisted</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// logs "foo"</span>
+
+<span class="token keyword">function</span> <span class="token function">hoisted</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"foo"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div> <p><a href="../operators/function"><code>함수 표현식</code></a>은 끌어올려지지 않으므로 주의하세요:</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="TNLyfH4+ZM5Qar/Re8M9KJHaKrAMT3bUS6vreKA8Dbc=" data-language="js"><span class="token function">notHoisted</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// TypeError: notHoisted is not a function</span>
+
+<span class="token keyword">var</span> <span class="token function-variable function">notHoisted</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+   console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"bar"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+</section><section aria-labelledby="function_사용하기"><h3 id="function_사용하기">
+<code>function</code> 사용하기</h3>
+<div class="section-content">
+<p>다음 코드는 제품 <code>a</code>, <code>b</code> 및 <code>c</code>의 단위 판매량이 주어졌을 때, 총 판매량을 반환하는 함수를 선언합니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="VY+jji0p+sCAfQe9eZtO2cQpxCYjBJMe7LBpiLw2MbY=" data-language="js"><span class="token keyword">function</span> <span class="token function">calc_sales</span><span class="token punctuation">(</span><span class="token parameter">units_a<span class="token punctuation">,</span> units_b<span class="token punctuation">,</span> units_c</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+   <span class="token keyword">return</span> units_a<span class="token operator">*</span><span class="token number">79</span> <span class="token operator">+</span> units_b <span class="token operator">*</span> <span class="token number">129</span> <span class="token operator">+</span> units_c <span class="token operator">*</span> <span class="token number">699</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div>
+</div></section><h2 id="명세서">명세서</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://tc39.es/ecma262/multipage/ecmascript-language-functions-and-classes.html#sec-function-definitions">ECMAScript Language Specification <br><small># sec-function-definitions</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="../functions"><code>함수 및 함수 범위</code></a></li> <li><a href="../global_objects/function"><code>Function</code></a></li> <li><a href="../operators/function"><code>함수 표현식</code></a></li> <li><a href="function*"><code>function* 문</code></a></li> <li><a href="../operators/function*"><code>function* 식</code></a></li> <li><a href="../functions/arrow_functions"><code>화살표 함수</code></a></li> <li><a href="../global_objects/generatorfunction"><code>GeneratorFunction</code></a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Statements/function" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Statements/function</a>
+  </p>
+</div>

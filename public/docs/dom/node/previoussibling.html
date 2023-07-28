@@ -1,0 +1,27 @@
+<header><h1>Node.previousSibling</h1></header><div class="section-content"><p><code>Node.previousSibling</code> 은 읽기전용 속성이며 현재 호출하는 노드가 속해 있는 부모의 <a href="childnodes"><code>childNodes</code></a> 목록에서 특정 자식 노드를 리턴하거나 <code>childNodes</code> 목록의 첫번째 노드일 경우 Null값을 리턴합니다.`</p></div>
+<h2 id="syntax">Syntax</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="y14q2oyY8kSJRQe3IZyHc5OSAAbmboZvJ6IWJ40caH0=" data-language="js">previousNode <span class="token operator">=</span> node<span class="token punctuation">.</span>previousSibling<span class="token punctuation">;</span>
+</pre>
+</div></div>
+<h2 id="example">Example</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="MtSLG4smyKDRh7lj4ynic7KAIw4DErwabCFlmaFRWFw=" data-language="js"><span class="token comment">// &lt;a&gt;&lt;b1 id="b1"/&gt;&lt;b2 id="b2"/&gt;&lt;/a&gt;</span>
+
+<span class="token function">alert</span><span class="token punctuation">(</span>document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">"b1"</span><span class="token punctuation">)</span><span class="token punctuation">.</span>previousSibling<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// null</span>
+<span class="token function">alert</span><span class="token punctuation">(</span>document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">"b2"</span><span class="token punctuation">)</span><span class="token punctuation">.</span>previousSibling<span class="token punctuation">.</span>id<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// "b1"</span>
+</pre>
+</div></div>
+<h2 id="notes">Notes</h2>
+<div class="section-content">
+<p> Gecko 기반 브라우저는 소스 마크업에서 공백을 나타내기 위해 문서 내에 텍스트 노드를 삽입합니다. 그러므로 예를 들어 <a href="firstchild"><code>Node.firstChild</code></a>나 <a href="previoussibling" aria-current="page"><code>Node.previousSibling</code></a>을 통해서 얻은 노드는 작성자가 얻으려 한 실제 요소와는 달리 공백 텍스트 노드를 참조할 지도 모릅니다. </p> <p> 더 많은 정보는 <a href="https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model/Whitespace" class="only-in-en-us">Whitespace in the DOM <small>(en-US)</small></a>과 <a href="https://www.w3.org/DOM/faq.html#emptytext" target="_blank">W3C DOM 3 FAQ: Why are some Text nodes empty?</a>를 보세요. </p> <p>To navigate the opposite way through the child nodes list use <a href="https://developer.mozilla.org/en-US/docs/Web/API/Node/nextSibling" class="only-in-en-us">Node.nextSibling <small>(en-US)</small></a>.</p>
+</div>
+<h2 id="specification">Specification</h2>
+<div class="section-content"><ul> <li><a href="https://www.w3.org/TR/REC-DOM-Level-1/level-one-core.html#attribute-previousSibling" target="_blank">DOM Level 1 Core: previousSibling</a></li> <li><a href="https://www.w3.org/TR/DOM-Level-2-Core/core.html#ID-640FB3C8" target="_blank">DOM Level 2 Core: previousSibling</a></li> <li><a href="https://www.w3.org/TR/DOM-Level-3-Core/core.html#ID-640FB3C8" target="_blank">DOM Level 3 Core: previousSibling</a></li> </ul></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/Node/previousSibling" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/Node/previousSibling</a>
+  </p>
+</div>

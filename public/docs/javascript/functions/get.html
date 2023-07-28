@@ -1,0 +1,135 @@
+<header><h1>접근자</h1></header><div class="section-content"><p><code>get</code> 구문은 객체의 속성 접근 시 호출할 함수를 바인딩합니다.</p></div>
+<section aria-labelledby="시도해보기"><h2 id="시도해보기">시도해보기</h2>
+<div class="section-content"><iframe class="interactive is-js-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/js/functions-getter.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe></div></section><section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="G8nv4Qtf935BGtFNyCG3iXkTb0Ca5r0ju+NY12zJWY8=" data-language="js"><span class="token punctuation">{</span><span class="token keyword">get</span> <span class="token function">prop</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token operator">...</span> <span class="token punctuation">}</span> <span class="token punctuation">}</span>
+<span class="token punctuation">{</span><span class="token keyword">get</span> <span class="token punctuation">[</span>expression<span class="token punctuation">]</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token operator">...</span> <span class="token punctuation">}</span> <span class="token punctuation">}</span>
+</pre>
+</div></div></section><section aria-labelledby="매개변수"><h3 id="매개변수">매개변수</h3>
+<div class="section-content"><dl> <dt id="prop"><code>prop</code></dt> <dd> <p>주어진 함수를 바인딩할 속성 이름.</p> </dd> <dt id="expression"><code>expression</code></dt> <dd> <p>ECMAScript 2015 이후, 주어진 함수를 바인딩할 속성 이름을 구하는 표현식을 사용할 수도 있습니다.</p> </dd> </dl></div></section><section aria-labelledby="설명"><h2 id="설명">설명</h2>
+<div class="section-content">
+<p>때로는 동적으로 계산한 값을 반환하는 속성이 필요하거나, 명시적인 함수 호출 없이도 객체의 내부 변수 상태를 반영하는 값을 나타내고 싶은 경우가 있습니다. JavaScript에서는 이런 경우 사용할 수 있도록 접근자(<em>getter</em>)라는 기능을 제공합니다.</p> <p>어떤 속성에 접근자를 바인딩하는 동시에, 해당 속성이 값도 가지도록 할 수는 없습니다. 그러나 접근자와 설정자(<em>setter</em>)를 함께 사용해서, 접근과 할당 모두 되는 '유사 속성'을 만들 수는 있습니다.</p> <p><code>get</code> 구문을 이용할 때는 다음 사항을 주의하세요.</p> <ul> <li>접근자의 식별자는 숫자나 문자열일 수 있습니다.</li> <li>접근자 함수는 매개변수를 가질 수 없습니다.</li> <li>객체 리터럴에서, 같은 속성 키에 다수의 접근자를 바인딩할 수 없습니다. <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="HDkHacXhhn3mhsLqoVUVMpJWHPZqzBfK0BWzoygXnu8=" data-language="js"><span class="token punctuation">{</span>
+  <span class="token keyword">get</span> <span class="token function">x</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token keyword">get</span> <span class="token function">x</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</pre>
+</div> </li> <li>객체 리터럴에서, 접근자는 데이터 속성과 같은 키를 사용할 수 없습니다. <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="bdpn71t9CFN4kUbw3cl+TwidJFUefvqyhTlgcj+hzQ4=" data-language="js"><span class="token punctuation">{</span>
+  <span class="token literal-property property">x</span><span class="token operator">:</span> <span class="token operator">...</span><span class="token punctuation">,</span> <span class="token keyword">get</span> <span class="token function">x</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</pre>
+</div> </li> </ul>
+</div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+</section><section aria-labelledby="객체_초기자에서_새로운_객체의_접근자_정의하기"><h3 id="객체_초기자에서_새로운_객체의_접근자_정의하기">객체 초기자에서 새로운 객체의 접근자 정의하기</h3>
+<div class="section-content">
+<p>다음 예제는 객체 <code>obj</code>에 유사 속성 <code>latest</code>를 생성합니다. <code>latest</code>는 배열 <code>log</code>의 마지막 요소를 반환합니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="cQ81hC2S6Mz33eSEArGzXXptkfRQza6jcNzliSzhWNY=" data-language="js"><span class="token keyword">const</span> obj <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token literal-property property">log</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'example'</span><span class="token punctuation">,</span><span class="token string">'test'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+  <span class="token keyword">get</span> <span class="token function">latest</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>log<span class="token punctuation">.</span>length <span class="token operator">===</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token keyword">undefined</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span>log<span class="token punctuation">[</span><span class="token keyword">this</span><span class="token punctuation">.</span>log<span class="token punctuation">.</span>length <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>obj<span class="token punctuation">.</span>latest<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// "test"</span>
+</pre>
+</div> <p><code>latest</code>에 다른 값을 할당하려 해도 아무 변화도 없을 것입니다.</p>
+</div></section><section aria-labelledby="delete_연산자로_접근자_제거하기"><h3 id="delete_연산자로_접근자_제거하기">
+<code>delete</code> 연산자로 접근자 제거하기</h3>
+<div class="section-content">
+<p>접근자를 삭제하려면 간단히 <a href="../operators/delete"><code>delete</code></a> 연산자를 사용하세요.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="K46NsYTpm9DNkl91UU3S3O/Ix2OYnvQat31Z6pOrDFQ=" data-language="js"><span class="token keyword">delete</span> obj<span class="token punctuation">.</span>latest<span class="token punctuation">;</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="defineproperty를_이용해_이미_존재하는_객체에_접근자_정의하기"><h3 id="defineproperty를_이용해_이미_존재하는_객체에_접근자_정의하기">
+<code>defineProperty</code>를 이용해 이미 존재하는 객체에 접근자 정의하기</h3>
+<div class="section-content">
+<p>이미 존재하는 객체에 접근자를 추가하려면 <a href="../global_objects/object/defineproperty"><code>Object.defineProperty()</code></a>를 사용하세요.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="26kzpuRBquJOYppFjASr/5D+YoufV9XpBOqegaq4cQE=" data-language="js"><span class="token keyword">const</span> o <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token literal-property property">a</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+Object<span class="token punctuation">.</span><span class="token function">defineProperty</span><span class="token punctuation">(</span>o<span class="token punctuation">,</span> <span class="token string">'b'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> <span class="token function-variable function">get</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span>a <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span> <span class="token punctuation">}</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>o<span class="token punctuation">.</span>b<span class="token punctuation">)</span> <span class="token comment">// 접근자 실행, a + 1 반환 (0 + 1 = 1)</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="계산된_속성_이름_사용하기"><h3 id="계산된_속성_이름_사용하기">계산된 속성 이름 사용하기</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="hEgiu+P/dxRZRaTvzeu+x6urRhh/yOSdADZAMTDV98s=" data-language="js"><span class="token keyword">const</span> expr <span class="token operator">=</span> <span class="token string">'foo'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> obj <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token keyword">get</span> <span class="token punctuation">[</span>expr<span class="token punctuation">]</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> <span class="token string">'bar'</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>obj<span class="token punctuation">.</span>foo<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// "bar"</span>
+</pre>
+</div></div></section><section aria-labelledby="정적_접근자_정의하기"><h3 id="정적_접근자_정의하기">정적 접근자 정의하기</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="gGEYhkNFih0d86ptkmzzOSBsgcG+8CbpGw1rLcD4894=" data-language="js"><span class="token keyword">class</span> <span class="token class-name">MyConstants</span> <span class="token punctuation">{</span>
+  <span class="token keyword">static</span> <span class="token keyword">get</span> <span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token string">'foo'</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>MyConstants<span class="token punctuation">.</span>foo<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 'foo'</span>
+MyConstants<span class="token punctuation">.</span>foo <span class="token operator">=</span> <span class="token string">'bar'</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>MyConstants<span class="token punctuation">.</span>foo<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 'foo', 정적 접근자의 값 변경 불가</span>
+</pre>
+</div></div></section><section aria-labelledby="똑똑한_느긋한_접근자"><h3 id="똑똑한_느긋한_접근자">똑똑한 / 느긋한 접근자</h3>
+<div class="section-content">
+<p>접근자를 사용하면 객체에 속성을 <strong>정의</strong>하되, 접근하기 전에는 속성의 값을 <strong>계산</strong>하지 않을 수 있습니다. 접근자는 값이 실제로 필요한 상황이 오기 전까지 계산 비용을 미루는 것입니다. 사용하지 않으면 비용을 지불할 일도 없습니다.</p> <p>속성 값의 계산을 느긋(<em>lazy</em>)하게 만들거나 미루고, 추가 접근에 사용할 수 있도록 캐시에 저장하는 추가 최적화 기법은 <strong>똑똑한(<em>smart</em>) 또는 메모화(<a href="https://ko.wikipedia.org/wiki/%EB%A9%94%EB%AA%A8%EC%9D%B4%EC%A0%9C%EC%9D%B4%EC%85%98" target="_blank">메모이제이션</a>) 접근자</strong>라고 합니다. 똑똑한 접근자 속성의 값은 접근자를 처음 호출할 때 계산하는 동시에 캐시에 저장됩니다. 덕분에 속성에 추가 접근 시 캐시에서 값을 즉시 반환하므로 값을 다시 계산하는 수고를 피할 수 있습니다. 똑똑한 접근자는 다음과 같은 상황에 유용합니다.</p> <ul> <li>값의 계산 비용이 큰 경우. (RAM이나 CPU 시간을 많이 소모하거나, 워커 스레드를 생성하거나, 원격 파일을 불러오는 등)</li> <li>값이 지금 당장 필요하지 않은 경우. 나중에 사용할 수도 있고, 일부 상황에선 아예 사용하지 않을 수 있는 경우입니다.</li> <li>절대 바뀌지 않는 값이거나 다시 계산해서는 안 되는 값을 여러 번 사용하는 경우.</li> </ul> <div class="notecard note" id="sect1"> <p><strong>참고:</strong> 달리 말하자면, 변화할 수 있는 값에 똑똑한 접근자를 사용해서는 안됩니다. 값이 바뀌어야 하는 상황에서도 접근자의 값은 항상 동일할 것이기 때문입니다.</p> <p>모든 접근자가 처음부터 '느긋'하며 '메모화'되는 것은 아닙니다. 이런 동작이 필요하면 직접 구현해야 합니다.</p> </div> <p>다음 예제의 접근자 속성은 어느 객체의 자체 속성으로 존재합니다. 이 속성에 접근하는 순간, 접근자는 스스로 자신을 객체에서 제거하는 동시에 같은 이름의 속성을 다시 추가하지만, 이때는 접근자가 아니라 데이터 속성으로 추가합니다. 마지막으로 그 속성의 값을 반환합니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="D6jQByk/P5UzZhlqu+aqrBMLrUKCIVjmV8hBE9EQYPA=" data-language="js"><span class="token keyword">get</span> <span class="token function">notifier</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">delete</span> <span class="token keyword">this</span><span class="token punctuation">.</span>notifier<span class="token punctuation">;</span>
+  <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span>notifier <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">"bookmarked-notification-anchor"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="get_vs._defineproperty"><h3 id="get_vs._defineproperty">
+<code>get</code> Vs. <code>defineProperty</code>
+</h3>
+<div class="section-content">
+<p><code>get</code> 키워드와 <a href="../global_objects/object/defineproperty"><code>Object.defineProperty()</code></a>는 비슷한 결과를 내지만, <a href="../classes">클래스</a>에 사용할 경우 미묘한 차이가 생깁니다.</p> <p><code>get</code>을 사용할 경우, 해당 속성은 인스턴스의 프로토타입에 정의됩니다. 그러나 <a href="../global_objects/object/defineproperty"><code>Object.defineProperty()</code></a>를 사용할 경우 속성을 인스턴스 자체에 직접 정의하게 됩니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="BjLuX1f0Eh3c1yVPQ3CNr38Ejtc+5Vzd4D1wAcHyj+4=" data-language="js"><span class="token keyword">class</span> <span class="token class-name">Example</span> <span class="token punctuation">{</span>
+  <span class="token keyword">get</span> <span class="token function">hello</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token string">'world'</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">const</span> obj <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Example</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>obj<span class="token punctuation">.</span>hello<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// "world"</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>Object<span class="token punctuation">.</span><span class="token function">getOwnPropertyDescriptor</span><span class="token punctuation">(</span>obj<span class="token punctuation">,</span> <span class="token string">'hello'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// undefined</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>
+  Object<span class="token punctuation">.</span><span class="token function">getOwnPropertyDescriptor</span><span class="token punctuation">(</span>
+    Object<span class="token punctuation">.</span><span class="token function">getPrototypeOf</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">'hello'</span>
+  <span class="token punctuation">)</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// { configurable: true, enumerable: false, get: function get hello() { return 'world'; }, set: undefined }</span>
+</pre>
+</div>
+</div></section><h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://tc39.es/ecma262/multipage/ecmascript-language-functions-and-classes.html#sec-method-definitions">ECMAScript Language Specification <br><small># sec-method-definitions</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="set">설정자</a></li> <li><a href="../operators/delete"><code>delete</code></a></li> <li><a href="../global_objects/object/defineproperty"><code>Object.defineProperty()</code></a></li> <li><a href="../global_objects/object/__definegetter__"><code>Object.prototype.__defineGetter__()</code></a></li> <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/__defineSetter__" class="only-in-en-us"><code>Object.prototype.__defineSetter__()</code> <small>(en-US)</small></a></li> <li>JavaScript 안내서의 <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Guide/Working_with_objects#defining_getters_and_setters">접근자와 설정자 정의하기</a>
+</li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Functions/get" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Functions/get</a>
+  </p>
+</div>

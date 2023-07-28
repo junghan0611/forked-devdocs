@@ -1,0 +1,84 @@
+<header><h1>unset</h1></header><div class="section-content"><p>CSS <code>unset</code> 키워드를 적용한 속성은, 부모로부터 상속할 값이 존재하면 상속값을, 그렇지 않다면 <a href="initial_value">초깃값</a>을 사용합니다. 다르게 표현하자면, 전자일 땐 <a href="inherit"><code>inherit</code></a> 키워드처럼, 후자일 땐 <a href="initial"><code>initial</code></a> 키워드처럼 동작합니다. <a href="all"><code>all</code></a> 단축 속성을 포함한 모든 속성에 사용할 수 있습니다.</p></div>
+<section aria-labelledby="예제"><h2 id="예제">예제</h2>
+</section><section aria-labelledby="글자_색"><h3 id="글자_색">글자 색</h3>
+<div class="section-content">
+<h4 id="html">HTML</h4> <div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="b4zL9LBIL5I8XlKhpTru7OdkkPJxiUDxlO7VbOLh+Io=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>This text is red.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>foo<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>This text is also red.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>bar<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>This text is green (default inherited value).<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div> <h4 id="css">CSS</h4> <div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="sNdsEB/c1zo75dkeWMAYBp/hTw/Kc7wU13tAPWk1sLI=" data-language="css"><span class="token selector">.foo</span> <span class="token punctuation">{</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> blue<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token selector">.bar</span> <span class="token punctuation">{</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> green<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">p</span> <span class="token punctuation">{</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> red<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token selector">.bar p</span> <span class="token punctuation">{</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> unset<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div> <h4 id="결과">결과</h4>
+<div class="code-example" id="sect1">
+
+<iframe class="sample-code-frame" title="글자 색 sample" id="frame_글자_색" src="https://live.mdnplay.dev/ko/docs/Web/CSS/unset/runner.html?id=%EA%B8%80%EC%9E%90_%EC%83%89" loading="lazy"></iframe>
+</div>
+</div></section><section aria-labelledby="테두리"><h3 id="테두리">테두리</h3>
+<div class="section-content">
+<h4 id="html_2">HTML</h4> <div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="gZ6yuZLf6iBwBxdv+rpszOPBb11m1bgYxG5z2/ulj28=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>This text has a red border.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>This text has a red border.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>bar<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>This text has has a black border (initial default, not inherited).<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div> <h4 id="css_2">CSS</h4> <div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="9UEchuSNVt2+BfJBIBykt/nZ3RlkLJdCGuv60qdftJg=" data-language="css"><span class="token selector">div</span> <span class="token punctuation">{</span>
+  <span class="token property">border</span><span class="token punctuation">:</span> 1px solid green<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">p</span> <span class="token punctuation">{</span>
+  <span class="token property">border</span><span class="token punctuation">:</span> 1px solid red<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">.bar p</span> <span class="token punctuation">{</span>
+  <span class="token property">border-color</span><span class="token punctuation">:</span> unset<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div> <h4 id="결과_2">결과</h4>
+<div class="code-example" id="sect2">
+
+<iframe class="sample-code-frame" title="테두리 sample" id="frame_테두리" width="auto" height="200" src="https://live.mdnplay.dev/ko/docs/Web/CSS/unset/runner.html?id=%ED%85%8C%EB%91%90%EB%A6%AC" loading="lazy"></iframe>
+</div>
+</div></section><h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://drafts.csswg.org/css-cascade/#inherit-initial">CSS Cascading and Inheritance Level 4 <br><small># inherit-initial</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li>
+<a href="initial"><code>initial</code></a>을 사용해 속성의 초깃값을 사용하세요.</li> <li>
+<a href="revert"><code>revert</code></a>를 사용해 사용자 에이전트가 지정한 값(또는 사용자가 수정한 값)으로 속성을 되돌리세요.</li> <li>
+<a href="inherit"><code>inherit</code></a>을 사용해 속성의 값이 부모와 같도록 지정하세요.</li> <li>
+<a href="all"><code>all</code></a> 속성을 사용하면 요소의 모든 속성을 한꺼번에 <code>initial</code>, <code>inherit</code>, <code>revert</code>, <code>unset</code>할 수 있습니다.</li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/CSS/unset" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/CSS/unset</a>
+  </p>
+</div>

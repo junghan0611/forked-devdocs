@@ -1,0 +1,50 @@
+<header><h1>Math.sinh()</h1></header><div class="section-content">
+<p><code>Math.sinh()</code> 함수(쌍곡선 함수)는 사인값을 반환합니다 이 값은 아래와같은 식을통해서 표현할 수 있습니다.<a href="e">constant e</a>:</p> <p> <math display="block"> <semantics> <mrow> <mstyle mathvariant="monospace"> <mo lspace="0em" rspace="thinmathspace">Math.sinh(x)</mo> </mstyle> <mo>=</mo> <mfrac> <mrow> <msup> <mi>e</mi> <mi>x</mi> </msup> <mo>-</mo> <msup> <mi>e</mi> <mrow> <mo>-</mo> <mi>x</mi> </mrow> </msup> </mrow> <mn>2</mn> </mfrac> </mrow> <annotation encoding="TeX">\mathtt{\operatorname{Math.sinh(x)}} = \frac{e^x - e^{-x}}{2}</annotation> </semantics> </math> </p>
+</div>
+<section aria-labelledby="시도해보기"><h2 id="시도해보기">시도해보기</h2>
+<div class="section-content"><iframe class="interactive is-js-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/js/math-sinh.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe></div></section><section aria-labelledby="syntax"><h2 id="syntax">Syntax</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="3Y7PV0FnLqVDlVHJ+Dj+7JsMc2w2BQoeMwZ+wNuAmFk=" data-language="js">    Math<span class="token punctuation">.</span><span class="token function">sinh</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span>
+</pre>
+</div></div></section><section aria-labelledby="parameters"><h3 id="parameters">Parameters</h3>
+<div class="section-content"><dl> <dt id="x"><code>x</code></dt> <dd> <p>숫자.</p> </dd> </dl></div></section><section aria-labelledby="return_value"><h3 id="return_value">Return value</h3>
+<div class="section-content"><p>사인값.</p></div></section><section aria-labelledby="description"><h2 id="description">Description</h2>
+<div class="section-content"><p><code>sinh()</code> 는 <code>Math</code> 의 정적 함수이기 때문에, 자바스크립트 어디든 <code>Math.sinh()</code> 를 사용할 수 있습니다, 따라서 <code>Math</code> 오브젝트를 생성해서는 안됩니다. (<code>Math</code> 는 constructor(생성자) 가 아닙니다.).</p></div></section><section aria-labelledby="examples"><h2 id="examples">Examples</h2>
+</section><section aria-labelledby="math.sinh_사용하기"><h3 id="math.sinh_사용하기">
+<code>Math.sinh()</code> 사용하기</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="AwHXwBUD90ofszjseCHP2JkOFazt21nc4VL6S6nc4Z0=" data-language="js">Math<span class="token punctuation">.</span><span class="token function">sinh</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 0</span>
+Math<span class="token punctuation">.</span><span class="token function">sinh</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 1.1752011936438014</span>
+</pre>
+</div></div></section><section aria-labelledby="polyfill"><h2 id="polyfill">Polyfill</h2>
+<div class="section-content">
+<p>This can be emulated with the help of the <a href="exp"><code>Math.exp()</code></a> function:</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="spXy6VzQCjIIlZPjs7FNmpsXCb4O9f+P5LvAHtWUK7I=" data-language="js">Math<span class="token punctuation">.</span>sinh <span class="token operator">=</span> Math<span class="token punctuation">.</span>sinh <span class="token operator">||</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">x</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token punctuation">(</span>Math<span class="token punctuation">.</span><span class="token function">exp</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span> <span class="token operator">-</span> Math<span class="token punctuation">.</span><span class="token function">exp</span><span class="token punctuation">(</span><span class="token operator">-</span>x<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div> <p>or using only one call to the <a href="exp"><code>Math.exp()</code></a> function:</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="v5BCqU4QI1kxL0oUo4wsRvMeamtDjJguvJvTtO78Hnw=" data-language="js">Math<span class="token punctuation">.</span>sinh <span class="token operator">=</span> Math<span class="token punctuation">.</span>sinh <span class="token operator">||</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">x</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">var</span> y <span class="token operator">=</span> Math<span class="token punctuation">.</span><span class="token function">exp</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">return</span> <span class="token punctuation">(</span>y <span class="token operator">-</span> <span class="token number">1</span> <span class="token operator">/</span> y<span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div>
+</div></section><h2 id="명세서">명세서</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://tc39.es/ecma262/multipage/numbers-and-dates.html#sec-math.sinh">ECMAScript Language Specification <br><small># sec-math.sinh</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="see_also"><h2 id="see_also">See also</h2>
+<div class="section-content"><ul> <li><a href="acosh"><code>Math.acosh()</code></a></li> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/asinh"><code>Math.asinh()</code> <small>(en-US)</small></a></li> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/atanh"><code>Math.atanh()</code> <small>(en-US)</small></a></li> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/cosh"><code>Math.cosh()</code> <small>(en-US)</small></a></li> <li><a href="tanh"><code>Math.tanh()</code></a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Math/sinh" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Math/sinh</a>
+  </p>
+</div>

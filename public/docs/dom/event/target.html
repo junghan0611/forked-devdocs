@@ -1,0 +1,42 @@
+<header><h1>Event.target</h1></header><div class="section-content"><p><a href="../event"><code>Event</code></a> 인터페이스의 <code>target</code> 속성은 이벤트가 발생한 대상 객체를 가리킵니다. 버블링과 캡처링 단계에서는 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/Event/currentTarget"><code>Event.currentTarget</code> <small>(en-US)</small></a>과 다를 수 있습니다.</p></div>
+<h3 id="값">값</h3>
+<div class="section-content"><p>연관된 <a href="../eventtarget"><code>EventTarget</code></a>.</p></div>
+<h2 id="예제">예제</h2>
+<div class="section-content">
+<p><code>event.target</code> 속성을 사용하여 <strong>이벤트 위임</strong>을 구현할 수 있습니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="tclyRl33QB4PVej3i20UQVXjEMxqa+BdoEGaT3P4Mm8=" data-language="js"><span class="token comment">// 목록 생성</span>
+<span class="token keyword">const</span> ul <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">createElement</span><span class="token punctuation">(</span><span class="token string">'ul'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+document<span class="token punctuation">.</span>body<span class="token punctuation">.</span><span class="token function">appendChild</span><span class="token punctuation">(</span>ul<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> li1 <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">createElement</span><span class="token punctuation">(</span><span class="token string">'li'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> li2 <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">createElement</span><span class="token punctuation">(</span><span class="token string">'li'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+ul<span class="token punctuation">.</span><span class="token function">appendChild</span><span class="token punctuation">(</span>li1<span class="token punctuation">)</span><span class="token punctuation">;</span>
+ul<span class="token punctuation">.</span><span class="token function">appendChild</span><span class="token punctuation">(</span>li2<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">function</span> <span class="token function">hide</span><span class="token punctuation">(</span><span class="token parameter">evt</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">// e.target은 사용자가 클릭한 &lt;li&gt; 요소를 가리킴</span>
+  <span class="token comment">// 여기서 e.currentTarget은 부모인 &lt;ul&gt;을 가리킬 것</span>
+  evt<span class="token punctuation">.</span>target<span class="token punctuation">.</span>style<span class="token punctuation">.</span>visibility <span class="token operator">=</span> <span class="token string">'hidden'</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// 목록에 수신기 부착</span>
+<span class="token comment">// 각각의 &lt;li&gt;를 클릭할 때 호출됨</span>
+ul<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">'click'</span><span class="token punctuation">,</span> hide<span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div>
+</div>
+<h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="#">DOM Standard <br><small># ref-for-dom-event-target③</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Event/Comparison_of_Event_Targets" class="only-in-en-us">이벤트 대상의 비교 <small>(en-US)</small></a></li> </ul></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/Event/target" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/Event/target</a>
+  </p>
+</div>

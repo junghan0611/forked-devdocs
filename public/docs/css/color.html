@@ -1,0 +1,104 @@
+<header><h1>color</h1></header><div class="section-content"><p><code>color</code> <a href="https://developer.mozilla.org/ko/docs/Web/API/CSS">CSS</a> 속성은 요소의 글씨 및 <a href="text-decoration">글씨 장식</a>의 전경색과 <a href="#"><code>&lt;currentcolor&gt;</code></a>의 값을 설정합니다. <code>currentcolor</code>는 다른 속성에서 사용할 수 있는 간접적인 값이며, <a href="border-color"><code>border-color</code></a> 등 일부 속성의 기본값입니다.</p></div>
+<section aria-labelledby="시도해보기"><h2 id="시도해보기">시도해보기</h2>
+<div class="section-content">
+<iframe class="interactive is-default-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/css/color.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe> <p>HTML에서 색을 사용하는 법은 <a href="css_colors/applying_color">CSS로 HTML 요소에 색입히기</a> 문서에서 정리한 내용으로 읽을 수 있습니다.</p>
+</div></section><section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content">
+<div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="crSeKqvsOpOgqhICi4LM3KwIkME8a+LGnoeSbbh59fo=" data-language="css"><span class="token comment">/* 키워드 값 */</span>
+<span class="token property">color</span><span class="token punctuation">:</span> currentcolor<span class="token punctuation">;</span>
+
+<span class="token comment">/* &lt;named-color&gt; 값 */</span>
+<span class="token property">color</span><span class="token punctuation">:</span> red<span class="token punctuation">;</span>
+<span class="token property">color</span><span class="token punctuation">:</span> orange<span class="token punctuation">;</span>
+<span class="token property">color</span><span class="token punctuation">:</span> tan<span class="token punctuation">;</span>
+<span class="token property">color</span><span class="token punctuation">:</span> rebeccapurple<span class="token punctuation">;</span>
+
+<span class="token comment">/* &lt;hex-color&gt; 값 */</span>
+<span class="token property">color</span><span class="token punctuation">:</span> #090<span class="token punctuation">;</span>
+<span class="token property">color</span><span class="token punctuation">:</span> #009900<span class="token punctuation">;</span>
+<span class="token property">color</span><span class="token punctuation">:</span> #090a<span class="token punctuation">;</span>
+<span class="token property">color</span><span class="token punctuation">:</span> #009900aa<span class="token punctuation">;</span>
+
+<span class="token comment">/* &lt;rgb()&gt; 값 */</span>
+<span class="token property">color</span><span class="token punctuation">:</span> <span class="token function">rgb</span><span class="token punctuation">(</span>34<span class="token punctuation">,</span> 12<span class="token punctuation">,</span> 64<span class="token punctuation">,</span> 0.6<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token property">color</span><span class="token punctuation">:</span> <span class="token function">rgba</span><span class="token punctuation">(</span>34<span class="token punctuation">,</span> 12<span class="token punctuation">,</span> 64<span class="token punctuation">,</span> 0.6<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token property">color</span><span class="token punctuation">:</span> <span class="token function">rgb</span><span class="token punctuation">(</span>34 12 64 / 0.6<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token property">color</span><span class="token punctuation">:</span> <span class="token function">rgba</span><span class="token punctuation">(</span>34 12 64 / 0.3<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token property">color</span><span class="token punctuation">:</span> <span class="token function">rgb</span><span class="token punctuation">(</span>34.0 12 64 / 60%<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token property">color</span><span class="token punctuation">:</span> <span class="token function">rgba</span><span class="token punctuation">(</span>34.6 12 64 / 30%<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">/* &lt;hsl()&gt; 값 */</span>
+<span class="token property">color</span><span class="token punctuation">:</span> <span class="token function">hsl</span><span class="token punctuation">(</span>30<span class="token punctuation">,</span> 100%<span class="token punctuation">,</span> 50%<span class="token punctuation">,</span> 0.6<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token property">color</span><span class="token punctuation">:</span> <span class="token function">hsla</span><span class="token punctuation">(</span>30<span class="token punctuation">,</span> 100%<span class="token punctuation">,</span> 50%<span class="token punctuation">,</span> 0.6<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token property">color</span><span class="token punctuation">:</span> <span class="token function">hsl</span><span class="token punctuation">(</span>30 100% 50% / 0.6<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token property">color</span><span class="token punctuation">:</span> <span class="token function">hsla</span><span class="token punctuation">(</span>30 100% 50% / 0.6<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token property">color</span><span class="token punctuation">:</span> <span class="token function">hsl</span><span class="token punctuation">(</span>30.0 100% 50% / 60%<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token property">color</span><span class="token punctuation">:</span> <span class="token function">hsla</span><span class="token punctuation">(</span>30.2 100% 50% / 60%<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">/* 전역 값 */</span>
+<span class="token property">color</span><span class="token punctuation">:</span> inherit<span class="token punctuation">;</span>
+<span class="token property">color</span><span class="token punctuation">:</span> initial<span class="token punctuation">;</span>
+<span class="token property">color</span><span class="token punctuation">:</span> unset<span class="token punctuation">;</span>
+</pre>
+</div> <p><code>color</code> 속성은 하나의 <a href="color_value"><code>&lt;color&gt;</code></a> 값을 사용해 지정합니다.</p> <p>값이 단일 색상이어야 함에 주의하세요. <a href="gradient"><code>&lt;gradient&gt;</code></a>는 사실 <a href="image"><code>&lt;image&gt;</code></a> 자료형이기 때문에 사용할 수 없습니다.</p>
+</div></section><section aria-labelledby="값"><h3 id="값">값</h3>
+<div class="section-content"><dl> <dt id="color"><a href="color_value"><code>&lt;color&gt;</code></a></dt> <dd> <p>요소의 글씨와 장식 부분의 색.</p> </dd> </dl></div></section><section aria-labelledby="형식_구문"><h3 id="형식_구문">형식 구문</h3>
+<div class="section-content"><pre class="notranslate"><span class="token property" id="color">color = </span><br>  <a href="color_value"><span class="token property">&lt;color&gt;</span></a>  <br><br></pre></div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+<div class="section-content">
+<p>아래 예제 모두 글씨를 빨갛게 만듭니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="a6rF/6ztk+ac8IV5L7Zs8lxw8EFURQMnOFaEYGW7Xt4=" data-language="css"><span class="token selector">p</span> <span class="token punctuation">{</span> <span class="token property">color</span><span class="token punctuation">:</span> red<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+<span class="token selector">p</span> <span class="token punctuation">{</span> <span class="token property">color</span><span class="token punctuation">:</span> #f00<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+<span class="token selector">p</span> <span class="token punctuation">{</span> <span class="token property">color</span><span class="token punctuation">:</span> #ff0000<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+<span class="token selector">p</span> <span class="token punctuation">{</span> <span class="token property">color</span><span class="token punctuation">:</span> <span class="token function">rgb</span><span class="token punctuation">(</span>255<span class="token punctuation">,</span>0<span class="token punctuation">,</span>0<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+<span class="token selector">p</span> <span class="token punctuation">{</span> <span class="token property">color</span><span class="token punctuation">:</span> <span class="token function">rgb</span><span class="token punctuation">(</span>100%<span class="token punctuation">,</span> 0%<span class="token punctuation">,</span> 0%<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+<span class="token selector">p</span> <span class="token punctuation">{</span> <span class="token property">color</span><span class="token punctuation">:</span> <span class="token function">hsl</span><span class="token punctuation">(</span>0<span class="token punctuation">,</span> 100%<span class="token punctuation">,</span> 50%<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+
+<span class="token comment">/* 50% 투명 */</span>
+<span class="token selector">p</span> <span class="token punctuation">{</span> <span class="token property">color</span><span class="token punctuation">:</span> <span class="token function">rgba</span><span class="token punctuation">(</span>255<span class="token punctuation">,</span> 0<span class="token punctuation">,</span> 0<span class="token punctuation">,</span> 0.5<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+<span class="token selector">p</span> <span class="token punctuation">{</span> <span class="token property">color</span><span class="token punctuation">:</span> <span class="token function">hsla</span><span class="token punctuation">(</span>0<span class="token punctuation">,</span> 100%<span class="token punctuation">,</span> 50%<span class="token punctuation">,</span> 0.5<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="접근성_고려사항"><h2 id="접근성_고려사항">접근성 고려사항</h2>
+<div class="section-content">
+<p>낮은 시력을 가진 사용자도 페이지의 콘텐츠를 읽을 수 있도록 글자 색과 배경색의 대비를 높게 유지하는 것이 중요합니다.</p> <p>색 대비율은 배경색과 투명도를 적용한 글자 색의 밝기를 비교해서 얻어낼 수 있습니다. 현재 <a href="https://www.w3.org/WAI/standards-guidelines/wcag/" target="_blank">웹 콘텐츠 접근성 가이드라인</a>(WCAG)을 만족하려면, 텍스트 콘텐츠는 4.5:1, 제목 등 큰 텍스트는 3:1의 대비율이 필요합니다. 큰 텍스트란 18.66px 이상의 <a href="font-weight">굵은</a> 글씨 혹은 24px 이상의 텍스트로 정의하고 있습니다.</p> <ul> <li><a href="https://webaim.org/resources/contrastchecker/" target="_blank">WebAIM: Color Contrast Checker</a></li> <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/Understanding_WCAG/Perceivable" class="only-in-en-us">MDN Understanding WCAG, Guideline 1.4 explanations <small>(en-US)</small></a></li> <li><a href="https://www.w3.org/TR/UNDERSTANDING-WCAG20/visual-audio-contrast-contrast.html" target="_blank">Understanding Success Criterion 1.4.3 | W3C Understanding WCAG 2.0</a></li> </ul>
+</div></section><h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://drafts.csswg.org/css-color/#the-color-property">CSS Color Module Level 4 <br><small># the-color-property</small></a></td></tr></tbody>
+</table></div>
+<div class="section-content"><figure class="table-container"><div class="_table"><table class="properties"><tbody>
+<tr>
+<th scope="row"><a href="initial_value">초기값</a></th>
+<td><code>canvastext</code></td>
+</tr>
+<tr>
+<th scope="row">적용대상</th>
+<td>all elements and text. It also applies to <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/::first-letter" class="only-in-en-us"><code>::first-letter</code> <small>(en-US)</small></a> and <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/::first-line" class="only-in-en-us"><code>::first-line</code> <small>(en-US)</small></a>.</td>
+</tr>
+<tr>
+<th scope="row"><a href="inheritance">상속</a></th>
+<td>yes</td>
+</tr>
+<tr>
+<th scope="row"><a href="computed_value">계산 값</a></th>
+<td>computed color</td>
+</tr>
+<tr>
+<th scope="row">Animation type</th>
+<td>by computed value type</td>
+</tr>
+</tbody></table></div></figure></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li>
+<a href="color_value"><code>&lt;color&gt;</code></a> 자료형</li> <li>다른 색상 관련 속성: <a href="background-color"><code>background-color</code></a>, <a href="border-color"><code>border-color</code></a>, <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/outline-color"><code>outline-color</code> <small>(en-US)</small></a>, <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/text-decoration-color"><code>text-decoration-color</code> <small>(en-US)</small></a>, <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/text-emphasis-color"><code>text-emphasis-color</code> <small>(en-US)</small></a>, <a href="text-shadow"><code>text-shadow</code></a>, <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/caret-color"><code>caret-color</code> <small>(en-US)</small></a>, <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/column-rule-color"><code>column-rule-color</code> <small>(en-US)</small></a>, <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/print-color-adjust"><code>color-adjust</code> <small>(en-US)</small></a>
+</li> <li><a href="css_colors/applying_color">CSS로 HTML 요소에 색입히기</a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/CSS/color" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/CSS/color</a>
+  </p>
+</div>

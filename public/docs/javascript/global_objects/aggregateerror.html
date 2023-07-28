@@ -1,0 +1,44 @@
+<header><h1>AggregateError</h1></header><div class="section-content"><p> <code>AggregateError</code> 객체는 다수의 에러가 한 에러로 포장되어야 할 때의 오류를 나타냅니다. 한 작업에서 여러 개의 오류가 보고될 때 발생하는데, 대표적으로 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/any"><code>Promise.any()</code> <small>(en-US)</small></a>에 전달된 모든 프로미스가 거부되었을 때 발생합니다. </p></div>
+<section aria-labelledby="생성자"><h2 id="생성자">생성자</h2>
+<div class="section-content"><dl> <dt id="aggregateerror"><a href="aggregateerror/aggregateerror"><code>AggregateError()</code></a></dt> <dd> <p>새로운<code>AggregateError</code> 객체를 생성합니다.</p> </dd> </dl></div></section><section aria-labelledby="인스턴스_속성"><h2 id="인스턴스_속성">인스턴스 속성</h2>
+<div class="section-content"><dl> <dt id="aggregateerror.prototype.message"><a href="error/message"><code>AggregateError.prototype.message</code></a></dt> <dd> <p>에러 메시지. <a href="error"><code>Error</code></a>로부터 상속되었습니다.</p> </dd> <dt id="aggregateerror.prototype.name"><a href="error/name"><code>AggregateError.prototype.name</code></a></dt> <dd> <p>에러 이름. <a href="error"><code>Error</code></a>로부터 상속되었습니다.</p> </dd> <dt id="aggregateerror.prototype.cause"><a href="error/cause"><code>AggregateError.prototype.cause</code></a></dt> <dd> <p>에러 원인. <a href="error"><code>Error</code></a>로부터 상속되었습니다.</p> </dd> <dt id="aggregateerror.prototype.errors"><code>AggregateError.prototype.errors</code></dt> <dd> <p> <code>AggregateError</code>와 함께 인스턴스화되는 반복 가능한 객체를 반영하는 배열. 예를 들면 <code>AggregateError</code>가 <a href="aggregateerror/aggregateerror"><code>AggregateError()</code></a> 생성자로 생성된다면, 반복가능한 어떤 객체로든 만들어진 배열이 생성자에 첫 번째 인자로 전달됩니다. </p> </dd> </dl></div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+</section><section aria-labelledby="aggregateerror_다루기"><h3 id="aggregateerror_다루기">AggregateError 다루기</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="gUrMLlt6QxafPd9u+YlM5VxZRE8nEeRSP79Blxsq3sM=" data-language="js">Promise<span class="token punctuation">.</span><span class="token function">any</span><span class="token punctuation">(</span><span class="token punctuation">[</span>
+  Promise<span class="token punctuation">.</span><span class="token function">reject</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Error</span><span class="token punctuation">(</span><span class="token string">"some error"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">catch</span><span class="token punctuation">(</span><span class="token parameter">e</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>e <span class="token keyword">instanceof</span> <span class="token class-name">AggregateError</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// true</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>e<span class="token punctuation">.</span>message<span class="token punctuation">)</span><span class="token punctuation">;</span>                   <span class="token comment">// "All Promises rejected"</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>e<span class="token punctuation">.</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span>                      <span class="token comment">// "AggregateError"</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>e<span class="token punctuation">.</span>errors<span class="token punctuation">)</span><span class="token punctuation">;</span>                    <span class="token comment">// [ Error: "some error" ]</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div></div></section><section aria-labelledby="aggregateerror_발생시키기"><h3 id="aggregateerror_발생시키기">AggregateError 발생시키기</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="FPoeoSZJbLmSkYvhMlHfTo/J+4ZaBp8+hllRf9ldamI=" data-language="js"><span class="token keyword">try</span> <span class="token punctuation">{</span>
+  <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">AggregateError</span><span class="token punctuation">(</span><span class="token punctuation">[</span>
+    <span class="token keyword">new</span> <span class="token class-name">Error</span><span class="token punctuation">(</span><span class="token string">"some error"</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  <span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token string">'Hello'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span>e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>e <span class="token keyword">instanceof</span> <span class="token class-name">AggregateError</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// true</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>e<span class="token punctuation">.</span>message<span class="token punctuation">)</span><span class="token punctuation">;</span>                   <span class="token comment">// "Hello"</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>e<span class="token punctuation">.</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span>                      <span class="token comment">// "AggregateError"</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>e<span class="token punctuation">.</span>errors<span class="token punctuation">)</span><span class="token punctuation">;</span>                    <span class="token comment">// [ Error: "some error" ]</span>
+<span class="token punctuation">}</span>
+</pre>
+</div></div></section><h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://tc39.es/ecma262/multipage/fundamental-objects.html#sec-aggregate-error-objects">ECMAScript Language Specification <br><small># sec-aggregate-error-objects</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="https://github.com/zloirock/core-js#ecmascript-promise" target="_blank">Polyfill of <code>AggregateError</code> in <code>core-js</code></a></li> <li><a href="error"><code>Error</code></a></li> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/any"><code>Promise.any</code> <small>(en-US)</small></a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/AggregateError" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/AggregateError</a>
+  </p>
+</div>

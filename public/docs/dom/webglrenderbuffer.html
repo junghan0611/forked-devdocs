@@ -1,0 +1,30 @@
+<header><h1>WebGLRenderbuffer</h1></header><div class="section-content"><p><strong>WebGLRenderbuffer</strong> 인터페이스는 <a href="webgl_api">WebGL API</a> 의 부분입니다. 그리고 이미지를 담거나 렌더링 연산의 소스나 타겟이 될 수 있는 버퍼를 말합니다.</p></div>
+<h2 id="설명">설명</h2>
+<div class="section-content">
+<p><code>WebGLRenderbuffer</code> 오브젝트는 메소드나 프로퍼티를 정의 하지 않으며 직접적으로 접근할 수 없습니다. When working with <code>WebGLRenderbuffer</code> 오브젝트와 작업하려면 다음의 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/WebGLRenderingContext"><code>WebGLRenderingContext</code> <small>(en-US)</small></a> 메소드가 도움이 될 것입니다.</p> <ul> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/WebGLRenderingContext/bindRenderbuffer"><code>WebGLRenderingContext.bindRenderbuffer()</code> <small>(en-US)</small></a></li> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/WebGLRenderingContext/createRenderbuffer"><code>WebGLRenderingContext.createRenderbuffer()</code> <small>(en-US)</small></a></li> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/WebGLRenderingContext/deleteRenderbuffer"><code>WebGLRenderingContext.deleteRenderbuffer()</code> <small>(en-US)</small></a></li> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/WebGLRenderingContext/isRenderbuffer"><code>WebGLRenderingContext.isRenderbuffer()</code> <small>(en-US)</small></a></li> </ul>
+</div>
+<h2 id="예">예</h2>
+
+<h3 id="렌더_버퍼_만들기">렌더 버퍼 만들기</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="4mk8XQWGbLobqgiP2lmOepAag3jzzvhbfe4tjtH7iPo=" data-language="js"><span class="token keyword">var</span> canvas <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">'canvas'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> gl <span class="token operator">=</span> canvas<span class="token punctuation">.</span><span class="token function">getContext</span><span class="token punctuation">(</span><span class="token string">'webgl'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> buffer <span class="token operator">=</span> gl<span class="token punctuation">.</span><span class="token function">createRenderbuffer</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div></div>
+<h2 id="명세서">명세서</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://registry.khronos.org/webgl/specs/latest/1.0/#5.7">WebGL Specification <br><small># 5.7</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<h2 id="함께_보기">함께 보기</h2>
+<div class="section-content"><ul> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/WebGLRenderingContext/bindRenderbuffer"><code>WebGLRenderingContext.bindRenderbuffer()</code> <small>(en-US)</small></a></li> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/WebGLRenderingContext/createRenderbuffer"><code>WebGLRenderingContext.createRenderbuffer()</code> <small>(en-US)</small></a></li> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/WebGLRenderingContext/deleteRenderbuffer"><code>WebGLRenderingContext.deleteRenderbuffer()</code> <small>(en-US)</small></a></li> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/WebGLRenderingContext/isRenderbuffer"><code>WebGLRenderingContext.isRenderbuffer()</code> <small>(en-US)</small></a></li> <li>Other buffers: <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/WebGLBuffer"><code>WebGLBuffer</code> <small>(en-US)</small></a>, <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/WebGLFramebuffer"><code>WebGLFramebuffer</code> <small>(en-US)</small></a>
+</li> </ul></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/WebGLRenderbuffer" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/WebGLRenderbuffer</a>
+  </p>
+</div>

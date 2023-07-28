@@ -1,0 +1,101 @@
+<header><h1>Using fullscreen mode</h1></header><div class="section-content">
+<p><strong>Fullscreen API</strong> 는 특정 요소<a href="element"><code>Element</code></a>(와 해당 자손들을)를 full-screen mode로 표시하고, 더 이상 필요하지 않으면 full-screen mode를 종료하는 메서드를 추가합니다. 이렇게 하면 사용자의 전체 화면을 사용하여, 온라인 게임과 같은 원하는 내용을 표시할 수 있습니다. full-screen mode가 종료될 때까지 화면에서 브라우저의 모든 유저 인터페이스 요소와 기타 응용 프로그램을 제거할 수 있습니다.</p> <p>API 사용 방법에 대한 자세한 내용은 <a href="https://developer.mozilla.org/en-US/docs/Web/API/Fullscreen_API/Guide" class="only-in-en-us">Guide to the Fullscreen API <small>(en-US)</small></a> 문서를 참조하세요.</p> <div class="notecard note" id="sect1"> <p><strong>참고:</strong> <strong>주의:</strong> 이 API에 대한 지원은 여러 브라우저에서 이루어지며, 다양한 업체의 접두사(prefix)가 필요하거나, 최신 사양을 구현하지 않는 경우가 많습니다. 이 API 지원에 대한 자세한 내용은 아래에 있는 <a href="#browser_compatibility">Browser compatibility</a> 섹션을 참조하세요. Fullscreen API를 지원하지 않는 업체의 경우, <a href="https://github.com/rafrex/fscreen" target="_blank">Fscreen</a> 과 같은 라이브러리를 사용할 수 있습니다.</p> </div>
+</div>
+<h2 id="interfaces">Interfaces</h2>
+<div class="section-content"><p><em>Fullscreen API 에는 자체 인터페이스가 없습니다. 대신에, full-screen 기능을 제공하는데 필요한 메서드, 속성(property), 이벤트 핸들러를 추가하기 위해, 다음 섹션에 나열된 것과 같은 몇 가지 다른 인터페이스를 추가합니다.</em></p></div>
+<h2 id="methods">Methods</h2>
+<div class="section-content"><p>Fullscreen API 는 <a href="document"><code>Document</code></a>, <a href="element"><code>Element</code></a> 인터페이스에 메서드를 추가하여 full-screen mode를 설정하거나 해제할 수 있습니다.</p></div>
+<h3 id="methods_on_the_document_interface">Methods on the Document interface</h3>
+<div class="section-content"><dl> <dt id="document.exitfullscreen_en-us"><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/Document/exitFullscreen"><code>Document.exitFullscreen()</code> <small>(en-US)</small></a></dt> <dd> <p><a href="https://developer.mozilla.org/ko/docs/Glossary/User_agent">user agent</a> 가 full-screen mode에서 창 모드로 다시 전환되도록 요청합니다. full-screen mode가 완전히 종료되면 <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Promise"><code>Promise</code></a> resolved 를 반환합니다.</p> </dd> </dl></div>
+<h3 id="methods_on_the_element_interface">Methods on the Element interface</h3>
+<div class="section-content"><dl> <dt id="element.requestfullscreen_en-us"><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/Element/requestFullscreen"><code>Element.requestFullscreen()</code> <small>(en-US)</small></a></dt> <dd> <p>유저 에이전트가 지정한 요소(그리고 그 자손들까지)를 full-screen mode로 설정하고, 브라우저의 모든 UI 요소와 다른 모든 애플리케이션을 화면에서 제거하도록 요구합니다. full-screen mode가 활성화되면 <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Promise"><code>Promise</code></a> resolved를 반환합니다.</p> </dd> </dl></div>
+<h2 id="properties">Properties</h2>
+<div class="section-content">
+<p><em><a href="document"><code>Document</code></a> 인터페이스는 full-screen mode가 지원되고 사용 가능한지, full-screen mode가 현재 활성화 되어있는지, 어떤 요소가 스크린을 사용하고 있는지 확인하는데 사용할 수 있는 속성(property)을 제공합니다.</em></p> <dl> <dt id="documentorshadowroot.fullscreenelement_en-us"><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/Document/fullscreenElement"><code>DocumentOrShadowRoot.fullscreenElement</code> <small>(en-US)</small></a></dt> <dd> <p><code>fullscreenElement</code> 속성은 DOM(혹은 shadow DOM)에서 현재 full-screen mode로 표시되는 요소<a href="element"><code>Element</code></a>를 알려줍니다. 이것이 <code>null</code>인 경우, document는 full-screen mode가 아닙니다.</p> </dd> <dt id="document.fullscreenenabled_en-us"><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/Document/fullscreenEnabled"><code>Document.fullscreenEnabled</code> <small>(en-US)</small></a></dt> <dd> <p><code>fullscreenEnabled</code> 속성(property)은 full-screen mode를 사용할 수 있는지 여부를 알려줍니다. 이유가 어떻든(예를들어, <code>"fullscreen"</code> 기능이 허락되지 않거나, full-screen mode가 지원되지 않는 경우) full-screen mode를 사용할 수 없으면 <code>false</code> 입니다.</p> </dd> </dl>
+</div>
+<h3 id="event_handlers">Event handlers</h3>
+<div class="section-content">
+<p><em>Fullscreen API는 full-screen mode를 켜고 끌 때 혹은, full-screen mode와 window mode간에 변경하는 과정에서 오류가 발생하는 것을 감지하는데 사용할 수 있는 두 가지 이벤트를 정의합니다. 이러한 이벤트에 대한 이벤트 핸들러는 <a href="document"><code>Document</code></a> 와<a href="element"><code>Element</code></a> 인터페이스 에서 사용할 수 있습니다.</em></p> <div class="notecard note" id="sect2"> <p><strong>참고:</strong> <strong>주의:</strong> 이러한 이벤트 핸들러 속성(property)은 HTML 컨텐트 속성(attribute)으로 사용할 수 없습니다. 즉, HTML 컨텐트에서 <code><a href="https://developer.mozilla.org/en-US/docs/Web/API/Document/fullscreenchange_event" class="only-in-en-us">fullscreenchange <small>(en-US)</small></a></code> 및 <code><a href="https://developer.mozilla.org/en-US/docs/Web/API/Document/fullscreenerror_event" class="only-in-en-us">fullscreenerror <small>(en-US)</small></a></code> 이벤트를 지정할 수 없습니다. 자바스크립트 코드로 추가해야만 합니다.</p> </div> <h4 id="event_handlers_on_documents">Event handlers on documents</h4> <dl> <dt id="document.onfullscreenchange_en-us"><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/Document/fullscreenchange_event"><code>Document.onfullscreenchange</code> <small>(en-US)</small></a></dt> <dd> <p>문서(document)가 full-screen mode로 전환되거나 full-screen mode를 종료할 때 <a href="document"><code>Document</code></a>로 보내지는 <code><a href="https://developer.mozilla.org/en-US/docs/Web/API/Document/fullscreenchange_event" class="only-in-en-us">fullscreenchange <small>(en-US)</small></a></code> 이벤트에 대한 이벤트 핸들러 입니다. 이 핸들러는 오직 전체 문서가 full-screen mode로 표시될 때만 호출됩니다.</p> </dd> <dt id="document.onfullscreenerror_en-us"><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/Document/fullscreenerror_event"><code>Document.onfullscreenerror</code> <small>(en-US)</small></a></dt> <dd> <p>전체 문서에 대해 full-screen mode를 사용하거나, 사용하지 않도록 설정하는 동안 오류가 발생하면, <a href="document"><code>Document</code></a>로 보내지는 <code><a href="https://developer.mozilla.org/en-US/docs/Web/API/Document/fullscreenerror_event" class="only-in-en-us">fullscreenerror <small>(en-US)</small></a></code> 이벤트의 이벤트 핸들러입니다.</p> </dd> </dl> <h4 id="event_handlers_on_elements">Event handlers on elements</h4> <dl> <dt id="element.onfullscreenchange_en-us"><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/Element/fullscreenchange_event"><code>Element.onfullscreenchange</code> <small>(en-US)</small></a></dt> <dd> <p><code><a href="https://developer.mozilla.org/en-US/docs/Web/API/Document/fullscreenchange_event" class="only-in-en-us">fullscreenchange <small>(en-US)</small></a></code> 이벤트가 요소(element)로 전송되면, 요소가 full-screen mode로 배치되거나 제거되었음을 나타내는 이벤트 핸들러입니다.</p> </dd> <dt id="element.onfullscreenerror_en-us"><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/Element/fullscreenerror_event"><code>Element.onfullscreenerror</code> <small>(en-US)</small></a></dt> <dd> <p>full-screen mode 를 사용하거나, 사용하지 않도록 설정하는 동안 오류가 발생하면 요소로 보내지는 <code><a href="https://developer.mozilla.org/en-US/docs/Web/API/Document/fullscreenerror_event" class="only-in-en-us">fullscreenerror <small>(en-US)</small></a></code> 이벤트의 이벤트 핸들러입니다.</p> </dd> </dl>
+</div>
+<h3 id="obsolete_properties">Obsolete properties</h3>
+<div class="section-content"><dl> <dt id="document.fullscreen_en-us">
+<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/Document/fullscreen"><code>Document.fullscreen</code> <small>(en-US)</small></a> <abbr class="icon icon-deprecated" title="지원이 중단되었습니다. 새로운 웹사이트에서 사용하지 마세요."> <span class="visually-hidden">지원이 중단되었습니다</span> </abbr>
+</dt> <dd> <p>문서에 현재 full-screen mode로 표시되는 요소가 있는 경우 <code>true</code>, 그렇지 않으면 <code>false</code>의 Boolean 값입니다.&gt; <strong>참고:</strong> <strong>주의:</strong> 대신에 <a href="document"><code>Document</code></a> 나 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/ShadowRoot"><code>ShadowRoot</code> <small>(en-US)</small></a> 에서 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/Document/fullscreenElement"><code>fullscreenElement</code> <small>(en-US)</small></a> 속성(property)을 사용하세요. 그것이 <code>null</code>이 아닌 경우 <a href="element"><code>Element</code></a>가 full-screen mode로 표시됩니다.</p> </dd> </dl></div>
+<h2 id="events">Events</h2>
+<div class="section-content">
+<p><em>Fullscreen API는 full-screen mode를 켜고 끌 때 혹은, full-screen mode와 window mode간에 변경하는 과정에서 오류가 발생하는 것을 감지하는데 사용할 수 있는 두 가지 이벤트를 정의합니다.</em></p> <dl> <dt id="fullscreenchange"><code><a href="https://developer.mozilla.org/en-US/docs/Web/API/Document/fullscreenchange_event" class="only-in-en-us">fullscreenchange <small>(en-US)</small></a></code></dt> <dd> <p>full-screen mode를 사용하거나, 사용하지 않도록 전환할 때 <a href="document"><code>Document</code></a> 혹은<a href="element"><code>Element</code></a> 로 보냅니다.</p> </dd> <dt id="fullscreenerror"><code><a href="https://developer.mozilla.org/en-US/docs/Web/API/Document/fullscreenerror_event" class="only-in-en-us">fullscreenerror <small>(en-US)</small></a></code></dt> <dd> <p>full-screen mode를 사용하거나, 사용하지 않도록 전환하려고 시도하는 중에 오류가 발생하면 <code>Document</code> 또는 <code>Element</code> 로 보냅니다.</p> </dd> </dl>
+</div>
+<h2 id="dictionaries">Dictionaries</h2>
+<div class="section-content"><dl> <dt id="fullscreenoptions_en-us"><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/Element/requestFullscreen"><code>FullscreenOptions</code> <small>(en-US)</small></a></dt> <dd> <p><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/Element/requestFullscreen"><code>requestFullscreen()</code> <small>(en-US)</small></a>을 호출할 때 지정할 수 있는 옵션 설정을 제공합니다.</p> </dd> </dl></div>
+<h2 id="controlling_access">Controlling access</h2>
+<div class="section-content">
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Permissions_Policy" class="only-in-en-us">Feature Policy <small>(en-US)</small></a>을 사용하여 full-screen mode의 유효성을 제어할 수 있습니다. full-screen mode는 <code>"fullscreen"</code>으로 식별되고, 기본 허용 목록 값은 <code>"self"</code> 입니다. 이는 최상위(top-level) 문서 컨텍스트에서 full-screen mode가 허용된다는 것을 의미하며, 최상위(top-most) 문서와 같은 출처에서 로드 된 중첩 된 컨텍스트에도 적용됩니다.</p> <p>기능 정책을 사용하여 API에 대한 액세스를 제어하는 자세한 내용은 <a href="https://developer.mozilla.org/ko/docs/Web/HTTP/Feature_Policy/Using_Feature_Policy" class="page-not-created">Using Feature Policy</a>을 참조하세요.</p>
+</div>
+<h2 id="usage_notes">Usage notes</h2>
+<div class="section-content">
+<p>사용자는 <kbd>ESC</kbd> (혹은 <kbd>F11</kbd>) 키를 누르기만하면 사이트 또는 앱이 프로그래밍 방식으로 기다리는 대신에, full-screen mode를 종료하도록 선택할 수 있습니다. 유저 인터페이스의 어딘가에 사용자에게 이 옵션을 사용할 수 있음을 알리는, 적절한 유저 인터페이스 요소를 제공해야 합니다.</p> <div class="notecard note" id="sect3"> <p><strong>참고:</strong> <strong>주의:</strong> 다른 페이지로 이동하거나, 탭을 변경하거나, 응용 프로그램 전환기(또는 <kbd>Alt</kbd>-<kbd>Tab</kbd>)를 사용하여, 다른 응용 프로그램으로 전환하면 마찬가지로 full-screen mode가 종료됩니다.</p> </div>
+</div>
+<h2 id="example">Example</h2>
+<div class="section-content">
+<p>이 예제에서는 비디오가 웹 페이지에 표시됩니다. <kbd>Return</kbd> 또는 <kbd>Enter</kbd> 키를 누르면, 사용자가 비디오의 창과 full-screen 표시를 전환할 수 있습니다.</p> <p><a href="https://mdn.dev/archives/media/samples/domref/fullscreen.html" target="_blank">View Live Examples</a></p>
+</div>
+<h3 id="watching_for_the_enter_key">Watching for the Enter key</h3>
+<div class="section-content">
+<p>페이지가 로드되면, 이 코드가 실행되어 <kbd>Enter</kbd> 키 를 주시하는 이벤트 리스너를 설정합니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="xYksWQUN+fZ/373xqDRLVhdttsTnxxGHrCm6sTqLaqg=" data-language="js">document<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">"keypress"</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">e</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>e<span class="token punctuation">.</span>keyCode <span class="token operator">===</span> <span class="token number">13</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">toggleFullScreen</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div>
+</div>
+<h3 id="toggling_full-screen_mode">Toggling full-screen mode</h3>
+<div class="section-content">
+<p>이 코드는 사용자가 <kbd>Enter</kbd> 키를 누를 때, 위의 이벤트 핸들러에 의해 호출됩니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="L425yYZomwM+PZlgltPk2bkel01NTME3LZu3hrizfUQ=" data-language="js"><span class="token keyword">function</span> <span class="token function">toggleFullScreen</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>document<span class="token punctuation">.</span>fullscreenElement<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    document<span class="token punctuation">.</span>documentElement<span class="token punctuation">.</span><span class="token function">requestFullscreen</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>document<span class="token punctuation">.</span>exitFullscreen<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      document<span class="token punctuation">.</span><span class="token function">exitFullscreen</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</pre>
+</div> <p>먼저 <a href="document"><code>document</code></a>의 <code>fullscreenElement</code> 속성(attribute)값을 살펴보겠습니다. 실제 배포 시에는 이 시점에 접두어가 붙은 버전(예를들어, <code>mozFullscreenElement</code>, <code>msFullscreenElement</code>, <code>webkitFullscreenElement</code>)을 확인해야 합니다. 값이 <code>null</code>인 경우, 문서는 현재 window mode에 있으므로, full-screen mode로 전환해야 합니다. 그렇지 않으면, 이 요소는 지금 full-screen mode 상태입니다. full-screen mode로 전환하는 작업은, <a href="https://developer.mozilla.org/ko/docs/Web/HTML/Element/video"><code>&lt;video&gt;</code></a>요소에서 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/Element/requestFullscreen"><code>Element.requestFullscreen()</code> <small>(en-US)</small></a>을 호출하여 수행합니다.</p> <p>full-screen mode가 이미 활성화 된 경우(<code>fullscreenElement</code> 가 <code>null</code>이 아닌 경우), <code>document</code>에서 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/Document/exitFullscreen"><code>exitFullscreen()</code> <small>(en-US)</small></a>을 호출하여 full-screen mode를 종료합니다.</p>
+</div>
+<h2 id="명세서">명세서</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody>
+<tr><td><a href="#">Fullscreen API Standard <br><small># ref-for-dom-document-fullscreenelement①</small></a></td></tr>
+<tr><td><a href="#">Fullscreen API Standard <br><small># ref-for-dom-document-fullscreenenabled①</small></a></td></tr>
+<tr><td><a href="#">Fullscreen API Standard <br><small># ref-for-dom-document-exitfullscreen①</small></a></td></tr>
+<tr><td><a href="#">Fullscreen API Standard <br><small># ref-for-dom-element-requestfullscreen①</small></a></td></tr>
+<tr><td><a href="https://fullscreen.spec.whatwg.org/#dom-document-fullscreen">Fullscreen API Standard <br><small># dom-document-fullscreen</small></a></td></tr>
+</tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+
+<h3 id="api.document.fullscreenelement">api.Document.fullscreenElement</h3>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<h3 id="api.document.fullscreenenabled">api.Document.fullscreenEnabled</h3>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<h3 id="api.document.exitfullscreen">api.Document.exitFullscreen</h3>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<h3 id="api.element.requestfullscreen">api.Element.requestFullscreen</h3>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<h3 id="api.document.fullscreen">api.Document.fullscreen</h3>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<h2 id="see_also">See also</h2>
+<div class="section-content"><ul> <li><a href="fullscreen_api" aria-current="page">Using full-screen mode</a></li> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/Element/requestFullscreen"><code>Element.requestFullscreen()</code> <small>(en-US)</small></a></li> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/Document/exitFullscreen"><code>Document.exitFullscreen()</code> <small>(en-US)</small></a></li> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/Document/fullscreen"><code>Document.fullscreen</code> <small>(en-US)</small></a></li> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/Document/fullscreenElement"><code>Document.fullscreenElement</code> <small>(en-US)</small></a></li> <li>
+<a href="https://developer.mozilla.org/ko/docs/Web/CSS/:fullscreen"><code>:fullscreen</code></a>, <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/::backdrop"><code>::backdrop</code> <small>(en-US)</small></a>
+</li> <li><a href="https://developer.mozilla.org/ko/docs/Web/HTML/Element/iframe#attr-allowfullscreen"><code>allowfullscreen</code></a></li> </ul></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/Fullscreen_API" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/Fullscreen_API</a>
+  </p>
+</div>

@@ -1,0 +1,64 @@
+<header><h1>자손 결합자</h1></header><div class="section-content">
+<p>보통 한 칸의 공백 문자로 표현하는 <strong>자손 결합자</strong>(" ")는 두 개의 선택자를 조합하여, 뒤쪽 선택자 요소의 조상(부모, 부모의 부모, 부모의 부모의 부모...)에 앞쪽 선택자 요소가 존재할 경우 선택합니다. 자손 결합자를 활용하는 선택자를 자손 선택자라고 부릅니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="tDo3dH0fPPV8MHirgSAN1DzuysDBDVI1bjON1DyEAvw=" data-language="css"><span class="token comment">/* List items that are descendants of the "my-things" list */</span>
+<span class="token selector">ul.my-things li</span> <span class="token punctuation">{</span>
+  <span class="token property">margin</span><span class="token punctuation">:</span> 2em<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div> <p>기술적으로, 자손 결합자는 하나 이상의 <a href="https://developer.mozilla.org/ko/docs/Glossary/CSS">CSS</a> 공백 문자이므로 스페이스 외에도 캐리지 리턴, 폼 피드, 새 줄, 탭 문자도 해당합니다. 또한 결합자를 구성하는 공백 문자는 CSS 주석을 임의의 개수만큼 포함할 수 있습니다.</p>
+</div>
+<section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content"><pre class="notranslate">selector1 selector2 {
+  /* property declarations */
+}
+</pre></div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+</section><section aria-labelledby="css"><h3 id="css">CSS</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="mZyFq+eDyC5HMaglD00WlPWIho2bD5vW7ztDl25D6/E=" data-language="css"><span class="token selector">li</span> <span class="token punctuation">{</span>
+  <span class="token property">list-style-type</span><span class="token punctuation">:</span> disc<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">li li</span> <span class="token punctuation">{</span>
+  <span class="token property">list-style-type</span><span class="token punctuation">:</span> circle<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div></div></section><section aria-labelledby="html"><h3 id="html">HTML</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="BPXUkvDYHkGBvNH0nK0itEjzHS43KD85hegaCJChl6Q=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ul</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span>Item 1<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ul</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">&gt;</span></span>Subitem A<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">&gt;</span></span>Subitem B<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>ul</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span>Item 2<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ul</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">&gt;</span></span>Subitem A<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">&gt;</span></span>Subitem B<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>ul</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>ul</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div></div></section><section aria-labelledby="결과"><h3 id="결과">결과</h3>
+<div class="section-content"><div class="code-example" id="sect1">
+
+<iframe class="sample-code-frame" title="예제 sample" id="frame_예제" width="100%" height="160" src="https://live.mdnplay.dev/ko/docs/Web/CSS/Descendant_combinator/runner.html?id=%EC%98%88%EC%A0%9C" loading="lazy"></iframe>
+</div></div></section><h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://drafts.csswg.org/selectors/#descendant-combinators">Selectors Level 4 <br><small># descendant-combinators</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="child_combinator">자식 결합자</a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/CSS/Descendant_combinator" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/CSS/Descendant_combinator</a>
+  </p>
+</div>

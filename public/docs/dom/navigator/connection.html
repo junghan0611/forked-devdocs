@@ -1,0 +1,27 @@
+<header><h1>window.navigator.connection</h1></header><div class="section-content"><div class="notecard experimental" id="sect1"><p><strong>Experimental:</strong> <strong>This is an <a href="https://developer.mozilla.org/en-US/docs/MDN/Writing_guidelines/Experimental_deprecated_obsolete#experimental">experimental technology</a></strong><br>Check the <a href="#browser_compatibility">Browser compatibility table</a> carefully before using this in production.</p></div></div>
+<h2 id="요약">요약</h2>
+<div class="section-content"><p><a href="../network_information_api">네트워크 정보 API</a>는 사용자 기기의 현재 대역폭이나 연결이 과금되는 지와 같은 정보를 알려줍니다. 이를 이용해서 사용자의 연결에 기반해서 높은 품질의 콘텐츠를 제공할지 낮은 품질의 콘텐츠를 제공할지 선택할 수 있습니다.</p></div>
+<h2 id="속성">속성</h2>
+<div class="section-content"><dl> <dt id="connection.bandwidth">
+<a class="page-not-created"><code>connection.bandwidth</code></a> <span class="badge inline readonly">읽기 전용</span>
+</dt> <dd> <p>현재 연결에 대한 다운로드 대역폭을 MB/s 단위의 double 형태로 알려줍니다. 사용자가 오프라인일 경우는 <code>0</code>이고 알 수 없을 경우에는 <code>infinity</code>로 나옵니다.</p> </dd> <dt id="connection.metered">
+<a class="page-not-created"><code>connection.metered</code></a> <span class="badge inline readonly">읽기 전용</span>
+</dt> <dd> <p>연결이 과금이 되는 경우(예를 들어 pay-per-use) <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Boolean"><code>Boolean</code></a> 형의 <code>true</code>가 반환됩니다.</p> </dd> </dl></div>
+<h3 id="이벤트_핸들러">이벤트 핸들러</h3>
+<div class="section-content">
+<dl> <dt id="connection.onchange"><a class="page-not-created"><code>connection.onchange</code></a></dt> <dd> <p><code><a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event" class="only-in-en-us">change <small>(en-US)</small></a></code> 이벤트에 대한 이벤트 핸들러 속성입니다. 연결 정보가 변경될 때 이벤트가 발생합니다.</p> </dd> </dl> <div class="notecard note" id="sect2"> <p><strong>참고:</strong> <strong>주의:</strong> <code>connection</code> 객체는 이벤트를 다루기 위한 <a href="../eventtarget/addeventlistener"><code>addEventListener</code></a> 메서드를 사용할 수 있는 <a href="../eventtarget"><code>EventTarget</code></a>을 상속받습니다.</p> </div>
+</div>
+<h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://wicg.github.io/netinfo/#connection-attribute">Network Information API <br><small># connection-attribute</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<h2 id="관련_내용">관련 내용</h2>
+<div class="section-content"><ul> <li><a href="../network_information_api">Network Information API</a></li> <li><a href="https://developer.mozilla.org/ko/Online_and_offline_events" class="page-not-created">Online and offline events</a></li> </ul></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/Navigator/connection" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/Navigator/connection</a>
+  </p>
+</div>

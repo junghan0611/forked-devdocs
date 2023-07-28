@@ -1,0 +1,28 @@
+<header><h1>DOMRect</h1></header><div class="section-content">
+<p><code>DOMRect</code> 인터페이스는 직사각형의 크기와 위치를 나타냅니다.</p> <p><code>DOMRect</code>가 나타내는 사각형의 유형은 <code>DOMRect</code>를 반환한 메서드나 속성이 지정합니다. 예를 들어 WebVR API의 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/VREyeParameters"><code>VREyeParameters.renderRect</code> <small>(en-US)</small></a>는, 헤드 마운트 디스플레이에서 한쪽 눈의 뷰포트가 <a href="htmlcanvaselement">캔버스</a>의 어디에 위치하는지 나타냅니다.</p> <p>부모인 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/DOMRectReadOnly"><code>DOMRectReadOnly</code> <small>(en-US)</small></a>을 상속합니다.</p>
+<svg viewbox="-1 -1 650 42" preserveaspectratio="xMinYMin meet"> <a style="text-decoration: none;" xlink:href="/en-US/docs/Web/API/DOMRectReadOnly" class="only-in-en-us">  <text x="60" y="16" font-size="10px" fill="#4D4E53" text-anchor="middle"> DOMRectReadOnly </text> <small>(en-US)</small></a>   <a style="text-decoration: none;" xlink:href="/ko/docs/Web/API/DOMRect" aria-current="page">  <text x="187.5" y="16" font-size="10px" fill="#4D4E53" text-anchor="middle"> DOMRect </text> </a></svg>
+</div>
+<h2 id="생성자">생성자</h2>
+<div class="section-content"><dl> <dt id="domrect"><a href="domrect/domrect"><code>DOMRect()</code></a></dt> <dd> <p>새로운 <code>DOMRect</code> 객체를 생성합니다.</p> </dd> </dl></div>
+<h2 id="속성">속성</h2>
+<div class="section-content">
+<p>부모인 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/DOMRectReadOnly"><code>DOMRectReadOnly</code> <small>(en-US)</small></a>의 속성을 상속합니다. 읽기 전용 속성이 아니라는 차이점이 있습니다.</p> <dl> <dt id="domrectreadonly.x_en-us"><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/DOMRectReadOnly/x"><code>DOMRectReadOnly.x</code> <small>(en-US)</small></a></dt> <dd> <p><code>DOMRect</code> 원점의 X 좌표입니다. 원점은 보통 직사각형의 왼쪽 상단 꼭지점입니다.</p> </dd> <dt id="domrectreadonly.y_en-us"><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/DOMRectReadOnly/y"><code>DOMRectReadOnly.y</code> <small>(en-US)</small></a></dt> <dd> <p><code>DOMRect</code> 원점의 Y 좌표입니다. 원점은 보통 직사각형의 왼쪽 상단 꼭지점입니다.</p> </dd> <dt id="domrectreadonly.width_en-us"><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/DOMRectReadOnly/width"><code>DOMRectReadOnly.width</code> <small>(en-US)</small></a></dt> <dd> <p><code>DOMRect</code>의 너비입니다.</p> </dd> <dt id="domrectreadonly.height_en-us"><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/DOMRectReadOnly/height"><code>DOMRectReadOnly.height</code> <small>(en-US)</small></a></dt> <dd> <p><code>DOMRect</code>의 높이입니다.</p> </dd> <dt id="domrectreadonly.top_en-us"><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/DOMRectReadOnly/top"><code>DOMRectReadOnly.top</code> <small>(en-US)</small></a></dt> <dd> <p><code>DOMRect</code> 위쪽 모서리의 Y 좌표입니다. <code>y</code> 또는, <code>height</code>가 음수인 경우, <code>y + height</code>와 같은 값입니다.</p> </dd> <dt id="domrectreadonly.right_en-us"><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/DOMRectReadOnly/right"><code>DOMRectReadOnly.right</code> <small>(en-US)</small></a></dt> <dd> <p><code>DOMRect</code> 오른쪽 모서리의 X 좌표입니다. <code>x</code> 또는, <code>width</code>가 음수인 경우, <code>x + height</code>와 같은 값입니다.</p> </dd> <dt id="domrectreadonly.bottom_en-us"><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/DOMRectReadOnly/bottom"><code>DOMRectReadOnly.bottom</code> <small>(en-US)</small></a></dt> <dd> <p><code>DOMRect</code> 아래쪽 모서리의 Y 좌표입니다. <code>y + height</code> 또는, <code>height</code>가 음수인 경우, <code>y</code>와 같은 값입니다.</p> </dd> <dt id="domrectreadonly.left_en-us"><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/DOMRectReadOnly/left"><code>DOMRectReadOnly.left</code> <small>(en-US)</small></a></dt> <dd> <p><code>DOMRect</code> 왼쪽 모서리의 X 좌표입니다. <code>x + width</code> 또는, <code>width</code>가 음수인 경우, <code>x</code>와 같은 값입니다.</p> </dd> </dl>
+</div>
+<h2 id="메서드">메서드</h2>
+<div class="section-content"><p>부모인 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/DOMRectReadOnly"><code>DOMRectReadOnly</code> <small>(en-US)</small></a>의 메서드를 상속합니다.</p></div>
+<h2 id="정적_메서드">정적 메서드</h2>
+<div class="section-content"><dl> <dt id="domrectreadonly.fromrect_en-us"><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/DOMRectReadOnly/fromRect_static"><code>DOMRectReadOnly.fromRect()</code> <small>(en-US)</small></a></dt> <dd> <p>주어진 위치와 면적을 갖는 새로운 <code>DOMRect</code> 객체를 생성합니다.</p> </dd> </dl></div>
+<h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://drafts.fxtf.org/geometry/#DOMRect">Geometry Interfaces Module Level 1 <br><small># DOMRect</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/DOMPoint"><code>DOMPoint</code> <small>(en-US)</small></a></li> </ul></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/DOMRect" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/DOMRect</a>
+  </p>
+</div>

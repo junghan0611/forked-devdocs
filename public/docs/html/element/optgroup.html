@@ -1,0 +1,46 @@
+<header><h1>&lt;optgroup&gt;</h1></header><div class="section-content"><p><code>&lt;optgroup&gt;</code>는 <a href="select"><code>&lt;select&gt;</code></a> 요소의 옵션을 묶을 수 있습니다.</p></div>
+<h2 id="시도해보기">시도해보기</h2>
+<div class="section-content">
+<iframe class="interactive is-tabbed-standard-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/tabbed/optgroup.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe>  <figure class="table-container"><div class="_table"><table class="properties"> <tbody> <tr> <th scope="row"><a href="../content_categories">콘텐츠 카테고리</a></th> <td>없음.</td> </tr> <tr> <th scope="row">가능한 콘텐츠</th> <td>0개 이상의 <a href="option"><code>&lt;option&gt;</code></a> 요소.</td> </tr> <tr> <th scope="row">태그 생략</th> <td> 여는 태그는 필수입니다. 바로 뒤따르는 요소가 다른 <code>&lt;optgroup&gt;</code>이거나, 자신이 부모의 마지막 자식이라면 닫는 태그를 생략할 수 있습니다. </td> </tr> <tr> <th scope="row">가능한 부모 요소</th> <td>
+<a href="select"><code>&lt;select&gt;</code></a> 요소.</td> </tr> <tr> <th scope="row">가능한 ARIA 역할</th> <td>없음</td> </tr> <tr> <th scope="row">DOM 인터페이스</th> <td><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLOptGroupElement"><code>HTMLOptGroupElement</code> <small>(en-US)</small></a></td> </tr> </tbody> </table></div></figure> <div class="notecard note" id="sect1"> <p><strong>참고:</strong> <code>&lt;optgroup&gt;</code> 요소는 중첩할 수 없습니다.</p> </div>
+</div>
+<h2 id="특성">특성</h2>
+<div class="section-content">
+<p>이 요소는 <a href="../global_attributes">전역 특성</a>을 포함합니다.</p> <dl> <dt id="disabled"><a id="attr-disabled" class="inline-block" href="#attr-disabled"><b><code>disabled</code></b></a></dt> <dd> <p>지정한 경우 모든 하위 옵션을 선택할 수 없습니다. 브라우저에서, 비활성화 옵션은 주로 회색으로 보이며, 클릭과 포커스 등 모든 이벤트를 받지 않습니다.</p> </dd> <dt id="label"><a id="attr-label" class="inline-block" href="#attr-label"><b><code>label</code></b></a></dt> <dd> <p>옵션 그룹의 이름. 브라우저가 그룹의 이름을 표시할 때 사용할 수 있습니다. 필수로 지정해야 합니다.</p> </dd> </dl>
+</div>
+<h2 id="예제">예제</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="8d6LzWimwabx5QLlOyOM1drlp2h1OtESJZZ77PRdMe8=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>select</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>optgroup</span> <span class="token attr-name">label</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Group 1<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>option</span><span class="token punctuation">&gt;</span></span>Option 1.1<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>option</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>optgroup</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>optgroup</span> <span class="token attr-name">label</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Group 2<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>option</span><span class="token punctuation">&gt;</span></span>Option 2.1<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>option</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>option</span><span class="token punctuation">&gt;</span></span>Option 2.2<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>option</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>optgroup</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>optgroup</span> <span class="token attr-name">label</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Group 3<span class="token punctuation">"</span></span> <span class="token attr-name">disabled</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>option</span><span class="token punctuation">&gt;</span></span>Option 3.1<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>option</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>option</span><span class="token punctuation">&gt;</span></span>Option 3.2<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>option</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>option</span><span class="token punctuation">&gt;</span></span>Option 3.3<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>option</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>optgroup</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>select</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div></div>
+<h3 id="결과">결과</h3>
+<div class="section-content"><div class="code-example" id="sect2">
+
+<iframe class="sample-code-frame" title="예제 sample" id="frame_예제" src="https://live.mdnplay.dev/ko/docs/Web/HTML/Element/optgroup/runner.html?id=%EC%98%88%EC%A0%9C" loading="lazy"></iframe>
+</div></div>
+<h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://html.spec.whatwg.org/multipage/form-elements.html#the-optgroup-element">HTML Standard <br><small># the-optgroup-element</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/HTML/Element/optgroup" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/HTML/Element/optgroup</a>
+  </p>
+</div>

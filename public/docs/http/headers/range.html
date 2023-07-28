@@ -1,0 +1,26 @@
+<h1>Range</h1>
+<header><h1>Range</h1></header><div class="section-content">
+<p><code>Range</code> HTTP 요청 헤더는 서버에게 문서의 일부분만 돌려주어야 한다는 것을 알려줍니다. <code>Range</code> 헤더를 통해 여러 부분을 한번에 요청할 수 있으며, 서버는 이러한 범위에 대해 문서의 여러 부분을 돌려보내줄 것입니다. 만약 서버가 돌려 보낸다면, <a href="../status/206"><code>206</code></a> <code>Partial Content</code>를 응답으로 사용할 것입니다. 만약 범위가 유효하지 않다면, 서버는 <a href="../status/416"><code>416</code></a> <code>Range Not Satisfiable</code> 에러를 보낼 것입니다. 또한 서버는 <code>Range</code> 헤더를 무시하고 <a href="../status/200"><code>200</code></a> 상태 코드와 함께 전체 문서를 돌려줄 수 있습니다.</p> <figure class="table-container"><div class="_table"><table class="properties"> <tbody> <tr> <th scope="row">헤더 타입</th> <td><a href="https://developer.mozilla.org/ko/docs/Glossary/Request_header">Request header</a></td> </tr> <tr> <th scope="row"><a href="https://developer.mozilla.org/ko/docs/Glossary/Forbidden_header_name">Forbidden header name</a></th> <td>아니오</td> </tr> </tbody> </table></div></figure>
+</div>
+<section aria-labelledby="문법"><h2 id="문법">문법</h2>
+<div class="section-content"><pre class="notranslate">Range: &lt;unit&gt;=&lt;range-start&gt;-
+Range: &lt;unit&gt;=&lt;range-start&gt;-&lt;range-end&gt;
+Range: &lt;unit&gt;=&lt;range-start&gt;-&lt;range-end&gt;, &lt;range-start&gt;-&lt;range-end&gt;
+Range: &lt;unit&gt;=&lt;range-start&gt;-&lt;range-end&gt;, &lt;range-start&gt;-&lt;range-end&gt;, &lt;range-start&gt;-&lt;range-end&gt;
+</pre></div></section><section aria-labelledby="지시자"><h2 id="지시자">지시자</h2>
+<div class="section-content"><dl> <dt id="unit">&lt;unit&gt;</dt> <dd> <p>범위를 결정하는 단위. 보통 <code>bytes</code>.</p> </dd> <dt id="range-start">&lt;range-start&gt;</dt> <dd> <p>범위 요청의 시작 지점을 알리는 단위를 뜻하는 정수.</p> </dd> <dt id="range-end">&lt;range-end&gt;</dt> <dd> <p>요청한 범위의 끝을 알리는 단위를 의미하는 정수. 이 값은 옵션으로 사용할 수 있으며, 생략한다면 문서의 끝부분을 요청의 끝으로 사용함.</p> </dd> </dl></div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+<div class="section-content"><pre class="notranslate">Range: bytes=200-1000, 2000-6576, 19000-
+</pre></div></section><section aria-labelledby="기술_사양"><h2 id="기술_사양">기술 사양</h2>
+<div class="section-content"><figure class="table-container"><div class="_table"><table> <thead> <tr> <th>기술 사양</th> <th>제목</th> </tr> </thead> <tbody> <tr> <td><a href="https://datatracker.ietf.org/doc/html/rfc7233#section-3.1" target="_blank">RFC 7233, 섹션 3.1: Range</a></td> <td>Hypertext Transfer Protocol (HTTP/1.1): Range Requests</td> </tr> </tbody> </table></div></figure></div></section><h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="함께_참고할_내용"><h2 id="함께_참고할_내용">함께 참고할 내용</h2>
+<div class="section-content"><ul> <li><a href="if-range"><code>If-Range</code></a></li> <li><a href="content-range"><code>Content-Range</code></a></li> <li><a href="content-type"><code>Content-Type</code></a></li> <li>
+<a href="../status/206"><code>206</code></a> <code>Partial Content</code>
+</li> <li>
+<a href="../status/416"><code>416</code></a> <code>Range Not Satisfiable</code>
+</li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/HTTP/Headers/Range" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/HTTP/Headers/Range</a>
+  </p>
+</div>

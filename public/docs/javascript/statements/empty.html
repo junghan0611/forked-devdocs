@@ -1,0 +1,53 @@
+<header><h1>empty</h1></header><div class="section-content"><p><strong>empty</strong> 문은 JavaScript 아무것도 동작하지 않습니다.</p></div>
+<section aria-labelledby="시도해보기"><h2 id="시도해보기">시도해보기</h2>
+<div class="section-content"><iframe class="interactive is-js-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/js/statement-empty.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe></div></section><section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="4Lmho8gUw6PlaClu2uqos1k/6SxSsKYYAZmPLuQJjX4=" data-language="js">    <span class="token punctuation">;</span>
+</pre>
+</div></div></section><section aria-labelledby="설명"><h2 id="설명">설명</h2>
+<div class="section-content"><p>empty statement은 JavaScript구문에 하나가 필요할 때 어떤 문도 실행되지 않을 것이라는 것을 나타내는 세미 콜론(;)입니다. 여러개의 문장을 원하지만 JavaScript는 <a href="block">block statement</a>을 사용하여 하나만 허용하며 여러개의 문장을 하나로 결합합니다.</p></div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+<div class="section-content">
+<p>빈 문은 루프 문과 함께 사용되기도합니다. 빈 루프 본문이있는 다음 예제를 참조하십시오.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="+jJqUOs6ucKy9CEmVc8h0HXGBN42ULaqCzlcMJ9JifQ=" data-language="js"><span class="token keyword">var</span> arr <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+<span class="token comment">// Assign all array values to 0</span>
+<span class="token keyword">for</span> <span class="token punctuation">(</span>i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> arr<span class="token punctuation">.</span>length<span class="token punctuation">;</span> arr<span class="token punctuation">[</span>i<span class="token operator">++</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token comment">/* empty statement */</span> <span class="token punctuation">;</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>arr<span class="token punctuation">)</span>
+<span class="token comment">// [0, 0, 0]</span>
+</pre>
+</div> <p><strong>참고:</strong> 정상적인 세미 콜론을 구분하는 것이 그리 쉽지 않기 때문에, empty statement를 사용할 때는 의도적으로 주석을 달아주는것이 좋습니다. 다음 예 에서는 의도한대로 코드가 동작하지 않을것입니다. 아마도 killTheUniverse()를 if문 안에서 실행하고자 했던것 같습니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="cLKr4f+QcdFXRgNWyfPo4NFvOUs+HII8OUSvqUms7IU=" data-language="js"><span class="token keyword">if</span> <span class="token punctuation">(</span>condition<span class="token punctuation">)</span><span class="token punctuation">;</span>       <span class="token comment">// Caution, this "if" does nothing!</span>
+   <span class="token function">killTheUniverse</span><span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token comment">// So this always gets executed!!!</span>
+</pre>
+</div> <p>다른 예 : 중괄호 ({})가없는 <a href="if...else"><code>if...else</code></a> 문에서 <code>three</code>가 <code>true</code>이면 아무 일도 일어나지 않고 <code>four</code>를 건너 뛰고 else case의 launchRocket() 함수도 실행되지 않습니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="QNhsT7O+nLjiv4hNwMPOwhdSJcX/LjoGIPDW/4L3xtc=" data-language="js"><span class="token keyword">if</span> <span class="token punctuation">(</span>one<span class="token punctuation">)</span>
+  <span class="token function">doOne</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>two<span class="token punctuation">)</span>
+  <span class="token function">doTwo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>three<span class="token punctuation">)</span>
+  <span class="token punctuation">;</span> <span class="token comment">// nothing here</span>
+<span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>four<span class="token punctuation">)</span>
+  <span class="token function">doFour</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">else</span>
+  <span class="token function">launchRocket</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div>
+</div></section><h2 id="명세서">명세서</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://tc39.es/ecma262/multipage/ecmascript-language-statements-and-declarations.html#sec-empty-statement">ECMAScript Language Specification <br><small># sec-empty-statement</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="see_also"><h2 id="see_also">See also</h2>
+<div class="section-content"><ul> <li><a href="block"><code>Block statement</code></a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Statements/Empty" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Statements/Empty</a>
+  </p>
+</div>

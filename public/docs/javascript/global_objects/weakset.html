@@ -1,0 +1,40 @@
+<header><h1>WeakSet</h1></header><div class="section-content"><p><code>WeakSet</code> 객체는 약하게 유지되는(held, 잡아두는) <em>객체</em>를 컬렉션에 저장할 수 있습니다.</p></div>
+<section aria-labelledby="설명"><h2 id="설명">설명</h2>
+<div class="section-content">
+<p><code>WeakSet</code> 객체는 객체 컬렉션입니다. <code>WeakSet</code> 내 객체는 오직 한 번만 발생할 수 있습니다. 즉, <code>WeakSet</code> 컬렉션 내에서 유일합니다.</p> <p><a href="set"><code>Set</code></a> 객체와 주된 차이는 다음과 같습니다:</p> <ul> <li>
+<code>Set</code>과 달리, <code>WeakSet</code>은 <strong>객체 만의 컬렉션</strong>이며 모든 유형의 임의 값(의 컬렉션)은 아닙니다.</li> <li>
+<code>WeakSet</code>은 약합니다(<em>weak</em>): 컬렉션 내 객체 참조는 약하게 유지됩니다. <code>WeakSet</code> 내 저장된 객체에 다른 참조가 없는 경우, 쓰레기 수집(garbage collection)될 수 있습니다. 이는 또한 컬렉션 내 현재 저장된 객체 목록이 없음을 뜻합니다. <code>WeakSets</code>은 열거불가입니다.</li> </ul>
+</div></section><section aria-labelledby="생성자"><h2 id="생성자">생성자</h2>
+<div class="section-content"><dl> <dt id="weakset_en-us"><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakSet/WeakSet"><code>WeakSet()</code> <small>(en-US)</small></a></dt> <dd> <p>Creates a new <code>WeakSet</code> object.</p> </dd> </dl></div></section><section aria-labelledby="인스턴스_메서드"><h2 id="인스턴스_메서드">인스턴스 메서드</h2>
+<div class="section-content"><dl> <dt id="weakset.prototype.addvalue_en-us"><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakSet/add"><code>WeakSet.prototype.add(<var>value</var>)</code> <small>(en-US)</small></a></dt> <dd> <p>Appends <code>value</code> to the <code>WeakSet</code> object.</p> </dd> <dt id="weakset.prototype.deletevalue_en-us"><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakSet/delete"><code>WeakSet.prototype.delete(<var>value</var>)</code> <small>(en-US)</small></a></dt> <dd> <p>Removes <code>value</code> from the <code>WeakSet</code>. <code>WeakSet.prototype.has(value)</code> will return <code>false</code> afterwards.</p> </dd> <dt id="weakset.prototype.hasvalue_en-us"><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakSet/has"><code>WeakSet.prototype.has(<var>value</var>)</code> <small>(en-US)</small></a></dt> <dd> <p>Returns a boolean asserting whether <code>value</code> is present in the <code>WeakSet</code> object or not.</p> </dd> </dl></div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+</section><section aria-labelledby="weakset_객체_사용"><h3 id="weakset_객체_사용">
+<code>WeakSet</code> 객체 사용</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="Wo2QCfHoNO8lzG3sJHHmJSpvobw5dEx+cUq8NhUNjs0=" data-language="js"><span class="token keyword">var</span> ws <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">WeakSet</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> obj <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> foo <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+ws<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>window<span class="token punctuation">)</span><span class="token punctuation">;</span>
+ws<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+ws<span class="token punctuation">.</span><span class="token function">has</span><span class="token punctuation">(</span>window<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// true</span>
+ws<span class="token punctuation">.</span><span class="token function">has</span><span class="token punctuation">(</span>foo<span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token comment">// false, foo가 집합에 추가되지 않았음</span>
+
+ws<span class="token punctuation">.</span><span class="token function">delete</span><span class="token punctuation">(</span>window<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 집합에서 window 제거함</span>
+ws<span class="token punctuation">.</span><span class="token function">has</span><span class="token punctuation">(</span>window<span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token comment">// false, window가 제거되었음</span>
+</pre>
+</div></div></section><h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://tc39.es/ecma262/multipage/keyed-collections.html#sec-weakset-objects">ECMAScript Language Specification <br><small># sec-weakset-objects</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="https://github.com/zloirock/core-js#weakset" target="_blank">Polyfill of <code>WeakSet</code> in <code>core-js</code></a></li> <li><a href="map"><code>Map</code></a></li> <li><a href="set"><code>Set</code></a></li> <li><a href="weakmap"><code>WeakMap</code></a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/WeakSet" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/WeakSet</a>
+  </p>
+</div>

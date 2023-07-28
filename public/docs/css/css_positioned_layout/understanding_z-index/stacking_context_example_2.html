@@ -1,0 +1,109 @@
+<header><h1>쌓임 맥락 예제2</h1></header><div class="section-content"><p>« <a href="https://developer.mozilla.org/ko/docs/Web/CSS">CSS</a> « <a href="../understanding_z-index">CSS z-index 이해하기</a></p></div>
+<section aria-labelledby="쌓임_맥락_예제2"><h3 id="쌓임_맥락_예제2">쌓임 맥락 예제2</h3>
+<div class="section-content">
+<p>굉장히 간단하지만 <em>쌓임 맥락</em>을 이해하는데 도움이 되는 예제를 하나 소개하려 한다. 이전 예제에서 본 4개의 DIV가 있다. 이번에는 두 레벨의 DIV 모두 z-index 속성 값을 지정했다.</p> <p>z-index 속성 값이 2인 DIV #2는 z-index 속성 값이 1인 DIV #3 위에 있다. 왜냐하면 DIV #2와 DIV #3은 같은 쌓임 맥락(루트 엘리먼트)에 속하고 DIV #2의 z-index 값이 더 크기 때문이다.</p> <p>이상한 점은 z-index 속성 값이 2인 DIV #2가 z-index 속성 값이 10인 DIV #4보다 위에 있다는 점이다. 이것은 이 두 DIV가 같은 쌓임 맥락에 속해있지 않기 때문이다. DIV #4는 DIV #3이 만든 쌓임 맥락에 속해있고 DIV #3과 DIV #3의 모든 자식 엘리먼트는 DIV #2보다 아래에 있다.</p> <p>이 상황을 더 잘 이해하기 위해서 쌓임 맥락 계층을 그려보자.</p> <ul> <li>루트 엘리먼트 쌓임 맥락 <ul> <li>DIV #2 (z-index 2)</li> <li>DIV #3 (z-index 1) <ul> <li>DIV #4 (z-index 10)</li> </ul> </li> </ul> </li> </ul> <div class="notecard note" id="sect1"> <p><strong>참고:</strong> 일반적인 HTML 계층 구조가 쌓임 맥락 계층 구조와 다르다는걸 상기하자. 쌓임 맥락을 만들지 않는 엘리먼트들은 쌓임 맥락 계층 구조에서 사라진다.</p> </div>
+</div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+</section><section aria-labelledby="html"><h3 id="html">HTML</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="/J1tOMuyim3A8tFjRc1cpZO4XZkf+LqE/IekpLytkPg=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>div1<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>br</span> <span class="token punctuation">/&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>bold<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>DIV #1<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>br</span> <span class="token punctuation">/&gt;</span></span>
+  position: relative;
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>div2<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>br</span> <span class="token punctuation">/&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>bold<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>DIV #2<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>br</span> <span class="token punctuation">/&gt;</span></span>
+    position: absolute;<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>br</span> <span class="token punctuation">/&gt;</span></span>
+    z-index: 2;
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>br</span> <span class="token punctuation">/&gt;</span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>div3<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>br</span> <span class="token punctuation">/&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>bold<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>DIV #3<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>br</span> <span class="token punctuation">/&gt;</span></span>
+  position: relative;<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>br</span> <span class="token punctuation">/&gt;</span></span>
+  z-index: 1;
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>div4<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>br</span> <span class="token punctuation">/&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>bold<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>DIV #4<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>br</span> <span class="token punctuation">/&gt;</span></span>
+    position: absolute;<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>br</span> <span class="token punctuation">/&gt;</span></span>
+    z-index: 10;
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div></div></section><section aria-labelledby="css"><h3 id="css">CSS</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="fT4ukCHitmMaIHJq+5GxIuhl1SVODHVvhjOMXnO21TI=" data-language="css"><span class="token selector">div</span> <span class="token punctuation">{</span>
+  <span class="token property">font</span><span class="token punctuation">:</span> 12px Arial<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">span.bold</span> <span class="token punctuation">{</span>
+  <span class="token property">font-weight</span><span class="token punctuation">:</span> bold<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">#div2</span> <span class="token punctuation">{</span>
+  <span class="token property">z-index</span><span class="token punctuation">:</span> 2<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token selector">#div3</span> <span class="token punctuation">{</span>
+  <span class="token property">z-index</span><span class="token punctuation">:</span> 1<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token selector">#div4</span> <span class="token punctuation">{</span>
+  <span class="token property">z-index</span><span class="token punctuation">:</span> 10<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">#div1,
+#div3</span> <span class="token punctuation">{</span>
+  <span class="token property">height</span><span class="token punctuation">:</span> 80px<span class="token punctuation">;</span>
+  <span class="token property">position</span><span class="token punctuation">:</span> relative<span class="token punctuation">;</span>
+  <span class="token property">border</span><span class="token punctuation">:</span> 1px dashed #669966<span class="token punctuation">;</span>
+  <span class="token property">background-color</span><span class="token punctuation">:</span> #ccffcc<span class="token punctuation">;</span>
+  <span class="token property">padding-left</span><span class="token punctuation">:</span> 5px<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">#div2</span> <span class="token punctuation">{</span>
+  <span class="token property">opacity</span><span class="token punctuation">:</span> 0.8<span class="token punctuation">;</span>
+  <span class="token property">position</span><span class="token punctuation">:</span> absolute<span class="token punctuation">;</span>
+  <span class="token property">width</span><span class="token punctuation">:</span> 150px<span class="token punctuation">;</span>
+  <span class="token property">height</span><span class="token punctuation">:</span> 200px<span class="token punctuation">;</span>
+  <span class="token property">top</span><span class="token punctuation">:</span> 20px<span class="token punctuation">;</span>
+  <span class="token property">left</span><span class="token punctuation">:</span> 170px<span class="token punctuation">;</span>
+  <span class="token property">border</span><span class="token punctuation">:</span> 1px dashed #990000<span class="token punctuation">;</span>
+  <span class="token property">background-color</span><span class="token punctuation">:</span> #ffdddd<span class="token punctuation">;</span>
+  <span class="token property">text-align</span><span class="token punctuation">:</span> center<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">#div4</span> <span class="token punctuation">{</span>
+  <span class="token property">opacity</span><span class="token punctuation">:</span> 0.8<span class="token punctuation">;</span>
+  <span class="token property">position</span><span class="token punctuation">:</span> absolute<span class="token punctuation">;</span>
+  <span class="token property">width</span><span class="token punctuation">:</span> 200px<span class="token punctuation">;</span>
+  <span class="token property">height</span><span class="token punctuation">:</span> 70px<span class="token punctuation">;</span>
+  <span class="token property">top</span><span class="token punctuation">:</span> 65px<span class="token punctuation">;</span>
+  <span class="token property">left</span><span class="token punctuation">:</span> 50px<span class="token punctuation">;</span>
+  <span class="token property">border</span><span class="token punctuation">:</span> 1px dashed #000099<span class="token punctuation">;</span>
+  <span class="token property">background-color</span><span class="token punctuation">:</span> #ddddff<span class="token punctuation">;</span>
+  <span class="token property">text-align</span><span class="token punctuation">:</span> left<span class="token punctuation">;</span>
+  <span class="token property">padding-left</span><span class="token punctuation">:</span> 10px<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div></div></section><section aria-labelledby="결과"><h2 id="결과">결과</h2>
+<div class="section-content"><div class="code-example" id="sect2">
+
+<iframe class="sample-code-frame" title="예제 sample" id="frame_예제" width="352" height="270" src="https://live.mdnplay.dev/ko/docs/Web/CSS/CSS_positioned_layout/Understanding_z-index/Stacking_context_example_2/runner.html?id=%EC%98%88%EC%A0%9C" loading="lazy"></iframe>
+</div></div></section><section aria-labelledby="see_also"><h3 id="see_also">See also</h3>
+<div class="section-content"><ul> <li>
+<a href="https://developer.mozilla.org/en-US/CSS/Understanding_z-index/Stacking_without_z-index">Stacking without z-index</a> : Default stacking rules</li> <li>
+<a href="https://developer.mozilla.org/en-US/CSS/Understanding_z-index/Stacking_and_float">Stacking and float</a> : How floating elements are handled</li> <li>
+<a href="https://developer.mozilla.org/en-US/CSS/Understanding_z-index/Adding_z-index">Adding z-index</a> : Using z-index to change default stacking</li> <li>
+<a href="https://developer.mozilla.org/en-US/CSS/Understanding_z-index/The_stacking_context">The stacking context</a> : Notes on the stacking context</li> <li>
+<a href="https://developer.mozilla.org/en-US/CSS/Understanding_z-index/Stacking_context_example_1">Stacking context example 1</a> : 2-level HTML hierarchy, z-index on the last level</li> <li>
+<a href="https://developer.mozilla.org/en-US/CSS/Understanding_z-index/Stacking_context_example_3">Stacking context example 3</a> : 3-level HTML hierarchy, z-index on the second level</li> </ul></div></section><section aria-labelledby="original_document_information"><h3 id="original_document_information">Original Document Information</h3>
+<div class="section-content"><ul> <li>Author(s): Paolo Lombardi</li> <li>This article is the english translation of an article I wrote in italian for <a href="http://www.yappy.it" target="_blank">YappY</a>. I grant the right to share all the content under <a href="https://creativecommons.org/licenses/by-sa/2.0/" target="_blank">Creative Commons: Attribution-Sharealike license</a>
+</li> <li>Last Updated Date: July 9th, 2005</li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/CSS/CSS_positioned_layout/Understanding_z-index/Stacking_context_example_2" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/CSS/CSS_positioned_layout/Understanding_z-index/Stacking_context_example_2</a>
+  </p>
+</div>

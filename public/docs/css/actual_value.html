@@ -1,0 +1,16 @@
+<header><h1>실제값</h1></header><div class="section-content"><p><a href="https://developer.mozilla.org/ko/docs/Web/CSS">CSS</a> 속성의 <strong>실제값</strong>은 모든 근사치(approximation)가 적용된 뒤의 <a href="used_value">사용값</a>입니다. 예를 들어, 사용자 에이전트는 오직 정수 픽셀값으로 테두리(border)를 렌더링할 수도 있고 테두리의 계산된 폭(width)에 근접하도록 강제할 지도 모릅니다.</p></div>
+<section aria-labelledby="calculating_a_propertys_actual_value"><h2 id="calculating_a_propertys_actual_value">Calculating a property's actual value</h2>
+<div class="section-content">
+<p>The <a href="https://developer.mozilla.org/ko/docs/Glossary/User_agent">user agent</a> performs four steps to calculate a property's actual (final) value:</p> <ol> <li>First, the <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/specified_value" class="only-in-en-us">specified value <small>(en-US)</small></a> is determined based on the result of <a href="cascade">cascading</a>, <a href="inheritance">inheritance</a>, or using the <a href="initial_value">initial value</a>.</li> <li>Next, the <a href="computed_value">computed value</a> is calculated according to the specification (for example, a <code>span</code> with <code>position: absolute</code> will have its computed <code>display</code> changed to <code>block</code>).</li> <li>Then, layout is calculated, resulting in the <a href="used_value">used value</a>.</li> <li>Finally, the used value is transformed according to the limitations of the local environment, resulting in the actual value.</li> </ol>
+</div></section><h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://www.w3.org/TR/CSS22/cascade.html#actual-value">Cascading Style Sheets Level 2 Revision 2 (CSS 2.2) Specification <br><small># actual-value</small></a></td></tr></tbody>
+</table></div>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li>CSS 주요 개념 <ul> <li><a href="syntax">CSS 문법</a></li> <li><a href="at-rule">@규칙</a></li> <li><a href="comments">주석</a></li> <li><a href="specificity">명시도</a></li> <li><a href="inheritance">상속</a></li> <li><a href="css_box_model/introduction_to_the_css_box_model">박스 모델</a></li> <li><a href="layout_mode">레이아웃 모드</a></li> <li><a href="visual_formatting_model">시각적 서식 모델</a></li> <li><a href="css_box_model/mastering_margin_collapsing">마진 중첩</a></li> <li>값 <ul> <li><a href="initial_value">초깃값</a></li> <li><a href="computed_value">계산값</a></li> <li><a href="resolved_value">결정값</a></li> <li><a href="specified_value">지정값</a></li> <li><a href="used_value">사용값</a></li> <li><a href="actual_value" aria-current="page">실제값</a></li> </ul> </li> <li><a href="value_definition_syntax">값 정의 구문</a></li> <li><a href="shorthand_properties">단축 속성</a></li> <li><a href="replaced_element">대체 요소</a></li> </ul> </li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/CSS/actual_value" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/CSS/actual_value</a>
+  </p>
+</div>

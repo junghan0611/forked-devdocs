@@ -1,0 +1,99 @@
+<header><h1>Object.isFrozen()</h1></header><div class="section-content"><p>**<code>Object.isFrozen()</code>**은 객체가 <a href="freeze">동결</a>됐는지 판별합니다.</p></div>
+<section aria-labelledby="시도해보기"><h2 id="시도해보기">시도해보기</h2>
+<div class="section-content"><iframe class="interactive is-js-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/js/object-isfrozen.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe></div></section><section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="03ypYyMuAjCpNig+6FkLkq3gsV8ouoZO3B87wLu3S1E=" data-language="js">Object<span class="token punctuation">.</span><span class="token function">isFrozen</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span>
+</pre>
+</div></div></section><section aria-labelledby="매개변수"><h3 id="매개변수">매개변수</h3>
+<div class="section-content"><dl> <dt id="obj"><code>obj</code></dt> <dd> <p>판별할 객체.</p> </dd> </dl></div></section><section aria-labelledby="반환_값"><h3 id="반환_값">반환 값</h3>
+<div class="section-content"><p>객체의 동결 여부를 나타내는 <a href="../boolean"><code>Boolean</code></a>.</p></div></section><section aria-labelledby="설명"><h2 id="설명">설명</h2>
+<div class="section-content"><p>객체는 <a href="isextensible">확장 불가</a>이며 모든 속성이 설정 불가 및 모든 데이터 속성(즉, getter 또는 setter 요소가 있는 접근자 속성이 아닌 속성)이 쓰기 불가인 경우에만 동결됩니다.</p></div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="xChg9zxPyYCBfeDtrkIw1cxLkuAeuP1SFpsLMterceI=" data-language="js"><span class="token comment">// 새로운 객체는 확장 가능해서 동결되지 않습니다.</span>
+Object<span class="token punctuation">.</span><span class="token function">isFrozen</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// === false</span>
+
+<span class="token comment">// 확장 불가인 빈 객체는 빈 채로 동결됩니다.</span>
+<span class="token keyword">var</span> vacuouslyFrozen <span class="token operator">=</span> Object<span class="token punctuation">.</span><span class="token function">preventExtensions</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+Object<span class="token punctuation">.</span><span class="token function">isFrozen</span><span class="token punctuation">(</span>vacuouslyFrozen<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// === true</span>
+
+<span class="token comment">// 속성이 하나 있는 새 객체도 확장 가능하므로 동결되지 않습니다.</span>
+<span class="token keyword">var</span> oneProp <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token literal-property property">p</span><span class="token operator">:</span> <span class="token number">42</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
+Object<span class="token punctuation">.</span><span class="token function">isFrozen</span><span class="token punctuation">(</span>oneProp<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// === false</span>
+
+<span class="token comment">// 객체 확장을 막아도 여전히 동결되지 않습니다,</span>
+<span class="token comment">// 속성이 여전히 설정 가능(및 쓰기 가능)하기에.</span>
+Object<span class="token punctuation">.</span><span class="token function">preventExtensions</span><span class="token punctuation">(</span>oneProp<span class="token punctuation">)</span><span class="token punctuation">;</span>
+Object<span class="token punctuation">.</span><span class="token function">isFrozen</span><span class="token punctuation">(</span>oneProp<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// === false</span>
+
+<span class="token comment">// ...그렇지만 그 속성 삭제는 객체를 빈 채로 동결되게 합니다.</span>
+<span class="token keyword">delete</span> oneProp<span class="token punctuation">.</span>p<span class="token punctuation">;</span>
+Object<span class="token punctuation">.</span><span class="token function">isFrozen</span><span class="token punctuation">(</span>oneProp<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// === true</span>
+
+<span class="token comment">// 쓰기 불가지만 여전히 설정 가능한 속성이 있는 확장 불가 객체는 동결되지 않습니다.</span>
+<span class="token keyword">var</span> nonWritable <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token literal-property property">e</span><span class="token operator">:</span> <span class="token string">'plep'</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
+Object<span class="token punctuation">.</span><span class="token function">preventExtensions</span><span class="token punctuation">(</span>nonWritable<span class="token punctuation">)</span><span class="token punctuation">;</span>
+Object<span class="token punctuation">.</span><span class="token function">defineProperty</span><span class="token punctuation">(</span>nonWritable<span class="token punctuation">,</span> <span class="token string">'e'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> <span class="token literal-property property">writable</span><span class="token operator">:</span> <span class="token boolean">false</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 쓰기 불가로 함</span>
+Object<span class="token punctuation">.</span><span class="token function">isFrozen</span><span class="token punctuation">(</span>nonWritable<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// === false</span>
+
+<span class="token comment">// 그 속성을 설정 불가로 바꾸면 객체를 동결되게 합니다.</span>
+Object<span class="token punctuation">.</span><span class="token function">defineProperty</span><span class="token punctuation">(</span>nonWritable<span class="token punctuation">,</span> <span class="token string">'e'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> <span class="token literal-property property">configurable</span><span class="token operator">:</span> <span class="token boolean">false</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 설정 불가로 함</span>
+Object<span class="token punctuation">.</span><span class="token function">isFrozen</span><span class="token punctuation">(</span>nonWritable<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// === true</span>
+
+<span class="token comment">// 설정 불가지만 여전히 쓰기 가능 속성이 있는 확장 불가 객체도 동결되지 않습니다.</span>
+<span class="token keyword">var</span> nonConfigurable <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token literal-property property">release</span><span class="token operator">:</span> <span class="token string">'the kraken!'</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
+Object<span class="token punctuation">.</span><span class="token function">preventExtensions</span><span class="token punctuation">(</span>nonConfigurable<span class="token punctuation">)</span><span class="token punctuation">;</span>
+Object<span class="token punctuation">.</span><span class="token function">defineProperty</span><span class="token punctuation">(</span>nonConfigurable<span class="token punctuation">,</span> <span class="token string">'release'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> <span class="token literal-property property">configurable</span><span class="token operator">:</span> <span class="token boolean">false</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+Object<span class="token punctuation">.</span><span class="token function">isFrozen</span><span class="token punctuation">(</span>nonConfigurable<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// === false</span>
+
+<span class="token comment">// 그 속성을 쓰기 불가로 바꾸면 객체를 동결되게 합니다.</span>
+Object<span class="token punctuation">.</span><span class="token function">defineProperty</span><span class="token punctuation">(</span>nonConfigurable<span class="token punctuation">,</span> <span class="token string">'release'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> <span class="token literal-property property">writable</span><span class="token operator">:</span> <span class="token boolean">false</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+Object<span class="token punctuation">.</span><span class="token function">isFrozen</span><span class="token punctuation">(</span>nonConfigurable<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// === true</span>
+
+<span class="token comment">// 설정 가능 접근자 속성이 있는 확장 불가 객체는 동결되지 않습니다.</span>
+<span class="token keyword">var</span> accessor <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token keyword">get</span> <span class="token function">food</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> <span class="token string">'yum'</span><span class="token punctuation">;</span> <span class="token punctuation">}</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
+Object<span class="token punctuation">.</span><span class="token function">preventExtensions</span><span class="token punctuation">(</span>accessor<span class="token punctuation">)</span><span class="token punctuation">;</span>
+Object<span class="token punctuation">.</span><span class="token function">isFrozen</span><span class="token punctuation">(</span>accessor<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// === false</span>
+
+<span class="token comment">// ...하지만 그 속성을 설정 불가로 하면 동결됩니다.</span>
+Object<span class="token punctuation">.</span><span class="token function">defineProperty</span><span class="token punctuation">(</span>accessor<span class="token punctuation">,</span> <span class="token string">'food'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> <span class="token literal-property property">configurable</span><span class="token operator">:</span> <span class="token boolean">false</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+Object<span class="token punctuation">.</span><span class="token function">isFrozen</span><span class="token punctuation">(</span>accessor<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// === true</span>
+
+<span class="token comment">// 하지만 동결되는 객체를 위한 가장 쉬운 방법은 객체에 Object.freeze가 호출된 경우입니다.</span>
+<span class="token keyword">var</span> frozen <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token number">1</span><span class="token operator">:</span> <span class="token number">81</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
+Object<span class="token punctuation">.</span><span class="token function">isFrozen</span><span class="token punctuation">(</span>frozen<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// === false</span>
+Object<span class="token punctuation">.</span><span class="token function">freeze</span><span class="token punctuation">(</span>frozen<span class="token punctuation">)</span><span class="token punctuation">;</span>
+Object<span class="token punctuation">.</span><span class="token function">isFrozen</span><span class="token punctuation">(</span>frozen<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// === true</span>
+
+<span class="token comment">// 정의에 의해, 동결된 객체는 확장 불가입니다.</span>
+Object<span class="token punctuation">.</span><span class="token function">isExtensible</span><span class="token punctuation">(</span>frozen<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// === false</span>
+
+<span class="token comment">// 또한 정의에 의해, 동결된 객체는 봉인됩니다.</span>
+Object<span class="token punctuation">.</span><span class="token function">isSealed</span><span class="token punctuation">(</span>frozen<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// === true</span>
+</pre>
+</div></div></section><section aria-labelledby="주의"><h2 id="주의">주의</h2>
+<div class="section-content">
+<p>ES5에서, 이 메서드의 인수가 비객체(원시형)인 경우, 그러면 <a href="../typeerror"><code>TypeError</code></a>가 발생합니다. ES6에서, 비객체 인수는 마치 동결된 보통 객체였던 것처럼 취급됩니다, 그저 <code>true</code>를 반환하는.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="W5qQA5EbjlaK2dBklmLoNg9/KPnkgU7S2HwYdhDK/Uk=" data-language="js">Object<span class="token punctuation">.</span><span class="token function">isFrozen</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// TypeError: 1은 객체가 아닙니다 (ES5 코드)</span>
+
+Object<span class="token punctuation">.</span><span class="token function">isFrozen</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// true                          (ES6 코드)</span>
+</pre>
+</div>
+</div></section><h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://tc39.es/ecma262/multipage/fundamental-objects.html#sec-object.isfrozen">ECMAScript Language Specification <br><small># sec-object.isfrozen</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="freeze"><code>Object.freeze()</code></a></li> <li><a href="preventextensions"><code>Object.preventExtensions()</code></a></li> <li><a href="isextensible"><code>Object.isExtensible()</code></a></li> <li><a href="seal"><code>Object.seal()</code></a></li> <li><a href="issealed"><code>Object.isSealed()</code></a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Object/isFrozen" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Object/isFrozen</a>
+  </p>
+</div>

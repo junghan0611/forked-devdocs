@@ -1,0 +1,66 @@
+<header><h1>Promise.allSettled()</h1></header><div class="section-content">
+<p><code>Promise.allSettled()</code> 메서드는 주어진 모든 프로미스를 이행하거나 거부한 후, 각 프로미스에 대한 결과를 나타내는 객체 배열을 반환합니다.</p> <p>일반적으로 서로의 성공 여부에 관련 없는 여러 비동기 작업을 수행해야 하거나, 항상 각 프로미스의 실행 결과를 알고 싶을 때 사용합니다.</p> <p>그에 비해, <a href="all"><code>Promise.all()</code></a>이 반환한 프로미스는 서로 연관된 작업을 수행하거나, 하나라도 거부 당했을 때 즉시 거부하고 싶을 때 적합합니다.</p>
+</div>
+<section aria-labelledby="시도해보기"><h2 id="시도해보기">시도해보기</h2>
+<div class="section-content"><iframe class="interactive is-js-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/js/promise-allsettled.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe></div></section><section aria-labelledby="문법"><h2 id="문법">문법</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="UbXoZ1Gg0RYNEWuyGBRZWvg77AYVzlfrPddx8wcpwi8=" data-language="js">Promise<span class="token punctuation">.</span><span class="token function">allSettled</span><span class="token punctuation">(</span>iterable<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div></div></section><section aria-labelledby="인자"><h3 id="인자">인자</h3>
+<div class="section-content"><dl> <dt id="iterable"><code>iterable</code></dt> <dd> <p>멤버가 모두 <code>Promise</code>인, 배열(<a href="../array"><code>Array</code></a>)과 같은 <a href="../../iteration_protocols">이터러블</a> 객체입니다.</p> </dd> </dl></div></section><section aria-labelledby="반환_값"><h3 id="반환_값">반환 값</h3>
+<div class="section-content">
+<p>지정된 Promise 컬렉션의 모든 Promise가 성공적으로 이행되거나 거부되어 완료되면, <strong>보류 중</strong>인 Promise는 <strong>비동기적</strong>으로 이행됩니다. 그 때, 반환된 Promise의 핸들러는 원래 프로미스 집합에 있는 각 프로미스의 결과를 포함하는 배열을 입력으로 전달합니다.</p> <p>단, <code>Promise.allSettled()</code>는 빈 이터러블 객체를 인자로 전달받았을 <strong>경우에만</strong> 빈 배열로써 <strong>이미 이행된</strong> 객체를 반환합니다.</p> <p>반환된 각 객체별로 <code>status</code>를 확인할 수 있습니다. 만약 <code>fulfilled</code> 상태라면 <code>value</code>를, <code>rejected</code> 상태라면면 <code>reason</code> 속성을 확인할 수 있습니다. value나 reason을 통해 각 Promise가 어떻게 이행(또는 거부)됐는지 알 수 있습니다.</p>
+</div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+</section><section aria-labelledby="promise.allsettled의_사용"><h3 id="promise.allsettled의_사용">Promise.allSettled의 사용</h3>
+<div class="section-content">
+<h4 id="promise.prototype.then"><a href="then"><code>Promise.prototype.then()</code></a></h4> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="xtCmIcUNpkfrHagFSi2/qmVj1k9RtUnw8y3c+g2AhgY=" data-language="js">Promise<span class="token punctuation">.</span><span class="token function">allSettled</span><span class="token punctuation">(</span><span class="token punctuation">[</span>
+  Promise<span class="token punctuation">.</span><span class="token function">resolve</span><span class="token punctuation">(</span><span class="token number">33</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  <span class="token keyword">new</span> <span class="token class-name">Promise</span><span class="token punctuation">(</span><span class="token parameter">resolve</span> <span class="token operator">=&gt;</span> <span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token function">resolve</span><span class="token punctuation">(</span><span class="token number">66</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  <span class="token number">99</span><span class="token punctuation">,</span>
+  Promise<span class="token punctuation">.</span><span class="token function">reject</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Error</span><span class="token punctuation">(</span><span class="token string">'an error'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token parameter">values</span> <span class="token operator">=&gt;</span> console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>values<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// [</span>
+<span class="token comment">//   {status: "fulfilled", value: 33},</span>
+<span class="token comment">//   {status: "fulfilled", value: 66},</span>
+<span class="token comment">//   {status: "fulfilled", value: 99},</span>
+<span class="token comment">//   {status: "rejected",  reason: Error: an error}</span>
+<span class="token comment">// ]</span>
+</pre>
+</div> <h4 id="await"><a href="../../operators/await"><code>await</code></a></h4> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="PS6IicnkbNyGWq8qulNTIK+TI9bp9PPSAbPkqusMsGg=" data-language="js"><span class="token keyword">const</span> values <span class="token operator">=</span> <span class="token keyword">await</span> Promise<span class="token punctuation">.</span><span class="token function">allSettled</span><span class="token punctuation">(</span><span class="token punctuation">[</span>
+  Promise<span class="token punctuation">.</span><span class="token function">resolve</span><span class="token punctuation">(</span><span class="token number">33</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  <span class="token keyword">new</span> <span class="token class-name">Promise</span><span class="token punctuation">(</span><span class="token parameter">resolve</span> <span class="token operator">=&gt;</span> <span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token function">resolve</span><span class="token punctuation">(</span><span class="token number">66</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  <span class="token number">99</span><span class="token punctuation">,</span>
+  Promise<span class="token punctuation">.</span><span class="token function">reject</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Error</span><span class="token punctuation">(</span><span class="token string">'an error'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token punctuation">]</span><span class="token punctuation">)</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>values<span class="token punctuation">)</span>
+
+<span class="token comment">// [</span>
+<span class="token comment">//   {status: "fulfilled", value: 33},</span>
+<span class="token comment">//   {status: "fulfilled", value: 66},</span>
+<span class="token comment">//   {status: "fulfilled", value: 99},</span>
+<span class="token comment">//   {status: "rejected",  reason: Error: an error}</span>
+<span class="token comment">// ]</span>
+</pre>
+</div>
+</div></section><h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://tc39.es/ecma262/multipage/control-abstraction-objects.html#sec-promise.allsettled">ECMAScript Language Specification <br><small># sec-promise.allsettled</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li>
+<a href="https://github.com/zloirock/core-js#ecmascript-promise" target="_blank">core-js</a>에서 사용가능한 <code>Promise.allSettled</code>의 폴리필</li> <li><a href="https://developer.mozilla.org/ko/docs/Archive/Add-ons/Techniques/Promises" class="page-not-created">Promises</a></li> <li><a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Guide/Using_promises">Using promises</a></li> <li><a href="https://developer.mozilla.org/ko/docs/Learn/JavaScript/Asynchronous/Promises">Graceful asynchronous programming with promises</a></li> <li><a href="../promise"><code>Promise</code></a></li> <li><a href="all"><code>Promise.all()</code></a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Promise/allSettled" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Promise/allSettled</a>
+  </p>
+</div>

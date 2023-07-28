@@ -1,0 +1,36 @@
+<header><h1>AudioWorkletProcessor.parameterDescriptors (static getter)</h1></header><div class="section-content">
+<div class="notecard experimental" id="sect1"><p><strong>Experimental:</strong> <strong>This is an <a href="https://developer.mozilla.org/en-US/docs/MDN/Writing_guidelines/Experimental_deprecated_obsolete#experimental">experimental technology</a></strong><br>Check the <a href="#browser_compatibility">Browser compatibility table</a> carefully before using this in production.</p></div> <p><a href="../audioworkletprocessor"><code>AudioWorkletProcessor</code></a>로부터 파생된 클래스의 <code>parameterDescriptors</code> 읽기 전용 속성은 <em>static getter</em> 인데, 이는 <a href="../audioparamdescriptor"><code>AudioParamDescriptor</code></a> 기반 객체의 iterable을 반환합니다.</p> <p>이 속성은 <a href="../audioworkletprocessor"><code>AudioWorkletProcessor</code></a> 인터페이스의 일부가 아니지만, 만약 정의된다면, 이것은 <a href="../audioworkletprocessor"><code>AudioWorkletProcessor</code></a> 생성자에 의해 연관된 <a href="../audioworkletnode"><code>AudioWorkletNode</code></a>의 <a href="../audioworkletnode/parameters"><code>parameters</code></a> 속성에서 사용자 정의 <a href="../audioparam"><code>AudioParam</code></a> 객체들의 리스트를 생성하기 위해 내부적으로 호출됩니다.</p> <p>getter를 정의하는 것은 선택 사항입니다.</p>
+</div>
+<h2 id="구문">구문</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="x5eZAimDli7PgOWxVtA89+Q0o1zdy/1D99vhuBvx8nY=" data-language="js">AudioWorkletProcessorSubclass<span class="token punctuation">.</span>parameterDescriptors<span class="token punctuation">;</span>
+</pre>
+</div></div>
+<h3 id="value">Value</h3>
+<div class="section-content">
+<p><a href="../audioparamdescriptor"><code>AudioParamDescriptor</code></a> 기반 객체들의 iterable. 이 객체들의 속성은 다음과 같습니다.</p> <dl> <dt id="name"><code>name</code></dt> <dd> <p><code>AudioParam</code> 의 이름을 나타내는 <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/String"><code>DOMString</code></a>. 이 이름 아래에서 <code>AudioParam</code> 은 이 노드의 <a href="../audioworkletnode/parameters"><code>parameters</code></a> 속성에서 사용 가능하고, 이 이름 아래에서 <a href="process"><code>AudioWorkletProcessor.process</code></a> 메서드는 이 <code>AudioParam</code> 의 계산된 값을 획득할 것입니다.</p> </dd> <dt id="automationrate">
+<code>automationRate</code> <span class="badge inline optional">Optional</span>
+</dt> <dd> <p>이 <code>AudioParam</code> 의 자동화 비율을 나타내는 <a href="../audioparam#a-rate"><code>"a-rate"</code></a>, 또는 <a href="../audioparam#k-rate"><code>"k-rate"</code></a> 문자열. 기본값은 <code>"a-rate"</code> 입니다.</p> </dd> <dt id="minvalue">
+<code>minValue</code> <span class="badge inline optional">Optional</span>
+</dt> <dd> <p><code>AudioParam</code> 의 최소 값을 나타내는 <code>float</code>. 기본 값은 <code>-3.4028235e38</code> 입니다.</p> </dd> <dt id="maxvalue">
+<code>maxValue</code> <span class="badge inline optional">Optional</span>
+</dt> <dd> <p><code>AudioParam</code> 의 최대 값을 나타내는 <code>float</code>. 기본 값은 <code>3.4028235e38</code> 입니다.</p> </dd> <dt id="defaultvalue">
+<code>defaultValue</code> <span class="badge inline optional">Optional</span>
+</dt> <dd> <p><code>AudioParam</code> 의 초기 값을 나타내는 <code>float</code>. 기본값은 <code>0</code> 입니다.</p> </dd> </dl>
+</div>
+<h2 id="예제">예제</h2>
+<div class="section-content"><p>어떻게 static <code>parameterDescriptors</code> getter를 사용자 정의 <code>AudioWorkletProcessor</code> 에 추가하는지를 보여주는 예제 코드를 보시려면 <a href="../audioworkletnode/parameters#examples"><code>AudioWorkletNode.parameters</code></a> 를 참고해 보세요.</p></div>
+<h2 id="명세서">명세서</h2>
+<div class="notecard warning">
+<strong>No specification found</strong><p>No specification data found for <code>api.AudioWorkletProcessor.parameterDescriptors</code>.<br><a href="#on-github">Check for problems with this page</a> or contribute a missing <code>spec_url</code> to <a href="https://github.com/mdn/browser-compat-data">mdn/browser-compat-data</a>. Also make sure the specification is included in <a href="https://github.com/w3c/browser-specs">w3c/browser-specs</a>.</p>
+</div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="../web_audio_api">Web Audio API</a></li> <li><a href="../web_audio_api/using_web_audio_api">Web Audio API 사용하기</a></li> </ul></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/AudioWorkletProcessor/parameterDescriptors" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/AudioWorkletProcessor/parameterDescriptors</a>
+  </p>
+</div>

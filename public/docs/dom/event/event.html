@@ -1,0 +1,46 @@
+<header><h1>Event()</h1></header><div class="section-content"><p><code>Event()</code> 생성자는 새로운 <a href="../event"><code>Event</code></a> 객체를 생성합니다. 생성자로 생성한 이벤트는 브라우저가 생성하는 이벤트와 구분해서 합성 이벤트(synthetic event)라고 부르며, <a href="https://developer.mozilla.org/en-US/docs/Web/Events/Creating_and_triggering_events" class="only-in-en-us">스크립트에서 발송할 수 있습니다 <small>(en-US)</small></a>.</p></div>
+<h2 id="구문">구문</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="U9TwrHXO5IojvfJv7pgw5bvtiEiB6ioSqpUoXymAHvc=" data-language="js"><span class="token keyword">new</span> <span class="token class-name">Event</span><span class="token punctuation">(</span>type<span class="token punctuation">)</span>
+<span class="token keyword">new</span> <span class="token class-name">Event</span><span class="token punctuation">(</span>type<span class="token punctuation">,</span> options<span class="token punctuation">)</span>
+</pre>
+</div></div>
+<h3 id="매개변수">매개변수</h3>
+<div class="section-content"><dl> <dt id="type"><code>type</code></dt> <dd> <p>이벤트의 이름을 나타내는 문자열입니다.</p> </dd> <dt id="options">
+<code>options</code> <span class="badge inline optional">Optional</span>
+</dt> <dd> <p>다음 속성을 포함하는 객체입니다.</p> <dl> <dt id="bubbles">
+<code>bubbles</code> <span class="badge inline optional">Optional</span>
+</dt> <dd> <p>이벤트의 버블링 여부를 나타내는 불리언 값입니다. 기본 값은 <code>false</code>입니다.</p> </dd> <dt id="cancelable">
+<code>cancelable</code> <span class="badge inline optional">Optional</span>
+</dt> <dd> <p>이벤트를 취소할 수 있는지 나타내는 불리언 값입니다. 기본 값은 <code>false</code>입니다.</p> </dd> <dt id="composed">
+<code>composed</code> <span class="badge inline optional">Optional</span>
+</dt> <dd> <p>이벤트가 섀도 루트(shadow root) 바깥의 이벤트 수신기로도 전달될지 나타내는 불리언 값입니다. <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/Event/composed"><code>Event.composed</code> <small>(en-US)</small></a>에서 자세한 정보를 확인하세요. 기본 값은 <code>false</code>입니다.</p> </dd> </dl> </dd> </dl></div>
+<h3 id="반환_값">반환 값</h3>
+<div class="section-content"><p>새로운 <a href="../event"><code>Event</code></a> 객체.</p></div>
+<h2 id="예제">예제</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="497hQ5LkNM66gO2KmOOvnSBe6kM0Bcw51j/P7+VZ6QI=" data-language="js"><span class="token comment">// 버블링 가능하고 취소 불가능한 look 이벤트 생성</span>
+
+<span class="token keyword">const</span> evt <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Event</span><span class="token punctuation">(</span><span class="token string">"look"</span><span class="token punctuation">,</span> <span class="token punctuation">{</span><span class="token string-property property">"bubbles"</span><span class="token operator">:</span><span class="token boolean">true</span><span class="token punctuation">,</span> <span class="token string-property property">"cancelable"</span><span class="token operator">:</span><span class="token boolean">false</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+document<span class="token punctuation">.</span><span class="token function">dispatchEvent</span><span class="token punctuation">(</span>evt<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// document 외의 다른 요소에서도 이벤트 발송 가능</span>
+myDiv<span class="token punctuation">.</span><span class="token function">dispatchEvent</span><span class="token punctuation">(</span>evt<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div></div>
+<h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://dom.spec.whatwg.org/#ref-for-dom-event-event">DOM Standard <br><small># ref-for-dom-event-event</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="../event"><code>Event</code></a></li> <li><a href="../eventtarget/dispatchevent"><code>EventTarget.dispatchEvent()</code></a></li> <li><a href="https://developer.mozilla.org/en-US/docs/Web/Events/Creating_and_triggering_events" class="only-in-en-us">이벤트 생성 및 발동 <small>(en-US)</small></a></li> </ul></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/Event/Event" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/Event/Event</a>
+  </p>
+</div>

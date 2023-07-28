@@ -1,0 +1,26 @@
+<h1>Cookie</h1>
+<header><h1>Cookie</h1></header><div class="section-content">
+<p><code>Cookie</code> HTTP 요청 헤더는 <a href="set-cookie"><code>Set-Cookie</code></a> 헤더와 함께 서버에 의해 이전에 전송되어 저장된 <a href="../cookies">HTTP cookies</a>를 포함합니다.</p> <p><code>Cookie</code> 헤더는 선택적(optional)이고, 만약 브라우저의 사생활 보호 설정(privacy settings)이 쿠키를 block할 경우 생략될 수도 있습니다.</p> <figure class="table-container"><div class="_table"><table class="properties"> <tbody> <tr> <th scope="row">Header type</th> <td><a href="https://developer.mozilla.org/ko/docs/Glossary/Request_header">Request header</a></td> </tr> <tr> <th scope="row"><a href="https://developer.mozilla.org/ko/docs/Glossary/Forbidden_header_name">Forbidden header name</a></th> <td>yes</td> </tr> </tbody> </table></div></figure>
+</div>
+<section aria-labelledby="문법"><h2 id="문법">문법</h2>
+<div class="section-content">
+<pre class="notranslate">Cookie: &lt;cookie-list&gt;
+Cookie: name=value
+Cookie: name=value; name2=value2; name3=value3
+</pre> <dl> <dt id="cookie-list">&lt;cookie-list&gt;</dt> <dd> <p><code>&lt;cookie-name&gt;=&lt;cookie-value&gt;</code> 형태를 띄는 이름-값 쌍의 목록입니다. 목록 내 쌍들은 세미콜록과 공백(<code>'; '</code>)으로 구분됩니다.</p> </dd> </dl>
+</div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+<div class="section-content"><pre class="notranslate">Cookie: PHPSESSID=298zf09hf012fh2; csrftoken=u32t4o3tb3gg43; _gat=1;
+</pre></div></section><h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://httpwg.org/specs/rfc6265.html#cookie">HTTP State Management Mechanism <br><small># cookie</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="함께_참고할_내용들"><h2 id="함께_참고할_내용들">함께 참고할 내용들</h2>
+<div class="section-content"><ul> <li><a href="set-cookie"><code>Set-Cookie</code></a></li> <li><a href="https://developer.mozilla.org/ko/docs/Web/API/Document/cookie"><code>Document.cookie</code></a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/HTTP/Headers/Cookie" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/HTTP/Headers/Cookie</a>
+  </p>
+</div>

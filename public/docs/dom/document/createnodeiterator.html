@@ -1,0 +1,56 @@
+<header><h1>NodeFilter</h1></header><div class="section-content">
+<p><code>NodeFilter</code> 인터페이스는 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/NodeIterator"><code>NodeIterator</code> <small>(en-US)</small></a>나 <a href="../treewalker"><code>TreeWalker</code></a>에서 노드를 거를 때 사용하는 객체를 나타냅니다. <code>NodeFilter</code>는 DOM이나 노드 순회 방법은 알지 못하며, 주어진 필터에 대해 단일 노드를 평가하는 방법만 알 수 있습니다.</p> <div class="notecard note" id="sect1"> <p><strong>참고:</strong> The browser doesn't provide any object implementing this interface. It is the user who is expected to write one, tailoring the <code>acceptNode()</code> method to its needs, and using it with some <a href="../treewalker"><code>TreeWalker</code></a> or <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/NodeIterator"><code>NodeIterator</code> <small>(en-US)</small></a> objects.</p> </div>
+</div>
+<h2 id="properties">Properties</h2>
+<div class="section-content"><p><em>This interface neither implements, nor inherits, any properties.</em></p></div>
+<h2 id="methods">Methods</h2>
+<div class="section-content">
+<p><em>This interface doesn't inherit any methods.</em></p> <ul> <li>
+<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/Document/createNodeIterator"><code>NodeFilter.acceptNode()</code> <small>(en-US)</small></a> <ul> <li> <figure class="table-container"><div class="_table"><table> <thead> <tr> <th>: Returns an <code>unsigned short</code> that will be used to tell if a given <a href="../node"><code>Node</code></a> must be accepted or not by the <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/NodeIterator"><code>NodeIterator</code> <small>(en-US)</small></a> or <a href="../treewalker"><code>TreeWalker</code></a> iteration algorithm. This method is expected to be written by the user of a <code>NodeFilter</code>. Possible return values are:</th> <th>Constant</th> <th>Description</th> </tr> </thead> <tbody> <tr> <td><code>FILTER_ACCEPT</code></td> <td>Value returned by the <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/Document/createNodeIterator"><code>NodeFilter.acceptNode()</code> <small>(en-US)</small></a> method when a node should be accepted.</td> <td></td> </tr> <tr> <td><code>FILTER_REJECT</code></td> <td>Value to be returned by the <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/Document/createNodeIterator"><code>NodeFilter.acceptNode()</code> <small>(en-US)</small></a> method when a node should be rejected. For <a href="../treewalker"><code>TreeWalker</code></a>, child nodes are also rejected. For <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/NodeIterator"><code>NodeIterator</code> <small>(en-US)</small></a>, this flag is synonymous with FILTER_SKIP.</td> <td></td> </tr> <tr> <td><code>FILTER_SKIP</code></td> <td>Value to be returned by <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/Document/createNodeIterator"><code>NodeFilter.acceptNode()</code> <small>(en-US)</small></a> for nodes to be skipped by the <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/NodeIterator"><code>NodeIterator</code> <small>(en-US)</small></a> or <a href="../treewalker"><code>TreeWalker</code></a> object. The children of skipped nodes are still considered. This is treated as "skip this node but not its children".</td> <td></td> </tr> </tbody> </table></div></figure> </li> </ul> </li> </ul>
+</div>
+<h2 id="example">Example</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="EfSkeSdv745v2LaaBR6KBw2t/W7iKmr6pKID6fxegxw=" data-language="js"><span class="token keyword">var</span> nodeIterator <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">createNodeIterator</span><span class="token punctuation">(</span>
+  <span class="token comment">// Node to use as root</span>
+  document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">'someId'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+
+  <span class="token comment">// Only consider nodes that are text nodes (nodeType 3)</span>
+  NodeFilter<span class="token punctuation">.</span><span class="token constant">SHOW_TEXT</span><span class="token punctuation">,</span>
+
+  <span class="token comment">// Object containing the function to use for the acceptNode method</span>
+  <span class="token comment">// of the NodeFilter</span>
+    <span class="token punctuation">{</span> <span class="token function-variable function">acceptNode</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">node</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token comment">// Logic to determine whether to accept, reject or skip node</span>
+      <span class="token comment">// In this case, only accept nodes that have content</span>
+      <span class="token comment">// other than whitespace</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span> <span class="token operator">!</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex"><span class="token anchor function">^</span><span class="token char-set class-name">\s</span><span class="token quantifier number">*</span><span class="token anchor function">$</span></span><span class="token regex-delimiter">/</span></span><span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span>node<span class="token punctuation">.</span>data<span class="token punctuation">)</span> <span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> NodeFilter<span class="token punctuation">.</span><span class="token constant">FILTER_ACCEPT</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token boolean">false</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// Show the content of every non-empty text node that is a child of root</span>
+<span class="token keyword">var</span> node<span class="token punctuation">;</span>
+
+<span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>node <span class="token operator">=</span> nodeIterator<span class="token punctuation">.</span><span class="token function">nextNode</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token function">alert</span><span class="token punctuation">(</span>node<span class="token punctuation">.</span>data<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div></div>
+<h2 id="명세서">명세서</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://dom.spec.whatwg.org/#dom-document-createnodeiterator">DOM Standard <br><small># dom-document-createnodeiterator</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<h2 id="see_also">See also</h2>
+<div class="section-content"><ul> <li>Related interfaces: <a href="../treewalker"><code>TreeWalker</code></a>, <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/NodeIterator"><code>NodeIterator</code> <small>(en-US)</small></a>.</li> </ul></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/Document/createNodeIterator" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/Document/createNodeIterator</a>
+  </p>
+</div>

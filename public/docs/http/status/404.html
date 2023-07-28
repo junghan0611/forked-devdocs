@@ -1,0 +1,27 @@
+<h1>404 Not Found</h1>
+<header><h1>404 Not Found</h1></header><div class="section-content">
+<p> HTTP <code>404 Not Found</code> 클라이언트 오류 응답 코드는 서버가 요청받은 리소스를 찾을 수 없다는 것을 의미합니다. 404 페이지를 띄우는 링크는 대체로 브로큰 링크(broken link) 또는 데드 링크(dead link)라고 부르며, <a href="https://en.wikipedia.org/wiki/Link_rot" target="_blank">link rot</a> 대상일 수도 있습니다. </p> <p> 404 상태 코드는 리소스가 일시적, 또는 영구적으로 사라졌다는 것을 의미하지는 않습니다. 리소스가 영구적으로 삭제되었다면 404 상태 코드 대신 <a href="410"><code>410</code></a> (Gone) 상태 코드가 쓰여야 합니다. </p>
+</div>
+<section aria-labelledby="상태"><h2 id="상태">상태</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">http</span></p>
+<pre data-signature="SnQWY3HVzhRcZfSdiMsc6Hw66M83gtuT28kY+AnwmQc=" data-language="http">404 Not Found
+</pre>
+</div></div></section><section aria-labelledby="사용자_지정_에러_페이지"><h2 id="사용자_지정_에러_페이지">사용자 지정 에러 페이지</h2>
+<div class="section-content">
+<p> 많은 웹사이트들이 사용자에게 더 많은 도움을 주기 위해 404 페이지의 모습을 알맞게 재단합니다. 예를 들어, 아파치 서버는 <code>.htaccess</code> 파일에 아래와 같은 코드를 작성해 설정할 수 있습니다. </p> <pre class="notranslate">ErrorDocument 404 /notfound.html
+</pre> <p>사용자 지정 404 페이지의 예시로는 <a href="https://konmari.com/404" target="_blank">404 page</a>을 참고해보세요.</p> <div class="notecard note" id="sect1"> <p><strong>참고:</strong> 적당한 사용자 지정 디자인은 좋습니다. 404 페이지를 재밌게 만들되, 사용자를 혼란스럽게 하지는 마세요.</p> </div>
+</div></section><h2 id="명세서">명세서</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://www.rfc-editor.org/rfc/rfc9110#status.404">HTTP Semantics <br><small># status.404</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="410"><code>410</code></a></li> <li><a href="https://ko.wikipedia.org/wiki/HTTP_404" target="_blank">HTTP_404</a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/HTTP/Status/404" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/HTTP/Status/404</a>
+  </p>
+</div>

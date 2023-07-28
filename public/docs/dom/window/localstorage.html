@@ -1,0 +1,47 @@
+<header><h1>Window.localStorage</h1></header><div class="section-content">
+<p><code>localStorage</code> 읽기 전용 속성을 사용하면 <a href="../document"><code>Document</code></a> <a href="https://developer.mozilla.org/ko/docs/Glossary/Origin">출처</a>의 <a href="../storage"><code>Storage</code></a> 객체에 접근할 수 있습니다. 저장한 데이터는 브라우저 세션 간에 공유됩니다. <code>localStorage</code>는 <a href="sessionstorage"><code>sessionStorage</code></a>와 비슷하지만, <code>localStorage</code>의 데이터는 만료되지 않고 <code>sessionStorage</code>의 데이터는 페이지 세션이 끝날 때, 즉 페이지를 닫을 때 사라지는 점이 다릅니다. ("사생활 보호 모드" 중 생성한 <code>localStorage</code> 데이터는 마지막 "사생활 보호" 탭이 닫힐 때 지워집니다.)</p> <p><code>localStorage</code>에 저장한 자료는 <strong>페이지 프로토콜별로 구분</strong>합니다. 특히 HTTP(<a href="https://example.com" target="_blank">http://example.com</a>)로 방문한 페이지에서 저장한 데이터는 같은 페이지의 HTTPS(<a href="https://example.com" target="_blank">https://example.com</a>)와는 다른 <code>localStorage</code>에 저장됩니다.</p> <p>키와 값은 <strong>항상</strong> 각 문자에 2바이트를 할당하는 UTF-16 <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/String"><code>DOMString</code></a>의 형태로 저장합니다. 객체와 마찬가지로 정수 키는 자동으로 문자열로 변환합니다.</p>
+</div>
+<h2 id="구문">구문</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="HDqI5EitjOFE85C0XhNom4xrmDPzQu0ghXT9GJoRZts=" data-language="js">myStorage <span class="token operator">=</span> window<span class="token punctuation">.</span>localStorage<span class="token punctuation">;</span>
+</pre>
+</div></div>
+<h3 id="값">값</h3>
+<div class="section-content"><p>현재 <a href="https://developer.mozilla.org/ko/docs/Glossary/Origin">출처</a>의 로컬 저장 공간에 접근할 수 있는 <a href="../storage"><code>Storage</code></a> 객체.</p></div>
+<h3 id="예외">예외</h3>
+<div class="section-content"><dl> <dt id="securityerror"><code>SecurityError</code></dt> <dd> <p>요청이 정책의 결정을 위반했거나, 출처가 <a href="https://developer.mozilla.org/ko/docs/Web/Security/Same-origin_policy#%EC%B6%9C%EC%B2%98%EC%9D%98_%EC%A0%95%EC%9D%98">유효한 스킴/호스트/포트 튜플</a>이 아닌 경우. 유효하지 않은 튜플은 출처가 <code>file:</code>이나 <code>data:</code> 스킴을 사용했을 때 발생할 수 있습니다. 예외의 예를 들자면 사용자가 특정 출처의 지속성 데이터를 거부하도록 브라우저를 설정하는 경우가 있습니다.</p> </dd> </dl></div>
+<h2 id="예제">예제</h2>
+<div class="section-content">
+<p>아래 코드는 현재 도메인의 로컬 <a href="../storage"><code>Storage</code></a> 객체에 접근한 후, <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/Storage/setItem"><code>Storage.setItem()</code> <small>(en-US)</small></a>을 사용해 항목 하나를 추가합니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="ZHg1GH72vmco66+fx00Wu41tLeo7/rWnm/Jpx3LbJTQ=" data-language="js">localStorage<span class="token punctuation">.</span><span class="token function">setItem</span><span class="token punctuation">(</span><span class="token string">'myCat'</span><span class="token punctuation">,</span> <span class="token string">'Tom'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div> <p>위에서 추가한 <code>localStorage</code> 항목을 읽는 법은 다음과 같습니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="XU93qFRY2FjgwiIrGd/Xm5KgzzSISDSlc2hOdHVdXPw=" data-language="js"><span class="token keyword">const</span> cat <span class="token operator">=</span> localStorage<span class="token punctuation">.</span><span class="token function">getItem</span><span class="token punctuation">(</span><span class="token string">'myCat'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div> <p>그리고 제거는 아래와 같습니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="WSKSH8499YEtlq19Vdq05+QN84Ce+y1LLGSpXX5MrLY=" data-language="js">localStorage<span class="token punctuation">.</span><span class="token function">removeItem</span><span class="token punctuation">(</span><span class="token string">'myCat'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div> <p><code>localStorage</code> 항목의 전체 제거 구문입니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="/Yg5GVaTQY9JUivIEZFykXawp9JKd0x2psj9GBNE4a4=" data-language="js">localStorage<span class="token punctuation">.</span><span class="token function">clear</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div> <div class="notecard note" id="sect1"> <p><strong>참고:</strong> 참고: <a href="../web_storage_api/using_the_web_storage_api">Web Storage API 사용하기</a> 문서에서 전체 예제를 살펴보세요.</p> </div>
+</div>
+<h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://html.spec.whatwg.org/multipage/webstorage.html#dom-localstorage-dev">HTML Standard <br><small># dom-localstorage-dev</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<h2 id="함께_보기">함께 보기</h2>
+<div class="section-content"><ul> <li><a href="../web_storage_api/using_the_web_storage_api">Web Storage API 사용하기</a></li> <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage" class="only-in-en-us">Local storage with Window.localStorage <small>(en-US)</small></a></li> <li><a href="sessionstorage"><code>Window.sessionStorage</code></a></li> </ul></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/Window/localStorage" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/Window/localStorage</a>
+  </p>
+</div>

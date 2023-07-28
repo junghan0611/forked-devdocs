@@ -1,0 +1,33 @@
+<header><h1>Date.prototype.toISOString()</h1></header><div class="section-content"><p> <code>toISOString()</code> 메서드는 단순화한 확장 ISO 형식(<a href="https://ko.wikipedia.org/wiki/ISO_8601" target="_blank">ISO 8601</a>)의 문자열을 반환합니다. 반환값은 언제나 24글자 또는 27글자(각각 <code>YYYY-MM-DDTHH:mm:ss.sssZ</code> 또는 <code>±YYYYYY-MM-DDTHH:mm:ss.sssZ</code>)입니다.시간대는 언제나 UTC이며 접미어 <code>Z</code>로 표현합니다. </p></div>
+<section aria-labelledby="시도해보기"><h2 id="시도해보기">시도해보기</h2>
+<div class="section-content"><iframe class="interactive is-js-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/js/date-toisostring.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe></div></section><section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="fIunqGCTmwI1eYbn/dt0XTuHw8SUSSX/IdRUG8CAQHY=" data-language="js"><span class="token function">toISOString</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+</pre>
+</div></div></section><section aria-labelledby="반환_값"><h3 id="반환_값">반환 값</h3>
+<div class="section-content"><p> 주어진 날짜를 국제표준시 기준 <a href="https://ko.wikipedia.org/wiki/ISO_8601" target="_blank">ISO 8601</a> 형식으로 표현한 문자열. <a href="parse#date_time_string_format"><code>Date.parse()</code></a>에서 인식해야 하는 형식과 동일합니다. </p></div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+</section><section aria-labelledby="toisostring_사용하기"><h3 id="toisostring_사용하기">
+<code>toISOString()</code> 사용하기</h3>
+<div class="section-content">
+<div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="R352xD/5QZ0gM7jC+P4ZJEi34DHkL3ykHIfVNQcKN50=" data-language="js"><span class="token keyword">const</span> today <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token string">'05 October 2011 14:48 UTC'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>today<span class="token punctuation">.</span><span class="token function">toISOString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Returns 2011-10-05T14:48:00.000Z</span>
+</pre>
+</div> <p>위 예제는 비표준 문자열의 분석을 포함하고 있어 Mozilla 외의 브라우저에서는 올바르게 작동하지 않을 수 있습니다.</p>
+</div></section><h2 id="명세서">명세서</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://tc39.es/ecma262/multipage/numbers-and-dates.html#sec-date.prototype.toisostring">ECMAScript Language Specification <br><small># sec-date.prototype.toisostring</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleDateString"><code>Date.prototype.toLocaleDateString()</code> <small>(en-US)</small></a></li> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toTimeString"><code>Date.prototype.toTimeString()</code> <small>(en-US)</small></a></li> <li><a href="toutcstring"><code>Date.prototype.toUTCString()</code></a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Date/toISOString" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Date/toISOString</a>
+  </p>
+</div>

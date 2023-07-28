@@ -1,0 +1,103 @@
+<header><h1>&lt;u&gt;</h1></header><div class="section-content">
+<p><code>&lt;u&gt;</code>는 글자로 표현하지 않는 주석을 가진 것으로 렌더링 해야 하는 텍스트를 나타냅니다. 기본값에서는 단순한 밑줄로 표시하지만 CSS를 사용해 바꿀 수 있습니다.</p> <div class="notecard warning" id="sect1"> <p><strong>경고:</strong> <code>&lt;u&gt;</code> 요소는 과거 HTML에서 밑줄(Underline) 요소로 불렸으며 지금도 밑줄을 추가할 목적으로 남용하는 경우가 있습니다. 그러나 밑줄을 위해서는 CSS <a href="https://developer.mozilla.org/ko/docs/Web/CSS/text-decoration"><code>text-decoration</code></a> 속성을 <code>underline</code>으로 지정하는 방법을 대신 사용해야 합니다.</p> </div>
+</div>
+<h2 id="시도해보기">시도해보기</h2>
+<div class="section-content">
+<iframe class="interactive is-tabbed-shorter-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/tabbed/u.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe> <figure class="table-container"><div class="_table"><table class="properties"> <tbody> <tr> <th scope="row"><a href="../content_categories">콘텐츠 카테고리</a></th> <td> <a href="../content_categories#%ed%94%8c%eb%a1%9c%ec%9a%b0_%ec%bd%98%ed%85%90%ec%b8%a0">플로우 콘텐츠</a>, <a href="../content_categories#%ea%b5%ac%eb%ac%b8_%ec%bd%98%ed%85%90%ec%b8%a0">구문 콘텐츠</a>, 뚜렷한 콘텐츠. </td> </tr> <tr> <th scope="row">가능한 콘텐츠</th> <td>
+<a href="../content_categories#%ea%b5%ac%eb%ac%b8_%ec%bd%98%ed%85%90%ec%b8%a0">구문 콘텐츠</a>.</td> </tr> <tr> <th scope="row">태그 생략</th> <td>불가능, 시작과 끝에 태그를 추가하는것은 필수입니다.</td> </tr> <tr> <th scope="row">가능한 부모 요소</th> <td>
+<a href="../content_categories#%ea%b5%ac%eb%ac%b8_%ec%bd%98%ed%85%90%ec%b8%a0">구문 콘텐츠</a>를 허용하는 모든 요소.</td> </tr> <tr> <th scope="row">가능한 ARIA 역할</th> <td>모두</td> </tr> <tr> <th scope="row">DOM 인터페이스</th> <td><a href="https://developer.mozilla.org/ko/docs/Web/API/HTMLElement"><code>HTMLElement</code></a></td> </tr> </tbody> </table></div></figure>
+</div>
+<h2 id="특성">특성</h2>
+<div class="section-content"><p>이 요소는 <a href="../global_attributes">전역 특성</a>만 포함합니다.</p></div>
+<h2 id="사용_일람">사용 일람</h2>
+<div class="section-content">
+<p>다른 순수 스타일 요소와 마찬가지로, 원래의 HTML 밑줄 요소(<code>&lt;u&gt;</code>)는 HTML 4부터 사용을 중단했으나, HTML 5에서 새로운 의미를 얻으며 돌아왔습니다. HTML 5에서 <code>&lt;u&gt;</code> 요소는 텍스트가 일종의 문자가 아닌 주석을 가지고 있음을 나타냅니다.</p> <div class="notecard note" id="sect2"> <p><strong>참고:</strong> <code>&lt;u&gt;</code>와 하이퍼링크 둘 다 기본 스타일이 밑줄이므로, <code>&lt;u&gt;</code>를 기본 스타일로 사용하는건 피해야 합니다.</p> </div>
+</div>
+<h3 id="사용처">사용처</h3>
+<div class="section-content">
+<p><code>&lt;u&gt;</code> 요소의 유효한 사용처는 철자 오류 강조, <a href="https://en.wikipedia.org/wiki/Proper_name_mark" target="_blank">중국어의 고유명사 표시</a> 등이 있습니다.</p> <p><code>&lt;u&gt;</code>를 사용해 밑줄만 추가하거나, 책 제목 등을 강조해서는 안됩니다.</p>
+</div>
+<h3 id="고려할만한_다른_요소">고려할만한 다른 요소</h3>
+<div class="section-content">
+<p>대부분의 경우 <code>&lt;u&gt;</code> 대신 다른 요소를 사용해야 합니다.</p> <ul> <li>
+<a href="em"><code>&lt;em&gt;</code></a> 요소는 강세를 나타냅니다.</li> <li>
+<a href="b"><code>&lt;b&gt;</code></a> 요소는 사용자의 주의를 텍스트로 돌립니다.</li> <li>
+<a href="mark"><code>&lt;mark&gt;</code></a> 요소는 관련성을 나타냅니다.</li> <li>
+<a href="strong"><code>&lt;strong&gt;</code></a> 요소는 강한 중요성을 나타냅니다.</li> <li>
+<a href="cite"><code>&lt;cite&gt;</code></a> 요소는 책, 공연, 음악 등 저작물의 이름을 나타냅니다.</li> <li>
+<a href="i"><code>&lt;i&gt;</code></a> 요소는 기술 용어, 외국어, 등장인물의 생각 등을 나타냅니다.</li> </ul> <p><code>&lt;u&gt;</code>가 비 텍스트 표기라면, <a href="ruby"><code>&lt;ruby&gt;</code></a>는 텍스트 표기를 제공합니다.</p> <p>별도의 의미 없이 밑줄만 추가하려면 CSS <a href="https://developer.mozilla.org/ko/docs/Web/CSS/text-decoration"><code>text-decoration</code></a> 속성의 값을 <code>underline</code>으로 지정하세요.</p>
+</div>
+<h2 id="예제">예제</h2>
+
+<h3 id="맞춤법_오류_표시">맞춤법 오류 표시</h3>
+<div class="section-content">
+<p>이번 예제는 <code>&lt;u&gt;</code>와 약간의 CSS를 사용해, 문단에서 철자 오류가 존재하는 부분을 빨간색 물결 밑줄로 표시합니다.</p> <h4 id="html">HTML</h4> <div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="1xg3bgLv63GHxu7lKW05MwNRlm2a4/rJ3SgMaVzPkXI=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>맞춤법을 틀리면 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>u</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>spelling<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>않돼요<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>u</span><span class="token punctuation">&gt;</span></span>.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div> <p><code>spelling</code> 클래스를 가진 <code>&lt;u&gt;</code> 요소가 "안돼요"의 잘못된 철자를 나타내고 있음을 볼 수 있습니다.</p> <h4 id="css">CSS</h4> <div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="dKcteSUJM1HU1FcZqhqAJkYjKSuMX+gr9Jt3bHTSWHI=" data-language="css"><span class="token selector">u.spelling</span> <span class="token punctuation">{</span>
+  <span class="token property">text-decoration</span><span class="token punctuation">:</span> red wavy underline<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div> <p>CSS는 <code>spelling</code> 클래스를 가진 <code>&lt;u&gt;</code> 요소에 빨간 물결 밑줄을 적용하고 있습니다. 빨간 물결 밑줄은 맞춤법 오류를 표시할 때 흔히 쓰이는 스타일입니다. 또 다른 스타일은 <code>red dashed underline</code>입니다.</p> <h4 id="결과">결과</h4> <p>최근 워드 프로세서를 사용해본 경우 친숙한 모습일 것입니다.</p>
+<div class="code-example" id="sect3">
+
+<iframe class="sample-code-frame" title="맞춤법 오류 표시 sample" id="frame_맞춤법_오류_표시" width="650" height="80" src="https://live.mdnplay.dev/ko/docs/Web/HTML/Element/u/runner.html?id=%EB%A7%9E%EC%B6%A4%EB%B2%95_%EC%98%A4%EB%A5%98_%ED%91%9C%EC%8B%9C" loading="lazy"></iframe>
+</div>
+</div>
+<h3 id="u_피하기">
+<code>&lt;u&gt;</code> 피하기</h3>
+<div class="section-content">
+<p>대부분의 경우, 사실 <code>&lt;u&gt;</code> 요소를 피하는게 좋습니다. 다음은 다른 요소를 사용해야 하는 몇 가지 경우입니다.</p> <h4 id="의미를_가지지_않는_밑줄">의미를 가지지 않는 밑줄</h4> <p>아무런 의미를 나타내지 않고 밑줄만 추가할 경우 <a href="span"><code>&lt;span&gt;</code></a> 요소를 사용하고, <a href="https://developer.mozilla.org/ko/docs/Web/CSS/text-decoration"><code>text-decoration</code></a> 속성의 값은 <code>underline</code>으로 지정하세요.</p> <h5 id="html_2">HTML</h5> <div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="701HnV2L4OjrtPQVa0XEEqME7cj+0oGxccp+4gWAtu0=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>underline<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Today's Special<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>br</span><span class="token punctuation">&gt;</span></span>
+Chicken Noodle Soup With Carrots
+</pre>
+</div> <h5 id="css_2">CSS</h5> <div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="lhjHvumCvagO0Wocf88gqstu9IJJa8ICORUDDKkqpbs=" data-language="css"><span class="token selector">.underline</span> <span class="token punctuation">{</span>
+  <span class="token property">text-decoration</span><span class="token punctuation">:</span> underline<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div> <h5 id="result">Result</h5>
+<div class="code-example" id="sect4">
+
+<iframe class="sample-code-frame" title="의미를 가지지 않는 밑줄 sample" id="frame_의미를_가지지_않는_밑줄" width="650" height="80" src="https://live.mdnplay.dev/ko/docs/Web/HTML/Element/u/runner.html?id=%EC%9D%98%EB%AF%B8%EB%A5%BC_%EA%B0%80%EC%A7%80%EC%A7%80_%EC%95%8A%EB%8A%94_%EB%B0%91%EC%A4%84" loading="lazy"></iframe>
+</div> <h4 id="책_제목_표현하기">책 제목 표현하기</h4> <p>책 제목은 <code>&lt;u&gt;</code> 대신 <a href="cite"><code>&lt;cite&gt;</code></a>를 사용해 나타내야 합니다.</p> <h5 id="html_3">HTML</h5> <div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="IvAbWaSpyzx2PfuOIlRUZE586Uu0qCCEghIgmYP9un4=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>The class read <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>cite</span><span class="token punctuation">&gt;</span></span>Moby Dick<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>cite</span><span class="token punctuation">&gt;</span></span> in the first term.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div> <h5 id="기본_스타일_결과">기본 스타일 결과</h5>
+<div class="code-example" id="sect5">
+
+<iframe class="sample-code-frame" title="기본 스타일 결과" id="frame_example-unstyled-cite" width="650" height="80" src="https://live.mdnplay.dev/ko/docs/Web/HTML/Element/u/runner.html?id=example-unstyled-cite" loading="lazy"></iframe>
+</div> <p><code>&lt;cite&gt;</code> 요소의 기본 스타일은 기울임꼴을 적용합니다. 원한다면 CSS를 사용해 재정의할 수 있습니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="KOazMaZHLmsqODOwqfdrIpKB0RsMGpSDYiXqA8AAy3Q=" data-language="css"><span class="token selector">cite</span> <span class="token punctuation">{</span>
+  <span class="token property">font-style</span><span class="token punctuation">:</span> normal<span class="token punctuation">;</span>
+  <span class="token property">text-decoration</span><span class="token punctuation">:</span> underline<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div> <h5 id="사용자_지정_스타일_결과">사용자 지정 스타일 결과</h5>
+<div class="code-example" id="sect6">
+
+<iframe class="sample-code-frame" title="책 제목 표현하기" id="frame_presenting_a_book_title" width="650" height="80" src="https://live.mdnplay.dev/ko/docs/Web/HTML/Element/u/runner.html?id=presenting_a_book_title" loading="lazy"></iframe>
+</div>
+</div>
+<h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-u-element">HTML Standard <br><small># the-u-element</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li>보통 <a href="span"><code>&lt;span&gt;</code></a>, <a href="i"><code>&lt;i&gt;</code></a>, <a href="em"><code>&lt;em&gt;</code></a>, <a href="b"><code>&lt;b&gt;</code></a>, <a href="cite"><code>&lt;cite&gt;</code></a> 요소를 사용하는 편이 더 적합합니다.</li> <li>특별한 의미를 가지지 않는 밑줄은 CSS <a href="https://developer.mozilla.org/ko/docs/Web/CSS/text-decoration"><code>text-decoration</code></a> 속성을 사용해야 합니다.</li> </ul></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/HTML/Element/u" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/HTML/Element/u</a>
+  </p>
+</div>

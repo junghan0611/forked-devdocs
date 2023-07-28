@@ -1,0 +1,53 @@
+<header><h1>element.scrollIntoView</h1></header><div class="section-content"><p><a href="../element"><code>Element</code></a> 인터페이스의 <code>scrollIntoView()</code> 메소드는 <code>scrollIntoView()</code>가 호출 된 요소가 사용자에게 표시되도록 요소의 상위 컨테이너를 스크롤합니다.</p></div>
+<h2 id="문법">문법</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="nlt1oMefSymidkl6jE6OCfuMen6w0/3JzQRYUOmZAp0=" data-language="js">element<span class="token punctuation">.</span><span class="token function">scrollIntoView</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+element<span class="token punctuation">.</span><span class="token function">scrollIntoView</span><span class="token punctuation">(</span>alignToTop<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Boolean parameter</span>
+element<span class="token punctuation">.</span><span class="token function">scrollIntoView</span><span class="token punctuation">(</span>scrollIntoViewOptions<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Object parameter</span>
+</pre>
+</div></div>
+<h3 id="매개변수">매개변수</h3>
+<div class="section-content"><dl> <dt id="aligntotop">
+<code>alignToTop</code> <span class="badge inline optional">Optional</span>
+</dt> <dd> <p>불리언 값입니다.</p> <ul> <li> <code>true</code>일 경우, 요소의 상단은 스크롤 가능한 조상 요소의 보이는 영역 상단에 정렬됩니다. <code>scrollIntoViewOptions: {block: "start", inline: "nearest"}</code>와 일치합니다. 이 값이 기본 값입니다. </li> <li> <code>false</code>일 경우, 요소의 하단은 스크롤 가능한 조상 요소의 보이는 영역 하단에 정렬됩니다. <code>scrollIntoViewOptions: {block: "end", inline: "nearest"}</code>와 일치합니다. </li> </ul> </dd> <dt id="sect1"> <code>scrollIntoViewOptions</code> <span class="badge inline optional">Optional</span> <abbr class="icon icon-experimental" title="Experimental. 예상되는 동작은 향후 변경될 수 있습니다."> <span class="visually-hidden">Experimental</span> </abbr> </dt> <dd> <p>다음 속성을 포함하는 객체입니다.</p> <dl> <dt id="behavior">
+<code>behavior</code> <span class="badge inline optional">Optional</span>
+</dt> <dd> <p>스크롤을 즉시 적용할지 아니면 부드러운 애니메이션을 적용할지 결정합니다. 이 옵션은 다음 값 중 하나의 문자열을 취해야 합니다.</p> <ul> <li>
+<code>smooth</code>: 스크롤이 부드럽게 움직입니다.</li> <li>
+<code>instant</code>: 스크롤이 단번에 즉시 적용됩니다.</li> <li>
+<code>auto</code>: 스크롤 동작은 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/scroll-behavior"><code>scroll-behavior</code> <small>(en-US)</small></a>의 계산된 값에 의해 결정됩니다.</li> </ul> </dd> <dt id="block">
+<code>block</code> <span class="badge inline optional">Optional</span>
+</dt> <dd> <p> 수직 정렬을 정의합니다. <code>start</code>, <code>center</code>, <code>end</code>, 또는 <code>nearest</code> 중 하나입니다. 기본 값은 <code>start</code>입니다. </p> </dd> <dt id="inline">
+<code>inline</code> <span class="badge inline optional">Optional</span>
+</dt> <dd> <p> 수평 정렬을 정의합니다. <code>start</code>, <code>center</code>, <code>end</code>, 또는 <code>nearest</code> 중 하나입니다. 기본 값은 <code>nearest</code>입니다. </p> </dd> </dl> </dd> </dl></div>
+<h3 id="반환_값">반환 값</h3>
+<div class="section-content"><p>없음 (<a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/undefined"><code>undefined</code></a>).</p></div>
+<h2 id="예제">예제</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="jUB31txmCQn86cRe3Sdmhq8IkjKT8+TpqITK8QgcDQo=" data-language="js"><span class="token keyword">const</span> element <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">"box"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+element<span class="token punctuation">.</span><span class="token function">scrollIntoView</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+element<span class="token punctuation">.</span><span class="token function">scrollIntoView</span><span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+element<span class="token punctuation">.</span><span class="token function">scrollIntoView</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token literal-property property">block</span><span class="token operator">:</span> <span class="token string">"end"</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+element<span class="token punctuation">.</span><span class="token function">scrollIntoView</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token literal-property property">behavior</span><span class="token operator">:</span> <span class="token string">"smooth"</span><span class="token punctuation">,</span> <span class="token literal-property property">block</span><span class="token operator">:</span> <span class="token string">"end"</span><span class="token punctuation">,</span> <span class="token literal-property property">inline</span><span class="token operator">:</span> <span class="token string">"nearest"</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div></div>
+<h2 id="참고">참고</h2>
+<div class="section-content"><p>다른 요소의 레이아웃에 따라 위쪽 또는 아래쪽으로 완전히 스크롤되지 않을 수 있습니다.</p></div>
+<h2 id="명세서">명세서</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://drafts.csswg.org/cssom-view/#dom-element-scrollintoview">CSSOM View Module <br><small># dom-element-scrollintoview</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<h2 id="더보기">더보기</h2>
+<div class="section-content"><ul> <li>
+<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoViewIfNeeded"><code>Element.scrollIntoViewIfNeeded()</code> <small>(en-US)</small></a> <abbr class="icon icon-nonstandard" title="비표준. 사용하기전에 다른 브라우저에서도 사용 가능한지 확인 해주세요."> <span class="visually-hidden">비표준</span> </abbr>
+</li> </ul></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/Element/scrollIntoView" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/Element/scrollIntoView</a>
+  </p>
+</div>

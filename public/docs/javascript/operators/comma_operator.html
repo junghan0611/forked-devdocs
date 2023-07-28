@@ -1,0 +1,59 @@
+<header><h1>쉼표 연산자</h1></header><div class="section-content"><p><strong>쉼표 연산자</strong>는 각각의 피연산자를 왼쪽에서 오른쪽 순서로 평가하고, 마지막 연산자의 값을 반환합니다.</p></div>
+<section aria-labelledby="시도해보기"><h2 id="시도해보기">시도해보기</h2>
+<div class="section-content"><iframe class="interactive is-js-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/js/expressions-commaoperators.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe></div></section><section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="6H6bodcQbrBzxVLQu42VApZopuAcm8by0X75ThFtemg=" data-language="js">    expr1<span class="token punctuation">,</span> expr2<span class="token punctuation">,</span> expr3<span class="token operator">...</span>
+</pre>
+</div></div></section><section aria-labelledby="매개변수"><h3 id="매개변수">매개변수</h3>
+<div class="section-content"><dl> <dt id="expr1">
+<code>expr1</code>, <code>expr2, expr3...</code>
+</dt> <dd> <p>아무 표현식.</p> </dd> </dl></div></section><section aria-labelledby="설명"><h2 id="설명">설명</h2>
+<div class="section-content">
+<p>단일 표현식을 요구하는 곳에 복수의 표현식을 사용하고 싶을 때 쉼표 연산자를 사용할 수 있습니다. 가장 흔히 사용되는 곳은 <code>for</code> 반복문에 다수의 매개변수를 제공할 때입니다.</p> <p>쉼표 연산자는 배열, 객체, 함수의 매개변수와 호출 인수에서 사용하는 쉼표와는 전혀 다릅니다.</p>
+</div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+<div class="section-content">
+<p><code>a</code>를 한 행에 10개의 요소를 가진 2차원 배열이라고 가정할 때, 아래 예제는 쉼표 연산자를 사용해 한 번에 <code>i</code>는 증가시키고 <code>j</code>는 감소시킵니다.</p> <p>다음 코드는 2차원 배열의 대각선에 위치하는 요소의 값을 출력합니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="N1qr2QIjQHjx6hXueXTvx1iUGmdQ2Fv+/19/6NLxuA8=" data-language="js"><span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> j <span class="token operator">=</span> <span class="token number">9</span><span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> <span class="token number">9</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">,</span> j<span class="token operator">--</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">a[</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>i<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">][</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>j<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">] = </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>a<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div> <p>쉼표 연산자를 할당에 사용하면, 할당 연산이 표현식에 포함되지 않아 예상한 결과와는 다소 다를 수 있습니다. 다음 예제에서, <code>a</code>는 <code>b = 3</code>의 값(3)을 할당받지만, <code>c = 4</code> 표현식 역시 평가되어 콘솔에 기록됩니다. <a href="operator_precedence">연산자 우선순위와 결합성</a> 때문입니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="lsBy+vQAGxgea+A/fgzCmzfmC5Wj3GFbmFoyn4Qp6zQ=" data-language="js"><span class="token keyword">var</span> a<span class="token punctuation">,</span> b<span class="token punctuation">,</span> c<span class="token punctuation">;</span>
+
+a <span class="token operator">=</span> b <span class="token operator">=</span> <span class="token number">3</span><span class="token punctuation">,</span> c <span class="token operator">=</span> <span class="token number">4</span><span class="token punctuation">;</span> <span class="token comment">// 콘솔에는 4를 반환</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 3 (제일 왼쪽)</span>
+
+<span class="token keyword">var</span> x<span class="token punctuation">,</span> y<span class="token punctuation">,</span> z<span class="token punctuation">;</span>
+
+x <span class="token operator">=</span> <span class="token punctuation">(</span>y <span class="token operator">=</span> <span class="token number">5</span><span class="token punctuation">,</span> z <span class="token operator">=</span> <span class="token number">6</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 콘솔에는 6을 반환</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 6 (제일 오른쪽)</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="연산_후_반환"><h3 id="연산_후_반환">연산 후 반환</h3>
+<div class="section-content">
+<p>쉼표 연산자를 사용하는 다른 방법은 값을 반환하기 전에 연산을 수행하는 것입니다. 쉼표 연산자는 마지막 표현식의 평가 결과만 반환하지만, 이전 피연산자에 대해서도 평가는 수행하므로 다음과 같은 코드를 작성할 수 있습니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="6wnauPMUQKTtWTMw/RO0N6KA3avr2BQKGy652oE9QwE=" data-language="js"><span class="token keyword">function</span> <span class="token function">myFunc</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">var</span> x <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">return</span> <span class="token punctuation">(</span>x <span class="token operator">+=</span> <span class="token number">1</span><span class="token punctuation">,</span> x<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// ++x 와 같은 효과</span>
+<span class="token punctuation">}</span>
+</pre>
+</div>
+</div></section><h2 id="명세서">명세서</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://tc39.es/ecma262/multipage/ecmascript-language-expressions.html#sec-comma-operator">ECMAScript Language Specification <br><small># sec-comma-operator</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="../statements/for"><code>for</code> 반복문</a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Operators/Comma_operator" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Operators/Comma_operator</a>
+  </p>
+</div>

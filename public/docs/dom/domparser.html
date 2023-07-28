@@ -1,0 +1,36 @@
+<header><h1>DOMParser</h1></header><div class="section-content">
+<p>The <code>DOMParser</code> 인터페이스는 DOM <a href="document"><code>Document</code></a> 문서에 맞는 <a href="https://developer.mozilla.org/ko/docs/Glossary/XML">XML</a> 및 <a href="https://developer.mozilla.org/ko/docs/Glossary/HTML">HTML</a> 소스 코드를 해석할 수 있는 기반을 제공한다 .</p> <div class="notecard note" id="sect1"> <p><strong>참고:</strong> <a href="xmlhttprequest"><code>XMLHttpRequest</code></a> 객체로도 인식 가능한 URL 주소로부터 직접 XML 및 HTML 문서를 해석하여 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/response"><code>response</code> <small>(en-US)</small></a> 속성을 통해 <code>Document</code> 객체로 제공한다.</p> </div> <p>반대로 DOM 구조를 XML 및 HTML 소스 코드로 제공하는 방식은 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/XMLSerializer"><code>XMLSerializer</code> <small>(en-US)</small></a> 인터페이스를 참고하도록 한다.</p> <p>HTML 문서의 경우, <a href="element/innerhtml"><code>Element.innerHTML</code></a> 속성과 <a href="element/outerhtml"><code>outerHTML</code></a> 속성을 통해 DOM 구조를 새로운 방식으로 변경할 수 있다. 또한 이들 속성을 통해 HTML 구조의 하위에 있는 HTML 구조도 불러올 수 있다.</p>
+</div>
+<h2 id="문법">문법</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="BMSpBhJyBaIXK/05hGt4HaVACgf65rLD/NwIIphXHH4=" data-language="js"><span class="token keyword">let</span> domparser <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">DOMParser</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+</pre>
+</div></div>
+<h2 id="메소드">메소드</h2>
+<div class="section-content">
+<ul> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/DOMParser/parseFromString"><code>DOMParser.parseFromString()</code> <small>(en-US)</small></a></li> </ul> <h4 id="문법_2">문법</h4> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="X1SWwV2HSuWbyzwvMd6CLFpwR8nNqVYE2Q1cd2pRVIM=" data-language="js"><span class="token keyword">let</span> doc <span class="token operator">=</span> domparser<span class="token punctuation">.</span><span class="token function">parseFromString</span><span class="token punctuation">(</span>string<span class="token punctuation">,</span> mimeType<span class="token punctuation">)</span>
+</pre>
+</div> <h4 id="반환">반환</h4> <p><strong><a href="#argument02"><code>mimeType</code></a></strong> 인자를 통해 정의한 형식에 따른 <a href="document"><code>Document</code></a> 또는<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/XMLDocument"><code>XMLDocument</code> <small>(en-US)</small></a> 문서를 반환한다.</p> <h4 id="인자">인자</h4> <p>이 메소드에는 2개의 인자가 제공되는데, 모두 필수값이다.</p> <ul> <li>
+<code>string</code> <ul> <li>: 해석할 <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/String"><code>DOMString</code></a> 문자열. 반드시 <a href="https://developer.mozilla.org/ko/docs/Glossary/HTML">HTML</a>, <a href="https://developer.mozilla.org/ko/docs/Glossary/XML">xml</a>, <a class="page-not-created">xhtml+xml</a> 또는 <a href="https://developer.mozilla.org/ko/docs/Glossary/SVG">svg</a> 문서 형식에 맞아야 한다.</li> </ul> </li> <li>
+<code>mimeType</code> <ul> <li> <figure class="table-container"><div class="_table"><table> <thead> <tr> <th>: 아래 표에 정의한 형식을 반환 값으로 제공할 <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/String"><code>DOMString</code></a> 문자열.</th> <th><code>mimeType</code></th> <th><code>doc.constructor</code></th> </tr> </thead> <tbody> <tr> <td><code>text/html</code></td> <td><code><a href="document"><code>Document</code></a></code></td> <td></td> </tr> <tr> <td><code>text/xml</code></td> <td><code><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/XMLDocument"><code>XMLDocument</code> <small>(en-US)</small></a></code></td> <td></td> </tr> <tr> <td><code>application/xml</code></td> <td><code><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/XMLDocument"><code>XMLDocument</code> <small>(en-US)</small></a></code></td> <td></td> </tr> <tr> <td><code>application/xhtml+xml</code></td> <td><code><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/XMLDocument"><code>XMLDocument</code> <small>(en-US)</small></a></code></td> <td></td> </tr> <tr> <td><code>image/svg+xml</code></td> <td><code><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/XMLDocument"><code>XMLDocument</code> <small>(en-US)</small></a></code></td> <td></td> </tr> </tbody> </table></div></figure> </li> </ul> </li> </ul>
+</div>
+<h2 id="예제">예제</h2>
+<div class="section-content"><p>이 인터페이스의 유일한 메서드인 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/DOMParser/parseFromString"><code>DOMParser.parseFromString()</code> <small>(en-US)</small></a>에 대한 설명서에는 XML, SVG 및 HTML 문자열을 구문 분석하기 위한 예제가 포함되어 있습니다.</p></div>
+<h2 id="명세서">명세서</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://html.spec.whatwg.org/multipage/dynamic-markup-insertion.html#dom-parsing-and-serialization">HTML Standard <br><small># dom-parsing-and-serialization</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="https://developer.mozilla.org/en-US/docs/Web/Guide/Parsing_and_serializing_XML" class="only-in-en-us">XML 문서 직렬화와 해석 <small>(en-US)</small></a></li> <li><a href="xmlhttprequest"><code>XMLHttpRequest</code></a></li> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/XMLSerializer"><code>XMLSerializer</code> <small>(en-US)</small></a></li> <li>
+<a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse"><code>JSON.parse()</code></a> - <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/JSON"><code>JSON</code></a> 문서에 대해 같은 역할을 제공한다.</li> </ul></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/DOMParser" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/DOMParser</a>
+  </p>
+</div>

@@ -1,0 +1,37 @@
+<header><h1>Battery Status API</h1></header><div class="section-content">
+<p><strong>Battery API</strong> 만큼이나 자주 언급되는 <strong>Battery Status API</strong>는 시스템의 배터리 충전 상태에 대한 정보를 제공하고, 배터리 상태에 따라 발생하는 이벤트를 다룰 수 있도록 해 줍니다. 배터리가 얼마남지 않은 상황에서, 앱에서 배터리의 소모를 줄인다거나 배터리가 방전되기 전에 데이터를 저장하거나 하는 것들이 가능합니다.</p> <p>Battery Status API 는 <a class="page-not-created"><code>window.navigator.battery</code></a> 를 제공 합니다. 이는 <a href="batterymanager"><code>BatteryManager</code></a> 객체이며 배터리 상태를 감시하고 전달받아 처리할 수 있는 이벤트를 가지고 있습니다.</p>
+</div>
+<h2 id="예제">예제</h2>
+<div class="section-content">
+<p>아래 예제에서는 배터리가 충전중인 상태 (전원 케이블을 연결하여 충전 중인지) 와 배터리 수준의 변화를 감시합니다. 각각 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/BatteryManager/chargingchange_event"><code>chargingchange</code> <small>(en-US)</small></a> 와 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/BatteryManager/levelchange_event"><code>levelchange</code> <small>(en-US)</small></a> 이벤트가 발생하면 완료 됩니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="aeLK4uyS/Few1JhIRwTqB3zilDJlVeShWR7Hu0X8NHo=" data-language="js"><span class="token keyword">var</span> battery <span class="token operator">=</span> navigator<span class="token punctuation">.</span>battery <span class="token operator">||</span> navigator<span class="token punctuation">.</span>mozBattery <span class="token operator">||</span> navigator<span class="token punctuation">.</span>webkitBattery<span class="token punctuation">;</span>
+
+<span class="token keyword">function</span> <span class="token function">updateBatteryStatus</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"Battery status: "</span> <span class="token operator">+</span> battery<span class="token punctuation">.</span>level <span class="token operator">*</span> <span class="token number">100</span> <span class="token operator">+</span> <span class="token string">" %"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>battery<span class="token punctuation">.</span>charging<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"Battery is charging"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+battery<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">"chargingchange"</span><span class="token punctuation">,</span> updateBatteryStatus<span class="token punctuation">)</span><span class="token punctuation">;</span>
+battery<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">"levelchange"</span><span class="token punctuation">,</span> updateBatteryStatus<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">updateBatteryStatus</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div> <p>명세서의 예제도 <a href="https://dev.w3.org/2009/dap/system-info/battery-status.html#introduction" target="_blank"><strong>확인</strong></a>해보세요.</p>
+</div>
+<h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://w3c.github.io/battery/#the-batterymanager-interface">Battery Status API <br><small># the-batterymanager-interface</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<h2 id="더보기">더보기</h2>
+<div class="section-content"><ul> <li><a href="https://hacks.mozilla.org/2012/02/using-the-battery-api-part-of-webapi/" target="_blank">Hacks blog post - Using the Battery API</a></li> <li><a href="batterymanager"><code>BatteryManager</code></a></li> <li><a class="page-not-created"><code>navigator.battery</code></a></li> </ul></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/Battery_Status_API" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/Battery_Status_API</a>
+  </p>
+</div>

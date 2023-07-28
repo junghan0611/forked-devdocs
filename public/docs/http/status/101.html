@@ -1,0 +1,32 @@
+<h1>101 Switching Protocols</h1>
+<header><h1>101 Switching Protocols</h1></header><div class="section-content">
+<p> HTTP <code>101 Switching Protocols</code> 응답 코드는 서버가 전환되는 프로토콜을 가리킵니다. 프로토콜은 클라이언트로부터 받은 <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Upgrade" class="only-in-en-us"><code>Upgrade</code> <small>(en-US)</small></a> 헤더에 명시되어 있습니다. </p> <p> 서버는 이 응답에 전환된 프로토콜을 나타내는 <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Upgrade" class="only-in-en-us"><code>Upgrade</code> <small>(en-US)</small></a> 헤더를 포함합니다. 이 절차는 <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Protocol_upgrade_mechanism" class="only-in-en-us">프로토콜 업그레이드 메커니즘 <small>(en-US)</small></a> 문서에 설명되어 있습니다. </p>
+</div>
+<section aria-labelledby="상태"><h2 id="상태">상태</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">http</span></p>
+<pre data-signature="pI1M5luDJpbh0DsnOIN+O6RcL1m3qsRcjxiH8p+T/HE=" data-language="http">101 Switching Protocols
+</pre>
+</div></div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+<div class="section-content">
+<p> <code>101 Switching Protocols</code> 는 <a href="https://developer.mozilla.org/ko/docs/Web/API/WebSockets_API">WebSockets</a>와 함께 사용할 수 있습니다. </p> <div class="code-example">
+<p class="example-header"><span class="language-name">http</span></p>
+<pre data-signature="X+JOcKCXrbetMLbuT5PEzriCzrdWYk07Yx5IzVzo9n4=" data-language="http"><span class="token response-status"><span class="token http-version property">HTTP/1.1</span> <span class="token status-code number">101</span> <span class="token reason-phrase string">Switching Protocols</span></span>
+<span class="token header"><span class="token header-name keyword">Upgrade</span><span class="token punctuation">:</span> <span class="token header-value">websocket</span></span>
+<span class="token header"><span class="token header-name keyword">Connection</span><span class="token punctuation">:</span> <span class="token header-value">Upgrade</span></span>
+</pre>
+</div>
+</div></section><h2 id="명세서">명세서</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://httpwg.org/specs/rfc9110.html#status.101">Unknown specification <br><small># status.101</small></a></td></tr></tbody>
+</table></div>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Protocol_upgrade_mechanism" class="only-in-en-us">프로토콜 업그레이드 메커니즘 <small>(en-US)</small></a></li> <li><a href="https://developer.mozilla.org/ko/docs/Web/API/WebSockets_API">WebSockets</a></li> <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Upgrade" class="only-in-en-us"><code>Upgrade</code> <small>(en-US)</small></a></li> <li>
+<a href="426"><code>426</code></a> <code>Upgrade Required</code>
+</li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/HTTP/Status/101" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/HTTP/Status/101</a>
+  </p>
+</div>

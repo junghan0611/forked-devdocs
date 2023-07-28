@@ -1,0 +1,47 @@
+<header><h1>AudioParamDescriptor</h1></header><div class="section-content">
+<p><a href="web_audio_api">Web Audio API</a>의 <code>AudioParamDescriptor</code> dictionary는 <a href="audioparam"><code>AudioParam</code></a> 객체에 대한 속성들을 명시합니다.</p> <p>이 dictionary는 <a href="audioworkletnode"><code>AudioWorkletNode</code></a>에서 사용자 정의 <code>AudioParam</code> 을 생성하기 위해 사용됩니다. 만약 근본적인 <a href="audioworkletprocessor"><code>AudioWorkletProcessor</code></a>가 <a href="audioworkletprocessor/parameterdescriptors"><code>parameterDescriptors</code></a> static getter를 가지고 있다면, 이 dictionary에 기반한 반환된 객체들의 배열이 <code>AudioWorkletNode</code> 생성자에 의해 내부적으로 사용되어 이에 맞춰 AudioWorkletNode의 <a href="audioworkletnode/parameters"><code>parameters</code></a> 속성을 채웁니다.</p>
+</div>
+<h2 id="속성">속성</h2>
+<div class="section-content"><dl> <dt id="name"><code>name</code></dt> <dd> <p><code>AudioParam</code> 의 이름을 나타내는 <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/String"><code>DOMString</code></a>. 이 이름 아래에서 <code>AudioParam</code> 은 AudioWorkletNode의 <a href="audioworkletnode/parameters"><code>parameters</code></a> 속성에서 사용 가능하게 될 것이고, 이 이름 아래에서 <a href="audioworkletprocessor/process"><code>AudioWorkletProcessor.process</code></a> 메서드가 이 <code>AudioParam</code> 의 계산된 값을 획득할 것입니다.</p> </dd> <dt id="automationrate">
+<code>automationRate</code> <span class="badge inline optional">Optional</span>
+</dt> <dd> <p>이 <code>AudioParam</code> 의 자동화율(automation rate)을 나타내는 string인데, <a href="audioparam#a-rate"><code>"a-rate"</code></a> 또는 <a href="audioparam#k-rate"><code>"k-rate"</code></a>입니다. 기본값은 <code>"a-rate"</code> 입니다.</p> </dd> <dt id="minvalue">
+<code>minValue</code> <span class="badge inline optional">Optional</span>
+</dt> <dd> <p><code>AudioParam</code> 의 최소 값을 나타내는 <code>float</code>. 기본값은 <code>-3.4028235e38</code> 입니다.</p> </dd> <dt id="maxvalue">
+<code>maxValue</code> <span class="badge inline optional">Optional</span>
+</dt> <dd> <p><code>AudioParam</code> 의 최대 값을 나타내는 <code>float</code>. 기본값은 <code>3.4028235e38</code> 입니다.</p> </dd> <dt id="defaultvalue">
+<code>defaultValue</code> <span class="badge inline optional">Optional</span>
+</dt> <dd> <p><code>AudioParam</code> 의 초기 값을 나타내는 <code>float</code>. 기본값은 <code>0</code> 입니다.</p> </dd> </dl></div>
+<h2 id="예제">예제</h2>
+<div class="section-content">
+<p>아래의 코드는 사용자 정의 <code>AudioWorkletProcessor</code> 에서 정의된 static <a href="audioworkletprocessor/parameterdescriptors"><code>parameterDescriptors</code></a> 메서드에 의해 반환되는 이 유형의 descriptor를 보여줍니다 (이 코드는 <a href="audioworkletnode/parameters#examples">AudioWorkletNode.parameters</a> 예제의 일부입니다).</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="qAun/NJXBggOaQra/PDS1s5269Qzq9ktNMG4twtBx3I=" data-language="js"><span class="token comment">// white-noise-processor.js</span>
+<span class="token keyword">class</span> <span class="token class-name">WhiteNoiseProcessor</span> <span class="token keyword">extends</span> <span class="token class-name">AudioWorkletProcessor</span> <span class="token punctuation">{</span>
+  <span class="token keyword">static</span> <span class="token keyword">get</span> <span class="token function">parameterDescriptors</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token punctuation">[</span><span class="token punctuation">{</span>
+      <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">'customGain'</span><span class="token punctuation">,</span>
+      <span class="token literal-property property">defaultValue</span><span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+      <span class="token literal-property property">minValue</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
+      <span class="token literal-property property">maxValue</span><span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+      <span class="token literal-property property">automationRate</span><span class="token operator">:</span> <span class="token string">'a-rate'</span>
+    <span class="token punctuation">}</span><span class="token punctuation">]</span>
+  <span class="token punctuation">}</span>
+
+<span class="token operator">...</span>
+<span class="token punctuation">}</span>
+</pre>
+</div>
+</div>
+<h2 id="명세서">명세서</h2>
+<div class="notecard warning">
+<strong>No specification found</strong><p>No specification data found for <code>api.AudioParamDescriptor</code>.<br><a href="#on-github">Check for problems with this page</a> or contribute a missing <code>spec_url</code> to <a href="https://github.com/mdn/browser-compat-data">mdn/browser-compat-data</a>. Also make sure the specification is included in <a href="https://github.com/w3c/browser-specs">w3c/browser-specs</a>.</p>
+</div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="web_audio_api">Web Audio API</a></li> <li><a href="web_audio_api/using_web_audio_api">Web Audio API 사용하기</a></li> </ul></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/AudioParamDescriptor" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/AudioParamDescriptor</a>
+  </p>
+</div>

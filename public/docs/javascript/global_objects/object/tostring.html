@@ -1,0 +1,94 @@
+<header><h1>Object.prototype.toString()</h1></header><div class="section-content"><p>The <code>toString()</code> 은 문자열을 반환하는 object의 대표적인 방법이다</p></div>
+<section aria-labelledby="시도해보기"><h2 id="시도해보기">시도해보기</h2>
+<div class="section-content"><iframe class="interactive is-js-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/js/object-prototype-tostring.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe></div></section><section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="tSeJ70VX09748eButZZOwmiylGArGoRE62Ek+ul2XzM=" data-language="js">obj<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+</pre>
+</div></div></section><section aria-labelledby="description"><h2 id="description">Description</h2>
+<div class="section-content">
+<p>모든 객체에는 객체가 텍스트 값으로 표시되거나 객체가 문자열이 예상되는 방식으로 참조 될 때 자동으로 호출되는 <code>toString()</code> 메서드가 있습니다. 기본적으로 <code>toString()</code> 메서드는 Object에서 비롯된 모든 객체에 상속됩니다. 이 메서드가 사용자 지정 개체에서 재정의되지 않으면 <code>toString()</code>은 "<code>[object type]</code>"을 반환합니다. 여기서 <code>type</code>은 object type입니다. 다음 코드는 이것을 설명합니다</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="FdKKXio33Uq1GYJSqgAS7DSQyd5u0TjFH8BPBzNry98=" data-language="js"><span class="token keyword">var</span> o <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Object</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+o<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// returns [object Object]</span>
+</pre>
+</div> <div class="notecard note" id="sect1"> <p><strong>참고:</strong> 자바스크립트 1.8.5부터 <a href="../../operators/null"><code>null</code></a>의 <code>toString()</code>을 호출하는 경우 <code>[object Null]</code>을 반환하며, <a href="../undefined"><code>undefined</code></a>는 <code>[object Undefined]</code>를 반환합니다. 이는 ECMAScript 제 5판과 후속 정오표에 정의되어 있습니다. See <a href="#tostring%EC%9C%BC%EB%A1%9C_%EA%B0%9D%EC%B2%B4_%ED%81%B4%EB%9E%98%EC%8A%A4_%EA%B2%80%EC%82%AC">toString으로 객체 클래스 검사</a>.</p> </div>
+</div></section><section aria-labelledby="매개변수"><h2 id="매개변수">매개변수</h2>
+<div class="section-content">
+<p>숫자 및 BigInts의 경우 <code>toString()</code>은 선택적으로 기수(radix)를 매개변수로 취합니다. 기수의 값은 최소 2부터 36까지입니다.</p> <p><code>기수</code>를 이용함으로써 10진수를 (1, 2, 3, 4, 5...) 다른 진수로 변환할 수 있습니다. 아래는 10진수를 2진수로 변환하는 예제입니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="tXth41Iotj3BeWcXAXKiTVn/9dG29Ci7hTqmDZY38/s=" data-language="js"><span class="token keyword">let</span> baseTenInt <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">;</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>baseTenInt<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token comment">// "1010"이 출력됩니다</span>
+</pre>
+</div> <p>big integers도 이와 같습니다</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="bcIrvaZjZz/fni39R84JGJtTxZ3RKrXuuCnyseABec0=" data-language="js"><span class="token keyword">let</span> bigNum <span class="token operator">=</span> <span class="token function">BigInt</span><span class="token punctuation">(</span><span class="token number">20</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>bigNum<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token comment">// "10100"이 출력됩니다</span>
+</pre>
+</div> <p>몇 가지 일반적인 기수들은 아래와 같습니다</p> <ul> <li>2 : <a href="https://ko.wikipedia.org/wiki/%EC%9D%B4%EC%A7%84%EB%B2%95" target="_blank">2진법</a>
+</li> <li>8 : <a href="https://ko.wikipedia.org/wiki/%ED%8C%94%EC%A7%84%EB%B2%95" target="_blank">8진법</a>
+</li> <li>10 : <a href="https://ko.wikipedia.org/wiki/%EC%8B%AD%EC%A7%84%EB%B2%95" target="_blank">10진법</a>
+</li> <li>16 : <a href="https://ko.wikipedia.org/wiki/%EC%8B%AD%EC%9C%A1%EC%A7%84%EB%B2%95" target="_blank">16진법</a>
+</li> </ul>
+</div></section><section aria-labelledby="examples"><h2 id="examples">Examples</h2>
+</section><section aria-labelledby="기본_tostring_메소드_재정의"><h3 id="기본_tostring_메소드_재정의">기본 <code>toString</code> 메소드 재정의</h3>
+<div class="section-content">
+<p>기본 <code>toString()</code> 메서드 대신에 호출될 함수를 정의할 수 있습니다. <code>toString()</code> 메서드는 인자를 취하지 않고 문자열을 반환합니다. 직접 생성한 <code>toString()</code> 메서드는 원하는 어떤 값이든 될 수 있지만 해당 객체에 대한 정보를 전달하고 있을 때 가장 유용할 것입니다.</p> <p>다음 코드는 <code>Dog</code> 객체 타입을 정의하고 <code>Dog</code> 타입을 따르는 <code>theDog</code>를 생성합니다:</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="ChoYD5acYrPoUUlvb/wRd6XB+cK+Ua/wcRf2FZPIRVA=" data-language="js"><span class="token keyword">function</span> <span class="token function">Dog</span><span class="token punctuation">(</span><span class="token parameter">name<span class="token punctuation">,</span> breed<span class="token punctuation">,</span> color<span class="token punctuation">,</span> sex</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">this</span><span class="token punctuation">.</span>name <span class="token operator">=</span> name<span class="token punctuation">;</span>
+  <span class="token keyword">this</span><span class="token punctuation">.</span>breed <span class="token operator">=</span> breed<span class="token punctuation">;</span>
+  <span class="token keyword">this</span><span class="token punctuation">.</span>color <span class="token operator">=</span> color<span class="token punctuation">;</span>
+  <span class="token keyword">this</span><span class="token punctuation">.</span>sex <span class="token operator">=</span> sex<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+theDog <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Dog</span><span class="token punctuation">(</span><span class="token string">'Gabby'</span><span class="token punctuation">,</span> <span class="token string">'Lab'</span><span class="token punctuation">,</span> <span class="token string">'chocolate'</span><span class="token punctuation">,</span> <span class="token string">'female'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div> <p>커스텀 객체의 <code>toString()</code> 메서드를 호출하는 경우 <a href="../object"><code>Object</code></a>로부터 상속받은 기본 값을 반환하게 됩니다:</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="1PLwWvqe35X2gV5/x3chtq1YoyQyjQ4tLXg7NDkpeyQ=" data-language="js">theDog<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// returns [object Object]</span>
+</pre>
+</div> <p>다음 코드는 기본 <code>toString()</code> 메서드를 재정의하는 <code>dogToString()</code>을 생성하고 할당합니다. 이 함수는 객체의 name, breed, color, sex를 포함하는 문자열을 "<code>property = value;</code>"의 형태로 만들어냅니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="VYVacM1pGAGijsNgE6qR/OHio60tFmagP3K6azqiaPI=" data-language="js"><span class="token class-name">Dog</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function-variable function">toString</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token function">dogToString</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">var</span> ret <span class="token operator">=</span> <span class="token string">'Dog '</span> <span class="token operator">+</span> <span class="token keyword">this</span><span class="token punctuation">.</span>name <span class="token operator">+</span> <span class="token string">' is a '</span> <span class="token operator">+</span> <span class="token keyword">this</span><span class="token punctuation">.</span>sex <span class="token operator">+</span> <span class="token string">' '</span> <span class="token operator">+</span> <span class="token keyword">this</span><span class="token punctuation">.</span>color <span class="token operator">+</span> <span class="token string">' '</span> <span class="token operator">+</span> <span class="token keyword">this</span><span class="token punctuation">.</span>breed<span class="token punctuation">;</span>
+  <span class="token keyword">return</span> ret<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div> <p>앞선 코드를 사용하면 문자열 컨텍스트에서 <code>theDog</code>가 사용될 때마다 자바스크립트는 자동으로 <code>dogToString()</code> 함수를 호출하여 다음 문자열을 반환합니다:</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="yjvoIoKi94S7HUgOEI5a7pbNaCfYm4R1u9N28lkHdkE=" data-language="js"><span class="token string">"Dog Gabby is a female chocolate Lab"</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="tostring으로_객체_클래스_검사"><h3 id="tostring으로_객체_클래스_검사">
+<code>toString()</code>으로 객체 클래스 검사</h3>
+<div class="section-content">
+<p><code>toString()</code>은 모든 객체에 사용되어 해당 객체의 클래스를 가져올 수 있습니다. Object.prototype.toString()을 모든 객체에 사용하기 위해서는 <a href="../function/call"><code>Function.prototype.call()</code></a> 나 <a href="../function/apply"><code>Function.prototype.apply()</code></a>를 사용해서 검사하고자 하는 객체를 <code>thisArg</code>로 불리는 첫번째 파라미터로 넘겨야 합니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="l1sww7xbhHFYis4R+9RtfVK014S/dCBPprcFq57qErA=" data-language="js"><span class="token keyword">var</span> toString <span class="token operator">=</span> <span class="token class-name">Object</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span>toString<span class="token punctuation">;</span>
+
+<span class="token function">toString</span><span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token comment">// [object Date]</span>
+<span class="token function">toString</span><span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">String</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// [object String]</span>
+<span class="token function">toString</span><span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span>Math<span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token comment">// [object Math]</span>
+
+<span class="token comment">// Since JavaScript 1.8.5</span>
+<span class="token function">toString</span><span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span><span class="token keyword">undefined</span><span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment">// [object Undefined]</span>
+<span class="token function">toString</span><span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span><span class="token keyword">null</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token comment">// [object Null]</span>
+</pre>
+</div>
+</div></section><h2 id="명세서">명세서</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://tc39.es/ecma262/multipage/fundamental-objects.html#sec-object.prototype.tostring">ECMAScript Language Specification <br><small># sec-object.prototype.tostring</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="see_also"><h2 id="see_also">See also</h2>
+<div class="section-content"><ul> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/toString"><code>Object.prototype.toSource()</code> <small>(en-US)</small></a></li> <li><a href="valueof"><code>Object.prototype.valueOf()</code></a></li> <li><a href="../number/tostring"><code>Number.prototype.toString()</code></a></li> <li><a href="../symbol/toprimitive"><code>Symbol.toPrimitive</code></a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Object/toString" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Object/toString</a>
+  </p>
+</div>

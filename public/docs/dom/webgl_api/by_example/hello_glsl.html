@@ -1,0 +1,97 @@
+<header><h1>Hello GLSL</h1></header><div class="section-content">
+<ul class="prev-next"> <li><a class="button secondary only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API/By_example/Raining_rectangles">« 이전 <small>(en-US)</small></a></li> <li><a class="button secondary" href="hello_vertex_attributes">다음 »</a></li> </ul> <p>매우 간단한 색이 있는 단단한 사각형을 그려주는 쉐이더 프로그램</p> <div class="notecard note" id="sect1"> <p><strong>참고:</strong> 이 예시는 대부분 모든 최신의 데스크탑 브라우저에서 동작합니다. 하지만 어떤 모바일 혹은 낡은 브라우저에서는 동작하지 않습니다. 만약 캔버스가 공백인 상태로 남아있다면, 당신은 정확히 똑같은 것을 그리는 다음 예시의 결과를 확인하실 수 있습니다. 하지만 다음으로 넘어가기 전에, 여기서 설명과 코드를 읽고 가는 것을 기억하세요</p> </div>
+</div>
+<h3 id="hello_world_프로그램_in_glsl">Hello World 프로그램 in GLSL</h3>
+<div class="section-content">
+<div class="code-example" id="sect2">
+
+<iframe class="sample-code-frame" title="Hello World 프로그램 in GLSL sample" id="frame_hello_world_프로그램_in_glsl" width="660" height="425" src="https://live.mdnplay.dev/ko/docs/Web/API/WebGL_API/By_example/Hello_GLSL/runner.html?id=hello_world_%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%A8_in_glsl" loading="lazy"></iframe>
+</div> <p>매우 간단한 첫 쉐이더 프로그램</p>    <div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="5Y5GI8Xqeohmw0ZiFbiMxAD1cSKvLAm32eYnte4zUaM=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>x-shader/x-vertex<span class="token punctuation">"</span></span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>vertex-shader<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token script"><span class="token language-javascript">
+  #version <span class="token number">100</span>
+  <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    gl_Position <span class="token operator">=</span> <span class="token function">vec4</span><span class="token punctuation">(</span><span class="token number">0.0</span><span class="token punctuation">,</span> <span class="token number">0.0</span><span class="token punctuation">,</span> <span class="token number">0.0</span><span class="token punctuation">,</span> <span class="token number">1.0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    gl_PointSize <span class="token operator">=</span> <span class="token number">64.0</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div> <div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="NSanFOVP7kdsUkpBEwHeirLTMBcwHNh1aairvkxqUsQ=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>x-shader/x-fragment<span class="token punctuation">"</span></span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>fragment-shader<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token script"><span class="token language-javascript">
+  #version <span class="token number">100</span>
+  <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    gl_FragColor <span class="token operator">=</span> <span class="token function">vec4</span><span class="token punctuation">(</span><span class="token number">0.18</span><span class="token punctuation">,</span> <span class="token number">0.54</span><span class="token punctuation">,</span> <span class="token number">0.34</span><span class="token punctuation">,</span> <span class="token number">1.0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div>  <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="EBCZJiDev/cY+D/Jk1+aAkAOVMYnWH3XF1Rol1ieWUY=" data-language="js">window<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">"load"</span><span class="token punctuation">,</span> setupWebGL<span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">let</span> gl<span class="token punctuation">;</span>
+<span class="token keyword">let</span> program<span class="token punctuation">;</span>
+
+<span class="token keyword">function</span> <span class="token function">setupWebGL</span><span class="token punctuation">(</span><span class="token parameter">evt</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  window<span class="token punctuation">.</span><span class="token function">removeEventListener</span><span class="token punctuation">(</span>evt<span class="token punctuation">.</span>type<span class="token punctuation">,</span> setupWebGL<span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token punctuation">(</span>gl <span class="token operator">=</span> <span class="token function">getRenderingContext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword">return</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">let</span> source <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">querySelector</span><span class="token punctuation">(</span><span class="token string">"#vertex-shader"</span><span class="token punctuation">)</span><span class="token punctuation">.</span>innerHTML<span class="token punctuation">;</span>
+  <span class="token keyword">const</span> vertexShader <span class="token operator">=</span> gl<span class="token punctuation">.</span><span class="token function">createShader</span><span class="token punctuation">(</span>gl<span class="token punctuation">.</span><span class="token constant">VERTEX_SHADER</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  gl<span class="token punctuation">.</span><span class="token function">shaderSource</span><span class="token punctuation">(</span>vertexShader<span class="token punctuation">,</span> source<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  gl<span class="token punctuation">.</span><span class="token function">compileShader</span><span class="token punctuation">(</span>vertexShader<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  source <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">querySelector</span><span class="token punctuation">(</span><span class="token string">"#fragment-shader"</span><span class="token punctuation">)</span><span class="token punctuation">.</span>innerHTML<span class="token punctuation">;</span>
+  <span class="token keyword">const</span> fragmentShader <span class="token operator">=</span> gl<span class="token punctuation">.</span><span class="token function">createShader</span><span class="token punctuation">(</span>gl<span class="token punctuation">.</span><span class="token constant">FRAGMENT_SHADER</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  gl<span class="token punctuation">.</span><span class="token function">shaderSource</span><span class="token punctuation">(</span>fragmentShader<span class="token punctuation">,</span> source<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  gl<span class="token punctuation">.</span><span class="token function">compileShader</span><span class="token punctuation">(</span>fragmentShader<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  program <span class="token operator">=</span> gl<span class="token punctuation">.</span><span class="token function">createProgram</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  gl<span class="token punctuation">.</span><span class="token function">attachShader</span><span class="token punctuation">(</span>program<span class="token punctuation">,</span> vertexShader<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  gl<span class="token punctuation">.</span><span class="token function">attachShader</span><span class="token punctuation">(</span>program<span class="token punctuation">,</span> fragmentShader<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  gl<span class="token punctuation">.</span><span class="token function">linkProgram</span><span class="token punctuation">(</span>program<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  gl<span class="token punctuation">.</span><span class="token function">detachShader</span><span class="token punctuation">(</span>program<span class="token punctuation">,</span> vertexShader<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  gl<span class="token punctuation">.</span><span class="token function">detachShader</span><span class="token punctuation">(</span>program<span class="token punctuation">,</span> fragmentShader<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  gl<span class="token punctuation">.</span><span class="token function">deleteShader</span><span class="token punctuation">(</span>vertexShader<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  gl<span class="token punctuation">.</span><span class="token function">deleteShader</span><span class="token punctuation">(</span>fragmentShader<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>gl<span class="token punctuation">.</span><span class="token function">getProgramParameter</span><span class="token punctuation">(</span>program<span class="token punctuation">,</span> gl<span class="token punctuation">.</span><span class="token constant">LINK_STATUS</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> linkErrLog <span class="token operator">=</span> gl<span class="token punctuation">.</span><span class="token function">getProgramInfoLog</span><span class="token punctuation">(</span>program<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">cleanup</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    document<span class="token punctuation">.</span><span class="token function">querySelector</span><span class="token punctuation">(</span>
+      <span class="token string">"p"</span>
+    <span class="token punctuation">)</span><span class="token punctuation">.</span>textContent <span class="token operator">=</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">Shader program did not link successfully. Error log: </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>linkErrLog<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token function">initializeAttributes</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  gl<span class="token punctuation">.</span><span class="token function">useProgram</span><span class="token punctuation">(</span>program<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  gl<span class="token punctuation">.</span><span class="token function">drawArrays</span><span class="token punctuation">(</span>gl<span class="token punctuation">.</span><span class="token constant">POINTS</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token function">cleanup</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">let</span> buffer<span class="token punctuation">;</span>
+<span class="token keyword">function</span> <span class="token function">initializeAttributes</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  gl<span class="token punctuation">.</span><span class="token function">enableVertexAttribArray</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  buffer <span class="token operator">=</span> gl<span class="token punctuation">.</span><span class="token function">createBuffer</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  gl<span class="token punctuation">.</span><span class="token function">bindBuffer</span><span class="token punctuation">(</span>gl<span class="token punctuation">.</span><span class="token constant">ARRAY_BUFFER</span><span class="token punctuation">,</span> buffer<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  gl<span class="token punctuation">.</span><span class="token function">vertexAttribPointer</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> gl<span class="token punctuation">.</span><span class="token constant">FLOAT</span><span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">function</span> <span class="token function">cleanup</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  gl<span class="token punctuation">.</span><span class="token function">useProgram</span><span class="token punctuation">(</span><span class="token keyword">null</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>buffer<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    gl<span class="token punctuation">.</span><span class="token function">deleteBuffer</span><span class="token punctuation">(</span>buffer<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>program<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    gl<span class="token punctuation">.</span><span class="token function">deleteProgram</span><span class="token punctuation">(</span>program<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</pre>
+</div>   <p>이 예시 코드는 <a href="https://github.com/idofilin/webgl-by-example/tree/master/hello-glsl" target="_blank">GitHub</a>에서도 확인 가능합니다.</p>
+<ul class="prev-next"> <li><a class="button secondary only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API/By_example/Raining_rectangles">« 이전 <small>(en-US)</small></a></li> <li><a class="button secondary" href="hello_vertex_attributes">다음 »</a></li> </ul>
+</div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/WebGL_API/By_example/Hello_GLSL" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/WebGL_API/By_example/Hello_GLSL</a>
+  </p>
+</div>

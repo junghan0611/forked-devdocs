@@ -1,0 +1,71 @@
+<h1>OPTIONS</h1>
+<header><h1>OPTIONS</h1></header><div class="section-content">
+<p><code>OPTIONS</code>는 주어진 URL 또는 서버에 대해 허용된 통신 옵션을 요청합니다. 클라이언트는 이 방법으로 URL을 지정하거나 별표(<code>*</code>)를 지정하여 전체 서버를 참조할 수 있습니다.</p> <figure class="table-container"><div class="_table"><table class="properties"> <tbody> <tr> <th scope="row">요청에 본문이 있음</th> <td>아니요</td> </tr> <tr> <th scope="row">성공적인 응답에 본문이 있음</th> <td>예</td> </tr> <tr> <th scope="row"><a href="https://developer.mozilla.org/ko/docs/Glossary/Safe">안전함</a></th> <td>예</td> </tr> <tr> <th scope="row"><a href="https://developer.mozilla.org/ko/docs/Glossary/Idempotent">멱등성</a></th> <td>예</td> </tr> <tr> <th scope="row"><a href="https://developer.mozilla.org/ko/docs/Glossary/Cacheable">캐시 가능</a></th> <td>아니요</td> </tr> <tr> <th scope="row">HTML 폼에서 허용됨</th> <td>아니요</td> </tr> </tbody> </table></div></figure>
+</div>
+<section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">http</span></p>
+<pre data-signature="pthumUVSLEFVR5/bNu4K0SEf0CDNge9HdEvotwAm1LI=" data-language="http"><span class="token request-line"><span class="token method property">OPTIONS</span> <span class="token request-target url"><span class="token path"><span class="token path-separator">/</span>index.html</span></span> <span class="token http-version property">HTTP/1.1</span></span>
+OPTIONS * HTTP/1.1
+</pre>
+</div></div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+</section><section aria-labelledby="허용된_요청_매서드_식별하기"><h3 id="허용된_요청_매서드_식별하기">허용된 요청 매서드 식별하기</h3>
+<div class="section-content">
+<p>서버가 지원하는 요청 방법을 찾으려면 아래와 같이 <code>curl</code> 명령어을 사용하여 <code>OPTIONS</code> 요청을 보내볼 수 있습니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">bash</span></p>
+<pre data-signature="XtgQ08C5u2zdpJI/jIRIGNXTk3MVarW12ml4jvhjOrE=" data-language="bash"><span class="token function">curl</span> <span class="token parameter variable">-X</span> OPTIONS https://example.org <span class="token parameter variable">-i</span>
+</pre>
+</div> <p>그럼 응답은 허용된 메서드를 가지고 있는 <a href="../headers/allow"><code>Allow</code></a> 헤더가 있습니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">http</span></p>
+<pre data-signature="clO6+rn9AsHk84z4icZKwo/Y8MkCcDJJU9GPQXK0Y0A=" data-language="http"><span class="token response-status"><span class="token http-version property">HTTP/1.1</span> <span class="token status-code number">200</span> <span class="token reason-phrase string">No Content</span></span>
+<span class="token header"><span class="token header-name keyword">Allow</span><span class="token punctuation">:</span> <span class="token header-value">OPTIONS, GET, HEAD, POST</span></span>
+<span class="token header"><span class="token header-name keyword">Cache-Control</span><span class="token punctuation">:</span> <span class="token header-value">max-age=604800</span></span>
+<span class="token header"><span class="token header-name keyword">Date</span><span class="token punctuation">:</span> <span class="token header-value">Thu, 13 Oct 2016 11:45:00 GMT</span></span>
+<span class="token header"><span class="token header-name keyword">Server</span><span class="token punctuation">:</span> <span class="token header-value">EOS (lax004/2813)</span></span>
+</pre>
+</div>
+</div></section><section aria-labelledby="cors_사전_요청"><h3 id="cors_사전_요청">CORS 사전 요청</h3>
+<div class="section-content">
+<p><a href="../cors">CORS</a>에서 <a href="https://developer.mozilla.org/ko/docs/Glossary/Preflight_request">사전 요청</a>은 <code>OPTIONS</code> 메서드를 통해 전송되므로 요청을 보낼 수 있는 경우라면 서버가 응답할 수 있습니다. 이번 예제에서는 다음 매개변수에 대한 권한을 요청합니다.</p> <ul> <li>사전 요청에서 전송되는 <a href="../headers/access-control-request-method"><code>Access-Control-Request-Method</code></a> 헤더는 서버에 실제 요청이 전송될 때 <a href="post"><code>POST</code></a> 메서드가 있음을 알려줍니다.</li> <li>
+<a href="../headers/access-control-request-headers"><code>Access-Control-Request-Headers</code></a> 헤더는 서버에 실제 요청이 전송될 때 <code>X-PINGOTHER</code>와 <code>Content-Type</code> 헤더가 있음을 알려줍니다.</li> </ul> <div class="code-example">
+<p class="example-header"><span class="language-name">http</span></p>
+<pre data-signature="pLKoY1mU3lT0kTAI7txVwEu+VdIZq8ad0aRt+ER0lLs=" data-language="http"><span class="token request-line"><span class="token method property">OPTIONS</span> <span class="token request-target url"><span class="token path"><span class="token path-separator">/</span>resources<span class="token path-separator">/</span>post-here<span class="token path-separator">/</span></span></span> <span class="token http-version property">HTTP/1.1</span></span>
+<span class="token header"><span class="token header-name keyword">Host</span><span class="token punctuation">:</span> <span class="token header-value">bar.example</span></span>
+<span class="token header"><span class="token header-name keyword">Accept</span><span class="token punctuation">:</span> <span class="token header-value">text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8</span></span>
+<span class="token header"><span class="token header-name keyword">Accept-Language</span><span class="token punctuation">:</span> <span class="token header-value">en-us,en;q=0.5</span></span>
+<span class="token header"><span class="token header-name keyword">Accept-Encoding</span><span class="token punctuation">:</span> <span class="token header-value">gzip,deflate</span></span>
+<span class="token header"><span class="token header-name keyword">Connection</span><span class="token punctuation">:</span> <span class="token header-value">keep-alive</span></span>
+<span class="token header"><span class="token header-name keyword">Origin</span><span class="token punctuation">:</span> <span class="token header-value">https://foo.example</span></span>
+<span class="token header"><span class="token header-name keyword">Access-Control-Request-Method</span><span class="token punctuation">:</span> <span class="token header-value">POST</span></span>
+<span class="token header"><span class="token header-name keyword">Access-Control-Request-Headers</span><span class="token punctuation">:</span> <span class="token header-value">X-PINGOTHER, Content-Type</span></span>
+</pre>
+</div> <p>이제 서버는 아래와 같은 상황에서 요청을 수락할 때 응답할 수 있습니다. 이 예제에세 서버의 응답은 다음과 같습니다.</p> <dl> <dt id="access-control-allow-origin"><a href="../headers/access-control-allow-origin"><code>Access-Control-Allow-Origin</code></a></dt> <dd> <p><code>https://foo.example</code> 출처는 다음을 통해 <code>bar.example/resources/post-here/</code> URL을 요청할 수 있습니다.</p> </dd> <dt id="access-control-allow-methods"><a href="../headers/access-control-allow-methods"><code>Access-Control-Allow-Methods</code></a></dt> <dd> <p><a href="post"><code>POST</code></a>, <a href="get"><code>GET</code></a> 그리고 <code>OPTIONS</code>는 이 URL에 허용되는 메서드입니다. (이 헤더는 <a href="../headers/allow"><code>Allow</code></a> 헤더와 유사하지만 <a href="../cors">CORS</a>에만 사용됩니다.)</p> </dd> <dt id="access-control-allow-headers"><a href="../headers/access-control-allow-headers"><code>Access-Control-Allow-Headers</code></a></dt> <dd> <p><code>X-PINGOTHER</code> 및 <code>Content-Type</code>은 URL에 대해 허용되는 요청 헤더입니다.</p> </dd> <dt id="access-control-max-age"><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Access-Control-Max-Age" class="only-in-en-us"><code>Access-Control-Max-Age</code> <small>(en-US)</small></a></dt> <dd> <p>위 권한은 86,400초(1일) 동안 캐시될 수 있습니다.</p> </dd> </dl> <div class="code-example">
+<p class="example-header"><span class="language-name">http</span></p>
+<pre data-signature="l4OvEiVsqu95sbs6OX6e1fK/yA8uh5iK1zK/R7zMwRM=" data-language="http"><span class="token response-status"><span class="token http-version property">HTTP/1.1</span> <span class="token status-code number">200</span> <span class="token reason-phrase string">No Content</span></span>
+<span class="token header"><span class="token header-name keyword">Date</span><span class="token punctuation">:</span> <span class="token header-value">Mon, 01 Dec 2008 01:15:39 GMT</span></span>
+<span class="token header"><span class="token header-name keyword">Server</span><span class="token punctuation">:</span> <span class="token header-value">Apache/2.0.61 (Unix)</span></span>
+<span class="token header"><span class="token header-name keyword">Access-Control-Allow-Origin</span><span class="token punctuation">:</span> <span class="token header-value">https://foo.example</span></span>
+<span class="token header"><span class="token header-name keyword">Access-Control-Allow-Methods</span><span class="token punctuation">:</span> <span class="token header-value">POST, GET, OPTIONS</span></span>
+<span class="token header"><span class="token header-name keyword">Access-Control-Allow-Headers</span><span class="token punctuation">:</span> <span class="token header-value">X-PINGOTHER, Content-Type</span></span>
+<span class="token header"><span class="token header-name keyword">Access-Control-Max-Age</span><span class="token punctuation">:</span> <span class="token header-value">86400</span></span>
+<span class="token header"><span class="token header-name keyword">Vary</span><span class="token punctuation">:</span> <span class="token header-value">Accept-Encoding, Origin</span></span>
+<span class="token header"><span class="token header-name keyword">Keep-Alive</span><span class="token punctuation">:</span> <span class="token header-value">timeout=2, max=100</span></span>
+<span class="token header"><span class="token header-name keyword">Connection</span><span class="token punctuation">:</span> <span class="token header-value">Keep-Alive</span></span>
+</pre>
+</div>
+</div></section><section aria-labelledby="상태_코드"><h2 id="상태_코드">상태 코드</h2>
+<div class="section-content"><p><a href="../status/200"><code>200</code></a> OK와 <a href="../status/204"><code>204</code></a> No Content 모두 <a href="https://fetch.spec.whatwg.org/#ref-for-ok-status" target="_blank">허용되는 상태 코드</a>이지만 일부 브라우저는 <code>204 No Content</code>가 실제 리소스에 적용된다고 잘못 판단하여 리소스를 가져오기 위한 다음 요청을 보내지 않습니다.</p></div></section><h2 id="명세서">명세서</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://www.rfc-editor.org/rfc/rfc9110#OPTIONS">HTTP Semantics <br><small># OPTIONS</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li>
+<a href="../headers/allow"><code>Allow</code></a> 헤더</li> <li><a href="../cors">CORS</a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/HTTP/Methods/OPTIONS" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/HTTP/Methods/OPTIONS</a>
+  </p>
+</div>

@@ -1,0 +1,50 @@
+<header><h1>Generator.prototype.throw()</h1></header><div class="section-content"><p>제너레이터의 <code>throw()</code> 메서드는 현재 중단 된 위치에서 제너레이터에 <code>throw</code> 문이 삽입되는 것처럼 작동하여 제너레이터의 오류 조건을 알려주고 오류를 처리하거나 정리 작업을 수행하며 제너레이터를 종료할 수 있도록 합니다.</p></div>
+<section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content"> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="7bykEvkCuRRL+QhrzJSOdZgiqep8xPW0JdCacA29+vU=" data-language="js">generatorObject<span class="token punctuation">.</span><span class="token function">throw</span><span class="token punctuation">(</span>exception<span class="token punctuation">)</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="매개변수"><h2 id="매개변수">매개변수</h2>
+<div class="section-content"><dl> <dt id="exception"><code>exception</code></dt> <dd> <p>발생시킬 예외입니다. 디버깅을 위해 <a href="../error"><code>Error</code></a> 인스턴스(<code>instanceof</code> <a href="../error"><code>Error</code></a>)로 만드는 것이 유용합니다.</p> </dd> </dl></div></section><section aria-labelledby="반환_값"><h2 id="반환_값">반환 값</h2>
+<div class="section-content">
+<p>예외가 <a href="../../statements/try...catch"><code>try...catch</code></a>에서 발생하고 제너레이터가 재개하여 더 많은 값을 yield하면 다음 두 가지 속성을 가진 객체를 반환합니다.</p> <dl> <dt id="done"><code>done</code></dt> <dd> <p>불리언 값입니다.</p> <ul> <li>제너레이터가 제어 흐름의 끝에 도달한 경우 <code>true</code>입니다.</li> <li>제너레이터가 더 많은 값을 생성 할 수 있다면 <code>false</code>입니다.</li> </ul> </dd> <dt id="value"><code>value</code></dt> <dd> <p>다음 yield 식에서 산출된 값입니다.</p> </dd> </dl>
+</div></section><section aria-labelledby="예외"><h3 id="예외">예외</h3>
+<div class="section-content"><p>예외가 <code>try...catch</code>에서 발생하지 않으면 <code>throw()</code>로 전달 된 <code>exception</code>은 제너레이터에서 취급하지 않습니다.</p></div></section><section aria-labelledby="설명"><h2 id="설명">설명</h2>
+<div class="section-content"><p><code>throw()</code> 메소드는 호출 될 때, 이는 현재 중단 된 위치의 제너레이터에 삽입된 <code>throw exception;</code> 문 처럼 보일 수 있습니다. <code>exception</code>은 <code>throw()</code> 메서드에 전달 된 예외입니다. 따라서 일반적인 흐름에서 <code>throw(exception)</code>을 호출하면 제너레이터가 throw됩니다. 그러나 yield 식이 <code>try...catch</code> 블록으로 감싸졌 다면, 오류를 포착할 수 있으며 제어 흐름은 오류 처리 후 재개하거나 정상적으로 종료 하도록 진행됩니다.</p></div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+</section><section aria-labelledby="throw_사용하기"><h3 id="throw_사용하기">throw() 사용하기</h3>
+<div class="section-content">
+<p>다음 예제에서는 간단한 제너레이터와 <code>throw</code> 메서드를 사용하여 오류를 발생시키는 것을 보여 줍니다. 오류는 보통 <a href="../../statements/try...catch"><code>try...catch</code></a> 블록으로 처리합니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="thcFY8k23/GxBYpocCyTMzlLOCw1KKCZG35SR4yuC98=" data-language="js"><span class="token keyword">function</span><span class="token operator">*</span> <span class="token function">gen</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">try</span> <span class="token punctuation">{</span>
+      <span class="token keyword">yield</span> <span class="token number">42</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span>e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'Error caught!'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">const</span> g <span class="token operator">=</span> <span class="token function">gen</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+g<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// { value: 42, done: false }</span>
+g<span class="token punctuation">.</span><span class="token function">throw</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Error</span><span class="token punctuation">(</span><span class="token string">'Something went wrong'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// "Error caught!"</span>
+<span class="token comment">// { value: 42, done: false }</span>
+</pre>
+</div>
+</div></section><h2 id="명세서">명세서</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://tc39.es/ecma262/multipage/control-abstraction-objects.html#sec-generator.prototype.throw">ECMAScript Language Specification <br><small># sec-generator.prototype.throw</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="../../statements/function*"><code>function*</code></a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Generator/throw" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Generator/throw</a>
+  </p>
+</div>

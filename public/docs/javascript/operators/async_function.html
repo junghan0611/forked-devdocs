@@ -1,0 +1,90 @@
+<header><h1>async function 표현식</h1></header><div class="section-content">
+<p><code>async function</code> 키워드는 표현식 내에서 <code>async</code> 함수를 정의하기 위해 사용됩니다.</p> <p>또한 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function">async function statement</a>을 사용하여 async 함수를 정의할 수 있습니다.</p>
+</div>
+<section aria-labelledby="문법"><h2 id="문법">문법</h2>
+<div class="section-content">
+<div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="hmmtqnG4kV3skk8Lr7UQCY2q68+RSMBpXPpMO6F2wXE=" data-language="js">  <span class="token keyword">async</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">param0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    statements
+  <span class="token punctuation">}</span>
+
+  <span class="token keyword">async</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">param0<span class="token punctuation">,</span> param1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    statements
+  <span class="token punctuation">}</span>
+
+  <span class="token keyword">async</span> <span class="token keyword">function</span> <span class="token punctuation">(</span>param0<span class="token punctuation">,</span> param1<span class="token punctuation">,</span> <span class="token comment">/* ... */</span> paramN<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    statements
+  <span class="token punctuation">}</span>
+
+  <span class="token keyword">async</span> <span class="token keyword">function</span> <span class="token function">name</span><span class="token punctuation">(</span><span class="token parameter">param0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    statements
+  <span class="token punctuation">}</span>
+
+  <span class="token keyword">async</span> <span class="token keyword">function</span> <span class="token function">name</span><span class="token punctuation">(</span><span class="token parameter">param0<span class="token punctuation">,</span> param1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    statements
+  <span class="token punctuation">}</span>
+
+  <span class="token keyword">async</span> <span class="token keyword">function</span> <span class="token function">name</span><span class="token punctuation">(</span>param0<span class="token punctuation">,</span> param1<span class="token punctuation">,</span> <span class="token comment">/* ... */</span> paramN<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    statements
+  <span class="token punctuation">}</span>
+</pre>
+</div> <p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions">arrow functions</a>를 사용해도 됩니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="XKCCNFFHQWnSMjPbmvCpi/xk5l/Bma32+z4OVROVLIo=" data-language="js">  <span class="token keyword">async</span> <span class="token parameter">param</span> <span class="token operator">=&gt;</span> expression
+
+  <span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token parameter">param1<span class="token punctuation">,</span> param2<span class="token punctuation">,</span> <span class="token operator">...</span>paramN</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    statements
+  <span class="token punctuation">}</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="인수"><h3 id="인수">인수</h3>
+<div class="section-content"><dl> <dt id="name"><code>name</code></dt> <dd> <p>함수 이름. 생략가능하며 이경우함수는 <em>anonymous</em> 형식임 이름은 함수 몸체에 대해 지역적으로 사용.</p> </dd> <dt id="paramn"><code>paramN</code></dt> <dd> <p>함수에 전달될 인수의 이름.</p> </dd> <dt id="statements"><code>statements</code></dt> <dd> <p>함수 몸체를 구성하는 명령문들.</p> </dd> </dl></div></section><section aria-labelledby="설명"><h2 id="설명">설명</h2>
+<div class="section-content"><p><code>async function</code> 표현식은 <a href="../statements/async_function"><code><code>async function</code> 선언</code></a> 문법과 유사하며, 거의 동일합니다. <code>async function</code> 표현식과 <code>async function</code> 선언문의 주요 차이점은 익명함수로써의 사용 여부로, <code>async function</code> 표현식은 함수 이름을 생략하면 익명함수를 만듭니다. <code>async function</code> 표현식은 <a href="https://developer.mozilla.org/ko/docs/Glossary/IIFE">IIFE</a>(즉시실행함수)로 사용할 수 있습니다. <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions"><code>functions</code></a>문서를 참고하세요.</p></div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+</section><section aria-labelledby="간단한_예시"><h3 id="간단한_예시">간단한 예시</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="bcnQJDkSnC6mQQLnViTf/0pLTvycCTMeKBrv7Fc5XZY=" data-language="js">  <span class="token keyword">function</span> <span class="token function">resolveAfter2Seconds</span><span class="token punctuation">(</span><span class="token parameter">x</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Promise</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">resolve</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+      <span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+        <span class="token function">resolve</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token number">2000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token comment">// async function 표현식을 변수에 할당</span>
+  <span class="token keyword">const</span> <span class="token function-variable function">add</span> <span class="token operator">=</span> <span class="token keyword">async</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">x</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> a <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token function">resolveAfter2Seconds</span><span class="token punctuation">(</span><span class="token number">20</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">const</span> b <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token function">resolveAfter2Seconds</span><span class="token punctuation">(</span><span class="token number">30</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> x <span class="token operator">+</span> a <span class="token operator">+</span> b<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token function">add</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">v</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>v<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 4초 뒤에 60 출력 </span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+
+  <span class="token comment">// async function 표현식을 IIFE로 사용</span>
+  <span class="token punctuation">(</span><span class="token keyword">async</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">x</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> p1 <span class="token operator">=</span> <span class="token function">resolveAfter2Seconds</span><span class="token punctuation">(</span><span class="token number">20</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">const</span> p2 <span class="token operator">=</span> <span class="token function">resolveAfter2Seconds</span><span class="token punctuation">(</span><span class="token number">30</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> x <span class="token operator">+</span> <span class="token punctuation">(</span><span class="token keyword">await</span> p1<span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token punctuation">(</span><span class="token keyword">await</span> p2<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">v</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>v<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 2초 뒤에 60 출력</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div></div></section><h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://tc39.es/ecma262/multipage/ecmascript-language-functions-and-classes.html#sec-async-function-definitions">ECMAScript Language Specification <br><small># sec-async-function-definitions</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="../statements/async_function"><code>async function</code></a></li> <li>
+<a href="../global_objects/asyncfunction"><code>AsyncFunction</code></a> object</li> <li><a href="await"><code>await</code></a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Operators/async_function" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Operators/async_function</a>
+  </p>
+</div>

@@ -1,0 +1,20 @@
+<header><h1>brightness()</h1></header><div class="section-content"><p><code>brightness()</code> <a href="https://developer.mozilla.org/ko/docs/Web/CSS">CSS</a> 함수는 주어진 이미지에 선형 계수를 적용해 더 밝거나 어둡게 만듭니다. 반환 값은 <a href="../filter-function"><code>&lt;filter-function&gt;</code></a>입니다.</p></div>
+<section aria-labelledby="시도해보기"><h2 id="시도해보기">시도해보기</h2>
+<div class="section-content"><iframe class="interactive is-default-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/css/function-brightness.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe></div></section><section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content"><pre class="notranslate">brightness(amount)
+</pre></div></section><section aria-labelledby="매개변수"><h3 id="매개변수">매개변수</h3>
+<div class="section-content"><dl> <dt id="amount"><code>amount</code></dt> <dd> <p><a href="../number"><code>&lt;number&gt;</code></a> 또는 <a href="../percentage"><code>&lt;percentage&gt;</code></a>로 지정한, 결과물의 밝기. <code>100%</code> 미만의 값은 이미지를 어둡게 만들고, <code>100%</code>를 초과하는 값은 밝게 합니다. <code>0%</code>는 이미지를 완전한 검은색으로 바꾸고 <code>100%</code>는 주어진 입력 이미지를 그대로 반환합니다. 보간 시, 누락 값은 <code>1</code>입니다.</p> </dd> </dl></div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="40SaXX8wWnpgGTUHYEsfbFfWekTp9j5FCZNF6hAsdlI=" data-language="css"><span class="token function">brightness</span><span class="token punctuation">(</span>0%<span class="token punctuation">)</span>   <span class="token comment">/* 완전한 검정 */</span>
+<span class="token function">brightness</span><span class="token punctuation">(</span>0.4<span class="token punctuation">)</span>  <span class="token comment">/* 40% 밝기 */</span>
+<span class="token function">brightness</span><span class="token punctuation">(</span>1<span class="token punctuation">)</span>    <span class="token comment">/* 변화 없음 */</span>
+<span class="token function">brightness</span><span class="token punctuation">(</span>200%<span class="token punctuation">)</span> <span class="token comment">/* 두 배 밝기 */</span>
+</pre>
+</div></div></section><section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="../filter-function"><code>&lt;filter-function&gt;</code></a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/CSS/filter-function/brightness" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/CSS/filter-function/brightness</a>
+  </p>
+</div>

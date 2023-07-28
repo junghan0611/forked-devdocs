@@ -1,0 +1,32 @@
+<h1>401 Unauthorized</h1>
+<header><h1>401 Unauthorized</h1></header><div class="section-content">
+<p> HTTP(하이퍼텍스트 전송 프로토콜) <code>401 Unauthorized</code> 응답 상태 코드는 요청된 리소스에 대한 유효한 인증 자격 증명이 없기 때문에 클라이언트 요청이 완료되지 않았음을 나타냅니다. </p> <p> 이 상태 코드는 사용자에게 인증 자격 증명을 입력하라는 메시지를 표시한 후 클라이언트가 리소스를 다시 요청할 수 있는 방법이 포함된 HTTP <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/WWW-Authenticate" class="only-in-en-us"><code>WWW-Authenticate</code> <small>(en-US)</small></a> 응답 헤더와 함께 전송됩니다. </p> <p> 이 상태 코드는 <a href="403"><code>403 Forbidden</code></a> 상태 코드와 유사합니다. 다만 이 상태 코드가 발생하는 상황에서 사용자 인증을 통해 리소스에 대한 액세스를 허용할 수 있습니다. </p>
+</div>
+<section aria-labelledby="상태"><h2 id="상태">상태</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">http</span></p>
+<pre data-signature="ZLwQ4qP7WFNb86P1RocvDrcjMBwdplEqkSHb0vcmmRA=" data-language="http">401 Unauthorized
+</pre>
+</div></div></section><section aria-labelledby="응답_예시"><h2 id="응답_예시">응답 예시</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">http</span></p>
+<pre data-signature="JG6TbD1m2hLvobXem6G8T6FKkWxIMOx1hH/D1wOuLBk=" data-language="http"><span class="token response-status"><span class="token http-version property">HTTP/1.1</span> <span class="token status-code number">401</span> <span class="token reason-phrase string">Unauthorized</span></span>
+<span class="token header"><span class="token header-name keyword">Date</span><span class="token punctuation">:</span> <span class="token header-value">Wed, 21 Oct 2015 07:28:00 GMT</span></span>
+<span class="token header"><span class="token header-name keyword">WWW-Authenticate</span><span class="token punctuation">:</span> <span class="token header-value">Basic realm="Access to staging site"</span></span>
+</pre>
+</div></div></section><h2 id="명세서">명세서</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://www.rfc-editor.org/rfc/rfc9110#status.401">HTTP Semantics <br><small># status.401</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="../authentication">HTTP 인증</a></li> <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/WWW-Authenticate" class="only-in-en-us"><code>WWW-Authenticate</code> <small>(en-US)</small></a></li> <li><a href="../headers/authorization"><code>Authorization</code></a></li> <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Proxy-Authorization" class="only-in-en-us"><code>Proxy-Authorization</code> <small>(en-US)</small></a></li> <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Proxy-Authenticate" class="only-in-en-us"><code>Proxy-Authenticate</code> <small>(en-US)</small></a></li> <li>
+<a href="403"><code>403</code></a>, <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/407" class="only-in-en-us"><code>407</code> <small>(en-US)</small></a>
+</li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/HTTP/Status/401" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/HTTP/Status/401</a>
+  </p>
+</div>

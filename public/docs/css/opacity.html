@@ -1,0 +1,109 @@
+<header><h1>opacity</h1></header><div class="section-content"><p><code>opacity</code> <a href="https://developer.mozilla.org/ko/docs/Web/CSS">CSS</a> 속성은 요소의 불투명도를 설정합니다. 불투명도는 요소 뒤쪽 콘텐츠가 숨겨지는 정도로, 투명도의 반대입니다.</p></div>
+<section aria-labelledby="시도해보기"><h2 id="시도해보기">시도해보기</h2>
+<div class="section-content">
+<iframe class="interactive is-default-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/css/opacity.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe> <p><code>opacity</code>는 요소의 내용을 포함해 모든 곳에 영향을 주지만 자식 요소가 상속하지는 않습니다. 따라서 요소와 자식의 투명도가 서로 다르더라도 배경에 대해서는 상대적으로 같은 투명도를 갖습니다.</p> <p><code>opacity</code> 값이 <code>1</code>이 아니면 요소를 새로운 <a href="css_positioned_layout/understanding_z-index/stacking_context">쌓임 맥락</a>에 배치합니다.</p> <p>자식 요소는 불투명하게 유지하고 싶다면 <a href="background"><code>background</code></a> 속성을 대신 사용하세요.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="iFCHy3jdQDsWGmTWvqjd7zthYeQWfMrWvywdAkHZVbc=" data-language="css"><span class="token property">background</span><span class="token punctuation">:</span> <span class="token function">rgba</span><span class="token punctuation">(</span>0<span class="token punctuation">,</span> 0<span class="token punctuation">,</span> 0<span class="token punctuation">,</span> 0.4<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="구문"><h2 id="구문">구문</h2>
+</section><section aria-labelledby="값"><h3 id="값">값</h3>
+<div class="section-content"><dl> <dt id="alpha-value"><code>&lt;alpha-value&gt;</code></dt> <dd> <p>채널의 불투명도(알파 채널의 값)를 나타내는 <code>0.0</code> 이상 <code>1.0</code> 이하의 <a href="number"><code>&lt;number&gt;</code></a>, 또는 0% 이상 100% 이하의 <a href="percentage"><code>&lt;percentage&gt;</code></a>. 범위 밖의 숫자는 구문 상 유효하지만, 실제 적용 시에는 범위에 맞춰 나머지 값은 버려집니다.</p> <figure class="table-container"><div class="_table"><table> <thead> <tr> <th>값</th> <th>뜻</th> </tr> </thead> <tbody> <tr> <td><code>0</code></td> <td>요소가 완전히 투명해 보이지 않음.</td> </tr> <tr> <td>
+<code>0</code>과 <code>1</code> 사이의 아무 <code>&lt;number&gt;</code>
+</td> <td>요소가 반투명해 뒤의 내용을 볼 수 있음.</td> </tr> <tr> <td>
+<code>1</code> (기본값)</td> <td>요소가 불투명함.</td> </tr> </tbody> </table></div></figure> </dd> </dl></div></section><section aria-labelledby="형식_구문"><h3 id="형식_구문">형식 구문</h3>
+<div class="section-content"><pre class="notranslate"><span class="token property" id="opacity">opacity = </span><br>  <span class="token property">&lt;alpha-value&gt;</span>  <br><br><span class="token property" id="&lt;alpha-value&gt;">&lt;alpha-value&gt; = </span><br>  <a href="number"><span class="token property">&lt;number&gt;</span></a>      <a href="value_definition_syntax#single_bar">|</a><br>  <a href="percentage"><span class="token property">&lt;percentage&gt;</span></a>  <br><br></pre></div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+</section><section aria-labelledby="기본_예제"><h3 id="기본_예제">기본 예제</h3>
+<div class="section-content">
+<div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="VC5BZpHGgCCL4MBSIfrjzN+wkx5rsLo2apiFwsFkBYI=" data-language="css"><span class="token selector">div</span> <span class="token punctuation">{</span> <span class="token property">background-color</span><span class="token punctuation">:</span> yellow<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+<span class="token selector">.light</span> <span class="token punctuation">{</span>
+  <span class="token property">opacity</span><span class="token punctuation">:</span> 0.2<span class="token punctuation">;</span> <span class="token comment">/* 배경 위로 겨우 볼 수 있음 */</span>
+<span class="token punctuation">}</span>
+<span class="token selector">.medium</span> <span class="token punctuation">{</span>
+  <span class="token property">opacity</span><span class="token punctuation">:</span> 0.5<span class="token punctuation">;</span> <span class="token comment">/* 배경 위로 조금 더 잘 보임 */</span>
+<span class="token punctuation">}</span>
+<span class="token selector">.heavy</span> <span class="token punctuation">{</span>
+  <span class="token property">opacity</span><span class="token punctuation">:</span> 0.9<span class="token punctuation">;</span> <span class="token comment">/* 배경 위로 뚜렷하게 보임 */</span>
+<span class="token punctuation">}</span>
+</pre>
+</div> <div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="kK4yJR8MjsDMo3bFeixqwQPN616WB5CBKqX+51Z/TvU=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>light<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>겨우 보이는 글<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>medium<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>좀 더 잘 보이는 글<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>heavy<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>쉽게 보이는 글<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div>
+<div class="code-example" id="sect1">
+
+<iframe class="sample-code-frame" title="기본 예제 sample" id="frame_기본_예제" width="640" height="64" src="https://live.mdnplay.dev/ko/docs/Web/CSS/opacity/runner.html?id=%EA%B8%B0%EB%B3%B8_%EC%98%88%EC%A0%9C" loading="lazy"></iframe>
+</div>
+</div></section><section aria-labelledby="hover_시_다른_불투명도_적용"><h3 id="hover_시_다른_불투명도_적용">
+<code>:hover</code> 시 다른 불투명도 적용</h3>
+<div class="section-content">
+<div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="KfRVXKv/zngRl2OlZvfPR0vNPp761xOJ96f112cHTlA=" data-language="css"><span class="token selector">img.opacity</span> <span class="token punctuation">{</span>
+  <span class="token property">opacity</span><span class="token punctuation">:</span> 1<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">img.opacity:hover</span> <span class="token punctuation">{</span>
+  <span class="token property">opacity</span><span class="token punctuation">:</span> 0.5<span class="token punctuation">;</span>
+  <span class="token property">filter</span><span class="token punctuation">:</span> <span class="token function">alpha</span><span class="token punctuation">(</span>opacity=50<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token property">zoom</span><span class="token punctuation">:</span> 1<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div> <div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="nfnUgCkcSp91GgBEuSjg5ShRuhJhXcACXTh985eSZcs=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>https://developer.mozilla.org/mdn-social-share.png<span class="token punctuation">"</span></span>
+  <span class="token attr-name">alt</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>MDN logo<span class="token punctuation">"</span></span> <span class="token attr-name">width</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>128<span class="token punctuation">"</span></span> <span class="token attr-name">height</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>146<span class="token punctuation">"</span></span>
+  <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>opacity<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div>
+<div class="code-example" id="sect2">
+
+<iframe class="sample-code-frame" title="hover 시 다른 불투명도 적용 sample" id="frame_hover_시_다른_불투명도_적용" width="150" height="175" src="https://live.mdnplay.dev/ko/docs/Web/CSS/opacity/runner.html?id=hover_%EC%8B%9C_%EB%8B%A4%EB%A5%B8_%EB%B6%88%ED%88%AC%EB%AA%85%EB%8F%84_%EC%A0%81%EC%9A%A9" loading="lazy"></iframe>
+</div>
+</div></section><section aria-labelledby="접근성_고려사항"><h2 id="접근성_고려사항">접근성 고려사항</h2>
+<div class="section-content">
+<p>글씨의 투명도를 조절했다면, 낮은 시력을 가진 사용자도 페이지의 콘텐츠를 읽을 수 있도록 글자 색과 배경색의 대비를 높게 유지하는 것이 중요합니다.</p> <p>색 대비율은 배경색과 투명도를 적용한 글자 색의 밝기를 비교해서 얻어낼 수 있습니다. 현재 <a href="https://www.w3.org/WAI/standards-guidelines/wcag/" target="_blank">웹 콘텐츠 접근성 가이드라인</a>(WCAG)을 만족하려면, 텍스트 콘텐츠는 4.5:1, 제목 등 큰 텍스트는 3:1의 대비율이 필요합니다. 큰 텍스트란 18.66px 이상의 <a href="font-weight">굵은</a> 글씨 혹은 24px 이상의 텍스트로 정의하고 있습니다.</p> <ul> <li><a href="https://webaim.org/resources/contrastchecker/" target="_blank">WebAIM: Color Contrast Checker</a></li> <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/Understanding_WCAG/Perceivable" class="only-in-en-us">MDN Understanding WCAG, Guideline 1.4 explanations <small>(en-US)</small></a></li> <li><a href="https://www.w3.org/TR/UNDERSTANDING-WCAG20/visual-audio-contrast-contrast.html" target="_blank">Understanding Success Criterion 1.4.3 | W3C Understanding WCAG 2.0</a></li> </ul>
+</div></section><h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://drafts.csswg.org/css-color/#transparency">CSS Color Module Level 4 <br><small># transparency</small></a></td></tr></tbody>
+</table></div>
+<div class="section-content"><figure class="table-container"><div class="_table"><table class="properties"><tbody>
+<tr>
+<th scope="row"><a href="initial_value">초기값</a></th>
+<td><code>1</code></td>
+</tr>
+<tr>
+<th scope="row">적용대상</th>
+<td>all elements</td>
+</tr>
+<tr>
+<th scope="row"><a href="inheritance">상속</a></th>
+<td>no</td>
+</tr>
+<tr>
+<th scope="row">Percentages</th>
+<td>map to the range <code>[0,1]</code>
+</td>
+</tr>
+<tr>
+<th scope="row"><a href="computed_value">계산 값</a></th>
+<td>The same as the specified value after clipping the <a href="number"><code>number</code></a> to the range [0.0, 1.0].</td>
+</tr>
+<tr>
+<th scope="row">Animation type</th>
+<td>by computed value type</td>
+</tr>
+</tbody></table></div></figure></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/CSS/opacity" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/CSS/opacity</a>
+  </p>
+</div>

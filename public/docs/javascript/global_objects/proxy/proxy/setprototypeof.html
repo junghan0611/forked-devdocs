@@ -1,0 +1,71 @@
+<header><h1>handler.setPrototypeOf()</h1></header><div class="section-content"><p><code>handler.setPrototypeOf()</code> 메서드는 <a href="../../object/setprototypeof"><code>Object.setPrototypeOf()</code></a>에 대한 트랩입니다.</p></div>
+<section aria-labelledby="시도해보기"><h2 id="시도해보기">시도해보기</h2>
+<div class="section-content"><iframe class="interactive is-taller-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/js/proxyhandler-setprototypeof.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe></div></section><section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="i/jFQhRaMjpNBe+yoZtFKSyBCwYX13A0ekin+b72HyE=" data-language="js"><span class="token keyword">new</span> <span class="token class-name">Proxy</span><span class="token punctuation">(</span>target<span class="token punctuation">,</span> <span class="token punctuation">{</span>
+  <span class="token function">setPrototypeOf</span><span class="token punctuation">(</span><span class="token parameter">target<span class="token punctuation">,</span> prototype</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div></div></section><section aria-labelledby="매개변수"><h3 id="매개변수">매개변수</h3>
+<div class="section-content">
+<p>다음 매개변수는 <code>setPrototypeOf()</code> 메서드에 전달됩니다. <code>this</code>는 처리기에 바인딩됩니다.</p> <dl> <dt id="target"><code>target</code></dt> <dd> <p>대상 객체</p> </dd> <dt id="prototype"><code>prototype</code></dt> <dd> <p>대상 객체의 새 프로토타입 또는 <code>null</code></p> </dd> </dl>
+</div></section><section aria-labelledby="반환_값"><h3 id="반환_값">반환 값</h3>
+<div class="section-content"><p><code>setPrototypeOf()</code> 메서드는 <code>[[Prototype]]</code>이 성공적으로 변경되었으면 <code>true</code>를 반환하고 그렇지 않으면 <code>false</code>를 반환합니다.</p></div></section><section aria-labelledby="설명"><h2 id="설명">설명</h2>
+<div class="section-content"><p><code>handler.setPrototypeOf()</code> 메서드는 <a href="../../object/setprototypeof"><code>Object.setPrototypeOf()</code></a>에 대한 트랩입니다.</p></div></section><section aria-labelledby="가로채기"><h3 id="가로채기">가로채기</h3>
+<div class="section-content">
+<p>이 트랩은 다음 작업을 가로챌 수 있습니다.</p> <ul> <li><a href="../../object/setprototypeof"><code>Object.setPrototypeOf()</code></a></li> <li><a href="../../reflect/setprototypeof"><code>Reflect.setPrototypeOf()</code></a></li> </ul>
+</div></section><section aria-labelledby="불변_조건"><h3 id="불변_조건">불변 조건</h3>
+<div class="section-content">
+<p>다음 불변 조건이 위반되면 프록시에서 <a href="../../typeerror"><code>TypeError</code></a>가 발생합니다.</p> <ul> <li>
+<code>target</code>을 확장할 수 없는 경우, 프로토타입 매개변수는 <code>Object.getPrototypeOf(target)</code>과 동일한 값이어야 합니다.</li> </ul>
+</div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+<div class="section-content"><p>객체에 대한 새 프로토타입 설정을 허용하지 않으려면 처리기의 <code>setPrototypeOf()</code> 메서드에서 <code>false</code>를 반환하거나 예외를 발생시키면 됩니다.</p></div></section><section aria-labelledby="접근_방식_1_false_반환하기"><h3 id="접근_방식_1_false_반환하기">접근 방식 1: false 반환하기</h3>
+<div class="section-content">
+<p>이 접근 방식은 변경 실패 시 예외를 발생시키는 모든 작업이 해당 작업 자체에서 직접 예외를 생성해야 함을 뜻합니다.</p> <p>예를 들어 <a href="../../object/setprototypeof"><code>Object.setPrototypeOf()</code></a>가 <a href="../../typeerror"><code>TypeError</code></a>를 발생시킬때, <a href="../../reflect/setprototypeof"><code>Reflect.setPrototypeOf()</code></a>와 같이 실패 시 일반적으로 예외를 발생시키지않는 연산이 수행된다면 예외가 발생하지 <strong>않습니다.</strong></p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="dCy2hkkNXbJXnIlL0iOpQSHQNJEh9KaHVSkrfczHatI=" data-language="js"><span class="token keyword">const</span> handlerReturnsFalse <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token function">setPrototypeOf</span><span class="token punctuation">(</span><span class="token parameter">target<span class="token punctuation">,</span> newProto</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> newProto <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span> target <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> p1 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Proxy</span><span class="token punctuation">(</span>target<span class="token punctuation">,</span> handlerReturnsFalse<span class="token punctuation">)</span><span class="token punctuation">;</span>
+Object<span class="token punctuation">.</span><span class="token function">setPrototypeOf</span><span class="token punctuation">(</span>p1<span class="token punctuation">,</span> newProto<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// throws a TypeError</span>
+Reflect<span class="token punctuation">.</span><span class="token function">setPrototypeOf</span><span class="token punctuation">(</span>p1<span class="token punctuation">,</span> newProto<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// returns false</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="접근_방식_2_예외_발생_시키기"><h3 id="접근_방식_2_예외_발생_시키기">접근 방식 2: 예외 발생 시키기</h3>
+<div class="section-content">
+<p>후자의 접근 방식은 변경을 시도하거나 예외를 발생시키는 <strong>모든</strong> 작업을 실행시킵니다. 이 접근 방식은 예외가 발생하지 않는 작업도 실패 시 예외가 발생하거나 사용자 지정 예외 값을 발생시키려는 경우에 좋은 선택지가 될 수 있습니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="W2ehhWuO4jQSWm3F7jvR9aTo3xzFhNzRgn8HLerf4WY=" data-language="js"><span class="token keyword">const</span> handlerThrows <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token function">setPrototypeOf</span><span class="token punctuation">(</span><span class="token parameter">target<span class="token punctuation">,</span> newProto</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">Error</span><span class="token punctuation">(</span><span class="token string">'custom error'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> newProto <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span> target <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> p2 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Proxy</span><span class="token punctuation">(</span>target<span class="token punctuation">,</span> handlerThrows<span class="token punctuation">)</span><span class="token punctuation">;</span>
+Object<span class="token punctuation">.</span><span class="token function">setPrototypeOf</span><span class="token punctuation">(</span>p2<span class="token punctuation">,</span> newProto<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// throws new Error("custom error")</span>
+Reflect<span class="token punctuation">.</span><span class="token function">setPrototypeOf</span><span class="token punctuation">(</span>p2<span class="token punctuation">,</span> newProto<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// throws new Error("custom error")</span>
+</pre>
+</div>
+</div></section><h2 id="명세서">명세서</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://tc39.es/ecma262/multipage/ordinary-and-exotic-objects-behaviours.html#sec-proxy-object-internal-methods-and-internal-slots-setprototypeof-v">ECMAScript Language Specification <br><small># sec-proxy-object-internal-methods-and-internal-slots-setprototypeof-v</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="../../proxy"><code>Proxy</code></a></li> <li><a href="../proxy"><code>Proxy()</code> 생성자</a></li> <li><a href="../../object/setprototypeof"><code>Object.setPrototypeOf()</code></a></li> <li><a href="../../reflect/setprototypeof"><code>Reflect.setPrototypeOf()</code></a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Proxy/Proxy/setPrototypeOf" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Proxy/Proxy/setPrototypeOf</a>
+  </p>
+</div>

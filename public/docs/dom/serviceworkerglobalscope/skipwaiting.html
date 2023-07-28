@@ -1,0 +1,41 @@
+<header><h1>ServiceWorkerGlobalScope.skipWaiting()</h1></header><div class="section-content">
+<p><a href="../serviceworkerglobalscope"><code>ServiceWorkerGlobalScope</code></a> 의 <code>ServiceWorkerGlobalScope.skipWaiting()</code> 메소드는 waiting 상태의 서비스 워커를 active 상태의 서비스 워커로 변경하도록 강제한다.</p> <p>근본적인 서비스 워커에 대한 업데이트들이 현재의 클라이언트와 다른 모든 active 클라이언트들에게 즉시 적용되도록 하기 위해 <a href="../clients/claim"><code>Clients.claim()</code></a> 과 이 메소드를 사용한다.</p>
+</div>
+<h2 id="syntax">Syntax</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="gZLg9ZYcqws5Lu8LAj29Oy78zPlRWWNIkjn/C70psew=" data-language="js">ServiceWorkerGlobalScope<span class="token punctuation">.</span><span class="token function">skipWaiting</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">//Do something</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div></div>
+<h3 id="returns">Returns</h3>
+<div class="section-content"><p><code>undefined</code> 로 즉시 resolve 되는 <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Promise"><code>Promise</code></a></p></div>
+<h2 id="example">Example</h2>
+<div class="section-content">
+<p>서비스 워커가 실행되는 동안 언제라도 <code>self.skipWaiting()</code> 는 호출될 수 있지만, 이것은 <code>waiting</code> 상태로 남아 있을 수도 있는 새롭게 설치된 서비스 워커가 있는 경우에만 영향을 줄 수 있다. 따라서, <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/InstallEvent"><code>InstallEvent</code> <small>(en-US)</small></a> 핸들러 내부에서 <code>self.skipWaiting()</code> 을 호출하는 것이 일반적이다.</p> <p>다음 예시는 active 상태의 서비스 워커가 이미 존재하는지의 여부에 관계없이, 새로 설치된 서비스 워커가 <code>activating</code> 상태로 진행되도록 한다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="vCmZRWBILqKZ8xk+n4PJBIRRzxbmX4VOgrs6CYkjb64=" data-language="js">self<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">'install'</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">event</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">// skipWaiting()가 반환하는 promise는 안전하게 무시될 수 있다.</span>
+  self<span class="token punctuation">.</span><span class="token function">skipWaiting</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token comment">// 잠재적으로 event.waitUntil(); 내부에서</span>
+  <span class="token comment">// 서비스 워커 설치를 위해 필요한 다른 action 들을 수행하라.</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div>
+</div>
+<h2 id="명세서">명세서</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://w3c.github.io/ServiceWorker/#service-worker-global-scope-skipwaiting">Service Workers <br><small># service-worker-global-scope-skipwaiting</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<h2 id="see_also">See also</h2>
+<div class="section-content"><ul> <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API/Using_Service_Workers" class="only-in-en-us">Using Service Workers <small>(en-US)</small></a></li> <li><a href="https://github.com/mdn/sw-test" target="_blank">Service workers basic code example</a></li> <li><a href="https://jakearchibald.github.io/isserviceworkerready/" target="_blank">Is ServiceWorker ready?</a></li> <li><a href="../clients/claim"><code>Clients.claim()</code></a></li> <li><a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Promise"><code>Promises</code></a></li> <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Using_web_workers" class="only-in-en-us">Using web workers <small>(en-US)</small></a></li> </ul></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/ServiceWorkerGlobalScope/skipWaiting" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/ServiceWorkerGlobalScope/skipWaiting</a>
+  </p>
+</div>

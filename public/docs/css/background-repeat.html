@@ -1,0 +1,143 @@
+<header><h1>background-repeat</h1></header><div class="section-content"><p><a href="https://developer.mozilla.org/ko/docs/Web/CSS">CSS</a> <code>background-repeat</code> 속성은 배경 이미지의 반복 방법을 지정합니다. 가로축 및 세로축을 따라 반복할 수 있고, 아예 반복하지 않을 수도 있습니다.</p></div>
+<section aria-labelledby="시도해보기"><h2 id="시도해보기">시도해보기</h2>
+<div class="section-content">
+<iframe class="interactive is-default-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/css/background-repeat.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe> <p>반복한 이미지는 기본값에선 요소 크기에 따라 잘릴 수 있지만, 잘리지 않도록 배경 이미지 크기를 조절하거나(<code>round</code>) 끝에서 끝까지 고르게 분배(<code>space</code>)할 수 있습니다.</p>
+</div></section><section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="XGmxSKmAB59Oh/apZkQnxJiZ92yeFuPkJQDekJ3qJDQ=" data-language="css"><span class="token comment">/* 키워드 값 */</span>
+<span class="token property">background-repeat</span><span class="token punctuation">:</span> repeat-x<span class="token punctuation">;</span>
+<span class="token property">background-repeat</span><span class="token punctuation">:</span> repeat-y<span class="token punctuation">;</span>
+<span class="token property">background-repeat</span><span class="token punctuation">:</span> repeat<span class="token punctuation">;</span>
+<span class="token property">background-repeat</span><span class="token punctuation">:</span> space<span class="token punctuation">;</span>
+<span class="token property">background-repeat</span><span class="token punctuation">:</span> round<span class="token punctuation">;</span>
+<span class="token property">background-repeat</span><span class="token punctuation">:</span> no-repeat<span class="token punctuation">;</span>
+
+<span class="token comment">/* 2개 값 구문: 가로 | 세로 */</span>
+<span class="token property">background-repeat</span><span class="token punctuation">:</span> repeat space<span class="token punctuation">;</span>
+<span class="token property">background-repeat</span><span class="token punctuation">:</span> repeat repeat<span class="token punctuation">;</span>
+<span class="token property">background-repeat</span><span class="token punctuation">:</span> round space<span class="token punctuation">;</span>
+<span class="token property">background-repeat</span><span class="token punctuation">:</span> no-repeat round<span class="token punctuation">;</span>
+
+<span class="token comment">/* 전역 값 */</span>
+<span class="token property">background-repeat</span><span class="token punctuation">:</span> inherit<span class="token punctuation">;</span>
+<span class="token property">background-repeat</span><span class="token punctuation">:</span> initial<span class="token punctuation">;</span>
+<span class="token property">background-repeat</span><span class="token punctuation">:</span> unset<span class="token punctuation">;</span>
+</pre>
+</div></div></section><section aria-labelledby="값"><h3 id="값">값</h3>
+<div class="section-content"><dl> <dt id="repeat-style"><code>&lt;repeat-style&gt;</code></dt> <dd> <p>한 개 값 구문은 두 개 값 구문의 단축 형태입니다.</p> <figure class="table-container"><div class="_table"><table class="standard-table"> <tbody> <tr> <td><strong>한 개 값</strong></td> <td><strong>두 개 값</strong></td> </tr> <tr> <td><code>repeat-x</code></td> <td><code>repeat no-repeat</code></td> </tr> <tr> <td><code>repeat-y</code></td> <td><code>no-repeat repeat</code></td> </tr> <tr> <td><code>repeat</code></td> <td><code>repeat repeat</code></td> </tr> <tr> <td><code>space</code></td> <td><code>space space</code></td> </tr> <tr> <td><code>round</code></td> <td><code>round round</code></td> </tr> <tr> <td><code>no-repeat</code></td> <td><code>no-repeat no-repeat</code></td> </tr> </tbody> </table></div></figure> <p>두 개 값 구문의 앞쪽은 가로 반복 방법을, 뒤쪽은 세로 반복 방법을 설정합니다. 각 방법의 동작 방식은 아래 표와 같습니다.</p> <figure class="table-container"><div class="_table"><table class="standard-table"> <tbody> <tr> <td><code>repeat</code></td> <td>요소의 배경 영역을 채울 때까지 이미지를 반복합니다. 마지막 반복 이미지가 넘칠 경우 잘라냅니다.</td> </tr> <tr> <td><code>space</code></td> <td>요소가 잘리지 않을 만큼 이미지를 반복합니다. 제일 처음과 마지막 반복 이미지는 요소의 양쪽 끝에 고정되고, 각 이미지 사이에 남은 여백을 고르게 분배합니다. 잘리지 않고 배치할 수 있는 이미지가 단 한 장인 경우가 아니라면 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/background-position"><code>background-position</code> <small>(en-US)</small></a> 속성은 무시합니다. <code>space</code>를 사용했는데 이미지가 잘리는 경우는 그 크기가 너무 커서 한 장 조차 넣을 수 없는 경우뿐입니다.</td> </tr> <tr> <td><code>round</code></td> <td>가용 영역이 늘어나면 반복 이미지도 늘어나 여백을 남기지 않습니다. 이미지를 하나 더 추가할 공간이 생기면 (남은 공간 &gt;= 이미지 너비의 절반) 비로소 반복 횟수를 하나 추가합니다. 이 때, 원래 존재하던 이미지는 모두 줄어들어 새로운 이미지를 위한 공간을 확보합니다. 예시: 원래 너비가 260px이고, 세 번 반복된 이미지는 각자 300px 너비가 될 때까지 늘어날 수 있습니다. 그 후에는 이미지를 추가하고, 각자 225px로 줄어듭니다.</td> </tr> <tr> <td><code>no-repeat</code></td> <td>이미지를 반복하지 않습니다. 따라서 배경 이미지 영역이 다 차지 않을 수 있습니다. 반복하지 않은 이미지의 위치는 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/background-position"><code>background-position</code> <small>(en-US)</small></a> CSS속성이 설정합니다.</td> </tr> </tbody> </table></div></figure> </dd> </dl></div></section><section aria-labelledby="형식_정의"><h2 id="형식_정의">형식 정의</h2>
+<div class="section-content"><figure class="table-container"><div class="_table"><table class="properties"><tbody>
+<tr>
+<th scope="row"><a href="initial_value">초기값</a></th>
+<td><code>repeat</code></td>
+</tr>
+<tr>
+<th scope="row">적용대상</th>
+<td>all elements. It also applies to <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/::first-letter" class="only-in-en-us"><code>::first-letter</code> <small>(en-US)</small></a> and <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/::first-line" class="only-in-en-us"><code>::first-line</code> <small>(en-US)</small></a>.</td>
+</tr>
+<tr>
+<th scope="row"><a href="inheritance">상속</a></th>
+<td>no</td>
+</tr>
+<tr>
+<th scope="row"><a href="computed_value">계산 값</a></th>
+<td>a list, each item consisting of two keywords, one per dimension</td>
+</tr>
+<tr>
+<th scope="row">Animation type</th>
+<td>discrete</td>
+</tr>
+</tbody></table></div></figure></div></section><section aria-labelledby="형식_구문"><h2 id="형식_구문">형식 구문</h2>
+<div class="section-content"><pre class="notranslate"><span class="token property" id="background-repeat">background-repeat = </span><br>  <span class="token property">&lt;repeat-style&gt;</span><a href="value_definition_syntax#hash_mark">#</a>  <br><br><span class="token property" id="&lt;repeat-style&gt;">&lt;repeat-style&gt; = </span><br>  <span class="token keyword">repeat-x</span>                                     <a href="value_definition_syntax#single_bar">|</a><br>  <span class="token keyword">repeat-y</span>                                     <a href="value_definition_syntax#single_bar">|</a><br>  <a href="value_definition_syntax#brackets">[</a> <span class="token keyword">repeat</span> <a href="value_definition_syntax#single_bar">|</a> <span class="token keyword">space</span> <a href="value_definition_syntax#single_bar">|</a> <span class="token keyword">round</span> <a href="value_definition_syntax#single_bar">|</a> <span class="token keyword">no-repeat</span> <a href="value_definition_syntax#brackets">]</a><a href="value_definition_syntax#curly_braces">{1,2}</a>  <br><br></pre></div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+</section><section aria-labelledby="html"><h3 id="html">HTML</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="/ezEGoYR7CLE8TyjBoCzGcrxfxGqqz0UciKTFDE5GhY=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ol</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">&gt;</span></span>no-repeat
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>one<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">&gt;</span></span>repeat
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>two<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">&gt;</span></span>repeat-x
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>three<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">&gt;</span></span>repeat-y
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>four<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">&gt;</span></span>space
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>five<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">&gt;</span></span>round
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>six<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">&gt;</span></span>repeat-x, repeat-y (multiple images)
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>seven<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>ol</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div></div></section><section aria-labelledby="css"><h3 id="css">CSS</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="pQgF3npGw8VDfkSmKiuma+OkIWFZuBgcyH+PQf5oESE=" data-language="css"><span class="token comment">/* Shared for all DIVS in example */</span>
+<span class="token selector">ol,
+li</span> <span class="token punctuation">{</span>
+  <span class="token property">margin</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
+  <span class="token property">padding</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token selector">li</span> <span class="token punctuation">{</span>
+  <span class="token property">margin-bottom</span><span class="token punctuation">:</span> 12px<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token selector">div</span> <span class="token punctuation">{</span>
+    <span class="token property">background-image</span><span class="token punctuation">:</span> <span class="token url"><span class="token function">url</span><span class="token punctuation">(</span>starsolid.gif<span class="token punctuation">)</span></span><span class="token punctuation">;</span>
+    <span class="token property">width</span><span class="token punctuation">:</span> 160px<span class="token punctuation">;</span>
+    <span class="token property">height</span><span class="token punctuation">:</span> 70px<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">/* Background repeats */</span>
+<span class="token selector">.one</span> <span class="token punctuation">{</span>
+  <span class="token property">background-repeat</span><span class="token punctuation">:</span> no-repeat<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token selector">.two</span> <span class="token punctuation">{</span>
+  <span class="token property">background-repeat</span><span class="token punctuation">:</span> repeat<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token selector">.three</span> <span class="token punctuation">{</span>
+  <span class="token property">background-repeat</span><span class="token punctuation">:</span> repeat-x<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token selector">.four</span> <span class="token punctuation">{</span>
+  <span class="token property">background-repeat</span><span class="token punctuation">:</span> repeat-y<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token selector">.five</span> <span class="token punctuation">{</span>
+  <span class="token property">background-repeat</span><span class="token punctuation">:</span> space<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token selector">.six</span> <span class="token punctuation">{</span>
+  <span class="token property">background-repeat</span><span class="token punctuation">:</span> round<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">/* Multiple images */</span>
+<span class="token selector">.seven</span> <span class="token punctuation">{</span>
+  <span class="token property">background-image</span><span class="token punctuation">:</span>  <span class="token url"><span class="token function">url</span><span class="token punctuation">(</span>starsolid.gif<span class="token punctuation">)</span></span><span class="token punctuation">,</span>
+                     <span class="token url"><span class="token function">url</span><span class="token punctuation">(</span>https://developer.mozilla.org/static/img/favicon32.png<span class="token punctuation">)</span></span><span class="token punctuation">;</span>
+  <span class="token property">background-repeat</span><span class="token punctuation">:</span> repeat-x<span class="token punctuation">,</span>
+                     repeat-y<span class="token punctuation">;</span>
+  <span class="token property">height</span><span class="token punctuation">:</span> 144px<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div></div></section><section aria-labelledby="결과"><h3 id="결과">결과</h3>
+<div class="section-content"><div class="code-example" id="sect1">
+
+<iframe class="sample-code-frame" title="예제 sample" id="frame_예제" width="240" height="560" src="https://live.mdnplay.dev/ko/docs/Web/CSS/background-repeat/runner.html?id=%EC%98%88%EC%A0%9C" loading="lazy"></iframe>
+</div></div></section><h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://drafts.csswg.org/css-backgrounds/#the-background-repeat">CSS Backgrounds and Borders Module Level 3 <br><small># the-background-repeat</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="css_backgrounds_and_borders/using_multiple_backgrounds">한 번에 여러 배경 사용하기</a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/CSS/background-repeat" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/CSS/background-repeat</a>
+  </p>
+</div>

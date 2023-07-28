@@ -1,0 +1,39 @@
+<header><h1>&lt;hgroup&gt;</h1></header><div class="section-content"><p><code>&lt;hgroup&gt;</code>는 문서 구획의 다단계 제목을 나타냅니다. 다수의 <code><a href="heading_elements">&lt;h1&gt;-&lt;h6&gt;</a></code> 요소를 묶을 때 사용합니다.</p></div>
+<h2 id="시도해보기">시도해보기</h2>
+<div class="section-content">
+<iframe class="interactive is-tabbed-standard-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/tabbed/hgroup.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe> <figure class="table-container"><div class="_table"><table class="properties"> <tbody> <tr> <th scope="row"><a href="../content_categories">콘텐츠 카테고리</a></th> <td>
+<a href="../content_categories#%ed%94%8c%eb%a1%9c%ec%9a%b0_%ec%bd%98%ed%85%90%ec%b8%a0">플로우 콘텐츠</a>, 제목 콘텐츠, 뚜렷한 콘텐츠.</td> </tr> <tr> <th scope="row">가능한 콘텐츠</th> <td> 하나 이상의 <a href="heading_elements"><code>&lt;h1&gt;</code></a>, <a href="heading_elements"><code>&lt;h2&gt;</code></a>, <a href="heading_elements"><code>&lt;h3&gt;</code></a>, <a href="heading_elements"><code>&lt;h4&gt;</code></a>, <a href="heading_elements"><code>&lt;h5&gt;</code></a>, <a href="heading_elements"><code>&lt;h6&gt;</code></a>. </td> </tr> <tr> <th scope="row">태그 생략</th> <td>불가능, 시작과 끝에 태그를 추가하는것은 필수입니다.</td> </tr> <tr> <th scope="row">가능한 부모 요소</th> <td>
+<a href="../content_categories#%ed%94%8c%eb%a1%9c%ec%9a%b0_%ec%bd%98%ed%85%90%ec%b8%a0">플로우 콘텐츠</a>를 허용하는 모든 요소.</td> </tr> <tr> <th scope="row">가능한 ARIA 규칙</th> <td>
+<a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/tab_role" class="only-in-en-us"><code>tab</code> <small>(en-US)</small></a>, <a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/presentation_role" class="only-in-en-us"><code>presentation</code> <small>(en-US)</small></a>
+</td> </tr> <tr> <th scope="row">DOM 인터페이스</th> <td><a href="https://developer.mozilla.org/ko/docs/Web/API/HTMLElement"><code>HTMLElement</code></a></td> </tr> </tbody> </table></div></figure>
+</div>
+<h2 id="특성">특성</h2>
+<div class="section-content"><p>이 요소는 <a href="../global_attributes">전역 특성</a>만 포함합니다.</p></div>
+<h2 id="사용_일람">사용 일람</h2>
+<div class="section-content">
+<div class="notecard note" id="sect1"> <p> <strong>참고:</strong> <code>&lt;hgroup&gt;</code> 요소는 W3C HTML5 명세에서 제거되었고, WHATWG판 HTML에만 남아있습니다. 그러나 대부분의 브라우저에서 부분적으로 구현 중이므로 사라지지는 않을 것으로 보입니다. 다만, <code>&lt;hgroup&gt;</code> 요소의 주요 목적이 <a href="https://developer.mozilla.org/ko/docs/Web/HTML/HTML5_%EB%AC%B8%EC%84%9C%EC%9D%98_%EC%84%B9%EC%85%98%EA%B3%BC_%EC%9C%A4%EA%B3%BD" class="page-not-created">HTML 명세의 개요 알고리즘</a>에서 제목의 표시 방법을 설정하기 위함이며, <strong>어떠한 브라우저도 개요 알고리즘을 구현하지 않았음</strong>을 고려할 때, <code>&lt;hgroup&gt;</code>의 의미는 이론적으로만 유효합니다. W3C HTML5 명세에서 <code>&lt;hgroup&gt;</code> 없이 <a href="https://www.w3.org/TR/html52/common-idioms-without-dedicated-elements.html#common-idioms-without-dedicated-elements" target="_blank">부제, 보조 제목, 태그라인의 마크업 방법</a>에 대한 조언을 제공하고 있습니다. </p> </div> <p><code>&lt;hgroup&gt;</code> 요소는 문서 구획의 주 제목과 2차 제목을 연결해, 제목-부제목과 같은 "다단계 제목"을 만들 수 있습니다.</p> <p>다른 말로 하면, <code>&lt;hgroup&gt;</code> 요소는 자신의 2차 <code><a href="heading_elements">&lt;h1&gt;-&lt;h6&gt;</a></code>이 문서 개요에 자신의 구획을 생성하는 것을 방지합니다.</p> <p>따라서 <a href="https://developer.mozilla.org/ko/docs/Web/HTML/HTML5_%EB%AC%B8%EC%84%9C%EC%9D%98_%EC%84%B9%EC%85%98%EA%B3%BC_%EC%9C%A4%EA%B3%BD" class="page-not-created">HTML 개요 알고리즘</a>이 생성한 추상적 개요 내에서, <code>&lt;hgroup&gt;</code>은 논리적인 단일 제목을 형성하고, <code>&lt;hgroup&gt;</code>의 자식 제목 요소가 그 안에 하나로 포함됩니다.</p>
+</div>
+<h2 id="예제">예제</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="k2H/LFVfcMatvP+LkP9WjWtFVBujGD3891INImLhbg4=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>hgroup</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span><span class="token punctuation">&gt;</span></span>주요 제목<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h1</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h2</span><span class="token punctuation">&gt;</span></span>부제목<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h2</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>hgroup</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div></div>
+<h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://html.spec.whatwg.org/multipage/sections.html#the-hgroup-element">HTML Standard <br><small># the-hgroup-element</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li>구획 관련 다른 요소: <a href="body"><code>&lt;body&gt;</code></a>, <a href="article"><code>&lt;article&gt;</code></a>, <a href="section"><code>&lt;section&gt;</code></a>, <a href="aside"><code>&lt;aside&gt;</code></a>, <a href="heading_elements"><code>&lt;h1&gt;</code></a>, <a href="heading_elements"><code>&lt;h2&gt;</code></a>, <a href="heading_elements"><code>&lt;h3&gt;</code></a>, <a href="heading_elements"><code>&lt;h4&gt;</code></a>, <a href="heading_elements"><code>&lt;h5&gt;</code></a>, <a href="heading_elements"><code>&lt;h6&gt;</code></a>, <a href="nav"><code>&lt;nav&gt;</code></a>, <a href="header"><code>&lt;header&gt;</code></a>, <a href="footer"><code>&lt;footer&gt;</code></a>, <a href="address"><code>&lt;address&gt;</code></a>;</li> <li>
+<a href="https://developer.mozilla.org/ko/docs/Sections_and_Outlines_of_an_HTML5_document" class="page-not-created">HTML5 문서의 구획과 개요</a>.</li> </ul></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/HTML/Element/hgroup" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/HTML/Element/hgroup</a>
+  </p>
+</div>

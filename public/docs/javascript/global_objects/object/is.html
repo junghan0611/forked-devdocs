@@ -1,0 +1,61 @@
+<header><h1>Object.is()</h1></header><div class="section-content"><p><code>Object.is()</code> 정적 메서드는 두 값이 <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Equality_comparisons_and_sameness">같은 값</a>인지 결정합니다.</p></div>
+<section aria-labelledby="시도해보기"><h2 id="시도해보기">시도해보기</h2>
+<div class="section-content"><iframe class="interactive is-js-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/js/object-is.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe></div></section><section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="rqL+IudYP3gMaKglRONNlsR32prX+Sigbn2/W8O5Slc=" data-language="js">Object<span class="token punctuation">.</span><span class="token function">is</span><span class="token punctuation">(</span>value1<span class="token punctuation">,</span> value2<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div></div></section><section aria-labelledby="매개변수"><h3 id="매개변수">매개변수</h3>
+<div class="section-content"><dl> <dt id="value1"><code>value1</code></dt> <dd> <p>비교할 첫 번째 값.</p> </dd> <dt id="value2"><code>value2</code></dt> <dd> <p>비교할 두 번째 값.</p> </dd> </dl></div></section><section aria-labelledby="반환_값"><h3 id="반환_값">반환 값</h3>
+<div class="section-content"><p>두 인수가 같은 값인지 여부를 나타내는 불리언.</p></div></section><section aria-labelledby="설명"><h2 id="설명">설명</h2>
+<div class="section-content">
+<p><code>Object.is()</code>는 두 값이 <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Equality_comparisons_and_sameness">같은 값</a>인지 결정합니다. 다음 중 하나를 만족하면 두 값은 같습니다.</p> <ul> <li>둘 다 <a href="../undefined"><code>undefined</code></a>
+</li> <li>둘 다 <a href="../../operators/null"><code>null</code></a>
+</li> <li>둘 다 <code>true</code> 또는 둘 다 <code>false</code>
+</li> <li>둘 다 같은 순서로 같은 문자에 같은 길이인 문자열</li> <li>둘 다 같은 객체 (두 값 모두 메모리에서 같은 객체를 참조하는 것을 의미)</li> <li>둘 다 숫자이며 <ul> <li>둘 다 <code>+0</code>
+</li> <li>둘 다 <code>-0</code>
+</li> <li>둘 다 <a href="../nan"><code>NaN</code></a>
+</li> <li>둘 다 0이나 <a href="../nan"><code>NaN</code></a>이 아니고, 같은 값을 지님</li> </ul> </li> </ul> <p><code>Object.is()</code>는 <a href="../../operators/equality"><code>==</code></a> 연산자와 같지 않습니다. <code>==</code> 연산자는 같음을 테스트하기 전에 양 쪽(이 같은 형이 아니라면)에 다양한 강제(coercion)를 적용하지만(<code>"" == false</code>가 <code>true</code>가 되는 것과 같은 행동을 초래), <code>Object.is</code>는 어느 값도 강제하지 않습니다.</p> <p><code>Object.is()</code>는 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Strict_equality" class="only-in-en-us"><code>===</code> <small>(en-US)</small></a> 연산자와도 같지 않습니다. <code>Object.is()</code>와 <code>===</code>의 유일한 차이는 부호 있는 0과 <code>NaN</code> 값들의 처리입니다. <code>===</code> 연산자(및 <code>==</code> 연산자)는 숫자값 <code>-0</code>과 <code>+0</code>을 같게 처리하지만, <a href="../nan"><code>NaN</code></a>은 서로 같지 않게 처리합니다.</p>
+</div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+</section><section aria-labelledby="object.is_사용"><h3 id="object.is_사용">Object.is() 사용</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="qmsvk0E+M9fcDwW3n2SKzxvZb4FRgd59KeWlfQ7O0Jo=" data-language="js"><span class="token comment">// Case 1: 평가 결과는 ===을 사용한 것과 동일합니다</span>
+Object<span class="token punctuation">.</span><span class="token function">is</span><span class="token punctuation">(</span><span class="token number">25</span><span class="token punctuation">,</span> <span class="token number">25</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// true</span>
+Object<span class="token punctuation">.</span><span class="token function">is</span><span class="token punctuation">(</span><span class="token string">"foo"</span><span class="token punctuation">,</span> <span class="token string">"foo"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// true</span>
+Object<span class="token punctuation">.</span><span class="token function">is</span><span class="token punctuation">(</span><span class="token string">"foo"</span><span class="token punctuation">,</span> <span class="token string">"bar"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// false</span>
+Object<span class="token punctuation">.</span><span class="token function">is</span><span class="token punctuation">(</span><span class="token keyword">null</span><span class="token punctuation">,</span> <span class="token keyword">null</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// true</span>
+Object<span class="token punctuation">.</span><span class="token function">is</span><span class="token punctuation">(</span><span class="token keyword">undefined</span><span class="token punctuation">,</span> <span class="token keyword">undefined</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// true</span>
+Object<span class="token punctuation">.</span><span class="token function">is</span><span class="token punctuation">(</span>window<span class="token punctuation">,</span> window<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// true</span>
+Object<span class="token punctuation">.</span><span class="token function">is</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// false</span>
+<span class="token keyword">const</span> foo <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token literal-property property">a</span><span class="token operator">:</span> <span class="token number">1</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> bar <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token literal-property property">a</span><span class="token operator">:</span> <span class="token number">1</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> sameFoo <span class="token operator">=</span> foo<span class="token punctuation">;</span>
+Object<span class="token punctuation">.</span><span class="token function">is</span><span class="token punctuation">(</span>foo<span class="token punctuation">,</span> foo<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// true</span>
+Object<span class="token punctuation">.</span><span class="token function">is</span><span class="token punctuation">(</span>foo<span class="token punctuation">,</span> bar<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// false</span>
+Object<span class="token punctuation">.</span><span class="token function">is</span><span class="token punctuation">(</span>foo<span class="token punctuation">,</span> sameFoo<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// true</span>
+
+<span class="token comment">// Case 2: 부호 있는 0</span>
+Object<span class="token punctuation">.</span><span class="token function">is</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// false</span>
+Object<span class="token punctuation">.</span><span class="token function">is</span><span class="token punctuation">(</span><span class="token operator">+</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// false</span>
+Object<span class="token punctuation">.</span><span class="token function">is</span><span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// true</span>
+
+<span class="token comment">// Case 3: NaN</span>
+Object<span class="token punctuation">.</span><span class="token function">is</span><span class="token punctuation">(</span><span class="token number">NaN</span><span class="token punctuation">,</span> <span class="token number">0</span> <span class="token operator">/</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// true</span>
+Object<span class="token punctuation">.</span><span class="token function">is</span><span class="token punctuation">(</span><span class="token number">NaN</span><span class="token punctuation">,</span> Number<span class="token punctuation">.</span><span class="token number">NaN</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// true</span>
+</pre>
+</div></div></section><h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://tc39.es/ecma262/multipage/fundamental-objects.html#sec-object.is">ECMAScript Language Specification <br><small># sec-object.is</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="https://github.com/zloirock/core-js#ecmascript-object" target="_blank"><code>core-js</code>의 <code>Object.is</code> 폴리필</a></li> <li>
+<a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Equality_comparisons_and_sameness">동치 비교 및 동일성</a> — 동일성 내장 기능 3가지 모두 비교</li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Object/is" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Object/is</a>
+  </p>
+</div>

@@ -1,0 +1,33 @@
+<header><h1>Date.prototype.setTime()</h1></header><div class="section-content"><p> <code>setTime()</code> 메서드는 <a href="../date"><code>Date</code></a> 객체를 1970년 1월 1일 00:00:00 UTC부터 밀리 초 단위로 나타내는 시간으로 설정합니다. </p></div>
+<section aria-labelledby="시도해보기"><h2 id="시도해보기">시도해보기</h2>
+<div class="section-content"><iframe class="interactive is-taller-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/js/date-settime.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe></div></section><section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="S0CVi/8bjGhpU9Mnb/k3Bblhjro0C+2dFiU0kCaAHS4=" data-language="js"><span class="token function">setTime</span><span class="token punctuation">(</span>timeValue<span class="token punctuation">)</span>
+</pre>
+</div></div></section><section aria-labelledby="매개변수"><h3 id="매개변수">매개변수</h3>
+<div class="section-content"><dl> <dt id="timevalue"><code>timeValue</code></dt> <dd> <p>1970년 1월 1일 00:00:00 UTC 이후의 밀리 초 수를 나타내는 정수 값 입니다.</p> </dd> </dl></div></section><section aria-labelledby="반환_값"><h3 id="반환_값">반환 값</h3>
+<div class="section-content"><p>1970년 1월 1일 00:00:00 UTC와 업데이트 된 날짜 (사실상 인수의 값) 사이의 밀리 초 수입니다.</p></div></section><section aria-labelledby="설명"><h2 id="설명">설명</h2>
+<div class="section-content"><p><code>setTime()</code> 메서드를 사용하면 다른 <a href="../date"><code>Date</code></a> 객체에 날짜와 시간을 지정할 수 있습니다.</p></div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+</section><section aria-labelledby="settime_사용하기"><h3 id="settime_사용하기">
+<code>setTime()</code> 사용하기</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="VHWZFOrQoZkOGJaZzbqVlsHuOrHEd7Cd1UmsOrkxAVw=" data-language="js"><span class="token keyword">const</span> theBigDay <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token string">"July 1, 1999"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> sameAsBigDay <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+sameAsBigDay<span class="token punctuation">.</span><span class="token function">setTime</span><span class="token punctuation">(</span>theBigDay<span class="token punctuation">.</span><span class="token function">getTime</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div></div></section><h2 id="명세서">명세서</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://tc39.es/ecma262/multipage/numbers-and-dates.html#sec-date.prototype.settime">ECMAScript Language Specification <br><small># sec-date.prototype.settime</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="gettime"><code>Date.prototype.getTime()</code></a></li> <li><a href="setutchours"><code>Date.prototype.setUTCHours()</code></a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Date/setTime" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Date/setTime</a>
+  </p>
+</div>

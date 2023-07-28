@@ -1,0 +1,33 @@
+<header><h1>Date.prototype.setFullYear()</h1></header><div class="section-content"><p><strong>setFullYear()</strong> 메서드는 현지 시간에 따라 지정된 날짜의 전체 연도를 설정합니다. 새로운 타임 스탬프를 반환합니다.</p></div>
+<section aria-labelledby="syntax"><h2 id="syntax">Syntax</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="lvvk1q70u7H2T3/F5VOTsxe4uAngux6GtGKzGNE8exg=" data-language="js">    dateObj<span class="token punctuation">.</span><span class="token function">setFullYear</span><span class="token punctuation">(</span>yearValue<span class="token punctuation">[</span><span class="token punctuation">,</span> monthValue<span class="token punctuation">[</span><span class="token punctuation">,</span> dayValue<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+</pre>
+</div></div></section><section aria-labelledby="parameters"><h3 id="parameters">Parameters</h3>
+<div class="section-content"><dl> <dt id="yearvalue"><code>yearValue</code></dt> <dd> <p>연도의 숫자 값을 지정하는 정수입니다 (예 : 1995).</p> </dd> <dt id="monthvalue"><code>monthValue</code></dt> <dd> <p>선택 과목. 1 월에서 12 월까지의 월을 나타내는 0에서 11 사이의 정수입니다.</p> </dd> <dt id="dayvalue"><code>dayValue</code></dt> <dd> <p>선택 과목. 한 달의 날짜를 나타내는 1 - 31 사이의 정수입니다. dayValue 매개 변수를 지정하는 경우 monthValue도 지정해야합니다.</p> </dd> </dl></div></section><section aria-labelledby="return_value"><h3 id="return_value">Return value</h3>
+<div class="section-content"><p>1970 년 1 월 1 일 00:00:00 UTC와 업데이트 된 날짜 사이의 밀리 초 숫자입니다.</p></div></section><section aria-labelledby="description"><h2 id="description">Description</h2>
+<div class="section-content">
+<p>monthValue 및 dayValue 매개 변수를 지정하지 않으면 <a href="getmonth"><code>getMonth()</code></a> 및 <a class="page-not-created"><code>getDate()</code></a> 메소드가 사용됩니다.</p> <p>지정한 매개 변수가 예상 범위를 벗어나면 setFullYear ()가 다른 매개 변수와 <a href="../date"><code>Date</code></a> 객체의 날짜 정보를 그에 따라 업데이트하려고 시도합니다. 예를 들어, monthValue에 15를 지정하면 연도가 1 (yearValue + 1)만큼 증가하고 3은 해당 월에 사용됩니다.</p>
+</div></section><section aria-labelledby="examples"><h2 id="examples">Examples</h2>
+</section><section aria-labelledby="using_setfullyear"><h3 id="using_setfullyear">Using <code>setFullYear()</code>
+</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="KeqDb7rKf/2RQVr2LqbhcbAOvNxw6XouZ5JA60ySD0w=" data-language="js"><span class="token keyword">var</span> theBigDay <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+theBigDay<span class="token punctuation">.</span><span class="token function">setFullYear</span><span class="token punctuation">(</span><span class="token number">1997</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div></div></section><h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://tc39.es/ecma262/multipage/numbers-and-dates.html#sec-date.prototype.setfullyear">ECMAScript Language Specification <br><small># sec-date.prototype.setfullyear</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="see_also"><h2 id="see_also">See also</h2>
+<div class="section-content"><ul> <li><a href="getutcfullyear"><code>Date.prototype.getUTCFullYear()</code></a></li> <li><a href="setutcfullyear"><code>Date.prototype.setUTCFullYear()</code></a></li> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/setYear"><code>Date.prototype.setYear()</code> <small>(en-US)</small></a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Date/setFullYear" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Date/setFullYear</a>
+  </p>
+</div>

@@ -1,0 +1,104 @@
+<header><h1>String.prototype.indexOf()</h1></header><div class="section-content"><p><code>indexOf()</code> 메서드는 호출한 <a href="../string"><code>String</code></a> 객체에서 주어진 값과 일치하는 첫 번째 인덱스를 반환합니다. 일치하는 값이 없으면 -1을 반환합니다.</p></div>
+<section aria-labelledby="시도해보기"><h2 id="시도해보기">시도해보기</h2>
+<div class="section-content">
+<iframe class="interactive is-js-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/js/string-indexof.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe> <div class="notecard note" id="sect1"> <p><strong>참고:</strong> <a href="../array"><code>Array</code></a>에서는 <a href="../array/indexof"><code>Array.prototype.indexOf()</code></a> 메서드가 같은 역할을 합니다.</p> </div>
+</div></section><section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="BPtsp5Mwot+1HyBo2XKPpZSuSTPyTUk1LQ45qVG1DpE=" data-language="js">str<span class="token punctuation">.</span><span class="token function">indexOf</span><span class="token punctuation">(</span>searchValue<span class="token punctuation">[</span><span class="token punctuation">,</span> fromIndex<span class="token punctuation">]</span><span class="token punctuation">)</span>
+</pre>
+</div></div></section><section aria-labelledby="매개변수"><h3 id="매개변수">매개변수</h3>
+<div class="section-content"><dl> <dt id="searchvalue"><code>searchValue</code></dt> <dd> <p>찾으려는 문자열. 아무 값도 주어지지 않으면 <a href="https://tc39.github.io/ecma262/#sec-tostring" target="_blank">문자열 <code>"undefined"</code>를 찾으려는 문자열로 사용</a>합니다.</p> </dd> <dt id="fromindex">
+<code>fromIndex</code> <span class="badge inline optional">Optional</span>
+</dt> <dd> <p>문자열에서 찾기 시작하는 위치를 나타내는 인덱스 값입니다. 어떤 정수값이라도 가능합니다. 기본값은 0이며, 문자열 전체를 대상으로 찾게 됩니다. 만약 <code>fromIndex</code> 값이 음의 정수이면 전체 문자열을 찾게 됩니다. 만약 <code>fromIndex &gt;= str.length</code> 이면, 검색하지 않고 바로 -1을 반환합니다. <code>searchValue</code>가 공백 문자열이 아니라면, <code>str.length</code>를 반환합니다.</p> </dd> </dl></div></section><section aria-labelledby="반환_값"><h3 id="반환_값">반환 값</h3>
+<div class="section-content"><p><code>searchValue</code>의 첫 번째 등장 인덱스. 찾을 수 없으면 -1.</p></div></section><section aria-labelledby="설명"><h2 id="설명">설명</h2>
+<div class="section-content">
+<p>문자열 내에 있는 문자들은 왼쪽에서 오른쪽 방향으로 순번이 매겨집니다. 제일 처음 문자는 0번째 순번(index)이며, <code>stringName</code> 문자열의 마지막 문자의 순번 <code>stringName.length -1</code> 입니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="PB++FyEpbq1z2YGCzwB4seE0/NmYrmswmJokeEcd8nA=" data-language="js"><span class="token string">'Blue Whale'</span><span class="token punctuation">.</span><span class="token function">indexOf</span><span class="token punctuation">(</span><span class="token string">'Blue'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>     <span class="token comment">// returns  0</span>
+<span class="token string">'Blue Whale'</span><span class="token punctuation">.</span><span class="token function">indexOf</span><span class="token punctuation">(</span><span class="token string">'Blute'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token comment">// returns -1</span>
+<span class="token string">'Blue Whale'</span><span class="token punctuation">.</span><span class="token function">indexOf</span><span class="token punctuation">(</span><span class="token string">'Whale'</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// returns  5</span>
+<span class="token string">'Blue Whale'</span><span class="token punctuation">.</span><span class="token function">indexOf</span><span class="token punctuation">(</span><span class="token string">'Whale'</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// returns  5</span>
+<span class="token string">'Blue Whale'</span><span class="token punctuation">.</span><span class="token function">indexOf</span><span class="token punctuation">(</span><span class="token string">'Whale'</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// returns -1</span>
+<span class="token string">'Blue Whale'</span><span class="token punctuation">.</span><span class="token function">indexOf</span><span class="token punctuation">(</span><span class="token string">''</span><span class="token punctuation">)</span><span class="token punctuation">;</span>         <span class="token comment">// returns  0</span>
+<span class="token string">'Blue Whale'</span><span class="token punctuation">.</span><span class="token function">indexOf</span><span class="token punctuation">(</span><span class="token string">''</span><span class="token punctuation">,</span> <span class="token number">9</span><span class="token punctuation">)</span><span class="token punctuation">;</span>      <span class="token comment">// returns  9</span>
+<span class="token string">'Blue Whale'</span><span class="token punctuation">.</span><span class="token function">indexOf</span><span class="token punctuation">(</span><span class="token string">''</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span>     <span class="token comment">// returns 10</span>
+<span class="token string">'Blue Whale'</span><span class="token punctuation">.</span><span class="token function">indexOf</span><span class="token punctuation">(</span><span class="token string">''</span><span class="token punctuation">,</span> <span class="token number">11</span><span class="token punctuation">)</span><span class="token punctuation">;</span>     <span class="token comment">// returns 10</span>
+</pre>
+</div> <p><code>indexOf()</code> 메서드는 대소문자를 구분합니다. 예를 들면, 아래 예제는 일치하는 문자열이 없으므로 <code>-1</code>을 반환합니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="n+ipRTfDoFbHqRAMd5qzJkiIbMoepVJ/Fl4u9p260NU=" data-language="js"><span class="token string">'Blue Whale'</span><span class="token punctuation">.</span><span class="token function">indexOf</span><span class="token punctuation">(</span><span class="token string">'blue'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// returns -1</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="존재_여부_확인"><h3 id="존재_여부_확인">존재 여부 확인</h3>
+<div class="section-content">
+<p>'0'을 평가했을 때 <code>true</code>가 아니고, -1을 평가했을 때 <code>false</code>가 아닌 것에 주의해야 합니다. 따라서, 임의의 문자열에 특정 문자열이 있는지를 확인하는 올바른 방법은 다음과 같습니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="UIDiDBxTLqOp7n/q5QIcdelTnEwzBSXyWs6CPG+U6oM=" data-language="js"><span class="token string">'Blue Whale'</span><span class="token punctuation">.</span><span class="token function">indexOf</span><span class="token punctuation">(</span><span class="token string">'Blue'</span><span class="token punctuation">)</span> <span class="token operator">!==</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span> <span class="token comment">// true</span>
+<span class="token string">'Blue Whale'</span><span class="token punctuation">.</span><span class="token function">indexOf</span><span class="token punctuation">(</span><span class="token string">'Bloe'</span><span class="token punctuation">)</span> <span class="token operator">!==</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span> <span class="token comment">// false</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+</section><section aria-labelledby="indexof_사용하기"><h3 id="indexof_사용하기">
+<code>indexOf()</code> 사용하기</h3>
+<div class="section-content">
+<p>아래 예제는 <code>"Brave new world"</code> 문자열의 위치를 확인하기 위해 <code>indexOf()</code>와 <a href="lastindexof"><code>lastIndexOf()</code></a> 를 사용하고 있습니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="iPWVIj3//q2EBB1plTIicPERSYAff10xoI0eKo+fTa0=" data-language="js"><span class="token keyword">var</span> anyString <span class="token operator">=</span> <span class="token string">'Brave new world'</span><span class="token punctuation">;</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'The index of the first w from the beginning is '</span> <span class="token operator">+</span> anyString<span class="token punctuation">.</span><span class="token function">indexOf</span><span class="token punctuation">(</span><span class="token string">'w'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// 첫번째 w 문자 위치는 8</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'The index of the first w from the end is '</span> <span class="token operator">+</span> anyString<span class="token punctuation">.</span><span class="token function">lastIndexOf</span><span class="token punctuation">(</span><span class="token string">'w'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// 마지막 w 문자 위치는 10</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'The index of "new" from the beginning is '</span> <span class="token operator">+</span> anyString<span class="token punctuation">.</span><span class="token function">indexOf</span><span class="token punctuation">(</span><span class="token string">'new'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// 첫번째 new 문자열 위치는 6</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'The index of "new" from the end is '</span> <span class="token operator">+</span> anyString<span class="token punctuation">.</span><span class="token function">lastIndexOf</span><span class="token punctuation">(</span><span class="token string">'new'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// 마지막 new 문자열 위치는 6</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="indexof와_대소문자_구분"><h3 id="indexof와_대소문자_구분">
+<code>indexOf()</code>와 대소문자 구분</h3>
+<div class="section-content">
+<p>아래 예제에서는 2개의 문자열 변수를 정의하고 있습니다. 이 변수들 내에 있는 문자열들은 모두 같지만 두 번째 변수에 포함되어 있는 문자열은 대문자를 포함하고 있습니다. 첫 번째 <a href="https://developer.mozilla.org/ko/docs/Web/API/console/log"><code>console.log()</code></a> 메서드의 결과값은 19입니다. 하지만, 두 번째 <code>console.log()</code> 메서드의 결과값은 <code>-1</code>입니다. 왜냐하면, indexOf() 메서드는 대소문자를 구분하기 때문에 <code>myCapString</code>에서 "<code>cheddar</code>" 문자열을 찾을 수 없기 때문입니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="YIHNv5kWslPyQse+ZD8ACu98NXGmHtR3p5lO4jKxZ6k=" data-language="js"><span class="token keyword">var</span> myString    <span class="token operator">=</span> <span class="token string">'brie, pepper jack, cheddar'</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> myCapString <span class="token operator">=</span> <span class="token string">'Brie, Pepper Jack, Cheddar'</span><span class="token punctuation">;</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'myString.indexOf("cheddar") is '</span> <span class="token operator">+</span> myString<span class="token punctuation">.</span><span class="token function">indexOf</span><span class="token punctuation">(</span><span class="token string">'cheddar'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// 로그에 19를 출력합니다.</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'myCapString.indexOf("cheddar") is '</span> <span class="token operator">+</span> myCapString<span class="token punctuation">.</span><span class="token function">indexOf</span><span class="token punctuation">(</span><span class="token string">'cheddar'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// 로그에 -1을 출력합니다.</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="indexof를_사용하여_문자열_내의_특정_문자_숫자_세기"><h3 id="indexof를_사용하여_문자열_내의_특정_문자_숫자_세기">
+<code>indexOf()</code>를 사용하여 문자열 내의 특정 문자 숫자 세기</h3>
+<div class="section-content">
+<p>아래 예제는 <code>str</code> 문자열에서 <code>e</code> 문자의 총 숫자를 확인하는 프로그램입니다:</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="9EECtCZduO/oyUjKbF0KQWFlBQ8p/R5zxik//lP6tRM=" data-language="js"><span class="token keyword">var</span> str <span class="token operator">=</span> <span class="token string">'To be, or not to be, that is the question.'</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> count <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> pos <span class="token operator">=</span> str<span class="token punctuation">.</span><span class="token function">indexOf</span><span class="token punctuation">(</span><span class="token string">'e'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//pos는 4의 값을 가집니다.</span>
+
+<span class="token keyword">while</span> <span class="token punctuation">(</span>pos <span class="token operator">!==</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  count<span class="token operator">++</span><span class="token punctuation">;</span>
+  pos <span class="token operator">=</span> str<span class="token punctuation">.</span><span class="token function">indexOf</span><span class="token punctuation">(</span><span class="token string">'e'</span><span class="token punctuation">,</span> pos <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 첫 번째 e 이후의 인덱스부터 e를 찾습니다.</span>
+<span class="token punctuation">}</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>count<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 로그에 4를 출력합니다.</span>
+</pre>
+</div>
+</div></section><h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://tc39.es/ecma262/multipage/text-processing.html#sec-string.prototype.indexof">ECMAScript Language Specification <br><small># sec-string.prototype.indexof</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="charat"><code>String.prototype.charAt()</code></a></li> <li><a href="lastindexof"><code>String.prototype.lastIndexOf()</code></a></li> <li><a href="split"><code>String.prototype.split()</code></a></li> <li><a href="../array/indexof"><code>Array.prototype.indexOf()</code></a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/String/indexOf" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/String/indexOf</a>
+  </p>
+</div>

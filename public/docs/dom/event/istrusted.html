@@ -1,0 +1,23 @@
+<header><h1>Event.isTrusted</h1></header><div class="section-content"><p><a href="../event"><code>Event</code></a> 인터페이스의 <code>isTrusted</code> 읽기 전용 속성은 사용자 액션에 의해 생성된 이벤트에서는 <code>true</code>, 스크립트에서 생성 또는 수정했거나 <a href="../eventtarget/dispatchevent"><code>EventTarget.dispatchEvent()</code></a>로 발송한 이벤트의 경우 <code>false</code>인 불리언 값입니다.</p></div>
+<h2 id="예제">예제</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="OKuvbFckyzjYiCkmKGUJzmplvOjRE4EznmEU48viiYA=" data-language="js"><span class="token keyword">if</span> <span class="token punctuation">(</span>e<span class="token punctuation">.</span>isTrusted<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">// 신뢰할 수 있는 이벤트</span>
+<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+  <span class="token comment">// 신뢰 불가능한 이벤트</span>
+<span class="token punctuation">}</span>
+</pre>
+</div></div>
+<h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="#">DOM Standard <br><small># ref-for-dom-event-istrusted①</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/Event/isTrusted" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/Event/isTrusted</a>
+  </p>
+</div>

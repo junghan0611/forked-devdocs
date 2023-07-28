@@ -1,0 +1,97 @@
+<header><h1>Document.getElementsByTagName()</h1></header><div class="section-content">
+ <a href="../document"><code>Document</code></a> 인터페이스의 <code>getElementsByTagName</code> 메소드는 엘리먼트의 <a href="../htmlcollection"><code>HTMLCollection</code></a> 과 주어진 태그명을 반환합니다. 루트 노드를 포함해 전체 다큐먼트를 대상으로 검색됩니다. 반환된 <code>HTMLCollection</code> 은 살아있는데, 이는 <code>document.getElementsByTagName()</code> 을 다시 호출하지 않아도 자동으로 업데이트하여 DOM 트리와 동기화된 상태를 유지함을 의미합니다. 
+</div>
+<h2 id="구문">구문</h2>
+<div class="section-content">
+<div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="DsyzRHbybe2efLYi7fh6vlrcZTAi7Y5uDQ0vZgZLJ5M=" data-language="js"><span class="token keyword">var</span> elements <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementsByTagName</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div> <ul> <li>
+<em>elements</em> 는 트리에 나타난 순서대로 발견된 살아있는 <a href="../htmlcollection"><code>HTMLCollection</code></a> 입니다(하지만 아래 노트를 보세요).</li> <li>
+<em>name</em> 은 엘리먼트의 이름을 나타내는 문자열입니다. 특수 문자 "*" 은 모든 엘리먼트를 나타냅니다.</li> </ul> <div class="notecard note" id="sect1"> <p><strong>참고:</strong> <a href="https://dvcs.w3.org/hg/domcore/raw-file/tip/Overview.html" target="_blank">최신 W3C 명세</a>에서는 <em>elements</em> 가 <code>HTMLCollection</code> 라고 하지만, WebKit 브라우저에서는 <a href="../nodelist"><code>NodeList</code></a> 를 반환합니다. 자세한 내용은 <a href="https://bugzil.la/14869" target="_blank">Firefox bug 14869</a> 버그를 확인하시기 바랍니다.</p> </div>
+</div>
+<h2 id="예시">예시</h2>
+<div class="section-content">
+<p>다음 예시에서, <code>getElementsByTagName()</code> 는 특정 부모 엘리먼트에서 시작해 그 부모 엘리먼트의 DOM 을 거쳐 위에서 아래로 재귀 탐색을하고, 태그 <code>name</code> 파라미터에 일치하는 모든 자손 엘리먼트의 집합을 생성합니다. 여기에서는 <code>document.getElementsByTagName()</code> 과 기능적으로 동일하며 DOM 트리의 특정 엘리먼트를 시작으로하여 탐색하는 <a href="../element/getelementsbytagname"><code>Element.getElementsByTagName()</code></a> 모두를 시연합니다.</p> <p>버튼 클릭은 <code>getElementsByTagName()</code> 을 사용해 특정 부모의 자손 문단(p) 엘리먼트를 셉니다(다큐먼트 자체 또는 중첩된 <a href="https://developer.mozilla.org/ko/docs/Web/HTML/Element/div"><code>&lt;div&gt;</code></a> 엘리먼트 중 하나).</p> <div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="I+jrgjEoIFqODZK7FT11Y0kuYlE5B45FMj9joPtd3TM=" data-language="html"><span class="token doctype"><span class="token punctuation">&lt;!</span><span class="token doctype-tag">DOCTYPE</span> <span class="token name">html</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span> <span class="token attr-name">lang</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>en<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">charset</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>UTF-8<span class="token punctuation">"</span></span> <span class="token punctuation">/&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>title</span><span class="token punctuation">&gt;</span></span>getElementsByTagName example<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>title</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">&gt;</span></span><span class="token script"><span class="token language-javascript">
+    <span class="token keyword">function</span> <span class="token function">getAllParaElems</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">var</span> allParas <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementsByTagName</span><span class="token punctuation">(</span><span class="token string">'p'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token keyword">var</span> num <span class="token operator">=</span> allParas<span class="token punctuation">.</span>length<span class="token punctuation">;</span>
+      <span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">'There are '</span> <span class="token operator">+</span> num <span class="token operator">+</span> <span class="token string">' paragraph in this document'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">function</span> <span class="token function">div1ParaElems</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">var</span> div1 <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">'div1'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token keyword">var</span> div1Paras <span class="token operator">=</span> div1<span class="token punctuation">.</span><span class="token function">getElementsByTagName</span><span class="token punctuation">(</span><span class="token string">'p'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token keyword">var</span> num <span class="token operator">=</span> div1Paras<span class="token punctuation">.</span>length<span class="token punctuation">;</span>
+      <span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">'There are '</span> <span class="token operator">+</span> num <span class="token operator">+</span> <span class="token string">' paragraph in #div1'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">function</span> <span class="token function">div2ParaElems</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">var</span> div2 <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">'div2'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token keyword">var</span> div2Paras <span class="token operator">=</span> div2<span class="token punctuation">.</span><span class="token function">getElementsByTagName</span><span class="token punctuation">(</span><span class="token string">'p'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token keyword">var</span> num <span class="token operator">=</span> div2Paras<span class="token punctuation">.</span>length<span class="token punctuation">;</span>
+      <span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">'There are '</span> <span class="token operator">+</span> num <span class="token operator">+</span> <span class="token string">' paragraph in #div2'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  </span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span> <span class="token special-attr"><span class="token attr-name">style</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token value css language-css"><span class="token property">border</span><span class="token punctuation">:</span> solid green 3px</span><span class="token punctuation">"</span></span></span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>Some outer text<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>Some outer text<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>div1<span class="token punctuation">"</span></span> <span class="token special-attr"><span class="token attr-name">style</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token value css language-css"><span class="token property">border</span><span class="token punctuation">:</span> solid blue 3px</span><span class="token punctuation">"</span></span></span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>Some div1 text<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>Some div1 text<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>Some div1 text<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>div2<span class="token punctuation">"</span></span> <span class="token special-attr"><span class="token attr-name">style</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token value css language-css"><span class="token property">border</span><span class="token punctuation">:</span> solid red 3px</span><span class="token punctuation">"</span></span></span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>Some div2 text<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>Some div2 text<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>Some outer text<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>Some outer text<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token special-attr"><span class="token attr-name">onclick</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token value javascript language-javascript"><span class="token function">getAllParaElems</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span><span class="token punctuation">"</span></span></span><span class="token punctuation">&gt;</span></span>
+    show all p elements in document<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>br</span> <span class="token punctuation">/&gt;</span></span>
+
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token special-attr"><span class="token attr-name">onclick</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token value javascript language-javascript"><span class="token function">div1ParaElems</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span><span class="token punctuation">"</span></span></span><span class="token punctuation">&gt;</span></span>
+    show all p elements in div1 element<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>br</span> <span class="token punctuation">/&gt;</span></span>
+
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token special-attr"><span class="token attr-name">onclick</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token value javascript language-javascript"><span class="token function">div2ParaElems</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span><span class="token punctuation">"</span></span></span><span class="token punctuation">&gt;</span></span>
+    show all p elements in div2 element<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">&gt;</span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div>
+</div>
+<h2 id="노트">노트</h2>
+<div class="section-content">
+<p>HTML 다큐먼트에서 호출될 때, getElementsByTagName() 은 처리전에 인수를 소문자로 변환합니다. 이는 HTML 다큐먼트의 하위 트리에 속한 낙타 표기법의 SVG 엘리먼트를 찾으려할 때 바람직하지 않습니다. 그런 경우에는 <a href="getelementsbytagnamens"><code>document.getElementsByTagNameNS()</code></a> 가 유용합니다.<a href="https://bugzil.la/499656" target="_blank">Firefox bug 499656</a> 버그도 확인하시기 바랍니다.</p> <p><code>document.getElementsByTagName()</code> 은 전체 다큐먼트를 포함하여 탐색한다는 점만 제외하고 <a href="../element/getelementsbytagname"><code>Element.getElementsByTagName()</code></a> 와 유사합니다.</p>
+</div>
+<h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="#">DOM Standard <br><small># ref-for-dom-document-getelementsbytagname①</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<h2 id="함께_보기">함께 보기</h2>
+<div class="section-content"><ul> <li><a href="../element/getelementsbytagname"><code>Element.getElementsByTagName()</code></a></li> <li>
+<a href="getelementbyid"><code>document.getElementById()</code></a> 는 <code>id</code> 로 엘리먼트의 참조를 반환합니다</li> <li>
+<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/Document/getElementsByName"><code>document.getElementsByName()</code> <small>(en-US)</small></a> 은 <code>name</code> 으로 엘리먼트의 참조를 반환합니다</li> <li>
+<a href="queryselector"><code>document.querySelector()</code></a> 는 <code>'div.myclass'</code> 같은 쿼리를 사용할 수 있는 강력한 셀렉터입니다.</li> </ul></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/Document/getElementsByTagName" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/Document/getElementsByTagName</a>
+  </p>
+</div>

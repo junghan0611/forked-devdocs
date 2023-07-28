@@ -1,0 +1,165 @@
+<header><h1>&lt;dl&gt;</h1></header><div class="section-content"><p><code>&lt;dl&gt;</code>는 설명 목록을 나타냅니다. <code>&lt;dl&gt;</code>은 <a href="dt"><code>&lt;dt&gt;</code></a>로 표기한 용어와 <a href="dd"><code>&lt;dd&gt;</code></a> 요소로 표기한 설명 그룹의 목록을 감싸서 설명 목록을 생성합니다. 주로 용어사전 구현이나 메타데이터(키-값 쌍 목록)를 표시할 때 사용합니다.</p></div>
+<h2 id="시도해보기">시도해보기</h2>
+<div class="section-content">
+<iframe class="interactive is-tabbed-standard-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/tabbed/dl.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe> <p>The source for this interactive example is stored in a GitHub repository. If you'd like to contribute to the interactive examples project, please clone <a href="https://github.com/mdn/interactive-examples" target="_blank">https://github.com/mdn/interactive-examples</a> and send us a pull request.</p> <figure class="table-container"><div class="_table"><table class="properties"> <tbody> <tr> <th scope="row"><a href="../content_categories">콘텐츠 카테고리</a></th> <td>
+<a href="../content_categories#%ed%94%8c%eb%a1%9c%ec%9a%b0_%ec%bd%98%ed%85%90%ec%b8%a0">플로우 콘텐츠</a>. <code>&lt;dl&gt;</code>의 자식 중 이름-값 그룹이 있으면 뚜렷한 콘텐츠.</td> </tr> <tr> <th scope="row">가능한 콘텐츠</th> <td> <p> 하나 이상의 <a href="dt"><code>&lt;dt&gt;</code></a> 요소와 하나 이상의 <a href="dd"><code>&lt;dd&gt;</code></a> 요소로 구성한 그룹 0개 이상. 선택적으로 <a href="script"><code>&lt;script&gt;</code></a>와 <a href="template"><code>&lt;template&gt;</code></a>을 혼합 가능.<br>또는, 하나 이상의 <a href="div"><code>&lt;div&gt;</code></a>. 선택적으로 <a href="script"><code>&lt;script&gt;</code></a>, <a href="template"><code>&lt;template&gt;</code></a> 혼합 가능. </p> </td> </tr> <tr> <th scope="row">태그 생략</th> <td>불가능, 시작과 끝에 태그를 추가하는것은 필수입니다.</td> </tr> <tr> <th scope="row">가능한 부모 요소</th> <td>
+<a href="../content_categories#%ed%94%8c%eb%a1%9c%ec%9a%b0_%ec%bd%98%ed%85%90%ec%b8%a0">플로우 콘텐츠</a>를 허용하는 모든 요소.</td> </tr> <tr> <th scope="row">가능한 ARIA 역할</th> <td>
+<a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/group_role" class="only-in-en-us"><code>group</code> <small>(en-US)</small></a>, <a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/presentation_role" class="only-in-en-us"><code>presentation</code> <small>(en-US)</small></a>
+</td> </tr> <tr> <th scope="row">DOM 인터페이스</th> <td><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLDListElement"><code>HTMLDListElement</code> <small>(en-US)</small></a></td> </tr> </tbody> </table></div></figure>
+</div>
+<h2 id="특성">특성</h2>
+<div class="section-content"><p>이 요소는 <a href="../global_attributes">전역 특성</a>을 포함합니다.</p></div>
+<h2 id="예제">예제</h2>
+
+<h3 id="하나의_용어와_하나의_정의">하나의 용어와 하나의 정의</h3>
+<div class="section-content">
+<div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="PCLq5XN7eefS010Ut42f7GHALitgaFIE7EUyym60Nck=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dl</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dt</span><span class="token punctuation">&gt;</span></span>Firefox<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dt</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dd</span><span class="token punctuation">&gt;</span></span>
+    Mozilla 재단과 수 백명의
+    자원봉사자가 개발한 무료
+    오픈소스 크로스 플랫폼
+    그래픽 웹 브라우저.
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dd</span><span class="token punctuation">&gt;</span></span>
+
+  <span class="token comment">&lt;!-- 다른 용어 및 정의 --&gt;</span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dl</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div>
+<div class="code-example" id="sect1">
+
+<iframe class="sample-code-frame" title="하나의 용어와 하나의 정의 sample" id="frame_하나의_용어와_하나의_정의" src="https://live.mdnplay.dev/ko/docs/Web/HTML/Element/dl/runner.html?id=%ED%95%98%EB%82%98%EC%9D%98_%EC%9A%A9%EC%96%B4%EC%99%80_%ED%95%98%EB%82%98%EC%9D%98_%EC%A0%95%EC%9D%98" loading="lazy"></iframe>
+</div>
+</div>
+<h3 id="여러_개의_용어와_하나의_정의">여러 개의 용어와 하나의 정의</h3>
+<div class="section-content">
+<div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="7YkyglrWcxXqnIoh+Z35+SKuN9cCzruUxKIfmQpKhts=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dl</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dt</span><span class="token punctuation">&gt;</span></span>Firefox<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dt</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dt</span><span class="token punctuation">&gt;</span></span>Mozilla Firefox<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dt</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dt</span><span class="token punctuation">&gt;</span></span>Fx<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dt</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dd</span><span class="token punctuation">&gt;</span></span>
+    Mozilla 재단과 수 백명의
+    자원봉사자가 개발한 무료
+    오픈소스 크로스 플랫폼
+    그래픽 웹 브라우저.
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dd</span><span class="token punctuation">&gt;</span></span>
+
+  <span class="token comment">&lt;!-- 다른 용어 및 정의 --&gt;</span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dl</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div>
+<div class="code-example" id="sect2">
+
+<iframe class="sample-code-frame" title="여러 개의 용어와 하나의 정의 sample" id="frame_여러_개의_용어와_하나의_정의" src="https://live.mdnplay.dev/ko/docs/Web/HTML/Element/dl/runner.html?id=%EC%97%AC%EB%9F%AC_%EA%B0%9C%EC%9D%98_%EC%9A%A9%EC%96%B4%EC%99%80_%ED%95%98%EB%82%98%EC%9D%98_%EC%A0%95%EC%9D%98" loading="lazy"></iframe>
+</div>
+</div>
+<h3 id="하나의_용어와_여러_개의_정의">하나의 용어와 여러 개의 정의</h3>
+<div class="section-content">
+<div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="K+Z23SnLcw4K75ErwX7bV1SKQ4QHjuknorI0DJG7c94=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dl</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dt</span><span class="token punctuation">&gt;</span></span>Firefox<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dt</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dd</span><span class="token punctuation">&gt;</span></span>
+    Mozilla 재단과 수 백명의
+    자원봉사자가 개발한 무료
+    오픈소스 크로스 플랫폼
+    그래픽 웹 브라우저.
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dd</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dd</span><span class="token punctuation">&gt;</span></span>
+    붉은 판다, 레서 판다, 랫서 판다,
+    혹은 "Firefox"는 초식성 포유류이다.
+    몸 길이는 애완용 고양이보다 약간
+    큰 정도인 60cm다.
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dd</span><span class="token punctuation">&gt;</span></span>
+
+  <span class="token comment">&lt;!-- 다른 용어 및 정의 --&gt;</span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dl</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div>
+<div class="code-example" id="sect3">
+
+<iframe class="sample-code-frame" title="하나의 용어와 여러 개의 정의 sample" id="frame_하나의_용어와_여러_개의_정의" src="https://live.mdnplay.dev/ko/docs/Web/HTML/Element/dl/runner.html?id=%ED%95%98%EB%82%98%EC%9D%98_%EC%9A%A9%EC%96%B4%EC%99%80_%EC%97%AC%EB%9F%AC_%EA%B0%9C%EC%9D%98_%EC%A0%95%EC%9D%98" loading="lazy"></iframe>
+</div>
+</div>
+<h3 id="여러_개의_용어와_여러_개의_정의">여러 개의 용어와 여러 개의 정의</h3>
+<div class="section-content"><p>위의 예제를 결합하여 여러 용어를 여러 정의와 연결하는 것도 가능합니다.</p></div>
+<h3 id="메타데이터">메타데이터</h3>
+<div class="section-content">
+<p><code>&lt;dl&gt;</code>은 메타데이터를 키-값 쌍으로 표시할 때도 유용합니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="ggC1gFkDvO6JFAhoN3EqxIwXHU9xb2iS+jCZJURc0aI=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dl</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dt</span><span class="token punctuation">&gt;</span></span>Name<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dt</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dd</span><span class="token punctuation">&gt;</span></span>Godzilla<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dd</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dt</span><span class="token punctuation">&gt;</span></span>Born<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dt</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dd</span><span class="token punctuation">&gt;</span></span>1952<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dd</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dt</span><span class="token punctuation">&gt;</span></span>Birthplace<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dt</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dd</span><span class="token punctuation">&gt;</span></span>Japan<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dd</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dt</span><span class="token punctuation">&gt;</span></span>Color<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dt</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dd</span><span class="token punctuation">&gt;</span></span>Green<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dd</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dl</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div> <p>팁: 아래처럼 키-값 구분자를 CSS로 지정하면 편리합니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="Ue+8j4KvzUCY2jNNTxCcFZc/6Sh+tRfM1jieoEkj+W4=" data-language="css"><span class="token selector">dt:after</span> <span class="token punctuation">{</span>
+  <span class="token property">content</span><span class="token punctuation">:</span> <span class="token string">": "</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div>
+<div class="code-example" id="sect4">
+
+<iframe class="sample-code-frame" title="메타데이터 sample" id="frame_메타데이터" src="https://live.mdnplay.dev/ko/docs/Web/HTML/Element/dl/runner.html?id=%EB%A9%94%ED%83%80%EB%8D%B0%EC%9D%B4%ED%84%B0" loading="lazy"></iframe>
+</div>
+</div>
+<h3 id="이름-값_그룹을_div로_감싸기">이름-값 그룹을 <code>&lt;div&gt;</code>로 감싸기</h3>
+<div class="section-content">
+<p><a href="https://developer.mozilla.org/ko/docs/Glossary/WHATWG">WHATWG</a> HTML에서는 <code>&lt;dl&gt;</code> 안 각각의 이름-값 그룹을 <a href="div"><code>&lt;div&gt;</code></a>로 감쌀 수 있습니다. 마이크로데이터를 사용할 때, 그룹에 전역 특성을 적용할 때, 아니면 스타일을 적용할 때 유용할 수 있습니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="QCqvOoQtxNieexVFq+A7+T0VrsJ3whs6tVqRt06AeIQ=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dl</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dt</span><span class="token punctuation">&gt;</span></span>Name<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dt</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dd</span><span class="token punctuation">&gt;</span></span>Godzilla<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dd</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dt</span><span class="token punctuation">&gt;</span></span>Born<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dt</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dd</span><span class="token punctuation">&gt;</span></span>1952<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dd</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dt</span><span class="token punctuation">&gt;</span></span>Birthplace<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dt</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dd</span><span class="token punctuation">&gt;</span></span>Japan<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dd</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dt</span><span class="token punctuation">&gt;</span></span>Color<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dt</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dd</span><span class="token punctuation">&gt;</span></span>Green<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dd</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dl</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div>
+</div>
+<h2 id="참고">참고</h2>
+<div class="section-content">
+<p>페이지에서 들여쓰기를 하기 위한 목적으로 <code>&lt;dl&gt;</code> (또는 <a href="ul"><code>&lt;ul&gt;</code></a>) 요소를 사용하지 마세요. 작동할 수는 있으나 좋지 않은 방법이고, 설명 목록의 원래 목적을 흐립니다.</p> <p>용어의 들여쓰기를 수정하려면 <a href="https://developer.mozilla.org/ko/docs/Web/CSS">CSS</a> <a href="https://developer.mozilla.org/ko/docs/Web/CSS/margin"><code>margin</code></a> 속성을 사용하세요.</p>
+</div>
+<h2 id="접근성_고려사항">접근성 고려사항</h2>
+<div class="section-content">
+<p>각각의 스크린 리더는 <code>&lt;dl&gt;</code>을 다르게 표현합니다. iOS의 VoiceOver 등 일부 스크린 리더는 <code>&lt;dl&gt;</code>의 콘텐츠를 리스트로 표현하지 않습니다. 따라서, 각 아이템의 콘텐츠는 리스트 그룹 내 다른 항목과의 관계를 표현할 수 있는 방식으로 작성해야 합니다.</p> <ul> <li><a href="https://s.codepen.io/aardrian/debug/NzGaKP" target="_blank">CodePen - HTML Buddies: dt &amp; dd</a></li> </ul>
+</div>
+<h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-dl-element">HTML Standard <br><small># the-dl-element</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li>
+<a href="dt"><code>&lt;dt&gt;</code></a> 요소</li> <li>
+<a href="dd"><code>&lt;dd&gt;</code></a> 요소</li> </ul></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/HTML/Element/dl" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/HTML/Element/dl</a>
+  </p>
+</div>

@@ -1,0 +1,84 @@
+<header><h1>in 연산자</h1></header><div class="section-content"><p><code>in</code>는 명시된 속성이 명시된 객체에 존재하면 <code>true</code>를 반환합니다.</p></div>
+<section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="451zaTspIThxMhkRJX4HuN23yvscrMIrouMicD18bJ0=" data-language="js">    속성 <span class="token keyword">in</span> 객체명
+</pre>
+</div></div></section><section aria-labelledby="인자"><h3 id="인자">인자</h3>
+<div class="section-content"><dl> <dt id="속성"><code>속성</code></dt> <dd> <p>속성의 이름이나 배열의 인덱스를 뜻하는 문자열 또는 수 값입니다.</p> </dd> <dt id="객체명"><code>객체명</code></dt> <dd> <p>객체의 이름입니다.</p> </dd> </dl></div></section><section aria-labelledby="설명"><h2 id="설명">설명</h2>
+<div class="section-content">
+<p>다음 예제들은 <code>in</code> 연산자의 용도를 보여 줍니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="8JU6v5IfyQuI7mYGf+LRK162AHvOxCweb8AHmMmmIl4=" data-language="js"><span class="token comment">// 배열</span>
+<span class="token keyword">var</span> trees <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Array</span><span class="token punctuation">(</span><span class="token string">"redwood"</span><span class="token punctuation">,</span> <span class="token string">"bay"</span><span class="token punctuation">,</span> <span class="token string">"cedar"</span><span class="token punctuation">,</span> <span class="token string">"oak"</span><span class="token punctuation">,</span> <span class="token string">"maple"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token number">0</span> <span class="token keyword">in</span> trees         <span class="token comment">// true를 반환합니다.</span>
+<span class="token number">3</span> <span class="token keyword">in</span> trees         <span class="token comment">// true를 반환합니다.</span>
+<span class="token punctuation">(</span><span class="token number">1</span> <span class="token operator">+</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token keyword">in</span> trees   <span class="token comment">// true를 반환합니다. 연산자 우선 순위에 의하여 이 구문의 괄호는 없어도 됩니다.</span>
+<span class="token number">6</span> <span class="token keyword">in</span> trees         <span class="token comment">// false를 반환합니다.</span>
+<span class="token string">"bay"</span> <span class="token keyword">in</span> trees     <span class="token comment">// false를 반환합니다. 당신은 배열의 내용이 아닌, 인덱스 값을 명시하여야 합니다.</span>
+<span class="token string">"length"</span> <span class="token keyword">in</span> trees  <span class="token comment">// true를 반환합니다. length는 Array(배열) 객체의 속성입니다.</span>
+
+<span class="token comment">// 미리 정의된 객체</span>
+<span class="token string">"PI"</span> <span class="token keyword">in</span> Math       <span class="token comment">// true를 반환합니다.</span>
+<span class="token string">"P"</span> <span class="token operator">+</span> <span class="token string">"I"</span> <span class="token keyword">in</span> Math  <span class="token comment">// true를 반환합니다.</span>
+
+<span class="token comment">// 사용자가 정의한 객체</span>
+<span class="token keyword">var</span> myCar <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token literal-property property">company</span><span class="token operator">:</span> <span class="token string">"Lamborghini"</span><span class="token punctuation">,</span> <span class="token literal-property property">model</span><span class="token operator">:</span> <span class="token string">"Lamborghini Veneno Roadster"</span><span class="token punctuation">,</span> <span class="token literal-property property">year</span><span class="token operator">:</span> <span class="token number">2014</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token string">"company"</span> <span class="token keyword">in</span> myCar <span class="token comment">// true를 반환합니다.</span>
+<span class="token string">"model"</span> <span class="token keyword">in</span> myCar   <span class="token comment">// true를 반환합니다.</span>
+</pre>
+</div> <p>당신은 반드시 <code>in</code> 연산자의 오른쪽에 객체를 명시하여야 합니다. 예컨대 당신은 <code>String</code> 생성자로 만들어진 문자열을 명시할 수 있지만 문자열 리터럴은 명시할 수 없습니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="7enShL6RKfneiXlr/9c0n6hXhKk8vHgbuGh+TrMhSNs=" data-language="js"><span class="token keyword">var</span> color1 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">String</span><span class="token punctuation">(</span><span class="token string">"green"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token string">"length"</span> <span class="token keyword">in</span> color1 <span class="token comment">// true를 반환합니다.</span>
+
+<span class="token keyword">var</span> color2 <span class="token operator">=</span> <span class="token string">"coral"</span><span class="token punctuation">;</span>
+<span class="token string">"length"</span> <span class="token keyword">in</span> color2 <span class="token comment">// color2는 String 객체가 아니기에 오류를 냅니다.</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="제거되었거나_정의되지_않은_속성에_대하여_in_연산자_사용하기"><h3 id="제거되었거나_정의되지_않은_속성에_대하여_in_연산자_사용하기">제거되었거나 정의되지 않은 속성에 대하여 <code>in</code> 연산자 사용하기</h3>
+<div class="section-content">
+<p><code>in</code> 연산자는 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/delete"><code>delete</code></a> 연산자로 제거된 속성에 대하여 <code>false</code>를 반환합니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="onnM0lfzn6hzQQ4HfwC+hsh9N7hTB1wkxdpHy9OJrpc=" data-language="js"><span class="token keyword">var</span> myCar <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token literal-property property">company</span><span class="token operator">:</span> <span class="token string">"Lamborghini"</span><span class="token punctuation">,</span> <span class="token literal-property property">model</span><span class="token operator">:</span> <span class="token string">"Lamborghini Veneno Roadster"</span><span class="token punctuation">,</span> <span class="token literal-property property">year</span><span class="token operator">:</span> <span class="token number">2014</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token keyword">delete</span> myCar<span class="token punctuation">.</span>company<span class="token punctuation">;</span>
+<span class="token string">"company"</span> <span class="token keyword">in</span> myCar<span class="token punctuation">;</span> <span class="token comment">// false를 반환합니다.</span>
+
+<span class="token keyword">var</span> trees <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Array</span><span class="token punctuation">(</span><span class="token string">"redwood"</span><span class="token punctuation">,</span> <span class="token string">"bay"</span><span class="token punctuation">,</span> <span class="token string">"cedar"</span><span class="token punctuation">,</span> <span class="token string">"oak"</span><span class="token punctuation">,</span> <span class="token string">"maple"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">delete</span> trees<span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token number">3</span> <span class="token keyword">in</span> trees<span class="token punctuation">;</span> <span class="token comment">// false를 반환합니다.</span>
+</pre>
+</div> <p>만약 당신이 속성을 <a href="../global_objects/undefined"><code>undefined</code></a>로 설정하였는데 그것을 제거하지 않으면, <code>in</code> 연산자는 그 속성에 대하여 <code>true</code>를 반환합니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="OQ00eBChV4paYzGYHuJWEdDSZOs6ijNJFoU/te8tna0=" data-language="js"><span class="token keyword">var</span> myCar <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token literal-property property">company</span><span class="token operator">:</span> <span class="token string">"Lamborghini"</span><span class="token punctuation">,</span> <span class="token literal-property property">model</span><span class="token operator">:</span> <span class="token string">"Lamborghini Veneno Roadster"</span><span class="token punctuation">,</span> <span class="token literal-property property">year</span><span class="token operator">:</span> <span class="token number">2014</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+myCar<span class="token punctuation">.</span>company <span class="token operator">=</span> <span class="token keyword">undefined</span><span class="token punctuation">;</span>
+<span class="token string">"company"</span> <span class="token keyword">in</span> myCar<span class="token punctuation">;</span> <span class="token comment">// true를 반환합니다.</span>
+</pre>
+</div> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="ImA9w9BuvGkwvrK+Fl8tyHcKUkZRO+7yf/q3yLW+vtw=" data-language="js"><span class="token keyword">var</span> trees <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Array</span><span class="token punctuation">(</span><span class="token string">"redwood"</span><span class="token punctuation">,</span> <span class="token string">"bay"</span><span class="token punctuation">,</span> <span class="token string">"cedar"</span><span class="token punctuation">,</span> <span class="token string">"oak"</span><span class="token punctuation">,</span> <span class="token string">"maple"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+trees<span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">undefined</span><span class="token punctuation">;</span>
+<span class="token number">3</span> <span class="token keyword">in</span> trees<span class="token punctuation">;</span> <span class="token comment">// true를 반환합니다.</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="상속된_속성"><h3 id="상속된_속성">상속된 속성</h3>
+<div class="section-content">
+<p><code>in</code> 연산자는 프로토타입 체인에 의하여 접근할 수 있는 속성에 대하여 <code>true</code>를 반환합니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="NDgEq99swwvuNjlgr6YareDWNrQTIePj+ci2ofBm9CM=" data-language="js"><span class="token string">"toString"</span> <span class="token keyword">in</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span> <span class="token comment">// true를 반환합니다.</span>
+</pre>
+</div>
+</div></section><h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://tc39.es/ecma262/multipage/ecmascript-language-expressions.html#sec-relational-operators">ECMAScript Language Specification <br><small># sec-relational-operators</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="관련_문서"><h2 id="관련_문서">관련 문서</h2>
+<div class="section-content"><ul> <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/delete"><code>delete</code></a></li> <li><a href="../global_objects/object/hasownproperty"><code>Object.prototype.hasOwnProperty()</code></a></li> <li><a href="../global_objects/reflect/has"><code>Reflect.has()</code></a></li> <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Enumerability_and_ownership_of_properties">속성의, 소유와 셀 수 있는 성질</a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Operators/in" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Operators/in</a>
+  </p>
+</div>

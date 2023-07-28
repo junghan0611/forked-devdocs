@@ -1,0 +1,63 @@
+<header><h1>Array.prototype.entries()</h1></header><div class="section-content"><p><code>entries()</code> 메서드는 배열의 각 인덱스에 대한 키/값 쌍을 가지는 새로운 <code>Array Iterator</code> 객체를 반환합니다.</p></div>
+<section aria-labelledby="시도해보기"><h2 id="시도해보기">시도해보기</h2>
+<div class="section-content"><iframe class="interactive is-js-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/js/array-entries.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe></div></section><section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="ZaolINbWdvrJd21D0cVYU/sdGYB+daMmUFa4MQkJ34w=" data-language="js"><span class="token function">entries</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+</pre>
+</div></div></section><section aria-labelledby="반환_값"><h3 id="반환_값">반환 값</h3>
+<div class="section-content"><p><a href="../array"><code>Array</code></a> 반복자 인스턴스 객체.</p></div></section><section aria-labelledby="설명"><h2 id="설명">설명</h2>
+<div class="section-content"><p>sparse arrays와 사용하면 <code>entries()</code> 메서드가 빈 슬롯을 <code>undefined</code> 가 있는 것처럼 순회합니다.</p></div></section><section aria-labelledby="예시"><h2 id="예시">예시</h2>
+</section><section aria-labelledby="인덱스와_요소_순회하기"><h3 id="인덱스와_요소_순회하기">인덱스와 요소 순회하기</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="AxZjB3GvdaXyM41acVRfBdYQ37kt1kDSAdtzEMYdBbk=" data-language="js"><span class="token keyword">const</span> a <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">"a"</span><span class="token punctuation">,</span> <span class="token string">"b"</span><span class="token punctuation">,</span> <span class="token string">"c"</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token punctuation">[</span>index<span class="token punctuation">,</span> element<span class="token punctuation">]</span> <span class="token keyword">of</span> a<span class="token punctuation">.</span><span class="token function">entries</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>index<span class="token punctuation">,</span> element<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// 0 'a'</span>
+<span class="token comment">// 1 'b'</span>
+<span class="token comment">// 2 'c'</span>
+</pre>
+</div></div></section><section aria-labelledby="for…of_루프_사용"><h3 id="for…of_루프_사용">for…of 루프 사용</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="gZC8OLauE0MuwAZDIllvY/NN47HTFg6Az4P+SBtyAXI=" data-language="js"><span class="token keyword">const</span> array <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">"a"</span><span class="token punctuation">,</span> <span class="token string">"b"</span><span class="token punctuation">,</span> <span class="token string">"c"</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> arrayEntries <span class="token operator">=</span> array<span class="token punctuation">.</span><span class="token function">entries</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">const</span> element <span class="token keyword">of</span> arrayEntries<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>element<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// [0, 'a']</span>
+<span class="token comment">// [1, 'b']</span>
+<span class="token comment">// [2, 'c']</span>
+</pre>
+</div></div></section><section aria-labelledby="sparse_arrays_순회하기"><h3 id="sparse_arrays_순회하기">sparse arrays 순회하기</h3>
+<div class="section-content">
+<p><code>entires()</code> 는 빈 슬롯을 <code>undefined</code>인 것처럼 접근합니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="0vsnMwpqXRwGRsI1zI69SsRWSvGUWUkI8wI8C+bHuCU=" data-language="js"><span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">const</span> element <span class="token keyword">of</span> <span class="token punctuation">[</span><span class="token punctuation">,</span> <span class="token string">"a"</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">entries</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>element<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token comment">// [0, undefined]</span>
+<span class="token comment">// [1, 'a']</span>
+
+</pre>
+</div>
+</div></section><h2 id="명세서">명세서</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://tc39.es/ecma262/multipage/indexed-collections.html#sec-array.prototype.entries">ECMAScript Language Specification <br><small># sec-array.prototype.entries</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="keys"><code>Array.prototype.keys()</code></a></li> <li><a href="values"><code>Array.prototype.values()</code></a></li> <li><a href="foreach"><code>Array.prototype.forEach()</code></a></li> <li><a href="every"><code>Array.prototype.every()</code></a></li> <li><a href="some"><code>Array.prototype.some()</code></a></li> <li><a href="../../statements/for...of">for...of</a></li> <li><a href="../../iteration_protocols">Iteration protocols</a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/entries" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/entries</a>
+  </p>
+</div>

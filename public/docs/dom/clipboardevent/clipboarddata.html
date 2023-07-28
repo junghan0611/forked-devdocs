@@ -1,0 +1,26 @@
+<header><h1>ClipboardEvent.clipboardData</h1></header><div class="section-content">
+<div class="notecard experimental" id="sect1"><p><strong>Experimental:</strong> <strong>This is an <a href="https://developer.mozilla.org/en-US/docs/MDN/Writing_guidelines/Experimental_deprecated_obsolete#experimental">experimental technology</a></strong><br>Check the <a href="#browser_compatibility">Browser compatibility table</a> carefully before using this in production.</p></div> <p><code>ClipboardEvent.clipboardData</code> 속성은 다음과 같은 용도로 사용할 수 있는 <a href="../datatransfer"><code>DataTransfer</code></a> 객체입니다.</p> <ul> <li>
+<a href="../element/cut_event"><code>cut</code></a>, <a href="../element/copy_event"><code>copy</code></a> 이벤트 처리기 내에서, 어떤 데이터를 클립보드에 넣어야 하는지 지정하기. 보통 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/DataTransfer/setData"><code>setData(format, data)</code> <small>(en-US)</small></a>를 호출해서 수행합니다.</li> <li>
+<a href="../element/paste_event"><code>paste</code></a> 이벤트 처리기 내에서 데이터를 가져오기. 보통 <a href="../datatransfer/getdata"><code>getData(format)</code></a>을 호출해서 수행합니다.</li> </ul> <p><a href="../element/cut_event"><code>cut</code></a>, <a href="../element/copy_event"><code>copy</code></a>, <a href="../element/paste_event"><code>paste</code></a> 이벤트 문서에서 자세한 정보를 확인하세요.</p>
+</div>
+<h2 id="구문">구문</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="BVXnugVZOD9763Mq0XTLNFv1jgDyFtvDUzZyxnWggAY=" data-language="js">data <span class="token operator">=</span> ClipboardEvent<span class="token punctuation">.</span>clipboardData
+</pre>
+</div></div>
+<h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://w3c.github.io/clipboard-apis/#clipboardevent-clipboarddata">Clipboard API and events <br><small># clipboardevent-clipboarddata</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li>복사 관련 이벤트: <a href="../element/cut_event"><code>cut</code></a>, <a href="../element/copy_event"><code>copy</code></a>, <a href="../element/paste_event"><code>paste</code></a>
+</li> <li>이 속성이 속한 <a href="../clipboardevent"><code>ClipboardEvent</code></a> 인터페이스.</li> </ul></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/ClipboardEvent/clipboardData" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/ClipboardEvent/clipboardData</a>
+  </p>
+</div>

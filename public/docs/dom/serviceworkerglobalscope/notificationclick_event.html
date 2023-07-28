@@ -1,0 +1,66 @@
+<header><h1>ServiceWorkerGlobalScope: notificationclick event</h1></header><div class="section-content">
+<p><code>notificationclick</code> 이벤트는 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerRegistration/showNotification"><code>ServiceWorkerRegistration.showNotification()</code> <small>(en-US)</small></a> 에 의해 발생한 시스템 notification 이 클릭되었음을 나타내기 위해 발생된다.</p> <figure class="table-container"><div class="_table"><table> <thead> <tr> <th></th> <th>No</th> </tr> </thead> <tbody> <tr> <td>Cancelable</td> <td>No</td> </tr> <tr> <td>Interface</td> <td><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/NotificationEvent"><code>NotificationEvent</code> <small>(en-US)</small></a></td> </tr> <tr> <td>Event handler</td> <td><a href="https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerGlobalScope/onnotificationclick" class="page-not-created"><code>onnotificationclick</code></a></td> </tr> </tbody> </table></div></figure>
+</div>
+<h2 id="examples">Examples</h2>
+<div class="section-content">
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener"><code>addEventListener</code></a> 메소드 내에서 <code>notificationclick</code> 이벤트를 사용할 수 있다:</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="rVRH5+BFe3FjEFOmh+O51ODoDVuZEJhbYBCA50dc5Wc=" data-language="js">self<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">'notificationclick'</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">event</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'On notification click: '</span><span class="token punctuation">,</span> event<span class="token punctuation">.</span>notification<span class="token punctuation">.</span>tag<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  event<span class="token punctuation">.</span>notification<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token comment">// This looks to see if the current is already open and</span>
+  <span class="token comment">// focuses if it is</span>
+  event<span class="token punctuation">.</span><span class="token function">waitUntil</span><span class="token punctuation">(</span>clients<span class="token punctuation">.</span><span class="token function">matchAll</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    <span class="token literal-property property">type</span><span class="token operator">:</span> <span class="token string">"window"</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">clientList</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">var</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> clientList<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">var</span> client <span class="token operator">=</span> clientList<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span>client<span class="token punctuation">.</span>url <span class="token operator">==</span> <span class="token string">'/'</span> <span class="token operator">&amp;&amp;</span> <span class="token string">'focus'</span> <span class="token keyword">in</span> client<span class="token punctuation">)</span>
+        <span class="token keyword">return</span> client<span class="token punctuation">.</span><span class="token function">focus</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>clients<span class="token punctuation">.</span>openWindow<span class="token punctuation">)</span>
+      <span class="token keyword">return</span> clients<span class="token punctuation">.</span><span class="token function">openWindow</span><span class="token punctuation">(</span><span class="token string">'/'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div> <p>또는 <a href="https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerGlobalScope/onnotificationclick" class="page-not-created"><code>onnotificationclick</code></a> 이벤트 핸들러 속성을 사용할 수 있다:</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="vqaMaN54AemDrfLfGyspvWmq0f9iw51W/jph94PKjZs=" data-language="js">self<span class="token punctuation">.</span><span class="token function-variable function">onnotificationclick</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">event</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'On notification click: '</span><span class="token punctuation">,</span> event<span class="token punctuation">.</span>notification<span class="token punctuation">.</span>tag<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  event<span class="token punctuation">.</span>notification<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token comment">// This looks to see if the current is already open and</span>
+  <span class="token comment">// focuses if it is</span>
+  event<span class="token punctuation">.</span><span class="token function">waitUntil</span><span class="token punctuation">(</span>clients<span class="token punctuation">.</span><span class="token function">matchAll</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    <span class="token literal-property property">type</span><span class="token operator">:</span> <span class="token string">"window"</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">clientList</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">var</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> clientList<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">var</span> client <span class="token operator">=</span> clientList<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span>client<span class="token punctuation">.</span>url <span class="token operator">==</span> <span class="token string">'/'</span> <span class="token operator">&amp;&amp;</span> <span class="token string">'focus'</span> <span class="token keyword">in</span> client<span class="token punctuation">)</span>
+        <span class="token keyword">return</span> client<span class="token punctuation">.</span><span class="token function">focus</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>clients<span class="token punctuation">.</span>openWindow<span class="token punctuation">)</span>
+      <span class="token keyword">return</span> clients<span class="token punctuation">.</span><span class="token function">openWindow</span><span class="token punctuation">(</span><span class="token string">'/'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</pre>
+</div>
+</div>
+<h2 id="명세서">명세서</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody>
+<tr><td><a href="https://notifications.spec.whatwg.org/#activating-a-notification">Notifications API Standard <br><small># activating-a-notification</small></a></td></tr>
+<tr><td><a href="https://notifications.spec.whatwg.org/#dom-serviceworkerglobalscope-onnotificationclick">Notifications API Standard <br><small># dom-serviceworkerglobalscope-onnotificationclick</small></a></td></tr>
+</tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<h2 id="see_also">See also</h2>
+<div class="section-content"><ul> <li><a href="../service_worker_api">Service Worker API</a></li> <li><a href="../notifications_api">Notifications API</a></li> </ul></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/ServiceWorkerGlobalScope/notificationclick_event" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/ServiceWorkerGlobalScope/notificationclick_event</a>
+  </p>
+</div>

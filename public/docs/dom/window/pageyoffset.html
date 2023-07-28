@@ -1,0 +1,71 @@
+<header><h1>Window.pageYOffset</h1></header><div class="section-content">
+<p><a href="../window"><code>Window</code></a> 인터페이스의 <code>pageYOffset</code> 읽기 전용 속성은 <a href="scrolly"><code>scrollY</code></a>의 다른 이름으로, 문서가 수직으로 얼마나 스크롤됐는지 픽셀 단위로 반환합니다.</p> <p>일부 오래된 브라우저는 <code>scrollY</code> 대신 <code>pageYOffset</code>만 지원하는 경우가 있지만, 노후 환경을 신경쓰지 않아도 된다면 둘 중 아무거나 사용해도 괜찮습니다.</p> <p>수평 스크롤을 나타내는 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/Window/pageXOffset"><code>pageXOffset</code> <small>(en-US)</small></a> 속성 역시 <a href="scrollx"><code>scrollX</code></a>의 다른 이름입니다.</p>
+</div>
+<h2 id="구문">구문</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="QIASwnYFu/SJY6Vi2tF7xFKJJJ/JucJHssJZt83DLsA=" data-language="js">yOffset <span class="token operator">=</span> window<span class="token punctuation">.</span>pageYOffset<span class="token punctuation">;</span>
+</pre>
+</div></div>
+<h3 id="값">값</h3>
+<div class="section-content">
+<p><a href="../window"><code>Window</code></a> 안의 <a href="../document"><code>Document</code></a>가 수직 방향으로 스크롤된 거리를 픽셀 단위로 나타낸 부동소숫점 수. 단일 픽셀보다 높은 수준의 정밀도를 가지므로 정수가 아닐 수 있습니다. <code>0.0</code>은 창의 콘텐츠 영역과 문서의 위쪽 모서리 위치가 일치함을 나타냅니다.</p> <p><code>pageYOffset</code>은 <a href="scrolly"><code>Window.scrollY</code></a>의 다른 이름이므로, 값에 대한 더 자세한 정보는 해당 문서를 방문해주세요.</p>
+</div>
+<h2 id="예제">예제</h2>
+<div class="section-content">
+ <p>In this example, an <a href="https://developer.mozilla.org/ko/docs/Web/HTML/Element/iframe"><code>&lt;iframe&gt;</code></a> is created and filled with content, then a specific element within the document is scrolled into view in the frame. Once that's done, the vertical scroll position is checked by looking at the value of <code>pageYOffset</code> in the frame's <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLIFrameElement/contentWindow"><code>contentWindow</code> <small>(en-US)</small></a>.</p>
+</div>
+<h3 id="html">HTML</h3>
+<div class="section-content">
+<p>HTML은 단 두 개의 요소를 가진 짧은 코드입니다. 하나는 스크롤할 문서를 담은 <a href="https://developer.mozilla.org/ko/docs/Web/HTML/Element/iframe"><code>&lt;iframe&gt;</code></a>이고, 다른 하나는 스크롤을 끝냈을 때 <code>pageYOffset</code>의 값을 기록할 <a href="https://developer.mozilla.org/ko/docs/Web/HTML/Element/div"><code>&lt;div&gt;</code></a>입니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="8SPVDQG+EcRjKaiYs4mNK81CLJfmgq/hq6XP5EWueTc=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>iframe</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>frame<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>iframe</span><span class="token punctuation">&gt;</span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>info<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div>
+</div>
+<h3 id="javascript">JavaScript</h3>
+<div class="section-content">
+<div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="Jh5iPKe1lRFAtQHnuawG517PwES6XirpuW4D69JgvJc=" data-language="js"><span class="token keyword">var</span> frame <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">"frame"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> frameDoc <span class="token operator">=</span> frame<span class="token punctuation">.</span>contentDocument<span class="token punctuation">;</span>
+<span class="token keyword">var</span> info <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">"info"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">var</span> target <span class="token operator">=</span> frameDoc<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">"overview"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+frameDoc<span class="token punctuation">.</span>scrollingElement<span class="token punctuation">.</span>scrollTop <span class="token operator">=</span> target<span class="token punctuation">.</span>offsetTop<span class="token punctuation">;</span>
+
+info<span class="token punctuation">.</span>innerText <span class="token operator">=</span> <span class="token string">"스크롤 후 Y축 차이: "</span> <span class="token operator">+</span>
+                 frame<span class="token punctuation">.</span>contentWindow<span class="token punctuation">.</span>pageYOffset <span class="token operator">+</span> <span class="token string">" 픽셀"</span><span class="token punctuation">;</span>
+</pre>
+</div> <p>The JavaScript code begins by getting into <code>frame</code> and <code>info</code> the <code>&lt;iframe&gt;</code> element that contains our content as well as the <code>&lt;div&gt;</code> element into which we'll output the result of our scroll position check. It then gets a reference to the element we want to scroll into view calling <a href="../document/getelementbyid"><code>getElementById()</code></a> on the frame's <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLIFrameElement/contentDocument"><code>HTMLIFrameElement.contentDocument</code> <small>(en-US)</small></a>.</p> <p>With the target element in hand, we set the <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollTop"><code>scrollTop</code> <small>(en-US)</small></a> of the frame's <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/Document/scrollingElement"><code>scrollingElement</code> <small>(en-US)</small></a> to the <a class="page-not-created"><code>offsetTop</code></a> of the target element. By doing so, we set the vertical scrolling position of the frame's document so that it's the same as the top edge of the target element.</p> <p>This will automatically set the scrolling position to the maximum possible value if the attempted scroll would exceed the maximum. This prevents us from falling off the edge of the document. Nobody wants to know what's out there. There might be dragons.</p> 
+</div>
+<h3 id="결과">결과</h3>
+<div class="section-content">
+<p>The result follows. Note that the frame's contents have been scrolled to show the section named "Overview", and that the value of the <code>pageYOffset</code> property is shown with the corresponding value.</p>
+<div class="code-example" id="sect1">
+
+<iframe class="sample-code-frame" title="예제 sample" id="frame_예제" width="650" height="500" src="https://live.mdnplay.dev/ko/docs/Web/API/Window/pageYOffset/runner.html?id=%EC%98%88%EC%A0%9C" loading="lazy"></iframe>
+</div>
+</div>
+<h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://drafts.csswg.org/cssom-view/#dom-window-pageyoffset">CSSOM View Module <br><small># dom-window-pageyoffset</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/Window/pageXOffset"><code>pageXOffset</code> <small>(en-US)</small></a></li> <li>
+<a href="scrolly"><code>scrollY</code></a> and <a href="scrollx"><code>scrollX</code></a>
+</li> <li>
+<a href="scroll"><code>scroll()</code></a>, <a href="scrollby"><code>scrollBy()</code></a>, and <a href="scrollto"><code>scrollTo()</code></a>
+</li> </ul></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/Window/pageYOffset" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/Window/pageYOffset</a>
+  </p>
+</div>

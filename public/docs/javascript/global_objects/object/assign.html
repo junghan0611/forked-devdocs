@@ -1,0 +1,186 @@
+<header><h1>Object.assign()</h1></header><div class="section-content"><p><code>Object.assign()</code> 메서드는 출처 객체들의 모든 <a href="propertyisenumerable">열거 가능</a>한 <a href="hasownproperty">자체 속성</a>을 복사해 대상 객체에 붙여넣습니다. 그 후 대상 객체를 반환합니다.</p></div>
+<section aria-labelledby="시도해보기"><h2 id="시도해보기">시도해보기</h2>
+<div class="section-content"><iframe class="interactive is-js-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/js/object-assign.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe></div></section><section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="O4hppZL0Zrb1Y2Y3nXA0htgDeZ9xCCMRcJCVO6qFakA=" data-language="js">Object<span class="token punctuation">.</span><span class="token function">assign</span><span class="token punctuation">(</span>target<span class="token punctuation">,</span> <span class="token operator">...</span>sources<span class="token punctuation">)</span>
+</pre>
+</div></div></section><section aria-labelledby="매개변수"><h3 id="매개변수">매개변수</h3>
+<div class="section-content"><dl> <dt id="target"><code>target</code></dt> <dd> <p>목표 객체. 출처 객체의 속성을 복사해 반영한 후 반환할 객체입니다.</p> </dd> <dt id="sources"><code>sources</code></dt> <dd> <p>출처 객체. 목표 객체에 반영하고자 하는 속성들을 갖고 있는 객체들입니다.</p> </dd> </dl></div></section><section aria-labelledby="반환_값"><h3 id="반환_값">반환 값</h3>
+<div class="section-content"><p>목표 객체.</p></div></section><section aria-labelledby="설명"><h2 id="설명">설명</h2>
+<div class="section-content">
+<p>목표 객체의 속성 중 출처 객체와 동일한 <a href="keys">키</a>를 갖는 속성의 경우, 그 속성 값은 출처 객체의 속성 값으로 덮어씁니다. 출처 객체들의 속성 중에서도 키가 겹칠 경우 뒤쪽 객체의 속성 값이 앞쪽 객체의 속성 값보다 우선합니다.</p> <p><code>Object.assign()</code> 메서드는 출처 객체의 '열거 가능한 자체 속성'만 목표 객체로 복사합니다. 출처 객체에서 속성 값을 가져올 땐 <code>[[Get]]</code>, 목표 객체에 속성 값을 지정할 땐 <code>[[Set]]</code>을 사용하므로 각각 <a href="../../functions/get">접근자</a>와 <a href="../../functions/set">설정자</a>를 호출합니다. 그러므로 <code>Object.assign()</code>은 속성을 단순히 복사하거나 새로 정의하는 것이 아니라, 할당(<em>assign</em>)하는 것입니다. 따라서 출처 객체가 접근자를 포함하는 경우, 프로토타입에 새로운 속성을 추가하는 용도로는 적합하지 않을 수도 있습니다.</p> <p>열거성을 포함한 속성 정의를 프로토타입으로 복사하려면 <a href="getownpropertydescriptor"><code>Object.getOwnPropertyDescriptor()</code></a>와 <a href="defineproperty"><code>Object.defineProperty()</code></a>를 사용하세요.</p> <p><code>Object.assign()</code>은 <a href="../string"><code>String</code></a> 키와 <a href="../symbol"><code>Symbol</code></a> 키 속성 모두 복사합니다.</p> <p>오류(대상 객체의 속성이 쓰기 불가한 상태 등)를 마주치면 <a href="../typeerror"><code>TypeError</code></a>가 발생합니다. 그러나 오류가 발생하기 전에 이미 추가/변경한 다른 속성의 값은 대상 객체에 유지됩니다.</p> <div class="notecard note" id="sect1"> <p><strong>참고:</strong> <code>Object.assign()</code>의 출처에 <a href="../../operators/null"><code>null</code></a> 또는 <a href="../undefined"><code>undefined</code></a>를 제공해도 예외는 발생하지 않습니다.</p> </div>
+</div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+</section><section aria-labelledby="객체_복제"><h3 id="객체_복제">객체 복제</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="pVVlQytKI9r8X8xvJlR5Ul83T/3Y1oZaF4uw56z9nzc=" data-language="js"><span class="token keyword">const</span> obj <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token literal-property property">a</span><span class="token operator">:</span> <span class="token number">1</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> copy <span class="token operator">=</span> Object<span class="token punctuation">.</span><span class="token function">assign</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span> obj<span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>copy<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// { a: 1 }</span>
+</pre>
+</div></div></section><section aria-labelledby="깊은_복사_주의점"><h3 id="깊은_복사_주의점">깊은 복사 주의점</h3>
+<div class="section-content">
+<p><code>Object.assign()</code>은 속성의 값을 복사하기 때문에, 깊은 복사를 수행하려면 다른 방법을 사용해야 합니다.</p> <p>만약 출처 값이 객체에 대한 참조라면 참조 값만 복사합니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="ETNzItxgyn5SPQM+erQlz0/aG1Xan8c+X5mR1JQ3aJE=" data-language="js"><span class="token keyword">function</span> <span class="token function">test</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token string">'use strict'</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">let</span> obj1 <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token literal-property property">a</span><span class="token operator">:</span> <span class="token number">0</span> <span class="token punctuation">,</span> <span class="token literal-property property">b</span><span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token literal-property property">c</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+  <span class="token keyword">let</span> obj2 <span class="token operator">=</span> Object<span class="token punctuation">.</span><span class="token function">assign</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span> obj1<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span>obj2<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// { a: 0, b: { c: 0}}</span>
+
+  obj1<span class="token punctuation">.</span>a <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span>obj1<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// { a: 1, b: { c: 0}}</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span>obj2<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// { a: 0, b: { c: 0}}</span>
+
+  obj2<span class="token punctuation">.</span>a <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span>obj1<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// { a: 1, b: { c: 0}}</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span>obj2<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// { a: 2, b: { c: 0}}</span>
+
+  obj2<span class="token punctuation">.</span>b<span class="token punctuation">.</span>c <span class="token operator">=</span> <span class="token number">3</span><span class="token punctuation">;</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span>obj1<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// { a: 1, b: { c: 3}}</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span>obj2<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// { a: 2, b: { c: 3}}</span>
+
+  <span class="token comment">// 깊은 복사</span>
+  obj1 <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token literal-property property">a</span><span class="token operator">:</span> <span class="token number">0</span> <span class="token punctuation">,</span> <span class="token literal-property property">b</span><span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token literal-property property">c</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+  <span class="token keyword">let</span> obj3 <span class="token operator">=</span> <span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span><span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span>obj1<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  obj1<span class="token punctuation">.</span>a <span class="token operator">=</span> <span class="token number">4</span><span class="token punctuation">;</span>
+  obj1<span class="token punctuation">.</span>b<span class="token punctuation">.</span>c <span class="token operator">=</span> <span class="token number">4</span><span class="token punctuation">;</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span>obj3<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// { a: 0, b: { c: 0}}</span>
+<span class="token punctuation">}</span>
+
+<span class="token function">test</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="객체_병합"><h3 id="객체_병합">객체 병합</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="Q37Fw3LC/jN1dccHu9foIWqb6XfZfCtRNAsW81lZtE4=" data-language="js"><span class="token keyword">const</span> o1 <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token literal-property property">a</span><span class="token operator">:</span> <span class="token number">1</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> o2 <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token literal-property property">b</span><span class="token operator">:</span> <span class="token number">2</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> o3 <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token literal-property property">c</span><span class="token operator">:</span> <span class="token number">3</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> obj <span class="token operator">=</span> Object<span class="token punctuation">.</span><span class="token function">assign</span><span class="token punctuation">(</span>o1<span class="token punctuation">,</span> o2<span class="token punctuation">,</span> o3<span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// { a: 1, b: 2, c: 3 }</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>o1<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// { a: 1, b: 2, c: 3 }, 목표 객체 자체가 변경됨.</span>
+</pre>
+</div></div></section><section aria-labelledby="같은_속성을_가진_객체_병합"><h3 id="같은_속성을_가진_객체_병합">같은 속성을 가진 객체 병합</h3>
+<div class="section-content">
+<div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="cuzZt0LAiN8nOkEAe1sQzFCfv79v/5yi/tYrRTPCDWg=" data-language="js"><span class="token keyword">const</span> o1 <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token literal-property property">a</span><span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token literal-property property">b</span><span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token literal-property property">c</span><span class="token operator">:</span> <span class="token number">1</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> o2 <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token literal-property property">b</span><span class="token operator">:</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token literal-property property">c</span><span class="token operator">:</span> <span class="token number">2</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> o3 <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token literal-property property">c</span><span class="token operator">:</span> <span class="token number">3</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> obj <span class="token operator">=</span> Object<span class="token punctuation">.</span><span class="token function">assign</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span> o1<span class="token punctuation">,</span> o2<span class="token punctuation">,</span> o3<span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// { a: 1, b: 2, c: 3 }</span>
+</pre>
+</div> <p>같은 키를 가진 속성의 경우 매개변수 순서에서 더 뒤에 위치한 객체의 값으로 덮어씁니다.</p>
+</div></section><section aria-labelledby="심볼_속성_복사"><h3 id="심볼_속성_복사">심볼 속성 복사</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="oXVkIUUCCLnsP28/KOvH98+/zCjPwPr2ZzDam2Pm0yI=" data-language="js"><span class="token keyword">const</span> o1 <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token literal-property property">a</span><span class="token operator">:</span> <span class="token number">1</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> o2 <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token punctuation">[</span><span class="token function">Symbol</span><span class="token punctuation">(</span><span class="token string">'foo'</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token operator">:</span> <span class="token number">2</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> obj <span class="token operator">=</span> Object<span class="token punctuation">.</span><span class="token function">assign</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span> o1<span class="token punctuation">,</span> o2<span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// { a : 1, [Symbol("foo")]: 2 } (cf. bug 1207182 on Firefox)</span>
+Object<span class="token punctuation">.</span><span class="token function">getOwnPropertySymbols</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// [Symbol(foo)]</span>
+</pre>
+</div></div></section><section aria-labelledby="프로토타입_체인의_속성과_열거_불가능한_속성은_복사_불가"><h3 id="프로토타입_체인의_속성과_열거_불가능한_속성은_복사_불가">프로토타입 체인의 속성과 열거 불가능한 속성은 복사 불가</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="jSODTTwukhN2/aNUtEtiKT5+PD4irP6VB6rMcqAt37w=" data-language="js"><span class="token keyword">const</span> obj <span class="token operator">=</span> Object<span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token literal-property property">foo</span><span class="token operator">:</span> <span class="token number">1</span> <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> <span class="token comment">// foo는 obj의 프로토타입 체인에 있음</span>
+  <span class="token literal-property property">bar</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token literal-property property">value</span><span class="token operator">:</span> <span class="token number">2</span>  <span class="token comment">// bar는 열거 불가능</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">baz</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token literal-property property">value</span><span class="token operator">:</span> <span class="token number">3</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">enumerable</span><span class="token operator">:</span> <span class="token boolean">true</span>  <span class="token comment">// baz는 열거 가능한 자체 속성</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> copy <span class="token operator">=</span> Object<span class="token punctuation">.</span><span class="token function">assign</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span> obj<span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>copy<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// { baz: 3 }</span>
+</pre>
+</div></div></section><section aria-labelledby="원시_값은_객체로_래핑"><h3 id="원시_값은_객체로_래핑">원시 값은 객체로 래핑</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="zdGWtTLY3lZCyRx9F9rYe2CZPoaFkqEVdz6Nh5OAvBc=" data-language="js"><span class="token keyword">const</span> v1 <span class="token operator">=</span> <span class="token string">'abc'</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> v2 <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> v3 <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> v4 <span class="token operator">=</span> <span class="token function">Symbol</span><span class="token punctuation">(</span><span class="token string">'foo'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> obj <span class="token operator">=</span> Object<span class="token punctuation">.</span><span class="token function">assign</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span> v1<span class="token punctuation">,</span> <span class="token keyword">null</span><span class="token punctuation">,</span> v2<span class="token punctuation">,</span> <span class="token keyword">undefined</span><span class="token punctuation">,</span> v3<span class="token punctuation">,</span> v4<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// 원시 값은 래핑하고, null과 undefined는 무시</span>
+<span class="token comment">// 참고: 문자열 래퍼만 자체 열거형 속성을 가질 수 있음</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// { "0": "a", "1": "b", "2": "c" }</span>
+</pre>
+</div></div></section><section aria-labelledby="예외로_인한_복사_작업_중단"><h3 id="예외로_인한_복사_작업_중단">예외로 인한 복사 작업 중단</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="441THNZai3StSC5tGO8SMbgXGrofAcomP/vf0S6KYbo=" data-language="js"><span class="token keyword">const</span> target <span class="token operator">=</span> Object<span class="token punctuation">.</span><span class="token function">defineProperty</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token string">'foo'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+  <span class="token literal-property property">value</span><span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">writable</span><span class="token operator">:</span> <span class="token boolean">false</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// target.foo는 읽기 전용 속성</span>
+
+Object<span class="token punctuation">.</span><span class="token function">assign</span><span class="token punctuation">(</span>target<span class="token punctuation">,</span> <span class="token punctuation">{</span> <span class="token literal-property property">bar</span><span class="token operator">:</span> <span class="token number">2</span> <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> <span class="token literal-property property">foo2</span><span class="token operator">:</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token literal-property property">foo</span><span class="token operator">:</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token literal-property property">foo3</span><span class="token operator">:</span> <span class="token number">3</span> <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> <span class="token literal-property property">baz</span><span class="token operator">:</span> <span class="token number">4</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// TypeError: "foo" is read-only</span>
+<span class="token comment">// target.foo에 할당할 때 예외 발생</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>target<span class="token punctuation">.</span>bar<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// 2, 첫 번째 출처 객체는 성공적으로 복사함</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>target<span class="token punctuation">.</span>foo2<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 3, 두 번째 출처 객체 중 첫 번째 속성도 성공적으로 복사함</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>target<span class="token punctuation">.</span>foo<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// 1, 여기에서 예외가 발생했음</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>target<span class="token punctuation">.</span>foo3<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// undefined, assign 메서드가 종료됨, foo3은 복사되지 않음</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>target<span class="token punctuation">.</span>baz<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// undefined, 세 번째 출처 객체도 복사되지 않음</span>
+</pre>
+</div></div></section><section aria-labelledby="접근자_복사"><h3 id="접근자_복사">접근자 복사</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="bwU1ey1DezIDgjKJHmUNpMD2VSs6IkJ9z1BEXM4XFlo=" data-language="js"><span class="token keyword">const</span> obj <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token literal-property property">foo</span><span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+  <span class="token keyword">get</span> <span class="token function">bar</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token number">2</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">let</span> copy <span class="token operator">=</span> Object<span class="token punctuation">.</span><span class="token function">assign</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span> obj<span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>copy<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// { foo: 1, bar: 2 }, copy.bar의 값은 obj.bar의 접근자가 반환한 값</span>
+
+<span class="token comment">// 속성의 온전한 기술자를 복사해 할당하는 함수</span>
+<span class="token keyword">function</span> <span class="token function">completeAssign</span><span class="token punctuation">(</span><span class="token parameter">target<span class="token punctuation">,</span> <span class="token operator">...</span>sources</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  sources<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token parameter">source</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    <span class="token keyword">let</span> descriptors <span class="token operator">=</span> Object<span class="token punctuation">.</span><span class="token function">keys</span><span class="token punctuation">(</span>source<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">reduce</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">descriptors<span class="token punctuation">,</span> key</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+      descriptors<span class="token punctuation">[</span>key<span class="token punctuation">]</span> <span class="token operator">=</span> Object<span class="token punctuation">.</span><span class="token function">getOwnPropertyDescriptor</span><span class="token punctuation">(</span>source<span class="token punctuation">,</span> key<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token keyword">return</span> descriptors<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// 기본적으로 Object.assign은 열거 가능한 심볼도 복사함</span>
+    Object<span class="token punctuation">.</span><span class="token function">getOwnPropertySymbols</span><span class="token punctuation">(</span>source<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token parameter">sym</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+      <span class="token keyword">let</span> descriptor <span class="token operator">=</span> Object<span class="token punctuation">.</span><span class="token function">getOwnPropertyDescriptor</span><span class="token punctuation">(</span>source<span class="token punctuation">,</span> sym<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span>descriptor<span class="token punctuation">.</span>enumerable<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        descriptors<span class="token punctuation">[</span>sym<span class="token punctuation">]</span> <span class="token operator">=</span> descriptor<span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    Object<span class="token punctuation">.</span><span class="token function">defineProperties</span><span class="token punctuation">(</span>target<span class="token punctuation">,</span> descriptors<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">return</span> target<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+copy <span class="token operator">=</span> <span class="token function">completeAssign</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span> obj<span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>copy<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// { foo:1, get bar() { return 2 } }</span>
+</pre>
+</div></div></section><h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://tc39.es/ecma262/multipage/fundamental-objects.html#sec-object.assign">ECMAScript Language Specification <br><small># sec-object.assign</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="https://github.com/zloirock/core-js#ecmascript-object" target="_blank"><code>core-js</code>의 <code>Object.assign</code> 폴리필</a></li> <li><a href="defineproperties"><code>Object.defineProperties()</code></a></li> <li><a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Enumerability_and_ownership_of_properties">속성의 소유권과 열거 가능성</a></li> <li><a href="../../operators/spread_syntax#spread_in_object_literals">객체 리터럴에서의 전개 구문</a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Object/assign" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Object/assign</a>
+  </p>
+</div>

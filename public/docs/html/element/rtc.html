@@ -1,0 +1,44 @@
+<header><h1>&lt;rtc&gt;: 루비 텍스트 콘테이너 요소</h1></header><div class="section-content"><p><code>&lt;rtc&gt;</code>는 <a href="rb"><code>&lt;rb&gt;</code></a> 요소가 표시하는 문자의 의미에 대한 주석을 나타냅니다. <code>&lt;rb&gt;</code>는 발음(<a href="rt"><code>&lt;rt&gt;</code></a>)과 의미(<code>&lt;rtc&gt;</code>) 둘 다 가질 수 있습니다.</p></div>
+<h2 id="시도해보기">시도해보기</h2>
+<div class="section-content">
+<iframe class="interactive is-tabbed-standard-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/tabbed/rtc.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe> <figure class="table-container"><div class="_table"><table class="properties"> <tbody> <tr> <th scope="row"><a href="../content_categories">콘텐츠 카테고리</a></th> <td>없음.</td> </tr> <tr> <th scope="row">가능한 콘텐츠</th> <td> <a href="../content_categories#%ea%b5%ac%eb%ac%b8_%ec%bd%98%ed%85%90%ec%b8%a0">구문 콘텐츠</a> 또는 <a href="rt"><code>&lt;rt&gt;</code></a> 요소. </td> </tr> <tr> <th scope="row">태그 생략</th> <td> 바로 뒤따르는 요소가 <a href="rb"><code>&lt;rb&gt;</code></a>, <a href="rt"><code>&lt;rt&gt;</code></a>, 다른 <code>&lt;rtc&gt;</code> 요소거나, 자신이 부모의 마지막 요소라면 닫는 태그를 생략할 수 있습니다. </td> </tr> <tr> <th scope="row">가능한 부모 요소</th> <td>
+<a href="ruby"><code>&lt;ruby&gt;</code></a> 요소.</td> </tr> <tr> <th scope="row">가능한 ARIA 역할</th> <td>모두</td> </tr> <tr> <th scope="row">DOM 인터페이스</th> <td><a href="https://developer.mozilla.org/ko/docs/Web/API/HTMLElement"><code>HTMLElement</code></a></td> </tr> </tbody> </table></div></figure>
+</div>
+<h2 id="특성">특성</h2>
+<div class="section-content"><p>이 요소는 <a href="../global_attributes">전역 특성</a>만 포함합니다.</p></div>
+<h2 id="예제">예제</h2>
+<div class="section-content">
+<div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="tcpHgs4E8W/88fFguPyz+IyGsPbZShdOHT8xh92tHwE=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>info<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ruby</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rbc</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rb</span><span class="token punctuation">&gt;</span></span>馬<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rb</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rt</span><span class="token punctuation">&gt;</span></span>마<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rt</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rb</span><span class="token punctuation">&gt;</span></span>來<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rb</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rt</span><span class="token punctuation">&gt;</span></span>래<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rt</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rb</span><span class="token punctuation">&gt;</span></span>西<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rb</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rt</span><span class="token punctuation">&gt;</span></span>서<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rt</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rb</span><span class="token punctuation">&gt;</span></span>亞<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rb</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rt</span><span class="token punctuation">&gt;</span></span>아<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rt</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rbc</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rtc</span><span class="token punctuation">&gt;</span></span>말레이시아<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rtc</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>ruby</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div> 
+<div class="code-example" id="sect1">
+
+<iframe class="sample-code-frame" title="예제 sample" id="frame_예제" width="600" height="120" src="https://live.mdnplay.dev/ko/docs/Web/HTML/Element/rtc/runner.html?id=%EC%98%88%EC%A0%9C" loading="lazy"></iframe>
+</div>
+</div>
+<h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://html.spec.whatwg.org/multipage/obsolete.html#rtc">HTML Standard <br><small># rtc</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="ruby"><code>&lt;ruby&gt;</code></a></li> <li><a href="rp"><code>&lt;rp&gt;</code></a></li> <li><a href="rb"><code>&lt;rb&gt;</code></a></li> <li><a href="rt"><code>&lt;rt&gt;</code></a></li> <li><a class="page-not-created"><code>&lt;rbc&gt;</code></a></li> </ul></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/HTML/Element/rtc" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/HTML/Element/rtc</a>
+  </p>
+</div>

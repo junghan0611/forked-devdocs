@@ -1,0 +1,41 @@
+<header><h1>element.length</h1></header><h2 id="요약">요약</h2>
+<div class="section-content"><p><code>length</code>는 <code>NodeList</code>의 항목수를 반환합니다.</p></div>
+<h2 id="구문">구문</h2>
+<div class="section-content">
+<div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="GxYjadbhuaoUB7PsxoRSR2kixL7aEVeEmUkRpTIZaHE=" data-language="js">numItems <span class="token operator">=</span>nodeList<span class="token punctuation">.</span>length
+</pre>
+</div> <ul> <li>
+<code>numItems</code>은 <code>NodeList</code>의 항목수를 나타내는 정수값입니다.</li> </ul>
+</div>
+<h2 id="예">예</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="WpQmTxs58wJSH0yCE60ZhS3w3nOfG/olId84OSyz0As=" data-language="js"><span class="token comment">// 문서의 모든 paragraph</span>
+<span class="token keyword">var</span> items <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementsByTagName</span><span class="token punctuation">(</span><span class="token string">"p"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// 목록의 각 항목에,</span>
+<span class="token comment">// HTML의 문자열로 전체 요소를 추가</span>
+<span class="token keyword">var</span> gross <span class="token operator">=</span> <span class="token string">""</span><span class="token punctuation">;</span>
+<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">var</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> items<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  gross <span class="token operator">+=</span> items<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>innerHTML<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token comment">// gross는 이제 모두 paragraph을 위한 HTML</span>
+</pre>
+</div></div>
+<h2 id="주의">주의</h2>
+<div class="section-content">
+<p>reference에서 이 페이지의 위치에도 불구하고, <code>length</code>는 <a href="../element">Element</a>의 프로퍼티가 아니고, <code>NodeList</code>의 프로퍼티입니다. NodeList 개체는 <a href="https://developer.mozilla.org/ko/docs/DOM/document.getElementsByTagName">document.getElementsByTagName</a>과 같은 많은 DOM 메소드에서 반환됩니다.</p> <p><code>length</code>는 DOM 프로그래밍에서 아주 흔한 프로퍼티입니다. 위 예에서처럼 목록의 길이(적어도 있는 지 보기 위해)를 조사하고 for 루프에서 훑개(반복자, iterator)로 널리 쓰입니다.</p>
+</div>
+<h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="#">DOM Standard <br><small># ref-for-dom-nodelist-length①</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/NodeList/length" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/NodeList/length</a>
+  </p>
+</div>

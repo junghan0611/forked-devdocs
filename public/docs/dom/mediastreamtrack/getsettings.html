@@ -1,0 +1,23 @@
+<header><h1>MediaStreamTrack.getSettings()</h1></header><div class="section-content"><p><a href="../mediastreamtrack"><code>MediaStreamTrack</code></a> 인터페이스의 <code>getSettings()</code> 메서드는 트랙의 각 제약 속성에 지금 적용된 값을 담은 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/MediaTrackSettings"><code>MediaTrackSettings</code> <small>(en-US)</small></a> 객체를 반환합니다. <a href="https://developer.mozilla.org/en-US/docs/Web/API/Media_Capture_and_Streams_API/Constraints" class="only-in-en-us">기능, 제약, 설정 <small>(en-US)</small></a> 문서에서 제약 속성 사용법에 대해 자세히 알아보세요.</p></div>
+<h2 id="구문">구문</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="SqdO/DmwiC057auMV0zYaNoQ2hlgTxNcNoOkNK4CA8k=" data-language="js"><span class="token keyword">const</span> settings <span class="token operator">=</span> track<span class="token punctuation">.</span><span class="token function">getSettings</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+</pre>
+</div></div>
+<h3 id="반환_값">반환 값</h3>
+<div class="section-content">
+<p>트랙의 현재 제약 속성 설정을 설명하는 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/MediaTrackSettings"><code>MediaTrackSettings</code> <small>(en-US)</small></a> 객체.</p> <div class="notecard note" id="sect1"> <p><strong>참고:</strong> 반환하는 객체는 모든 제약 속성을 포함하며, 사이트 코드에서 수정하지 않은 플랫폼 기본값 역시 들어있습니다. 사이트 코드에서 제일 최근에 적용한 제약 속성만 필요한 경우, <a href="getconstraints"><code>getConstraints()</code></a> 메서드를 사용하세요.</p> </div>
+</div>
+<h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://w3c.github.io/mediacapture-main/#dom-mediastreamtrack-getsettings">Media Capture and Streams <br><small># dom-mediastreamtrack-getsettings</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/MediaStreamTrack/getSettings" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/MediaStreamTrack/getSettings</a>
+  </p>
+</div>

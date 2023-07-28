@@ -1,0 +1,26 @@
+<header><h1>AudioWorklet</h1></header><div class="section-content">
+<div class="notecard secure" id="sect1"><p><strong>Secure context:</strong> This feature is available only in <a href="https://developer.mozilla.org/ko/docs/Web/Security/Secure_Contexts">secure contexts</a> (HTTPS), in some or all <a href="#browser_compatibility">supporting browsers</a>.</p></div> <p><a href="web_audio_api">Web Audio API</a>의 <code>AudioWorklet</code> 인터페이스는 아주 낮은 레이턴시의 오디오 프로세싱을 제공하기 위해 별도의 스레드에서 실행되는 사용자 정의 오디오 프로세싱 스크립트를 제공하려는 목적으로 사용됩니다.</p> <p>worklet의 코드는 worklet과 다른 오디오 노드에 의해 공유되는 별도의 Web Audio 스레드를 사용하며 <a href="audioworkletglobalscope"><code>AudioWorkletGlobalScope</code></a> 전역 실행 컨텍스트에서 실행됩니다.</p> <p>오디오 컨텍스트의 <code>AudioWorklet</code> 인스턴스에 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/BaseAudioContext/audioWorklet"><code>BaseAudioContext.audioWorklet</code> <small>(en-US)</small></a> 속성을 통해 접근합니다.</p>
+</div>
+<h2 id="속성">속성</h2>
+<div class="section-content"><p><em><code>AudioWorklet</code> 인터페이스는 자신이 소유하는 어떠한 속성도 정의하지 않으나, <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/Worklet"><code>Worklet</code> <small>(en-US)</small></a>의 속성을 상속받습니다.</em></p></div>
+<h2 id="메서드">메서드</h2>
+<div class="section-content"><p><em>이 인터페이스는 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/Worklet"><code>Worklet</code> <small>(en-US)</small></a>으로부터 메서드를 상속받습니다. <code>AudioWorklet</code> 인터페이스는 자신이 소유하는 어떠한 메서드도 정의하지 않습니다.</em></p></div>
+<h2 id="이벤트">이벤트</h2>
+<div class="section-content"><p><em><code>AudioWorklet</code>은 응답하는 이벤트를 가지고 있지 않습니다.</em></p></div>
+<h2 id="예제">예제</h2>
+<div class="section-content"><p><a href="audioworkletnode"><code>AudioWorkletNode</code></a>에서 사용자 정의 오디오 노드 생성에 대한 완전한 예제를 참고해 보세요.</p></div>
+<h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://webaudio.github.io/web-audio-api/#AudioWorklet">Web Audio API <br><small># AudioWorklet</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li>
+<a href="audioworkletglobalscope"><code>AudioWorkletGlobalScope</code></a> — <code>AudioWorklet</code>의 전역 실행 컨텍스트</li> <li><a href="web_audio_api">Web Audio API</a></li> <li><a href="web_audio_api/using_web_audio_api">Web Audio API 사용하기</a></li> </ul></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/AudioWorklet" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/AudioWorklet</a>
+  </p>
+</div>

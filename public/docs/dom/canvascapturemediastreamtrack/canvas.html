@@ -1,0 +1,40 @@
+<header><h1>CanvasCaptureMediaStreamTrack.canvas</h1></header><div class="section-content"><p>The <a href="../canvascapturemediastreamtrack"><code>CanvasCaptureMediaStreamTrack</code></a> **<code>canvas</code>**읽기 전용 속성은 프레임이 캡쳐되는<a href="../htmlcanvaselement"><code>HTMLCanvasElement</code></a> 를 반환한다.</p></div>
+<h2 id="구문">구문</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="hnSO67N7Xws8On8dSlDDXFqQpq5H/A6EaVxSvbe13+U=" data-language="js"><span class="token keyword">var</span> elt <span class="token operator">=</span> stream<span class="token punctuation">.</span>canvas<span class="token punctuation">;</span>
+</pre>
+</div></div>
+<h3 id="값">값</h3>
+<div class="section-content"><p><code>캡처되는 프레임의 원본인 canvas를 나타내는 HTMLCanvasElement</code> .</p></div>
+<h2 id="예시">예시</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="34ehKDqQQLQSZMNCoVDA1hXtana0iVV3RIJjLj2dejw=" data-language="js"><span class="token comment">// 캡처할 canvas 요소 찾기</span>
+<span class="token keyword">var</span> canvasElt <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementsByTagName</span><span class="token punctuation">(</span><span class="token string">"canvas"</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+<span class="token comment">// stream 얻기</span>
+<span class="token keyword">var</span> stream <span class="token operator">=</span> canvasElt<span class="token punctuation">.</span><span class="token function">captureStream</span><span class="token punctuation">(</span><span class="token number">25</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 25 FPS</span>
+
+<span class="token comment">// stream 처리하기</span>
+<span class="token operator">...</span>
+
+<span class="token comment">// stream과 연결된 canvas 가져오기</span>
+<span class="token keyword">var</span> canvas <span class="token operator">=</span> stream<span class="token punctuation">.</span>canvas<span class="token punctuation">;</span>
+</pre>
+</div></div>
+<h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://w3c.github.io/mediacapture-fromelement/#dom-canvascapturemediastreamtrack-canvas">Media Capture from DOM Elements <br><small># dom-canvascapturemediastreamtrack-canvas</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<h2 id="더_보기">더 보기</h2>
+<div class="section-content"><ul> <li>
+<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLCanvasElement/captureStream"><code>HTMLCanvasElement.captureStream()</code> <small>(en-US)</small></a> to create a stream to capture a given canvas element.</li> <li><a href="https://developer.mozilla.org/ko/docs/Web/HTML/Element/canvas"><code>&lt;canvas&gt;</code></a></li> </ul></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/CanvasCaptureMediaStreamTrack/canvas" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/CanvasCaptureMediaStreamTrack/canvas</a>
+  </p>
+</div>

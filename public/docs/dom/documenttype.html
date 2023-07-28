@@ -1,0 +1,40 @@
+<header><h1>DocumentType</h1></header><div class="section-content">
+<p><code>DocumentType</code> 인터페이스는 doctype을 포함하는 <a href="node"><code>Node</code></a> 를 나타냅니다.</p>
+<svg viewbox="-1 -1 650 42" preserveaspectratio="xMinYMin meet"> <a style="text-decoration: none;" xlink:href="/ko/docs/Web/API/EventTarget">  <text x="44" y="16" font-size="10px" fill="#4D4E53" text-anchor="middle"> EventTarget </text> </a>   <a style="text-decoration: none;" xlink:href="/ko/docs/Web/API/Node">  <text x="155.5" y="16" font-size="10px" fill="#4D4E53" text-anchor="middle"> Node </text> </a>   <a style="text-decoration: none;" xlink:href="/ko/docs/Web/API/DocumentType" aria-current="page">  <text x="271" y="16" font-size="10px" fill="#4D4E53" text-anchor="middle"> DocumentType </text> </a></svg>
+</div>
+<h2 id="프로퍼티">프로퍼티</h2>
+<div class="section-content">
+<p><em>부모 <a href="node"><code>Node</code></a> 로부터 프로퍼티를 상속받고 <a class="page-not-created"><code>ChildNode</code></a> 인터페이스를 구현합니다.</em></p> <dl> <dt id="documenttype.entities">
+<a class="page-not-created"><code>DocumentType.entities</code></a> <span class="badge inline readonly">읽기 전용</span> <abbr class="icon icon-deprecated" title="지원이 중단되었습니다. 새로운 웹사이트에서 사용하지 마세요."> <span class="visually-hidden">지원이 중단되었습니다</span> </abbr>
+</dt> <dd> <p>DTD에 선언된 엔티티의 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/NamedNodeMap"><code>NamedNodeMap</code> <small>(en-US)</small></a> 입니다. 이 맵의 모든 노드는 <a class="page-not-created"><code>Entity</code></a> 인터페이스를 구현합니다.</p> </dd> <dt id="documenttype.internalsubset">
+<a class="page-not-created"><code>DocumentType.internalSubset</code></a> <span class="badge inline readonly">읽기 전용</span> <abbr class="icon icon-deprecated" title="지원이 중단되었습니다. 새로운 웹사이트에서 사용하지 마세요."> <span class="visually-hidden">지원이 중단되었습니다</span> </abbr>
+</dt> <dd> <p>내부 하위 집합의 <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/String"><code>DOMString</code></a> 입니다. 하위 집합이 존재하지 않을 경우 <code>null</code>입니다. 예, <code>"&lt;!ELEMENT foo (bar)&gt;"</code>.</p> </dd> <dt id="documenttype.name_en-us">
+<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/DocumentType/name"><code>DocumentType.name</code> <small>(en-US)</small></a> <span class="badge inline readonly">읽기 전용</span>
+</dt> <dd> <p><a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/String"><code>DOMString</code></a> 입니다. 예, <code>&lt;!DOCTYPE HTML&gt;</code> 의 경우 <code>"html"</code>.</p> </dd> <dt id="documenttype.notations">
+<a class="page-not-created"><code>DocumentType.notations</code></a> <span class="badge inline readonly">읽기 전용</span> <abbr class="icon icon-deprecated" title="지원이 중단되었습니다. 새로운 웹사이트에서 사용하지 마세요."> <span class="visually-hidden">지원이 중단되었습니다</span> </abbr>
+</dt> <dd> <p>DTD에 선언된 노테이션을 포함한 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/NamedNodeMap"><code>NamedNodeMap</code> <small>(en-US)</small></a> 입니다. 이 맵의 모든 노드는 <a class="page-not-created"><code>Notation</code></a> 인터페이스를 구현합니다.</p> </dd> <dt id="documenttype.publicid_en-us">
+<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/DocumentType/publicId"><code>DocumentType.publicId</code> <small>(en-US)</small></a> <span class="badge inline readonly">읽기 전용</span>
+</dt> <dd> <p><a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/String"><code>DOMString</code></a> 입니다. 예, <code>"-//W3C//DTD HTML 4.01//EN"</code>, HTML5의 경우 빈 문자열.</p> </dd> <dt id="documenttype.systemid_en-us">
+<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/DocumentType/systemId"><code>DocumentType.systemId</code> <small>(en-US)</small></a> <span class="badge inline readonly">읽기 전용</span>
+</dt> <dd> <p><a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/String"><code>DOMString</code></a> 입니다. 예, <code>"http://www.w3.org/TR/html4/strict.dtd"</code>, HTML5의 경우 빈 문자열.</p> </dd> </dl>
+</div>
+<h2 id="메소드">메소드</h2>
+<div class="section-content">
+<p><em>부모 <a href="node"><code>Node</code></a> 로부터 메소드를 상속받고 <a class="page-not-created"><code>ChildNode</code></a> 인터페이스를 구현합니다.</em></p> <dl> <dt id="childnode.remove_en-us">
+<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/Element/remove"><code>ChildNode.remove()</code> <small>(en-US)</small></a> <abbr class="icon icon-experimental" title="Experimental. 예상되는 동작은 향후 변경될 수 있습니다."> <span class="visually-hidden">Experimental</span> </abbr>
+</dt> <dd> <p>부모의 자식 리스트로부터 객체를 제거합니다.</p> </dd> </dl>
+</div>
+<h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://dom.spec.whatwg.org/#interface-documenttype">DOM Standard <br><small># interface-documenttype</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<h2 id="함께_보기">함께 보기</h2>
+<div class="section-content"><ul> <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model" class="only-in-en-us">DOM 인터페이스 목차. <small>(en-US)</small></a></li> <li><a class="page-not-created"><code>Entity</code></a></li> <li><a class="page-not-created"><code>Notation</code></a></li> </ul></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/DocumentType" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/DocumentType</a>
+  </p>
+</div>

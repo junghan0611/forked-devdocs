@@ -1,0 +1,60 @@
+<header><h1>PerformanceEntry</h1></header><div class="section-content">
+<p><code>PerformanceEntry</code> 객체는 <em>performance timeline</em> 상의 단일 성능 수치를 캡슐화 합니다. <em>performance entry</em>는 응용프로그램의 특정 지점에서 performance *<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/PerformanceMark"><code>mark</code> <small>(en-US)</small></a>*나 *<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/PerformanceMeasure"><code>measure</code> <small>(en-US)</small></a>*를 생성함으로써 (예를 들면 <a href="performance/mark"><code>mark()</code></a>를 호출하는 방법으로) 직접적으로 만들어질 수 있습니다. 또는 (이미지와 같은) 리소스를 로딩하는 등의 간접적인 방법으로 생성되기도 합니다.</p> <p><code>PerformanceEntry</code> 인스턴스는 항상 다음 서브타입들 중 하나를 따릅니다:</p> <ul> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/PerformanceMark"><code>PerformanceMark</code> <small>(en-US)</small></a></li> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/PerformanceMeasure"><code>PerformanceMeasure</code> <small>(en-US)</small></a></li> <li><a class="page-not-created"><code>PerformanceFrameTiming</code></a></li> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/PerformanceNavigationTiming"><code>PerformanceNavigationTiming</code> <small>(en-US)</small></a></li> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/PerformanceResourceTiming"><code>PerformanceResourceTiming</code> <small>(en-US)</small></a></li> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/PerformancePaintTiming"><code>PerformancePaintTiming</code> <small>(en-US)</small></a></li> </ul>
+<div class="notecard note" id="sect1"> <p><strong>참고:</strong> 이 기능은 <a href="web_workers_api">Web Worker</a>에서 사용할 수 있습니다</p> </div>
+</div>
+<h2 id="properties">Properties</h2>
+<div class="section-content"><dl> <dt id="performanceentry.name_en-us">
+<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/PerformanceEntry/name"><code>PerformanceEntry.name</code> <small>(en-US)</small></a> <span class="badge inline readonly">읽기 전용</span>
+</dt> <dd> <p>A value that further specifies the value returned by the <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/PerformanceEntry/entryType"><code>PerformanceEntry.entryType</code> <small>(en-US)</small></a> property. The value of both depends on the subtype. See property page for valid values.</p> </dd> <dt id="performanceentry.entrytype_en-us">
+<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/PerformanceEntry/entryType"><code>PerformanceEntry.entryType</code> <small>(en-US)</small></a> <span class="badge inline readonly">읽기 전용</span>
+</dt> <dd> <p>A <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/String"><code>DOMString</code></a> representing the type of performance metric such as, for example, "<code>mark</code>". See property page for valid values.</p> </dd> <dt id="performanceentry.starttime_en-us">
+<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/PerformanceEntry/startTime"><code>PerformanceEntry.startTime</code> <small>(en-US)</small></a> <span class="badge inline readonly">읽기 전용</span>
+</dt> <dd> <p>A <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/DOMHighResTimeStamp"><code>DOMHighResTimeStamp</code> <small>(en-US)</small></a> representing the starting time for the performance metric.</p> </dd> <dt id="performanceentry.duration_en-us">
+<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/PerformanceEntry/duration"><code>PerformanceEntry.duration</code> <small>(en-US)</small></a> <span class="badge inline readonly">읽기 전용</span>
+</dt> <dd> <p>A <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/DOMHighResTimeStamp"><code>DOMHighResTimeStamp</code> <small>(en-US)</small></a> representing the time value of the duration of the performance event.</p> </dd> </dl></div>
+<h2 id="methods">Methods</h2>
+<div class="section-content"><dl> <dt id="performanceentry.tojson_en-us"><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/PerformanceEntry/toJSON"><code>PerformanceEntry.toJSON()</code> <small>(en-US)</small></a></dt> <dd> <p>Returns a JSON representation of the <code>PerformanceEntry</code> object.</p> </dd> </dl></div>
+<h2 id="example">Example</h2>
+<div class="section-content">
+<p>The following example checks all <code>PerformanceEntry</code> properties to see if the browser supports them and if so, write their values to the console.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="GgHz9C0Z84pVfzSpN9TVRi7cSIq+KllDWeTtA+7Gib8=" data-language="js"><span class="token keyword">function</span> <span class="token function">print_PerformanceEntries</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">// Use getEntries() to get a list of all performance entries</span>
+  <span class="token keyword">var</span> p <span class="token operator">=</span> performance<span class="token punctuation">.</span><span class="token function">getEntries</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">var</span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> p<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"PerformanceEntry["</span> <span class="token operator">+</span> i <span class="token operator">+</span> <span class="token string">"]"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">print_PerformanceEntry</span><span class="token punctuation">(</span>p<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">function</span> <span class="token function">print_PerformanceEntry</span><span class="token punctuation">(</span><span class="token parameter">perfEntry</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">var</span> properties <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">"name"</span><span class="token punctuation">,</span>
+                    <span class="token string">"entryType"</span><span class="token punctuation">,</span>
+                    <span class="token string">"startTime"</span><span class="token punctuation">,</span>
+                    <span class="token string">"duration"</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">var</span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> properties<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// Check each property</span>
+    <span class="token keyword">var</span> supported <span class="token operator">=</span> properties<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token keyword">in</span> perfEntry<span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>supported<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">var</span> value <span class="token operator">=</span> perfEntry<span class="token punctuation">[</span>properties<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"... "</span> <span class="token operator">+</span> properties<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">+</span> <span class="token string">" = "</span> <span class="token operator">+</span> value<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"... "</span> <span class="token operator">+</span> properties<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">+</span> <span class="token string">" is NOT supported"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</pre>
+</div>
+</div>
+<h2 id="명세서">명세서</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://w3c.github.io/performance-timeline/#dom-performanceentry">Performance Timeline <br><small># dom-performanceentry</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/PerformanceEntry" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/PerformanceEntry</a>
+  </p>
+</div>

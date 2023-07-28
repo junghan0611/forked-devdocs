@@ -1,0 +1,32 @@
+<header><h1>Document.location</h1></header><div class="section-content">
+<p>The <code>Document.location</code> read-only property returns a <a href="../location"><code>Location</code></a> object, which contains information about the URL of the document and provides methods for changing that URL and loading another URL.</p> <p>Though <code>Document.location</code> is a <em>read-only</em> <code>Location</code> object, you can also assign a <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/String"><code>DOMString</code></a> to it. This means that you can work with document.location as if it were a string in most cases: <code>document.location = 'http://www.example.com'</code> is a synonym of <code>document.location.href = 'http://www.example.com'</code>.</p> <p>To retrieve just the URL as a string, the read-only <a href="url"><code>document.URL</code></a> property can also be used.</p> <p>If the current document is not in a browsing context, the returned value is <code>null</code>.</p>
+</div>
+<h2 id="syntax">Syntax</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="0vNVHv2zm75pDY2Y++0iJbCg7kpomGn+D3H01F19S/Y=" data-language="js">locationObj <span class="token operator">=</span> document<span class="token punctuation">.</span>location
+document<span class="token punctuation">.</span>location <span class="token operator">=</span> <span class="token string">'http://www.mozilla.org'</span> <span class="token comment">// Equivalent to document.location.href = 'http://www.mozilla.org'</span>
+</pre>
+</div></div>
+<h2 id="example">Example</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="hPMxfpwlCI0ZwPjOGQ7i5yCt5Jgb3IPEzqU6cI1Uh18=" data-language="js"><span class="token function">dump</span><span class="token punctuation">(</span>document<span class="token punctuation">.</span>location<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// Prints a string like</span>
+<span class="token comment">// "http://www.example.com/juicybits.html" to the console</span>
+</pre>
+</div></div>
+<h2 id="명세서">명세서</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://html.spec.whatwg.org/multipage/nav-history-apis.html#the-location-interface">HTML Standard <br><small># the-location-interface</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<h2 id="see_also">See also</h2>
+<div class="section-content"><ul> <li>The interface of the returned value, <a href="../location"><code>Location</code></a>.</li> <li>A similar information, but attached to the <a href="https://developer.mozilla.org/ko/docs/Glossary/Browsing_context">browsing context</a>, <a href="../window/location"><code>Window.location</code></a>.</li> </ul></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/Document/location" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/Document/location</a>
+  </p>
+</div>

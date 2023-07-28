@@ -1,0 +1,45 @@
+<header><h1>RTCPeerConnection.currentRemoteDescription</h1></header><div class="section-content">
+<p>읽기 속성인 <code>RTCPeerConnection.currentRemoteDescription</code>은 마지막 <a href="../rtcpeerconnection"><code>RTCPeerConnection</code></a> 이후 가장 최근에 원격 유저와의 네고시에이션 및 연결을 성공적으로 마친 연결의 원격 엔드 포인트를 알려주는 <a href="../rtcsessiondescription"><code>RTCSessionDescription</code></a> 객체를 반환합니다. 추가적으로 이 속성은 description에 의해 표현되는 마지막 offer 및 answer가 처음 시작되면 ICE 에이전트에 의해 생성이 되었을 수도 있는 모든 ICE candidate들의 리스트를 포함합니다.</p> <p><code>currentRemoteDescription</code>를 바꾸기 위해서는, <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/RTCPeerConnection/setRemoteDescription"><code>RTCPeerConnection.setRemoteDescription()</code> <small>(en-US)</small></a>를 호출해서 이 값이 설정되도록 만들어주는 연속된 이벤트를 활성화하십시오. 왜 바꾸는 것이 바로 적용이 안되는지 및 어떻게 작동하는지 더 자세히 알고 싶다면, <a href="https://developer.mozilla.org/en-US/docs/Web/API/WebRTC_API/Connectivity#pending_and_current_descriptions">Pending and current descriptions</a> 를 참조하십시오.</p> <div class="notecard note" id="sect1"> <p><strong>참고:</strong> <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/RTCPeerConnection/remoteDescription"><code>RTCPeerConnection.remoteDescription</code> <small>(en-US)</small></a>와 다르게, 이 값은 연결의 로컬 엔드 포인트에 대한 실제 현재 상태를 보여줍니다. <code>remoteDescription</code>은 연결이 현재 어느 상태로 바뀌는지에 대한 설명도 명시 할 수 있습니다.</p> </div>
+</div>
+<h2 id="syntax">Syntax</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="n4s0rmb2j4lQHbTT/QArbXSJ4cM5AkR7oHQ3hiqLXgA=" data-language="js">sessionDescription <span class="token operator">=</span> RTCPeerConnection<span class="token punctuation">.</span>currentRemoteDescription<span class="token punctuation">;</span>
+</pre>
+</div></div>
+<h3 id="반환_값">반환 값</h3>
+<div class="section-content"><p>설정이 되어있다면, 연결의 원격 엔드포인트에 대한 현재 설명을 반환합니다. 설정되어있지않으면, 이 값은 <code>null</code>입니다.</p></div>
+<h2 id="예시">예시</h2>
+<div class="section-content">
+<p>아래 예제는 <code>currentRemoteDescription</code> 를 확인하고 객체의 <code>type</code> 및 <code>sdp</code> 필드를 경고로 띄워줍니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="DOV4MnZEfPTSccWOgzRSqB3VW4/rgyLGCkKk5oYWERc=" data-language="js"><span class="token keyword">const</span> pc <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">RTCPeerConnection</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// ...</span>
+<span class="token keyword">const</span> sd <span class="token operator">=</span> pc<span class="token punctuation">.</span>currentRemoteDescription<span class="token punctuation">;</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span>sd<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token function">alert</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">Local session: type='</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>sd<span class="token punctuation">.</span>type<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">'; sdp description='</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>sd<span class="token punctuation">.</span>sdp<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">'</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">else</span> <span class="token punctuation">{</span>
+  <span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">"No local session yet."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div>
+</div>
+<h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://w3c.github.io/webrtc-pc/#dom-peerconnection-currentremotedesc">WebRTC: Real-Time Communication in Browsers <br><small># dom-peerconnection-currentremotedesc</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<h2 id="참조">참조</h2>
+<div class="section-content"><ul> <li>
+<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/RTCPeerConnection/setRemoteDescription"><code>RTCPeerConnection.setRemoteDescription()</code> <small>(en-US)</small></a>, <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/RTCPeerConnection/pendingRemoteDescription"><code>RTCPeerConnection.pendingRemoteDescription</code> <small>(en-US)</small></a>, <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/RTCPeerConnection/remoteDescription"><code>RTCPeerConnection.remoteDescription</code> <small>(en-US)</small></a>
+</li> <li>
+<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/RTCPeerConnection/setRemoteDescription"><code>RTCPeerConnection.setRemoteDescription()</code> <small>(en-US)</small></a>, <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/RTCPeerConnection/remoteDescription"><code>RTCPeerConnection.remoteDescription</code> <small>(en-US)</small></a>, <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/RTCPeerConnection/pendingRemoteDescription"><code>RTCPeerConnection.pendingRemoteDescription</code> <small>(en-US)</small></a>, <a href="currentremotedescription" aria-current="page"><code>RTCPeerConnection.currentRemoteDescription</code></a>
+</li> <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/WebRTC_API">WebRTC</a></li> </ul></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/RTCPeerConnection/currentRemoteDescription" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/RTCPeerConnection/currentRemoteDescription</a>
+  </p>
+</div>

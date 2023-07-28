@@ -1,0 +1,93 @@
+<header><h1>word-spacing</h1></header><div class="section-content"><p><a href="https://developer.mozilla.org/ko/docs/Web/CSS">CSS</a> <code>word-spacing</code> 속성은 단어와 단어 사이, 태그와 태그 사이의 거리를 설정합니다.</p></div>
+<section aria-labelledby="시도해보기"><h2 id="시도해보기">시도해보기</h2>
+<div class="section-content">
+<iframe class="interactive is-default-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/css/word-spacing.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe> </div></section><section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="uxZP7wxRpAhEjO4T8R5duX7Z5O63uWw23t4SJtCGhCw=" data-language="css"><span class="token comment">/* 키워드 값 */</span>
+<span class="token property">word-spacing</span><span class="token punctuation">:</span> normal<span class="token punctuation">;</span>
+
+<span class="token comment">/* &lt;length&gt; 값 */</span>
+<span class="token property">word-spacing</span><span class="token punctuation">:</span> 3px<span class="token punctuation">;</span>
+<span class="token property">word-spacing</span><span class="token punctuation">:</span> 0.3em<span class="token punctuation">;</span>
+
+<span class="token comment">/* &lt;percentage&gt; 값 */</span>
+<span class="token property">word-spacing</span><span class="token punctuation">:</span> 50%<span class="token punctuation">;</span>
+<span class="token property">word-spacing</span><span class="token punctuation">:</span> 200%<span class="token punctuation">;</span>
+
+<span class="token comment">/* 전역 값 */</span>
+<span class="token property">word-spacing</span><span class="token punctuation">:</span> inherit<span class="token punctuation">;</span>
+<span class="token property">word-spacing</span><span class="token punctuation">:</span> initial<span class="token punctuation">;</span>
+<span class="token property">word-spacing</span><span class="token punctuation">:</span> unset<span class="token punctuation">;</span>
+</pre>
+</div></div></section><section aria-labelledby="값"><h3 id="값">값</h3>
+<div class="section-content"><dl> <dt id="normal"><code>normal</code></dt> <dd> <p>현재 글씨체와 브라우저가 결정한 일반적인 단어 간격을 사용합니다.</p> </dd> <dt id="length"><a href="length"><code>&lt;length&gt;</code></a></dt> <dd> <p>지정한 길이를 기본 단어 간격에 더합니다.</p> </dd> <dt id="percentage"><a href="percentage"><code>&lt;percentage&gt;</code></a></dt> <dd> <p>영향 받는 문자 최대 폭의 백분율만큼을 기본 단어 간격에 더합니다.</p> </dd> </dl></div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+</section><section aria-labelledby="html"><h3 id="html">HTML</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="G+8O7Si1sBaNYZ9WFvkfrOXPAJob4KPnhPeOFbMI8mo=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>mozdiv1<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>다양한 단어...<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>mozdiv2<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>...더 많은 단어<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div></div></section><section aria-labelledby="css"><h3 id="css">CSS</h3>
+<div class="section-content">
+<div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="F81Iiwg8mefY9VKGsTOAcfuFKq5iz+oRnvBIesIgg80=" data-language="css"><span class="token selector">#mozdiv1</span> <span class="token punctuation">{</span>
+  <span class="token property">word-spacing</span><span class="token punctuation">:</span> 15px<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">#mozdiv2</span> <span class="token punctuation">{</span>
+  <span class="token property">word-spacing</span><span class="token punctuation">:</span> 5em<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div>
+<div class="code-example" id="sect2">
+
+<iframe class="sample-code-frame" title="예제 sample" id="frame_예제" src="https://live.mdnplay.dev/ko/docs/Web/CSS/word-spacing/runner.html?id=%EC%98%88%EC%A0%9C" loading="lazy"></iframe>
+</div>
+</div></section><section aria-labelledby="접근성_고려사항"><h2 id="접근성_고려사항">접근성 고려사항</h2>
+<div class="section-content">
+<p>큰 절댓값의 <code>word-spacing</code>을 적용한 문장은 거의 읽기 힘들어집니다. 큰 양의 값을 적용하면 단어의 사이가 너무나도 멀어져서 문장처럼 보이지 않습니다. 반면 지나친 음의 값을 적용하면 단어끼리 서로 겹쳐서 어느 단어의 시작과 끝을 알아차리지 못하게 됩니다.</p> <p>글씨체마다 문자 너비가 다르므로, 가독성을 확보하는 수준의 <code>word-spacing</code> 역시 상황에 맞춰 결정해야 합니다. 모든 글씨체에서 가독성을 유지하는 단 하나의 값은 존재하지 않습니다.</p> <ul> <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/Understanding_WCAG/Perceivable" class="only-in-en-us">MDN Understanding WCAG, Guideline 1.4 explanations <small>(en-US)</small></a></li> <li><a href="https://www.w3.org/TR/UNDERSTANDING-WCAG20/visual-audio-contrast-visual-presentation.html" target="_blank">Understanding Success Criterion 1.4.8 | W3C Understanding WCAG 2.0</a></li> </ul>
+</div></section><section aria-labelledby="형식_정의"><h2 id="형식_정의">형식 정의</h2>
+<div class="section-content"><figure class="table-container"><div class="_table"><table class="properties"><tbody>
+<tr>
+<th scope="row"><a href="initial_value">초기값</a></th>
+<td><code>normal</code></td>
+</tr>
+<tr>
+<th scope="row">적용대상</th>
+<td>all elements. It also applies to <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/::first-letter" class="only-in-en-us"><code>::first-letter</code> <small>(en-US)</small></a> and <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/::first-line" class="only-in-en-us"><code>::first-line</code> <small>(en-US)</small></a>.</td>
+</tr>
+<tr>
+<th scope="row"><a href="inheritance">상속</a></th>
+<td>yes</td>
+</tr>
+<tr>
+<th scope="row">Percentages</th>
+<td>refer to the width of the affected glyph</td>
+</tr>
+<tr>
+<th scope="row"><a href="computed_value">계산 값</a></th>
+<td>absolute <a href="length"><code>length</code></a>
+</td>
+</tr>
+<tr>
+<th scope="row">Animation type</th>
+<td>a <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/length#interpolation">length</a>
+</td>
+</tr>
+</tbody></table></div></figure></div></section><section aria-labelledby="형식_구문"><h2 id="형식_구문">형식 구문</h2>
+<div class="section-content"><pre class="notranslate"><span class="token property" id="word-spacing">word-spacing = </span><br>  <span class="token keyword">normal</span>    <a href="value_definition_syntax#single_bar">|</a><br>  <a href="length"><span class="token property">&lt;length&gt;</span></a>  <br><br></pre></div></section><h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://drafts.csswg.org/css-text/#word-spacing-property">CSS Text Module Level 3 <br><small># word-spacing-property</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="letter-spacing"><code>letter-spacing</code></a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/CSS/word-spacing" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/CSS/word-spacing</a>
+  </p>
+</div>

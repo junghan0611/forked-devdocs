@@ -1,0 +1,194 @@
+<header><h1>gap</h1></header><div class="section-content">
+<p><a href="https://developer.mozilla.org/ko/docs/Web/CSS">CSS</a> <code>gap</code> 속성은 행과 열 사이의 간격 (<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Glossary/Gutters">gutters <small>(en-US)</small></a>)을 설정합니다. <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/row-gap"><code>row-gap</code> <small>(en-US)</small></a>과 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/column-gap"><code>column-gap</code> <small>(en-US)</small></a>의 <a href="shorthand_properties">단축 속성</a>입니다.</p> </div>
+<section aria-labelledby="시도해보기"><h2 id="시도해보기">시도해보기</h2>
+<div class="section-content">
+<iframe class="interactive is-default-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/css/gap.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe> <p><code>grid-gap</code> 은 해당 속성의 별칭입니다.</p>
+</div></section><section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content">
+<div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="0gZSZCxiu3tEXk9lEGdJBfnEhDKeyRkNlKRZHXB2kHA=" data-language="css"><span class="token comment">/* 단일 &lt;length&gt; 값 */</span>
+<span class="token property">gap</span><span class="token punctuation">:</span> 20px<span class="token punctuation">;</span>
+<span class="token property">gap</span><span class="token punctuation">:</span> 1em<span class="token punctuation">;</span>
+<span class="token property">gap</span><span class="token punctuation">:</span> 3vmin<span class="token punctuation">;</span>
+<span class="token property">gap</span><span class="token punctuation">:</span> 0.5cm<span class="token punctuation">;</span>
+
+<span class="token comment">/* 단일 &lt;percentage&gt; 값 */</span>
+<span class="token property">gap</span><span class="token punctuation">:</span> 16%<span class="token punctuation">;</span>
+<span class="token property">gap</span><span class="token punctuation">:</span> 100%<span class="token punctuation">;</span>
+
+<span class="token comment">/* 이중 &lt;length&gt; 값 */</span>
+<span class="token property">gap</span><span class="token punctuation">:</span> 20px 10px<span class="token punctuation">;</span>
+<span class="token property">gap</span><span class="token punctuation">:</span> 1em 0.5em<span class="token punctuation">;</span>
+<span class="token property">gap</span><span class="token punctuation">:</span> 3vmin 2vmax<span class="token punctuation">;</span>
+<span class="token property">gap</span><span class="token punctuation">:</span> 0.5cm 2mm<span class="token punctuation">;</span>
+
+<span class="token comment">/* 이중 또는 혼합 &lt;percentage&gt; 값 */</span>
+<span class="token property">gap</span><span class="token punctuation">:</span> 16% 100%<span class="token punctuation">;</span>
+<span class="token property">gap</span><span class="token punctuation">:</span> 21px 82%<span class="token punctuation">;</span>
+
+<span class="token comment">/* calc() 값 */</span>
+<span class="token property">gap</span><span class="token punctuation">:</span> <span class="token function">calc</span><span class="token punctuation">(</span>10% + 20px<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token property">gap</span><span class="token punctuation">:</span> <span class="token function">calc</span><span class="token punctuation">(</span>20px + 10%<span class="token punctuation">)</span> <span class="token function">calc</span><span class="token punctuation">(</span>10% - 5px<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">/* 전역 값 */</span>
+<span class="token property">gap</span><span class="token punctuation">:</span> inherit<span class="token punctuation">;</span>
+<span class="token property">gap</span><span class="token punctuation">:</span> initial<span class="token punctuation">;</span>
+<span class="token property">gap</span><span class="token punctuation">:</span> unset<span class="token punctuation">;</span>
+<span class="token property">gap</span><span class="token punctuation">:</span> revert<span class="token punctuation">;</span>
+<span class="token property">gap</span><span class="token punctuation">:</span> revert-layer<span class="token punctuation">;</span>
+</pre>
+</div> <p><code>gap</code>은 <code>&lt;'row-gap'&gt;</code> 값을 사용해 지정하며, 선택적으로 <code>&lt;'column-gap'&gt;</code>을 추가할 수 있습니다. <code>&lt;'column-gap'&gt;</code>을 생략한 경우 <code>&lt;'row-gap'&gt;</code>과 동일한 값을 사용합니다.</p> <p><code>&lt;'row-gap'&gt;</code>과 <code>&lt;'column-gap'&gt;</code>은 각각 <code>&lt;length&gt;</code> 또는 <code>&lt;percentage&gt;</code>를 사용해 지정합니다.</p>
+</div></section><section aria-labelledby="값"><h3 id="값">값</h3>
+<div class="section-content"><dl> <dt id="length"><a href="length"><code>&lt;length&gt;</code></a></dt> <dd> <p>그리드 선을 분할하는 간격의 너비.</p> </dd> <dt id="percentage"><a href="percentage"><code>&lt;percentage&gt;</code></a></dt> <dd> <p>그리드 선을 분할하는 간격의 너비. 요소 크기에 상대적입니다.</p> </dd> </dl></div></section><section aria-labelledby="형식_정의"><h3 id="형식_정의">형식 정의</h3>
+<div class="section-content"><figure class="table-container"><div class="_table"><table class="properties"><tbody>
+<tr>
+<th scope="row"><a href="initial_value">초기값</a></th>
+<td>as each of the properties of the shorthand:<br><ul>
+<li>
+<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/row-gap" class="only-in-en-us"><code>row-gap</code> <small>(en-US)</small></a>: <code>normal</code>
+</li>
+<li>
+<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/column-gap" class="only-in-en-us"><code>column-gap</code> <small>(en-US)</small></a>: <code>normal</code>
+</li>
+</ul>
+</td>
+</tr>
+<tr>
+<th scope="row">적용대상</th>
+<td>multi-column elements, flex containers, grid containers</td>
+</tr>
+<tr>
+<th scope="row"><a href="inheritance">상속</a></th>
+<td>no</td>
+</tr>
+<tr>
+<th scope="row"><a href="computed_value">계산 값</a></th>
+<td>as each of the properties of the shorthand:<br><ul>
+<li>
+<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/row-gap" class="only-in-en-us"><code>row-gap</code> <small>(en-US)</small></a>: as specified, with &lt;length&gt;s made absolute, and normal computing to zero except on multi-column elements</li>
+<li>
+<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/column-gap" class="only-in-en-us"><code>column-gap</code> <small>(en-US)</small></a>: as specified, with &lt;length&gt;s made absolute, and normal computing to zero except on multi-column elements</li>
+</ul>
+</td>
+</tr>
+<tr>
+<th scope="row">Animation type</th>
+<td>as each of the properties of the shorthand:<br><ul>
+<li>
+<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/row-gap" class="only-in-en-us"><code>row-gap</code> <small>(en-US)</small></a>: a <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/length#interpolation">length</a>, <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/percentage#interpolation">percentage</a> or calc();</li>
+<li>
+<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/column-gap" class="only-in-en-us"><code>column-gap</code> <small>(en-US)</small></a>: a <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/length#interpolation">length</a>, <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/percentage#interpolation">percentage</a> or calc();</li>
+</ul>
+</td>
+</tr>
+</tbody></table></div></figure></div></section><section aria-labelledby="형식_구문"><h3 id="형식_구문">형식 구문</h3>
+<div class="section-content"><pre class="notranslate"><span class="token property" id="gap">gap = </span><br>  <span class="token property">&lt;'row-gap'&gt;</span> <span class="token property">&lt;'column-gap'&gt;</span><a href="value_definition_syntax#question_mark">?</a>  <br><br></pre></div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+</section><section aria-labelledby="플렉스_레이아웃"><h3 id="플렉스_레이아웃">플렉스 레이아웃</h3>
+<div class="section-content">
+<h4 id="html">HTML</h4> <div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="xdERda/Ae0Xj6R+LNJqBv8+uZyjTLc13U8fsm6QBi/k=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>flexbox<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div> <h4 id="css">CSS</h4> <div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="t9SZ8vaETzzU/LwfUSmk4jsfuq+S48WVtRyO8OzKdK4=" data-language="css"><span class="token selector">#flexbox</span> <span class="token punctuation">{</span>
+  <span class="token property">display</span><span class="token punctuation">:</span> flex<span class="token punctuation">;</span>
+  <span class="token property">flex-wrap</span><span class="token punctuation">:</span> wrap<span class="token punctuation">;</span>
+  <span class="token property">width</span><span class="token punctuation">:</span> 300px<span class="token punctuation">;</span>
+  <span class="token property">gap</span><span class="token punctuation">:</span> 20px 5px<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">#flexbox &gt; div</span> <span class="token punctuation">{</span>
+  <span class="token property">border</span><span class="token punctuation">:</span> 1px solid green<span class="token punctuation">;</span>
+  <span class="token property">background-color</span><span class="token punctuation">:</span> lime<span class="token punctuation">;</span>
+  <span class="token property">flex</span><span class="token punctuation">:</span> 1 1 auto<span class="token punctuation">;</span>
+  <span class="token property">width</span><span class="token punctuation">:</span> 100px<span class="token punctuation">;</span>
+  <span class="token property">height</span><span class="token punctuation">:</span> 50px<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div> <h4 id="결과">결과</h4>
+<div class="code-example" id="sect2">
+
+<iframe class="sample-code-frame" title="플렉스 레이아웃 sample" id="frame_플렉스_레이아웃" width="auto" height="120px" src="https://live.mdnplay.dev/ko/docs/Web/CSS/gap/runner.html?id=%ED%94%8C%EB%A0%89%EC%8A%A4_%EB%A0%88%EC%9D%B4%EC%95%84%EC%9B%83" loading="lazy"></iframe>
+</div>
+</div></section><section aria-labelledby="그리드_레이아웃"><h3 id="그리드_레이아웃">그리드 레이아웃</h3>
+<div class="section-content">
+<h4 id="html_2">HTML</h4> <div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="tNh7RpR4iTQ0zu82DLPyENUnA9wzHzJDJlx8ZK3MG0c=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>grid<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div> <h4 id="css_2">CSS</h4> <div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="+6+MRodah2ThTyzBBnQyAF4YQj3gZbc8BkJWUn4bwo4=" data-language="css"><span class="token selector">#grid</span> <span class="token punctuation">{</span>
+  <span class="token property">display</span><span class="token punctuation">:</span> grid<span class="token punctuation">;</span>
+  <span class="token property">height</span><span class="token punctuation">:</span> 200px<span class="token punctuation">;</span>
+  <span class="token property">grid-template</span><span class="token punctuation">:</span> <span class="token function">repeat</span><span class="token punctuation">(</span>3<span class="token punctuation">,</span> 1fr<span class="token punctuation">)</span> / <span class="token function">repeat</span><span class="token punctuation">(</span>3<span class="token punctuation">,</span> 1fr<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token property">gap</span><span class="token punctuation">:</span> 20px 5px<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">#grid &gt; div</span> <span class="token punctuation">{</span>
+  <span class="token property">border</span><span class="token punctuation">:</span> 1px solid green<span class="token punctuation">;</span>
+  <span class="token property">background-color</span><span class="token punctuation">:</span> lime<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div> <h4 id="결과_2">결과</h4>
+<div class="code-example" id="sect3">
+
+<iframe class="sample-code-frame" title="그리드 레이아웃 sample" id="frame_그리드_레이아웃" width="auto" height="120px" src="https://live.mdnplay.dev/ko/docs/Web/CSS/gap/runner.html?id=%EA%B7%B8%EB%A6%AC%EB%93%9C_%EB%A0%88%EC%9D%B4%EC%95%84%EC%9B%83" loading="lazy"></iframe>
+</div>
+</div></section><section aria-labelledby="다열_레이아웃"><h3 id="다열_레이아웃">다열 레이아웃</h3>
+<div class="section-content">
+<h4 id="html_3">HTML</h4> <div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="D45eB0KWKsOtMXRJpbz+pqoEJz8HHW9uXuQOEo5YZfY=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>content-box<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+  This is some multi-column text with a 40px column
+  gap created with the CSS <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>code</span><span class="token punctuation">&gt;</span></span>gap<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>code</span><span class="token punctuation">&gt;</span></span> property.
+  Don't you think that's fun and exciting? I sure do!
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div> <h4 id="css_3">CSS</h4> <div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="a+IyC+X9RCJRg8+sUZK8XIY3GiyFbkNwgahMvD+fNO8=" data-language="css"><span class="token selector">.content-box</span> <span class="token punctuation">{</span>
+  <span class="token property">column-count</span><span class="token punctuation">:</span> 3<span class="token punctuation">;</span>
+  <span class="token property">gap</span><span class="token punctuation">:</span> 40px<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div> <h4 id="결과_3">결과</h4>
+<div class="code-example" id="sect4">
+
+<iframe class="sample-code-frame" title="다열 레이아웃 sample" id="frame_다열_레이아웃" width="auto" height="120px" src="https://live.mdnplay.dev/ko/docs/Web/CSS/gap/runner.html?id=%EB%8B%A4%EC%97%B4_%EB%A0%88%EC%9D%B4%EC%95%84%EC%9B%83" loading="lazy"></iframe>
+</div>
+</div></section><h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://drafts.csswg.org/css-align/#gap-shorthand">CSS Box Alignment Module Level 3 <br><small># gap-shorthand</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li>관련 CSS 속성: <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/row-gap"><code>row-gap</code> <small>(en-US)</small></a>, <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/column-gap"><code>column-gap</code> <small>(en-US)</small></a>
+</li> <li>그리드 레이아웃 안내서: <em><a href="css_grid_layout/basic_concepts_of_grid_layout#gutters">Basic concepts of grid layout - Gutters</a></em>
+</li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/CSS/gap" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/CSS/gap</a>
+  </p>
+</div>

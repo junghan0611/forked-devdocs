@@ -1,0 +1,36 @@
+<header><h1>Attr</h1></header><div class="section-content">
+<p><code>Attr</code> 인터페이스는 요소의 속성 중 하나를 객체로 나타냅니다. 대부분의 경우 속성 값을 문자열로 직접 검색하지만(예: <a href="element/getattribute"><code>Element.getAttribute()</code></a>), 특정 함수(예: <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/Element/getAttributeNode"><code>Element.getAttributeNode()</code> <small>(en-US)</small></a>)나 반복을 통해서는 <code>Attr</code> 인스턴스를 반환합니다.</p>
+<svg viewbox="-1 -1 650 42" preserveaspectratio="xMinYMin meet"> <a style="text-decoration: none;" xlink:href="/ko/docs/Web/API/EventTarget">  <text x="44" y="16" font-size="10px" fill="#4D4E53" text-anchor="middle"> EventTarget </text> </a>   <a style="text-decoration: none;" xlink:href="/ko/docs/Web/API/Node">  <text x="155.5" y="16" font-size="10px" fill="#4D4E53" text-anchor="middle"> Node </text> </a>   <a style="text-decoration: none;" xlink:href="/ko/docs/Web/API/Attr" aria-current="page">  <text x="260.5" y="16" font-size="10px" fill="#4D4E53" text-anchor="middle"> Attr </text> </a></svg> <p><code>Attr</code> 객체의 핵심 개념은 '이름'과 '값'의 연관성입니다. 또한 속성은 '네임스페이스'의 일부인 경우가 있는데 이때는 네임스페이스를 식별하는 URI와 네임스페이스의 약어인 접두사를 가집니다.</p> <p>이름은 네임스페이스 접두사를 무시하면 로컬로, 네임스페이스 내의 속성을 포함하면(콜론(<code>:</code>)으로 로컬 이름과 구분된 경우도) 한정(<em>qualified</em>)된 것으로 간주됩니다. 네임스페이스 외부의 속성, 접두사가 정의되지 않은 네임스페이스 내부의 속성, 접두사가 있는 네임스페이스 내부의 속성과 같은 다음 세 가지 경우로 나눌 수 있습니다.</p> <figure class="table-container"><div class="_table"><table> <thead> <tr> <th>속성</th> <th>네임스페이스 이름</th> <th>네임스페이스 접두사</th> <th>속성 로컬 이름</th> <th>한정된 속성 이름</th> </tr> </thead> <tbody> <tr> <td><code>myAttr</code></td> <td><em>none</em></td> <td><em>none</em></td> <td><code>myAttr</code></td> <td><code>myAttr</code></td> </tr> <tr> <td><code>myAttr</code></td> <td><code>mynamespace</code></td> <td><em>none</em></td> <td><code>myAttr</code></td> <td><code>myAttr</code></td> </tr> <tr> <td><code>myAttr</code></td> <td><code>mynamespace</code></td> <td><code>myns</code></td> <td><code>myAttr</code></td> <td><code>myns:myAttr</code></td> </tr> </tbody> </table></div></figure> <div class="notecard note" id="sect1"> <p><strong>참고:</strong> 이 인터페이스는 SVG, HTML 그리고 MathML 요소의 트리 표현에 존재하는 속성만 나타냅니다.</p> <p><a href="https://developer.mozilla.org/ko/docs/Web/HTML/Element/table"><code>&lt;table&gt;</code></a> 요소에 대한 <a href="htmltableelement"><code>HTMLTableElement</code></a> 인터페이스의 속성을 나타내지 않습니다. (속성에 대한 자세한 내용은 <a href="https://developer.mozilla.org/ko/docs/Glossary/Attribute">이 문서</a>를 참고하세요.)</p> </div>
+</div>
+<h2 id="인스턴스_속성">인스턴스 속성</h2>
+<div class="section-content">
+<p>이 인터페이스는 상위 인터페이스인 <a href="node"><code>Node</code></a>와 <a href="eventtarget"><code>EventTarget</code></a>의 속성도 상속합니다.</p> <dl> <dt id="localname_en-us">
+<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/Attr/localName"><code>localName</code> <small>(en-US)</small></a> <span class="badge inline readonly">읽기 전용</span>
+</dt> <dd> <p>속성의 한정된 이름의 로컬 부분을 나타내는 문자열입니다.</p> </dd> <dt id="name_en-us">
+<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/Attr/name"><code>name</code> <small>(en-US)</small></a> <span class="badge inline readonly">읽기 전용</span>
+</dt> <dd> <p>속성의 한정된 이름을 나타내는 문자열입니다. 속성이 네임스페이스에 속하지 않은 경우 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/Attr/localName"><code>localName</code> <small>(en-US)</small></a> 속성과 동일합니다.</p> </dd> <dt id="namespaceuri_en-us">
+<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/Attr/namespaceURI"><code>namespaceURI</code> <small>(en-US)</small></a> <span class="badge inline readonly">읽기 전용</span>
+</dt> <dd> <p>속성의 네임스페이스 URI를 나타내는 문자열입니다. 네임스페이스가 없는 경우 <code>null</code>입니다.</p> </dd> <dt id="ownerelement_en-us">
+<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/Attr/ownerElement"><code>ownerElement</code> <small>(en-US)</small></a> <span class="badge inline readonly">읽기 전용</span>
+</dt> <dd> <p>속성이 속한 <a href="element"><code>Element</code></a>입니다.</p> </dd> <dt id="prefix_en-us">
+<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/Attr/prefix"><code>prefix</code> <small>(en-US)</small></a> <span class="badge inline readonly">읽기 전용</span>
+</dt> <dd> <p>속성의 네임스페이스 접두사를 나타내는 문자열입니다. 접두사가 없거나 네임스페이스가 없는 경우 <code>null</code>입니다.</p> </dd> <dt id="specified_en-us">
+<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/Attr/specified"><code>specified</code> <small>(en-US)</small></a> <span class="badge inline readonly">읽기 전용</span> <abbr class="icon icon-deprecated" title="지원이 중단되었습니다. 새로운 웹사이트에서 사용하지 마세요."> <span class="visually-hidden">지원이 중단되었습니다</span> </abbr>
+</dt> <dd> <p>이 속성은 항상 <code>true</code>를 반환합니다.</p> </dd> <dt id="value_en-us"><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/Attr/value"><code>value</code> <small>(en-US)</small></a></dt> <dd> <p>이 속성을 사용하여 설정하고 가져올 수 있는 문자열인 속성의 값입니다.</p> </dd> </dl>
+</div>
+<h2 id="인스턴스_메서드">인스턴스 메서드</h2>
+<div class="section-content"><p>이 인터페이스는 특정 메서드를 가지지 않지만, 상위 인터페이스인 <a href="node"><code>Node</code></a>와 <a href="eventtarget"><code>EventTarget</code></a>의 메서드를 상속합니다.</p></div>
+<h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://dom.spec.whatwg.org/#interface-attr">DOM Standard <br><small># interface-attr</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li>다른 노드는 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/CDATASection"><code>CDATASection</code> <small>(en-US)</small></a>, <a href="characterdata"><code>CharacterData</code></a>, <a href="comment"><code>Comment</code></a>, <a href="document"><code>Document</code></a>, <a href="element"><code>Element</code></a>, <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/ProcessingInstruction"><code>ProcessingInstruction</code> <small>(en-US)</small></a>, 그리고 <a href="text"><code>Text</code></a>가 있습니다.</li> </ul></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/Attr" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/Attr</a>
+  </p>
+</div>

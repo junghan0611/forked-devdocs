@@ -1,0 +1,79 @@
+<header><h1>Intl.NumberFormat</h1></header><div class="section-content"><p>**<code>Intl.NumberFormat</code>**은 언어에 맞는 숫자 서식을 지원하는 객체의 생성자입니다.</p></div>
+<section aria-labelledby="시도해보기"><h2 id="시도해보기">시도해보기</h2>
+<div class="section-content"><iframe class="interactive is-js-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/js/intl-numberformat.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe></div></section><section aria-labelledby="생성자"><h2 id="생성자">생성자</h2>
+<div class="section-content"><dl> <dt id="intl.numberformat_en-us"><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat/NumberFormat"><code>Intl.NumberFormat()</code> <small>(en-US)</small></a></dt> <dd> <p>Creates a new <code>NumberFormat</code> object.</p> </dd> </dl></div></section><section aria-labelledby="정적_메서드"><h2 id="정적_메서드">정적 메서드</h2>
+<div class="section-content"><dl> <dt id="intl.numberformat.supportedlocalesof_en-us"><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat/supportedLocalesOf"><code>Intl.NumberFormat.supportedLocalesOf()</code> <small>(en-US)</small></a></dt> <dd> <p>주어진 로케일 목록 중, 런타임이 지원하는 항목을 배열로 반환합니다.</p> </dd> </dl></div></section><section aria-labelledby="인스턴스_메서드"><h2 id="인스턴스_메서드">인스턴스 메서드</h2>
+<div class="section-content"><dl> <dt id="intl.numberformat.prototype.format_en-us"><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat/format"><code>Intl.NumberFormat.prototype.format()</code> <small>(en-US)</small></a></dt> <dd> <p>Getter function that formats a number according to the locale and formatting options of this <a href="numberformat" aria-current="page"><code>Intl.NumberFormat</code></a> object.</p> </dd> <dt id="intl.numberformat.prototype.formattoparts_en-us"><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat/formatToParts"><code>Intl.NumberFormat.prototype.formatToParts()</code> <small>(en-US)</small></a></dt> <dd> <p>Returns an <a href="../array"><code>Array</code></a> of objects representing the number string in parts that can be used for custom locale-aware formatting.</p> </dd> <dt id="intl.numberformat.prototype.formatrange_en-us"><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat/formatRange"><code>Intl.NumberFormat.prototype.formatRange()</code> <small>(en-US)</small></a></dt> <dd> <p>Getter function that formats a range of numbers according to the locale and formatting options of the <a href="numberformat" aria-current="page"><code>Intl.NumberFormat</code></a> object from which the method is called.</p> </dd> <dt id="intl.numberformat.prototype.formatrangetoparts_en-us"><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat/formatRangeToParts"><code>Intl.NumberFormat.prototype.formatRangeToParts()</code> <small>(en-US)</small></a></dt> <dd> <p>Returns an <a href="../array"><code>Array</code></a> of objects representing the range of number strings in parts that can be used for custom locale-aware formatting.</p> </dd> <dt id="intl.numberformat.prototype.resolvedoptions_en-us"><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat/resolvedOptions"><code>Intl.NumberFormat.prototype.resolvedOptions()</code> <small>(en-US)</small></a></dt> <dd> <p>Returns a new object with properties reflecting the locale and collation options computed during initialization of the object.</p> </dd> </dl></div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+</section><section aria-labelledby="기본적인_사용_방법"><h3 id="기본적인_사용_방법">기본적인 사용 방법</h3>
+<div class="section-content">
+<p>로케일을 지정하지 않고 사용하면 기본 로케일 및 기본 옵션 서식을 적용한 문자열을 반환합니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="HbDTtip9tzr3SiP3PmOAOsy3Zi1IDPvfGbVX6Mtewjc=" data-language="js"><span class="token keyword">var</span> number <span class="token operator">=</span> <span class="token number">3500</span><span class="token punctuation">;</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Intl<span class="token punctuation">.</span>NumberFormat</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">format</span><span class="token punctuation">(</span>number<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// → 한국 로케일의 경우 '3,500' 표시</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="locales_사용하기"><h3 id="locales_사용하기">
+<code>locales</code> 사용하기</h3>
+<div class="section-content">
+<p>다음 예제는 지역화된 숫자 서식의 예시를 보입니다. 어플리케이션의 사용자 인터페이스 언어에 맞는 서식을 적용하려면 <code>locales</code> 매개변수로 적절한 언어(와, 필요한 경우 대체 언어)를 제공하는걸 잊지 마세요.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="TgBbOeG6pBQDbt0ym40hBIm5LetArNn73dnQwFb8E1c=" data-language="js"><span class="token keyword">var</span> number <span class="token operator">=</span> <span class="token number">123456.789</span><span class="token punctuation">;</span>
+
+<span class="token comment">// 독일은 소수점 구분자로 쉼표를 사용하고 천 단위 구분자로 마침표를 사용</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Intl<span class="token punctuation">.</span>NumberFormat</span><span class="token punctuation">(</span><span class="token string">'de-DE'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">format</span><span class="token punctuation">(</span>number<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// → 123.456,789</span>
+
+<span class="token comment">// 대부분의 아랍어 사용 국가에서는 실제 아라비아 숫자를 사용</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Intl<span class="token punctuation">.</span>NumberFormat</span><span class="token punctuation">(</span><span class="token string">'ar-EG'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">format</span><span class="token punctuation">(</span>number<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// → ١٢٣٤٥٦٫٧٨٩</span>
+
+<span class="token comment">// 인도는 천, 라크(십만), 크로르(천만) 단위에 구분자 사용</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Intl<span class="token punctuation">.</span>NumberFormat</span><span class="token punctuation">(</span><span class="token string">'en-IN'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">format</span><span class="token punctuation">(</span>number<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// → 1,23,456.789</span>
+
+<span class="token comment">// nu 확장 키로 기수법 지정 (아래 예시는 중국식 숫자 표기)</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Intl<span class="token punctuation">.</span>NumberFormat</span><span class="token punctuation">(</span><span class="token string">'zh-Hans-CN-u-nu-hanidec'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">format</span><span class="token punctuation">(</span>number<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// → 一二三,四五六.七八九</span>
+
+<span class="token comment">// 발리어와 같이 지원되지 않을 수도 있는 언어를 지정할 때는</span>
+<span class="token comment">// 다음과 같이 대체 언어를 지정할 수 있음. 아래의 경우 대체 언어는 인도어</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Intl<span class="token punctuation">.</span>NumberFormat</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">'ban'</span><span class="token punctuation">,</span> <span class="token string">'id'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">format</span><span class="token punctuation">(</span>number<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// → 123.456,789</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="options_사용"><h3 id="options_사용">
+<code>options</code> 사용</h3>
+<div class="section-content">
+<p><code>options</code> 매개변수를 지정해 결과를 원하는 형태로 바꿀 수 있습니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="fYO+ha4d++hVWgcrLnrZyI1TeYdTnSe0b7OfvbRn51g=" data-language="js"><span class="token keyword">var</span> number <span class="token operator">=</span> <span class="token number">123456.789</span><span class="token punctuation">;</span>
+
+<span class="token comment">// 통화 서식</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Intl<span class="token punctuation">.</span>NumberFormat</span><span class="token punctuation">(</span><span class="token string">'de-DE'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> <span class="token literal-property property">style</span><span class="token operator">:</span> <span class="token string">'currency'</span><span class="token punctuation">,</span> <span class="token literal-property property">currency</span><span class="token operator">:</span> <span class="token string">'EUR'</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">format</span><span class="token punctuation">(</span>number<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// → 123.456,79 €</span>
+
+<span class="token comment">// 한국 원화는 보조 통화 단위를 사용하지 않음</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Intl<span class="token punctuation">.</span>NumberFormat</span><span class="token punctuation">(</span><span class="token string">'ko-KR'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> <span class="token literal-property property">style</span><span class="token operator">:</span> <span class="token string">'currency'</span><span class="token punctuation">,</span> <span class="token literal-property property">currency</span><span class="token operator">:</span> <span class="token string">'KRW'</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">format</span><span class="token punctuation">(</span>number<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// → ₩123,457</span>
+
+<span class="token comment">// 유효숫자를 세 개로 제한</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Intl<span class="token punctuation">.</span>NumberFormat</span><span class="token punctuation">(</span><span class="token string">'en-IN'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> <span class="token literal-property property">maximumSignificantDigits</span><span class="token operator">:</span> <span class="token number">3</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">format</span><span class="token punctuation">(</span>number<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// → 1,23,000</span>
+</pre>
+</div>
+</div></section><h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://tc39.es/ecma402/#numberformat-objects">ECMAScript Internationalization API Specification <br><small># numberformat-objects</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="../intl"><code>Intl</code></a></li> <li><a href="https://formatjs.io/docs/polyfills/intl-numberformat" target="_blank">A polyfill of <code>Intl.NumberFormat</code> in FormatJS</a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat</a>
+  </p>
+</div>

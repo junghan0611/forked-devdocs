@@ -1,0 +1,73 @@
+<header><h1>의사 클래스</h1></header><div class="section-content">
+<p><a href="https://developer.mozilla.org/ko/docs/Web/CSS">CSS</a> <strong>의사 클래스</strong>(가상 클래스)는 선택자에 추가하는 키워드로, 선택한 요소가 특별한 상태여야 만족할 수 있습니다. 예를 들어 <a href=":hover"><code>:hover</code></a>를 사용하면 포인터를 올렸을 때에만 글씨 색을 바꾸고 싶을 때 사용할 수 있습니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="z7AWWcEeCGTbTVC0lLzJAYTk7JtzopvMhmgglTe7jCw=" data-language="css"><span class="token comment">/* Any button over which the user's pointer is hovering */</span>
+<span class="token selector">button:hover</span> <span class="token punctuation">{</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> blue<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div> <p>의사 클래스를 사용하면 문서 트리 콘텐츠와 관련된 경우 뿐만 아니라 탐색기 히스토리(<a href=":visited"><code>:visited</code></a> 등), 콘텐츠의 상태(특정 폼 요소에 적용한 <a href=":checked"><code>:checked</code></a> 등), 마우스의 위치(커서가 마우스 위인지 아닌지 알 수 있는 <a href=":hover"><code>:hover</code></a> 등)처럼 외부 인자와 관련된 경우에도 스타일을 적용할 수 있습니다.</p> <div class="notecard note" id="sect1"> <p><strong>참고:</strong> <a href="pseudo-elements">의사 요소</a>는 의사 클래스와 달리 요소의 <strong>특정 부분</strong>에 스타일을 적용할 때 사용합니다.</p> </div>
+</div>
+<section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content">
+<pre class="notranslate">selector:pseudo-class {
+  property: value;
+}
+</pre> <p>일반적인 클래스와 같이 여러 개의 의사 클래스를 조합해 복잡한 선택자를 만들 수 있습니다.</p>
+</div></section><section aria-labelledby="표준_의사_클래스_색인"><h2 id="표준_의사_클래스_색인">표준 의사 클래스 색인</h2>
+<div class="section-content"><ul> <li><a href=":active"><code>:active</code></a></li> <li>
+<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:any-link"><code>:any-link</code> <small>(en-US)</small></a> <abbr class="icon icon-experimental" title="Experimental. 예상되는 동작은 향후 변경될 수 있습니다."> <span class="visually-hidden">Experimental</span> </abbr>
+</li> <li>
+<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:blank"><code>:blank</code> <small>(en-US)</small></a> <abbr class="icon icon-experimental" title="Experimental. 예상되는 동작은 향후 변경될 수 있습니다."> <span class="visually-hidden">Experimental</span> </abbr>
+</li> <li><a href=":checked"><code>:checked</code></a></li> <li>
+<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:current"><code>:current</code> <small>(en-US)</small></a> <abbr class="icon icon-experimental" title="Experimental. 예상되는 동작은 향후 변경될 수 있습니다."> <span class="visually-hidden">Experimental</span> </abbr>
+</li> <li><a href=":default"><code>:default</code></a></li> <li><a href=":defined"><code>:defined</code></a></li> <li>
+<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:dir"><code>:dir()</code> <small>(en-US)</small></a> <abbr class="icon icon-experimental" title="Experimental. 예상되는 동작은 향후 변경될 수 있습니다."> <span class="visually-hidden">Experimental</span> </abbr>
+</li> <li><a href=":disabled"><code>:disabled</code></a></li> <li>
+<a class="page-not-created"><code>:drop</code></a> <abbr class="icon icon-experimental" title="Experimental. 예상되는 동작은 향후 변경될 수 있습니다."> <span class="visually-hidden">Experimental</span> </abbr>
+</li> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:empty"><code>:empty</code> <small>(en-US)</small></a></li> <li><a href=":enabled"><code>:enabled</code></a></li> <li><a href=":first"><code>:first</code></a></li> <li><a href=":first-child"><code>:first-child</code></a></li> <li><a href=":first-of-type"><code>:first-of-type</code></a></li> <li>
+<a href=":fullscreen"><code>:fullscreen</code></a> <abbr class="icon icon-experimental" title="Experimental. 예상되는 동작은 향후 변경될 수 있습니다."> <span class="visually-hidden">Experimental</span> </abbr>
+</li> <li>
+<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:future"><code>:future</code> <small>(en-US)</small></a> <abbr class="icon icon-experimental" title="Experimental. 예상되는 동작은 향후 변경될 수 있습니다."> <span class="visually-hidden">Experimental</span> </abbr>
+</li> <li><a href=":focus"><code>:focus</code></a></li> <li>
+<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:focus-visible"><code>:focus-visible</code> <small>(en-US)</small></a> <abbr class="icon icon-experimental" title="Experimental. 예상되는 동작은 향후 변경될 수 있습니다."> <span class="visually-hidden">Experimental</span> </abbr>
+</li> <li><a href=":focus-within"><code>:focus-within</code></a></li> <li>
+<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:has"><code>:has()</code> <small>(en-US)</small></a> <abbr class="icon icon-experimental" title="Experimental. 예상되는 동작은 향후 변경될 수 있습니다."> <span class="visually-hidden">Experimental</span> </abbr>
+</li> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:host"><code>:host</code> <small>(en-US)</small></a></li> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:host_function"><code>:host()</code> <small>(en-US)</small></a></li> <li>
+<a class="page-not-created"><code>:host-context()</code></a> <abbr class="icon icon-experimental" title="Experimental. 예상되는 동작은 향후 변경될 수 있습니다."> <span class="visually-hidden">Experimental</span> </abbr>
+</li> <li><a href=":hover"><code>:hover</code></a></li> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:indeterminate"><code>:indeterminate</code> <small>(en-US)</small></a></li> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:in-range"><code>:in-range</code> <small>(en-US)</small></a></li> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:invalid"><code>:invalid</code> <small>(en-US)</small></a></li> <li>
+<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:is"><code>:is()</code> <small>(en-US)</small></a> <abbr class="icon icon-experimental" title="Experimental. 예상되는 동작은 향후 변경될 수 있습니다."> <span class="visually-hidden">Experimental</span> </abbr>
+</li> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:lang"><code>:lang()</code> <small>(en-US)</small></a></li> <li><a href=":last-child"><code>:last-child</code></a></li> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:last-of-type"><code>:last-of-type</code> <small>(en-US)</small></a></li> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:left"><code>:left</code> <small>(en-US)</small></a></li> <li><a href=":link"><code>:link</code></a></li> <li>
+<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:local-link"><code>:local-link</code> <small>(en-US)</small></a> <abbr class="icon icon-experimental" title="Experimental. 예상되는 동작은 향후 변경될 수 있습니다."> <span class="visually-hidden">Experimental</span> </abbr>
+</li> <li><a href=":not"><code>:not()</code></a></li> <li><a href=":nth-child"><code>:nth-child()</code></a></li> <li>
+<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:nth-col"><code>:nth-col()</code> <small>(en-US)</small></a> <abbr class="icon icon-experimental" title="Experimental. 예상되는 동작은 향후 변경될 수 있습니다."> <span class="visually-hidden">Experimental</span> </abbr>
+</li> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:nth-last-child"><code>:nth-last-child()</code> <small>(en-US)</small></a></li> <li>
+<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:nth-last-col"><code>:nth-last-col()</code> <small>(en-US)</small></a> <abbr class="icon icon-experimental" title="Experimental. 예상되는 동작은 향후 변경될 수 있습니다."> <span class="visually-hidden">Experimental</span> </abbr>
+</li> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:nth-last-of-type"><code>:nth-last-of-type()</code> <small>(en-US)</small></a></li> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:nth-of-type"><code>:nth-of-type()</code> <small>(en-US)</small></a></li> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:only-child"><code>:only-child</code> <small>(en-US)</small></a></li> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:only-of-type"><code>:only-of-type</code> <small>(en-US)</small></a></li> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:optional"><code>:optional</code> <small>(en-US)</small></a></li> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:out-of-range"><code>:out-of-range</code> <small>(en-US)</small></a></li> <li>
+<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:past"><code>:past</code> <small>(en-US)</small></a> <abbr class="icon icon-experimental" title="Experimental. 예상되는 동작은 향후 변경될 수 있습니다."> <span class="visually-hidden">Experimental</span> </abbr>
+</li> <li>
+<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:placeholder-shown"><code>:placeholder-shown</code> <small>(en-US)</small></a> <abbr class="icon icon-experimental" title="Experimental. 예상되는 동작은 향후 변경될 수 있습니다."> <span class="visually-hidden">Experimental</span> </abbr>
+</li> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:read-only"><code>:read-only</code> <small>(en-US)</small></a></li> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:read-write"><code>:read-write</code> <small>(en-US)</small></a></li> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:required"><code>:required</code> <small>(en-US)</small></a></li> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:right"><code>:right</code> <small>(en-US)</small></a></li> <li><a href=":root"><code>:root</code></a></li> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:scope"><code>:scope</code> <small>(en-US)</small></a></li> <li>
+<a class="page-not-created"><code>:state()</code></a> <abbr class="icon icon-experimental" title="Experimental. 예상되는 동작은 향후 변경될 수 있습니다."> <span class="visually-hidden">Experimental</span> </abbr>
+</li> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:target"><code>:target</code> <small>(en-US)</small></a></li> <li>
+<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:target-within"><code>:target-within</code> <small>(en-US)</small></a> <abbr class="icon icon-experimental" title="Experimental. 예상되는 동작은 향후 변경될 수 있습니다."> <span class="visually-hidden">Experimental</span> </abbr>
+</li> <li>
+<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:user-invalid"><code>:user-invalid</code> <small>(en-US)</small></a> <abbr class="icon icon-experimental" title="Experimental. 예상되는 동작은 향후 변경될 수 있습니다."> <span class="visually-hidden">Experimental</span> </abbr>
+</li> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:valid"><code>:valid</code> <small>(en-US)</small></a></li> <li><a href=":visited"><code>:visited</code></a></li> <li>
+<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:where"><code>:where()</code> <small>(en-US)</small></a> <abbr class="icon icon-experimental" title="Experimental. 예상되는 동작은 향후 변경될 수 있습니다."> <span class="visually-hidden">Experimental</span> </abbr>
+</li> </ul></div></section><h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody>
+<tr><td><a href="https://html.spec.whatwg.org/multipage/#pseudo-classes">HTML Standard <br><small># pseudo-classes</small></a></td></tr>
+<tr><td><a href="https://drafts.csswg.org/selectors/">Selectors Level 4 <br></a></td></tr>
+<tr><td><a href="https://drafts.csswg.org/css-ui/">CSS Basic User Interface Module Level 4 <br></a></td></tr>
+</tbody>
+</table></div>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="pseudo-elements">의사 요소</a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/CSS/Pseudo-classes" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/CSS/Pseudo-classes</a>
+  </p>
+</div>

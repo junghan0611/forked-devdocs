@@ -1,0 +1,187 @@
+<header><h1>Template literals</h1></header><div class="section-content"><p>템플릿 리터럴은 내장된 표현식을 허용하는 문자열 리터럴입니다. 여러 줄로 이뤄진 문자열과 문자 보간기능을 사용할 수 있습니다. 이전 버전의 ES2015사양 명세에서는 "template strings" (템플릿 문자열) 라고 불려 왔습니다.</p></div>
+<section aria-labelledby="syntax"><h2 id="syntax">Syntax</h2>
+<div class="section-content"><pre class="notranslate">    `string text`
+
+    `string text line 1
+     string text line 2`
+
+    `string text ${expression} string text`
+
+    tag `string text ${expression} string text`
+</pre></div></section><section aria-labelledby="description"><h2 id="description">Description</h2>
+<div class="section-content">
+<p>템플릿 리터럴은 이중 따옴표 나 작은 따옴표 대신 백틱(` `) (<a href="http://en.wikipedia.org/wiki/Grave_accent" target="_blank">grave accent</a>) 을 이용합니다. 템플릿 리터럴은 또한 플레이스 홀더를 이용하여 표현식을 넣을 수 있는데, 이는 $와 중괄호( <code>$ {expression}</code> ) 로 표기할 수 있습니다. 플레이스 홀더 안에서의 표현식과 그 사이의 텍스트는 함께 함수로 전달됩니다. 기본 함수는 단순히 해당 부분을 단일 문자열로 연결시켜 줍니다. 템플릿 리터럴 앞에 어떠한 표현식이 있다면(여기에서는 태그), 템플릿 리터럴은 "태그가 지정된 템플릿"이라고 불리게 됩니다. 이 때, 태그 표현식 (주로 함수)이 처리된 템플릿 리터럴과 함께 호출되면, 출력하기 전에 조작할 수 있습니다. 템플릿 리터럴 안에서 백틱 문자를 사용하려면 백틱 앞에 백슬러쉬(\)를 넣으십시오.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="mBhflVnOESGhbPqZoMYTsu3q6QaZMjD6eB1SAjbszz8=" data-language="js"><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">\`</span><span class="token template-punctuation string">`</span></span> <span class="token operator">===</span> <span class="token string">"`"</span> <span class="token comment">// --&gt; true</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="multi-line_strings"><h3 id="multi-line_strings">Multi-line strings</h3>
+<div class="section-content">
+<p>source 내에 삽입되는 newline characters(\n)은 template literal의 일부가 됩니다.</p> <p>일반 string 들을 사용하여, multi-line strings 들을 얻기 위해서는 아래와 같은 문법을 사용해야 할 것입니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="m5RvrHomky+eJDKuLI702YQb/8s5qxx/UIkQEG2n0hA=" data-language="js">console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"string text line 1\n"</span><span class="token operator">+</span>
+<span class="token string">"string text line 2"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// "string text line 1</span>
+<span class="token comment">// string text line 2"</span>
+</pre>
+</div> <p>같은 효과를 template literal을 통해 얻기 위해서는, 아래와 같이 적을 수 있습니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="0weQlKv+or/JxXSkYX3Tsdpxe4Jvqi8O5+v3H08JkOM=" data-language="js">console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">string text line 1
+string text line 2</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// "string text line 1</span>
+<span class="token comment">// string text line 2"</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="expression_interpolation표현식_삽입법"><h3 id="expression_interpolation표현식_삽입법">Expression interpolation(표현식 삽입법)</h3>
+<div class="section-content">
+<p>표현식(expression)을 일반 문자열(normal strings)에 삽입하기 위해서, 당신은 다음의 문법을 사용할 수 있을 것입니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="ycM1ZY7CVeEJPbYHVro4tAHIPsThuM93StQwifytG4I=" data-language="js"><span class="token keyword">var</span> a <span class="token operator">=</span> <span class="token number">5</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> b <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"Fifteen is "</span> <span class="token operator">+</span> <span class="token punctuation">(</span>a <span class="token operator">+</span> b<span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">" and\nnot "</span> <span class="token operator">+</span> <span class="token punctuation">(</span><span class="token number">2</span> <span class="token operator">*</span> a <span class="token operator">+</span> b<span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">"."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// "Fifteen is 15 and</span>
+<span class="token comment">// not 20."</span>
+</pre>
+</div> <p>template literals을 이용하면, 이를 더욱 읽기 쉽도록 다음과 같은 문법 설탕(syntactic sugar) 을 활용할 수 있습니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="TPgZtTmr9dasmDS5GEBk4Wh854/w8bPcVAT6zh+ci+U=" data-language="js"><span class="token keyword">var</span> a <span class="token operator">=</span> <span class="token number">5</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> b <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">Fifteen is </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>a <span class="token operator">+</span> b<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string"> and
+not </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span><span class="token number">2</span> <span class="token operator">*</span> a <span class="token operator">+</span> b<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">.</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// "Fifteen is 15 and</span>
+<span class="token comment">// not 20."</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="nesting_templates"><h3 id="nesting_templates">Nesting templates</h3>
+<div class="section-content">
+<p>특정한 경우 템플릿을 중첩하는 것이 구성 가능한 문자열을 읽는 읽기 가장 쉬운 방법입니다. 백 스페이스 템플릿 내에서 템플릿 내의 자리 표시자<code>${}</code>에 내부 백틱을 사용하는 것이 쉽습니다. 예를 들어, 조건 a가 참이면:이 템플릿을 문자 그대로 반환합니다.</p> <p>In ES5:</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="l6E/ZK9IniQrrtl/PLPtJSv92OHAF/QLc4lCuw6mvIQ=" data-language="js">    <span class="token keyword">var</span> classes <span class="token operator">=</span> <span class="token string">'header'</span>
+    classes <span class="token operator">+=</span> <span class="token punctuation">(</span><span class="token function">isLargeScreen</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">?</span>
+       <span class="token string-property property">''</span> <span class="token operator">:</span> item<span class="token punctuation">.</span>isCollapsed <span class="token operator">?</span>
+         <span class="token string-property property">' icon-expander'</span> <span class="token operator">:</span> <span class="token string">' icon-collapser'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div> <p>ES2015에서 중첩(nesting)없이 템플릿 리터럴 사용한 경우:</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="x3UVjpoURuXYpaZnGycgifAyGHwpU+p09Vf7o4CJQv0=" data-language="js">    <span class="token keyword">const</span> classes <span class="token operator">=</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">header </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span> <span class="token function">isLargeScreen</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">?</span> <span class="token string">''</span> <span class="token operator">:</span>
+        <span class="token punctuation">(</span>item<span class="token punctuation">.</span>isCollapsed <span class="token operator">?</span> <span class="token string">'icon-expander'</span> <span class="token operator">:</span> <span class="token string">'icon-collapser'</span><span class="token punctuation">)</span> <span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">;</span>
+</pre>
+</div> <p>ES2015에서 중첩된(nested) 템플릿 리터럴을 사용한 경우:</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="DcCi4/vJNyMqgPu70dpkyDlPDJ43qTrmPkobzt8qL80=" data-language="js">    <span class="token keyword">const</span> classes <span class="token operator">=</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">header </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span> <span class="token function">isLargeScreen</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">?</span> <span class="token string">''</span> <span class="token operator">:</span>
+     <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">icon-</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>item<span class="token punctuation">.</span>isCollapsed <span class="token operator">?</span> <span class="token string">'expander'</span> <span class="token operator">:</span> <span class="token string">'collapser'</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span> <span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">;</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="tagged_templates"><h3 id="tagged_templates">Tagged templates</h3>
+<div class="section-content">
+<p>template literals 의 더욱 발전된 한 형태는 <em>tagged</em> templates 입니다. 태그를 사용하면 템플릿 리터럴을 함수로 파싱 할 수 있습니다. 태그 함수의 첫 번째 인수는 문자열 값의 배열을 포함합니다. 나머지 인수는 표현식과 관련됩니다. 결국 함수는 조작 된 문자열을 반환 할 수 있습니다 (또는 다음 예제에서 설명하는 것과 완전히 다른 결과를 반환 할 수 있습니다). function 이름은 원하는 어떤 것이든 가능합니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="8aVqemwOg+tTUDng5F7Q9vF7APY7NzBUgYwE5ziqw7g=" data-language="js">    <span class="token keyword">var</span> person <span class="token operator">=</span> <span class="token string">'Mike'</span><span class="token punctuation">;</span>
+    <span class="token keyword">var</span> age <span class="token operator">=</span> <span class="token number">28</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">function</span> <span class="token function">myTag</span><span class="token punctuation">(</span><span class="token parameter">strings<span class="token punctuation">,</span> personExp<span class="token punctuation">,</span> ageExp</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+      <span class="token keyword">var</span> str0 <span class="token operator">=</span> strings<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment">// "that "</span>
+      <span class="token keyword">var</span> str1 <span class="token operator">=</span> strings<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment">// " is a "</span>
+
+      <span class="token comment">// 사실 이 예제의 string에서 표현식이 두 개 삽입되었으므로</span>
+      <span class="token comment">// ${age} 뒤에는 ''인 string이 존재하여</span>
+      <span class="token comment">// 기술적으로 strings 배열의 크기는 3이 됩니다.</span>
+      <span class="token comment">// 하지만 빈 string이므로 무시하겠습니다.</span>
+      <span class="token comment">// var str2 = strings[2];</span>
+
+      <span class="token keyword">var</span> ageStr<span class="token punctuation">;</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span>ageExp <span class="token operator">&gt;</span> <span class="token number">99</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        ageStr <span class="token operator">=</span> <span class="token string">'centenarian'</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+        ageStr <span class="token operator">=</span> <span class="token string">'youngster'</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+
+      <span class="token comment">// 심지어 이 함수내에서도 template literal을 반환할 수 있습니다.</span>
+      <span class="token keyword">return</span> str0 <span class="token operator">+</span> personExp <span class="token operator">+</span> str1 <span class="token operator">+</span> ageStr<span class="token punctuation">;</span>
+
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">var</span> output <span class="token operator">=</span> myTag<span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">that </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span> person <span class="token interpolation-punctuation punctuation">}</span></span><span class="token string"> is a </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span> age <span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">;</span>
+
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>output<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// that Mike is a youngster</span>
+</pre>
+</div> <p>다음 예시에서 보여지듯이, Tag function 들은 string 을 반환할 필요는 없습니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="zVbdpSto2qFuw5G39RluDwUq3gt60x4oSLaZdNFim08=" data-language="js"><span class="token keyword">function</span> <span class="token function">template</span><span class="token punctuation">(</span><span class="token parameter">strings<span class="token punctuation">,</span> <span class="token operator">...</span>keys</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter"><span class="token operator">...</span>values</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">var</span> dict <span class="token operator">=</span> values<span class="token punctuation">[</span>values<span class="token punctuation">.</span>length <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">||</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+    <span class="token keyword">var</span> result <span class="token operator">=</span> <span class="token punctuation">[</span>strings<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    keys<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">key<span class="token punctuation">,</span> i</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">var</span> value <span class="token operator">=</span> Number<span class="token punctuation">.</span><span class="token function">isInteger</span><span class="token punctuation">(</span>key<span class="token punctuation">)</span> <span class="token operator">?</span> values<span class="token punctuation">[</span>key<span class="token punctuation">]</span> <span class="token operator">:</span> dict<span class="token punctuation">[</span>key<span class="token punctuation">]</span><span class="token punctuation">;</span>
+      result<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>value<span class="token punctuation">,</span> strings<span class="token punctuation">[</span>i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> result<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span><span class="token string">''</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">var</span> t1Closure <span class="token operator">=</span> template<span class="token template-string"><span class="token template-punctuation string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span><span class="token number">0</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span><span class="token number">1</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span><span class="token number">0</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">!</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">;</span>
+<span class="token function">t1Closure</span><span class="token punctuation">(</span><span class="token string">'Y'</span><span class="token punctuation">,</span> <span class="token string">'A'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// "YAY!"</span>
+<span class="token keyword">var</span> t2Closure <span class="token operator">=</span> template<span class="token template-string"><span class="token template-punctuation string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span><span class="token number">0</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span><span class="token string">'foo'</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">!</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">;</span>
+<span class="token function">t2Closure</span><span class="token punctuation">(</span><span class="token string">'Hello'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span><span class="token literal-property property">foo</span><span class="token operator">:</span> <span class="token string">'World'</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// "Hello World!"</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="raw_strings"><h3 id="raw_strings">Raw strings</h3>
+<div class="section-content">
+<p>태그 지정된 템플릿의 첫 번째 함수 인수에서 사용할 수있는 특별한 <code>raw</code> property을 사용하면 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Grammar_and_types#using_special_characters_in_strings">escape sequences</a> 처리하지 않고 원시 문자열을 입력 한대로 액세스 할 수 있습니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="+3oG9b8Nr3ERHcdfvwATjxtW5vSTdXQKSMnElu3GOVk=" data-language="js">    <span class="token keyword">function</span> <span class="token function">tag</span><span class="token punctuation">(</span><span class="token parameter">strings</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>strings<span class="token punctuation">.</span>raw<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    tag<span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">string text line 1 \n string text line 2</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">;</span>
+    <span class="token comment">// logs "string text line 1 \n string text line 2" ,</span>
+    <span class="token comment">// including the two characters '\' and 'n'</span>
+</pre>
+</div> <p>추가로, default template function 과 string 병합으로 생성될 것 같은 raw string 을 생성하기 위한 <a href="global_objects/string/raw"><code>String.raw()</code></a> method가 존재합니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="zQSCK1y6ILHs+7QSm/NiGDTurTmnOj98l2RyskqvpoE=" data-language="js">    <span class="token keyword">var</span> str <span class="token operator">=</span> String<span class="token punctuation">.</span>raw<span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">Hi\n</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span><span class="token number">2</span><span class="token operator">+</span><span class="token number">3</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">!</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">;</span>
+    <span class="token comment">// "Hi\n5!"</span>
+
+    str<span class="token punctuation">.</span>length<span class="token punctuation">;</span>
+    <span class="token comment">// 6</span>
+
+    str<span class="token punctuation">.</span><span class="token function">split</span><span class="token punctuation">(</span><span class="token string">''</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span><span class="token string">','</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// "H,i,\,n,5,!"</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="tagged_templates_and_escape_sequences"><h3 id="tagged_templates_and_escape_sequences">Tagged templates and escape sequences</h3>
+<div class="section-content">
+<h4 id="es2016_behavior">ES2016 behavior</h4> <p>ECMAScript 2016에서 tagged templates은 다음 escape sequences의 규칙을 따릅니다.</p> <ul> <li>Unicode escapes started by "\u", for example <code>\u00A9</code>
+</li> <li>Unicode code point escapes indicated by "\u{}", for example <code>\u{2F804}</code>
+</li> <li>Hexadecimal escapes started by "\x", for example <code>\xA9</code>
+</li> <li>Octal literal escapes started by "\" and (a) digit(s), for example <code>\251</code>
+</li> </ul> <p>이는 다음과 같은 tagged template이 문제가 된다는 것을 의미하는데, ECMAScript문법에 따라, parser는 유효한 유니 코드 탈출 시퀀스가 있는지 확인하지만 형식이 잘못되었기 때문에 오류가 발생합니다.</p> <pre class="notranslate">    latex`\unicode`
+    // Throws in older ECMAScript versions (ES2016 and earlier)
+    // SyntaxError: malformed Unicode character escape sequence
+</pre> <h4 id="es2018_revision_of_illegal_escape_sequences">ES2018 revision of illegal escape sequences</h4> <p>Tagged templates은 다른 escapes sequences가 일반적으로 사용되는 언어 (예 : <a href="https://en.wikipedia.org/wiki/Domain-specific_language" target="_blank">DSLs</a> 또는 <a href="https://en.wikipedia.org/wiki/LaTeX" target="_blank">LaTeX</a>)의 임베딩을 허용해야합니다. ECMAScript proposal <a href="https://tc39.github.io/proposal-template-literal-revision/" target="_blank">Template Literal Revision</a> (4 단계, ECMAScript 2018 표준에 통합됨)은 tagged templates에서 ECMAScript escape sequences의 구문 제한을 제거합니다.</p> <p>그러나 illegal escape sequences는 여전히 "cooked"라고 표현되어야합니다. "cooked"배열의 <a href="global_objects/undefined"><code>undefined</code></a> 요소로 나타납니다 :</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="E1GLehYxampuwDfUOEK9LyP+PvrfDZRGh8yi7u8yPdk=" data-language="js">    <span class="token keyword">function</span> <span class="token function">latex</span><span class="token punctuation">(</span><span class="token parameter">str</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+     <span class="token keyword">return</span> <span class="token punctuation">{</span> <span class="token string-property property">"cooked"</span><span class="token operator">:</span> str<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token string-property property">"raw"</span><span class="token operator">:</span> str<span class="token punctuation">.</span>raw<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+    latex<span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">\unicode</span><span class="token template-punctuation string">`</span></span>
+
+    <span class="token comment">// { cooked: undefined, raw: "\\unicode" }</span>
+</pre>
+</div> <p>escape sequence 제한은 <em>tagged</em> templates에만 적용되며 <em>untagged</em> template literals에는 적용되지 않습니다.</p> <blockquote> <p><strong>Warning:</strong> let bad = <code>bad escape sequence: \unicode</code>;</p> </blockquote>
+</div></section><h2 id="명세서">명세서</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://tc39.es/ecma262/multipage/ecmascript-language-expressions.html#sec-template-literals">ECMAScript Language Specification <br><small># sec-template-literals</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="see_also"><h2 id="see_also">See also</h2>
+<div class="section-content"><ul> <li><a href="global_objects/string"><code>String</code></a></li> <li><a href="global_objects/string/raw"><code>String.raw()</code></a></li> <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Lexical_grammar">Lexical grammar</a></li> <li><a href="https://gist.github.com/WebReflection/8f227532143e63649804" target="_blank">Template-like strings in ES3 compatible syntax</a></li> <li><a href="https://hacks.mozilla.org/2015/05/es6-in-depth-template-strings-2/" target="_blank">"ES6 in Depth: Template strings" on hacks.mozilla.org</a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Template_literals" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Template_literals</a>
+  </p>
+</div>

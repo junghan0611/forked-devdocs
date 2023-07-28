@@ -1,0 +1,103 @@
+<header><h1>Promise.resolve()</h1></header><div class="section-content">
+<p><code>Promise.resolve(value)</code> 메서드는 주어진 값으로 이행하는 <a href="then"><code>Promise.then</code></a> 객체를 반환합니다. 그 값이 프로미스인 경우, 해당 프로미스가 반환됩니다. 그 값이 thenable(예, <a href="then"><code>"then" 메소드</code></a> 가 있음)인 경우, 반환된 프로미스는 그 thenable을 "따르며", 그 최종 상태를 취합니다. 그렇지 않으면 반환된 프로미스는 그 값으로 이행합니다. 이 함수는 프로미스형의 객체(무언가를 결정하는 프로미스를 결정하는 프로미스 등)의 중첩된 레이어를 단일 레이어로 펼칩니다.</p> <div class="notecard warning" id="sect1"> <p><strong>경고:</strong> <strong>주의</strong>: 스스로를 결정하는 thenable 에서 <code>Promise.resolve</code> 를 호출하면 안됩니다. 이는 무한히 중첩된 프로미스를 펼치려고하므로 무한 재귀를 유발할 것입니다. Angular 에서 <code>async</code> Pipe 를 함께 사용한 <a href="https://stackblitz.com/edit/angular-promiseresovle-with-async-pipe?file=src/app/app.component.ts" target="_blank">예제</a>입니다. 자세한 내용은 <a href="https://angular.io/guide/template-syntax#avoid-side-effects" target="_blank">여기</a>에서 확인하세요.</p> </div>
+</div>
+<section aria-labelledby="시도해보기"><h2 id="시도해보기">시도해보기</h2>
+<div class="section-content"><iframe class="interactive is-js-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/js/promise-resolve.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe></div></section><section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="g2YiBRforFgqDGN+fchtzDYhqQarW2YUwGOWa8w9VF4=" data-language="js">Promise<span class="token punctuation">.</span><span class="token function">resolve</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div></div></section><section aria-labelledby="파라미터"><h3 id="파라미터">파라미터</h3>
+<div class="section-content"><dl> <dt id="value">value</dt> <dd> <p>이 <code>Promise</code>에 의해 결정되는 인수. <code>Promise</code> 또는 이행할 thenable 일수도 있습니다.</p> </dd> </dl></div></section><section aria-labelledby="반환_값"><h3 id="반환_값">반환 값</h3>
+<div class="section-content"><dl> <dd> <p>주어진 값으로 이행된 <a href="../promise"><code>Promise</code></a> 또는 값이 promise 객체인 경우, 값으로 전달된 promise.</p> </dd> </dl></div></section><section aria-labelledby="설명"><h2 id="설명">설명</h2>
+<div class="section-content"><p>정적 <code>Promise.resolve</code> 함수는 이행된 <code>Promise</code> 를 반환합니다.</p></div></section><section aria-labelledby="예시"><h2 id="예시">예시</h2>
+</section><section aria-labelledby="정적_promise.resolve_메소드_사용"><h3 id="정적_promise.resolve_메소드_사용">정적 <code>Promise.resolve</code> 메소드 사용</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="qZAKyvU/bHAxjsyxNc2UxAqhc+dYAC2rz9UlyXRTlfQ=" data-language="js">Promise<span class="token punctuation">.</span><span class="token function">resolve</span><span class="token punctuation">(</span><span class="token string">"Success"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">value</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// "Success"</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">value</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">// 호출되지 않음</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div></div></section><section aria-labelledby="배열_이행"><h3 id="배열_이행">배열 이행</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="AoyQR17A4Fe2YNb3UWcL9nmuhpadOuuppYdVGEX/ZwE=" data-language="js"><span class="token keyword">var</span> p <span class="token operator">=</span> Promise<span class="token punctuation">.</span><span class="token function">resolve</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+p<span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">v</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>v<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 1</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div></div></section><section aria-labelledby="또_다른_promise_이행"><h3 id="또_다른_promise_이행">또 다른 <code>Promise</code> 이행</h3>
+<div class="section-content">
+<div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="7dlUSbHKNrFIv2r/v4Yz4OFwNyZ/oGJlvoJDeQfc1X8=" data-language="js"><span class="token keyword">var</span> original <span class="token operator">=</span> Promise<span class="token punctuation">.</span><span class="token function">resolve</span><span class="token punctuation">(</span><span class="token number">33</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> cast <span class="token operator">=</span> Promise<span class="token punctuation">.</span><span class="token function">resolve</span><span class="token punctuation">(</span>original<span class="token punctuation">)</span><span class="token punctuation">;</span>
+cast<span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">value</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'value: '</span> <span class="token operator">+</span> value<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'original === cast ? '</span> <span class="token operator">+</span> <span class="token punctuation">(</span>original <span class="token operator">===</span> cast<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// 로그 순서:</span>
+<span class="token comment">// original === cast ? true</span>
+<span class="token comment">// value: 33</span>
+</pre>
+</div> <p>로그의 순서가 반대인 이유는 <code>then</code> 핸들러가 비동기로 호출되기 때문입니다. <a href="then#then_%EB%A9%94%EC%84%9C%EB%93%9C_%EC%82%AC%EC%9A%A9">여기</a>에서 <code>then</code> 이 동작하는 방식에 대해 확인하세요.</p>
+</div></section><section aria-labelledby="thenable_이행_및_오류_발생"><h3 id="thenable_이행_및_오류_발생">thenable 이행 및 오류 발생</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="3/eGHtjZjnDbGOsLhQnLgLOqMMtGO3lvO0tf/F2K9QY=" data-language="js"><span class="token comment">// thenable 객체 이행</span>
+<span class="token keyword">var</span> p1 <span class="token operator">=</span> Promise<span class="token punctuation">.</span><span class="token function">resolve</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  <span class="token function-variable function">then</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">onFulfill<span class="token punctuation">,</span> onReject</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token function">onFulfill</span><span class="token punctuation">(</span><span class="token string">"fulfilled!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>p1 <span class="token keyword">instanceof</span> <span class="token class-name">Promise</span><span class="token punctuation">)</span> <span class="token comment">// true, 객체는 Promise 로 변환됨</span>
+
+p1<span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">v</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>v<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// "fulfilled!"</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">e</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 호출되지 않음</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// thenable 이 콜백 이전에 오류를 throw</span>
+<span class="token comment">// Promise 거부</span>
+<span class="token keyword">var</span> thenable <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token function-variable function">then</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">resolve</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">TypeError</span><span class="token punctuation">(</span><span class="token string">"Throwing"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">resolve</span><span class="token punctuation">(</span><span class="token string">"Resolving"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">var</span> p2 <span class="token operator">=</span> Promise<span class="token punctuation">.</span><span class="token function">resolve</span><span class="token punctuation">(</span>thenable<span class="token punctuation">)</span><span class="token punctuation">;</span>
+p2<span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">v</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">// 호출되지 않음</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">e</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// TypeError: Throwing</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// thenable 이 콜백 이후에 오류를 throw</span>
+<span class="token comment">// Promise 이행</span>
+<span class="token keyword">var</span> thenable <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token function-variable function">then</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">resolve</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token function">resolve</span><span class="token punctuation">(</span><span class="token string">"Resolving"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">TypeError</span><span class="token punctuation">(</span><span class="token string">"Throwing"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">var</span> p3 <span class="token operator">=</span> Promise<span class="token punctuation">.</span><span class="token function">resolve</span><span class="token punctuation">(</span>thenable<span class="token punctuation">)</span><span class="token punctuation">;</span>
+p3<span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">v</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>v<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// "Resolving"</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">e</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">// 호출되지 않음</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div></div></section><h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://tc39.es/ecma262/multipage/control-abstraction-objects.html#sec-promise.resolve">ECMAScript Language Specification <br><small># sec-promise.resolve</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="함께_보기"><h2 id="함께_보기">함께 보기</h2>
+<div class="section-content"><ul> <li><a href="../promise"><code>Promise</code></a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Promise/resolve" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Promise/resolve</a>
+  </p>
+</div>

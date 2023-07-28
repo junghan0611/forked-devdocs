@@ -1,0 +1,42 @@
+<header><h1>is</h1></header><div class="section-content">
+<p><code>is</code> <a href="../global_attributes">전역 특성</a>은 표준 HTML 요소가 사용자 지정 요소처럼 행동하도록 지정합니다. <a href="https://developer.mozilla.org/ko/docs/Web/API/Web_components/Using_custom_elements">사용자 지정 요소 사용하기</a>를 방문해 더 자세한 정보를 알아보세요.</p> <p>이 특성은 주어진 사용자 지정 요소의 이름을 현재 문서에 성공적으로 <a href="https://developer.mozilla.org/en-US/docs/Web/API/CustomElementRegistry/define" class="only-in-en-us">정의 <small>(en-US)</small></a>했고, <code>is</code> 특성을 적용하려는 요소를 확장하는 경우에만 사용할 수 있습니다.</p>
+</div>
+<h2 id="예제">예제</h2>
+<div class="section-content">
+<p>다음 코드는 <a href="https://github.com/mdn/web-components-examples/tree/master/word-count-web-component" target="_blank">word-count-web-component</a> 예제에서 발췌한 것입니다. (<a href="https://mdn.github.io/web-components-examples/word-count-web-component/" target="_blank">실제 동작 보기</a>)</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="mu8K0k9hz844mlcsebt7i0tF3zGfVC1+/5YuD6A46ZA=" data-language="js"><span class="token comment">// Create a class for the element</span>
+<span class="token keyword">class</span> <span class="token class-name">WordCount</span> <span class="token keyword">extends</span> <span class="token class-name">HTMLParagraphElement</span> <span class="token punctuation">{</span>
+  <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// Always call super first in constructor</span>
+    <span class="token keyword">super</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// Constructor contents ommitted for brevity</span>
+    <span class="token operator">...</span>
+
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// Define the new element</span>
+customElements<span class="token punctuation">.</span><span class="token function">define</span><span class="token punctuation">(</span><span class="token string">'word-count'</span><span class="token punctuation">,</span> WordCount<span class="token punctuation">,</span> <span class="token punctuation">{</span> <span class="token keyword">extends</span><span class="token operator">:</span> <span class="token string">'p'</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div> <div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="2HWc9XXr7N6633Peud0V5KO5Agg7fFBZQXZH96uYCqM=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">is</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>word-count<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div>
+</div>
+<h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://html.spec.whatwg.org/multipage/custom-elements.html#attr-is">HTML Standard <br><small># attr-is</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li>모든 <a href="../global_attributes">전역 특성</a>.</li> </ul></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/HTML/Global_attributes/is" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/HTML/Global_attributes/is</a>
+  </p>
+</div>

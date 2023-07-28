@@ -1,0 +1,39 @@
+<header><h1>History.forward()</h1></header><div class="section-content">
+<p><code>History.forward()</code> 메서드는 브라우저가 세션 기록의 바로 앞 페이지로 이동하도록 지시합니다. <a href="go"><code>history.go(1)</code></a>과 같습니다. 다음 페이지가 없는 경우 아무것도 하지 않습니다.</p> <p>이 메서드는 비동기적입니다. <code><a href="../window/popstate_event">popstate</a></code> 이벤트 처리기를 통해 탐색 완료 시점을 알 수 있습니다.</p>
+</div>
+<h2 id="구문">구문</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="i8SVebGXxZ/ORRZOAYhH1Rej+C6FAbzCOqXWzA3vIgs=" data-language="js">history<span class="token punctuation">.</span><span class="token function">forward</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+</pre>
+</div></div>
+<h2 id="예제">예제</h2>
+<div class="section-content"><p>다음 예제는 클릭했을 때 앞으로 가는 버튼을 생성합니다.</p></div>
+<h3 id="html">HTML</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="44mDEps8wwML9RtvKT/0B25euoKLpSkB1vOTVhH6SGI=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">'</span>go-forward<span class="token punctuation">'</span></span><span class="token punctuation">&gt;</span></span>앞으로 가기!<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div></div>
+<h3 id="javascript">JavaScript</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="v5z8hTXLmlFqpEsggsoGoNFuZfpLkO7qJuO4shEhfMQ=" data-language="js">document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">'go-forward'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">'click'</span><span class="token punctuation">,</span> <span class="token parameter">e</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  window<span class="token punctuation">.</span>history<span class="token punctuation">.</span><span class="token function">forward</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</pre>
+</div></div>
+<h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://html.spec.whatwg.org/multipage/nav-history-apis.html#dom-history-forward-dev">HTML Standard <br><small># dom-history-forward-dev</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="../history"><code>History</code></a></li> </ul></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/History/forward" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/History/forward</a>
+  </p>
+</div>

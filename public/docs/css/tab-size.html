@@ -1,0 +1,97 @@
+<header><h1>tab-size</h1></header><div class="section-content"><p><a href="https://developer.mozilla.org/ko/docs/Web/CSS">CSS</a> <code>tab-size</code> 속성은 탭 문자(U+0009)의 너비를 조절합니다.</p></div>
+<section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="EFNDdqSnA85hRYxUp4XnPx1wgWgmQ3a8A8OndRGXUxA=" data-language="css"><span class="token comment">/* &lt;integer&gt; 값 */</span>
+<span class="token property">tab-size</span><span class="token punctuation">:</span> 4<span class="token punctuation">;</span>
+<span class="token property">tab-size</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
+
+<span class="token comment">/* &lt;length&gt; 값 */</span>
+<span class="token property">tab-size</span><span class="token punctuation">:</span> 10px<span class="token punctuation">;</span>
+<span class="token property">tab-size</span><span class="token punctuation">:</span> 2em<span class="token punctuation">;</span>
+
+<span class="token comment">/* 전역 값 */</span>
+<span class="token property">tab-size</span><span class="token punctuation">:</span> inherit<span class="token punctuation">;</span>
+<span class="token property">tab-size</span><span class="token punctuation">:</span> initial<span class="token punctuation">;</span>
+<span class="token property">tab-size</span><span class="token punctuation">:</span> unset<span class="token punctuation">;</span>
+</pre>
+</div></div></section><section aria-labelledby="값"><h3 id="값">값</h3>
+<div class="section-content"><dl> <dt id="integer"><a href="integer"><code>&lt;integer&gt;</code></a></dt> <dd> <p>공백 문자(U+0020)에 대한 탭 문자의 상대적인 너비. 0 이상의 정수여야 합니다.</p> </dd> <dt id="length"><a href="length"><code>&lt;length&gt;</code></a></dt> <dd> <p>탭 문자의 너비. 양의 값이어야 합니다.</p> </dd> </dl></div></section><section aria-labelledby="형식_정의"><h2 id="형식_정의">형식 정의</h2>
+<div class="section-content"><figure class="table-container"><div class="_table"><table class="properties"><tbody>
+<tr>
+<th scope="row"><a href="initial_value">초기값</a></th>
+<td><code>8</code></td>
+</tr>
+<tr>
+<th scope="row">적용대상</th>
+<td>block containers</td>
+</tr>
+<tr>
+<th scope="row"><a href="inheritance">상속</a></th>
+<td>yes</td>
+</tr>
+<tr>
+<th scope="row"><a href="computed_value">계산 값</a></th>
+<td>the specified integer or an absolute length</td>
+</tr>
+<tr>
+<th scope="row">Animation type</th>
+<td>a <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/length#interpolation">length</a>
+</td>
+</tr>
+</tbody></table></div></figure></div></section><section aria-labelledby="형식_구문"><h2 id="형식_구문">형식 구문</h2>
+<div class="section-content"><pre class="notranslate"><span class="token property" id="tab-size">tab-size = </span><br>  <a href="number"><span class="token property">&lt;number&gt;</span></a>  <a href="value_definition_syntax#single_bar">|</a><br>  <a href="length"><span class="token property">&lt;length&gt;</span></a>  <br><br></pre></div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+</section><section aria-labelledby="글자_수로_정의"><h3 id="글자_수로_정의">글자 수로 정의</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="P1HaME9BDDt8W0eJIlHSNz0TlkUJiIovpWD1w5T8kKk=" data-language="css"><span class="token selector">pre</span> <span class="token punctuation">{</span>
+  <span class="token property">tab-size</span><span class="token punctuation">:</span> 4<span class="token punctuation">;</span> <span class="token comment">/* Set tab size to 4 characters wide */</span>
+<span class="token punctuation">}</span>
+</pre>
+</div></div></section><section aria-labelledby="탭_제거"><h3 id="탭_제거">탭 제거</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="UZxFLAp9yu/zDT9xN1flfwIIC3TwJD9jp5jkshhRbr8=" data-language="css"><span class="token selector">pre</span> <span class="token punctuation">{</span>
+  <span class="token property">tab-size</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span> <span class="token comment">/* Remove indentation */</span>
+<span class="token punctuation">}</span>
+</pre>
+</div></div></section><section aria-labelledby="기본_크기와_비교"><h3 id="기본_크기와_비교">기본 크기와 비교</h3>
+<div class="section-content">
+<p>다음 예제는 기본 탭 크기를 사용자 지정 탭 크기와 비교합니다. <a href="white-space"><code>white-space</code></a> 속성을 <code>pre</code>로 설정해서 탭 문자가 접히지 않도록 했습니다.</p> <h4 id="html">HTML</h4> <div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="L70VzGum6toEpaj52p/Bybggeb4Bq78NeMNGl/SAJQM=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>no tab<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span><span class="token entity">&amp;#0009;</span>default tab size of 8 characters wide<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>custom<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token entity">&amp;#0009;</span>custom tab size of 3 characters wide<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span><span class="token entity named-entity">&amp;nbsp;</span><span class="token entity named-entity">&amp;nbsp;</span><span class="token entity named-entity">&amp;nbsp;</span>3 spaces, equivalent to the custom tab size<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div> <h4 id="css">CSS</h4> <div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="IfpdslPbf0di2e9QW3D1EKr+dMIe3euIa0qiE3qOOAM=" data-language="css"><span class="token selector">p</span> <span class="token punctuation">{</span>
+  <span class="token property">white-space</span><span class="token punctuation">:</span> pre<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">.custom</span> <span class="token punctuation">{</span>
+  <span class="token property">tab-size</span><span class="token punctuation">:</span> 3<span class="token punctuation">;</span>
+  <span class="token property">-moz-tab-size</span><span class="token punctuation">:</span> 3<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div> <h4 id="결과">결과</h4>
+<div class="code-example" id="sect1">
+
+<iframe class="sample-code-frame" title="기본 크기와 비교 sample" id="frame_기본_크기와_비교" src="https://live.mdnplay.dev/ko/docs/Web/CSS/tab-size/runner.html?id=%EA%B8%B0%EB%B3%B8_%ED%81%AC%EA%B8%B0%EC%99%80_%EB%B9%84%EA%B5%90" loading="lazy"></iframe>
+</div>
+</div></section><h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://drafts.csswg.org/css-text/#tab-size-property">CSS Text Module Level 3 <br><small># tab-size-property</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li>
+<a href="https://lists.w3.org/Archives/Public/www-style/2008Dec/0009.html" target="_blank">Controlling size of a tab character (U+0009)</a>, Anne van Kesteren이 CSSWG에 보낸 이메일.</li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/CSS/tab-size" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/CSS/tab-size</a>
+  </p>
+</div>

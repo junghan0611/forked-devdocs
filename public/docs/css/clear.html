@@ -1,0 +1,174 @@
+<header><h1>clear</h1></header><div class="section-content"><p><code>clear</code> <a href="https://developer.mozilla.org/ko/docs/Web/CSS">CSS</a> 속성은 요소가 선행 <a href="float">부동</a>(floating) 요소 다음일 수 있는지 또는 그 아래로 내려가(해제되어(cleared))야 하는 지를 지정합니다. <code>clear</code> 속성은 부동 및 비부동 요소 모두에 적용됩니다.</p></div>
+<section aria-labelledby="시도해보기"><h2 id="시도해보기">시도해보기</h2>
+<div class="section-content">
+<iframe class="interactive is-default-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/css/clear.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe> <p>비부동 블록에 적용되는 경우, 모든 관련 부동체(floats)의 <a href="css_box_model/introduction_to_the_css_box_model">마진 경계</a> 아래로까지 요소의 <a href="css_box_model/introduction_to_the_css_box_model">보더 경계</a>를 아래로 내립니다. 이 움직임(이 일어나는 경우)은 <a href="css_box_model/mastering_margin_collapsing">마진 상쇄</a>가 일어나지 않도록 합니다.</p> <p>부동 요소에 적용되는 경우, 모든 관련 부동체의 <a href="css_box_model/introduction_to_the_css_box_model">마진 경계</a> 아래로 요소의 <a href="css_box_model/introduction_to_the_css_box_model">마진 경계</a>를 옮깁니다. 이는 나중(later) 부동체의 위치에 영향을 줍니다, 나중 부동체가 앞선(earlier) 부동체보다 높게 위치될 수 없기에.</p> <p>해제(cleared)와 관련된 부동체는 같은 <a href="https://developer.mozilla.org/ko/docs/Web/Guide/CSS/Block_formatting_context">블록 형성 문맥</a> 내 앞선 부동체입니다.</p> <div class="notecard note" id="sect1"> <p><strong>참고:</strong> <strong>주의:</strong> 요소가 그 안에 모든 부동 요소를 포함하고 싶은 경우, 컨테이너도 부동하거나 컨테이너의 <a href="::after"><code>::after</code></a> 대체 <a href="pseudo-elements">가상 요소</a>에 <code>clear</code>를 쓸 수 있습니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="Q3c50xK7wxalXTZWssnk+loy75Juy225Jq43x95ql/w=" data-language="css"><span class="token selector">#container::after</span> <span class="token punctuation">{</span>
+   <span class="token property">content</span><span class="token punctuation">:</span> <span class="token string">""</span><span class="token punctuation">;</span>
+   <span class="token property">display</span><span class="token punctuation">:</span> block<span class="token punctuation">;</span>
+   <span class="token property">clear</span><span class="token punctuation">:</span> both<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div> </div>
+</div></section><section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="6FDb0F/JwjCiGDuHASwvC1RH8onYM6eX7clSwnBcjgw=" data-language="css"><span class="token comment">/* 키워드 값 */</span>
+<span class="token property">clear</span><span class="token punctuation">:</span> none<span class="token punctuation">;</span>
+<span class="token property">clear</span><span class="token punctuation">:</span> left<span class="token punctuation">;</span>
+<span class="token property">clear</span><span class="token punctuation">:</span> right<span class="token punctuation">;</span>
+<span class="token property">clear</span><span class="token punctuation">:</span> both<span class="token punctuation">;</span>
+<span class="token property">clear</span><span class="token punctuation">:</span> inline-start<span class="token punctuation">;</span>
+<span class="token property">clear</span><span class="token punctuation">:</span> inline-end<span class="token punctuation">;</span>
+
+<span class="token comment">/* 전역 값 */</span>
+<span class="token property">clear</span><span class="token punctuation">:</span> inherit<span class="token punctuation">;</span>
+<span class="token property">clear</span><span class="token punctuation">:</span> initial<span class="token punctuation">;</span>
+<span class="token property">clear</span><span class="token punctuation">:</span> unset<span class="token punctuation">;</span>
+</pre>
+</div></div></section><section aria-labelledby="값"><h3 id="값">값</h3>
+<div class="section-content"><dl> <dt id="none"><code>none</code></dt> <dd> <p>요소가 지난 부동 요소를 해제하기 위해 아래로 이동되지 <em>않음</em>을 나타내는 키워드입니다.</p> </dd> <dt id="left"><code>left</code></dt> <dd> <p>요소가 지난 <em>left</em> 부동체를 해제하기 위해 아래로 이동됨을 나타내는 키워드입니다.</p> </dd> <dt id="right"><code>right</code></dt> <dd> <p>요소가 지난 <em>right</em> 부동체를 해제하기 위해 아래로 이동됨을 나타내는 키워드입니다.</p> </dd> <dt id="both"><code>both</code></dt> <dd> <p>요소가 지난 <em>both</em> left 및 right 부동체를 해제하기 위해 아래로 이동됨을 나타내는 키워드입니다.</p> </dd> <dt id="inline-start"><code>inline-start</code></dt> <dd> <p>요소가 <em>포함 블록의 시작 쪽</em> 부동체를 해제하기 위해 아래로 이동됨을 나타내는 키워드입니다, 즉 ltr 스크립트의 <em>left</em> 부동체 및 rtl 스크립트의 <em>right</em> 부동체.</p> </dd> <dt id="inline-end"><code>inline-end</code></dt> <dd> <p>요소가 <em>포함 블록의 끝 쪽</em> 부동체를 해제하기 위해 아래로 이동됨을 나타내는 키워드입니다, 즉 ltr 스크립트의 <em>right</em> 부동체 및 rtl 스크립트의 <em>left</em> 부동체.</p> </dd> </dl></div></section><section aria-labelledby="형식_구문"><h3 id="형식_구문">형식 구문</h3>
+<div class="section-content"><pre class="notranslate"><span class="token property" id="clear">clear = </span><br>  <span class="token keyword">inline-start</span>  <a href="value_definition_syntax#single_bar">|</a><br>  <span class="token keyword">inline-end</span>    <a href="value_definition_syntax#single_bar">|</a><br>  <span class="token keyword">block-start</span>   <a href="value_definition_syntax#single_bar">|</a><br>  <span class="token keyword">block-end</span>     <a href="value_definition_syntax#single_bar">|</a><br>  <span class="token keyword">left</span>          <a href="value_definition_syntax#single_bar">|</a><br>  <span class="token keyword">right</span>         <a href="value_definition_syntax#single_bar">|</a><br>  <span class="token keyword">top</span>           <a href="value_definition_syntax#single_bar">|</a><br>  <span class="token keyword">bottom</span>        <a href="value_definition_syntax#single_bar">|</a><br>  <span class="token keyword">none</span>          <br><br></pre></div></section><section aria-labelledby="examples"><h2 id="examples">Examples</h2>
+</section><section aria-labelledby="clear_left"><h3 id="clear_left">clear: left</h3>
+<div class="section-content">
+<h4 id="html">HTML</h4> <div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="gSQ3gOEWduDZZ7atL9X44B3f0MTbbbc8FzxjexTrQ64=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>wrapper<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>black<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Phasellus sit amet diam. Duis mattis varius dui. Suspendisse eget dolor.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>red<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>left<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>This paragraph clears left.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div> <h4 id="css">CSS</h4> <div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="dt8HcetgGXktjYBhLJq3PtkUUxQwis70aOG9WenDHzI=" data-language="css"><span class="token selector">.wrapper</span><span class="token punctuation">{</span>
+  <span class="token property">border</span><span class="token punctuation">:</span>1px solid black<span class="token punctuation">;</span>
+  <span class="token property">padding</span><span class="token punctuation">:</span>10px<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token selector">.left</span> <span class="token punctuation">{</span>
+  <span class="token property">border</span><span class="token punctuation">:</span> 1px solid black<span class="token punctuation">;</span>
+  <span class="token property">clear</span><span class="token punctuation">:</span> left<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token selector">.black</span> <span class="token punctuation">{</span>
+  <span class="token property">float</span><span class="token punctuation">:</span> left<span class="token punctuation">;</span>
+  <span class="token property">margin</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
+  <span class="token property">background-color</span><span class="token punctuation">:</span> black<span class="token punctuation">;</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> #fff<span class="token punctuation">;</span>
+  <span class="token property">width</span><span class="token punctuation">:</span> 20%<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token selector">.red</span> <span class="token punctuation">{</span>
+  <span class="token property">float</span><span class="token punctuation">:</span> left<span class="token punctuation">;</span>
+  <span class="token property">margin</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
+  <span class="token property">background-color</span><span class="token punctuation">:</span> pink<span class="token punctuation">;</span>
+  <span class="token property">width</span><span class="token punctuation">:</span>20%<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token selector">p</span> <span class="token punctuation">{</span>
+  <span class="token property">width</span><span class="token punctuation">:</span> 50%<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div>
+<div class="code-example" id="sect2">
+
+<iframe class="sample-code-frame" title="clear left sample" id="frame_clear_left" width="100%" height="250" src="https://live.mdnplay.dev/ko/docs/Web/CSS/clear/runner.html?id=clear_left" loading="lazy"></iframe>
+</div>
+</div></section><section aria-labelledby="clear_right"><h3 id="clear_right">clear: right</h3>
+<div class="section-content">
+<h4 id="html_2">HTML</h4> <div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="4HHyYU9FTFpRo4JBt0i1xo1+gthXaCXhxecNWvjgFp0=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>wrapper<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>black<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Phasellus sit amet diam. Duis mattis varius dui. Suspendisse eget dolor.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>red<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>right<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>This paragraph clears right.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div> <h4 id="css_2">CSS</h4> <div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="6pa1UhX6aPK/a1HLVp4zvuNT38kUiLnVaALVDnBmkFc=" data-language="css"><span class="token selector">.wrapper</span><span class="token punctuation">{</span>
+  <span class="token property">border</span><span class="token punctuation">:</span>1px solid black<span class="token punctuation">;</span>
+  <span class="token property">padding</span><span class="token punctuation">:</span>10px<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token selector">.right</span> <span class="token punctuation">{</span>
+  <span class="token property">border</span><span class="token punctuation">:</span> 1px solid black<span class="token punctuation">;</span>
+  <span class="token property">clear</span><span class="token punctuation">:</span> right<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token selector">.black</span> <span class="token punctuation">{</span>
+  <span class="token property">float</span><span class="token punctuation">:</span> right<span class="token punctuation">;</span>
+  <span class="token property">margin</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
+  <span class="token property">background-color</span><span class="token punctuation">:</span> black<span class="token punctuation">;</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> #fff<span class="token punctuation">;</span>
+  <span class="token property">width</span><span class="token punctuation">:</span>20%<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token selector">.red</span> <span class="token punctuation">{</span>
+  <span class="token property">float</span><span class="token punctuation">:</span> right<span class="token punctuation">;</span>
+  <span class="token property">margin</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
+  <span class="token property">background-color</span><span class="token punctuation">:</span> pink<span class="token punctuation">;</span>
+  <span class="token property">width</span><span class="token punctuation">:</span>20%<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token selector">p</span> <span class="token punctuation">{</span>
+  <span class="token property">width</span><span class="token punctuation">:</span> 50%<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div>
+<div class="code-example" id="sect3">
+
+<iframe class="sample-code-frame" title="clear right sample" id="frame_clear_right" width="100%" height="250" src="https://live.mdnplay.dev/ko/docs/Web/CSS/clear/runner.html?id=clear_right" loading="lazy"></iframe>
+</div>
+</div></section><section aria-labelledby="clear_both"><h3 id="clear_both">clear: both</h3>
+<div class="section-content">
+<h4 id="html_3">HTML</h4> <div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="ogCQxDx0pyc3iQB3jdEoWH2ZecJB/OjY6RJxlO1d5nI=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>wrapper<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>black<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Phasellus sit amet diam. Duis mattis varius dui. Suspendisse eget dolor. Fusce pulvinar lacus ac dui.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>red<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Phasellus sit amet diam. Duis mattis varius dui. Suspendisse eget dolor.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>both<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>This paragraph clears both.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div> <h4 id="css_3">CSS</h4> <div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="NpZhkbBDNHy1/ea1ixLw8V6EpzAsLc8OFKJEn1YmmM0=" data-language="css"><span class="token selector">.wrapper</span><span class="token punctuation">{</span>
+  <span class="token property">border</span><span class="token punctuation">:</span>1px solid black<span class="token punctuation">;</span>
+  <span class="token property">padding</span><span class="token punctuation">:</span>10px<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token selector">.both</span> <span class="token punctuation">{</span>
+  <span class="token property">border</span><span class="token punctuation">:</span> 1px solid black<span class="token punctuation">;</span>
+  <span class="token property">clear</span><span class="token punctuation">:</span> both<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token selector">.black</span> <span class="token punctuation">{</span>
+  <span class="token property">float</span><span class="token punctuation">:</span> left<span class="token punctuation">;</span>
+  <span class="token property">margin</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
+  <span class="token property">background-color</span><span class="token punctuation">:</span> black<span class="token punctuation">;</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> #fff<span class="token punctuation">;</span>
+  <span class="token property">width</span><span class="token punctuation">:</span>20%<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token selector">.red</span> <span class="token punctuation">{</span>
+  <span class="token property">float</span><span class="token punctuation">:</span> right<span class="token punctuation">;</span>
+  <span class="token property">margin</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
+  <span class="token property">background-color</span><span class="token punctuation">:</span> pink<span class="token punctuation">;</span>
+  <span class="token property">width</span><span class="token punctuation">:</span>20%<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token selector">p</span> <span class="token punctuation">{</span>
+  <span class="token property">width</span><span class="token punctuation">:</span> 45%<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div>
+<div class="code-example" id="sect4">
+
+<iframe class="sample-code-frame" title="clear both sample" id="frame_clear_both" width="100%" height="300" src="https://live.mdnplay.dev/ko/docs/Web/CSS/clear/runner.html?id=clear_both" loading="lazy"></iframe>
+</div>
+</div></section><h2 id="명세서">명세서</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody>
+<tr><td><a href="https://drafts.csswg.org/css2/#propdef-clear">Cascading Style Sheets Level 2 Revision 2 (CSS 2.2) Specification <br><small># propdef-clear</small></a></td></tr>
+<tr><td><a href="https://drafts.csswg.org/css-logical/#float-clear">CSS Logical Properties and Values Level 1 <br><small># float-clear</small></a></td></tr>
+</tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="see_also"><h2 id="see_also">See also</h2>
+<div class="section-content"><ul> <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_box_model/Introduction_to_the_CSS_box_model">CSS basic box model</a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/CSS/clear" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/CSS/clear</a>
+  </p>
+</div>

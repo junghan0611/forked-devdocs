@@ -1,0 +1,90 @@
+<header><h1>Object.prototype.hasOwnProperty()</h1></header><div class="section-content"><p><code>hasOwnProperty()</code> 메소드는 객체가 특정 프로퍼티를 가지고 있는지를 나타내는 불리언 값을 반환한다.</p></div>
+<section aria-labelledby="시도해보기"><h2 id="시도해보기">시도해보기</h2>
+<div class="section-content"><iframe class="interactive is-js-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/js/object-prototype-hasownproperty.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe></div></section><section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="EfNSSg8QoVkVvo+NQg6pNMtqcboXZFvxtXrsDYccFpw=" data-language="js">obj<span class="token punctuation">.</span><span class="token function">hasOwnProperty</span><span class="token punctuation">(</span>prop<span class="token punctuation">)</span>
+</pre>
+</div></div></section><section aria-labelledby="매개변수"><h3 id="매개변수">매개변수</h3>
+<div class="section-content"><dl> <dt id="prop"><code>prop</code></dt> <dd> <p>테스트하려는 프로퍼티의 명칭</p> </dd> </dl></div></section><section aria-labelledby="설명"><h2 id="설명">설명</h2>
+<div class="section-content"><p>모든 객체는 <code>hasOwnProperty</code> 를 상속하는 <a href="../object"><code>Object</code></a>의 자식이다. 이 메소드는 객체가 특정 프로퍼티를 자기만의 직접적인 프로퍼티로서 소유하고 있는지를 판단하는데 사용된다. <a href="../../operators/in"><code>in</code></a> 연산과는 다르게, 이 메소드는 객체의 프로토타입 체인을 확인하지는 않는다.</p></div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+</section><section aria-labelledby="프로퍼티의_존재_여부를_테스트하기_위한_hasownproperty의_사용"><h3 id="프로퍼티의_존재_여부를_테스트하기_위한_hasownproperty의_사용">프로퍼티의 존재 여부를 테스트하기 위한 <code>hasOwnProperty</code>의 사용</h3>
+<div class="section-content">
+<p>다음은 o 객체가 prop라는 명칭을 지닌 프로퍼티를 포함하는지를 판단하는 예제이다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="aZGZXPjnPgos1IfIGDUPvw+nWx59jlx3aQbpBLBgPQg=" data-language="js">o <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Object</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+o<span class="token punctuation">.</span>prop <span class="token operator">=</span> <span class="token string">'exists'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">function</span> <span class="token function">changeO</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  o<span class="token punctuation">.</span>newprop <span class="token operator">=</span> o<span class="token punctuation">.</span>prop<span class="token punctuation">;</span>
+  <span class="token keyword">delete</span> o<span class="token punctuation">.</span>prop<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+o<span class="token punctuation">.</span><span class="token function">hasOwnProperty</span><span class="token punctuation">(</span><span class="token string">'prop'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment">// returns true</span>
+<span class="token function">changeO</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+o<span class="token punctuation">.</span><span class="token function">hasOwnProperty</span><span class="token punctuation">(</span><span class="token string">'prop'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment">// returns false</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="직접_프로퍼티와_상속된_프로퍼티의_비교"><h3 id="직접_프로퍼티와_상속된_프로퍼티의_비교">직접 프로퍼티와 상속된 프로퍼티의 비교</h3>
+<div class="section-content">
+<p>다음은 직접 프로퍼티와 프로토타입 체인에서 상속된 프로퍼티 간의 차이점을 비교하는 예제이다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="YB3z5OZ0kets/LOU8YFWwETuRGKUxsYFqIv6FxR+msE=" data-language="js">o <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Object</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+o<span class="token punctuation">.</span>prop <span class="token operator">=</span> <span class="token string">'exists'</span><span class="token punctuation">;</span>
+o<span class="token punctuation">.</span><span class="token function">hasOwnProperty</span><span class="token punctuation">(</span><span class="token string">'prop'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>             <span class="token comment">// returns true</span>
+o<span class="token punctuation">.</span><span class="token function">hasOwnProperty</span><span class="token punctuation">(</span><span class="token string">'toString'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>         <span class="token comment">// returns false</span>
+o<span class="token punctuation">.</span><span class="token function">hasOwnProperty</span><span class="token punctuation">(</span><span class="token string">'hasOwnProperty'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment">// returns false</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="객체의_프로퍼티들을_순환하기"><h3 id="객체의_프로퍼티들을_순환하기">객체의 프로퍼티들을 순환하기</h3>
+<div class="section-content">
+<p>The following example shows how to iterate over the properties of an object without executing on inherit properties. Note that the <a href="../../statements/for...in"><code>for...in</code></a> loop is already only iterating enumerable items, so one should not assume based on the lack of non-enumerable properties shown in the loop that <code>hasOwnProperty</code> itself is confined strictly to enumerable items (as with <a href="getownpropertynames"><code>Object.getOwnPropertyNames()</code></a>).</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="JgfooVJoj3CFte4LMfanJcdwmZ7yorihK6PWSDoqW2E=" data-language="js"><span class="token keyword">var</span> buz <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token literal-property property">fog</span><span class="token operator">:</span> <span class="token string">'stack'</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">var</span> name <span class="token keyword">in</span> buz<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>buz<span class="token punctuation">.</span><span class="token function">hasOwnProperty</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'this is fog ('</span> <span class="token operator">+</span> name <span class="token operator">+</span> <span class="token string">') for sure. Value: '</span> <span class="token operator">+</span> buz<span class="token punctuation">[</span>name<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword">else</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// toString or something else</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="프로퍼티의_명칭으로서_hasownproperty_를_사용하기"><h3 id="프로퍼티의_명칭으로서_hasownproperty_를_사용하기">프로퍼티의 명칭으로서 <code>hasOwnProperty</code> 를 사용하기</h3>
+<div class="section-content">
+<p>자바스크립트는 프로퍼티 명칭으로서 <code>hasOwnProperty</code>를 보호하지 않습니다. 그러므로, 이 명칭을 사용하는 프로퍼티를 가지는 객체가 존재하려면, 올바른 결과들을 얻기 위해서는 외부 <code>hasOwnProperty</code> 를 사용해야합니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="SNEch1iIah76vbUt8g6wShxTUUedbDY5ENhNM8wJVhk=" data-language="js"><span class="token keyword">var</span> foo <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token function-variable function">hasOwnProperty</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">bar</span><span class="token operator">:</span> <span class="token string">'Here be dragons'</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+foo<span class="token punctuation">.</span><span class="token function">hasOwnProperty</span><span class="token punctuation">(</span><span class="token string">'bar'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// always returns false</span>
+
+<span class="token comment">// Use another Object's hasOwnProperty and call it with 'this' set to foo</span>
+<span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">hasOwnProperty</span><span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span>foo<span class="token punctuation">,</span> <span class="token string">'bar'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// true</span>
+
+<span class="token comment">// It's also possible to use the hasOwnProperty property from the Object prototype for this purpose</span>
+<span class="token class-name">Object</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function">hasOwnProperty</span><span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span>foo<span class="token punctuation">,</span> <span class="token string">'bar'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// true</span>
+</pre>
+</div> <p>Note that in the last case there are no newly created objects.</p>
+</div></section><h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://tc39.es/ecma262/multipage/fundamental-objects.html#sec-object.prototype.hasownproperty">ECMAScript Language Specification <br><small># sec-object.prototype.hasownproperty</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Enumerability_and_ownership_of_properties" class="only-in-en-us">Enumerability and ownership of properties <small>(en-US)</small></a></li> <li><a href="getownpropertynames"><code>Object.getOwnPropertyNames()</code></a></li> <li><a href="../../statements/for...in"><code>for...in</code></a></li> <li><a href="../../operators/in"><code>in</code></a></li> <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Inheritance_and_the_prototype_chain" class="only-in-en-us">JavaScript Guide: Inheritance revisited <small>(en-US)</small></a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Object/hasOwnProperty" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Object/hasOwnProperty</a>
+  </p>
+</div>

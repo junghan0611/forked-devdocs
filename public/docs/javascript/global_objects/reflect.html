@@ -1,0 +1,51 @@
+<header><h1>Reflect</h1></header><div class="section-content"><p><code>Reflect</code> 는 중간에서 가로챌 수 있는 JavaScript 작업에 대한 메서드를 제공하는 내장 객체입니다. 메서드의 종류는 <a href="proxy/proxy">프록시 처리기</a>와 동일합니다. <code>Reflect</code>는 함수 객체가 아니므로 생성자로 사용할 수 없습니다.</p></div>
+<section aria-labelledby="설명"><h2 id="설명">설명</h2>
+<div class="section-content">
+<p>다른 대부분의 전역 객체와 다르게, <code>Reflect</code>는 생성자가 아닙니다. 따라서 함수처럼 호출하거나 <a href="../operators/new"><code>new</code> 연산자</a>로 인스턴스를 만들 수 없습니다. <a href="math"><code>Math</code></a> 객체처럼, <code>Reflect</code>의 모든 속성과 메서드는 정적입니다.</p> <p><code>Reflect</code> 객체의 정적 메서드 이름은 <a href="proxy/proxy">프록시 처리기 메서드</a>의 이름과 같습니다.</p> <p>일부 메서드는 <a href="object"><code>Object</code></a>에도 존재하는 메서드이지만 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Reflect" class="only-in-en-us">약간의 차이 <small>(en-US)</small></a>가 있습니다.</p>
+</div></section><section aria-labelledby="정적_메서드"><h2 id="정적_메서드">정적 메서드</h2>
+<div class="section-content"><dl> <dt id="reflect.apply"><a href="reflect/apply"><code>Reflect.apply()</code></a></dt> <dd> <p>대상 함수를 주어진 매개변수로 호출합니다. <a href="function/apply"><code>Function.prototype.apply()</code></a>도 참고하세요.</p> </dd> <dt id="reflect.construct"><a href="reflect/construct"><code>Reflect.construct()</code></a></dt> <dd> <p>함수로 사용하는 <a href="../operators/new"><code>new</code> 연산자</a>입니다. <code>new target(...args)</code>을 호출하는 것과 같습니다. 다른 프로토타입을 지정하는 추가 기능도 가지고 있습니다.</p> </dd> <dt id="reflect.defineproperty"><a href="reflect/defineproperty"><code>Reflect.defineProperty()</code></a></dt> <dd> <p><a href="object/defineproperty"><code>Object.defineProperty()</code></a>와 비슷합니다. <a href="boolean"><code>Boolean</code></a>을 반환합니다.</p> </dd> <dt id="reflect.deleteproperty"><a href="reflect/deleteproperty"><code>Reflect.deleteProperty()</code></a></dt> <dd> <p>함수로 사용하는 <a href="../operators/delete"><code>delete</code> 연산자</a>입니다. <code>delete target[name]</code>을 호출하는 것과 같습니다.</p> </dd> <dt id="reflect.get"><a href="reflect/get"><code>Reflect.get()</code></a></dt> <dd> <p>대상 속성의 값을 반환하는 함수입니다.</p> </dd> <dt id="reflect.getownpropertydescriptor"><a href="reflect/getownpropertydescriptor"><code>Reflect.getOwnPropertyDescriptor()</code></a></dt> <dd> <p><a href="object/getownpropertydescriptor"><code>Object.getOwnPropertyDescriptor()</code></a>와 비슷합니다. 주어진 속성이 대상 객체에 존재하면, 그 속성의 서술자를 반환합니다. 그렇지 않으면 <a href="undefined"><code>undefined</code></a>를 반환합니다.</p> </dd> <dt id="reflect.getprototypeof"><a href="reflect/getprototypeof"><code>Reflect.getPrototypeOf()</code></a></dt> <dd> <p><a href="object/getprototypeof"><code>Object.getPrototypeOf()</code></a>와 같습니다.</p> </dd> <dt id="reflect.has"><a href="reflect/has"><code>Reflect.has()</code></a></dt> <dd> <p>함수로 사용하는 <a href="../operators/in"><code>in</code> 연산자</a>입니다. 자신의, 혹은 상속한 속성이 존재하는지 나타내는 <a href="boolean"><code>Boolean</code></a>을 반환합니다.</p> </dd> <dt id="reflect.isextensible"><a href="reflect/isextensible"><code>Reflect.isExtensible()</code></a></dt> <dd> <p><a href="object/isextensible"><code>Object.isExtensible()</code></a>과 같습니다.</p> </dd> <dt id="reflect.ownkeys"><a href="reflect/ownkeys"><code>Reflect.ownKeys()</code></a></dt> <dd> <p>대상 객체의 자체 키(상속하지 않은 키) 목록을 배열로 반환합니다.</p> </dd> <dt id="reflect.preventextensions"><a href="reflect/preventextensions"><code>Reflect.preventExtensions()</code></a></dt> <dd> <p><a href="object/preventextensions"><code>Object.preventExtensions()</code></a>와 비슷합니다. <a href="boolean"><code>Boolean</code></a>을 반환합니다.</p> </dd> <dt id="reflect.set"><a href="reflect/set"><code>Reflect.set()</code></a></dt> <dd> <p>속성에 값을 할당하는 함수입니다. 할당 성공 여부를 나타내는 <a href="boolean"><code>Boolean</code></a>을 반환합니다.</p> </dd> <dt id="reflect.setprototypeof"><a href="reflect/setprototypeof"><code>Reflect.setPrototypeOf()</code></a></dt> <dd> <p>객체의 프로토타입을 지정하는 함수입니다. 지정 성공 여부를 나타내는 <a href="boolean"><code>Boolean</code></a>을 반환합니다.</p> </dd> </dl></div></section><h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://tc39.es/ecma262/multipage/reflection.html#sec-reflect-object">ECMAScript Language Specification <br><small># sec-reflect-object</small></a></td></tr></tbody>
+</table></div>
+<section aria-labelledby="예제"><h2 id="예제">예제</h2>
+</section><section aria-labelledby="객체가_특정_속성을_가지고_있는지_검사하기"><h3 id="객체가_특정_속성을_가지고_있는지_검사하기">객체가 특정 속성을 가지고 있는지 검사하기</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="qTqLwHduhUU5XEPgtsBXjUYE/twcqgfvxeQmbnERkTM=" data-language="js"><span class="token keyword">const</span> duck <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">'Maurice'</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">color</span><span class="token operator">:</span> <span class="token string">'white'</span><span class="token punctuation">,</span>
+  <span class="token function-variable function">greeting</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">Quaaaack! My name is </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span><span class="token keyword">this</span><span class="token punctuation">.</span>name<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+Reflect<span class="token punctuation">.</span><span class="token function">has</span><span class="token punctuation">(</span>duck<span class="token punctuation">,</span> <span class="token string">'color'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// true</span>
+Reflect<span class="token punctuation">.</span><span class="token function">has</span><span class="token punctuation">(</span>duck<span class="token punctuation">,</span> <span class="token string">'haircut'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// false</span>
+</pre>
+</div></div></section><section aria-labelledby="객체_자체_키를_반환하기"><h3 id="객체_자체_키를_반환하기">객체 자체 키를 반환하기</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="N4CzNkehLO6CggetD4mIA4xrQikSgO5KdIxV6fT8xik=" data-language="js">Reflect<span class="token punctuation">.</span><span class="token function">ownKeys</span><span class="token punctuation">(</span>duck<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// [ "name", "color", "greeting" ]</span>
+</pre>
+</div></div></section><section aria-labelledby="객체에_새로운_속성_추가하기"><h3 id="객체에_새로운_속성_추가하기">객체에 새로운 속성 추가하기</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="/7SvvmZUSwAsySLVgVbE6mb2XLE0fdQf28SUlXPnX/4=" data-language="js">Reflect<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span>duck<span class="token punctuation">,</span> <span class="token string">'eyes'</span><span class="token punctuation">,</span> <span class="token string">'black'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// returns "true" if successful</span>
+<span class="token comment">// "duck" now contains the property "eyes: 'black'"</span>
+</pre>
+</div></div></section><h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li>
+<a href="proxy"><code>Proxy</code></a> 전역 객체.</li> <li>
+<a href="proxy/proxy"><code>handler</code></a> 객체.</li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Reflect" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Reflect</a>
+  </p>
+</div>

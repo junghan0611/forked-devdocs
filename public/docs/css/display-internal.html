@@ -1,0 +1,65 @@
+<header><h1>&lt;display-internal&gt;</h1></header><div class="section-content"><p><code>table</code>과 <code>ruby</code> 같은 몇몇 레이아웃 모델은 복잡한 내부 구조를 가지고 있으며, 자식이나 자손들로 채울 수 있는 다양한 역할을 가지고 있습니다. 이 페이지는 이러한 "내재적인" 디스플레이 값을 정의하며, 이들은 특정 레이아웃 모드 안에서만 의미를 가집니다.</p></div>
+<section aria-labelledby="문법"><h2 id="문법">문법</h2>
+<div class="section-content">
+<p>유효한 <code>&lt;display-internal&gt;</code> 값들:</p> <dl> <dt id="table-row-group"><code>table-row-group</code></dt> <dd> <p>이 요소는 <a href="https://developer.mozilla.org/ko/docs/Web/HTML/Element/tbody"><code>&lt;tbody&gt;</code></a> HTML 요소처럼 동작합니다.</p> </dd> <dt id="table-header-group"><code>table-header-group</code></dt> <dd> <p>이 요소는 <a href="https://developer.mozilla.org/ko/docs/Web/HTML/Element/thead"><code>&lt;thead&gt;</code></a> HTML 요소처럼 동작합니다.</p> </dd> <dt id="table-footer-group"><code>table-footer-group</code></dt> <dd> <p>이 요소는 <a href="https://developer.mozilla.org/ko/docs/Web/HTML/Element/tfoot"><code>&lt;tfoot&gt;</code></a> HTML 요소처럼 동작합니다.</p> </dd> <dt id="table-row"><code>table-row</code></dt> <dd> <p>이 요소는 <a href="https://developer.mozilla.org/ko/docs/Web/HTML/Element/tr"><code>&lt;tr&gt;</code></a> HTML 요소처럼 동작합니다.</p> </dd> <dt id="table-cell"><code>table-cell</code></dt> <dd> <p>이 요소는 <a href="https://developer.mozilla.org/ko/docs/Web/HTML/Element/td"><code>&lt;td&gt;</code></a> HTML 요소처럼 동작합니다.</p> </dd> <dt id="table-column-group"><code>table-column-group</code></dt> <dd> <p>이 요소는 <a href="https://developer.mozilla.org/ko/docs/Web/HTML/Element/colgroup"><code>&lt;colgroup&gt;</code></a> HTML 요소처럼 동작합니다.</p> </dd> <dt id="table-column"><code>table-column</code></dt> <dd> <p>이 요소는 <a href="https://developer.mozilla.org/ko/docs/Web/HTML/Element/col"><code>&lt;col&gt;</code></a> HTML 요소처럼 동작합니다.</p> </dd> <dt id="table-caption"><code>table-caption</code></dt> <dd> <p>이 요소는 <a href="https://developer.mozilla.org/ko/docs/Web/HTML/Element/caption"><code>&lt;caption&gt;</code></a> HTML 요소처럼 동작합니다.</p> </dd> <dt id="ruby-base">
+<code>ruby-base</code> <abbr class="icon icon-experimental" title="Experimental. 예상되는 동작은 향후 변경될 수 있습니다."> <span class="visually-hidden">Experimental</span> </abbr>
+</dt> <dd> <p>이 요소는 <a href="https://developer.mozilla.org/ko/docs/Web/HTML/Element/rb"><code>&lt;rb&gt;</code></a> HTML 요소처럼 동작합니다.</p> </dd> <dt id="ruby-text">
+<code>ruby-text</code> <abbr class="icon icon-experimental" title="Experimental. 예상되는 동작은 향후 변경될 수 있습니다."> <span class="visually-hidden">Experimental</span> </abbr>
+</dt> <dd> <p>이 요소는 <a href="https://developer.mozilla.org/ko/docs/Web/HTML/Element/rt"><code>&lt;rt&gt;</code></a> HTML 요소처럼 동작합니다.</p> </dd> <dt id="ruby-base-container">
+<code>ruby-base-container</code> <abbr class="icon icon-experimental" title="Experimental. 예상되는 동작은 향후 변경될 수 있습니다."> <span class="visually-hidden">Experimental</span> </abbr>
+</dt> <dd> <p>이 요소는 익명의 박스로 만들어지는 <a class="page-not-created"><code>&lt;rbc&gt;</code></a> HTML 요소처럼 동작합니다.</p> </dd> <dt id="ruby-text-container">
+<code>ruby-text-container</code> <abbr class="icon icon-experimental" title="Experimental. 예상되는 동작은 향후 변경될 수 있습니다."> <span class="visually-hidden">Experimental</span> </abbr>
+</dt> <dd> <p>이 요소는 <a href="https://developer.mozilla.org/ko/docs/Web/HTML/Element/rtc"><code>&lt;rtc&gt;</code></a> HTML 요소처럼 동작합니다.</p> </dd> </dl>
+</div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+</section><section aria-labelledby="css_테이블의_예시"><h3 id="css_테이블의_예시">CSS 테이블의 예시</h3>
+<div class="section-content">
+<p>다음 예시에서는 CSS 테이블 레이아웃을 이용해 간단한 폼을 배치합니다.</p> <h4 id="html">HTML</h4> <div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="mRW3veMoZhQ+mhqUhDVHne7k6BVYD52KSvQ+D3OTON0=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>main</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>label</span> <span class="token attr-name">for</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>name<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Name<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>label</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>text<span class="token punctuation">"</span></span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>name<span class="token punctuation">"</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>name<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>label</span> <span class="token attr-name">for</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>age<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Age<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>label</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>text<span class="token punctuation">"</span></span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>age<span class="token punctuation">"</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>age<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>main</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div> <h4 id="css">CSS</h4> <div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="mklJkMRoB1C4BZrvt0iOl1Igaqa6Qvi1Bqk9YlpcSF0=" data-language="css"><span class="token selector">main</span> <span class="token punctuation">{</span>
+  <span class="token property">display</span><span class="token punctuation">:</span> table<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">div</span> <span class="token punctuation">{</span>
+  <span class="token property">display</span><span class="token punctuation">:</span> table-row<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">label, input</span> <span class="token punctuation">{</span>
+  <span class="token property">display</span><span class="token punctuation">:</span> table-cell<span class="token punctuation">;</span>
+  <span class="token property">margin</span><span class="token punctuation">:</span> 5px<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div> <h4 id="결과">결과</h4>
+<div class="code-example" id="sect1">
+
+<iframe class="sample-code-frame" title="CSS 테이블의 예시" id="frame_css_tables_example" width="100%" height="100" src="https://live.mdnplay.dev/ko/docs/Web/CSS/display-internal/runner.html?id=css_tables_example" loading="lazy"></iframe>
+</div>
+</div></section><h2 id="명세서">명세서</h2>
+<div class="notecard warning">
+<strong>No specification found</strong><p>No specification data found for <code>css.properties.display.table_values,css.properties.display.ruby_values</code>.<br><a href="#on-github">Check for problems with this page</a> or contribute a missing <code>spec_url</code> to <a href="https://github.com/mdn/browser-compat-data">mdn/browser-compat-data</a>. Also make sure the specification is included in <a href="https://github.com/w3c/browser-specs">w3c/browser-specs</a>.</p>
+</div>
+<section aria-labelledby="브라우저_호환성"><h2 id="브라우저_호환성">브라우저 호환성</h2>
+</section><h3 id="css.properties.display.table_values">css.properties.display.table_values</h3>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<h3 id="css.properties.display.ruby_values">css.properties.display.ruby_values</h3>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li>
+<a href="display"><code>display</code></a> <ul> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/display-outside"><code>&lt;display-outside&gt;</code> <small>(en-US)</small></a></li> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/display-inside"><code>&lt;display-inside&gt;</code> <small>(en-US)</small></a></li> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/display-listitem"><code>&lt;display-listitem&gt;</code> <small>(en-US)</small></a></li> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/display-box"><code>&lt;display-box&gt;</code> <small>(en-US)</small></a></li> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/display-legacy"><code>&lt;display-legacy&gt;</code> <small>(en-US)</small></a></li> </ul> </li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/CSS/display-internal" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/CSS/display-internal</a>
+  </p>
+</div>

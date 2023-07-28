@@ -1,0 +1,75 @@
+<header><h1>DataTransfer.getData()</h1></header><div class="section-content">
+<p><code>DataTransfer.getData()</code> 메소드는 특정 형태를 위해 (<a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/String"><code>DOMString</code></a>로) 끌어낸 데이터를 회수한다. 가령, 끌어내는 동작이 데이터를 포함하지 않는다면, 이 메소드는 빈 문자열을 반환한다.</p> <p>예시 데이터 형식으로는 <code>text/plain</code> 와 <code>text/uri-list</code> 이 있다.</p>
+</div>
+<h2 id="구문">구문</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="Ujy4/pNtO+ksEIz6DkUrUmaAai9OjDyy1A3MZgwDq/s=" data-language="js">dataTransfer<span class="token punctuation">.</span><span class="token function">getData</span><span class="token punctuation">(</span>format<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div></div>
+<h3 id="매개변수">매개변수</h3>
+<div class="section-content"><dl> <dt id="format"><code>format</code></dt> <dd> <p>회수할 데이터 형식을 나타내는 <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/String"><code>DOMString</code></a></p> </dd> </dl></div>
+<h3 id="반환_값">반환 값</h3>
+<div class="section-content"><dl> <dt id="domstring"><a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/String"><code>DOMString</code></a></dt> <dd> <p>특정 <code>format</code>을 위해 끌어낸 데이터를 나타내는 <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/String"><code>DOMString</code></a>. 만약 끌어내는 동작이 데이터를 가지고 있지 않거나 동작이 특정 <code>format</code> 에 대한 데이터를 가지고 있지 않다면, 이 메소드는 빈 문자열을 반환한다.</p> </dd> </dl></div>
+<h2 id="예제">예제</h2>
+<div class="section-content"><p>이 예시는 <a href="../datatransfer"><code>DataTransfer</code></a> 객체의 <a href="getdata" aria-current="page"><code>getData()</code></a> 와 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/DataTransfer/setData"><code>setData()</code> <small>(en-US)</small></a> 메소드의 사용을 보여준다.</p></div>
+<h3 id="html_내용">HTML 내용</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="8wTgXvGnYcBP63klgx9XLtArw3owPc6NoTd/2zuwk8U=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>div1<span class="token punctuation">"</span></span> <span class="token attr-name">ondrop</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>drop(event)<span class="token punctuation">"</span></span> <span class="token attr-name">ondragover</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>allowDrop(event)<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>drag<span class="token punctuation">"</span></span> <span class="token attr-name">draggable</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>true<span class="token punctuation">"</span></span> <span class="token attr-name">ondragstart</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>drag(event)<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>drag me to the other box<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>div2<span class="token punctuation">"</span></span> <span class="token attr-name">ondrop</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>drop(event)<span class="token punctuation">"</span></span> <span class="token attr-name">ondragover</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>allowDrop(event)<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div></div>
+<h3 id="css_내용">CSS 내용</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="VkV+QpcBsX9gUFrNG2/+sizpzXxSPKR6K2EErcs+x+w=" data-language="css"><span class="token selector">#div1, #div2</span> <span class="token punctuation">{</span>
+    <span class="token property">width</span><span class="token punctuation">:</span>100px<span class="token punctuation">;</span>
+    <span class="token property">height</span><span class="token punctuation">:</span>50px<span class="token punctuation">;</span>
+    <span class="token property">padding</span><span class="token punctuation">:</span>10px<span class="token punctuation">;</span>
+    <span class="token property">border</span><span class="token punctuation">:</span>1px solid #aaaaaa<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div></div>
+<h3 id="javascript_내용">JavaScript 내용</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="upOikrF3gghPyDo0kiP0YQIPCyghKL0XHrZdLeQcaJQ=" data-language="js"><span class="token keyword">function</span> <span class="token function">allowDrop</span><span class="token punctuation">(</span><span class="token parameter">allowdropevent</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    allowdropevent<span class="token punctuation">.</span>target<span class="token punctuation">.</span>style<span class="token punctuation">.</span>color <span class="token operator">=</span> <span class="token string">'blue'</span><span class="token punctuation">;</span>
+    allowdropevent<span class="token punctuation">.</span><span class="token function">preventDefault</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">function</span> <span class="token function">drag</span><span class="token punctuation">(</span><span class="token parameter">dragevent</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    dragevent<span class="token punctuation">.</span>dataTransfer<span class="token punctuation">.</span><span class="token function">setData</span><span class="token punctuation">(</span><span class="token string">"text"</span><span class="token punctuation">,</span> dragevent<span class="token punctuation">.</span>target<span class="token punctuation">.</span>id<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    dragevent<span class="token punctuation">.</span>target<span class="token punctuation">.</span>style<span class="token punctuation">.</span>color <span class="token operator">=</span> <span class="token string">'green'</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">function</span> <span class="token function">drop</span><span class="token punctuation">(</span><span class="token parameter">dropevent</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    dropevent<span class="token punctuation">.</span><span class="token function">preventDefault</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">var</span> data <span class="token operator">=</span> dropevent<span class="token punctuation">.</span>dataTransfer<span class="token punctuation">.</span><span class="token function">getData</span><span class="token punctuation">(</span><span class="token string">"text"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    dropevent<span class="token punctuation">.</span>target<span class="token punctuation">.</span><span class="token function">appendChild</span><span class="token punctuation">(</span>document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">"drag"</span><span class="token punctuation">)</span><span class="token punctuation">.</span>style<span class="token punctuation">.</span>color <span class="token operator">=</span> <span class="token string">'black'</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div></div>
+<h3 id="결과">결과</h3>
+<div class="section-content"><div class="code-example" id="sect1">
+
+<iframe class="sample-code-frame" title="예제 sample" id="frame_예제" width="600" src="https://live.mdnplay.dev/ko/docs/Web/API/DataTransfer/getData/runner.html?id=%EC%98%88%EC%A0%9C" loading="lazy"></iframe>
+</div></div>
+<h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://html.spec.whatwg.org/multipage/dnd.html#dom-datatransfer-getdata-dev">HTML Standard <br><small># dom-datatransfer-getdata-dev</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="../html_drag_and_drop_api">Drag and drop</a></li> <li><a href="../html_drag_and_drop_api/drag_operations">Drag Operations</a></li> <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/HTML_Drag_and_Drop_API/Recommended_drag_types" class="only-in-en-us">Recommended Drag Types <small>(en-US)</small></a></li> <li><a href="../html_drag_and_drop_api/multiple_items" class="page-not-created">Dragging and Dropping Multiple Items</a></li> <li><a href="https://codepen.io/tech_query/pen/MqGgap" target="_blank">DataTransfer test - Paste or Drag</a></li> </ul></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/DataTransfer/getData" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/DataTransfer/getData</a>
+  </p>
+</div>

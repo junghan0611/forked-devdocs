@@ -1,0 +1,128 @@
+<header><h1>outline</h1></header><div class="section-content"><p><a href="https://developer.mozilla.org/ko/docs/Web/CSS">CSS</a> <code>outline</code> <a href="shorthand_properties">단축 속성</a>은 모든 외곽선 속성을 한꺼번에 지정합니다.</p></div>
+<section aria-labelledby="시도해보기"><h2 id="시도해보기">시도해보기</h2>
+<div class="section-content">
+<iframe class="interactive is-default-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/css/outline.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe> </div></section><section aria-labelledby="구성_속성"><h2 id="구성_속성">구성 속성</h2>
+<div class="section-content">
+<p><code>outline</code>은 단축 속성으로서 다음의 하위 속성을 포함합니다.</p> <ul> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/outline-color"><code>outline-color</code> <small>(en-US)</small></a></li> <li><a href="outline-style"><code>outline-style</code></a></li> <li><a href="outline-width"><code>outline-width</code></a></li> </ul>
+</div></section><section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content">
+<div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="3wHxGh1mNb7OD9P8KJjLv/0g//uCw9tELIzDrDPqC/M=" data-language="css"><span class="token comment">/* style */</span>
+<span class="token property">outline</span><span class="token punctuation">:</span> solid<span class="token punctuation">;</span>
+
+<span class="token comment">/* color | style */</span>
+<span class="token property">outline</span><span class="token punctuation">:</span> #f66 dashed<span class="token punctuation">;</span>
+
+<span class="token comment">/* style | width */</span>
+<span class="token property">outline</span><span class="token punctuation">:</span> inset thick<span class="token punctuation">;</span>
+
+<span class="token comment">/* color | style | width */</span>
+<span class="token property">outline</span><span class="token punctuation">:</span> green solid 3px<span class="token punctuation">;</span>
+
+<span class="token comment">/* 전역 값 */</span>
+<span class="token property">outline</span><span class="token punctuation">:</span> inherit<span class="token punctuation">;</span>
+<span class="token property">outline</span><span class="token punctuation">:</span> initial<span class="token punctuation">;</span>
+<span class="token property">outline</span><span class="token punctuation">:</span> unset<span class="token punctuation">;</span>
+</pre>
+</div> <p><code>outline</code> 속성은 아래의 값 중 한 개에서 세 개를 사용해 지정할 수 있으며 순서는 상관하지 않습니다.</p> <div class="notecard note" id="sect2"> <p><strong>참고:</strong> 많은 요소의 외곽선은 스타일을 지정하지 않을 경우 보이지 않습니다. 스타일 기본값이 <code>none</code>이기 때문인데, 주목할만한 예외는 <a href="https://developer.mozilla.org/ko/docs/Web/HTML/Element/input"><code>&lt;input&gt;</code></a> 요소로 브라우저의 기본 스타일이 적용됩니다.</p> </div>
+</div></section><section aria-labelledby="값"><h3 id="값">값</h3>
+<div class="section-content"><dl> <dt id="outline-color"><code>&lt;'outline-color'&gt;</code></dt> <dd> <p>외곽선의 색을 설정합니다. 누락 시 기본값은 <code>currentcolor</code>입니다. <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/outline-color"><code>outline-color</code> <small>(en-US)</small></a>를 참고하세요.</p> </dd> <dt id="outline-style"><code>&lt;'outline-style'&gt;</code></dt> <dd> <p>외곽선의 스타일을 설정합니다. 누락 시 기본값은 <code>none</code>입니다. <a href="outline-style"><code>outline-style</code></a>을 참고하세요.</p> </dd> <dt id="outline-width"><code>&lt;'outline-width'&gt;</code></dt> <dd> <p>외곽선의 두께를 설정합니다. 누락 시 기본값은 <code>medium</code>입니다. <a href="outline-width"><code>outline-width</code></a>를 참고하세요.</p> </dd> </dl></div></section><section aria-labelledby="설명"><h2 id="설명">설명</h2>
+<div class="section-content">
+<p><a href="border">테두리</a>와 외곽선은 매우 유사하지만, 다음의 두 가지 차이점이 존재합니다.</p> <ul> <li>외곽선은 요소 콘텐츠의 밖에 그려지며 절대 공간을 차지하지 않습니다.</li> <li>명세에 따르면 외곽선은 직사각형일 필요가 없습니다. 보통 직사각형으로 그리기는 합니다.</li> </ul> <p>다른 모든 단축 속성과 마찬가지로, 누락한 하위 속성의 값은 <a href="initial_value">초깃값</a>으로 설정됩니다.</p>
+</div></section><section aria-labelledby="접근성_고려사항"><h2 id="접근성_고려사항">접근성 고려사항</h2>
+<div class="section-content">
+<p><code>outline</code>에 <code>0</code> 또는 <code>none</code> 값을 지정하면 브라우저의 기본 포커스 스타일이 사라집니다. 만약 어떤 요소가 상호작용 가능하다면 반드시 시각으로 포커스 여부를 나타낼 수 있어야 합니다. 기본 포커스 스타일을 제거한 경우 다른 뚜렷한 대안을 제공하세요.</p> <ul> <li><a href="https://www.deque.com/blog/give-site-focus-tips-designing-usable-focus-indicators/" target="_blank">How to Design Useful and Usable Focus Indicators</a></li> <li>WCAG 2.1: <a href="https://www.w3.org/WAI/WCAG21/Understanding/focus-visible.html" target="_blank">Understanding Success Criterion 2.4.7: Focus Visible</a>
+</li> </ul>
+</div></section><section aria-labelledby="형식_정의"><h2 id="형식_정의">형식 정의</h2>
+<div class="section-content"><figure class="table-container"><div class="_table"><table class="properties"><tbody>
+<tr>
+<th scope="row"><a href="initial_value">초기값</a></th>
+<td>as each of the properties of the shorthand:<br><ul>
+<li>
+<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/outline-color" class="only-in-en-us"><code>outline-color</code> <small>(en-US)</small></a>: <code>invert</code>, for browsers supporting it, <code>currentColor</code> for the other</li>
+<li>
+<a href="outline-style"><code>outline-style</code></a>: <code>none</code>
+</li>
+<li>
+<a href="outline-width"><code>outline-width</code></a>: <code>medium</code>
+</li>
+</ul>
+</td>
+</tr>
+<tr>
+<th scope="row">적용대상</th>
+<td>all elements</td>
+</tr>
+<tr>
+<th scope="row"><a href="inheritance">상속</a></th>
+<td>no</td>
+</tr>
+<tr>
+<th scope="row"><a href="computed_value">계산 값</a></th>
+<td>as each of the properties of the shorthand:<br><ul>
+<li>
+<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/outline-color" class="only-in-en-us"><code>outline-color</code> <small>(en-US)</small></a>: For the keyword <code>invert</code>, the computed value is <code>invert</code>. For the color value, if the value is translucent, the computed value will be the <code>rgba()</code> corresponding one. If it isn't, it will be the <code>rgb()</code> corresponding one. The <code>transparent</code> keyword maps to <code>rgba(0,0,0,0)</code>.</li>
+<li>
+<a href="outline-width"><code>outline-width</code></a>: an absolute length; if the keyword <code>none</code> is specified, the computed value is <code>0</code>
+</li>
+<li>
+<a href="outline-style"><code>outline-style</code></a>: as specified</li>
+</ul>
+</td>
+</tr>
+<tr>
+<th scope="row">Animation type</th>
+<td>as each of the properties of the shorthand:<br><ul>
+<li>
+<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/outline-color" class="only-in-en-us"><code>outline-color</code> <small>(en-US)</small></a>: a <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#interpolation">color</a>
+</li>
+<li>
+<a href="outline-width"><code>outline-width</code></a>: a <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/length#interpolation">length</a>
+</li>
+<li>
+<a href="outline-style"><code>outline-style</code></a>: by computed value type</li>
+</ul>
+</td>
+</tr>
+</tbody></table></div></figure></div></section><section aria-labelledby="형식_구문"><h2 id="형식_구문">형식 구문</h2>
+<div class="section-content"><pre class="notranslate"><span class="token property" id="outline">outline = </span><br>  <span class="token property">&lt;'outline-color'&gt;</span>  <a href="value_definition_syntax#double_bar">||</a><br>  <span class="token property">&lt;'outline-style'&gt;</span>  <a href="value_definition_syntax#double_bar">||</a><br>  <span class="token property">&lt;'outline-width'&gt;</span>  <br><br></pre></div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+</section><section aria-labelledby="외곽선으로_포커스_스타일_설정"><h3 id="외곽선으로_포커스_스타일_설정">외곽선으로 포커스 스타일 설정</h3>
+<div class="section-content">
+<h4 id="html">HTML</h4> <div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="slG5TQxk8tY1YW702zgRYBQDIgUQctiJs/JgXlSbYkw=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>#<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>This link has a special focus style.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div> <h4 id="css">CSS</h4> <div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="9zvdTHxjlW460vZ3520Ruq8qfgGcyBki3/ptq1wOkBY=" data-language="css"><span class="token selector">a</span> <span class="token punctuation">{</span>
+  <span class="token property">border</span><span class="token punctuation">:</span> 1px solid<span class="token punctuation">;</span>
+  <span class="token property">border-radius</span><span class="token punctuation">:</span> 3px<span class="token punctuation">;</span>
+  <span class="token property">display</span><span class="token punctuation">:</span> inline-block<span class="token punctuation">;</span>
+  <span class="token property">margin</span><span class="token punctuation">:</span> 10px<span class="token punctuation">;</span>
+  <span class="token property">padding</span><span class="token punctuation">:</span> 5px<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">a:focus</span> <span class="token punctuation">{</span>
+  <span class="token property">outline</span><span class="token punctuation">:</span> 4px dotted #e73<span class="token punctuation">;</span>
+  <span class="token property">outline-offset</span><span class="token punctuation">:</span> 4px<span class="token punctuation">;</span>
+  <span class="token property">background</span><span class="token punctuation">:</span> #ffa<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div> <h4 id="결과">결과</h4>
+<div class="code-example" id="sect3">
+
+<iframe class="sample-code-frame" title="외곽선으로 포커스 스타일 설정 sample" id="frame_외곽선으로_포커스_스타일_설정" width="100%" height="60" src="https://live.mdnplay.dev/ko/docs/Web/CSS/outline/runner.html?id=%EC%99%B8%EA%B3%BD%EC%84%A0%EC%9C%BC%EB%A1%9C_%ED%8F%AC%EC%BB%A4%EC%8A%A4_%EC%8A%A4%ED%83%80%EC%9D%BC_%EC%84%A4%EC%A0%95" loading="lazy"></iframe>
+</div>
+</div></section><h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://drafts.csswg.org/css-ui/#outline">CSS Basic User Interface Module Level 4 <br><small># outline</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/CSS/outline" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/CSS/outline</a>
+  </p>
+</div>

@@ -1,0 +1,122 @@
+<header><h1>transform</h1></header><div class="section-content"><p><a href="https://developer.mozilla.org/ko/docs/Web/CSS">CSS</a> <code>transform</code> 속성으로 요소에 회전, 크기 조절, 기울이기, 이동 효과를 부여할 수 있습니다. <code>transform</code>은 CSS <a href="visual_formatting_model">시각적 서식 모델</a>의 좌표 공간을 변경합니다.</p></div>
+<section aria-labelledby="시도해보기"><h2 id="시도해보기">시도해보기</h2>
+<div class="section-content">
+<iframe class="interactive is-default-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/css/transform.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe> <p><code>none</code>이 아닌 값을 지정하면 새로운 <a href="css_positioned_layout/understanding_z-index/stacking_context">쌓임 맥락</a>을 생성합니다. 이 경우, <a href="position"><code>position</code></a>이 <code>fixed</code>거나 <code>absolute</code>인 요소의 <a href="containing_block">컨테이닝 블록</a>으로서 작용합니다.</p> <div class="notecard warning" id="sect1"> <p><strong>경고:</strong> 변형 가능한 요소만 <code>transform</code>할 수 있습니다. 즉, CSS 박스 모델이 레이아웃을 결정하는 모든 요소 중 <a href="visual_formatting_model#inline-level_elements_and_inline_boxes">비대체 인라인 박스</a>, <a href="https://developer.mozilla.org/ko/docs/Web/HTML/Element/col">표 열 박스</a>, <a href="https://developer.mozilla.org/ko/docs/Web/HTML/Element/colgroup">표 열 그룹 박스</a>를 제외한 요소에만 적용할 수 있습니다.</p> </div>
+</div></section><section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content">
+<div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="ZCgSft30CGY9AOtHrAp7b1rV+2NWtyM/b9JPBmrIjNg=" data-language="css"><span class="token comment">/* 키워드 값 */</span>
+<span class="token property">transform</span><span class="token punctuation">:</span> none<span class="token punctuation">;</span>
+
+<span class="token comment">/* 함수 값 */</span>
+<span class="token property">transform</span><span class="token punctuation">:</span> <span class="token function">matrix</span><span class="token punctuation">(</span>1.0<span class="token punctuation">,</span> 2.0<span class="token punctuation">,</span> 3.0<span class="token punctuation">,</span> 4.0<span class="token punctuation">,</span> 5.0<span class="token punctuation">,</span> 6.0<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token property">transform</span><span class="token punctuation">:</span> <span class="token function">matrix3d</span><span class="token punctuation">(</span>1<span class="token punctuation">,</span> 0<span class="token punctuation">,</span> 0<span class="token punctuation">,</span> 0<span class="token punctuation">,</span> 0<span class="token punctuation">,</span> 1<span class="token punctuation">,</span> 0<span class="token punctuation">,</span> 0<span class="token punctuation">,</span> 0<span class="token punctuation">,</span> 0<span class="token punctuation">,</span> 1<span class="token punctuation">,</span> 0<span class="token punctuation">,</span> 0<span class="token punctuation">,</span> 0<span class="token punctuation">,</span> 0<span class="token punctuation">,</span> 1<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token property">transform</span><span class="token punctuation">:</span> <span class="token function">perspective</span><span class="token punctuation">(</span>17px<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token property">transform</span><span class="token punctuation">:</span> <span class="token function">rotate</span><span class="token punctuation">(</span>0.5turn<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token property">transform</span><span class="token punctuation">:</span> <span class="token function">rotate3d</span><span class="token punctuation">(</span>1<span class="token punctuation">,</span> 2.0<span class="token punctuation">,</span> 3.0<span class="token punctuation">,</span> 10deg<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token property">transform</span><span class="token punctuation">:</span> <span class="token function">rotateX</span><span class="token punctuation">(</span>10deg<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token property">transform</span><span class="token punctuation">:</span> <span class="token function">rotateY</span><span class="token punctuation">(</span>10deg<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token property">transform</span><span class="token punctuation">:</span> <span class="token function">rotateZ</span><span class="token punctuation">(</span>10deg<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token property">transform</span><span class="token punctuation">:</span> <span class="token function">translate</span><span class="token punctuation">(</span>12px<span class="token punctuation">,</span> 50%<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token property">transform</span><span class="token punctuation">:</span> <span class="token function">translate3d</span><span class="token punctuation">(</span>12px<span class="token punctuation">,</span> 50%<span class="token punctuation">,</span> 3em<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token property">transform</span><span class="token punctuation">:</span> <span class="token function">translateX</span><span class="token punctuation">(</span>2em<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token property">transform</span><span class="token punctuation">:</span> <span class="token function">translateY</span><span class="token punctuation">(</span>3in<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token property">transform</span><span class="token punctuation">:</span> <span class="token function">translateZ</span><span class="token punctuation">(</span>2px<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token property">transform</span><span class="token punctuation">:</span> <span class="token function">scale</span><span class="token punctuation">(</span>2<span class="token punctuation">,</span> 0.5<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token property">transform</span><span class="token punctuation">:</span> <span class="token function">scale3d</span><span class="token punctuation">(</span>2.5<span class="token punctuation">,</span> 1.2<span class="token punctuation">,</span> 0.3<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token property">transform</span><span class="token punctuation">:</span> <span class="token function">scaleX</span><span class="token punctuation">(</span>2<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token property">transform</span><span class="token punctuation">:</span> <span class="token function">scaleY</span><span class="token punctuation">(</span>0.5<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token property">transform</span><span class="token punctuation">:</span> <span class="token function">scaleZ</span><span class="token punctuation">(</span>0.3<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token property">transform</span><span class="token punctuation">:</span> <span class="token function">skew</span><span class="token punctuation">(</span>30deg<span class="token punctuation">,</span> 20deg<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token property">transform</span><span class="token punctuation">:</span> <span class="token function">skewX</span><span class="token punctuation">(</span>30deg<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token property">transform</span><span class="token punctuation">:</span> <span class="token function">skewY</span><span class="token punctuation">(</span>1.07rad<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">/* 다중 함수 값 */</span>
+<span class="token property">transform</span><span class="token punctuation">:</span> <span class="token function">translateX</span><span class="token punctuation">(</span>10px<span class="token punctuation">)</span> <span class="token function">rotate</span><span class="token punctuation">(</span>10deg<span class="token punctuation">)</span> <span class="token function">translateY</span><span class="token punctuation">(</span>5px<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token property">transform</span><span class="token punctuation">:</span> <span class="token function">perspective</span><span class="token punctuation">(</span>500px<span class="token punctuation">)</span> <span class="token function">translate</span><span class="token punctuation">(</span>10px<span class="token punctuation">,</span> 0<span class="token punctuation">,</span> 20px<span class="token punctuation">)</span> <span class="token function">rotateY</span><span class="token punctuation">(</span>3deg<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">/* 전역 값 */</span>
+<span class="token property">transform</span><span class="token punctuation">:</span> inherit<span class="token punctuation">;</span>
+<span class="token property">transform</span><span class="token punctuation">:</span> initial<span class="token punctuation">;</span>
+<span class="token property">transform</span><span class="token punctuation">:</span> unset<span class="token punctuation">;</span>
+</pre>
+</div> <p><code>transform</code> 속성은 키워드 <a href="#none"><code>none</code></a> 또는 하나 이상의 <a href="#transform-function"><code>&lt;transform-function&gt;</code></a> 값을 사용해 지정할 수 있습니다.</p>
+</div></section><section aria-labelledby="값"><h3 id="값">값</h3>
+<div class="section-content"><dl> <dt id="transform-function"><a href="transform-function"><code>&lt;transform-function&gt;</code></a></dt> <dd> <p>요소에 적용할 하나 이상의 <a href="transform-function">CSS 변형 함수</a>. 변형 함수는 왼쪽에서 오른쪽으로 곱해집니다. 즉, 요소에 변형을 오른쪽부터 왼쪽으로 하나씩 순서대로 적용하는 것과 같습니다.</p> </dd> <dt id="none"><code>none</code></dt> <dd> <p>아무런 변형도 적용하지 않음.</p> </dd> </dl></div></section><section aria-labelledby="형식_구문"><h3 id="형식_구문">형식 구문</h3>
+<div class="section-content">
+<pre class="notranslate"><span class="token property" id="transform">transform = </span><br>  <span class="token keyword">none</span>              <a href="value_definition_syntax#single_bar">|</a><br>  <span class="token property">&lt;transform-list&gt;</span>  <br><br><span class="token property" id="&lt;transform-list&gt;">&lt;transform-list&gt; = </span><br>  <a href="transform-function"><span class="token property">&lt;transform-function&gt;</span></a><a href="value_definition_syntax#plus">+</a>  <br><br></pre> <p><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/transform-function/perspective"><code>perspective()</code> <small>(en-US)</small></a>가 변형 함수의 일부라면 항상 제일 앞에 위치해야 합니다.</p>
+</div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+</section><section aria-labelledby="html"><h3 id="html">HTML</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="6fiRrcmDXldRjEOk+OH9R3O6HfasMxtkOw6P23i17gc=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span>Transformed element<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div></div></section><section aria-labelledby="css"><h3 id="css">CSS</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="KKc8H1Sug24vYcxMy5/fXaabFdPRzX+s6NV1h+0gwEs=" data-language="css"><span class="token selector">div</span> <span class="token punctuation">{</span>
+  <span class="token property">border</span><span class="token punctuation">:</span> solid red<span class="token punctuation">;</span>
+  <span class="token property">transform</span><span class="token punctuation">:</span> <span class="token function">translate</span><span class="token punctuation">(</span>30px<span class="token punctuation">,</span> 20px<span class="token punctuation">)</span> <span class="token function">rotate</span><span class="token punctuation">(</span>20deg<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token property">width</span><span class="token punctuation">:</span> 140px<span class="token punctuation">;</span>
+  <span class="token property">height</span><span class="token punctuation">:</span> 60px<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div></div></section><section aria-labelledby="결과"><h3 id="결과">결과</h3>
+<div class="section-content">
+<div class="code-example" id="sect2">
+
+<iframe class="sample-code-frame" title="예제 sample" id="frame_예제" width="400" height="160" src="https://live.mdnplay.dev/ko/docs/Web/CSS/transform/runner.html?id=%EC%98%88%EC%A0%9C" loading="lazy"></iframe>
+</div> <p><a href="css_transforms/using_css_transforms">CSS 변형 사용하기</a>와 <a href="transform-function"><code>&lt;transform-function&gt;</code></a> 문서를 방문해 더 많은 예제를 찾아보세요.</p>
+</div></section><section aria-labelledby="접근성_고려사항"><h2 id="접근성_고려사항">접근성 고려사항</h2>
+<div class="section-content">
+<p>크기 변경/확대/축소 애니메이션은 흔한 편두통 유발 요인이므로 접근성에 좋지 않습니다. 그러나 꼭 넣어야 한다면 되도록 사이트 전체의 애니메이션을 켜거나 끌 수 있는 방법을 제공하는걸 고려해주세요.</p> <p><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion"><code>prefers-reduced-motion</code> <small>(en-US)</small></a> 미디어 기능을 사용할 수도 있습니다. <a href="css_media_queries">미디어 쿼리</a>와 함께 사용하면, 사용자가 시스템 설정에서 애니메이션을 줄였는지 알아내고, 애니메이션을 비활성화할 수 있습니다.</p> <p>자세한 내용은 다음 링크에서 확인할 수 있습니다.</p> <ul> <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/Understanding_WCAG/Operable" class="only-in-en-us">MDN Understanding WCAG, Guideline 2.3 explanations <small>(en-US)</small></a></li> <li><a href="https://www.w3.org/WAI/WCAG21/Understanding/animation-from-interactions" target="_blank">Understanding Success Criterion 2.3.3 | W3C Understanding WCAG 2.1</a></li> </ul>
+</div></section><h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody>
+<tr><td><a href="https://drafts.csswg.org/css-transforms-2/#transform-functions">CSS Transforms Module Level 2 <br><small># transform-functions</small></a></td></tr>
+<tr><td><a href="https://drafts.csswg.org/css-transforms/#transform-property">CSS Transforms Module Level 1 <br><small># transform-property</small></a></td></tr>
+</tbody>
+</table></div>
+<div class="section-content"><figure class="table-container"><div class="_table"><table class="properties"><tbody>
+<tr>
+<th scope="row"><a href="initial_value">초기값</a></th>
+<td><code>none</code></td>
+</tr>
+<tr>
+<th scope="row">적용대상</th>
+<td>transformable elements</td>
+</tr>
+<tr>
+<th scope="row"><a href="inheritance">상속</a></th>
+<td>no</td>
+</tr>
+<tr>
+<th scope="row">Percentages</th>
+<td>refer to the size of bounding box</td>
+</tr>
+<tr>
+<th scope="row"><a href="computed_value">계산 값</a></th>
+<td>as specified, but with relative lengths converted into absolute lengths</td>
+</tr>
+<tr>
+<th scope="row">Animation type</th>
+<td>a transform</td>
+</tr>
+<tr>
+<th scope="row">Creates <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_positioned_layout/Understanding_z-index/Stacking_context">stacking context</a>
+</th>
+<td>yes</td>
+</tr>
+</tbody></table></div></figure></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="css_transforms/using_css_transforms">CSS 변형 사용하기</a></li> <li>변형 함수의 설명을 담은 <a href="transform-function"><code>&lt;transform-function&gt;</code></a> 자료형 문서.</li> <li>CSS 변형 함수의 시각화가 가능한 온라인 도구: <a href="https://css-transform.moro.es/" target="_blank">CSS Transform Playground</a>
+</li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/CSS/transform" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/CSS/transform</a>
+  </p>
+</div>

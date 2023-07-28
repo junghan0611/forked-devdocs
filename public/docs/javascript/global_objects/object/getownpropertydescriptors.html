@@ -1,0 +1,56 @@
+<header><h1>Object.getOwnPropertyDescriptors()</h1></header><div class="section-content"><p><code>Object.getOwnPropertyDescriptors()</code> 메서드는 주어진 객체의 모든 속성들의 설명자(descriptor)들을 반환합니다.</p></div>
+<section aria-labelledby="시도해보기"><h2 id="시도해보기">시도해보기</h2>
+<div class="section-content"><iframe class="interactive is-js-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/js/object-getownpropertydescriptors.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe></div></section><section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="lF7Trqllze0KNw7E9T0w8p73VgsK7DRpQyAGvjpVU44=" data-language="js">Object<span class="token punctuation">.</span><span class="token function">getOwnPropertyDescriptors</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span>
+</pre>
+</div></div></section><section aria-labelledby="매개변수"><h3 id="매개변수">매개변수</h3>
+<div class="section-content"><dl> <dt id="obj"><code>obj</code></dt> <dd> <p>가지고 있는 모든 속성들의 설명자를 반환받고 싶은 객체</p> </dd> </dl></div></section><section aria-labelledby="반환_값"><h3 id="반환_값">반환 값</h3>
+<div class="section-content"><p>객체의 모든 속성의 설명자를 가지는 객체를 반환합니다. 매개변수 객체에 속성이 없다면, 빈 객체가 반환됩니다.</p></div></section><section aria-labelledby="설명"><h2 id="설명">설명</h2>
+<div class="section-content">
+<p> 이 메서드를 사용하면, 객체의 모든 속성들에 대한 설명자를 정확하게 확인할 수 있습니다. 자바스크립트의 <em>속성</em>은 문자열로된 이름 또는 심볼, 그리고 속성 설명자로 이루어져 있습니다. 속성 설명자 종류와 특성에 대한 자세한 정보는 <a href="defineproperty"><code>Object.defineProperty()</code></a>에 있습니다.. </p> <p><em>속성 설명자</em> 는 다음과 같은 특징들을 가진 레코드입니다.</p> <dl> <dt id="value"><code>value</code></dt> <dd> <p>속성과 관련된 값입니다. (데이터 설명자만 해당됨)</p> </dd> <dt id="writable"><code>writable</code></dt> <dd> <p><code>참(true)</code>인 경우, 속성과 관련된 값이 변경될 수 있는 상태입니다. (데이터 설명자만 해당됨)</p> </dd> <dt id="get"><code>get</code></dt> <dd> <p> 속성에 대한 getter 역할을 하는 함수거나, getter가 정의되지 않은 경우에는 <a href="../undefined"><code>undefined</code></a> 입니다. (접근자 설명자만 해당됨) </p> </dd> <dt id="set"><code>set</code></dt> <dd> <p> 속성에 대한 setter 역할을 하는 함수거나, setter 정의되지 않은 경우에는 <a href="../undefined"><code>undefined</code></a> 입니다. (접근자 설명자만 해당됨) </p> </dd> <dt id="configurable"><code>configurable</code></dt> <dd> <p><code>참(true)</code>인 경우, 객체로 부터 속성 설명자가 변경 및 삭제될 수 있는 상태입니다.</p> </dd> <dt id="enumerable"><code>enumerable</code></dt> <dd> <p><code>true</code>인 경우, 열거 가능한 상태의 속성입니다.</p> </dd> </dl>
+</div></section><section aria-labelledby="예시"><h2 id="예시">예시</h2>
+</section><section aria-labelledby="얕은_복사하기"><h3 id="얕은_복사하기">얕은 복사하기</h3>
+<div class="section-content">
+<p> <a href="assign"><code>Object.assign()</code></a> 메서드는 원본 객체에서 목표 객체로 열거 가능한 속성과 객체의 속성들만 복사하는 반면, 이 메서드와 <a href="create"><code>Object.create()</code></a> 를 사용하면 어느 두 객체를 얕은 복사에 사용할 수 있습니다. </p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="P/ebaj25pZMxF9783gRCocykYgXUPOZwD0IRyhAsyR0=" data-language="js">Object<span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span>
+  Object<span class="token punctuation">.</span><span class="token function">getPrototypeOf</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span><span class="token punctuation">,</span>
+  Object<span class="token punctuation">.</span><span class="token function">getOwnPropertyDescriptors</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="서브클래스_만들기"><h3 id="서브클래스_만들기">서브클래스 만들기</h3>
+<div class="section-content">
+<p> 서브클래스를 만드는 일반적인 방법은 서브클래스를 정의하고, 프로토타입을 슈퍼 클래스의 인스턴스로 설정한 다음, 그 인스턴스에 속성을 정의하는 것입니다. 이 방법은 게터와 세터의 경우 굉장히 불편합니다. 대신, 다음 코드를 사용하여 프로토타입을 설정할 수 있습니다. </p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="ZSlxtaOaatnpMdSSXjrphLKqrpiisi+4e4UCCCuRXGQ=" data-language="js"><span class="token keyword">function</span> <span class="token function">superclass</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+superclass<span class="token punctuation">.</span>prototype <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token comment">// 여기에 슈퍼 클래스의 생성자, 매서드, 속성을 정의합니다.</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token keyword">function</span> <span class="token function">subclass</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+subclass<span class="token punctuation">.</span>prototype <span class="token operator">=</span> Object<span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span>
+  superclass<span class="token punctuation">.</span>prototype<span class="token punctuation">,</span>
+  <span class="token punctuation">{</span>
+    <span class="token comment">// 여기에 서브클래스의 생성자, 매서드, 속성을 정의합니다.</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div>
+</div></section><h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://tc39.es/ecma262/multipage/fundamental-objects.html#sec-object.getownpropertydescriptors">ECMAScript Language Specification <br><small># sec-object.getownpropertydescriptors</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li>
+<code>Object.getOwnPropertyDescriptors</code>의 폴리필은 다음에서 확인 할 수 있습니다. <a href="https://github.com/zloirock/core-js#ecmascript-object" target="_blank"><code>core-js</code></a>
+</li> <li><a href="getownpropertydescriptor"><code>Object.getOwnPropertyDescriptor()</code></a></li> <li><a href="defineproperty"><code>Object.defineProperty()</code></a></li> <li><a href="https://github.com/tc39/proposal-object-getownpropertydescriptors" target="_blank">Polyfill</a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Object/getOwnPropertyDescriptors" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Object/getOwnPropertyDescriptors</a>
+  </p>
+</div>

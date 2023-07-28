@@ -1,0 +1,114 @@
+<header><h1>border-left-style</h1></header><div class="section-content"><p><code>border-left-style</code> <a href="https://developer.mozilla.org/ko/docs/Web/CSS">CSS</a> 속성은 요소 테두리의 왼쪽 스타일을 지정합니다.</p></div>
+<section aria-labelledby="시도해보기"><h2 id="시도해보기">시도해보기</h2>
+<div class="section-content">
+<iframe class="interactive is-default-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/css/border-left-style.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe> <div class="notecard note" id="sect1"> <p><strong>참고:</strong> 명세는 서로 다른 스타일의 테두리가 꼭지점에서 만날 때 어떻게 그려야 할지는 정의하고 있지 않습니다.</p> </div>
+</div></section><section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content">
+<div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="wqKfCGXj4Dn2LtEHdsO6l/JqrpBzOpiZIQXbcbwbp78=" data-language="css"><span class="token comment">/* 키워드 값 */</span>
+<span class="token property">border-left-style</span><span class="token punctuation">:</span> none<span class="token punctuation">;</span>
+<span class="token property">border-left-style</span><span class="token punctuation">:</span> hidden<span class="token punctuation">;</span>
+<span class="token property">border-left-style</span><span class="token punctuation">:</span> dotted<span class="token punctuation">;</span>
+<span class="token property">border-left-style</span><span class="token punctuation">:</span> dashed<span class="token punctuation">;</span>
+<span class="token property">border-left-style</span><span class="token punctuation">:</span> solid<span class="token punctuation">;</span>
+<span class="token property">border-left-style</span><span class="token punctuation">:</span> double<span class="token punctuation">;</span>
+<span class="token property">border-left-style</span><span class="token punctuation">:</span> groove<span class="token punctuation">;</span>
+<span class="token property">border-left-style</span><span class="token punctuation">:</span> ridge<span class="token punctuation">;</span>
+<span class="token property">border-left-style</span><span class="token punctuation">:</span> inset<span class="token punctuation">;</span>
+<span class="token property">border-left-style</span><span class="token punctuation">:</span> outset<span class="token punctuation">;</span>
+
+<span class="token comment">/* 전역 값 */</span>
+<span class="token property">border-left-style</span><span class="token punctuation">:</span> inherit<span class="token punctuation">;</span>
+<span class="token property">border-left-style</span><span class="token punctuation">:</span> initial<span class="token punctuation">;</span>
+<span class="token property">border-left-style</span><span class="token punctuation">:</span> unset<span class="token punctuation">;</span>
+</pre>
+</div> <p><code>border-left-style</code> 속성은 <a href="border-style"><code>border-style</code></a> 속성에 사용할 수 있는 키워드 중 하나를 사용해 지정할 수 있습니다.</p>
+</div></section><section aria-labelledby="형식_구문"><h3 id="형식_구문">형식 구문</h3>
+<div class="section-content"><pre class="notranslate"><span class="token property" id="border-left-style">border-left-style = </span><br>  <span class="token property">&lt;line-style&gt;</span>  <br><br><span class="token property" id="&lt;line-style&gt;">&lt;line-style&gt; = </span><br>  <span class="token keyword">none</span>    <a href="value_definition_syntax#single_bar">|</a><br>  <span class="token keyword">hidden</span>  <a href="value_definition_syntax#single_bar">|</a><br>  <span class="token keyword">dotted</span>  <a href="value_definition_syntax#single_bar">|</a><br>  <span class="token keyword">dashed</span>  <a href="value_definition_syntax#single_bar">|</a><br>  <span class="token keyword">solid</span>   <a href="value_definition_syntax#single_bar">|</a><br>  <span class="token keyword">double</span>  <a href="value_definition_syntax#single_bar">|</a><br>  <span class="token keyword">groove</span>  <a href="value_definition_syntax#single_bar">|</a><br>  <span class="token keyword">ridge</span>   <a href="value_definition_syntax#single_bar">|</a><br>  <span class="token keyword">inset</span>   <a href="value_definition_syntax#single_bar">|</a><br>  <span class="token keyword">outset</span>  <br><br></pre></div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+<div class="section-content">
+<h4 id="html">HTML</h4> <div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="XxILsP5RuGu9wDM05pSxozYQXrWajvQ7jPIZbfP6VPs=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>table</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>tr</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>td</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>b1<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>none<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>td</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>td</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>b2<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>hidden<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>td</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>td</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>b3<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>dotted<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>td</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>td</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>b4<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>dashed<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>td</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>tr</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>tr</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>td</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>b5<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>solid<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>td</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>td</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>b6<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>double<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>td</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>td</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>b7<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>groove<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>td</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>td</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>b8<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>ridge<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>td</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>tr</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>tr</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>td</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>b9<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>inset<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>td</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>td</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>b10<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>outset<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>td</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>tr</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>table</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div> <h4 id="css">CSS</h4> <div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="YONoitZv2e0d0Rdv7tHFjfYZFUD1k91cyoKhEUxP6Ws=" data-language="css"><span class="token comment">/* Define look of the table */</span>
+<span class="token selector">table</span> <span class="token punctuation">{</span>
+  <span class="token property">border-width</span><span class="token punctuation">:</span> 2px<span class="token punctuation">;</span>
+  <span class="token property">background-color</span><span class="token punctuation">:</span> #52E385<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token selector">tr, td</span> <span class="token punctuation">{</span>
+  <span class="token property">padding</span><span class="token punctuation">:</span> 3px<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">/* border-left-style example classes */</span>
+<span class="token selector">.b1</span> <span class="token punctuation">{</span><span class="token property">border-left-style</span><span class="token punctuation">:</span> none<span class="token punctuation">;</span><span class="token punctuation">}</span>
+<span class="token selector">.b2</span> <span class="token punctuation">{</span><span class="token property">border-left-style</span><span class="token punctuation">:</span> hidden<span class="token punctuation">;</span><span class="token punctuation">}</span>
+<span class="token selector">.b3</span> <span class="token punctuation">{</span><span class="token property">border-left-style</span><span class="token punctuation">:</span> dotted<span class="token punctuation">;</span><span class="token punctuation">}</span>
+<span class="token selector">.b4</span> <span class="token punctuation">{</span><span class="token property">border-left-style</span><span class="token punctuation">:</span> dashed<span class="token punctuation">;</span><span class="token punctuation">}</span>
+<span class="token selector">.b5</span> <span class="token punctuation">{</span><span class="token property">border-left-style</span><span class="token punctuation">:</span> solid<span class="token punctuation">;</span><span class="token punctuation">}</span>
+<span class="token selector">.b6</span> <span class="token punctuation">{</span><span class="token property">border-left-style</span><span class="token punctuation">:</span> double<span class="token punctuation">;</span><span class="token punctuation">}</span>
+<span class="token selector">.b7</span> <span class="token punctuation">{</span><span class="token property">border-left-style</span><span class="token punctuation">:</span> groove<span class="token punctuation">;</span><span class="token punctuation">}</span>
+<span class="token selector">.b8</span> <span class="token punctuation">{</span><span class="token property">border-left-style</span><span class="token punctuation">:</span> ridge<span class="token punctuation">;</span><span class="token punctuation">}</span>
+<span class="token selector">.b9</span> <span class="token punctuation">{</span><span class="token property">border-left-style</span><span class="token punctuation">:</span> inset<span class="token punctuation">;</span><span class="token punctuation">}</span>
+<span class="token selector">.b10</span> <span class="token punctuation">{</span><span class="token property">border-left-style</span><span class="token punctuation">:</span> outset<span class="token punctuation">;</span><span class="token punctuation">}</span>
+</pre>
+</div> <h4 id="결과">결과</h4>
+<div class="code-example" id="sect2">
+
+<iframe class="sample-code-frame" title="예제 sample" id="frame_예제" width="300" height="200" src="https://live.mdnplay.dev/ko/docs/Web/CSS/border-left-style/runner.html?id=%EC%98%88%EC%A0%9C" loading="lazy"></iframe>
+</div>
+</div></section><h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://drafts.csswg.org/css-backgrounds/#the-border-style">CSS Backgrounds and Borders Module Level 3 <br><small># the-border-style</small></a></td></tr></tbody>
+</table></div>
+<div class="section-content"><figure class="table-container"><div class="_table"><table class="properties"><tbody>
+<tr>
+<th scope="row"><a href="initial_value">초기값</a></th>
+<td><code>none</code></td>
+</tr>
+<tr>
+<th scope="row">적용대상</th>
+<td>all elements. It also applies to <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/::first-letter" class="only-in-en-us"><code>::first-letter</code> <small>(en-US)</small></a>.</td>
+</tr>
+<tr>
+<th scope="row"><a href="inheritance">상속</a></th>
+<td>no</td>
+</tr>
+<tr>
+<th scope="row"><a href="computed_value">계산 값</a></th>
+<td>as specified</td>
+</tr>
+<tr>
+<th scope="row">Animation type</th>
+<td>discrete</td>
+</tr>
+</tbody></table></div></figure></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li>테두리 스타일 관련 CSS 속성: <a href="border-top-style"><code>border-top-style</code></a>, <a href="border-right-style"><code>border-right-style</code></a>, <a href="border-bottom-style"><code>border-bottom-style</code></a>, <a href="border-style"><code>border-style</code></a>.</li> <li>왼쪽 테두리 관련 CSS 속성: <a href="border-left"><code>border-left</code></a>, <a href="border-left-color"><code>border-left-color</code></a>, <a href="border-left-width"><code>border-left-width</code></a>.</li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/CSS/border-left-style" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/CSS/border-left-style</a>
+  </p>
+</div>

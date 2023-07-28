@@ -1,0 +1,104 @@
+<header><h1>FileReader.readAsDataURL()</h1></header><div class="section-content"><p><code>readAsDataURL</code> 메서드는 컨텐츠를 특정 <a href="../blob"><code>Blob</code></a> 이나 <a href="../file"><code>File</code></a>에서 읽어 오는 역할을 합니다. 읽어오는 read 행위가 종료되는 경우에, <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/FileReader/readyState"><code>readyState</code> <small>(en-US)</small></a> 의 상태가 <code>DONE</code>이 되며, <code><a href="https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/loadend_event" class="only-in-en-us">loadend <small>(en-US)</small></a></code> 이벤트가 트리거 됩니다. 이와 함께, base64 인코딩 된 스트링 데이터가 <a href="result"><code>result</code></a> 속성(attribute)에 담아지게 됩니다.</p></div>
+<h2 id="문법">문법</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="yIKOEYDHnb+t5eo9vtfWtunpxDcthHeMwcGmcmrGxjI=" data-language="js">instanceOfFileReader<span class="token punctuation">.</span><span class="token function">readAsDataURL</span><span class="token punctuation">(</span>blob<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div></div>
+<h3 id="파라미터">파라미터</h3>
+<div class="section-content"><dl> <dt id="blob"><code>blob</code></dt> <dd> <p>읽고자 하는 <a href="../blob"><code>Blob</code></a> 또는 <a href="../file"><code>File</code></a>.</p> </dd> </dl></div>
+<h2 id="예제">예제</h2>
+
+<h3 id="html">HTML</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="D0+4Wa5aki9bjPDsBUoCWpIPxDpMIzjIRqz7j/L+v04=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>file<span class="token punctuation">"</span></span> <span class="token special-attr"><span class="token attr-name">onchange</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token value javascript language-javascript"><span class="token function">previewFile</span><span class="token punctuation">(</span><span class="token punctuation">)</span></span><span class="token punctuation">"</span></span></span> <span class="token punctuation">/&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>br</span> <span class="token punctuation">/&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token punctuation">"</span></span> <span class="token attr-name">height</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>200<span class="token punctuation">"</span></span> <span class="token attr-name">alt</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>이미지 미리보기...<span class="token punctuation">"</span></span> <span class="token punctuation">/&gt;</span></span>
+</pre>
+</div></div>
+<h3 id="javascript">JavaScript</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="Ny6k9ENa6mYNz6b39Vafwze8GDgpoX4tgl8vFBWCafM=" data-language="js"><span class="token keyword">function</span> <span class="token function">previewFile</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">var</span> preview <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">querySelector</span><span class="token punctuation">(</span><span class="token string">'img'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">var</span> file <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">querySelector</span><span class="token punctuation">(</span><span class="token string">'input[type=file]'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>files<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+  <span class="token keyword">var</span> reader <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">FileReader</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  reader<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span>
+    <span class="token string">'load'</span><span class="token punctuation">,</span>
+    <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      preview<span class="token punctuation">.</span>src <span class="token operator">=</span> reader<span class="token punctuation">.</span>result<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token boolean">false</span>
+  <span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>file<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    reader<span class="token punctuation">.</span><span class="token function">readAsDataURL</span><span class="token punctuation">(</span>file<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</pre>
+</div></div>
+<h3 id="실행_결과">실행 결과</h3>
+<div class="section-content"><div class="code-example" id="sect1">
+
+<iframe class="sample-code-frame" title="예제" id="frame_example" width="100%" height="240" src="https://live.mdnplay.dev/ko/docs/Web/API/FileReader/readAsDataURL/runner.html?id=example" loading="lazy"></iframe>
+</div></div>
+<h2 id="복수의_파일_읽기_예제">복수의 파일 읽기 예제</h2>
+
+<h3 id="html_2">HTML</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="+85Ycs0xB1wS2rfaZegEeGZ69rffGU1IFFF0m+SLWl4=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>browse<span class="token punctuation">"</span></span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>file<span class="token punctuation">"</span></span> <span class="token special-attr"><span class="token attr-name">onchange</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token value javascript language-javascript"><span class="token function">previewFiles</span><span class="token punctuation">(</span><span class="token punctuation">)</span></span><span class="token punctuation">"</span></span></span> <span class="token attr-name">multiple</span> <span class="token punctuation">/&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>preview<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div></div>
+<h3 id="javascript_2">JavaScript</h3>
+<div class="section-content">
+<div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="KeBoKusKya+/kQA6xFHJvEwfcBXMEkNRZWka4fmR7Pk=" data-language="js"><span class="token keyword">function</span> <span class="token function">previewFiles</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">var</span> preview <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">querySelector</span><span class="token punctuation">(</span><span class="token string">'#preview'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">var</span> files <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">querySelector</span><span class="token punctuation">(</span><span class="token string">'input[type=file]'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>files<span class="token punctuation">;</span>
+
+  <span class="token keyword">function</span> <span class="token function">readAndPreview</span><span class="token punctuation">(</span><span class="token parameter">file</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// `file.name` 형태의 확장자 규칙에 주의하세요</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex"><span class="token special-escape escape">\.</span><span class="token group punctuation">(</span>jpe<span class="token quantifier number">?</span>g<span class="token alternation keyword">|</span>png<span class="token alternation keyword">|</span>gif<span class="token group punctuation">)</span><span class="token anchor function">$</span></span><span class="token regex-delimiter">/</span><span class="token regex-flags">i</span></span><span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span>file<span class="token punctuation">.</span>name<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">var</span> reader <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">FileReader</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+      reader<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span>
+        <span class="token string">'load'</span><span class="token punctuation">,</span>
+        <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+          <span class="token keyword">var</span> image <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Image</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+          image<span class="token punctuation">.</span>height <span class="token operator">=</span> <span class="token number">100</span><span class="token punctuation">;</span>
+          image<span class="token punctuation">.</span>title <span class="token operator">=</span> file<span class="token punctuation">.</span>name<span class="token punctuation">;</span>
+          image<span class="token punctuation">.</span>src <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>result<span class="token punctuation">;</span>
+          preview<span class="token punctuation">.</span><span class="token function">appendChild</span><span class="token punctuation">(</span>image<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token boolean">false</span>
+      <span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+      reader<span class="token punctuation">.</span><span class="token function">readAsDataURL</span><span class="token punctuation">(</span>file<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>files<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span>files<span class="token punctuation">,</span> readAndPreview<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</pre>
+</div> <div class="notecard note" id="sect2"> <p><strong>참고:</strong></p> <p><a href="../filereader"><code>FileReader()</code></a> 생성자는 Internet Explorer 10 이전 버전에서는 지원하지 않는 기능입니다.</p> <p> 정상적으로 지원하는 코드를 확인하기 위해서는 다음 링크를 참조하시기 바랍니다. <a href="https://mdn.mozillademos.org/files/3699/crossbrowser_image_preview.html" target="_blank">crossbrowser possible solution for image preview</a>. 또는 <a href="https://mdn.mozillademos.org/files/3698/image_upload_preview.html" target="_blank">this more powerful example</a>. </p> </div>
+</div>
+<h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://w3c.github.io/FileAPI/#readAsDataURL">File API <br><small># readAsDataURL</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<h2 id="바깥_고리">바깥 고리</h2>
+<div class="section-content"><ul> <li><a href="../filereader"><code>FileReader</code></a></li> </ul></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/FileReader/readAsDataURL" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/FileReader/readAsDataURL</a>
+  </p>
+</div>

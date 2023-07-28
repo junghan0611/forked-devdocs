@@ -1,0 +1,78 @@
+<header><h1>RangeError() 생성자</h1></header><div class="section-content"><p><code>RangeError()</code> 생성자는 어떤 값이 집합에 없거나 허용되는 범위가 아닐 때 발생하는 오류를 생성합니다</p></div>
+<section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content">
+<div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="xS/mdpUtdLxL99bqmJAq3Kf1G/Dld8xfVVWFHtGOh+w=" data-language="js"><span class="token keyword">new</span> <span class="token class-name">RangeError</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">new</span> <span class="token class-name">RangeError</span><span class="token punctuation">(</span>message<span class="token punctuation">)</span>
+<span class="token keyword">new</span> <span class="token class-name">RangeError</span><span class="token punctuation">(</span>message<span class="token punctuation">,</span> options<span class="token punctuation">)</span>
+<span class="token keyword">new</span> <span class="token class-name">RangeError</span><span class="token punctuation">(</span>message<span class="token punctuation">,</span> fileName<span class="token punctuation">)</span>
+<span class="token keyword">new</span> <span class="token class-name">RangeError</span><span class="token punctuation">(</span>message<span class="token punctuation">,</span> fileName<span class="token punctuation">,</span> lineNumber<span class="token punctuation">)</span>
+
+<span class="token function">RangeError</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token function">RangeError</span><span class="token punctuation">(</span>message<span class="token punctuation">)</span>
+<span class="token function">RangeError</span><span class="token punctuation">(</span>message<span class="token punctuation">,</span> options<span class="token punctuation">)</span>
+<span class="token function">RangeError</span><span class="token punctuation">(</span>message<span class="token punctuation">,</span> fileName<span class="token punctuation">)</span>
+<span class="token function">RangeError</span><span class="token punctuation">(</span>message<span class="token punctuation">,</span> fileName<span class="token punctuation">,</span> lineNumber<span class="token punctuation">)</span>
+</pre>
+</div> <div class="notecard note" id="sect1"> <p><strong>참고:</strong> <code>RangeError()</code>는 <a href="../../operators/new"><code>new</code></a>와 함께 호출하거나 혹은 <code>new</code> 없이 호출할 수 있습니다. 두 방법 모두 새로운 <code>RangeError</code> 인스턴스를 생성합니다.</p> </div>
+</div></section><section aria-labelledby="매개변수"><h3 id="매개변수">매개변수</h3>
+<div class="section-content"><dl> <dt id="message">
+<code>message</code> <span class="badge inline optional">Optional</span>
+</dt> <dd> <p>사람이 읽을 수 있는 오류에 대한 설명</p> </dd> <dt id="options">
+<code>options</code> <span class="badge inline optional">Optional</span>
+</dt> <dd> <p>다음의 속성을 가지는 객체.</p> <dl> <dt id="cause">
+<code>cause</code> <span class="badge inline optional">Optional</span>
+</dt> <dd> <p> 오류의 특정 원인을 가리키는 속성. 오류를 잡아서 좀 더 상세하거나 유용한 오류 메시지와 함께 예외를 다시 발생시킬 때 이 속성을 원래 오류를 전달하는데 사용할 수 있습니다. </p> </dd> </dl> </dd> <dt id="filename">
+<code>fileName</code> <span class="badge inline optional">Optional</span> <abbr class="icon icon-nonstandard" title="비표준. 사용하기전에 다른 브라우저에서도 사용 가능한지 확인 해주세요."> <span class="visually-hidden">비표준</span> </abbr>
+</dt> <dd> <p>예외가 발생한 코드를 담고 있는 파일 이름</p> </dd> <dt id="linenumber">
+<code>lineNumber</code> <span class="badge inline optional">Optional</span> <abbr class="icon icon-nonstandard" title="비표준. 사용하기전에 다른 브라우저에서도 사용 가능한지 확인 해주세요."> <span class="visually-hidden">비표준</span> </abbr>
+</dt> <dd> <p>예외가 발상한 코드의 줄 수</p> </dd> </dl></div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+</section><section aria-labelledby="rangeerror_사용하기숫자_값일_경우"><h3 id="rangeerror_사용하기숫자_값일_경우">RangeError 사용하기(숫자 값일 경우)</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="kB5auXNAW/KqaG3fkunjFuj/DjM5nTruShqktLxLdRU=" data-language="js"><span class="token keyword">function</span> <span class="token function">check</span><span class="token punctuation">(</span><span class="token parameter">n</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token punctuation">(</span>n <span class="token operator">&gt;=</span> <span class="token operator">-</span><span class="token number">500</span> <span class="token operator">&amp;&amp;</span> n <span class="token operator">&lt;=</span> <span class="token number">500</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">RangeError</span><span class="token punctuation">(</span><span class="token string">"The argument must be between -500 and 500."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">try</span> <span class="token punctuation">{</span>
+  <span class="token function">check</span><span class="token punctuation">(</span><span class="token number">2000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span>error<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>error <span class="token keyword">instanceof</span> <span class="token class-name">RangeError</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// Handle the error</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</pre>
+</div></div></section><section aria-labelledby="rangeerror_사용하기_숫자_값이_아닐_경우"><h3 id="rangeerror_사용하기_숫자_값이_아닐_경우">RangeError 사용하기 (숫자 값이 아닐 경우)</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="4xew5v42FwylkKIt+y//cKoUXElRTtMwK9od7UjJs5c=" data-language="js"><span class="token keyword">function</span> <span class="token function">check</span><span class="token punctuation">(</span><span class="token parameter">value</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token punctuation">[</span><span class="token string">"apple"</span><span class="token punctuation">,</span> <span class="token string">"banana"</span><span class="token punctuation">,</span> <span class="token string">"carrot"</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">includes</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">RangeError</span><span class="token punctuation">(</span>
+      <span class="token string">'The argument must be an "apple", "banana", or "carrot".'</span>
+    <span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">try</span> <span class="token punctuation">{</span>
+  <span class="token function">check</span><span class="token punctuation">(</span><span class="token string">"cabbage"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span>error<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>error <span class="token keyword">instanceof</span> <span class="token class-name">RangeError</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// Handle the error</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</pre>
+</div></div></section><h2 id="명세서">명세서</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://tc39.es/ecma262/multipage/fundamental-objects.html#sec-nativeerror-constructors">ECMAScript Language Specification <br><small># sec-nativeerror-constructors</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="../error"><code>Error</code></a></li> <li><a href="../array"><code>Array</code></a></li> <li><a href="../number/toexponential"><code>Number.prototype.toExponential()</code></a></li> <li><a href="../number/tofixed"><code>Number.prototype.toFixed()</code></a></li> <li><a href="../number/toprecision"><code>Number.prototype.toPrecision()</code></a></li> <li><a href="../string/normalize"><code>String.prototype.normalize()</code></a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/RangeError/RangeError" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/RangeError/RangeError</a>
+  </p>
+</div>

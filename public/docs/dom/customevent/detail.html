@@ -1,0 +1,42 @@
+<header><h1>CustomEvent.detail</h1></header><div class="section-content"><p><a href="../customevent"><code>CustomEvent</code></a> 인터페이스의 <code>detail</code> 읽기 전용 속성은 이벤트를 초기화할 때 제공한 데이터를 반환합니다.</p></div>
+<h2 id="값">값</h2>
+<div class="section-content"><p>이벤트를 초기화할 때 제공한 데이터입니다.</p></div>
+<h2 id="예제">예제</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="K/tDAyiHj9s8596ndBmIlD5kywQjeeUMJ4s9M49iRxI=" data-language="js"><span class="token comment">// CustomEvent 생성</span>
+<span class="token keyword">const</span> catFound <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">CustomEvent</span><span class="token punctuation">(</span><span class="token string">'animalfound'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+  <span class="token literal-property property">detail</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">'cat'</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> dogFound <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">CustomEvent</span><span class="token punctuation">(</span><span class="token string">'animalfound'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+  <span class="token literal-property property">detail</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">'dog'</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// 적합한 이벤트 수신기 부착</span>
+obj<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">'animalfound'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">e</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>e<span class="token punctuation">.</span>detail<span class="token punctuation">.</span>name<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// 이벤트 발송</span>
+obj<span class="token punctuation">.</span><span class="token function">dispatchEvent</span><span class="token punctuation">(</span>catFound<span class="token punctuation">)</span><span class="token punctuation">;</span>
+obj<span class="token punctuation">.</span><span class="token function">dispatchEvent</span><span class="token punctuation">(</span>dogFound<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// 콘솔에 "cat"과 "dog"가 기록됨</span>
+</pre>
+</div></div>
+<h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="#">DOM Standard <br><small># ref-for-dom-customevent-detail②</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="../customevent"><code>CustomEvent</code></a></li> </ul></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/CustomEvent/detail" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/CustomEvent/detail</a>
+  </p>
+</div>

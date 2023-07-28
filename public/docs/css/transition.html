@@ -1,0 +1,92 @@
+<header><h1>transition</h1></header><div class="section-content"><div class="notecard experimental" id="sect1"><p><strong>Experimental:</strong> <strong>This is an <a href="https://developer.mozilla.org/en-US/docs/MDN/Writing_guidelines/Experimental_deprecated_obsolete#experimental">experimental technology</a></strong><br>Check the <a href="#browser_compatibility">Browser compatibility table</a> carefully before using this in production.</p></div></div>
+<section aria-labelledby="summary"><h2 id="summary">Summary</h2>
+<div class="section-content">
+<p><code>transition</code> <a href="https://developer.mozilla.org/en-US/CSS">CSS</a>속성은 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/transition-property"><code>transition-property</code> <small>(en-US)</small></a>, <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/transition-duration"><code>transition-duration</code> <small>(en-US)</small></a>, <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/transition-timing-function"><code>transition-timing-function</code> <small>(en-US)</small></a> 과 <a href="transition-delay"><code>transition-delay</code></a>를 위한 <a href="shorthand_properties">단축 속성</a>입니다. 이 속성으로 엘리먼트의 두 가지 상태 사이에 변화를 줄 수 있습니다. 엘리먼트의 각 상태는 <a href="pseudo-classes">가상 클래스</a> 를 사용해 정의된 <a href=":hover"><code>:hover</code></a> 이나 <a href=":active"><code>:active</code></a> 또는 자바스크립트를 사용해 동적으로 만들어진 것들입니다.</p>
+<figure class="table-container"><div class="_table"><table class="properties"><tbody>
+<tr>
+<th scope="row"><a href="initial_value">초기값</a></th>
+<td>as each of the properties of the shorthand:<br><ul>
+<li>
+<a href="transition-delay"><code>transition-delay</code></a>: <code>0s</code>
+</li>
+<li>
+<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/transition-duration" class="only-in-en-us"><code>transition-duration</code> <small>(en-US)</small></a>: <code>0s</code>
+</li>
+<li>
+<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/transition-property" class="only-in-en-us"><code>transition-property</code> <small>(en-US)</small></a>: all</li>
+<li>
+<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/transition-timing-function" class="only-in-en-us"><code>transition-timing-function</code> <small>(en-US)</small></a>: <code>ease</code>
+</li>
+</ul>
+</td>
+</tr>
+<tr>
+<th scope="row">적용대상</th>
+<td>all elements, <a href="::before"><code>::before</code></a> and <a href="::after"><code>::after</code></a> <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-elements">pseudo-elements</a>
+</td>
+</tr>
+<tr>
+<th scope="row"><a href="inheritance">상속</a></th>
+<td>no</td>
+</tr>
+<tr>
+<th scope="row"><a href="computed_value">계산 값</a></th>
+<td>as each of the properties of the shorthand:<br><ul>
+<li>
+<a href="transition-delay"><code>transition-delay</code></a>: as specified</li>
+<li>
+<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/transition-duration" class="only-in-en-us"><code>transition-duration</code> <small>(en-US)</small></a>: as specified</li>
+<li>
+<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/transition-property" class="only-in-en-us"><code>transition-property</code> <small>(en-US)</small></a>: as specified</li>
+<li>
+<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/transition-timing-function" class="only-in-en-us"><code>transition-timing-function</code> <small>(en-US)</small></a>: as specified</li>
+</ul>
+</td>
+</tr>
+<tr>
+<th scope="row">Animation type</th>
+<td>Not animatable</td>
+</tr>
+</tbody></table></div></figure>
+</div></section><section aria-labelledby="syntax"><h2 id="syntax">Syntax</h2>
+<div class="section-content">
+<div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="RKJPPok7hqXw1p3pdPYp6GyXV4AhwLZj1Ps+ucZIatc=" data-language="css"><span class="token comment">/* Apply to 1 property */</span>
+<span class="token comment">/* property name | duration */</span>
+<span class="token property">transition</span><span class="token punctuation">:</span> margin-left 4s<span class="token punctuation">;</span>
+
+<span class="token comment">/* property name | duration | delay */</span>
+<span class="token property">transition</span><span class="token punctuation">:</span> margin-left 4s 1s<span class="token punctuation">;</span>
+
+<span class="token comment">/* property name | duration | timing function | delay */</span>
+<span class="token property">transition</span><span class="token punctuation">:</span> margin-left 4s ease-in-out 1s<span class="token punctuation">;</span>
+
+<span class="token comment">/* Apply to 2 properties */</span>
+<span class="token property">transition</span><span class="token punctuation">:</span> margin-left 4s<span class="token punctuation">,</span> color 1s<span class="token punctuation">;</span>
+
+<span class="token comment">/* Apply to all changed properties */</span>
+<span class="token property">transition</span><span class="token punctuation">:</span> all 0.5s ease-out<span class="token punctuation">;</span>
+
+<span class="token comment">/* Global values */</span>
+<span class="token property">transition</span><span class="token punctuation">:</span> inherit<span class="token punctuation">;</span>
+<span class="token property">transition</span><span class="token punctuation">:</span> initial<span class="token punctuation">;</span>
+<span class="token property">transition</span><span class="token punctuation">:</span> unset<span class="token punctuation">;</span>
+</pre>
+</div> <p>이 속성에서 각 항목의 순서는 중요합니다: 시간으로 해석될 수 있는 값이 첫번째에 위치한다면 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/transition-duration"><code>transition-duration</code> <small>(en-US)</small></a> 로 적용되고, 두번째에 위치한다면 <a href="transition-delay"><code>transition-delay</code></a> 로 적용됩니다.</p> <p>속성값 목록이 알맞은 길이를 갖지 않는다면 어떻게 처리될지 궁금하다면 <a href="css_transitions/using_css_transitions#%ec%86%8d%ec%84%b1%ea%b0%92_%eb%aa%a9%eb%a1%9d%ec%9d%b4_%eb%8b%a4%eb%a5%b8_%ea%b0%9c%ec%88%98%eb%a5%bc_%ea%b0%80%ec%a7%84_%ea%b2%bd%ec%9a%b0">속성값 목록이 다른 개수를 가진 경우</a>를 참고하세요. 요컨대, 실제 속성의 개수보다 많이 기술된 것은 무시됩니다.</p>
+</div></section><section aria-labelledby="formal_syntax"><h3 id="formal_syntax">Formal syntax</h3>
+<div class="section-content"><pre class="notranslate"><span class="token property" id="transition">transition = </span><br>  <span class="token property">&lt;single-transition&gt;</span><a href="value_definition_syntax#hash_mark">#</a>  <br><br><span class="token property" id="&lt;single-transition&gt;">&lt;single-transition&gt; = </span><br>  <a href="value_definition_syntax#brackets">[</a> <span class="token keyword">none</span> <a href="value_definition_syntax#single_bar">|</a> <span class="token property">&lt;single-transition-property&gt;</span> <a href="value_definition_syntax#brackets">]</a>  <a href="value_definition_syntax#double_bar">||</a><br>  <a href="time"><span class="token property">&lt;time&gt;</span></a>                                   <a href="value_definition_syntax#double_bar">||</a><br>  <span class="token property">&lt;easing-function&gt;</span>                        <a href="value_definition_syntax#double_bar">||</a><br>  <a href="time"><span class="token property">&lt;time&gt;</span></a>                                   <br><br><span class="token property" id="&lt;single-transition-property&gt;">&lt;single-transition-property&gt; = </span><br>  <span class="token keyword">all</span>             <a href="value_definition_syntax#single_bar">|</a><br>  <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/custom-ident" class="only-in-en-us"><span class="token property">&lt;custom-ident&gt;</span> <small>(en-US)</small></a>  <br><br><span class="token property" id="&lt;easing-function&gt;">&lt;easing-function&gt; = </span><br>  <span class="token keyword">linear</span>                          <a href="value_definition_syntax#single_bar">|</a><br>  <span class="token property">&lt;linear-easing-function&gt;</span>        <a href="value_definition_syntax#single_bar">|</a><br>  <span class="token property">&lt;cubic-bezier-easing-function&gt;</span>  <a href="value_definition_syntax#single_bar">|</a><br>  <span class="token property">&lt;step-easing-function&gt;</span>          <br><br><span class="token property" id="&lt;linear-easing-function&gt;">&lt;linear-easing-function&gt; = </span><br>  <span class="token function">linear(</span> <span class="token property">&lt;linear-stop-list&gt;</span> <span class="token function">)</span>  <br><br><span class="token property" id="&lt;cubic-bezier-easing-function&gt;">&lt;cubic-bezier-easing-function&gt; = </span><br>  <span class="token keyword">ease</span>                                                <a href="value_definition_syntax#single_bar">|</a><br>  <span class="token keyword">ease-in</span>                                             <a href="value_definition_syntax#single_bar">|</a><br>  <span class="token keyword">ease-out</span>                                            <a href="value_definition_syntax#single_bar">|</a><br>  <span class="token keyword">ease-in-out</span>                                         <a href="value_definition_syntax#single_bar">|</a><br>  <span class="token function">cubic-bezier(</span> <a href="number"><span class="token property">&lt;number [0,1]&gt;</span></a> , <a href="number"><span class="token property">&lt;number&gt;</span></a> , <a href="number"><span class="token property">&lt;number [0,1]&gt;</span></a> , <a href="number"><span class="token property">&lt;number&gt;</span></a> <span class="token function">)</span>  <br><br><span class="token property" id="&lt;step-easing-function&gt;">&lt;step-easing-function&gt; = </span><br>  <span class="token keyword">step-start</span>                                <a href="value_definition_syntax#single_bar">|</a><br>  <span class="token keyword">step-end</span>                                  <a href="value_definition_syntax#single_bar">|</a><br>  <span class="token function">steps(</span> <a href="integer"><span class="token property">&lt;integer&gt;</span></a> <a href="value_definition_syntax#brackets">[</a>, <span class="token property">&lt;step-position&gt;</span> <a href="value_definition_syntax#brackets">]</a><a href="value_definition_syntax#question_mark">?</a> <span class="token function">)</span>  <br><br><span class="token property" id="&lt;linear-stop-list&gt;">&lt;linear-stop-list&gt; = </span><br>  <a href="value_definition_syntax#brackets">[</a> <span class="token property">&lt;linear-stop&gt;</span> <a href="value_definition_syntax#brackets">]</a><a href="value_definition_syntax#hash_mark">#</a>  <br><br><span class="token property" id="&lt;step-position&gt;">&lt;step-position&gt; = </span><br>  <span class="token keyword">jump-start</span>  <a href="value_definition_syntax#single_bar">|</a><br>  <span class="token keyword">jump-end</span>    <a href="value_definition_syntax#single_bar">|</a><br>  <span class="token keyword">jump-none</span>   <a href="value_definition_syntax#single_bar">|</a><br>  <span class="token keyword">jump-both</span>   <a href="value_definition_syntax#single_bar">|</a><br>  <span class="token keyword">start</span>       <a href="value_definition_syntax#single_bar">|</a><br>  <span class="token keyword">end</span>         <br><br><span class="token property" id="&lt;linear-stop&gt;">&lt;linear-stop&gt; = </span><br>  <a href="number"><span class="token property">&lt;number&gt;</span></a>               <a href="value_definition_syntax#double_ampersand">&amp;&amp;</a><br>  <span class="token property">&lt;linear-stop-length&gt;</span><a href="value_definition_syntax#question_mark">?</a>  <br><br><span class="token property" id="&lt;linear-stop-length&gt;">&lt;linear-stop-length&gt; = </span><br>  <a href="percentage"><span class="token property">&lt;percentage&gt;</span></a><a href="value_definition_syntax#curly_braces">{1,2}</a>  <br><br></pre></div></section><section aria-labelledby="examples"><h2 id="examples">Examples</h2>
+<div class="section-content"><p><a href="css_transitions/using_css_transitions">CSS 트랜지션 사용하기</a> 에 다양한 CSS transition 예제가 있습니다.</p></div></section><h2 id="명세서">명세서</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://drafts.csswg.org/css-transitions/#transition-shorthand-property">CSS Transitions <br><small># transition-shorthand-property</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="see_also"><h2 id="see_also">See also</h2>
+<div class="section-content"><ul> <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_transitions/Using_CSS_transitions" class="only-in-en-us">Using CSS transitions <small>(en-US)</small></a></li> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/TransitionEvent"><code>TransitionEvent</code> <small>(en-US)</small></a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/CSS/transition" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/CSS/transition</a>
+  </p>
+</div>

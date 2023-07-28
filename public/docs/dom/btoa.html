@@ -1,0 +1,97 @@
+<header><h1>btoa()</h1></header><div class="section-content">
+<p><code>btoa()</code> 함수는 <a href="domstring/binary" class="page-not-created">이진 문자열</a>(<a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/String"><code>String</code></a> 객체 내 모든 문자가 이진 데이터의 바이트 한 개)로부터 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Glossary/Base64">Base64 <small>(en-US)</small></a> 인코딩된 ASCII 문자열을 생성해 반환합니다.</p> <p>ASCII 값 0부터 31까지의 제어 문자처럼 통신에 사용하면 문제가 발생할 수 있는 데이터를 <code>btoa()</code>로 인코딩해 전송하고, 받는 쪽에서는 <a href="atob"><code>atob()</code></a>로 디코딩하면 문제 없이 원래 데이터를 가져올 수 있습니다.</p>
+</div>
+<h2 id="구문">구문</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="FTr7aD1uk9NLJqkTMDCMOw/dAcDOZqeWrBybCR+cQm0=" data-language="js"><span class="token function">btoa</span><span class="token punctuation">(</span>stringToEncode<span class="token punctuation">)</span>
+</pre>
+</div></div>
+<h3 id="매개변수">매개변수</h3>
+<div class="section-content"><dl> <dt id="stringtoencode"><code>stringToEncode</code></dt> <dd> <p>인코딩할 <a href="domstring/binary" class="page-not-created">이진 문자열</a>입니다.</p> </dd> </dl></div>
+<h3 id="반환_값">반환 값</h3>
+<div class="section-content"><p><code>stringToEncode</code>를 Base64로 표현한 ASCII 문자열.</p></div>
+<h3 id="예외">예외</h3>
+<div class="section-content"><dl> <dt id="invalidcharactererror">
+<code>InvalidCharacterError</code> <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/DOMException"><code>DOMException</code> <small>(en-US)</small></a>
+</dt> <dd> <p>문자열이 바이트 한 개로 표현할 수 없는 문자를 포함하고 있으면 발생합니다. 자세한 정보는 아래의 "유니코드 문자열"을 참고하세요.</p> </dd> </dl></div>
+<h2 id="예제">예제</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="hEgUtdqWX+6A+G8jLXT60S94tbeVlM+WBo6NMsEGpao=" data-language="js"><span class="token keyword">const</span> encodedData <span class="token operator">=</span> <span class="token function">btoa</span><span class="token punctuation">(</span><span class="token string">'Hello, world'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 문자열 인코딩</span>
+<span class="token keyword">const</span> decodedData <span class="token operator">=</span> <span class="token function">atob</span><span class="token punctuation">(</span>encodedData<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 문자열 디코딩</span>
+</pre>
+</div></div>
+<h2 id="유니코드_문자열">유니코드 문자열</h2>
+<div class="section-content">
+<p><code>btoa()</code> 함수는 매개변수로 JavaScript 문자열을 받습니다. JavaScript에서는 문자열을 UTF-16 인코딩으로 표현하는데, UTF-16은 문자열을 16비트 (2바이트) 단위의 시퀀스로 나타냅니다. 모든 ASCII 문자는 단위 하나의 앞쪽 바이트만으로 표현할 수 있지만, 많은 수의 다른 문자들은 두 바이트를 모두 사용해야 합니다.</p> <p>Base64는 이진 데이터를 입력으로 받도록 설계됐습니다. JavaScript 문자열로 얘기하자면 모든 문자가 바이트를 하나씩만 차지하는 경우를 의미합니다. 따라서 <code>btoa()</code>에 2바이트 문자를 포함한 문자열을 제공하면 오류가 발생합니다. 그런 문자열은 이진 데이터라고 하지 않기 때문입니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="h3ooaTHrVuXqRcSpgK4DxpSPcmvzJF9fGnB1e9fVkho=" data-language="js"><span class="token keyword">const</span> ok <span class="token operator">=</span> <span class="token string">"a"</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>ok<span class="token punctuation">.</span><span class="token function">codePointAt</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token number">16</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 61: 1바이트 미만</span>
+
+<span class="token keyword">const</span> notOK <span class="token operator">=</span> <span class="token string">"✓"</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>notOK<span class="token punctuation">.</span><span class="token function">codePointAt</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token number">16</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 2713: 1바이트 초과</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token function">btoa</span><span class="token punctuation">(</span>ok<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token comment">// YQ==</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token function">btoa</span><span class="token punctuation">(</span>notOK<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 오류</span>
+</pre>
+</div> <p><code>btoa()</code>를 사용해서 유니코드 텍스트를 ASCII로 인코딩해야 할 때 사용할 수 있는 방법 한 가지는, 문자열의 각 16비트 단위가 한 바이트씩 차지하도록 먼저 변환하는 것입니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="7k6KBE1TR5MDeJgGwPvBFTdgUvKZGhTSzeFTdtyTT1U=" data-language="js"><span class="token comment">// Unicode 문자열의 16비트 단위가 한 바이트씩 차지하도록 변환</span>
+<span class="token keyword">function</span> <span class="token function">toBinary</span><span class="token punctuation">(</span><span class="token parameter">string</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> codeUnits <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Uint16Array</span><span class="token punctuation">(</span>string<span class="token punctuation">.</span>length<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> codeUnits<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    codeUnits<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> string<span class="token punctuation">.</span><span class="token function">charCodeAt</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword">const</span> charCodes <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Uint8Array</span><span class="token punctuation">(</span>codeUnits<span class="token punctuation">.</span>buffer<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">let</span> result <span class="token operator">=</span> <span class="token string">''</span><span class="token punctuation">;</span>
+  <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> charCodes<span class="token punctuation">.</span>byteLength<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    result <span class="token operator">+=</span> String<span class="token punctuation">.</span><span class="token function">fromCharCode</span><span class="token punctuation">(</span>charCodes<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword">return</span> result<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// 1바이트를 초과하는 문자를 포함하는 문자열</span>
+<span class="token keyword">const</span> myString <span class="token operator">=</span> <span class="token string">"☸☹☺☻☼☾☿"</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> converted <span class="token operator">=</span> <span class="token function">toBinary</span><span class="token punctuation">(</span>myString<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> encoded <span class="token operator">=</span> <span class="token function">btoa</span><span class="token punctuation">(</span>converted<span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>encoded<span class="token punctuation">)</span><span class="token punctuation">;</span>                 <span class="token comment">// OCY5JjomOyY8Jj4mPyY=</span>
+</pre>
+</div> <p>물론 이렇게 되면 디코딩한 문자열에 역변환까지 해야 원래의 문자열을 구할 수 있습니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="ViKb+uqPkbDpFQ7jGVcslw4UOVvj8CcyfNtiEdXNm50=" data-language="js"><span class="token keyword">function</span> <span class="token function">fromBinary</span><span class="token punctuation">(</span><span class="token parameter">binary</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> bytes <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Uint8Array</span><span class="token punctuation">(</span>binary<span class="token punctuation">.</span>length<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> bytes<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    bytes<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> binary<span class="token punctuation">.</span><span class="token function">charCodeAt</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword">const</span> charCodes <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Uint16Array</span><span class="token punctuation">(</span>bytes<span class="token punctuation">.</span>buffer<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">let</span> result <span class="token operator">=</span> <span class="token string">''</span><span class="token punctuation">;</span>
+  <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> charCodes<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    result <span class="token operator">+=</span> String<span class="token punctuation">.</span><span class="token function">fromCharCode</span><span class="token punctuation">(</span>charCodes<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword">return</span> result<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">const</span> decoded <span class="token operator">=</span> <span class="token function">atob</span><span class="token punctuation">(</span>encoded<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> original <span class="token operator">=</span> <span class="token function">fromBinary</span><span class="token punctuation">(</span>decoded<span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>original<span class="token punctuation">)</span><span class="token punctuation">;</span>                <span class="token comment">// ☸☹☺☻☼☾☿</span>
+</pre>
+</div> <p>용어집 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Glossary/Base64">Base64 <small>(en-US)</small></a> 항목, <a href="https://developer.mozilla.org/en-US/docs/Glossary/Base64" class="only-in-en-us">해결책 #1 – 인코딩 전에 문자열 이스케이핑 <small>(en-US)</small></a>의 예제 코드 <code>utf8_to_b64</code>와 <code>b64_to_utf8</code> 함수도 참고하세요.</p>
+</div>
+<h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://html.spec.whatwg.org/multipage/webappapis.html#dom-btoa-dev">HTML Standard <br><small># dom-btoa-dev</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li>
+<a href="https://github.com/zloirock/core-js" target="_blank"><code>core-js</code></a>의 <a href="https://github.com/zloirock/core-js#base64-utility-methods" target="_blank"><code>btoa</code> 폴리필</a>
+</li> <li><a href="https://developer.mozilla.org/ko/docs/Web/HTTP/Basics_of_HTTP/Data_URLs"><code>data</code> URL</a></li> <li><a href="atob"><code>atob()</code></a></li> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Glossary/Base64">Base64 <small>(en-US)</small></a></li> </ul></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/btoa" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/btoa</a>
+  </p>
+</div>

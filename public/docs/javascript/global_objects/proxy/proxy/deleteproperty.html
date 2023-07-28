@@ -1,0 +1,64 @@
+<header><h1>handler.deleteProperty()</h1></header><div class="section-content"><p><code>handler.deleteProperty()</code> 메서드는 <a href="../../../operators/delete"><code>delete</code></a> 연산자에 대한 트랩입니다.</p></div>
+<section aria-labelledby="시도해보기"><h2 id="시도해보기">시도해보기</h2>
+<div class="section-content"><iframe class="interactive is-taller-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/js/proxyhandler-deleteproperty.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe></div></section><section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="eDkYK06lXdqmXG3oi0uIH0IXZA9KivAGsuhX4Wo8Dqc=" data-language="js"><span class="token keyword">new</span> <span class="token class-name">Proxy</span><span class="token punctuation">(</span>target<span class="token punctuation">,</span> <span class="token punctuation">{</span>
+  <span class="token function">deleteProperty</span><span class="token punctuation">(</span><span class="token parameter">target<span class="token punctuation">,</span> property</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div></div></section><section aria-labelledby="매개_변수"><h3 id="매개_변수">매개 변수</h3>
+<div class="section-content">
+<p>다음 매개변수는 <code>deleteProperty()</code> 메서드에 전달됩니다. <code>this</code>는 처리기에 바인딩됩니다.</p> <dl> <dt id="target"><code>target</code></dt> <dd> <p>대상 객체</p> </dd> <dt id="property"><code>property</code></dt> <dd> <p>삭제할 이름 또는 속성의 <a href="../../symbol"><code>Symbol</code></a>입니다.</p> </dd> </dl>
+</div></section><section aria-labelledby="반환_값"><h3 id="반환_값">반환 값</h3>
+<div class="section-content"><p><code>deleteProperty()</code> 메서드는 속성이 성공적으로 삭제되었는지를 나타내는 <a href="../../boolean"><code>불리언</code></a>을 반환합니다.</p></div></section><section aria-labelledby="설명"><h2 id="설명">설명</h2>
+<div class="section-content"><p><code>handler.deleteProperty()</code> 메서드는 <a href="../../../operators/delete"><code>delete</code></a> 연산자에 대한 트랩입니다.</p></div></section><section aria-labelledby="가로채기"><h3 id="가로채기">가로채기</h3>
+<div class="section-content">
+<p>이 트랩은 다음 작업을 가로챌 수 있습니다.</p> <ul> <li> 속성 삭제: <code>delete proxy[foo]</code>와 <code>delete proxy.foo</code> </li> <li><a href="../../reflect/deleteproperty"><code>Reflect.deleteProperty()</code></a></li> </ul>
+</div></section><section aria-labelledby="불변_조건"><h3 id="불변_조건">불변 조건</h3>
+<div class="section-content">
+<p>다음 불변 조건이 위반되면 프록시에서 <a href="../../typeerror"><code>TypeError</code></a>가 발생합니다.</p> <ul> <li>속성이 대상 객체의 구성할 수 없는 자체 속성으로 존재하는 경우, 속성을 삭제할 수 없습니다.</li> </ul>
+</div></section><section aria-labelledby="예제들"><h2 id="예제들">예제들</h2>
+</section><section aria-labelledby="delete_연산자_가로채기"><h3 id="delete_연산자_가로채기">delete 연산자 가로채기</h3>
+<div class="section-content">
+<p>다음 코드는 <a href="../../../operators/delete"><code>delete</code></a> 연산자를 트랩합니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="vDnfyT2UBlAdGdkdTh4j+o+pURfP1ZIdlcXVKX0aqUo=" data-language="js"><span class="token keyword">const</span> p <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Proxy</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+  <span class="token function">deleteProperty</span><span class="token punctuation">(</span><span class="token parameter">target<span class="token punctuation">,</span> prop</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token punctuation">(</span>prop <span class="token keyword">in</span> target<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">property not found: </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>prop<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">delete</span> target<span class="token punctuation">[</span>prop<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">property removed: </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>prop<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+p<span class="token punctuation">.</span>a <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'a'</span> <span class="token keyword">in</span> p<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// true</span>
+
+<span class="token keyword">const</span> result1 <span class="token operator">=</span> <span class="token keyword">delete</span> p<span class="token punctuation">.</span>a<span class="token punctuation">;</span> <span class="token comment">// "property removed: a"</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>result1<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// true</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'a'</span> <span class="token keyword">in</span> p<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// false</span>
+
+<span class="token keyword">const</span> result2 <span class="token operator">=</span> <span class="token keyword">delete</span> p<span class="token punctuation">.</span>a<span class="token punctuation">;</span> <span class="token comment">// "property not found: a"</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>result2<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// false</span>
+</pre>
+</div>
+</div></section><h2 id="명세서">명세서</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://tc39.es/ecma262/multipage/ordinary-and-exotic-objects-behaviours.html#sec-proxy-object-internal-methods-and-internal-slots-delete-p">ECMAScript Language Specification <br><small># sec-proxy-object-internal-methods-and-internal-slots-delete-p</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="../../proxy"><code>Proxy</code></a></li> <li><a href="../proxy"><code>Proxy()</code> 생성자</a></li> <li>
+<a href="../../../operators/delete"><code>delete</code></a> 연산자</li> <li><a href="../../reflect/deleteproperty"><code>Reflect.deleteProperty()</code></a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Proxy/Proxy/deleteProperty" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Proxy/Proxy/deleteProperty</a>
+  </p>
+</div>

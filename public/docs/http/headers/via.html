@@ -1,0 +1,32 @@
+<h1>Via</h1>
+<header><h1>Via</h1></header><div class="section-content">
+<p><code>Via</code> 일반 헤더는 포워드 프록시와 리버스 프록시에 의해서 추가됩니다. 그리고 요청 또는 응답 헤더에 표시될 수 있습니다. 메시지 전달을 추적하고 요청 루프를 방지하며 요청/응답 체인에서 발신자의 프로토콜 기능을 식별하는 데 사용됩니다.</p> <figure class="table-container"><div class="_table"><table class="properties"> <tbody> <tr> <th scope="row">Header type</th> <td> <a href="https://developer.mozilla.org/ko/docs/Glossary/Request_header">요청 헤더</a>, <a href="https://developer.mozilla.org/ko/docs/Glossary/Response_header">응답 헤더</a> </td> </tr> <tr> <th scope="row"><a href="https://developer.mozilla.org/ko/docs/Glossary/Forbidden_header_name">금지된 헤더 이름</a></th> <td>예</td> </tr> </tbody> </table></div></figure>
+</div>
+<section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">http</span></p>
+<pre data-signature="cUc5n7HlDSEdgqPLBAe6yGdkAokPhQcz5sHEn5bzB4U=" data-language="http"><span class="token header"><span class="token header-name keyword">Via</span><span class="token punctuation">:</span> <span class="token header-value">[ &lt;protocol-name&gt; "/" ] &lt;protocol-version&gt; &lt;host&gt; [ ":" &lt;port&gt; ]</span></span>
+<span class="token header"><span class="token header-name keyword">Via</span><span class="token punctuation">:</span> <span class="token header-value">[ &lt;protocol-name&gt; "/" ] &lt;protocol-version&gt; &lt;pseudonym&gt;</span></span>
+</pre>
+</div></div></section><section aria-labelledby="지시자"><h2 id="지시자">지시자</h2>
+<div class="section-content"><dl> <dt id="protocol-name">&lt;protocol-name&gt;</dt> <dd> <p>선택사항. "HTTP" 와 같은 사용된 프로토콜의 이름.</p> </dd> <dt id="protocol-version">&lt;protocol-version&gt;</dt> <dd> <p>"1.1" 과 같이 사용된 프로토콜의 버전.</p> </dd> <dt id="host_and_port">&lt;host&gt; and &lt;port&gt;</dt> <dd> <p>공용 프록시의 URL과 포트.</p> </dd> <dt id="pseudonym">&lt;pseudonym&gt;</dt> <dd> <p>내부 프록시의 이름 또는 별칭.</p> </dd> </dl></div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">http</span></p>
+<pre data-signature="BEisrmYWinwX2V11Vhub5EhADSZHvMyxyPC9+Ejry7w=" data-language="http"><span class="token header"><span class="token header-name keyword">Via</span><span class="token punctuation">:</span> <span class="token header-value">1.1 vegur</span></span>
+<span class="token header"><span class="token header-name keyword">Via</span><span class="token punctuation">:</span> <span class="token header-value">HTTP/1.1 GWA</span></span>
+<span class="token header"><span class="token header-name keyword">Via</span><span class="token punctuation">:</span> <span class="token header-value">1.0 fred, 1.1 p.example.net</span></span>
+</pre>
+</div></div></section><h2 id="명세서">명세서</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://www.rfc-editor.org/rfc/rfc9110#field.via">HTTP Semantics <br><small># field.via</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="함께_참고할_내용"><h2 id="함께_참고할_내용">함께 참고할 내용</h2>
+<div class="section-content"><ul> <li><a href="x-forwarded-for"><code>X-Forwarded-For</code></a></li> <li><a href="https://github.com/heroku/vegur" target="_blank">Heroku's proxy library Vegur</a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/HTTP/Headers/Via" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/HTTP/Headers/Via</a>
+  </p>
+</div>

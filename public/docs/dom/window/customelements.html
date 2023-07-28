@@ -1,0 +1,37 @@
+<header><h1>Window.customElements</h1></header><div class="section-content"><p><a href="../window"><code>Window</code></a> 인터페이스의 <code>customElements</code> 읽기 전용 속성은 새로운 사용자 지정 요소를 등록하거나, 이전에 등록한 요소의 정보를 받아올 수 있는 <a href="../customelementregistry"><code>CustomElementRegistry</code></a> 객체의 참조를 반환합니다.</p></div>
+<h2 id="예제">예제</h2>
+<div class="section-content">
+<p><code>customElements</code>를 사용하는 가장 흔한 예시는 새로운 요소를 정의하고 등록하기 위해 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/CustomElementRegistry/define"><code>CustomElementRegistry.define()</code> <small>(en-US)</small></a> 메서드에 적용하는 경우입니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="/uhhVD41KTkvvhA4dtTSut2q60IX13K2GP0Qql70NgU=" data-language="js"><span class="token keyword">let</span> customElementRegistry <span class="token operator">=</span> window<span class="token punctuation">.</span>customElements<span class="token punctuation">;</span>
+customElementRegistry<span class="token punctuation">.</span><span class="token function">define</span><span class="token punctuation">(</span><span class="token string">'my-custom-element'</span><span class="token punctuation">,</span> MyCustomElement<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div> <p>그러나, 보통은 다음 코드처럼 줄여서 사용하곤 합니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="+I/OfINlj0ij7pxRsxzuGtWlMI93KdJ5WCfpixpulYw=" data-language="js">customElements<span class="token punctuation">.</span><span class="token function">define</span><span class="token punctuation">(</span><span class="token string">'element-details'</span><span class="token punctuation">,</span>
+  <span class="token keyword">class</span> <span class="token class-name">extends</span> HTMLElement <span class="token punctuation">{</span>
+    <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">super</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token keyword">const</span> template <span class="token operator">=</span> document
+        <span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">'element-details-template'</span><span class="token punctuation">)</span>
+        <span class="token punctuation">.</span>content<span class="token punctuation">;</span>
+      <span class="token keyword">const</span> shadowRoot <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">attachShadow</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token literal-property property">mode</span><span class="token operator">:</span> <span class="token string">'open'</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
+        <span class="token punctuation">.</span><span class="token function">appendChild</span><span class="token punctuation">(</span>template<span class="token punctuation">.</span><span class="token function">cloneNode</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div> <p><a href="https://github.com/mdn/web-components-examples/" target="_blank">web-components-examples</a> 저장소에서 더 많은 사용 예제를 찾아보세요.</p>
+</div>
+<h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://html.spec.whatwg.org/multipage/custom-elements.html#dom-window-customelements">HTML Standard <br><small># dom-window-customelements</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/Window/customElements" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/Window/customElements</a>
+  </p>
+</div>

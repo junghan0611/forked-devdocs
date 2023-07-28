@@ -1,0 +1,41 @@
+<header><h1>&lt;b&gt;</h1></header><div class="section-content"><p><code>&lt;b&gt;</code>는 독자의 주의를 요소의 콘텐츠로 끌기 위한 용도로 사용합니다. 그 외의 다른 특별한 중요도는 주어지지 않습니다. 원래는 "굵은 글씨 요소"로 불렸으며, 대부분의 브라우저도 여전히 텍스트를 굵은 글씨체로 강조합니다. 그러나 <code>&lt;b&gt;</code>를 사용해 텍스트를 꾸미면 안됩니다. 대신 CSS <a href="https://developer.mozilla.org/ko/docs/Web/CSS/font-weight"><code>font-weight</code></a>를 사용해 굵은 글씨체를 적용하거나, <a href="strong"><code>&lt;strong&gt;</code></a> 요소를 사용해 특별히 중요한 텍스트를 나타내세요.</p></div>
+<h2 id="시도해보기">시도해보기</h2>
+<div class="section-content">
+<iframe class="interactive is-tabbed-shorter-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/tabbed/b.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe> <figure class="table-container"><div class="_table"><table class="properties"> <tbody> <tr> <th scope="row"><a href="../content_categories">콘텐츠 카테고리</a></th> <td> <a href="../content_categories#%ed%94%8c%eb%a1%9c%ec%9a%b0_%ec%bd%98%ed%85%90%ec%b8%a0">플로우 콘텐츠</a>, <a href="../content_categories#%ea%b5%ac%eb%ac%b8_%ec%bd%98%ed%85%90%ec%b8%a0">구문 콘텐츠</a>, 뚜렷한 콘텐츠. </td> </tr> <tr> <th scope="row">가능한 콘텐츠</th> <td>
+<a href="../content_categories#%ea%b5%ac%eb%ac%b8_%ec%bd%98%ed%85%90%ec%b8%a0">구문 콘텐츠</a>.</td> </tr> <tr> <th scope="row">태그 생략</th> <td>불가능, 시작과 끝에 태그를 추가하는것은 필수입니다.</td> </tr> <tr> <th scope="row">가능한 부모 요소</th> <td>
+<a href="../content_categories#%ea%b5%ac%eb%ac%b8_%ec%bd%98%ed%85%90%ec%b8%a0">구문 콘텐츠</a>를 허용하는 모든 요소.</td> </tr> <tr> <th scope="row">암시적 ARIA 역할</th> <td><a href="https://www.w3.org/TR/html-aria/#dfn-no-corresponding-role" target="_blank">대응하는 역할 없음</a></td> </tr> <tr> <th scope="row">가능한 ARIA 역할</th> <td>모두</td> </tr> <tr> <th scope="row">DOM 인터페이스</th> <td><a href="https://developer.mozilla.org/ko/docs/Web/API/HTMLElement"><code>HTMLElement</code></a></td> </tr> </tbody> </table></div></figure>
+</div>
+<h2 id="특성">특성</h2>
+<div class="section-content"><p>이 요소는 <a href="../global_attributes">전역 특성</a>만 포함합니다.</p></div>
+<h2 id="사용_일람">사용 일람</h2>
+<div class="section-content"><ul> <li>요약 키워드, 리뷰의 제품명 등, 특별한 중요성을 가지고 있지는 않지만 굵게 표시할 부분에 <code>&amp;#x3C;b&gt;</code>를 사용하세요.</li> <li>
+<code>&amp;#x3C;b&gt;</code> 요소와 <a href="strong"><code>&lt;strong&gt;</code></a>, <a href="em"><code>&lt;em&gt;</code></a>, <a href="mark"><code>&lt;mark&gt;</code></a> 요소를 혼동하지 않도록 주의하세요. <a href="strong"><code>&lt;strong&gt;</code></a> 요소는 <strong>중요</strong>한 글을, <a href="em"><code>&lt;em&gt;</code></a> 요소는 약간의 강조가 필요한 글을, <a href="mark"><code>&lt;mark&gt;</code></a> 요소는 관련성이 있는 글을 나타냅니다. <code>&amp;#x3C;b&gt;</code> 요소는 아무런 의미도 갖지 않으므로 다른 요소가 적합하지 않을 때만 사용하세요.</li> <li>비슷한 이유로 <code>&amp;#x3C;b&gt;</code> 요소로만 제목을 만들어선 안됩니다. 제목은 <a href="heading_elements"><code>&lt;h1&gt;</code></a>에서 <a href="heading_elements"><code>&lt;h6&gt;</code></a> 태그로 표현하세요. 특히 스타일 시트를 사용해 제목 요소의 스타일을 바꿀 수 있다는 점을 생각해보면, 제목이 꼭 굵은 글씨체일 필요는 없습니다. <ul> <li>It is a good practice to use the <strong>class</strong> attribute on the <code>&amp;#x3C;b&gt;</code> in order to convey additional semantic information (for example <code>&amp;#x3C;b class="lede"&gt;</code> for the first sentence in a paragraph). This eases the development of several stylings of a web document, without the need to change its HTML code.</li> </ul> </li> <li>과거 <code>&amp;#x3C;b&gt;</code> 요소는 굵을 글씨를 만들 때 사용했습니다. HTML4부터 스타일 정보는 사용하지 않으므로 <code>&amp;#x3C;b&gt;</code> 요소의 의미도 바뀌었습니다.</li> <li>&lt;b&gt;의 의미와 관계 없이 굵은 글씨를 사용하고 있다면, CSS <a href="https://developer.mozilla.org/ko/docs/Web/CSS/font-weight"><code>font-weight</code></a> 속성의 <code>"bold"</code> 값을 사용하는 방법을 고려하세요.</li> </ul></div>
+<h2 id="예제">예제</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="VpZ0QzIegp4+EFWJBUJt/eBWblJ1MMvCN2XD4E6a69U=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>
+  This article describes several <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>b</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>keywords<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>text-level<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>b</span><span class="token punctuation">&gt;</span></span> elements.
+  It explains their usage in an <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>b</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>keywords<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>HTML<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>b</span><span class="token punctuation">&gt;</span></span> document.
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+Keywords are displayed with the default style of the <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>b</span><span class="token punctuation">&gt;</span></span>element, likely in bold<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>b</span><span class="token punctuation">&gt;</span></span>.
+</pre>
+</div></div>
+<h3 id="결과">결과</h3>
+<div class="section-content"><div class="code-example" id="sect1">
+
+<iframe class="sample-code-frame" title="예제 sample" id="frame_예제" src="https://live.mdnplay.dev/ko/docs/Web/HTML/Element/b/runner.html?id=%EC%98%88%EC%A0%9C" loading="lazy"></iframe>
+</div></div>
+<h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-b-element">HTML Standard <br><small># the-b-element</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="https://www.w3.org/International/questions/qa-b-and-i-tags" target="_blank">&lt;b&gt;와 &lt;i&gt; 요소 사용하기 (W3C)</a></li> </ul></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/HTML/Element/b" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/HTML/Element/b</a>
+  </p>
+</div>

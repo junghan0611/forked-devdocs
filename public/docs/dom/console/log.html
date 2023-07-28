@@ -1,0 +1,43 @@
+<header><h1>console.log()</h1></header><div class="section-content">
+<p><code>console.log()</code> 메서드는 웹 콘솔에 메시지를 출력합니다. 메시지는 (선택적 대체 값을 포함한) 단일 문자열이거나 더 많은 JavaScript 객체중 하나일 수 있습니다.</p>
+<div class="notecard note" id="sect1"> <p><strong>참고:</strong> 이 기능은 <a href="../web_workers_api">Web Worker</a>에서 사용할 수 있습니다</p> </div>
+</div>
+<h2 id="구문">구문</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="N2Fd6GGk919/cVAzPWDZPVHeJO01ijLBH8+a22T/Z2k=" data-language="js">console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>obj1 <span class="token punctuation">[</span><span class="token punctuation">,</span> obj2<span class="token punctuation">,</span> <span class="token operator">...</span><span class="token punctuation">,</span> objN<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>msg <span class="token punctuation">[</span><span class="token punctuation">,</span> subst1<span class="token punctuation">,</span> <span class="token operator">...</span><span class="token punctuation">,</span> substN<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div></div>
+<h3 id="매개변수">매개변수</h3>
+<div class="section-content">
+<dl> <dt id="obj1">
+<code>obj1</code> ... <code>objN</code>
+</dt> <dd> <p>출력할 JavaScript 객체 목록입니다. 이러한 각 객체의 문자열 표현은 입력한 순서대로 함께 출력됩니다. 최신 버전의 Chrome 및 Firefox에서, 콘솔에 기록되는 것은 객체에 대한 참조이며, <code>console.log()</code>를 호출하는 순간에 객체의 '값'이 반드시 필요한 것은 아닙니다.</p> </dd> <dt id="msg"><code>msg</code></dt> <dd> <p>0개 이상의 치환 문자열들을 포함하는 자바스크립트 문자열입니다.</p> </dd> <dt id="subst1">
+<code>subst1</code> ... <code>substN</code>
+</dt> <dd> <p><code>msg</code> 내의 치환 문자열들을 치환할 자바스크립트 객체들입니다. 출력 형식에 추가 제어를 할 수 있게 해줍니다.</p> </dd> </dl> <p>자세한 내용은 <a href="../console"><code>console</code></a> 문서의 <a href="../console#%ec%bd%98%ec%86%94%ec%97%90_%ed%85%8d%ec%8a%a4%ed%8a%b8_%ec%b6%9c%eb%a0%a5%ed%95%98%ea%b8%b0">콘솔에 텍스트 출력</a>을 참고하세요.</p>
+</div>
+<h2 id="log와_dir의_차이">log()와 dir()의 차이</h2>
+<div class="section-content">
+<p>당신은 <a href="dir"><code>console.dir()</code></a>과 <code>console.log()</code>가 무엇이 다른지 궁금할 수 있습니다.</p> <p>DOM 요소들을 콘솔로 보낼 때 Chrome에서 다른 유용한 차이점이 있습니다.</p> <p> <img src="https://developer.mozilla.org/ko/docs/Web/API/console/log/dozdcyr.png" alt="" loading="lazy"> </p> <ul> <li>
+<code>console.log</code>는 요소를 HTML과 같은 트리 구조로 출력합니다.</li> <li>
+<code>console.dir</code>은 요소를 JSON과 같은 트리 구조로 출력합니다.</li> </ul> <p>구체적으로, <code>console.log</code>는 DOM 요소에 대해 특별한 처리를 제공하지만 <code>console.dir</code>은 그렇지 않습니다. 이것은 종종 DOM JS 객체의 전체 표현을 보려고 할 때 유용합니다.</p> <p>이것과 다른 함수들에 대한 더 많은 정보는 <a href="https://developers.google.com/chrome-developer-tools/docs/console-api#consoledirobject" target="_blank">Chrome Console API reference</a>에서 확인할 수 있습니다.</p>
+</div>
+<h2 id="객체_로깅하기">객체 로깅하기</h2>
+<div class="section-content">
+<p><code>console.log(obj)</code>를 사용하지 말고 <code>console.log(JSON.parse(JSON.stringify(obj)))</code>를 사용하시기 바랍니다.</p> <p>이 방법은 여러분이 로그를 남길 당시의 <code>obj</code> 값을 보려고 사용했을 것입니다. 그러나 많은 브라우저가 값이 갱신 될때마다 끊임없이 바뀐 값을 보여줍니다. 이는 여러분이 원하는 방법이 아닐 것입니다.</p>
+</div>
+<h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://console.spec.whatwg.org/#log">Console Standard <br><small># log</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="https://msdn.microsoft.com/library/gg589530" target="_blank">MSDN: F12 도구 콘솔을 사용하여 오류 및 상태 보기</a></li> <li><a href="https://nodejs.org/docs/latest/api/console.html#console_console_log_data" target="_blank">NodeJS: Console API</a></li> </ul></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/console/log" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/console/log</a>
+  </p>
+</div>

@@ -1,0 +1,60 @@
+<header><h1>TypedArray.BYTES_PER_ELEMENT</h1></header><div class="section-content"><p><code>TypedArray.BYTES_PER_ELEMENT</code> 속성은 각 형식화 배열 요소의 바이트 크기입니다.</p></div>
+<section aria-labelledby="시도해보기"><h2 id="시도해보기">시도해보기</h2>
+<div class="section-content"><iframe class="interactive is-shorter-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/js/typedarray-bytes-per-element.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe></div></section><section aria-labelledby="값"><h2 id="값">값</h2>
+<div class="section-content">
+<p><code>TypedArray</code>의 타입에 따라 값이 달라지는 숫자입니다.</p>
+<figure class="table-container"><div class="_table"><table class="standard-table"> <thead> <tr> <th class="header" colspan="2">Property attributes of <code>TypedArray.BYTES_PER_ELEMENT</code>
+</th> </tr> </thead> <tbody> <tr> <td>Writable</td> <td>불가능</td> </tr> <tr> <td>Enumerable</td> <td>불가능</td> </tr> <tr> <td>Configurable</td> <td>불가능</td> </tr> </tbody> </table></div></figure>
+</div></section><section aria-labelledby="설명"><h2 id="설명">설명</h2>
+<div class="section-content">
+<p> <code>TypedArray</code> 객체는 요소 당 바이트 수 및 바이트가 해석되는 방법이 서로 다릅니다. <code>BYTES_PER_ELEMENT</code> 상수는 주어진 <code>TypedArray</code>의 각 요소가 갖는 바이트 수를 포함합니다. </p> <p> <code>BYTES_PER_ELEMENT</code> 속성은 인스턴스 속성이자 정적 속성입니다. 해당 속성은 <code>TypedArray</code> 하위 클래스의 생성자와 해당 생성자의 인스턴스 모두에서 사용 가능합니다. </p> <p>인스턴스 속성으로 <code>BYTES_PER_ELEMENT</code>는 생성자의 <code>prototype</code>에 정의됩니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="sYUeTb80UCHjyDhg8By+H3vNKxVJpdpOTbDibYiibMo=" data-language="js">console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>Object<span class="token punctuation">.</span><span class="token function">hasOwn</span><span class="token punctuation">(</span><span class="token class-name">Int8Array</span><span class="token punctuation">.</span>prototype<span class="token punctuation">,</span> <span class="token string">"BYTES_PER_ELEMENT"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// true</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+</section><section aria-labelledby="bytes_per_element_사용하기"><h3 id="bytes_per_element_사용하기">BYTES_PER_ELEMENT 사용하기</h3>
+<div class="section-content">
+<p>정적 속성으로 사용하기</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="+cq3yUy6dorjBGAzrncSXEiX5+6/gYlsfu4EfnZd56s=" data-language="js">Int8Array<span class="token punctuation">.</span><span class="token constant">BYTES_PER_ELEMENT</span><span class="token punctuation">;</span> <span class="token comment">// 1</span>
+Uint8Array<span class="token punctuation">.</span><span class="token constant">BYTES_PER_ELEMENT</span><span class="token punctuation">;</span> <span class="token comment">// 1</span>
+Uint8ClampedArray<span class="token punctuation">.</span><span class="token constant">BYTES_PER_ELEMENT</span><span class="token punctuation">;</span> <span class="token comment">// 1</span>
+Int16Array<span class="token punctuation">.</span><span class="token constant">BYTES_PER_ELEMENT</span><span class="token punctuation">;</span> <span class="token comment">// 2</span>
+Uint16Array<span class="token punctuation">.</span><span class="token constant">BYTES_PER_ELEMENT</span><span class="token punctuation">;</span> <span class="token comment">// 2</span>
+Int32Array<span class="token punctuation">.</span><span class="token constant">BYTES_PER_ELEMENT</span><span class="token punctuation">;</span> <span class="token comment">// 4</span>
+Uint32Array<span class="token punctuation">.</span><span class="token constant">BYTES_PER_ELEMENT</span><span class="token punctuation">;</span> <span class="token comment">// 4</span>
+Float32Array<span class="token punctuation">.</span><span class="token constant">BYTES_PER_ELEMENT</span><span class="token punctuation">;</span> <span class="token comment">// 4</span>
+Float64Array<span class="token punctuation">.</span><span class="token constant">BYTES_PER_ELEMENT</span><span class="token punctuation">;</span> <span class="token comment">// 8</span>
+BigInt64Array<span class="token punctuation">.</span><span class="token constant">BYTES_PER_ELEMENT</span><span class="token punctuation">;</span> <span class="token comment">// 8</span>
+BigUint64Array<span class="token punctuation">.</span><span class="token constant">BYTES_PER_ELEMENT</span><span class="token punctuation">;</span> <span class="token comment">// 8</span>
+</pre>
+</div> <p>인스턴스 속성으로 사용하기</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="jQdnCNryGwU9/yppqgrrFdVoiRg6SGYsJwtM7yf6Ugk=" data-language="js"><span class="token keyword">new</span> <span class="token class-name">Int8Array</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token constant">BYTES_PER_ELEMENT</span><span class="token punctuation">;</span> <span class="token comment">// 1</span>
+<span class="token keyword">new</span> <span class="token class-name">Uint8Array</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token constant">BYTES_PER_ELEMENT</span><span class="token punctuation">;</span> <span class="token comment">// 1</span>
+<span class="token keyword">new</span> <span class="token class-name">Uint8ClampedArray</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token constant">BYTES_PER_ELEMENT</span><span class="token punctuation">;</span> <span class="token comment">// 1</span>
+<span class="token keyword">new</span> <span class="token class-name">Int16Array</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token constant">BYTES_PER_ELEMENT</span><span class="token punctuation">;</span> <span class="token comment">// 2</span>
+<span class="token keyword">new</span> <span class="token class-name">Uint16Array</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token constant">BYTES_PER_ELEMENT</span><span class="token punctuation">;</span> <span class="token comment">// 2</span>
+<span class="token keyword">new</span> <span class="token class-name">Int32Array</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token constant">BYTES_PER_ELEMENT</span><span class="token punctuation">;</span> <span class="token comment">// 4</span>
+<span class="token keyword">new</span> <span class="token class-name">Uint32Array</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token constant">BYTES_PER_ELEMENT</span><span class="token punctuation">;</span> <span class="token comment">// 4</span>
+<span class="token keyword">new</span> <span class="token class-name">Float32Array</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token constant">BYTES_PER_ELEMENT</span><span class="token punctuation">;</span> <span class="token comment">// 4</span>
+<span class="token keyword">new</span> <span class="token class-name">Float64Array</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token constant">BYTES_PER_ELEMENT</span><span class="token punctuation">;</span> <span class="token comment">// 8</span>
+<span class="token keyword">new</span> <span class="token class-name">BigInt64Array</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token constant">BYTES_PER_ELEMENT</span><span class="token punctuation">;</span> <span class="token comment">// 8</span>
+<span class="token keyword">new</span> <span class="token class-name">BigUint64Array</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token constant">BYTES_PER_ELEMENT</span><span class="token punctuation">;</span> <span class="token comment">// 8</span>
+</pre>
+</div>
+</div></section><h2 id="명세서">명세서</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://tc39.es/ecma262/multipage/indexed-collections.html#sec-typedarray.bytes_per_element">ECMAScript Language Specification <br><small># sec-typedarray.bytes_per_element</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Guide/Typed_arrays">JavaScript 형식화 배열</a></li> <li><a href="../typedarray"><code>TypedArray</code></a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/TypedArray/BYTES_PER_ELEMENT" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/TypedArray/BYTES_PER_ELEMENT</a>
+  </p>
+</div>

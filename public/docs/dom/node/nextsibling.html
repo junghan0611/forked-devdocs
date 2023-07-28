@@ -1,0 +1,55 @@
+<header><h1>Node.nextSibling</h1></header><div class="section-content"><p>읽기 전용 속성인 <code>Node.nextSibling</code> 은 부모의 <a href="childnodes"><code>childNodes</code></a> 목록에서 지정된 노드 바로 다음에 있는 노드를 반환하거나 지정된 노드가 해당 목록의 마지막 노드이면 <code>null</code> 값을 반환합니다.</p></div>
+<h2 id="syntax">Syntax</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="DLVn6XRyJwOEKruZ/gOfWSu1m8XV/lmj2JKxfWvPlXI=" data-language="js">nextNode <span class="token operator">=</span> node<span class="token punctuation">.</span>nextSibling
+</pre>
+</div></div>
+<h2 id="notes">Notes</h2>
+<div class="section-content">
+<p> Gecko 기반 브라우저는 소스 마크업에서 공백을 나타내기 위해 문서 내에 텍스트 노드를 삽입합니다. 그러므로 예를 들어 <a href="firstchild"><code>Node.firstChild</code></a>나 <a href="previoussibling"><code>Node.previousSibling</code></a>을 통해서 얻은 노드는 작성자가 얻으려 한 실제 요소와는 달리 공백 텍스트 노드를 참조할 지도 모릅니다. </p> <p> 더 많은 정보는 <a href="https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model/Whitespace" class="only-in-en-us">Whitespace in the DOM <small>(en-US)</small></a>과 <a href="https://www.w3.org/DOM/faq.html#emptytext" target="_blank">W3C DOM 3 FAQ: Why are some Text nodes empty?</a>를 보세요. </p>
+</div>
+<h2 id="example">Example</h2>
+<div class="section-content">
+<div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="499jYbeOFzBPRc365lEL5u70e4Gm5ej5LizW07eR8xU=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>div-01<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Here is div-01<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>div-02<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Here is div-02<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>text/javascript<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token script"><span class="token language-javascript">
+<span class="token keyword">var</span> el <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">'div-01'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>nextSibling<span class="token punctuation">,</span>
+    i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'Siblings of div-01:'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">while</span> <span class="token punctuation">(</span>el<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>i <span class="token operator">+</span> <span class="token string">'. '</span> <span class="token operator">+</span> el<span class="token punctuation">.</span>nodeName<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  el <span class="token operator">=</span> el<span class="token punctuation">.</span>nextSibling<span class="token punctuation">;</span>
+  i<span class="token operator">++</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+
+/**************************************************
+   로드될 때 다음과 같이 콘솔에 기록됩니다. :
+
+     Siblings of div-01
+
+      1. #text
+      2. DIV
+      3. #text
+      4. SCRIPT
+
+**************************************************/
+</pre>
+</div> <p>위의 예에서 <code>#text</code> 노드는 태그 사이의 마크 업 에서 공백이 발생하는 DOM에 삽입되며 ( 즉 요소의 닫기 태그와 다음 태그의 열기 태그 사이에 있습니다 ) <code>document.write</code> 구문에 의해 삽입 된 요소간에 공백이 생성되지 않습니다.</p> <p><code>nextSibling</code> 을 사용하여 DOM을 탐색 할 때, DOM에 텍스트 노드를 포함시킬 수 있어야 합니다. 노트 섹션의 리소스를 참조하세요.</p>
+</div>
+<h2 id="specification">Specification</h2>
+<div class="section-content"><ul> <li><a href="https://www.w3.org/TR/REC-DOM-Level-1/level-one-core.html#attribute-nextSibling" target="_blank">DOM Level 1 Core: nextSibling</a></li> <li><a href="https://www.w3.org/TR/DOM-Level-2-Core/core.html#ID-6AC54C2F" target="_blank">DOM Level 2 Core: nextSibling</a></li> </ul></div>
+<h2 id="see_also">See also</h2>
+<div class="section-content"><ul> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/Element/nextElementSibling"><code>Element.nextElementSibling</code> <small>(en-US)</small></a></li> </ul></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/Node/nextSibling" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/Node/nextSibling</a>
+  </p>
+</div>

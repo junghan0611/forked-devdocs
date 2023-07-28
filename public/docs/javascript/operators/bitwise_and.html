@@ -1,0 +1,44 @@
+<header><h1>AND 비트연산(&amp;)</h1></header><div class="section-content"><p>AND 비트 연산자(<code>&amp;</code>)는 두 개의 피연산자의 각 자리마다 대응하는 비트가 모두 <code>1</code>일 경우 <code>1</code>을 반환합니다.</p></div>
+<section aria-labelledby="시도해보기"><h2 id="시도해보기">시도해보기</h2>
+<div class="section-content"><iframe class="interactive is-js-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/js/expressions-bitwise-and.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe></div></section><section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="Yuo6r9F3M6K37NVMx0Wac7hP7Fhlt2EtsMuo3A5WT9o=" data-language="js">a <span class="token operator">&amp;</span> b<span class="token punctuation">;</span>
+</pre>
+</div></div></section><section aria-labelledby="설명"><h2 id="설명">설명</h2>
+<div class="section-content">
+<p>피연산자는 32비트 정수로 변환되며 일련의 비트(0과 1)로 표현됩니다. 32비트 이상인 숫자는 최상위 비트가 삭제됩니다. 예를 들어 32비트 이상인 다음 정수는 32비트 정수로 변환됩니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="ofEK6Mm5BPWgEjmmeqrYDGQeInrZB+B3z96V0u/xrKE=" data-language="js"><span class="token literal-property property">Before</span><span class="token operator">:</span> <span class="token number">11100110111110100000000000000110000000000001</span><span class="token punctuation">;</span>
+<span class="token literal-property property">After</span><span class="token operator">:</span> <span class="token number">10100000000000000110000000000001</span><span class="token punctuation">;</span>
+</pre>
+</div> <p>첫 번째 피연산자의 각 비트는 두 번째 피연산자의 해당 비트(<em>첫 번째 비트</em> 와 <em>첫 번째 비트</em>, <em>두 번째 비트</em> 와 <em>두 번째 비트</em> 등등)와 쌍을 이룹니다.</p> <p>연산자가 각 비트의 쌍에 적용되며, 결과는 완성된 비트 연산된 값입니다.</p> <p>AND 연산에 대한 진리표는 다음과 같습니다:</p> <figure class="table-container"><div class="_table"><table> <thead> <tr> <th>a</th> <th>b</th> <th>a AND b</th> </tr> </thead> <tbody> <tr> <td>0</td> <td>0</td> <td>0</td> </tr> <tr> <td>0</td> <td>1</td> <td>0</td> </tr> <tr> <td>1</td> <td>0</td> <td>0</td> </tr> <tr> <td>1</td> <td>1</td> <td>1</td> </tr> </tbody> </table></div></figure> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="pzUfIgxrGLrm5lI3EoTlNUrK+UHIH+Or7nJSkBNwY1w=" data-language="js"><span class="token punctuation">.</span>    <span class="token number">9</span> <span class="token punctuation">(</span>base <span class="token number">10</span><span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token number">00000000000000000000000000001001</span> <span class="token punctuation">(</span>base <span class="token number">2</span><span class="token punctuation">)</span>
+    <span class="token number">14</span> <span class="token punctuation">(</span>base <span class="token number">10</span><span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token number">00000000000000000000000000001110</span> <span class="token punctuation">(</span>base <span class="token number">2</span><span class="token punctuation">)</span>
+                   <span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span>
+<span class="token number">14</span> <span class="token operator">&amp;</span> <span class="token number">9</span> <span class="token punctuation">(</span>base <span class="token number">10</span><span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token number">00000000000000000000000000001000</span> <span class="token punctuation">(</span>base <span class="token number">2</span><span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token number">8</span> <span class="token punctuation">(</span>base <span class="token number">10</span><span class="token punctuation">)</span>
+</pre>
+</div> <p>어떤 수 <code>x</code>에 <code>0</code>을 AND 비트 연산한 결과는 <code>0</code>가 됩니다.</p>
+</div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+</section><section aria-labelledby="and_비트_연산_사용하기"><h3 id="and_비트_연산_사용하기">AND 비트 연산 사용하기</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="uc+Nz4YeuZA7ZkSBriSX5D7HWn2gmmUio8/T4PDZ2Ws=" data-language="js"><span class="token comment">// 5: 00000000000000000000000000000101</span>
+<span class="token comment">// 2: 00000000000000000000000000000010</span>
+<span class="token number">5</span> <span class="token operator">&amp;</span> <span class="token number">2</span><span class="token punctuation">;</span> <span class="token comment">// 0</span>
+</pre>
+</div></div></section><h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://tc39.es/ecma262/multipage/ecmascript-language-expressions.html#prod-BitwiseANDExpression">ECMAScript Language Specification <br><small># prod-BitwiseANDExpression</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Guide/Expressions_and_operators#%eb%b9%84%ed%8a%b8_%ec%97%b0%ec%82%b0%ec%9e%90">JS의 비트 연산 가이드</a></li> <li><a href="bitwise_and_assignment">비트 AND 할당연산자</a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Operators/Bitwise_AND" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Operators/Bitwise_AND</a>
+  </p>
+</div>

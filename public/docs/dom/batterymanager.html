@@ -1,0 +1,31 @@
+<header><h1>BatteryManager</h1></header><div class="section-content">
+<div class="notecard deprecated" id="sect1"><p><strong>지원이 중단되었습니다:</strong> This feature is no longer recommended. Though some browsers might still support it, it may have already been removed from the relevant web standards, may be in the process of being dropped, or may only be kept for compatibility purposes. Avoid using it, and update existing code if possible; see the <a href="#browser_compatibility">compatibility table</a> at the bottom of this page to guide your decision. Be aware that this feature may cease to work at any time.</p></div> <p><code>BatteryManager</code> 인터페이스는 시스템의 배터리 충전 상태에 대한 정보를 확인 하는 방법을 제공합니다.</p> <p><a class="page-not-created"><code>navigator.battery</code></a> 프로퍼티는 Battery Status API와 상호작용 할 수 있는 <code>BatteryManager</code> 인터페이스의 인스턴스를 반환합니다.</p>
+</div>
+<h2 id="속성">속성</h2>
+<div class="section-content"><dl> <dt id="batterymanager.charging">
+<a href="batterymanager/charging"><code>BatteryManager.charging</code></a> <span class="badge inline readonly">읽기 전용</span>
+</dt> <dd> <p>배터리가 현재 충전 중인지 여부를 Boolean 값으로 나타냅니다.</p> </dd> <dt id="batterymanager.chargingtime">
+<a href="batterymanager/chargingtime"><code>BatteryManager.chargingTime</code></a> <span class="badge inline readonly">읽기 전용</span>
+</dt> <dd> <p>배터리가 완전히 충전되기 까지 남은 시간을 초로 표현합니다. 0 이면 이미 배터리의 충전이 완료 된 상황 입니다.</p> </dd> <dt id="batterymanager.dischargingtime">
+<a href="batterymanager/dischargingtime"><code>BatteryManager.dischargingTime</code></a> <span class="badge inline readonly">읽기 전용</span>
+</dt> <dd> <p>배터리가 완전히 방전되고 시스템이 중지 될 때까지의 남은 시간을 초로 표현 합니다.</p> </dd> <dt id="batterymanager.level_en-us">
+<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/BatteryManager/level"><code>BatteryManager.level</code> <small>(en-US)</small></a> <span class="badge inline readonly">읽기 전용</span>
+</dt> <dd> <p>배터리의 충전 상태를 0.0 에서 1.0 사이의 값으로 표현 합니다.</p> </dd> </dl></div>
+<h3 id="이벤트">이벤트</h3>
+<div class="section-content"><dl> <dt id="chargingchange_en-us"><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/BatteryManager/chargingchange_event"><code>chargingchange</code> <small>(en-US)</small></a></dt> <dd> <p><a href="batterymanager/charging"><code>charging</code></a> 이벤트의 핸들러 입니다. 이 이벤트는 배터리 충전 상태가 변경될 때 발생합니다.</p> </dd> <dt id="chargingtimechange_en-us"><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/BatteryManager/chargingtimechange_event"><code>chargingtimechange</code> <small>(en-US)</small></a></dt> <dd> <p><a href="batterymanager/chargingtime"><code>chargingTime</code></a> 이벤트의 핸들러 입니다. 이 이벤트는 배터리 충전 시간이 변경될 때 발생합니다.</p> </dd> <dt id="dischargingtimechange_en-us"><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/BatteryManager/dischargingtimechange_event"><code>dischargingtimechange</code> <small>(en-US)</small></a></dt> <dd> <p><a href="batterymanager/dischargingtime"><code>dischargingTime</code></a> 이벤트의 핸들러 입니다. 이 이벤트는 배터리 방전 시간이 변경될 때 발생합니다.</p> </dd> <dt id="levelchange_en-us"><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/BatteryManager/levelchange_event"><code>levelchange</code> <small>(en-US)</small></a></dt> <dd> <p><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/BatteryManager/level"><code>level</code> <small>(en-US)</small></a> 이벤트의 핸들러 입니다. 이 이벤트는 배터리 수준 상태가 변경 될 때 발생합니다.</p> </dd> </dl></div>
+<h2 id="메서드">메서드</h2>
+<div class="section-content"><p><a href="eventtarget"><code>EventTarget</code></a> 으로 부터 상속을 받습니다.</p></div>
+<h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://w3c.github.io/battery/#the-batterymanager-interface">Battery Status API <br><small># the-batterymanager-interface</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<h2 id="참고">참고</h2>
+<div class="section-content"><ul> <li><a class="page-not-created"><code>navigator.battery</code></a></li> <li><a href="battery_status_api">Battery Status API</a></li> </ul></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/BatteryManager" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/BatteryManager</a>
+  </p>
+</div>

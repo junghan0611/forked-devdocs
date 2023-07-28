@@ -1,0 +1,47 @@
+<header><h1>JavaScript APIs</h1></header><div class="section-content">
+<p>The WebExtension JavaScript APIs can be used inside the add-on's <a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Anatomy_of_a_WebExtension#background_scripts">background scripts</a> and in any other documents bundled with the add-on, including <a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/user_interface/Toolbar_button" class="only-in-en-us">browser action <small>(en-US)</small></a> or <a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/user_interface/Page_actions" class="only-in-en-us">page action <small>(en-US)</small></a> popups, <a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/user_interface/Sidebars" class="only-in-en-us">sidebars <small>(en-US)</small></a>, <a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/user_interface/Options_pages" class="only-in-en-us">options pages <small>(en-US)</small></a>, or <a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/manifest.json/chrome_url_overrides">new tab pages</a>. A few of these APIs can also be accessed by an add-on's <a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Anatomy_of_a_WebExtension#content_scripts">content scripts</a> (see the <a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Content_scripts#webextension_apis">list in the content script guide</a>).</p> <p>To use the more powerful APIs you need to <a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/manifest.json/permissions">request permission</a> in your add-on's manifest.json.</p> <p>You can access the APIs using the <code>browser</code> namespace:</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="UdJfndVOlVgoqPMiA8diL2NYPoYjU589mp3oViUrD+4=" data-language="js"><span class="token keyword">function</span> <span class="token function">logTabs</span><span class="token punctuation">(</span><span class="token parameter">tabs</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>tabs<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+browser<span class="token punctuation">.</span>tabs<span class="token punctuation">.</span><span class="token function">query</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token literal-property property">currentWindow</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">}</span><span class="token punctuation">,</span> logTabs<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div> <p>Many of the APIs are asynchronous, returning a <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Promise"><code>Promise</code></a>:</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="4WFiGiInGo3ZDEJXyV3TqHL+nGfPkPFcNUhsNdIOQ18=" data-language="js"><span class="token keyword">function</span> <span class="token function">logCookie</span><span class="token punctuation">(</span><span class="token parameter">c</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>c<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">function</span> <span class="token function">logError</span><span class="token punctuation">(</span><span class="token parameter">e</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">var</span> setCookie <span class="token operator">=</span> browser<span class="token punctuation">.</span>cookies<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span>
+  <span class="token punctuation">{</span><span class="token literal-property property">url</span><span class="token operator">:</span> <span class="token string">"https://developer.mozilla.org/"</span><span class="token punctuation">}</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+setCookie<span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span>logCookie<span class="token punctuation">,</span> logError<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div> <p>Note that this is different from Google Chrome's extension system, which uses the <code>chrome</code> namespace instead of <code>browser</code>, and which uses callbacks instead of promises for asynchronous functions. As a porting aid, the Firefox implementation of WebExtensions supports <code>chrome</code> and callbacks as well as <code>browser</code> and promises. Mozilla has also written a polyfill which enables code that uses <code>browser</code> and promises to work unchanged in Chrome: <a href="https://github.com/mozilla/webextension-polyfill" target="_blank">https://github.com/mozilla/webextension-polyfill</a>.</p> <p>Microsoft Edge uses the <code>browser</code> namespace, but doesn't yet support promise-based asynchronous APIs. In Edge, for the time being, asynchronous APIs must use callbacks.</p> <p>Not all browsers support all the APIs: for the details, see <a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Browser_support_for_JavaScript_APIs" class="only-in-en-us">Browser support for JavaScript APIs <small>(en-US)</small></a>.</p>
+<dl>
+<dt class="landingPageList" id="browsingdata"><a href="api/browsingdata">browsingData</a></dt>
+<dd class="landingPageList"><p>WebExtensions 을 통해 사용자가 브라우저를 사용하는 동안 축적된 데이터를 삭제할 수 있는 기능을 제공합니다.</p></dd>
+<dt class="landingPageList" id="contentscripts"><a href="api/contentscripts">contentScripts</a></dt>
+<dd class="landingPageList"><p>이 API는 콘텐츠 스크립트를 등록한다. 등록된 콘텐츠 스크립트는 브라우저가 URL 패턴이 일치하는 페이지에 넣는다.</p></dd>
+<dt class="landingPageList" id="contextmenus"><a href="api/menus">contextMenus</a></dt>
+<dd class="landingPageList"><p>브라우저의 메뉴 시스템에 항목을 추가한다.</p></dd>
+<dt class="landingPageList" id="pageaction"><a href="api/pageaction">pageAction</a></dt>
+<dd class="landingPageList"><p><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/user_interface/Page_actions" class="only-in-en-us">페이지 액션 <small>(en-US)</small></a>은 브라우저의 주소창에 있는 아이콘이다.</p></dd>
+<dt class="landingPageList" id="storage"><a href="api/storage">storage</a></dt>
+<dd class="landingPageList"><p>웹확장이 데이터를 저장하고, 확인하고, 저장된 항목의 변화를 감시할 수 있도록 해 준다.</p></dd>
+<dt class="landingPageList" id="tabs"><a href="api/tabs">tabs</a></dt>
+<dd class="landingPageList"><p>Interact with the browser's tab system.</p></dd>
+<dt class="landingPageList" id="webrequest"><a href="api/webrequest">webRequest</a></dt>
+<dd class="landingPageList"><p>Add event listeners for the various stages of making an HTTP request. The event listener receives detailed information about the request and can modify or cancel the request.</p></dd>
+</dl>
+</div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Mozilla/Add-ons/WebExtensions/API" class="_attribution-link">https://developer.mozilla.org/ko/docs/Mozilla/Add-ons/WebExtensions/API</a>
+  </p>
+</div>

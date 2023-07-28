@@ -1,0 +1,114 @@
+<header><h1>전역 특성</h1></header><div class="section-content">
+<p><strong>전역 특성</strong>(Global attributes)은 모든 HTML에서 공통으로 사용할 수 있는 특성입니다. 그러나 일부 요소에는 아무런 효과도 없을 수 있습니다.</p> <p>전역 특성은 모든 <a href="element">HTML 요소</a>에 지정할 수 있으며, 심지어 표준에 명시되지 않은 요소에도 지정할 수 있습니다. 이는, 비표준 요소를 사용하는 순간 문서가 HTML5를 준수하지 않음에도 불구하고, 비표준 요소 역시 전역 특성을 허용해야 함을 의미합니다. 예를 들어, HTML5를 준수하는 브라우저라면, <code>&lt;foo&gt;</code>라는 요소는 유효하지 않지만 그래도 <code>&lt;foo hidden&gt;...&lt;/foo&gt;</code>는 화면에 나타내지 않을 것입니다.</p> <p>기본 HTML 전역 특성 외에 아래와 같은 전역 특성도 존재합니다.</p> <ul> <li>
+<a id="attr-xml:lang" class="inline-block" href="#attr-xml:lang"><b><code>xml:lang</code></b></a>과 <a id="attr-xml:base" class="inline-block" href="#attr-xml:base"><b><code>xml:base</code></b></a>는 XHTML 명세에서 상속받은 것으로 더 사용하지 않지만, 호환성 유지를 위해 아직 존재합니다.</li> <li> 여러 개의 <strong><a href="https://developer.mozilla.org/ko/docs/Web/Accessibility/ARIA">aria-*</a>`</strong> 특성은 접근성 향상을 위해 사용됩니다. </li> <li>
+<a href="https://developer.mozilla.org/en-US/docs/Web/Events/Event_handlers" class="only-in-en-us">이벤트 처리기 <small>(en-US)</small></a> 특성: <code>onabort</code>, <code>onautocomplete</code>, <code>onautocompleteerror</code>, <code>onblur</code>, <code>oncancel</code>, <code>oncanplay</code>, <code>oncanplaythrough</code>, <code>onchange</code>, <code>onclick</code>, <code>onclose</code>, <code>oncontextmenu</code>, <code>oncuechange</code>, <code>ondblclick</code>, <code>ondrag</code>, <code>ondragend</code>, <code>ondragenter</code>, <code>ondragexit</code>, <code>ondragleave</code>, <code>ondragover</code>, <code>ondragstart</code>, <code>ondrop</code>, <code>ondurationchange</code>, <code>onemptied</code>, <code>onended</code>, <code>onerror</code>, <code>onfocus</code>, <code>oninput</code>, <code>oninvalid</code>, <code>onkeydown</code>, <code>onkeypress</code>, <code>onkeyup</code>, <code>onload</code>, <code>onloadeddata</code>, <code>onloadedmetadata</code>, <code>onloadstart</code>, <code>onmousedown</code>, <code>onmouseenter</code>, <code>onmouseleave</code>, <code>onmousemove</code>, <code>onmouseout</code>, <code>onmouseover</code>, <code>onmouseup</code>, <code>onmousewheel</code>, <code>onpause</code>, <code>onplay</code>, <code>onplaying</code>, <code>onprogress</code>, <code>onratechange</code>, <code>onreset</code>, <code>onresize</code>, <code>onscroll</code>, <code>onseeked</code>, <code>onseeking</code>, <code>onselect</code>, <code>onshow</code>, <code>onsort</code>, <code>onstalled</code>, <code>onsubmit</code>, <code>onsuspend</code>, <code>ontimeupdate</code>, <code>ontoggle</code>, <code>onvolumechange</code>, <code>onwaiting</code>.</li> </ul>
+</div>
+<h2 id="전역_특성_목록">전역 특성 목록</h2>
+<div class="section-content">
+<dl> <dt id="sect1">
+<a id="attr-accesskey" class="inline-block" href="#attr-accesskey"><b><code>accesskey</code></b></a>
+</dt> <dd> <p>현재 요소에 대한 키보드 단축키 생성을 위한 힌트를 제공합니다. 이 특성은 공백으로 구분한 문자 목록으로 구성됩니다. 브라우저는 주어진 여러 개의 값 중 장치의 키보드 레이아웃에 존재하는 첫 번째 키를 사용해야 합니다.</p> </dd> <dt id="sect2">
+<a id="attr-autocapitalize" class="inline-block" href="#attr-autocapitalize"><b><code>autocapitalize</code></b></a>
+</dt> <dd> <p>사용자가 입력 또는 수정하는 텍스트를 자동으로 대문자로 변환할지 여부와 변환하는 방법을 제어합니다. 다음과 같은 값이 가능합니다.</p> <ul> <li>
+<code>off</code> 또는 <code>none</code>, 대소문자 자동 변환이 발생하지 않음 (모든 글자가 기본값 소문자)</li> <li>
+<code>on</code> 또는 <code>sentences</code>, 각 문장의 첫 글자를 대문자로 변환, 나머지 글자는 기본값 소문자</li> <li>
+<code>words</code>, 각 단어의 첫 글자를 대문자로 변환, 나머지 글자는 기본값 소문자</li> <li>
+<code>characters</code>, 모든 글자의 기본값이 대문자</li> </ul> </dd> <dt id="sect3">
+<a id="attr-class" class="inline-block" href="#attr-class"><b><code>class</code></b></a>
+</dt> <dd> <p>공백으로 구분된 해당 요소의 클래스의 목록입니다. 클래스를 이용하면 CSS나 JavaScript에서 <a href="https://developer.mozilla.org/ko/docs/Web/CSS/Class_selectors">클래스 선택자</a>나 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/Document/getElementsByClassName"><code>Document.getElementsByClassName()</code> <small>(en-US)</small></a>과 같은 메서드를 이용해 특정 요소를 선택하거나 접근할 수 있습니다.</p> </dd> <dt id="sect4">
+<a id="attr-contenteditable" class="inline-block" href="#attr-contenteditable"><b><code>contenteditable</code></b></a>
+</dt> <dd> <p>해당 요소를 사용자가 편집할 수 있는지를 나타내는 열거형 특성입니다. 편집 가능한 경우에 브라우저는 편집을 허용하도록 위젯을 수정합니다.</p> </dd> <dt id="sect5">
+<a id="attr-data-*" class="inline-block" href="#attr-data-*"><b><code>data-*</code></b></a>
+</dt> <dd> <p>사용자 지정 데이터 특성(custom data attributes)이라는 특성 클래스를 형성함으로써 임의의 데이터를 스크립트로 <a href="index">HTML</a>과 <a href="https://developer.mozilla.org/ko/docs/Web/API/Document_Object_Model">DOM</a> 사이에서 교환할 수 있는 방법을 제공합니다.</p> </dd> <dt id="sect6">
+<a id="attr-dir" class="inline-block" href="#attr-dir"><b><code>dir</code></b></a>
+</dt> <dd> <p>요소의 쓰기 방향을 나타내는 열거형 특성입니다.</p> </dd> <dt id="sect7">
+<a id="attr-draggable" class="inline-block" href="#attr-draggable"><b><code>draggable</code></b></a>
+</dt> <dd> <p><a href="https://developer.mozilla.org/ko/docs/Web/API/HTML_Drag_and_Drop_API">Drag and Drop API</a>를 사용해 요소를 드래그할 수 있는지 나타내는 열거형 특성입니다.</p> </dd> <dt id="sect8">
+<a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/exportparts" class="only-in-en-us"> <small>(en-US)</small></a><a id="attr-exportparts" class="inline-block" href="#attr-exportparts"><b><code>exportparts</code></b></a> <abbr class="icon icon-experimental" title="Experimental. 예상되는 동작은 향후 변경될 수 있습니다."> <span class="visually-hidden">Experimental</span> </abbr>
+</dt> <dd> <p>중첩 섀도우 트리에서 섀도우 파트를 전이적으로 라이트 파트에 내보낼 때 사용합니다.</p> </dd> <dt id="sect9">
+<a id="attr-hidden" class="inline-block" href="#attr-hidden"><b><code>hidden</code></b></a>
+</dt> <dd> <p>해당 요소가 아직, 또는 더 이상 관련이 없음을 나타내는 불리언 특성입니다. 브라우저는 <code>hidden</code> 특성을 가진 요소를 렌더링 하지 않습니다.</p> </dd> <dt id="sect10">
+<a id="attr-id" class="inline-block" href="#attr-id"><b><code>id</code></b></a>
+</dt> <dd> <p>문서 전체에서 유일해야 하는 고유 식별자(ID)를 정의합니다. (프래그먼트 식별자를 사용한) 링크, 스크립트, 스타일 적용 시 요소를 식별할 때 사용합니다.</p> </dd> <dt id="sect11">
+<a id="attr-inputmode" class="inline-block" href="#attr-inputmode"><b><code>inputmode</code></b></a>
+</dt> <dd> <p>사용자가 요소나 요소의 콘텐츠를 편집할 때, 브라우저가 제공해야 하는 가상 키보드 설정을 알려줍니다. 주로 <a href="element/input"><code>&lt;input&gt;</code></a> 요소에 사용하지만, <a href="global_attributes#contenteditable" aria-current="page"><code>contenteditable</code></a> 특성을 가진 요소라면 종류 불문하고 사용할 수 있습니다.</p> </dd> <dt id="sect12">
+<a id="attr-is" class="inline-block" href="#attr-is"><b><code>is</code></b></a>
+</dt> <dd> <p>표준 HTML 요소가 사용자 정의 기본 요소처럼 동작하도록 지정합니다. (자세한 내용은 <a href="https://developer.mozilla.org/ko/docs/Web/API/Web_components/Using_custom_elements">사용자 정의 요소 사용하기</a>를 참고하세요<a href="https://developer.mozilla.org/ko/docs/Web/API/Web_components/Using_custom_elements">)</a></p> </dd> </dl> <div class="notecard note" id="sect13"> <p><strong>참고:</strong><code>item*</code> 특성은 <a href="https://html.spec.whatwg.org/multipage/microdata.html#microdata" target="_blank">WHATWG HTML Microdata feature</a>의 일부입니다.</p> </div> <dl> <dt id="sect14">
+<a id="attr-itemid" class="inline-block" href="#attr-itemid"><b><code>itemid</code></b></a>
+</dt> <dd> <p>아이템의 고유하고 전역적인 식별자입니다.</p> </dd> <dt id="sect15">
+<a id="attr-itemprop" class="inline-block" href="#attr-itemprop"><b><code>itemprop</code></b></a>
+</dt> <dd> <p>아이템에 특성(properties)을 추가할 때 사용합니다. 모든 HTML 요소에는 이름과 값의 쌍으로 구성된 <code>itemprop</code> 특성을 명시할 수 있습니다.</p> </dd> <dt id="sect16">
+<a id="attr-itemref" class="inline-block" href="#attr-itemref"><b><code>itemref</code></b></a>
+</dt> <dd> <p><code>itemscope</code> 특성을 가진 요소에 속하지 않는 특성들(properties)은 <code>itemref</code>를 사용하여 item에 연결할 수 있습니다. 여기에는 문서 내의 다른 위치에 있는 추가적인 특성을 갖는 요소 id(<code>itemid</code>s 가 아닌)목록이 제공됩니다.</p> </dd> <dt id="sect17">
+<a id="attr-itemscope" class="inline-block" href="#attr-itemscope"><b><code>itemscope</code></b></a>
+</dt> <dd> <p><code>itemscope</code>은 (일반적으로) <a href="global_attributes#itemtype" aria-current="page"><code>itemtype</code></a>과 같이 사용하여 블록에 포함된 HTML이 특정 item에 대한 것임을 나타냅니다. <code>itemscope</code>은 item을 생성하고 그 item에 연결된 <code>itemtype</code>의 범위를 정의합니다. <code>itemtype</code>은 item과 특성 컨텍스트를 설명하는 (<a href="https://schema.org/" target="_blank">schema.org</a>와 같은) 어휘(vocabulary)에 대한 유효한 URL입니다.</p> </dd> <dt id="sect18">
+<a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/itemtype" class="only-in-en-us"> <small>(en-US)</small></a><a id="attr-itemtype" class="inline-block" href="#attr-itemtype"><b><code>itemtype</code></b></a>
+</dt> <dd> <p>데이터 구조에서 <code>itemprop</code>s (item properties)을 정의하는 데 사용할 단어의 URL을 지정합니다. <a href="global_attributes/itemscope"><code>itemscope</code></a>은 데이터 구조 내에서 <code>itemtype</code>에 의해 설정된 어휘가 활성화되는 범위를 설정하는 데 사용됩니다.</p> </dd> <dt id="sect19">
+<a id="attr-lang" class="inline-block" href="#attr-lang"><b><code>lang</code></b></a>
+</dt> <dd> <p>요소의 언어를 정의하는데 도움을 줍니다: 편집할 수 없는 요소가 있는 언어 또는 사용자가 요소를 편집할 수 있는 언어를 정의하는 데 도움이 됩니다(the language that non-editable elements are in, or the language that editable elements should be written in by the user). 이 특성은 언어 식별 태그(<a href="https://www.ietf.org/rfc/bcp/bcp47.txt" target="_blank"><em>Tags for Identifying Languages (BCP47)</em></a>)에 정의된 형식의 하나의 "언어 태그"(하이픈으로 구분된 "언어 하위 태그(language subtags)"로 구성된)를 포함합니다. <a href="#attr-xml:lang"><strong>xml:lang</strong></a>은 이보다 우선합니다.</p> </dd> <dt id="sect20">
+<a id="attr-part" class="inline-block" href="#attr-part"><b><code>part</code></b></a>
+</dt> <dd> <p>A space-separated list of the part names of the element. Part names allows CSS to select and style specific elements in a shadow tree via the <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/::part"><code>::part</code> <small>(en-US)</small></a> pseudo-element.</p> </dd> <dt id="sect21">
+<a id="attr-slot" class="inline-block" href="#attr-slot"><b><code>slot</code></b></a>
+</dt> <dd> <p>요소에 <a href="https://developer.mozilla.org/ko/docs/Web/API/Web_components/Using_shadow_DOM">shadow DOM</a>의 shadow tree에 있는 슬롯을 할당합니다: <code>slot</code> 특성을 가진 요소는 <a href="element/slot#attr-name"><code>name</code></a> 특성의 값이 해당 <code>slot</code> 특성의 값과 일치하는 {HTMLElement("slot")}} 요소가 생성한 슬롯에 할당됩니다.</p> </dd> <dt id="sect22">
+<a id="attr-spellcheck" class="inline-block" href="#attr-spellcheck"><b><code>spellcheck</code></b></a>
+</dt> <dd> <p>요소의 맞춤법 검사 여부를 지정합니다.</p> </dd> <dt id="sect23">
+<a id="attr-style" class="inline-block" href="#attr-style"><b><code>style</code></b></a>
+</dt> <dd> <p>요소에 적용할 <a href="https://developer.mozilla.org/ko/docs/Web/CSS">CSS</a> 스타일 선언을 담습니다. 단, 스타일은 별도 파일에 정의하는 것이 추천하는 방식임을 유의하세요. 이 특성과 <a href="element/style"><code>&lt;style&gt;</code></a> 요소는 테스트 등을 위한 빠른 스타일링이 주 용도입니다.</p> </dd> <dt id="sect24">
+<a id="attr-tabindex" class="inline-block" href="#attr-tabindex"><b><code>tabindex</code></b></a>
+</dt> <dd> <p>An integer attribute indicating if the element can take input focus (is <em>focusable</em>), if it should participate to sequential keyboard navigation, and if so, at what position. It can takes several values:</p> <ul> <li>a <em>negative value</em> means that the element should be focusable, but should not be reachable via sequential keyboard navigation;</li> <li>
+<code>0</code> means that the element should be focusable and reachable via sequential keyboard navigation, but its relative order is defined by the platform convention;</li> <li>a <em>positive value</em> means that the element should be focusable and reachable via sequential keyboard navigation; the order in which the elements are focused is the increasing value of the <a href="#attr-tabindex"><strong>tabindex</strong></a>. If several elements share the same tabindex, their relative order follows their relative positions in the document.</li> </ul> </dd> <dt id="sect25">
+<a id="attr-title" class="inline-block" href="#attr-title"><b><code>title</code></b></a>
+</dt> <dd> <p>요소에 대한 추가 정보를 제공하는 텍스트입니다. 사용자에게는 보통 툴팁으로서 보여집니다.</p> </dd> <dt id="sect26">
+<a id="attr-translate" class="inline-block" href="#attr-translate"><b><code>translate</code></b></a> <abbr class="icon icon-experimental" title="Experimental. 예상되는 동작은 향후 변경될 수 있습니다."> <span class="visually-hidden">Experimental</span> </abbr>
+</dt> <dd> <p>페이지를 지역화할 때 요소의 <a href="https://developer.mozilla.org/ko/docs/Web/API/Text"><code>Text</code></a> 노드 자식 및 번역 가능한 특성의 값을 번역해야 되는지, 아니면 그대로 유지해야 하는지 나타냅니다.</p> </dd> </dl>
+</div>
+<h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody>
+<tr><td><a href="https://html.spec.whatwg.org/multipage/interaction.html#the-accesskey-attribute">HTML Standard <br><small># the-accesskey-attribute</small></a></td></tr>
+<tr><td><a href="https://html.spec.whatwg.org/multipage/interaction.html#attr-autocapitalize">HTML Standard <br><small># attr-autocapitalize</small></a></td></tr>
+<tr><td><a href="https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#attr-fe-autocomplete">HTML Standard <br><small># attr-fe-autocomplete</small></a></td></tr>
+<tr><td><a href="https://html.spec.whatwg.org/multipage/interaction.html#dom-fe-autofocus">HTML Standard <br><small># dom-fe-autofocus</small></a></td></tr>
+<tr><td><a href="https://html.spec.whatwg.org/multipage/dom.html#global-attributes:classes-2">HTML Standard <br><small># global-attributes:classes-2</small></a></td></tr>
+<tr><td><a href="https://html.spec.whatwg.org/multipage/interaction.html#attr-contenteditable">HTML Standard <br><small># attr-contenteditable</small></a></td></tr>
+<tr><td><a href="https://html.spec.whatwg.org/multipage/dom.html#attr-data-*">HTML Standard <br><small># attr-data-*</small></a></td></tr>
+<tr><td><a href="https://html.spec.whatwg.org/multipage/dom.html#the-dir-attribute">HTML Standard <br><small># the-dir-attribute</small></a></td></tr>
+<tr><td><a href="https://html.spec.whatwg.org/multipage/dnd.html#the-draggable-attribute">HTML Standard <br><small># the-draggable-attribute</small></a></td></tr>
+<tr><td><a href="https://html.spec.whatwg.org/multipage/interaction.html#attr-enterkeyhint">HTML Standard <br><small># attr-enterkeyhint</small></a></td></tr>
+<tr><td><a href="https://drafts.csswg.org/css-shadow-parts/#element-attrdef-html-global-exportparts">CSS Shadow Parts <br><small># element-attrdef-html-global-exportparts</small></a></td></tr>
+<tr><td><a href="https://html.spec.whatwg.org/multipage/interaction.html#the-hidden-attribute">HTML Standard <br><small># the-hidden-attribute</small></a></td></tr>
+<tr><td><a href="https://html.spec.whatwg.org/multipage/dom.html#global-attributes:the-id-attribute-2">HTML Standard <br><small># global-attributes:the-id-attribute-2</small></a></td></tr>
+<tr><td><a href="https://html.spec.whatwg.org/multipage/interaction.html#the-inert-attribute">HTML Standard <br><small># the-inert-attribute</small></a></td></tr>
+<tr><td><a href="https://html.spec.whatwg.org/multipage/interaction.html#attr-inputmode">HTML Standard <br><small># attr-inputmode</small></a></td></tr>
+<tr><td><a href="https://html.spec.whatwg.org/multipage/custom-elements.html#attr-is">HTML Standard <br><small># attr-is</small></a></td></tr>
+<tr><td><a href="https://html.spec.whatwg.org/multipage/microdata.html#attr-itemid">HTML Standard <br><small># attr-itemid</small></a></td></tr>
+<tr><td><a href="https://html.spec.whatwg.org/multipage/microdata.html#names:-the-itemprop-attribute">HTML Standard <br><small># names:-the-itemprop-attribute</small></a></td></tr>
+<tr><td><a href="https://html.spec.whatwg.org/multipage/microdata.html#attr-itemref">HTML Standard <br><small># attr-itemref</small></a></td></tr>
+<tr><td><a href="https://html.spec.whatwg.org/multipage/microdata.html#attr-itemscope">HTML Standard <br><small># attr-itemscope</small></a></td></tr>
+<tr><td><a href="https://html.spec.whatwg.org/multipage/microdata.html#attr-itemtype">HTML Standard <br><small># attr-itemtype</small></a></td></tr>
+<tr><td><a href="https://html.spec.whatwg.org/multipage/dom.html#attr-lang">HTML Standard <br><small># attr-lang</small></a></td></tr>
+<tr><td><a href="https://html.spec.whatwg.org/multipage/urls-and-fetching.html#attr-nonce">HTML Standard <br><small># attr-nonce</small></a></td></tr>
+<tr><td><a href="https://drafts.csswg.org/css-shadow-parts/#part-attr">CSS Shadow Parts <br><small># part-attr</small></a></td></tr>
+<tr><td><a href="https://html.spec.whatwg.org/multipage/popover.html#the-popover-attribute">HTML Standard <br><small># the-popover-attribute</small></a></td></tr>
+<tr><td><a href="https://html.spec.whatwg.org/multipage/popover.html#attr-popovertarget">HTML Standard <br><small># attr-popovertarget</small></a></td></tr>
+<tr><td><a href="https://html.spec.whatwg.org/multipage/popover.html#attr-popovertargetaction">HTML Standard <br><small># attr-popovertargetaction</small></a></td></tr>
+<tr><td><a href="https://html.spec.whatwg.org/multipage/dom.html#attr-slot">HTML Standard <br><small># attr-slot</small></a></td></tr>
+<tr><td><a href="#">DOM Standard <br><small># ref-for-dom-element-slot①</small></a></td></tr>
+<tr><td><a href="https://html.spec.whatwg.org/multipage/interaction.html#attr-spellcheck">HTML Standard <br><small># attr-spellcheck</small></a></td></tr>
+<tr><td><a href="https://html.spec.whatwg.org/multipage/dom.html#the-style-attribute">HTML Standard <br><small># the-style-attribute</small></a></td></tr>
+<tr><td><a href="https://html.spec.whatwg.org/multipage/interaction.html#attr-tabindex">HTML Standard <br><small># attr-tabindex</small></a></td></tr>
+<tr><td><a href="https://html.spec.whatwg.org/multipage/dom.html#the-title-attribute">HTML Standard <br><small># the-title-attribute</small></a></td></tr>
+<tr><td><a href="https://html.spec.whatwg.org/multipage/dom.html#attr-translate">HTML Standard <br><small># attr-translate</small></a></td></tr>
+<tr><td><a href="https://w3c.github.io/virtual-keyboard/#dom-elementcontenteditable-virtualkeyboardpolicy">VirtualKeyboard API <br><small># dom-elementcontenteditable-virtualkeyboardpolicy</small></a></td></tr>
+</tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li>대부분의 전역 특성에 접근할 수 있는 <a href="https://developer.mozilla.org/ko/docs/Web/API/Element"><code>Element</code></a>와 <a class="page-not-created"><code>GlobalEventHandlers</code></a> 인터페이스.</li> </ul></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/HTML/Global_attributes" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/HTML/Global_attributes</a>
+  </p>
+</div>

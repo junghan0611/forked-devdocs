@@ -1,0 +1,51 @@
+<header><h1>RTCPeerConnection: icegatheringstatechange event</h1></header><div class="section-content">
+<p><code>icegatheringstatechange</code> 이벤트는 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Glossary/ICE">ICE <small>(en-US)</small></a> candidate 수집 과정이 변경되면, <a href="../rtcpeerconnection"><code>RTCPeerConnection</code></a>의 이벤트 핸들러인 <a href="icegatheringstatechange_event" aria-current="page"><code>onicegatheringstatechange</code></a>로 전달됩니다. 이는 연결의 <a href="icegatheringstate"><code>iceGatheringState</code></a> 속성이 변경되었다는 것을 뜻합니다.</p> <p>ICE가 처음 연결 candidate들을 수집하게되면 값이 <code>new</code>에서 <code>gathering</code>으로 바뀌게 되고, 이는 연결에 대한 candidate 설정들을 수집하는 과정 중에 있다는 뜻입니다. 값이 complete가 되면, RTCPeerConnection을 구성하는 모든 트랜스포트들이 ICE candidate 수집을 완료한 상태입니다.</p> <figure class="table-container"><div class="_table"><table> <thead> <tr> <th>Bubbles</th> <th>No</th> </tr> </thead> <tbody> <tr> <td>취소가능여부</td> <td>No</td> </tr> <tr> <td>인터페이스</td> <td><a href="../event"><code>Event</code></a></td> </tr> <tr> <td>이벤트 핸들러</td> <td><a href="icegatheringstatechange_event" aria-current="page"><code>onicegatheringstatechange</code></a></td> </tr> </tbody> </table></div></figure> <div class="notecard note" id="sect1"> <p><strong>참고:</strong> ICE candidate 수집 과정이 완료되었는지는 <code>icegatheringstatechange</code>이벤트와 <a href="icegatheringstate"><code>iceGatheringState</code></a>의 값이 <code>complete</code>로 바뀌는 것을 확인하면 알 수 있습니다. 하지만, 더 쉬운 방법으로는 <a href="icecandidate_event"><code>icecandidate</code></a> 이벤트에 대한 핸들러가 <a href="../rtcpeerconnectioniceevent/candidate"><code>candidate</code></a> 속성의 값이 null로 변하는 시점을 체크하도록 할 수 있습니다. 이 속성이 <code>null</code> 값으로 바뀌었다는 것은 즉 모든 candidate 수집이 완료되었다는 뜻입니다.</p> </div>
+</div>
+<h2 id="예시">예시</h2>
+<div class="section-content">
+<p>아래 예제는 <code>icegatheringstatechange</code> 이벤트에대한 핸들러를 생성합니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="WB7jxH21umC298nCNesL7RtAqc8+eGJCyfZafso5j18=" data-language="js">pc<span class="token punctuation">.</span><span class="token function-variable function">onicegatheringstatechange</span> <span class="token operator">=</span> <span class="token parameter">ev</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token keyword">let</span> connection <span class="token operator">=</span> ev<span class="token punctuation">.</span>target<span class="token punctuation">;</span>
+
+  <span class="token keyword">switch</span><span class="token punctuation">(</span>connection<span class="token punctuation">.</span>iceGatheringState<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">case</span> <span class="token string">"gathering"</span><span class="token operator">:</span>
+      <span class="token comment">/* candidate 수집 과정 시작 */</span>
+      <span class="token keyword">break</span><span class="token punctuation">;</span>
+    <span class="token keyword">case</span> <span class="token string">"complete"</span><span class="token operator">:</span>
+      <span class="token comment">/* candidate 수집 완료 */</span>
+      <span class="token keyword">break</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</pre>
+</div> <p>아래처럼 <a href="../eventtarget/addeventlistener"><code>addEventListener()</code></a>을 사용해서 <code>icegatheringstatechange</code> 이벤트에 대한 변경을 감지하는 리스너를 추가 할 수 있습니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="EQHoQTBMk3PN8q+HDFwNknlcMb733wC4VOhLMx0tOxY=" data-language="js">pc<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">"icegatheringstatechange"</span><span class="token punctuation">,</span> <span class="token parameter">ev</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token keyword">let</span> connection <span class="token operator">=</span> ev<span class="token punctuation">.</span>target<span class="token punctuation">;</span>
+
+  <span class="token keyword">switch</span><span class="token punctuation">(</span>connection<span class="token punctuation">.</span>iceGatheringState<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">case</span> <span class="token string">"gathering"</span><span class="token operator">:</span>
+      <span class="token comment">/* candidate 수집 과정 시작 */</span>
+      <span class="token keyword">break</span><span class="token punctuation">;</span>
+    <span class="token keyword">case</span> <span class="token string">"complete"</span><span class="token operator">:</span>
+      <span class="token comment">/* candidate 수집 완료 */</span>
+      <span class="token keyword">break</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div>
+</div>
+<h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://w3c.github.io/webrtc-pc/#dom-rtcpeerconnection-onicegatheringstatechange">WebRTC: Real-Time Communication in Browsers <br><small># dom-rtcpeerconnection-onicegatheringstatechange</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<h2 id="참조">참조</h2>
+<div class="section-content"><ul> <li><a href="../webrtc_api">WebRTC API</a></li> <li><a href="../webrtc_api/signaling_and_video_calling">Signaling and video calling</a></li> <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/WebRTC_API/Connectivity" class="only-in-en-us">WebRTC connectivity <small>(en-US)</small></a></li> <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/WebRTC_API/Session_lifetime" class="only-in-en-us">Lifetime of a WebRTC session <small>(en-US)</small></a></li> </ul></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/RTCPeerConnection/icegatheringstatechange_event" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/RTCPeerConnection/icegatheringstatechange_event</a>
+  </p>
+</div>

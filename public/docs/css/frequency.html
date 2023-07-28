@@ -1,0 +1,29 @@
+<header><h1>&lt;frequency&gt;</h1></header><div class="section-content"><p><a href="https://developer.mozilla.org/ko/docs/Web/CSS">CSS</a> <code>&lt;frequency&gt;</code> <a href="css_types">자료형</a>은 목소리의 높낮이 등 주파수를 나타냅니다. 현재 어떤 CSS 속성도 <code>&lt;frequency&gt;</code>를 사용하지 않습니다.</p></div>
+<section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content"><p><code>&lt;frequency&gt;</code> 자료형은 <a href="number"><code>&lt;number&gt;</code></a> 다음에 아래 나열한 단위 중 하나를 붙여 구성핳합니다. 다른 CSS 단위와 마찬가지로 숫자와 단위 문자 사이에 공백은 존재하지 않습니다.</p></div></section><section aria-labelledby="단위"><h3 id="단위">단위</h3>
+<div class="section-content">
+<dl> <dt id="hz"><code>Hz</code></dt> <dd> <p>헤르츠로 주파수를 나타냅니다. 예시: <code>0Hz</code>, <code>1500Hz</code>, <code>10000Hz</code>.</p> </dd> <dt id="khz"><code>kHz</code></dt> <dd> <p>킬로헤르츠로 주파수를 나타냅니다. 예시: <code>0kHz</code>, <code>1.5kHz</code>, <code>10kHz</code>.</p> </dd> </dl> <div class="notecard note" id="sect1"> <p><strong>참고:</strong> <code>0</code>은 단위와 상관없이 언제나 같은 값을 나타내지만, 주파수에서는 단위를 생략할 수 없습니다. 즉 <code>0</code>은 유효한 주파수가 아니며 <code>0Hz</code>나 <code>0kHz</code>를 나타내지 않습니다. 단위 문자가 대소문자를 구분하지 않기는 하지만, <a href="https://ko.wikipedia.org/wiki/%EA%B5%AD%EC%A0%9C%EB%8B%A8%EC%9C%84%EA%B3%84" target="_blank">SI</a>에서 명시한 대로 "H"는 대문자로 표기하는 게 좋습니다.</p> </div>
+</div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+</section><section aria-labelledby="유효한_주파수"><h3 id="유효한_주파수">유효한 주파수</h3>
+<div class="section-content"><pre class="notranslate">12Hz     양의 정수
+4.3Hz    실수
+14KhZ    단위가 대소문자를 구분하지 않지만, SI 표준에서 벗어난 표기는 비추천
++0Hz     0, 양의 부호와 단위
+-0kHz    0, 음의 부호와 단위
+</pre></div></section><section aria-labelledby="유효하지_않은_주파수"><h3 id="유효하지_않은_주파수">유효하지 않은 주파수</h3>
+<div class="section-content"><pre data-language="plain">12.0     단위가 없으므로 &lt;number&gt;지만 &lt;frequency&gt;가 아님
+7 Hz     수와 단위 사이에 공백은 불허
+0        &lt;length&gt;는 단위 없는 0을 받을 수 있지만, &lt;frequency&gt;는 불가능
+</pre></div></section><h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://drafts.csswg.org/css-values/#frequency">CSS Values and Units Module Level 4 <br><small># frequency</small></a></td></tr></tbody>
+</table></div>
+<div class="section-content"><div class="notecard note" id="sect3"> <p><strong>참고:</strong> <code>&lt;frequency&gt;</code>는 <a href="https://www.w3.org/TR/CSS2/aural.html#q19.0" target="_blank">CSS Level 2</a>의, 지금은 사용하지 않는 청각적 <a href="@media#%EB%AF%B8%EB%94%94%EC%96%B4_%ED%8A%B9%EC%84%B1">미디어 특성</a>에서 음성의 높낮이를 설정할 때 사용했습니다. 이후 CSS3에서 다시 추가됐지만, 지금으로써는 어떤 CSS 속성에서도 사용하지 않습니다.</p> </div></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/CSS/frequency" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/CSS/frequency</a>
+  </p>
+</div>

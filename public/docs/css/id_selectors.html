@@ -1,0 +1,45 @@
+<header><h1>ID 선택자</h1></header><div class="section-content">
+<p><a href="https://developer.mozilla.org/ko/docs/Web/CSS">CSS</a> <strong>ID 선택자</strong>는 요소의 <a href="https://developer.mozilla.org/ko/docs/Web/HTML/Global_attributes#id"><code>id</code></a> 특성 값을 비교하여, 완전히 동일한 <code>id</code>를 가진 요소를 선택합니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="2gkGXn/PGL+XpFQC1TxyL+o+KHK2uCBBdOrCVqsw3oU=" data-language="css"><span class="token comment">/* id="demo" 요소 선택 */</span>
+<span class="token selector">#demo</span> <span class="token punctuation">{</span>
+  <span class="token property">border</span><span class="token punctuation">:</span> red 2px solid<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div>
+</div>
+<section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content">
+<pre class="notranslate">#id_value { style properties }
+</pre> <p>위의 구문은 <a href="attribute_selectors">특성 선택자</a>를 사용한 다음 구문과 동일합니다.</p> <pre class="notranslate">[id=id_value] { style properties }
+</pre>
+</div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+</section><section aria-labelledby="css"><h3 id="css">CSS</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="DF+d5Vnsq6FxaMcDSnXFIw9/HYbw4pckwXXHAP5W2r4=" data-language="css"><span class="token selector">#identified</span> <span class="token punctuation">{</span>
+  <span class="token property">background-color</span><span class="token punctuation">:</span> skyblue<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div></div></section><section aria-labelledby="html"><h3 id="html">HTML</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="mL+EoKAE3oVgLRdlPxQjtn2HL2G3g7akQq4GdzhDduA=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>identified<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>특별한 ID를 가진 요소에요!<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span>이건 그냥 div에요.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div></div></section><section aria-labelledby="결과"><h3 id="결과">결과</h3>
+<div class="section-content"><div class="code-example" id="sect1">
+
+<iframe class="sample-code-frame" title="예제" id="frame_example" width="100%" height="60" src="https://live.mdnplay.dev/ko/docs/Web/CSS/ID_selectors/runner.html?id=example" loading="lazy"></iframe>
+</div></div></section><h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://drafts.csswg.org/selectors/#id-selectors">Selectors Level 4 <br><small># id-selectors</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/CSS/ID_selectors" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/CSS/ID_selectors</a>
+  </p>
+</div>

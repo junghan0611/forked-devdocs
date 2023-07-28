@@ -1,0 +1,48 @@
+<header><h1>의사 요소</h1></header><div class="section-content">
+<p><a href="https://developer.mozilla.org/ko/docs/Web/CSS">CSS</a> <strong>의사 요소</strong>(가상 요소)는 선택자에 추가하는 키워드로, 선택한 요소의 일부분에만 스타일을 입힐 수 있습니다. 예를 들어 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/::first-line"><code>::first-line</code> <small>(en-US)</small></a>을 사용하면 문단 첫 줄의 글씨체만 바꿀 수 있습니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="LEyKTDnkn5iyDDobnOq9b8Y4aaf7N3kcZfFA0Kiu8rc=" data-language="css"><span class="token comment">/* The first line of every &lt;p&gt; element. */</span>
+<span class="token selector">p::first-line</span> <span class="token punctuation">{</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> blue<span class="token punctuation">;</span>
+  <span class="token property">text-transform</span><span class="token punctuation">:</span> uppercase<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div> <div class="notecard note" id="sect1"> <p><strong>참고:</strong> <a href="pseudo-classes">의사 클래스</a>는 의사 요소와 달리 요소의 <strong>특정 상태</strong>에 스타일을 적용할 때 사용합니다.</p> </div>
+</div>
+<section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content">
+<pre class="notranslate">selector::pseudo-element {
+  property: value;
+}
+</pre> <p>하나의 선택자에 하나의 의사 요소만 사용할 수 있습니다. 반드시 단순 선택자 뒤에 위치해야 합니다.</p> <div class="notecard note" id="sect2"> <p><strong>참고:</strong> 참고: 규칙을 따라 단일 콜론(<code>:</code>) 대신 이중 콜론(<code>::</code>)을 사용하여 의사 클래스와 의사 요소를 구별해야 합니다. 그러나 과거 W3C 명세에선 이런 구별을 두지 않았으므로 대부분의 브라우저는 기존 의사 요소에 대해 두 구문 모두 지원합니다.</p> </div>
+</div></section><section aria-labelledby="표준_의사_요소_색인"><h2 id="표준_의사_요소_색인">표준 의사 요소 색인</h2>
+<div class="section-content"><ul> <li><a href="::after"><code>::after (:after)</code></a></li> <li>
+<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/::backdrop"><code>::backdrop</code> <small>(en-US)</small></a> <abbr class="icon icon-experimental" title="Experimental. 예상되는 동작은 향후 변경될 수 있습니다."> <span class="visually-hidden">Experimental</span> </abbr>
+</li> <li><a href="::before"><code>::before (:before)</code></a></li> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/::cue"><code>::cue</code> <small>(en-US)</small></a></li> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/::cue-region"><code>::cue-region</code> <small>(en-US)</small></a></li> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/::first-letter"><code>::first-letter (:first-letter)</code> <small>(en-US)</small></a></li> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/::first-line"><code>::first-line (:first-line)</code> <small>(en-US)</small></a></li> <li>
+<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/::grammar-error"><code>::grammar-error</code> <small>(en-US)</small></a> <abbr class="icon icon-experimental" title="Experimental. 예상되는 동작은 향후 변경될 수 있습니다."> <span class="visually-hidden">Experimental</span> </abbr>
+</li> <li>
+<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/::marker"><code>::marker</code> <small>(en-US)</small></a> <abbr class="icon icon-experimental" title="Experimental. 예상되는 동작은 향후 변경될 수 있습니다."> <span class="visually-hidden">Experimental</span> </abbr>
+</li> <li>
+<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/::part"><code>::part()</code> <small>(en-US)</small></a> <abbr class="icon icon-experimental" title="Experimental. 예상되는 동작은 향후 변경될 수 있습니다."> <span class="visually-hidden">Experimental</span> </abbr>
+</li> <li>
+<a href="::placeholder"><code>::placeholder</code></a> <abbr class="icon icon-experimental" title="Experimental. 예상되는 동작은 향후 변경될 수 있습니다."> <span class="visually-hidden">Experimental</span> </abbr>
+</li> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/::selection"><code>::selection</code> <small>(en-US)</small></a></li> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/::slotted"><code>::slotted()</code> <small>(en-US)</small></a></li> <li>
+<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/::spelling-error"><code>::spelling-error</code> <small>(en-US)</small></a> <abbr class="icon icon-experimental" title="Experimental. 예상되는 동작은 향후 변경될 수 있습니다."> <span class="visually-hidden">Experimental</span> </abbr>
+</li> </ul></div></section><h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody>
+<tr><td><a href="https://drafts.csswg.org/css-pseudo/">CSS Pseudo-Elements Module Level 4 <br></a></td></tr>
+<tr><td><a href="https://drafts.csswg.org/css-position-4/">CSS Positioned Layout Module Level 4 <br></a></td></tr>
+<tr><td><a href="https://drafts.csswg.org/css-shadow-parts/">CSS Shadow Parts <br></a></td></tr>
+<tr><td><a href="https://w3c.github.io/webvtt/">WebVTT: The Web Video Text Tracks Format <br></a></td></tr>
+</tbody>
+</table></div>
+<section aria-labelledby="브라우저_호환성"><h2 id="브라우저_호환성">브라우저 호환성</h2>
+<div class="section-content">{{compat}}</div></section><section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="pseudo-classes">의사 클래스</a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/CSS/Pseudo-elements" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/CSS/Pseudo-elements</a>
+  </p>
+</div>

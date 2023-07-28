@@ -1,0 +1,106 @@
+<header><h1>&lt;kbd&gt;: 키보드 입력 요소</h1></header><div class="section-content"><p><code>&lt;kbd&gt;</code>는 키보드 입력, 음성 입력 등 임의의 장치를 사용한 사용자의 입력을 나타냅니다. 관례에 따라 <a href="https://developer.mozilla.org/ko/docs/Glossary/User_agent">사용자 에이전트</a>의 고정폭 글꼴로 표시하지만, HTML 표준은 그런 점을 강제하지 않습니다.</p></div>
+<h2 id="시도해보기">시도해보기</h2>
+<div class="section-content">
+<iframe class="interactive is-tabbed-shorter-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/tabbed/kbd.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe> <figure class="table-container"><div class="_table"><table class="properties"> <tbody> <tr> <th scope="row">콘텐츠 카테고리</th> <td> <a href="../content_categories#%ed%94%8c%eb%a1%9c%ec%9a%b0_%ec%bd%98%ed%85%90%ec%b8%a0">플로우 콘텐츠</a>, <a href="../content_categories#%ea%b5%ac%eb%ac%b8_%ec%bd%98%ed%85%90%ec%b8%a0">구문 콘텐츠</a>, 뚜렷한 콘텐츠. </td> </tr> <tr> <th scope="row">가능한 콘텐츠</th> <td>
+<a href="../content_categories#%ea%b5%ac%eb%ac%b8_%ec%bd%98%ed%85%90%ec%b8%a0">구문 콘텐츠</a>.</td> </tr> <tr> <th scope="row">태그 생략</th> <td>불가능, 시작과 끝에 태그를 추가하는것은 필수입니다.</td> </tr> <tr> <th scope="row">가능한 부모 요소</th> <td>
+<a href="../content_categories#%ea%b5%ac%eb%ac%b8_%ec%bd%98%ed%85%90%ec%b8%a0">구문 콘텐츠</a>를 허용하는 모든 요소.</td> </tr> <tr> <th scope="row">가능한 ARIA 역할</th> <td>모두</td> </tr> <tr> <th scope="row">DOM 인터페이스</th> <td><a href="https://developer.mozilla.org/ko/docs/Web/API/HTMLElement"><code>HTMLElement</code></a></td> </tr> </tbody> </table></div></figure>
+</div>
+<h2 id="특성">특성</h2>
+<div class="section-content"><p>이 요소는 <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes" class="only-in-en-us">전역 특성 <small>(en-US)</small></a>만 포함합니다.</p></div>
+<h2 id="사용_일람">사용 일람</h2>
+<div class="section-content">
+<p><code>&lt;kbd&gt;</code> 요소를 다른 요소와 조합해 더 상세한 상황을 표현할 수 있습니다.</p> <ul> <li>
+<code>&lt;kbd&gt;</code> 요소를 다른 <code>&lt;kbd&gt;</code> 요소 안에 배치해, 하나의 입력 안의 작은 부분이나, 실제 타이핑 키를 하나씩 나타낼 수 있습니다. 아래의 <a href="#%EC%9E%85%EB%A0%A5_%EC%95%88%EC%9D%98_%ED%82%A4%EC%9E%85%EB%A0%A5_%EB%82%98%ED%83%80%EB%82%B4%EA%B8%B0">입력 안의 키입력 나타내기</a> 예제를 참고하세요.</li> <li>
+<code>&lt;kbd&gt;</code> 요소를 <a href="samp"><code>&lt;samp&gt;</code></a> 요소 안에 배치하면 시스템이 에코로써 다시 출력한 사용자 입력을 나타낼 수 있습니다. 아래의 <a href="#%EC%9E%AC%EC%B6%9C%EB%A0%A5%EB%90%9C_%EC%9E%85%EB%A0%A5">재출력된 입력</a> 예제를 참고하세요.</li> <li>반면, <code>&lt;samp&gt;</code> 요소를 <code>&lt;kbd&gt;</code> 요소 안에 배치하면 화면에 표시된 메뉴 이름, 메뉴 항목, 버튼 이름 등 시스템이 출력한 텍스트를 기반으로 한 입력을 나타낼 수 있습니다. 아래의 <a href="#%ED%99%94%EB%A9%B4%EC%97%90_%ED%91%9C%EC%8B%9C%EB%90%9C_%EC%9E%85%EB%A0%A5_%EC%98%B5%EC%85%98_%EB%82%98%ED%83%80%EB%82%B4%EA%B8%B0">화면에 표시된 입력 옵션 나타내기</a> 예제를 참고하세요.</li> </ul> <div class="notecard note" id="sect1"> <p><strong>참고:</strong> 사용자 지정 CSS 파일을 정의해 <code>&lt;kbd&gt;</code> 요소의 브라우저 기본 글꼴을 바꿀 수 있지만, 사용자 설정이 더 우선할 수도 있습니다.</p> </div>
+</div>
+<h2 id="예제">예제</h2>
+
+<h3 id="기본_예제">기본 예제</h3>
+<div class="section-content">
+<div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="pNi6M5b5EoOqhTX9O1tHKIyH1y9+aLjJf4lnTWZmCHo=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>kbd</span><span class="token punctuation">&gt;</span></span>help mycommand<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>kbd</span><span class="token punctuation">&gt;</span></span> 명령어를 입력해 "mycommand" 명령에 대한 문서를 확인하세요.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div> <h4 id="결과">결과</h4>
+<div class="code-example" id="sect2">
+
+<iframe class="sample-code-frame" title="기본 예제 sample" id="frame_기본_예제" width="350" height="80" src="https://live.mdnplay.dev/ko/docs/Web/HTML/Element/kbd/runner.html?id=%EA%B8%B0%EB%B3%B8_%EC%98%88%EC%A0%9C" loading="lazy"></iframe>
+</div>
+</div>
+<h3 id="입력_안의_키입력_나타내기">입력 안의 키입력 나타내기</h3>
+<div class="section-content">
+<p>다수의 키입력으로 구성된 입력을 설명할 땐 여러 개의 <code>&lt;kbd&gt;</code> 요소를 중첩할 수 있습니다. 바깥 <code>&lt;kbd&gt;</code>는 전체 입력을, 각각의 키입력 또는 구성요소는 안쪽의 <code>&lt;kbd&gt;</code>로 나타냅니다.</p> <h4 id="스타일_없이">스타일 없이</h4> <p>우선 기본 HTML에서 어떻게 나타나나 확인해보겠습니다.</p> <h5 id="html">HTML</h5> <div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="gJU6k26NHe1nWUAZV4h7tnJX7n1Bdrrn3WI9u/zj+bQ=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>새로운 문서는 키보드 단축키
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>kbd</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>kbd</span><span class="token punctuation">&gt;</span></span>Ctrl<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>kbd</span><span class="token punctuation">&gt;</span></span>+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>kbd</span><span class="token punctuation">&gt;</span></span>N<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>kbd</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>kbd</span><span class="token punctuation">&gt;</span></span>으로 만들 수 있습니다.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div> <p>단축키 조합 전체를 하나의 <code>&lt;kbd&gt;</code>로 감싼 후, 조합 구성요소를 나타내기 위해 각각의 키보드 키를 다른 <code>&lt;kbd&gt;</code>로 감싼 모습입니다.</p> <div class="notecard note" id="sect3"> <p><strong>참고:</strong> 꼭 이렇게 중첩할 필요는 없습니다. 바깥 <code>&lt;kbd&gt;</code>를 생략하고, <code>&lt;kbd&gt;Ctrl&lt;/kbd&gt;+&lt;kbd&gt;N&lt;/kbd&gt;</code>로 작성하더라도 완벽하게 유효한 표기법입니다.</p> <p>다만 현재 사용 중인 스타일에 따라 중첩이 유용할 때도 있습니다.</p> </div> <h5 id="결과_2">결과</h5> <p>스타일 시트 없는 출력은 다음과 같습니다.</p>
+<div class="code-example" id="sect4">
+
+<iframe class="sample-code-frame" title="스타일 없이 sample" id="frame_스타일_없이" width="650" height="80" src="https://live.mdnplay.dev/ko/docs/Web/HTML/Element/kbd/runner.html?id=%EC%8A%A4%ED%83%80%EC%9D%BC_%EC%97%86%EC%9D%B4" loading="lazy"></iframe>
+</div> <h4 id="스타일_적용">스타일 적용</h4> <p>CSS를 좀 더해서 명확하게 바꿀 수 있습니다.</p> <h5 id="css">CSS</h5> <p>키보드 버튼을 렌더링 할 때 사용할 수 있는, <code>&lt;kbd&gt;</code> 요소의 <code>"key"</code> 스타일을 추가합니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="jWttOyPdMr8XuSe3Pfy/Wn3orO1ztURRWL6ypZJa8DM=" data-language="css"><span class="token selector">kbd.key</span> <span class="token punctuation">{</span>
+  <span class="token property">border-radius</span><span class="token punctuation">:</span> 3px<span class="token punctuation">;</span>
+  <span class="token property">padding</span><span class="token punctuation">:</span> 1px 2px 0<span class="token punctuation">;</span>
+  <span class="token property">border</span><span class="token punctuation">:</span> 1px solid black<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div> <h5 id="html_2">HTML</h5> <p>HTML을 업데이트해 앞선 스타일을 적용합니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="9BLeHmitGqeU8U5KHl3HRzrijQmDzorZSQHSdMD3hJE=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>새로운 문서는 키보드 단축키
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>kbd</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>kbd</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>key<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Ctrl<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>kbd</span><span class="token punctuation">&gt;</span></span>+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>kbd</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>key<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>N<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>kbd</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>kbd</span><span class="token punctuation">&gt;</span></span>으로 만들 수 있습니다.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div> <h5 id="결과_3">결과</h5> <p>원하던 바로 그 결과입니다!</p>
+<div class="code-example" id="sect5">
+
+<iframe class="sample-code-frame" title="스타일 적용 sample" id="frame_스타일_적용" width="650" height="80" src="https://live.mdnplay.dev/ko/docs/Web/HTML/Element/kbd/runner.html?id=%EC%8A%A4%ED%83%80%EC%9D%BC_%EC%A0%81%EC%9A%A9" loading="lazy"></iframe>
+</div>
+</div>
+<h3 id="재출력된_입력">재출력된 입력</h3>
+<div class="section-content">
+<p><code>&lt;kbd&gt;</code> 요소를 <a href="samp"><code>&lt;samp&gt;</code></a> 요소 안에 배치하면 시스템이 다시 출력한 입력을 나타낼 수 있습니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="fY2nWAr0qyRAA9pi40r5o8t5hSY4vLdZcEpNBJrRwQ4=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>구문 오류가 발생하면, 오류 원인을 찾을 수 있도록
+입력받은 명령을 다시 출력합니다.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>blockquote</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>samp</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>kbd</span><span class="token punctuation">&gt;</span></span>custom-git ad my-new-file.cpp<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>kbd</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>samp</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>blockquote</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div> <p>결과는 다음과 같습니다.</p>
+<div class="code-example" id="sect6">
+
+<iframe class="sample-code-frame" title="재출력된 입력 sample" id="frame_재출력된_입력" width="650" height="120" src="https://live.mdnplay.dev/ko/docs/Web/HTML/Element/kbd/runner.html?id=%EC%9E%AC%EC%B6%9C%EB%A0%A5%EB%90%9C_%EC%9E%85%EB%A0%A5" loading="lazy"></iframe>
+</div>
+</div>
+<h3 id="화면에_표시된_입력_옵션_나타내기">화면에 표시된 입력 옵션 나타내기</h3>
+<div class="section-content">
+<p><a href="samp"><code>&lt;samp&gt;</code></a> 요소를 <code>&lt;kbd&gt;</code> 요소 안에 배치하면 시스템이 화면에 표시하는 입력 선택지(메뉴, 버튼...)에 기반한 사용자 입력을 나타냅니다.</p> <p>예를 들면, "파일" 메뉴의 "새 문서" 옵션을 선택하는 방법에 대해 설명하는 HTML은 다음과 같은 형태를 가집니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="jam1fJrSXH6jwPjgheCtlnTJk1JA6DrZ9Phh9pArBIc=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>새로운 파일을 생성하려면, <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>kbd</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>kbd</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>samp</span><span class="token punctuation">&gt;</span></span>파일<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>samp</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>kbd</span><span class="token punctuation">&gt;</span></span>⇒<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>kbd</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>samp</span><span class="token punctuation">&gt;</span></span>새 문서<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>samp</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>kbd</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>kbd</span><span class="token punctuation">&gt;</span></span> 메뉴를 선택하세요.
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>파일의 이름을 입력한 후, <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>kbd</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>samp</span><span class="token punctuation">&gt;</span></span>확인<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>samp</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>kbd</span><span class="token punctuation">&gt;</span></span>을
+누르는 걸 잊지 마세요.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div> <p>흥미로운 중첩 사용법을 볼 수 있습니다. 메뉴 옵션 설명을 보면, 전체 입력 시퀀스가 하나의 <code>&lt;kbd&gt;</code> 요소에 들어간 것을 볼 수 있으며, 메뉴 이름("파일")과 메뉴 항목("새 문서") 둘 다 각자의 <code>&lt;kbd&gt;</code>와 <code>&lt;samp&gt;</code>로 표시한 것을 볼 수 있습니다. <code>&lt;kbd&gt;</code> 안에 <code>&lt;samp&gt;</code>가 존재하므로, "파일"과 "새 문서"는 화면 위의 위젯을 사용한 입력임을 알 수 있습니다.</p> <h4 id="결과_4">결과</h4>
+<div class="code-example" id="sect7">
+
+<iframe class="sample-code-frame" title="화면에 표시된 입력 옵션 나타내기 sample" id="frame_화면에_표시된_입력_옵션_나타내기" width="650" height="120" src="https://live.mdnplay.dev/ko/docs/Web/HTML/Element/kbd/runner.html?id=%ED%99%94%EB%A9%B4%EC%97%90_%ED%91%9C%EC%8B%9C%EB%90%9C_%EC%9E%85%EB%A0%A5_%EC%98%B5%EC%85%98_%EB%82%98%ED%83%80%EB%82%B4%EA%B8%B0" loading="lazy"></iframe>
+</div>
+</div>
+<h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-kbd-element">HTML Standard <br><small># the-kbd-element</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="code"><code>&lt;code&gt;</code></a></li> </ul></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/HTML/Element/kbd" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/HTML/Element/kbd</a>
+  </p>
+</div>

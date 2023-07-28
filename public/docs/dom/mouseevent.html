@@ -1,0 +1,128 @@
+<header><h1>MouseEvent</h1></header><div class="section-content">
+<p><code>MouseEvent</code> 인터페이스는 사용자가 포인팅 장치(마우스 등)를 사용해 상호작용할 때 발생하는 이벤트를 나타냅니다. <a href="element/click_event"><code>click</code></a>, <a href="element/dblclick_event"><code>dblclick</code></a>, <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/Element/mouseup_event"><code>mouseup</code> <small>(en-US)</small></a>, <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/Element/mousedown_event"><code>mousedown</code> <small>(en-US)</small></a>이 <code>MouseEvent</code>를 사용하는 흔한 이벤트입니다.</p> <p><code>MouseEvent</code>는 <a href="uievent"><code>UIEvent</code></a>를 상속하고, <code>UIEvent</code>는 <a href="event"><code>Event</code></a>를 상속합니다. 하위 호환을 유지하기 위해 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/initMouseEvent"><code>MouseEvent.initMouseEvent()</code> <small>(en-US)</small></a> 메서드가 사라지지는 않았지만, <code>MouseEvent</code> 객체의 생성은 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/MouseEvent"><code>MouseEvent()</code> <small>(en-US)</small></a> 생성자로 해야 합니다.</p> <p><code>MouseEvent</code>에 기반한 세부 이벤트로 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/WheelEvent"><code>WheelEvent</code> <small>(en-US)</small></a>, <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/DragEvent"><code>DragEvent</code> <small>(en-US)</small></a>, <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/PointerEvent"><code>PointerEvent</code> <small>(en-US)</small></a> 등이 있습니다.</p>
+<svg viewbox="-1 -1 650 42" preserveaspectratio="xMinYMin meet"> <a style="text-decoration: none;" xlink:href="/ko/docs/Web/API/Event">  <text x="37.5" y="16" font-size="10px" fill="#4D4E53" text-anchor="middle"> Event </text> </a>   <a style="text-decoration: none;" xlink:href="/ko/docs/Web/API/UIEvent">  <text x="142.5" y="16" font-size="10px" fill="#4D4E53" text-anchor="middle"> UIEvent </text> </a>   <a style="text-decoration: none;" xlink:href="/ko/docs/Web/API/MouseEvent" aria-current="page">  <text x="250" y="16" font-size="10px" fill="#4D4E53" text-anchor="middle"> MouseEvent </text> </a></svg>
+</div>
+<h2 id="생성자">생성자</h2>
+<div class="section-content"><dl> <dt id="mouseevent_en-us"><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/MouseEvent"><code>MouseEvent()</code> <small>(en-US)</small></a></dt> <dd> <p><code>MouseEvent</code> 객체를 생성합니다.</p> </dd> </dl></div>
+<h2 id="정적_속성">정적 속성</h2>
+<div class="section-content"><dl> <dt id="mouseevent.webkit_force_at_mouse_down_en-us">
+<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/WEBKIT_FORCE_AT_MOUSE_DOWN_static"><code>MouseEvent.WEBKIT_FORCE_AT_MOUSE_DOWN</code> <small>(en-US)</small></a> <abbr class="icon icon-nonstandard" title="비표준. 사용하기전에 다른 브라우저에서도 사용 가능한지 확인 해주세요."> <span class="visually-hidden">비표준</span> </abbr> <span class="badge inline readonly">읽기 전용</span>
+</dt> <dd> <p>일반 클릭을 위해 필요한 최소 압력입니다.</p> </dd> <dt id="mouseevent.webkit_force_at_force_mouse_down_en-us">
+<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/WEBKIT_FORCE_AT_FORCE_MOUSE_DOWN_static"><code>MouseEvent.WEBKIT_FORCE_AT_FORCE_MOUSE_DOWN</code> <small>(en-US)</small></a> <abbr class="icon icon-nonstandard" title="비표준. 사용하기전에 다른 브라우저에서도 사용 가능한지 확인 해주세요."> <span class="visually-hidden">비표준</span> </abbr> <span class="badge inline readonly">읽기 전용</span>
+</dt> <dd> <p>강제 클릭을 위해 필요한 최소 압력입니다.</p> </dd> </dl></div>
+<h2 id="인스턴스_속성">인스턴스 속성</h2>
+<div class="section-content">
+<p><a href="uievent"><code>UIEvent</code></a>와 <a href="event"><code>Event</code></a> 인터페이스의 속성을 상속합니다.</p> <dl> <dt id="mouseevent.altkey_en-us">
+<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/altKey"><code>MouseEvent.altKey</code> <small>(en-US)</small></a> <span class="badge inline readonly">읽기 전용</span>
+</dt> <dd> <p>마우스 이벤트 발생 시점에 <kbd>alt</kbd>가 눌려있었으면 <code>true</code>를 반환합니다.</p> </dd> <dt id="mouseevent.button_en-us">
+<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/button"><code>MouseEvent.button</code> <small>(en-US)</small></a> <span class="badge inline readonly">읽기 전용</span>
+</dt> <dd> <p>(해당하는 경우) 마우스 이벤트를 발생시킨 버튼의 번호입니다.</p> </dd> <dt id="mouseevent.buttons_en-us">
+<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/buttons"><code>MouseEvent.buttons</code> <small>(en-US)</small></a> <span class="badge inline readonly">읽기 전용</span>
+</dt> <dd> <p>(버튼이 있는 경우) 마우스 이벤트 발생 시점에 누르고 있던 버튼 번호입니다.</p> </dd> <dt id="mouseevent.clientx">
+<a href="mouseevent/clientx"><code>MouseEvent.clientX</code></a> <span class="badge inline readonly">읽기 전용</span>
+</dt> <dd> <p>로컬 (DOM 콘텐츠) 좌표계에서 마우스 포인터의 X축 좌표입니다.</p> </dd> <dt id="mouseevent.clienty_en-us">
+<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/clientY"><code>MouseEvent.clientY</code> <small>(en-US)</small></a> <span class="badge inline readonly">읽기 전용</span>
+</dt> <dd> <p>로컬 (DOM 콘텐츠) 좌표계에서 마우스 포인터의 Y축 좌표입니다.</p> </dd> <dt id="mouseevent.ctrlkey_en-us">
+<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/ctrlKey"><code>MouseEvent.ctrlKey</code> <small>(en-US)</small></a> <span class="badge inline readonly">읽기 전용</span>
+</dt> <dd> <p>마우스 이벤트 발생 시점에 <kbd>ctrl</kbd>이 눌려있었으면 <code>true</code>를 반환합니다.</p> </dd> <dt id="mouseevent.layerx_en-us">
+<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/layerX"><code>MouseEvent.layerX</code> <small>(en-US)</small></a> <abbr class="icon icon-nonstandard" title="비표준. 사용하기전에 다른 브라우저에서도 사용 가능한지 확인 해주세요."> <span class="visually-hidden">비표준</span> </abbr> <span class="badge inline readonly">읽기 전용</span>
+</dt> <dd> <p>이벤트의 가로축 좌표를 현재 레이어에 상대적인 값으로 반환합니다.</p> </dd> <dt id="mouseevent.layery_en-us">
+<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/layerY"><code>MouseEvent.layerY</code> <small>(en-US)</small></a> <abbr class="icon icon-nonstandard" title="비표준. 사용하기전에 다른 브라우저에서도 사용 가능한지 확인 해주세요."> <span class="visually-hidden">비표준</span> </abbr> <span class="badge inline readonly">읽기 전용</span>
+</dt> <dd> <p>이벤트의 세로축 좌표를 현재 레이어에 상대적인 값으로 반환합니다.</p> </dd> <dt id="mouseevent.metakey_en-us">
+<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/metaKey"><code>MouseEvent.metaKey</code> <small>(en-US)</small></a> <span class="badge inline readonly">읽기 전용</span>
+</dt> <dd> <p>마우스 이벤트 발생 시점에 <kbd>meta</kbd>가 눌려있었으면 <code>true</code>를 반환합니다.</p> </dd> <dt id="mouseevent.movementx_en-us">
+<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/movementX"><code>MouseEvent.movementX</code> <small>(en-US)</small></a> <span class="badge inline readonly">읽기 전용</span>
+</dt> <dd> <p>마지막 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/Element/mousemove_event"><code>mousemove</code> <small>(en-US)</small></a> 이벤트로부터 마우스 포인터가 움직인 X축 거리입니다.</p> </dd> <dt id="mouseevent.movementy_en-us">
+<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/movementY"><code>MouseEvent.movementY</code> <small>(en-US)</small></a> <span class="badge inline readonly">읽기 전용</span>
+</dt> <dd> <p>마지막 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/Element/mousemove_event"><code>mousemove</code> <small>(en-US)</small></a> 이벤트로부터 마우스 포인터가 움직인 Y축 거리입니다.</p> </dd> <dt id="mouseevent.offsetx_en-us">
+<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/offsetX"><code>MouseEvent.offsetX</code> <small>(en-US)</small></a> <span class="badge inline readonly">읽기 전용</span>
+</dt> <dd> <p>대상 노드의 안쪽 여백 경계를 기준으로 한 마우스 포인터의 X축 좌표입니다.</p> </dd> <dt id="mouseevent.offsety_en-us">
+<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/offsetY"><code>MouseEvent.offsetY</code> <small>(en-US)</small></a> <span class="badge inline readonly">읽기 전용</span>
+</dt> <dd> <p>대상 노드의 안쪽 여백 경계를 기준으로 한 마우스 포인터의 Y축 좌표입니다.</p> </dd> <dt id="mouseevent.pagex_en-us">
+<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/pageX"><code>MouseEvent.pageX</code> <small>(en-US)</small></a> <span class="badge inline readonly">읽기 전용</span>
+</dt> <dd> <p>전체 문서를 기준으로 한 마우스 포인터의 X축 좌표입니다.</p> </dd> <dt id="mouseevent.pagey_en-us">
+<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/pageY"><code>MouseEvent.pageY</code> <small>(en-US)</small></a> <span class="badge inline readonly">읽기 전용</span>
+</dt> <dd> <p>전체 문서를 기준으로 한 마우스 포인터의 Y축 좌표입니다.</p> </dd> <dt id="mouseevent.relatedtarget_en-us">
+<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/relatedTarget"><code>MouseEvent.relatedTarget</code> <small>(en-US)</small></a> <span class="badge inline readonly">읽기 전용</span>
+</dt> <dd> <p>존재하는 경우, 이벤트의 보조 대상입니다.</p> </dd> <dt id="mouseevent.screenx_en-us">
+<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/screenX"><code>MouseEvent.screenX</code> <small>(en-US)</small></a> <span class="badge inline readonly">읽기 전용</span>
+</dt> <dd> <p>전역 (화면) 좌표계에서 마우스 포인터의 X축 좌표입니다.</p> </dd> <dt id="mouseevent.screeny_en-us">
+<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/screenY"><code>MouseEvent.screenY</code> <small>(en-US)</small></a> <span class="badge inline readonly">읽기 전용</span>
+</dt> <dd> <p>전역 (화면) 좌표계에서 마우스 포인터의 Y축 좌표입니다.</p> </dd> <dt id="mouseevent.shiftkey_en-us">
+<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/shiftKey"><code>MouseEvent.shiftKey</code> <small>(en-US)</small></a> <span class="badge inline readonly">읽기 전용</span>
+</dt> <dd> <p>마우스 이벤트 발생 시점에 <kbd>shift</kbd>가 눌려있었으면 <code>true</code>를 반환합니다.</p> </dd> <dt id="mouseevent.mozpressure">
+<a class="page-not-created"><code>MouseEvent.mozPressure</code></a> <abbr class="icon icon-nonstandard" title="비표준. 사용하기전에 다른 브라우저에서도 사용 가능한지 확인 해주세요."> <span class="visually-hidden">비표준</span> </abbr> <abbr class="icon icon-deprecated" title="지원이 중단되었습니다. 새로운 웹사이트에서 사용하지 마세요."> <span class="visually-hidden">지원이 중단되었습니다</span> </abbr> <span class="badge inline readonly">읽기 전용</span>
+</dt> <dd> <p>터치 또는 태블릿에서 이 이벤트가 발생했을 때 적용된 입력 압력의 양입니다. <code>0.0</code>(최소 압력)과 <code>1.0</code>(최대 압력) 사이의 값입니다. 사용을 권장하지 않는 비표준 속성입니다. <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/PointerEvent"><code>PointerEvent</code> <small>(en-US)</small></a>의 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/PointerEvent/pressure"><code>pressure</code> <small>(en-US)</small></a> 속성을 사용하세요.</p> </dd> <dt id="mouseevent.mozinputsource_en-us">
+<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/mozInputSource"><code>MouseEvent.mozInputSource</code> <small>(en-US)</small></a> <abbr class="icon icon-nonstandard" title="비표준. 사용하기전에 다른 브라우저에서도 사용 가능한지 확인 해주세요."> <span class="visually-hidden">비표준</span> </abbr> <span class="badge inline readonly">읽기 전용</span>
+</dt> <dd> <p>이벤트를 발생시킨 장치의 유형으로 <code>MOZ_SOURCE_*</code> 상수 중 하나입니다. 이 값을 사용하면 이벤트가 실제 마우스에 의해 발생했는지, 아니면 터치에 의해 발생했는지 확인해 정확도 보정 등을 적용할 수 있습니다.</p> </dd> <dt id="mouseevent.webkitforce_en-us">
+<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/webkitForce"><code>MouseEvent.webkitForce</code> <small>(en-US)</small></a> <abbr class="icon icon-nonstandard" title="비표준. 사용하기전에 다른 브라우저에서도 사용 가능한지 확인 해주세요."> <span class="visually-hidden">비표준</span> </abbr> <span class="badge inline readonly">읽기 전용</span>
+</dt> <dd> <p>클릭의 압력입니다.</p> </dd> <dt id="mouseevent.x_en-us">
+<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/x"><code>MouseEvent.x</code> <small>(en-US)</small></a> <span class="badge inline readonly">읽기 전용</span>
+</dt> <dd> <p><a href="mouseevent/clientx"><code>MouseEvent.clientX</code></a>의 별칭입니다.</p> </dd> <dt id="mouseevent.y_en-us">
+<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/y"><code>MouseEvent.y</code> <small>(en-US)</small></a> <span class="badge inline readonly">읽기 전용</span>
+</dt> <dd> <p><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/clientY"><code>MouseEvent.clientY</code> <small>(en-US)</small></a>의 별칭입니다.</p> </dd> </dl>
+</div>
+<h2 id="인스턴스_메서드">인스턴스 메서드</h2>
+<div class="section-content">
+<p><a href="uievent"><code>UIEvent</code></a>와 <a href="event"><code>Event</code></a> 인터페이스의 메서드를 상속합니다.</p> <dl> <dt id="mouseevent.getmodifierstate_en-us"><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/getModifierState"><code>MouseEvent.getModifierState()</code> <small>(en-US)</small></a></dt> <dd> <p>주어진 조합키의 현재 상태를 반환합니다. <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/getModifierState"><code>KeyboardEvent.getModifierState()</code> <small>(en-US)</small></a>에서 자세히 확인하세요.</p> </dd> <dt id="mouseevent.initmouseevent_en-us">
+<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/initMouseEvent"><code>MouseEvent.initMouseEvent()</code> <small>(en-US)</small></a> <abbr class="icon icon-deprecated" title="지원이 중단되었습니다. 새로운 웹사이트에서 사용하지 마세요."> <span class="visually-hidden">지원이 중단되었습니다</span> </abbr>
+</dt> <dd> <p>생성한 <code>MouseEvent</code>의 값을 초기화합니다. 이미 발송한 이벤트에 대해서는 아무 것도 하지 않습니다.</p> </dd> </dl>
+</div>
+<h2 id="예제">예제</h2>
+<div class="section-content"><p>DOM 메서드들을 사용해 체크박스 클릭을 흉내(코드에서 클릭하기)내는 예제입니다. <a href="eventtarget/dispatchevent"><code>EventTarget.dispatchEvent()</code></a>의 반환 값으로 이벤트 상태(취소 여부)를 알 수 있습니다.</p></div>
+<h3 id="html">HTML</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="0RPfPBRTep56RCJJGXQEyOjDVUu9fQT+zdvW+/O5F4Y=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>label</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>checkbox<span class="token punctuation">"</span></span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>checkbox<span class="token punctuation">"</span></span> <span class="token punctuation">/&gt;</span></span> 체크됨<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>label</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>button<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>클릭해서 체크박스에 MouseEvent를 보내세요<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div></div>
+<h3 id="javascript">JavaScript</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="wTL+bz0Y+nwcASfF317BPy6qo+/wVjCqGejBUQxXock=" data-language="js"><span class="token keyword">function</span> <span class="token function">simulateClick</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">// 클릭 이벤트를 발송할 요소</span>
+  <span class="token keyword">const</span> cb <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">"checkbox"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token comment">// 인공 클릭 MouseEvent 생성</span>
+  <span class="token keyword">let</span> evt <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">MouseEvent</span><span class="token punctuation">(</span><span class="token string">"click"</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+    <span class="token literal-property property">bubbles</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">cancelable</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">view</span><span class="token operator">:</span> window<span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token comment">// 체크박스 요소로 이벤트 발송</span>
+  cb<span class="token punctuation">.</span><span class="token function">dispatchEvent</span><span class="token punctuation">(</span>evt<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">"button"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">"click"</span><span class="token punctuation">,</span> simulateClick<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div></div>
+<h3 id="결과">결과</h3>
+<div class="section-content"><div class="code-example" id="sect1">
+
+<iframe class="sample-code-frame" title="예제 sample" id="frame_예제" src="https://live.mdnplay.dev/ko/docs/Web/API/MouseEvent/runner.html?id=%EC%98%88%EC%A0%9C" loading="lazy"></iframe>
+</div></div>
+<h2 id="명세서">명세서</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody>
+<tr><td><a href="https://w3c.github.io/uievents/#interface-mouseevent">UI Events <br><small># interface-mouseevent</small></a></td></tr>
+<tr><td><a href="https://drafts.csswg.org/cssom-view/#extensions-to-the-mouseevent-interface">CSSOM View Module <br><small># extensions-to-the-mouseevent-interface</small></a></td></tr>
+<tr><td><a href="https://w3c.github.io/pointerlock/#extensions-to-the-mouseevent-interface">Pointer Lock 2.0 <br><small># extensions-to-the-mouseevent-interface</small></a></td></tr>
+</tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li>부모 인터페이스 <a href="uievent"><code>UIEvent</code></a>
+</li> <li>멀티터치 등 고급 포인터 이벤트를 위한 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/PointerEvent"><code>PointerEvent</code> <small>(en-US)</small></a>
+</li> </ul></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/MouseEvent" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/MouseEvent</a>
+  </p>
+</div>

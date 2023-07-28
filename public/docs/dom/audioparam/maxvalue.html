@@ -1,0 +1,33 @@
+<header><h1>AudioParam.maxValue</h1></header><div class="section-content"><p><a href="../audioparam"><code>AudioParam</code></a> 인터페이스의 읽기 전용 <code>maxValue</code> 속성은 파라미터의 명목상의 (효과적인) 범위에 대해 최대로 가능한 값을 나타냅니다.</p></div>
+<h2 id="구문">구문</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="3vME0MPEKW0MtIsCHNnUnCPfXSQdFDrrxIp4XDxXnPI=" data-language="js"><span class="token keyword">var</span> maxVal <span class="token operator">=</span> audioParam<span class="token punctuation">.</span>maxValue<span class="token punctuation">;</span>
+</pre>
+</div></div>
+<h3 id="값">값</h3>
+<div class="section-content">
+<p>매개변수의 명목상의 범위에 대해 허용되는 최대 값을 나타내는 부동점 <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Number"><code>Number</code></a>.</p> <p><code>maxValue</code> 의 기본 값은 최대 양수 단일 정밀도 부동점 값(+340,282,346,638,528,859,811,704,183,484,516,925,440)입니다.</p>
+</div>
+<h2 id="예제">예제</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="CPyj0C7H4Ycjln4dY4M50T0l3LT+zE/v31IsAObMGbU=" data-language="js"><span class="token keyword">const</span> audioCtx <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">AudioContext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> gainNode <span class="token operator">=</span> audioCtx<span class="token punctuation">.</span><span class="token function">createGain</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>gainNode<span class="token punctuation">.</span>gain<span class="token punctuation">.</span>maxValue<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 3.4028234663852886e38</span>
+</pre>
+</div></div>
+<h2 id="명세서">명세서</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://webaudio.github.io/web-audio-api/#dom-audioparam-maxvalue">Web Audio API <br><small># dom-audioparam-maxvalue</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="minvalue"><code>AudioParam.minValue</code></a></li> </ul></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/AudioParam/maxValue" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/AudioParam/maxValue</a>
+  </p>
+</div>

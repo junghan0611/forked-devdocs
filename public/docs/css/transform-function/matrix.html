@@ -1,0 +1,50 @@
+<header><h1>matrix()</h1></header><div class="section-content">
+<p><code>matrix()</code> <a href="https://developer.mozilla.org/ko/docs/Web/CSS">CSS</a> 함수는 2D 변형 동차 행렬을 선언합니다. 결과는 <a href="../transform-function"><code>&lt;transform-function&gt;</code></a> 데이터 타입입니다.</p> <div class="notecard note" id="sect1"> <p><strong>참고:</strong> <strong>주의:</strong> <code>matrix(a, b, c, d, tx, ty)</code> 는 <code>matrix3d(a, b, 0, 0, c, d, 0, 0, 0, 0, 1, 0, tx, ty, 0, 1)</code> 를 짧게 쓴 것입니다.</p> </div>
+</div>
+<section aria-labelledby="syntax"><h2 id="syntax">Syntax</h2>
+<div class="section-content">
+<p><code>matrix()</code> 함수는 6개의 값을 지정합니다. 상수 값은 묵시적이며, 매개변수(parameter)로 전달하지 않습니다. 다른 매개 변수는 column-major 순서로 설명됩니다.</p> <div class="notecard note" id="sect2"> <p><strong>참고:</strong> <strong>주의:</strong> 파이어폭스 16까지, Gecko(엔진) <code>tx</code>, <code>ty</code> 에<a href="../length"><code>&lt;length&gt;</code></a> 값을 허용했습니다.</p> </div> <pre class="notranslate">matrix(a, b, c, d, tx, ty)
+</pre>
+</div></section><section aria-labelledby="values"><h3 id="values">Values</h3>
+<div class="section-content">
+<dl> <dt id="a">
+<code>a</code> <code>b</code> <code>c</code> <code>d</code>
+</dt> <dd> <p><a href="../number"><code>&lt;number&gt;</code></a>는 선형 변환(linear transformation)을 설명합니다.</p> </dd> <dt id="tx">
+<code>tx</code> <code>ty</code>
+</dt> <dd> <p><a href="../number"><code>&lt;number&gt;</code></a>는 적용 할 이동(translation)을 설명합니다.</p> </dd> </dl> <figure class="table-container"><div class="_table"><table class="standard-table"> <thead> <tr> <th scope="col">Cartesian coordinates on ℝ<sup>2</sup>
+</th> <th scope="col">Homogeneous coordinates on ℝℙ<sup>2</sup>
+</th> <th scope="col">Cartesian coordinates on ℝ<sup>3</sup>
+</th> <th scope="col">Homogeneous coordinates on ℝℙ<sup>3</sup>
+</th> </tr> </thead> <tbody> <tr> <td colspan="1" rowspan="2"> <math> <mfenced> <mtable> <mtr> <mtd>a</mtd> <mtd>c</mtd> </mtr> <mtr> <mtd>b</mtd> <mtd>d</mtd> </mtr> </mtable> </mfenced> </math> </td> <td> <math> <mfenced> <mtable> <mtr> <mtd>a</mtd> <mtd>c</mtd> <mtd>tx</mtd> </mtr> <mtr> <mtd>b</mtd> <mtd>d</mtd> <mtd>ty</mtd> </mtr> <mtr> <mtd>0</mtd> <mtd>0</mtd> <mtd>1</mtd> </mtr> </mtable> </mfenced> </math> </td> <td colspan="1" rowspan="2"> <math> <mfenced> <mtable> <mtr> <mtd>a</mtd> <mtd>c</mtd> <mtd>tx</mtd> </mtr> <mtr> <mtd>b</mtd> <mtd>d</mtd> <mtd>ty</mtd> </mtr> <mtr> <mtd>0</mtd> <mtd>0</mtd> <mtd>1</mtd> </mtr> </mtable> </mfenced> </math> </td> <td colspan="1" rowspan="2"> <math> <mfenced> <mtable> <mtr> <mtd>a</mtd> <mtd>c</mtd> <mtd>0</mtd> <mtd>tx</mtd> </mtr> <mtr> <mtd>b</mtd> <mtd>d</mtd> <mtd>0</mtd> <mtd>ty</mtd> </mtr> <mtr> <mtd>0</mtd> <mtd>0</mtd> <mtd>1</mtd> <mtd>0</mtd> </mtr> <mtr> <mtd>0</mtd> <mtd>0</mtd> <mtd>0</mtd> <mtd>1</mtd> </mtr> </mtable> </mfenced> </math> </td> </tr> <tr> <td><code>[a b c d tx ty]</code></td> </tr> </tbody> </table></div></figure>
+</div></section><section aria-labelledby="examples"><h2 id="examples">Examples</h2>
+</section><section aria-labelledby="html"><h3 id="html">HTML</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="FSonfLXulIw/VWUsypOD4FGD3tplLmFmZz6IwtxfCiw=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span>Normal<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>changed<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Changed<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div></div></section><section aria-labelledby="css"><h3 id="css">CSS</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="smfVtNFjYVMUWnQDzDOW+2ANjXi6lK1ABTT6mSollWA=" data-language="css"><span class="token selector">div</span> <span class="token punctuation">{</span>
+  <span class="token property">width</span><span class="token punctuation">:</span> 80px<span class="token punctuation">;</span>
+  <span class="token property">height</span><span class="token punctuation">:</span> 80px<span class="token punctuation">;</span>
+  <span class="token property">background-color</span><span class="token punctuation">:</span> skyblue<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">.changed</span> <span class="token punctuation">{</span>
+  <span class="token property">transform</span><span class="token punctuation">:</span> <span class="token function">matrix</span><span class="token punctuation">(</span>1<span class="token punctuation">,</span> 2<span class="token punctuation">,</span> -1<span class="token punctuation">,</span> 1<span class="token punctuation">,</span> 80<span class="token punctuation">,</span> 80<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token property">background-color</span><span class="token punctuation">:</span> pink<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div></div></section><section aria-labelledby="result"><h3 id="result">Result</h3>
+<div class="section-content"><div class="code-example" id="sect3">
+
+<iframe class="sample-code-frame" title="Examples sample" id="frame_examples" width="350" height="350" src="https://live.mdnplay.dev/ko/docs/Web/CSS/transform-function/matrix/runner.html?id=examples" loading="lazy"></iframe>
+</div></div></section><section aria-labelledby="browser_compatibility"><h2 id="browser_compatibility">Browser compatibility</h2></section><section aria-labelledby="see_also"><h2 id="see_also">See also</h2>
+<div class="section-content"><ul> <li><a href="../transform"><code>transform</code></a></li> <li><a href="../transform-function"><code>&lt;transform-function&gt;</code></a></li> <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/transform-function/matrix3d"><code>matrix3d()</code></a></li> <li><a href="https://dev.opera.com/articles/understanding-the-css-transforms-matrix/" target="_blank">Understanding the CSS Transforms Matrix</a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/CSS/transform-function/matrix" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/CSS/transform-function/matrix</a>
+  </p>
+</div>

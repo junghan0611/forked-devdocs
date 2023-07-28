@@ -1,0 +1,69 @@
+<header><h1>선택자 목록</h1></header><div class="section-content">
+<p><a href="https://developer.mozilla.org/ko/docs/Web/CSS">CSS</a> <strong>선택자 목록</strong>(<code>,</code>)은 일치하는 모든 요소를 선택합니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="hEPeRKpJ45tKvbLzWvizqYbbxlJU14raFRzvFZeZfXY=" data-language="css"><span class="token comment">/* 모든 span과 div 요소 선택 */</span>
+<span class="token selector">span,
+div</span> <span class="token punctuation">{</span>
+  <span class="token property">border</span><span class="token punctuation">:</span> red 2px solid<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div> <p>다수의 선택자를 쉼표 구분 목록에 넣어 스타일 시트 크기를 줄일 수 있습니다.</p>
+</div>
+<section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content"><pre class="notranslate">element, element, element { style properties }
+</pre></div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+</section><section aria-labelledby="한_줄_묶기"><h3 id="한_줄_묶기">한 줄 묶기</h3>
+<div class="section-content">
+<p>쉼표로 구분한 목록을 한 줄에 배치할 수 있습니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="+yzi8Vdt2kqBFOrvSeTFpHtljnQR4fOsSd2p+zIcqbA=" data-language="css"><span class="token selector">h1, h2, h3, h4, h5, h6</span> <span class="token punctuation">{</span> <span class="token property">font-family</span><span class="token punctuation">:</span> helvetica<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="여러_줄_묶기"><h3 id="여러_줄_묶기">여러 줄 묶기</h3>
+<div class="section-content">
+<p>쉼표로 구분한 목록을 여러 줄에 배치할 수도 있습니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="mTAXEpqSfINCk4MX+y2reeczR16zQIKVeL5lL8qLN1I=" data-language="css"><span class="token selector">#main,
+.content,
+article</span> <span class="token punctuation">{</span>
+  <span class="token property">font-size</span><span class="token punctuation">:</span> 1.1em<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="선택자_목록_무효화"><h3 id="선택자_목록_무효화">선택자 목록 무효화</h3>
+<div class="section-content">
+<p>선택자 목록의 단점은, 다음의 두 경우가 서로 같지 않다는 점입니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="enSapXCXY4Twk1hfX4/RjwOYZ8EPehYHMKP73sX11mk=" data-language="css"><span class="token selector">h1</span> <span class="token punctuation">{</span> <span class="token property">font-family</span><span class="token punctuation">:</span> sans-serif <span class="token punctuation">}</span>
+<span class="token selector">h2:maybe-unsupported</span> <span class="token punctuation">{</span> <span class="token property">font-family</span><span class="token punctuation">:</span> sans-serif <span class="token punctuation">}</span>
+<span class="token selector">h3</span> <span class="token punctuation">{</span> <span class="token property">font-family</span><span class="token punctuation">:</span> sans-serif <span class="token punctuation">}</span>
+</pre>
+</div> <div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="5L7p76SU86Nkmj1gLmp8ix9nUtxoLxr920d1EgPQe7w=" data-language="css"><span class="token selector">h1, h2:maybe-unsupported, h3</span> <span class="token punctuation">{</span> <span class="token property">font-family</span><span class="token punctuation">:</span> sans-serif <span class="token punctuation">}</span>
+</pre>
+</div> <p>왜냐하면 목록 내의 하나의 선택자라도 브라우저가 지원하지 않으면 전체 목록을 무효화하기 때문입니다.</p> <p>대응 방법은 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:is"><code>:is()</code> <small>(en-US)</small></a> 선택자를 사용하는 것을 통해, 유효하지 않은 선택자를 무시하는 것입니다. 그러나 <code>:is()</code>가 명시도를 계산하는 방법으로 인해, 모든 선택자가 동일한 명시도를 갖게 되는 부작용이 있습니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="enSapXCXY4Twk1hfX4/RjwOYZ8EPehYHMKP73sX11mk=" data-language="css"><span class="token selector">h1</span> <span class="token punctuation">{</span> <span class="token property">font-family</span><span class="token punctuation">:</span> sans-serif <span class="token punctuation">}</span>
+<span class="token selector">h2:maybe-unsupported</span> <span class="token punctuation">{</span> <span class="token property">font-family</span><span class="token punctuation">:</span> sans-serif <span class="token punctuation">}</span>
+<span class="token selector">h3</span> <span class="token punctuation">{</span> <span class="token property">font-family</span><span class="token punctuation">:</span> sans-serif <span class="token punctuation">}</span>
+</pre>
+</div> <div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="5SHkL/3Lv5NwEUJt0+ejFDF1nlc5AIomhvJbyAU0SR8=" data-language="css"><span class="token selector">:is(h1, h2:maybe-unsupported, h3)</span> <span class="token punctuation">{</span> <span class="token property">font-family</span><span class="token punctuation">:</span> sans-serif <span class="token punctuation">}</span>
+</pre>
+</div>
+</div></section><h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://drafts.csswg.org/selectors/#grouping">Selectors Level 4 <br><small># grouping</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li>선택자 목록 무효화라는 과거의 실수를 가지지 않는 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:is"><code>:is()</code> <small>(en-US)</small></a> <abbr class="icon icon-experimental" title="Experimental. 예상되는 동작은 향후 변경될 수 있습니다."> <span class="visually-hidden">Experimental</span> </abbr>, <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:where"><code>:where()</code> <small>(en-US)</small></a> <abbr class="icon icon-experimental" title="Experimental. 예상되는 동작은 향후 변경될 수 있습니다."> <span class="visually-hidden">Experimental</span> </abbr> 의사 클래스.</li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/CSS/Selector_list" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/CSS/Selector_list</a>
+  </p>
+</div>

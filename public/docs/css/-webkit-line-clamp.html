@@ -1,0 +1,82 @@
+<header><h1>-webkit-line-clamp</h1></header><div class="section-content">
+<p><code>-webkit-line-clamp</code> CSS 속성은 <a class="page-not-created">블록 컨테이너</a>의 콘텐츠를 지정한 줄 수만큼으로 제한합니다.</p> <p><a href="display"><code>display</code></a> 속성을 <code>-webkit-box</code> 또는 <code>-webkit-inline-box</code>로, 그리고 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/box-orient"><code>-webkit-box-orient</code> <small>(en-US)</small></a> 속성을 <code>vertical</code>로 설정한 경우에만 동작합니다.</p> <p><code>-webkit-line-clamp</code>만 사용하는 경우, 말줄임표는 노출되나 넘친 콘텐츠가 숨겨지지 않으므로 대개 <a href="overflow"><code>overflow</code></a> 속성 또한 <code>hidden</code>으로 설정해야 합니다.</p> <p>앵커 요소에 적용한 경우 텍스트의 끝이 아니라 중앙에서 잘리는 경우도 있습니다.</p> <div class="notecard note" id="sect1"> <p><strong>참고:</strong> <code>-webkit-line-clamp</code>는 원래 WebKit이 구현했었으며 몇몇 문제점을 가지고 있으나 레거시 지원을 위해 표준화를 거쳤습니다. <a href="https://www.w3.org/TR/css-overflow-3/#propdef--webkit-line-clamp" target="_blank">CSS Overflow Module Level 3</a> 명세의 <a class="page-not-created"><code>line-clamp</code></a>가 <code>-webkit-line-clamp</code>를 대체하기 위해 정의된 속성입니다.</p> </div>
+</div>
+<section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content">
+<div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="NoKi8w9grT3GnCOsm9t1EZlQt2I1Tv9oyl6HAkMnMis=" data-language="css"><span class="token comment">/* 키워드 값 */</span>
+<span class="token property">-webkit-line-clamp</span><span class="token punctuation">:</span> none<span class="token punctuation">;</span>
+
+<span class="token comment">/* &lt;integer&gt; 값 */</span>
+<span class="token property">-webkit-line-clamp</span><span class="token punctuation">:</span> 3<span class="token punctuation">;</span>
+<span class="token property">-webkit-line-clamp</span><span class="token punctuation">:</span> 10<span class="token punctuation">;</span>
+
+<span class="token comment">/* 전역 값 */</span>
+<span class="token property">-webkit-line-clamp</span><span class="token punctuation">:</span> inherit<span class="token punctuation">;</span>
+<span class="token property">-webkit-line-clamp</span><span class="token punctuation">:</span> initial<span class="token punctuation">;</span>
+<span class="token property">-webkit-line-clamp</span><span class="token punctuation">:</span> unset<span class="token punctuation">;</span>
+</pre>
+</div> <dl> <dt id="none"><code>none</code></dt> <dd> <p>콘텐츠를 자르지 않습니다.</p> </dd> <dt id="integer"><a href="integer"><code>&lt;integer&gt;</code></a></dt> <dd> <p>몇 줄 뒤에 콘텐츠를 자를지 지정합니다. 0보다 커야 합니다.</p> </dd> </dl>
+</div></section><section aria-labelledby="형식_정의"><h2 id="형식_정의">형식 정의</h2>
+<div class="section-content"><figure class="table-container"><div class="_table"><table class="properties"><tbody>
+<tr>
+<th scope="row"><a href="initial_value">초기값</a></th>
+<td><code>none</code></td>
+</tr>
+<tr>
+<th scope="row">적용대상</th>
+<td>all elements</td>
+</tr>
+<tr>
+<th scope="row"><a href="inheritance">상속</a></th>
+<td>no</td>
+</tr>
+<tr>
+<th scope="row"><a href="computed_value">계산 값</a></th>
+<td>as specified</td>
+</tr>
+<tr>
+<th scope="row">Animation type</th>
+<td>by computed value type</td>
+</tr>
+</tbody></table></div></figure></div></section><section aria-labelledby="형식_구문"><h2 id="형식_구문">형식 구문</h2>
+<div class="section-content"><pre class="notranslate"><span class="token property" id="-webkit-line-clamp">-webkit-line-clamp = </span><br>  <span class="token keyword">none</span>       <a href="value_definition_syntax#single_bar">|</a><br>  <a href="integer"><span class="token property">&lt;integer&gt;</span></a>  <br><br></pre></div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+</section><section aria-labelledby="문단_자르기"><h3 id="문단_자르기">문단 자르기</h3>
+<div class="section-content">
+<h4 id="html">HTML</h4> <div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="yCCcWt+oGge2wGZyznDQoTq+um4VyVQH8e9yxRlXCC0=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>
+  In this example the <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>code</span><span class="token punctuation">&gt;</span></span>-webkit-line-clamp<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>code</span><span class="token punctuation">&gt;</span></span> property is set to <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>code</span><span class="token punctuation">&gt;</span></span>3<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>code</span><span class="token punctuation">&gt;</span></span>, which means the text is clamped after three lines.
+  An ellipsis will be shown at the point where the text is clamped.
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div> <h4 id="css">CSS</h4> <div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="0wkdOV0nxttBcxRKTF1sylRmZp+aDDrs1LwtbNrP1rM=" data-language="css"><span class="token selector">p</span> <span class="token punctuation">{</span>
+  <span class="token property">width</span><span class="token punctuation">:</span> 300px<span class="token punctuation">;</span>
+  <span class="token property">display</span><span class="token punctuation">:</span> -webkit-box<span class="token punctuation">;</span>
+  <span class="token property">-webkit-box-orient</span><span class="token punctuation">:</span> vertical<span class="token punctuation">;</span>
+  <span class="token property">-webkit-line-clamp</span><span class="token punctuation">:</span> 3<span class="token punctuation">;</span>
+  <span class="token property">overflow</span><span class="token punctuation">:</span> hidden<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div> <h4 id="결과">결과</h4>
+<div class="code-example" id="sect2">
+
+<iframe class="sample-code-frame" title="예제 sample" id="frame_예제" width="100%" height="100" src="https://live.mdnplay.dev/ko/docs/Web/CSS/-webkit-line-clamp/runner.html?id=%EC%98%88%EC%A0%9C" loading="lazy"></iframe>
+</div>
+</div></section><h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://drafts.csswg.org/css-overflow-4/#propdef--webkit-line-clamp">CSS Overflow Module Level 4 <br><small># propdef--webkit-line-clamp</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="https://css-tricks.com/line-clampin/" target="_blank">Line Clampin’ (Truncating Multiple Line Text)</a></li> <li><a class="page-not-created"><code>line-clamp</code></a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/CSS/-webkit-line-clamp" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/CSS/-webkit-line-clamp</a>
+  </p>
+</div>

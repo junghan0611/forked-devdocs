@@ -1,0 +1,65 @@
+<header><h1>Map.prototype[@@iterator]()</h1></header><div class="section-content">
+<p> <code>Map</code> 객체의 <code>@@iterator</code> 메서드는 <a href="../../iteration_protocols">반복가능 프로토콜</a>을 구현하여 <a href="../../operators/spread_syntax">전개 구문</a>와 <a href="../../statements/for...of"><code>for...of</code></a> 루프같은 반복이 필요한 대부분의 구문에서 맵을 사용할 수 있게 합니다. 맵의 키-값 쌍을 생성하는 반복자를 반환합니다. </p> <p>이 속성의 초기 값은 <a href="entries"><code>Map.prototype.entries</code></a> 속성의 초기 값과 동일한 함수 객체입니다.</p>
+</div>
+<section aria-labelledby="시도해보기"><h2 id="시도해보기">시도해보기</h2>
+<div class="section-content"><iframe class="interactive is-js-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/js/map-prototype-@@iterator.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe></div></section><section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="x2rMPMvmx0oga7OzC0xuv0XK3K9//9+k42hEgvPEVP4=" data-language="js">map<span class="token punctuation">[</span>Symbol<span class="token punctuation">.</span>iterator<span class="token punctuation">]</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+</pre>
+</div></div></section><section aria-labelledby="반환_값"><h3 id="반환_값">반환 값</h3>
+<div class="section-content"><p> <a href="entries"><code>Map.prototype.entries()</code></a>과 동일한 반환 값을 반환합니다. 이는 맵의 키-값 쌍을 생성하는 새로운 반복자 객체입니다. </p></div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+</section><section aria-labelledby="for...of_루프를_사용한_반복"><h3 id="for...of_루프를_사용한_반복">for...of 루프를 사용한 반복</h3>
+<div class="section-content">
+<p> 이 메서드를 직접 호출할 필요는 거의 없다는 점을 명심하시기 바랍니다. <code>@@iterator</code> 메서드의 존재는 <code>Map</code> 객체를 <a href="../../iteration_protocols#the_iterable_protocol">반복 가능</a>하게 만들고, <code>for...of</code> 루프와 같은 반복 구문이 자동으로 이 메서드를 호출하여 루프를 도는 반복자를 얻기 위함입니다. </p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="bOhxFzj5+oRktzOkAD8I7YSHL5RXLCNyLow+6k+xjQM=" data-language="js"><span class="token keyword">const</span> myMap <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Map</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+myMap<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span><span class="token string">"0"</span><span class="token punctuation">,</span> <span class="token string">"foo"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+myMap<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token string">"bar"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+myMap<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token string">"baz"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">const</span> entry <span class="token keyword">of</span> myMap<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>entry<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token comment">// ["0", "foo"]</span>
+<span class="token comment">// [1, "bar"]</span>
+<span class="token comment">// [{}, "baz"]</span>
+
+<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token punctuation">[</span>key<span class="token punctuation">,</span> value<span class="token punctuation">]</span> <span class="token keyword">of</span> myMap<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>key<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">: </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>value<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token comment">// 0: foo</span>
+<span class="token comment">// 1: bar</span>
+<span class="token comment">// [Object]: baz</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="수동으로_반복자_돌리기"><h3 id="수동으로_반복자_돌리기">수동으로 반복자 돌리기</h3>
+<div class="section-content">
+<p>반복 프로세스를 최대로 제어하기 위해 반환된 반복자 객체의 <code>next()</code> 메서드를 수동으로 호출할 수도 있습니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="5nzQKjUaDI1W5iblHRZ7yY0lQrVuc/s9Ucvjp56iiaQ=" data-language="js"><span class="token keyword">const</span> myMap <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Map</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+myMap<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span><span class="token string">"0"</span><span class="token punctuation">,</span> <span class="token string">"foo"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+myMap<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token string">"bar"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+myMap<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token string">"baz"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> mapIter <span class="token operator">=</span> myMap<span class="token punctuation">[</span>Symbol<span class="token punctuation">.</span>iterator<span class="token punctuation">]</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>mapIter<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>value<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// ["0", "foo"]</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>mapIter<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>value<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// [1, "bar"]</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>mapIter<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>value<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// [Object, "baz"]</span>
+</pre>
+</div>
+</div></section><h2 id="명세서">명세서</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://tc39.es/ecma262/multipage/keyed-collections.html#sec-map.prototype-@@iterator">ECMAScript Language Specification <br><small># sec-map.prototype-@@iterator</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="entries"><code>Map.prototype.entries()</code></a></li> <li><a href="keys"><code>Map.prototype.keys()</code></a></li> <li><a href="values"><code>Map.prototype.values()</code></a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Map/@@iterator" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Map/@@iterator</a>
+  </p>
+</div>

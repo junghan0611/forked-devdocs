@@ -1,0 +1,33 @@
+<header><h1>Map.prototype.delete()</h1></header><div class="section-content"><p><code>delete()</code> 메서드는 키로 <code>Map</code> 객체에서 특정 요소를 제거합니다.</p></div>
+<section aria-labelledby="시도해보기"><h2 id="시도해보기">시도해보기</h2>
+<div class="section-content"><iframe class="interactive is-js-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/js/map-prototype-delete.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe></div></section><section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="5seKlJP8IGnV4TexOXJJ8JZidUzy3ZT1CXYv0BB8YfY=" data-language="js"><span class="token keyword">delete</span><span class="token punctuation">(</span>key<span class="token punctuation">)</span>
+</pre>
+</div></div></section><section aria-labelledby="매개_변수"><h3 id="매개_변수">매개 변수</h3>
+<div class="section-content"><dl> <dt id="key"><code>key</code></dt> <dd> <p><code>Map</code> 객체에서 제거할 요소의 키</p> </dd> </dl></div></section><section aria-labelledby="반환_값"><h3 id="반환_값">반환 값</h3>
+<div class="section-content"><p><code>Map</code> 객체에서 요소가 존재하고 제거된 경우 <code>true</code>, 그렇지 않고 해당 요소가 존재하지 않으면 <code>false</code>를 반환합니다.</p></div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+</section><section aria-labelledby="delete_사용하기"><h3 id="delete_사용하기">delete() 사용하기</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="I9t0SpK+8JyMEq0yk4V4qaO7gTnhrm6V0VNYauYMcJg=" data-language="js"><span class="token keyword">const</span> myMap <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Map</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+myMap<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span><span class="token string">'bar'</span><span class="token punctuation">,</span> <span class="token string">'foo'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>myMap<span class="token punctuation">.</span><span class="token function">delete</span><span class="token punctuation">(</span><span class="token string">'bar'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// true를 반환합니다. 성공적으로 제거되었습니다.</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>myMap<span class="token punctuation">.</span><span class="token function">has</span><span class="token punctuation">(</span><span class="token string">'bar'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// false를 반환합니다. "bar" 요소는 더 이상 존재하지 않습니다.</span>
+</pre>
+</div></div></section><h2 id="명세서">명세서</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://tc39.es/ecma262/multipage/keyed-collections.html#sec-map.prototype.delete">ECMAScript Language Specification <br><small># sec-map.prototype.delete</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="../map"><code>Map</code></a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Map/delete" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Map/delete</a>
+  </p>
+</div>

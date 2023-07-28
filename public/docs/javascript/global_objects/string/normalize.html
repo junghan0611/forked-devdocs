@@ -1,0 +1,102 @@
+<header><h1>String.prototype.normalize()</h1></header><div class="section-content"><p><code>normalize()</code> 메서드는 주어진 문자열을 유니코드 정규화 방식(Unicode Normalization Form)에 따라 정규화된 형태로 반환합니다. 만약 주어진 값이 문자열이 아닐 경우에는 우선 문자열로 변환 후 정규화합니다.</p></div>
+<section aria-labelledby="시도해보기"><h2 id="시도해보기">시도해보기</h2>
+<div class="section-content"><iframe class="interactive is-js-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/js/string-normalize.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe></div></section><section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="K89IEV+SIrdNoj54y2yMB1TGrP3HAAqL/SfIOp2BgIc=" data-language="js">str<span class="token punctuation">.</span><span class="token function">normalize</span><span class="token punctuation">(</span><span class="token punctuation">[</span>form<span class="token punctuation">]</span><span class="token punctuation">)</span>
+</pre>
+</div></div></section><section aria-labelledby="매개변수"><h3 id="매개변수">매개변수</h3>
+<div class="section-content"><dl> <dt id="form"><code>form</code></dt> <dd> <p>유니코드 정규화 방식을 지정합니다. <code>"NFC"</code>, <code>"NFD"</code>, <code>"NFKC"</code>, <code>"NFKD"</code> 중 하나이며, 생략되거나 <a href="../undefined"><code>undefined</code></a> 일 경우 <code>"NFC"</code>가 사용됩니다.* <code>NFC</code> — 정규형 정준 결합(Normalization Form Canonical Composition).</p> <ul> <li>
+<code>NFD</code> — 정규형 정준 분해(Normalization Form Canonical Decomposition).</li> <li>
+<code>NFKC</code> — 정규형 호환성 결합(Normalization Form Compatibility Composition).</li> <li>
+<code>NFKD</code> — 정규형 호환성 분해(Normalization Form Compatibility Decomposition).</li> </ul> </dd> </dl></div></section><section aria-labelledby="반환_값"><h3 id="반환_값">반환 값</h3>
+<div class="section-content"><p>주어진 문자열을 유니코드 정규화 방식에 따라 정규화된 문자열로 반환합니다.</p></div></section><section aria-labelledby="예외"><h3 id="예외">예외</h3>
+<div class="section-content"><dl> <dt id="rangeerror"><a href="../rangeerror"><code>RangeError</code></a></dt> <dd> <p><code>form</code>이 위에서 명시된 값 중 하나가 아닐 경우 <a href="../rangeerror"><code>RangeError</code></a> 에러가 발생합니다.</p> </dd> </dl></div></section><section aria-labelledby="설명"><h2 id="설명">설명</h2>
+<div class="section-content"><p><code>normalize()</code> 메서드는 문자열을 유니코드 정규화 방식에 따라 정규화된 형태로 반환합니다. 문자열의 값 자체에는 영향을 주지 않습니다.</p></div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+</section><section aria-labelledby="normalize_사용하기"><h3 id="normalize_사용하기">
+<code>normalize()</code> 사용하기</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="H7NOnK4HYibHBYFmmWX09tDW7gSrqMmsYG6sJYn6CWU=" data-language="js"><span class="token comment">// 원본 문자열</span>
+
+<span class="token comment">// U+1E9B: LATIN SMALL LETTER LONG S WITH DOT ABOVE</span>
+<span class="token comment">// U+0323: COMBINING DOT BELOW</span>
+<span class="token keyword">var</span> str <span class="token operator">=</span> <span class="token string">'\u1E9B\u0323'</span><span class="token punctuation">;</span>
+
+
+<span class="token comment">// 정규형 정준 결합 (NFC)</span>
+
+<span class="token comment">// U+1E9B: LATIN SMALL LETTER LONG S WITH DOT ABOVE</span>
+<span class="token comment">// U+0323: COMBINING DOT BELOW</span>
+str<span class="token punctuation">.</span><span class="token function">normalize</span><span class="token punctuation">(</span><span class="token string">'NFC'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// '\u1E9B\u0323'</span>
+str<span class="token punctuation">.</span><span class="token function">normalize</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>      <span class="token comment">// 위와 같은 결과</span>
+
+
+<span class="token comment">// 정규형 정준 분해 (NFD)</span>
+
+<span class="token comment">// U+017F: LATIN SMALL LETTER LONG S</span>
+<span class="token comment">// U+0323: COMBINING DOT BELOW</span>
+<span class="token comment">// U+0307: COMBINING DOT ABOVE</span>
+str<span class="token punctuation">.</span><span class="token function">normalize</span><span class="token punctuation">(</span><span class="token string">'NFD'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// '\u017F\u0323\u0307'</span>
+
+
+<span class="token comment">// 정규형 호환성 결합 (NFKC)</span>
+
+<span class="token comment">// U+1E69: LATIN SMALL LETTER S WITH DOT BELOW AND DOT ABOVE</span>
+str<span class="token punctuation">.</span><span class="token function">normalize</span><span class="token punctuation">(</span><span class="token string">'NFKC'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// '\u1E69'</span>
+
+
+<span class="token comment">// 정규형 호환성 분해 (NFKD)</span>
+
+<span class="token comment">// U+0073: LATIN SMALL LETTER S</span>
+<span class="token comment">// U+0323: COMBINING DOT BELOW</span>
+<span class="token comment">// U+0307: COMBINING DOT ABOVE</span>
+str<span class="token punctuation">.</span><span class="token function">normalize</span><span class="token punctuation">(</span><span class="token string">'NFKD'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// '\u0073\u0323\u0307'</span>
+</pre>
+</div></div></section><section aria-labelledby="한글에_normalize_사용하기"><h3 id="한글에_normalize_사용하기">한글에 <code>normalize()</code> 사용하기</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="HzRa1SnbA+lEPfKPKFs3SN6euV2P8S4F/yMMWEIpiEk=" data-language="js"><span class="token comment">// 결합된 한글 문자열</span>
+
+<span class="token comment">// U+D55C: 한(HANGUL SYLLABLE HAN)</span>
+<span class="token comment">// U+AE00: 글(HANGUL SYLLABLE GEUL)</span>
+<span class="token keyword">var</span> first <span class="token operator">=</span> <span class="token string">'\uD55C\uAE00'</span><span class="token punctuation">;</span>
+
+
+<span class="token comment">// 정규형 정준 분해 (NFD)</span>
+<span class="token comment">// 정준 분해 결과 초성, 중성, 종성의 자소분리가 일어납니다.</span>
+<span class="token comment">// 일부 브라우저에서는 결과값 '한글'이 자소분리된 상태로 보여질 수 있습니다.</span>
+
+<span class="token comment">// U+1112: ᄒ(HANGUL CHOSEONG HIEUH)</span>
+<span class="token comment">// U+1161: ᅡ(HANGUL JUNGSEONG A)</span>
+<span class="token comment">// U+11AB: ᆫ(HANGUL JONGSEONG NIEUN)</span>
+<span class="token comment">// U+1100: ᄀ(HANGUL CHOSEONG KIYEOK)</span>
+<span class="token comment">// U+1173: ᅳ(HANGUL JUNGSEONG EU)</span>
+<span class="token comment">// U+11AF: ᆯ(HANGUL JONGSEONG RIEUL)</span>
+<span class="token keyword">var</span> second <span class="token operator">=</span> first<span class="token punctuation">.</span><span class="token function">normalize</span><span class="token punctuation">(</span><span class="token string">'NFD'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// '\u1112\u1161\u11AB\u1100\u1173\u11AF'</span>
+
+
+<span class="token comment">// 정규형 정준 결합 (NFC)</span>
+<span class="token comment">// 정준 결합 결과 자소분리 되었던 한글이 결합됩니다.</span>
+
+<span class="token comment">// U+D55C: 한(HANGUL SYLLABLE HAN)</span>
+<span class="token comment">// U+AE00: 글(HANGUL SYLLABLE GEUL)</span>
+<span class="token keyword">var</span> third <span class="token operator">=</span> second<span class="token punctuation">.</span><span class="token function">normalize</span><span class="token punctuation">(</span><span class="token string">'NFC'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// '\uD55C\uAE00'</span>
+
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>second <span class="token operator">===</span> third<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 같은 글자처럼 보이지만 false를 출력합니다.</span>
+</pre>
+</div></div></section><h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://tc39.es/ecma262/multipage/text-processing.html#sec-string.prototype.normalize">ECMAScript Language Specification <br><small># sec-string.prototype.normalize</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="https://www.unicode.org/reports/tr15/" target="_blank">Unicode Standard Annex #15, Unicode Normalization Forms</a></li> <li><a href="http://en.wikipedia.org/wiki/Unicode_equivalence" target="_blank">Unicode equivalence</a></li> <li><a href="https://ko.wikipedia.org/wiki/%EC%9C%A0%EB%8B%88%EC%BD%94%EB%93%9C_%EC%A0%95%EA%B7%9C%ED%99%94" target="_blank">유니코드 정규화</a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/String/normalize" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/String/normalize</a>
+  </p>
+</div>

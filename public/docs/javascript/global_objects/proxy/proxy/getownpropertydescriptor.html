@@ -1,0 +1,65 @@
+<header><h1>handler.getOwnPropertyDescriptor()</h1></header><div class="section-content"><p><code>handler.getOwnPropertyDescriptor()</code> 메서드는 <a href="../../object/getownpropertydescriptor"><code>Object.getOwnPropertyDescriptor()</code></a>에 대한 트랩입니다.</p></div>
+<section aria-labelledby="시도해보기"><h2 id="시도해보기">시도해보기</h2>
+<div class="section-content"><iframe class="interactive is-taller-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/js/proxyhandler-getownpropertydescriptor.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe></div></section><section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="Ml8tHjwTKOzP2S1uuhobMn0yvBe+I3dg2UyXsVqTFaY=" data-language="js"><span class="token keyword">new</span> <span class="token class-name">Proxy</span><span class="token punctuation">(</span>target<span class="token punctuation">,</span> <span class="token punctuation">{</span>
+  <span class="token function">getOwnPropertyDescriptor</span><span class="token punctuation">(</span><span class="token parameter">target<span class="token punctuation">,</span> prop</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div></div></section><section aria-labelledby="매개_변수"><h3 id="매개_변수">매개 변수</h3>
+<div class="section-content">
+<p>다음 매개변수는 <code>getOwnPropertyDescriptor()</code> 메서드에 전달됩니다. <code>this</code>는 처리기에 바인딩됩니다.</p> <dl> <dt id="target"><code>target</code></dt> <dd> <p>대상 객체</p> </dd> <dt id="prop"><code>prop</code></dt> <dd> <p>검색해야 하는 속성의 이름</p> </dd> </dl>
+</div></section><section aria-labelledby="반환_값"><h3 id="반환_값">반환 값</h3>
+<div class="section-content"><p><code>getOwnPropertyDescriptor()</code> 메서드는 객체를 반환하거나 <code>undefined</code>를 반환합니다.</p></div></section><section aria-labelledby="설명"><h2 id="설명">설명</h2>
+<div class="section-content"><p><code>handler.getOwnPropertyDescriptor()</code> 메서드는 <a href="../../object/getownpropertydescriptor"><code>Object.getOwnPropertyDescriptor()</code></a>에 대한 트랩입니다.</p></div></section><section aria-labelledby="가로채기"><h3 id="가로채기">가로채기</h3>
+<div class="section-content">
+<p>이 트랩은 다음 작업을 가로챌 수 있습니다.</p> <ul> <li><a href="../../object/getownpropertydescriptor"><code>Object.getOwnPropertyDescriptor()</code></a></li> <li><a href="../../reflect/getownpropertydescriptor"><code>Reflect.getOwnPropertyDescriptor()</code></a></li> </ul>
+</div></section><section aria-labelledby="불변_조건"><h3 id="불변_조건">불변 조건</h3>
+<div class="section-content">
+<p>다음 불변 조건이 위반되면 프록시에서 <a href="../../typeerror"><code>TypeError</code></a>가 발생합니다.</p> <ul> <li>
+<code>getOwnPropertyDescriptor()</code>는 객체 또는 <code>undefined</code>를 반환해야 합니다.</li> <li>속성이 대상 객체의 구성할 수 없는 자체 속성으로 존재하는 경우, 속성이 존재하지 않는 것으로 보고될 수 없습니다.</li> <li>속성이 대상 객체의 자체 속성으로 존재하고 대상 객체가 확장할 수 없는 경우, 속성이 존재하지 않는 것으로 보고될 수 없습니다.</li> <li>속성이 대상 객체의 자체 속성으로 존재하지 않고 대상 객체가 확장 가능하지 않은 경우, 속성이 있는 것으로 보고될 수 없습니다.</li> <li>속성이 대상 객체의 자체 속성으로 존재하지 않거나 대상 객체의 구성 가능한 자체 속성으로 존재하는 경우, 속성을 구성 불가능한 것으로 보고할 수 없습니다.</li> <li>
+<code>Object.getOwnPropertyDescriptor(target)</code>의 결과는 <code>Object.defineProperty()</code>를 사용하여 대상 객체에 적용할 수 있으며 예외를 발생시키지 않습니다.</li> </ul>
+</div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+</section><section aria-labelledby="getownpropertydescriptor_트랩"><h3 id="getownpropertydescriptor_트랩">getOwnPropertyDescriptor 트랩</h3>
+<div class="section-content">
+<p>다음 코드는 <a href="../../object/getownpropertydescriptor"><code>Object.getOwnPropertyDescriptor()</code></a>를 트래핑합니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="kZP69/XDxK4KzGxpsu5ScsDMfImXJhqqk++fXToVmJk=" data-language="js"><span class="token keyword">const</span> p <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Proxy</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token literal-property property">a</span><span class="token operator">:</span> <span class="token number">20</span><span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+  <span class="token function">getOwnPropertyDescriptor</span><span class="token punctuation">(</span><span class="token parameter">target<span class="token punctuation">,</span> prop</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">called: </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>prop<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token punctuation">{</span> <span class="token literal-property property">configurable</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span> <span class="token literal-property property">enumerable</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span> <span class="token literal-property property">value</span><span class="token operator">:</span> <span class="token number">10</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>Object<span class="token punctuation">.</span><span class="token function">getOwnPropertyDescriptor</span><span class="token punctuation">(</span>p<span class="token punctuation">,</span> <span class="token string">'a'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>value<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// "called: a"</span>
+                                                            <span class="token comment">// 10</span>
+</pre>
+</div> <p>다음 코드는 불변 조건을 위반합니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="ozXzSWNygIAlwaesFSOECoBTT3n8sYpestSby3mE6tI=" data-language="js"><span class="token keyword">const</span> obj <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token literal-property property">a</span><span class="token operator">:</span> <span class="token number">10</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
+Object<span class="token punctuation">.</span><span class="token function">preventExtensions</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> p <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Proxy</span><span class="token punctuation">(</span>obj<span class="token punctuation">,</span> <span class="token punctuation">{</span>
+  <span class="token function">getOwnPropertyDescriptor</span><span class="token punctuation">(</span><span class="token parameter">target<span class="token punctuation">,</span> prop</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token keyword">undefined</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+Object<span class="token punctuation">.</span><span class="token function">getOwnPropertyDescriptor</span><span class="token punctuation">(</span>p<span class="token punctuation">,</span> <span class="token string">'a'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// TypeError is thrown</span>
+</pre>
+</div>
+</div></section><h2 id="명세서">명세서</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://tc39.es/ecma262/multipage/ordinary-and-exotic-objects-behaviours.html#sec-proxy-object-internal-methods-and-internal-slots-getownproperty-p">ECMAScript Language Specification <br><small># sec-proxy-object-internal-methods-and-internal-slots-getownproperty-p</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="../../proxy"><code>Proxy</code></a></li> <li><a href="../proxy"><code>Proxy()</code> 생성자</a></li> <li><a href="../../object/getownpropertydescriptor"><code>Object.getOwnPropertyDescriptor()</code></a></li> <li><a href="../../reflect/getownpropertydescriptor"><code>Reflect.getOwnPropertyDescriptor()</code></a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Proxy/Proxy/getOwnPropertyDescriptor" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Proxy/Proxy/getOwnPropertyDescriptor</a>
+  </p>
+</div>

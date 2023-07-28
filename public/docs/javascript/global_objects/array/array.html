@@ -1,0 +1,56 @@
+<header><h1>Array() 생성자</h1></header><div class="section-content"><p><code>Array()</code> 생성자는 새로운 <a href="../array"><code>Array</code></a> 객체를 생성할 때 사용합니다.</p></div>
+<section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="YOIj8ilGx4Rn+xXRPJLxAv4uMWEdRnpjbxEfiyWgk+0=" data-language="js">    <span class="token punctuation">[</span>element0<span class="token punctuation">,</span> element1<span class="token punctuation">,</span> <span class="token operator">...</span><span class="token punctuation">,</span> elementN<span class="token punctuation">]</span>
+
+    <span class="token keyword">new</span> <span class="token class-name">Array</span><span class="token punctuation">(</span>element0<span class="token punctuation">,</span> element1<span class="token punctuation">[</span><span class="token punctuation">,</span> <span class="token operator">...</span><span class="token punctuation">[</span><span class="token punctuation">,</span> elementN<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+    <span class="token keyword">new</span> <span class="token class-name">Array</span><span class="token punctuation">(</span>arrayLength<span class="token punctuation">)</span>
+</pre>
+</div></div></section><section aria-labelledby="매개변수"><h3 id="매개변수">매개변수</h3>
+<div class="section-content"><dl> <dt id="elementn"><code>elementN</code></dt> <dd> <p>JavaScript 배열을 초기화할 때 채워넣을 요소. 단, 항목이 하나 뿐이며 그 항목의 자료형이 숫자일 경우 아래의 <code>arrayLength</code> 매개변수로 간주합니다.</p> </dd> <dt id="arraylength"><code>arrayLength</code></dt> <dd> <p><code>Array</code> 생성자에 제공한 유일한 매개변수가 0에서 2^32-1 이하의 정수인 경우, <code>length</code> 속성이 해당 값인 새로운 JavaScript 배열을 생성합니다. (<strong>참고:</strong> 이렇게 생성한 배열은 <code>arrayLength</code> 만큼의 빈 슬롯을 가지는 것으로, 실제 <a href="../undefined"><code>undefined</code></a>를 채우는 것이 아닙니다.) 값이 범위 밖이거나 정수가 아닌 경우 <a href="../rangeerror"><code>RangeError</code></a>가 발생합니다.</p> </dd> </dl></div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+</section><section aria-labelledby="배열_리터럴_표기법"><h3 id="배열_리터럴_표기법">배열 리터럴 표기법</h3>
+<div class="section-content">
+<p>배열은 <a href="../../lexical_grammar#%EB%B0%B0%EC%97%B4_%EB%A6%AC%ED%84%B0%EB%9F%B4">리터럴 표기법</a>으로 생성할 수도 있습니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="s8Tk1dyXTUpLP+Z5dbnRrQy2UvROuwmAwCqyMnjxDuk=" data-language="js"><span class="token keyword">let</span> fruits <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'사과'</span><span class="token punctuation">,</span> <span class="token string">'바나나'</span><span class="token punctuation">]</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>fruits<span class="token punctuation">.</span>length<span class="token punctuation">)</span> <span class="token comment">// 2</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>fruits<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span>     <span class="token comment">// "사과"</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="단일_매개변수_배열_생성자"><h3 id="단일_매개변수_배열_생성자">단일 매개변수 배열 생성자</h3>
+<div class="section-content">
+<p>배열을 생성자와 하나의 숫자 매개변수로 생성할 수 있습니다. 그 결과는 <code>length</code>가 매개변수고, 길이만큼의 빈 슬롯을 가진 배열입니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="+UzGX7mdq1JCULW27Gr4RJi/lPkj16lKebcvDZG4llk=" data-language="js"><span class="token keyword">let</span> fruits <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Array</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>fruits<span class="token punctuation">.</span>length<span class="token punctuation">)</span> <span class="token comment">// 2</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>fruits<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span>     <span class="token comment">// undefined</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="복수_매개변수_배열_생성자"><h3 id="복수_매개변수_배열_생성자">복수 매개변수 배열 생성자</h3>
+<div class="section-content">
+<p>생성자에 두 개 이상의 매개변수를 제공할 경우, 매개변수를 원소로 하는 새로운 배열을 생성합니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="/CB6cKIXOGlaVy8AYdAzWB9gfRgQhv5UvEpjdU1xLwg=" data-language="js"><span class="token keyword">let</span> fruits <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Array</span><span class="token punctuation">(</span><span class="token string">'사과'</span><span class="token punctuation">,</span> <span class="token string">'바나나'</span><span class="token punctuation">)</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>fruits<span class="token punctuation">.</span>length<span class="token punctuation">)</span> <span class="token comment">// 2</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>fruits<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span>     <span class="token comment">// "사과"</span>
+</pre>
+</div>
+</div></section><h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://tc39.es/ecma262/multipage/indexed-collections.html#sec-array-constructor">ECMAScript Language Specification <br><small># sec-array-constructor</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li>
+<a href="../array"><code>Array</code></a> 클래스</li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/Array" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/Array</a>
+  </p>
+</div>

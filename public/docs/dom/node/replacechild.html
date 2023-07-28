@@ -1,0 +1,54 @@
+<header><h1>Node.replaceChild()</h1></header><div class="section-content"><p><code>Node.replaceChild()</code> 메소드는 특정 부모 노드의 한 자식 노드를 다른 노드로 교체합니다.</p></div>
+<h2 id="syntax">Syntax</h2>
+<div class="section-content">
+<div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="BlckXv9YgSvuKmoWIIBVVeQHVgAVnJnKuBGT38RpWts=" data-language="js">replacedNode <span class="token operator">=</span> parentNode<span class="token punctuation">.</span><span class="token function">replaceChild</span><span class="token punctuation">(</span>newChild<span class="token punctuation">,</span> oldChild<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div> <ul> <li>
+<code>newChild</code> 는 <code>oldChild</code> 를 교체할 새로운 노드입니다. 만약 이미 <code>DOM</code> 안에 존재한다면 가장 먼저 제거됩니다.</li> <li>
+<code>oldChild</code> 는 이미 존재하는, 교체될 자식 노드입니다.</li> <li>
+<code>replacedNode</code> 는 교체된 노드입니다. <code>oldChild</code> 와 동일한 노드입니다.</li> </ul>
+</div>
+<h2 id="example">Example</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="m0IqtUIT7vc+SU0pu40UbZXBj6BX1G/lXal753NptsQ=" data-language="js"><span class="token comment">// &lt;div&gt;</span>
+<span class="token comment">//  &lt;span id="childSpan"&gt;foo bar&lt;/span&gt;</span>
+<span class="token comment">// &lt;/div&gt;</span>
+
+<span class="token comment">// 텅빈 요소 노드를 하나 생성합니다.</span>
+<span class="token comment">// ID도, 속성도, 컨텐츠도 없습니다.</span>
+<span class="token keyword">var</span> sp1 <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">createElement</span><span class="token punctuation">(</span><span class="token string">"span"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// 'newSpan'이란 id 속성을 부여합니다.</span>
+sp1<span class="token punctuation">.</span>id <span class="token operator">=</span> <span class="token string">"newSpan"</span><span class="token punctuation">;</span>
+
+<span class="token comment">// 새로운 요소를 위한 컨텐츠를 생성합니다.</span>
+<span class="token keyword">var</span> sp1_content <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">createTextNode</span><span class="token punctuation">(</span><span class="token string">"new replacement span element."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// 컨텐츠를 생성한 요소에 붙입니다.</span>
+sp1<span class="token punctuation">.</span><span class="token function">appendChild</span><span class="token punctuation">(</span>sp1_content<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// DOM에 존재하던, 교체되야할 노드를 참조합니다.</span>
+<span class="token keyword">var</span> sp2 <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">"childSpan"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> parentDiv <span class="token operator">=</span> sp2<span class="token punctuation">.</span>parentNode<span class="token punctuation">;</span>
+
+<span class="token comment">// 이미 존재하던 sp2 노드를 새로운 span 요소인 sp1으로 교체합니다.</span>
+parentDiv<span class="token punctuation">.</span><span class="token function">replaceChild</span><span class="token punctuation">(</span>sp1<span class="token punctuation">,</span> sp2<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// 결과:</span>
+<span class="token comment">// &lt;div&gt;</span>
+<span class="token comment">//   &lt;span id="newSpan"&gt;new replacement span element.&lt;/span&gt;</span>
+<span class="token comment">// &lt;/div&gt;</span>
+</pre>
+</div></div>
+<h2 id="specification">Specification</h2>
+<div class="section-content"><ul> <li><a href="https://www.w3.org/TR/REC-DOM-Level-1/level-one-core.html#method-replaceChild" target="_blank">DOM Level 1 Core: replaceChild</a></li> <li><a href="https://www.w3.org/TR/DOM-Level-2-Core/core.html#ID-785887307" target="_blank">DOM Level 2 Core: replaceChild</a></li> <li><a href="https://www.w3.org/TR/DOM-Level-3-Core/core.html#ID-785887307" target="_blank">DOM Level 3 Core: replaceChild</a></li> </ul></div>
+<h2 id="see_also">See also</h2>
+<div class="section-content"><ul> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/Node/removeChild"><code>Node.removeChild</code> <small>(en-US)</small></a></li> </ul></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/Node/replaceChild" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/Node/replaceChild</a>
+  </p>
+</div>

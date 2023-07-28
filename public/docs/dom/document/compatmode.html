@@ -1,0 +1,33 @@
+<header><h1>Document.compatMode</h1></header><div class="section-content"><p><code>Document.compatMode</code> 속성은 문서 렌더링을 <a href="https://developer.mozilla.org/ko/docs/Web/HTML/Quirks_Mode_and_Standards_Mode">호환 모드</a>에서 진행했는지, 표준 모드에서 진행했는지 나타냅니다.</p></div>
+<h2 id="구문">구문</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="x43uxZWxikw70b+TOgaGMEQwTj62MMsDDn3+KapC9R4=" data-language="js"><span class="token keyword">const</span> mode <span class="token operator">=</span> document<span class="token punctuation">.</span>compatMode
+</pre>
+</div></div>
+<h3 id="값">값</h3>
+<div class="section-content">
+<p>다음 중 하나.</p> <ul> <li>문서가 호환 모드이면 <code>"BackCompat"</code>
+</li> <li>문서가 호환 모드가 아니거나("표준") 제한적 호환("거의 표준") 모드이면 <code>"CSS1Compat"</code>
+</li> </ul> <div class="notecard note" id="sect1"> <p><strong>참고:</strong> 위의 모든 모드는 표준화됐으므로, 오래 전에 사용하던 "표준"과 "거의 표준"이라는 이름은 말이 되지 않아 이제 사용하지 않습니다.</p> </div>
+</div>
+<h2 id="예제">예제</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="7NGJb2O4MaXjXKhpVPKUjRYPSDS5tRLytic2WSa/gB8=" data-language="js"><span class="token keyword">if</span> <span class="token punctuation">(</span>document<span class="token punctuation">.</span>compatMode <span class="token operator">==</span> <span class="token string">"BackCompat"</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">// in Quirks mode</span>
+<span class="token punctuation">}</span>
+</pre>
+</div></div>
+<h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="#">DOM Standard <br><small># ref-for-dom-document-compatmode①</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/Document/compatMode" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/Document/compatMode</a>
+  </p>
+</div>

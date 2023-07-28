@@ -1,0 +1,113 @@
+<header><h1>메서드 정의</h1></header><div class="section-content"><p>ECMAScript 2015 를 시작으로, 객체 초기자(initializer)에 메서드 정의를 위한 더 짧은 구문이 도입되었습니다. 이는 메서드 명에 할당된 함수를 위한 단축입니다.</p></div>
+<section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="H8sG6i18T9QzyA6CcmwtsptxmS/GxdZtKc6wU34HdDQ=" data-language="js">    <span class="token keyword">var</span> obj <span class="token operator">=</span> <span class="token punctuation">{</span>
+      <span class="token function">property</span><span class="token punctuation">(</span> <span class="token parameter">parameters…</span> <span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token operator">*</span><span class="token function">generator</span><span class="token punctuation">(</span> <span class="token parameter">parameters…</span> <span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token comment">// 키(속성) 계산값과도 함께:</span>
+      <span class="token punctuation">[</span>property<span class="token punctuation">]</span><span class="token punctuation">(</span> <span class="token parameter">parameters…</span> <span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token operator">*</span><span class="token punctuation">[</span>generator<span class="token punctuation">]</span><span class="token punctuation">(</span> <span class="token parameter">parameters…</span> <span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token comment">// ES5 getter/setter 구문과 비교해 보세요:</span>
+      <span class="token keyword">get</span> <span class="token function">property</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token keyword">set</span> <span class="token function">property</span><span class="token punctuation">(</span><span class="token parameter">value</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">;</span>
+</pre>
+</div></div></section><section aria-labelledby="설명"><h2 id="설명">설명</h2>
+<div class="section-content">
+<p>단축 구문은 ECMAScript 5에 도입된 <a href="get">getter</a> 및 <a href="set">setter</a> 구문과 비슷합니다.</p> <p>다음 코드가 주어지면:</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="VI8uISwfSCPAuowl3BNxy6/Z5YdKoC7Fqts8Ruwt9f4=" data-language="js"><span class="token keyword">var</span> obj <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token function-variable function">foo</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token function-variable function">bar</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</pre>
+</div> <p>이제 이를 아래로 줄일 수 있습니다:</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="W+ZjO6kWTbCUMAK4lOlISEDMQjhrTFNbdaHbtLHEMz4=" data-language="js"><span class="token keyword">var</span> obj <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token function">bar</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</pre>
+</div> <div class="note notecard" id="sect1"> <p><strong>주의 :</strong> 단축 구문은 익명(anonymous) 함수 (…<code>foo: function() {}</code>… 에서처럼) 대신 유명(named) 함수를 사용합니다. 유명 함수는 함수 본체에서 호출될 수 있습니다 (이는 참조할 식별자가 없기에 익명 함수에게는 불가능합니다). 자세한 사항은, <a href="../operators/function#examples"><code>function</code></a> 참조.</p> </div>
+</div></section><section aria-labelledby="단축_생성기_메서드"><h3 id="단축_생성기_메서드">단축 생성기 메서드</h3>
+<div class="section-content">
+<p><a href="../statements/function*">생성기 메서드</a>는 단축 구문을 사용해서도 정의될 수 있습니다. 단축 구문 내 별표(*)는 생성기 속성명 앞에 와야 함을 주의하세요. 즉, <code>* g(){}</code>는 작동하지만 <code>g *(){}</code>는 아닙니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="JWdEo4wcxsrSxexssbbAcm/4tG9qumo13HmojKINEe4=" data-language="js"><span class="token comment">// 유명 속성 사용 (ES2015 이전)</span>
+<span class="token keyword">var</span> obj2 <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token function-variable function">g</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token operator">*</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">var</span> index <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token keyword">while</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span>
+      <span class="token keyword">yield</span> index<span class="token operator">++</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token comment">// 단축 구문을 쓰는 같은 객체</span>
+<span class="token keyword">var</span> obj2 <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token operator">*</span> <span class="token function">g</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">var</span> index <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token keyword">while</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span>
+      <span class="token keyword">yield</span> index<span class="token operator">++</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">var</span> it <span class="token operator">=</span> obj2<span class="token punctuation">.</span><span class="token function">g</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>it<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>value<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 0</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>it<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>value<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 1</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="메서드_정의는_생성_불가능합니다"><h3 id="메서드_정의는_생성_불가능합니다">메서드 정의는 생성 불가능합니다</h3>
+<div class="section-content">
+<p>모든 메서드 정의는 생성자가 아니고 인스턴스화하려고 하는 경우 <a href="../global_objects/typeerror"><code>TypeError</code></a> 예외가 발생합니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="IkdylJuQ4HbDNAHANfNjvPqua4KdkvwxtFDZfbe2oq0=" data-language="js"><span class="token keyword">var</span> obj <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token function">method</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token keyword">new</span> <span class="token class-name">obj<span class="token punctuation">.</span>method</span><span class="token punctuation">;</span> <span class="token comment">// TypeError: obj.method는 생성자가 아닙니다</span>
+
+<span class="token keyword">var</span> obj <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token operator">*</span> <span class="token function">g</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token keyword">new</span> <span class="token class-name">obj<span class="token punctuation">.</span>g</span><span class="token punctuation">;</span> <span class="token comment">// TypeError: obj.g는 생성자가 아닙니다 (ES2016에서 바뀜)</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="예"><h2 id="예">예</h2>
+</section><section aria-labelledby="간단한_테스트_사례"><h3 id="간단한_테스트_사례">간단한 테스트 사례</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="zhZ5tR14Ww5ouj3oJgx0pkeaqCWYSFtQrL7vC3h1jTw=" data-language="js"><span class="token keyword">var</span> obj <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token literal-property property">a</span> <span class="token operator">:</span> <span class="token string">"foo"</span><span class="token punctuation">,</span>
+  <span class="token function">b</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span> <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span>a<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>obj<span class="token punctuation">.</span><span class="token function">b</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// "foo"</span>
+</pre>
+</div></div></section><section aria-labelledby="속성_계산명"><h3 id="속성_계산명">속성 계산명</h3>
+<div class="section-content">
+<p>단축 구문은 속성 계산명(computed property name)도 지원합니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="lFlZi/k/yhq0X4umQ8vfLWAC1tgTmdpDCSGwooik0EA=" data-language="js"><span class="token keyword">var</span> bar <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token function-variable function">foo0</span> <span class="token operator">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token function">foo1</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token keyword">return</span> <span class="token number">1</span><span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">[</span><span class="token string">"foo"</span> <span class="token operator">+</span> <span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token keyword">return</span> <span class="token number">2</span><span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>bar<span class="token punctuation">.</span><span class="token function">foo0</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 0</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>bar<span class="token punctuation">.</span><span class="token function">foo1</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 1</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>bar<span class="token punctuation">.</span><span class="token function">foo2</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 2&lt;/pre&gt;</span>
+</pre>
+</div>
+</div></section><h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://tc39.es/ecma262/multipage/ecmascript-language-functions-and-classes.html#sec-method-definitions">ECMAScript Language Specification <br><small># sec-method-definitions</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="참조"><h2 id="참조">참조</h2>
+<div class="section-content"><ul> <li><a href="get"><code>get</code></a></li> <li><a href="set"><code>set</code></a></li> <li><a href="../lexical_grammar">어휘 문법</a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Functions/Method_definitions" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Functions/Method_definitions</a>
+  </p>
+</div>

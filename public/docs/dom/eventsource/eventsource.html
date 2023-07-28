@@ -1,0 +1,41 @@
+<header><h1>EventSource()</h1></header><div class="section-content"><p><code>EventSource()</code> 생성자는 원격 자원을 나타내는 새롭게 생성된 <a href="../eventsource"><code>EventSource</code></a> 를 반환합니다.</p></div>
+<h2 id="구문">구문</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="n5I5QrX10e3QwyYILDwqm7Tu009Yuo3rMY0L7FzwgP0=" data-language="js">eventSource <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">EventSource</span><span class="token punctuation">(</span>url<span class="token punctuation">,</span> configuration<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div></div>
+<h3 id="파라미터">파라미터</h3>
+<div class="section-content"><dl> <dt id="url"><code>url</code></dt> <dd> <p>이벤트/메시지를 제공하는 원격 자원의 위치를 나타내는 <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/String"><code>USVString</code></a> 입니다.</p> </dd> <dt id="configuration">
+<code>configuration</code> <span class="badge inline optional">Optional</span>
+</dt> <dd> <p>새 연결 구성을 위한 옵션을 제공합니다. 가능한 항목은 다음과 같습니다.* <code>withCredentials</code>. 기본값은 <code>false</code> 이며, CORS 가 자격을 <code>포함</code>하도록 설정되어야하는지를 나타냅니다.</p> </dd> </dl></div>
+<h2 id="예시">예시</h2>
+<div class="section-content">
+<div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="eq+6yX8k2M5vwPz5ZFuOxvPrjsi4D58ycEtV/+6WAx8=" data-language="js"><span class="token keyword">var</span> evtSource <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">EventSource</span><span class="token punctuation">(</span><span class="token string">'sse.php'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> eventList <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">querySelector</span><span class="token punctuation">(</span><span class="token string">'ul'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+evtSource<span class="token punctuation">.</span><span class="token function-variable function">onmessage</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">e</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">var</span> newElement <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">createElement</span><span class="token punctuation">(</span><span class="token string">"li"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  newElement<span class="token punctuation">.</span>textContent <span class="token operator">=</span> <span class="token string">"message: "</span> <span class="token operator">+</span> e<span class="token punctuation">.</span>data<span class="token punctuation">;</span>
+  eventList<span class="token punctuation">.</span><span class="token function">appendChild</span><span class="token punctuation">(</span>newElement<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div> <div class="notecard note" id="sect1"> <p><strong>참고:</strong> GitHub 에서 전체 예시를 확인할 수 있습니다 — <a href="https://github.com/mdn/dom-examples/tree/master/server-sent-events" target="_blank">Simple SSE demo using PHP를 사용하는 간단한 SSE 데모</a>를 보세요.</p> </div>
+</div>
+<h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://html.spec.whatwg.org/multipage/server-sent-events.html#dom-eventsource-dev">HTML Standard <br><small># dom-eventsource-dev</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<h2 id="함께_보기">함께 보기</h2>
+<div class="section-content"><ul> <li><a href="../eventsource"><code>EventSource</code></a></li> </ul></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/EventSource/EventSource" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/EventSource/EventSource</a>
+  </p>
+</div>

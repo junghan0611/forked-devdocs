@@ -1,0 +1,33 @@
+<header><h1>ANGLE_instanced_arrays</h1></header><div class="section-content">
+<p>이 **<code>ANGLE_instanced_arrays</code>**확장은 <a href="webgl_api">WebGL API의</a> 일부이며 동일한 객체 또는 동일한 객체 그룹을 같은 정점 데이터, 기본 개수 및 유형을 공유하는 경우 여러 번 그릴 수 있습니다.</p> <p>WebGL 확장은 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/WebGLRenderingContext/getExtension"><code>WebGLRenderingContext.getExtension()</code> <small>(en-US)</small></a> 메서드를 사용하여 사용할 수 있습니다. 자세한 내용 은 <a href="webgl_api/tutorial">WebGL 자습서의</a> <a href="https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API/Using_Extensions" class="only-in-en-us">Extensions 사용을 <small>(en-US)</small></a> 참조하십시오 .</p> <div class="notecard note" id="sect1"> <p><strong>참고:</strong> <strong>가용성 :</strong> 이 확장은 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/WebGLRenderingContext">WebGL1 <small>(en-US)</small></a> 컨텍스트에서만 사용할 수 있습니다. <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext">WebGL2 <small>(en-US)</small></a>에서이 확장 기능은 기본적으로 WebGL2 컨텍스트에서 사용할 수 있으며 상수 및 메서드는 <code>ANGLE</code>접미사 없이 사용할 수 있습니다 ."ANGLE"이라는 이름에도 불구하고이 확장은 하드웨어가 ANGLE 라이브러리를 사용할 때 Windows에서만 지원하는 것이 아닌 모든 장치에서 작동합니다. "ANGLE"은이 확장이 ANGLE 라이브러리 작성자에 의해 작성되었음을 나타냅니다.</p> </div>
+</div>
+<h2 id="상수">상수</h2>
+<div class="section-content">
+<p>이 확장은 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/WebGLRenderingContext/getVertexAttrib"><code>gl.getVertexAttrib()</code> <small>(en-US)</small></a> 메서드에서 사용할 수있는 하나의 새로운 상수를 제공합니다.</p> <dl> <dt id="ext.vertex_attrib_array_divisor_angle"><code>ext.VERTEX_ATTRIB_ARRAY_DIVISOR_ANGLE</code></dt> <dd> <p><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/WebGLRenderingContext/getVertexAttrib"><code>gl.getVertexAttrib()</code> <small>(en-US)</small></a>에서 <code>pname</code>매개 변수 로 사용될 때 인스턴스 렌더링에 사용되는 빈도 제수를 설명하는 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API/Types"><code>GLint</code> <small>(en-US)</small></a>를 반환합니다 .</p> </dd> </dl>
+</div>
+<h2 id="메서드">메서드</h2>
+<div class="section-content">
+<p>이 확장은 세 가지 새로운 메서드를 노출합니다.</p> <dl> <dt id="ext.drawarraysinstancedangle_"><a class="page-not-created"><code>ext.drawArraysInstancedANGLE ()</code></a></dt> <dd> <p><a class="page-not-created"><code>gl.drawArrays ()</code></a>와 동일하게 동작하지만 요소 범위의 인스턴스가 여러 개 실행되고 각 반복마다 인스턴스가 진행됩니다.</p> </dd> <dt id="ext.drawelementsinstancedangle_"><a class="page-not-created"><code>ext.drawElementsInstancedANGLE ()</code></a></dt> <dd> <p><a class="page-not-created"><code>gl.drawElements ()</code></a>와 동일하게 동작하지만 요소 세트의 여러 인스턴스가 실행되고 각 세트간에 인스턴스가 진행됩니다.</p> </dd> <dt id="ext.vertexattribdivisorangle_"><a class="page-not-created"><code>ext.vertexAttribDivisorANGLE ()</code></a></dt> <dd> <p><a class="page-not-created"><code>ext.drawArraysInstancedANGLE ()</code></a> 및 <a class="page-not-created"><code>ANGLE_instanced_arrays.drawElementsInstancedANGLE ()</code></a>로 여러 프리미티브 인스턴스를 렌더링 할 때 일반 정점 속성이 증가하는 비율을 수정합니다. , "ext.drawElementsInstancedANGLE ()")}}.</p> </dd> </dl>
+</div>
+<h2 id="예제">예제</h2>
+<div class="section-content">
+<p>확장 기능 사용 :</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="cHm9B4ZydsMY+OOSOpmDrc9x1tVkaRv+S4OxkHY+Epc=" data-language="js"><span class="token keyword">var</span> ext <span class="token operator">=</span> gl<span class="token punctuation">.</span><span class="token function">getExtension</span> <span class="token punctuation">(</span> <span class="token string">'ANGLE_instanced_arrays'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div>
+</div>
+<h2 id="명세서">명세서</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://registry.khronos.org/webgl/extensions/ANGLE_instanced_arrays/">WebGL ANGLE_instanced_arrays Khronos Ratified Extension Specification <br></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a class="page-not-created"><code>WebGLRenderingContext.getExtension ()</code></a></li> <li><a class="page-not-created"><code>WebGL2RenderingContext.drawArraysInstanced ()</code></a></li> <li><a class="page-not-created"><code>WebGL2RenderingContext.drawElementsInstanced ()</code></a></li> <li><a class="page-not-created"><code>WebGL2RenderingContext.vertexAttribDivisor ()</code></a></li> </ul></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/ANGLE_instanced_arrays" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/ANGLE_instanced_arrays</a>
+  </p>
+</div>

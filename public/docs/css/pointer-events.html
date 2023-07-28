@@ -1,0 +1,106 @@
+<header><h1>pointer-events</h1></header><div class="section-content"><p><code>pointer-events</code> <a href="https://developer.mozilla.org/ko/docs/Web/CSS">CSS</a> 속성은 그래픽 요소가 어떤 상황에서 포인터 이벤트의 <a href="https://developer.mozilla.org/ko/docs/Web/API/Event/target">대상</a>이 될 수 있는지 지정합니다.</p></div>
+<section aria-labelledby="시도해보기"><h2 id="시도해보기">시도해보기</h2>
+<div class="section-content"><iframe class="interactive is-default-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/css/pointer-events.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe></div></section><section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content">
+<div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="isKDjD/gT7LPf1644NJpTmN17AFiUbOKiZSQ9wixrF0=" data-language="css"><span class="token comment">/* 키워드 값 */</span>
+<span class="token property">pointer-events</span><span class="token punctuation">:</span> auto<span class="token punctuation">;</span>
+<span class="token property">pointer-events</span><span class="token punctuation">:</span> none<span class="token punctuation">;</span>
+<span class="token property">pointer-events</span><span class="token punctuation">:</span> visiblePainted<span class="token punctuation">;</span> <span class="token comment">/* SVG only */</span>
+<span class="token property">pointer-events</span><span class="token punctuation">:</span> visibleFill<span class="token punctuation">;</span>    <span class="token comment">/* SVG only */</span>
+<span class="token property">pointer-events</span><span class="token punctuation">:</span> visibleStroke<span class="token punctuation">;</span>  <span class="token comment">/* SVG only */</span>
+<span class="token property">pointer-events</span><span class="token punctuation">:</span> visible<span class="token punctuation">;</span>        <span class="token comment">/* SVG only */</span>
+<span class="token property">pointer-events</span><span class="token punctuation">:</span> painted<span class="token punctuation">;</span>        <span class="token comment">/* SVG only */</span>
+<span class="token property">pointer-events</span><span class="token punctuation">:</span> fill<span class="token punctuation">;</span>           <span class="token comment">/* SVG only */</span>
+<span class="token property">pointer-events</span><span class="token punctuation">:</span> stroke<span class="token punctuation">;</span>         <span class="token comment">/* SVG only */</span>
+<span class="token property">pointer-events</span><span class="token punctuation">:</span> all<span class="token punctuation">;</span>            <span class="token comment">/* SVG only */</span>
+
+<span class="token comment">/* 전역 값 */</span>
+<span class="token property">pointer-events</span><span class="token punctuation">:</span> inherit<span class="token punctuation">;</span>
+<span class="token property">pointer-events</span><span class="token punctuation">:</span> initial<span class="token punctuation">;</span>
+<span class="token property">pointer-events</span><span class="token punctuation">:</span> unset<span class="token punctuation">;</span>
+</pre>
+</div> <p><code>pointer-events</code> 속성은 아래 목록의 값 중 하나를 선택해서 지정할 수 있습니다.</p>
+</div></section><section aria-labelledby="값"><h3 id="값">값</h3>
+<div class="section-content">
+<dl> <dt id="auto"><code>auto</code></dt> <dd> <p>요소가 <code>pointer-events</code> 속성을 지정하지 않은 것처럼 행동합니다. SVG 콘텐츠에서는 <code>auto</code>와 <code>visiblePainted</code>가 동일한 효과를 지닙니다.</p> </dd> </dl> <dl> <dt id="none"><code>none</code></dt> <dd> <p>요소가 포인터 이벤트의 대상이 되지 않습니다. 그러나 해당 요소의 자손이 다른 <code>pointer-events</code> 값을 지정한 경우, 그 자손은 대상이 될 수 있습니다. 이 때는 이벤트 캡처/<a href="https://developer.mozilla.org/ko/docs/Web/API/Event/bubbles">버블</a> 단계에서 <code>none</code>을 지정한 요소의 이벤트 처리기를 발동할 수 있습니다.</p> </dd> </dl> <h4 id="svg_전용_html에서_실험적_기능">SVG 전용 (HTML에서 실험적 기능)</h4> <dl> <dt id="visiblepainted"><code>visiblePainted</code></dt> <dd> <p>SVG only. The element can only be the target of a mouse event when the <code>visibility</code> property is set to <code>visible</code> and when the mouse cursor is over the interior (i.e., 'fill') of the element and the <code>fill</code> property is set to a value other than <code>none</code>, or when the mouse cursor is over the perimeter (i.e., 'stroke') of the element and the <code>stroke</code> property is set to a value other than <code>none</code>.</p> </dd> <dt id="visiblefill"><code>visibleFill</code></dt> <dd> <p>SVG only. The element can only be the target of a mouse event when the <code>visibility</code> property is set to <code>visible</code> and when the mouse cursor is over the interior (i.e., fill) of the element. The value of the <code>fill</code> property does not affect event processing.</p> </dd> <dt id="visiblestroke"><code>visibleStroke</code></dt> <dd> <p>SVG only. The element can only be the target of a mouse event when the <code>visibility</code> property is set to <code>visible</code> and when the mouse cursor is over the perimeter (i.e., stroke) of the element. The value of the <code>stroke</code> property does not affect event processing.</p> </dd> <dt id="visible"><code>visible</code></dt> <dd> <p>SVG only. The element can be the target of a mouse event when the <code>visibility</code> property is set to <code>visible</code> and the mouse cursor is over either the interior (i.e., fill) or the perimeter (i.e., stroke) of the element. The values of the <code>fill</code> and <code>stroke</code> do not affect event processing.</p> </dd> <dt id="painted"><code>painted</code></dt> <dd> <p>SVG only. The element can only be the target of a mouse event when the mouse cursor is over the interior (i.e., 'fill') of the element and the <code>fill</code> property is set to a value other than <code>none</code>, or when the mouse cursor is over the perimeter (i.e., 'stroke') of the element and the <code>stroke</code> property is set to a value other than <code>none</code>. The value of the <code>visibility</code> property does not affect event processing.</p> </dd> <dt id="fill"><code>fill</code></dt> <dd> <p>SVG only. The element can only be the target of a mouse event when the pointer is over the interior (i.e., fill) of the element. The values of the <code>fill</code> and <code>visibility</code> properties do not affect event processing.</p> </dd> <dt id="stroke"><code>stroke</code></dt> <dd> <p>SVG only. The element can only be the target of a mouse event when the pointer is over the perimeter (i.e., stroke) of the element. The values of the <code>stroke</code> and <code>visibility</code> properties do not affect event processing.</p> </dd> <dt id="all"><code>all</code></dt> <dd> <p>SVG only. The element can only be the target of a mouse event when the pointer is over the interior (i.e., fill) or the perimeter (i.e., stroke) of the element. The values of the <code>fill</code>, <code>stroke</code> and <code>visibility</code> properties do not affect event processing.</p> </dd> </dl>
+</div></section><section aria-labelledby="형식_구문"><h3 id="형식_구문">형식 구문</h3>
+<div class="section-content"><pre class="notranslate"><span class="token property" id="pointer-events">pointer-events = </span><br>  <span class="token keyword">auto</span>            <a href="value_definition_syntax#single_bar">|</a><br>  <span class="token keyword">bounding-box</span>    <a href="value_definition_syntax#single_bar">|</a><br>  <span class="token keyword">visiblePainted</span>  <a href="value_definition_syntax#single_bar">|</a><br>  <span class="token keyword">visibleFill</span>     <a href="value_definition_syntax#single_bar">|</a><br>  <span class="token keyword">visibleStroke</span>   <a href="value_definition_syntax#single_bar">|</a><br>  <span class="token keyword">visible</span>         <a href="value_definition_syntax#single_bar">|</a><br>  <span class="token keyword">painted</span>         <a href="value_definition_syntax#single_bar">|</a><br>  <span class="token keyword">fill</span>            <a href="value_definition_syntax#single_bar">|</a><br>  <span class="token keyword">stroke</span>          <a href="value_definition_syntax#single_bar">|</a><br>  <span class="token keyword">all</span>             <a href="value_definition_syntax#single_bar">|</a><br>  <span class="token keyword">none</span>            <br><br></pre></div></section><section aria-labelledby="설명"><h2 id="설명">설명</h2>
+<div class="section-content">
+<p>SVG 콘텐츠에 <code>pointer-events</code>를 지정하지 않은 경우, <code>visiblePainted</code> 값과 동일한 방법을 사용합니다.</p> <p><code>none</code> 값의 경우 요소가 포인터 이벤트의 대상이 아님을 가리키는 동시에, 이벤트가 요소를 "뚫고" 들어가 "아래" 요소를 대상으로 하도록 만듭니다.</p> <p>다만, <code>pointer-events</code>를 사용해 요소가 포인터 이벤트의 대상이 되지 않도록 지정한다 하여도, 요소의 이벤트 수신기가 절대 발동하지 않거나, 아예 발동할 수 없는 상태가 되는 것은 아닙니다. 만약 자식 요소 중 하나의 <code>pointer-events</code>를 명시적으로 허용한 경우, 해당 자식을 대상으로 하는 이벤트는 평범하게 부모 트리를 타고 올라가며, 그 도중에 부모의 이벤트 수신기를 발동시게 됩니다. 물론, 부모 요소가 덮고 있지만 (포인터 이벤트를 허용한) 자식 요소 바깥의 영역은 클릭해도 부모와 자식 둘 다 감지하지 못합니다.</p> <p><code>pointer-events: none</code>을 지정한 요소여도 <kbd>Tab</kbd> 키를 사용한 순차적 키보드 내비게이션으로 인해 포커스를 획득할 수 있습니다.</p> <p>We would like to provide finer grained control (than just <code>auto</code> and <code>none</code>) in HTML for which parts of an element will cause it to "catch" pointer events, and when. To help us in deciding how <code>pointer-events</code> should be further extended for HTML, if you have any particular things that you would like to be able to do with this property, then please add them to the Use Cases section of <a href="https://wiki.mozilla.org/SVG:pointer-events" target="_blank">this wiki page</a> (don't worry about keeping it tidy).</p>
+</div></section><section aria-labelledby="형식_정의"><h2 id="형식_정의">형식 정의</h2>
+<div class="section-content"><figure class="table-container"><div class="_table"><table class="properties"><tbody>
+<tr>
+<th scope="row"><a href="initial_value">초기값</a></th>
+<td><code>auto</code></td>
+</tr>
+<tr>
+<th scope="row">적용대상</th>
+<td>all elements</td>
+</tr>
+<tr>
+<th scope="row"><a href="inheritance">상속</a></th>
+<td>yes</td>
+</tr>
+<tr>
+<th scope="row"><a href="computed_value">계산 값</a></th>
+<td>as specified</td>
+</tr>
+<tr>
+<th scope="row">Animation type</th>
+<td>discrete</td>
+</tr>
+</tbody></table></div></figure></div></section><section aria-labelledby="형식_구문_2"><h2 id="형식_구문_2">형식 구문</h2>
+<div class="section-content"><pre class="notranslate"><span class="token property" id="pointer-events">pointer-events = </span><br>  <span class="token keyword">auto</span>            <a href="value_definition_syntax#single_bar">|</a><br>  <span class="token keyword">bounding-box</span>    <a href="value_definition_syntax#single_bar">|</a><br>  <span class="token keyword">visiblePainted</span>  <a href="value_definition_syntax#single_bar">|</a><br>  <span class="token keyword">visibleFill</span>     <a href="value_definition_syntax#single_bar">|</a><br>  <span class="token keyword">visibleStroke</span>   <a href="value_definition_syntax#single_bar">|</a><br>  <span class="token keyword">visible</span>         <a href="value_definition_syntax#single_bar">|</a><br>  <span class="token keyword">painted</span>         <a href="value_definition_syntax#single_bar">|</a><br>  <span class="token keyword">fill</span>            <a href="value_definition_syntax#single_bar">|</a><br>  <span class="token keyword">stroke</span>          <a href="value_definition_syntax#single_bar">|</a><br>  <span class="token keyword">all</span>             <a href="value_definition_syntax#single_bar">|</a><br>  <span class="token keyword">none</span>            <br><br></pre></div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+</section><section aria-labelledby="기본_예제"><h3 id="기본_예제">기본 예제</h3>
+<div class="section-content">
+<p>다음 예제는 모든 이미지에서 포인터 이벤트(클릭, 드래그, 호버 등)를 비활성화합니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="0fJwh0p+QfUPGp5Weh/X9vQIC1I0Y40H6COyLilpI+g=" data-language="css"><span class="token selector">img</span> <span class="token punctuation">{</span>
+  <span class="token property">pointer-events</span><span class="token punctuation">:</span> none<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="링크_비활성화하기"><h3 id="링크_비활성화하기">링크 비활성화하기</h3>
+<div class="section-content">
+<p>다음 예제는 <code>https://example.com</code> 으로 통하는 링크의 포인터 이벤트를 비활성화합니다.</p> <h4 id="html">HTML</h4> <div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="bZk0Fxc60M/bfIpcK4t7s60WlHrlmOOLrWVu41DNz88=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ul</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>https://developer.mozilla.org<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>MDN<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>http://example.com<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>example.com<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>ul</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div> <h4 id="css">CSS</h4> <div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="2vOsdJQpAKsJM9FAjNT2IQIa1G54lwLPDhozKZnlFdo=" data-language="css"><span class="token selector">a[href="http://example.com"]</span> <span class="token punctuation">{</span>
+  <span class="token property">pointer-events</span><span class="token punctuation">:</span> none<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div> <h4 id="결과">결과</h4>
+<div class="code-example" id="sect1">
+
+<iframe class="sample-code-frame" title="링크 비활성화하기 sample" id="frame_링크_비활성화하기" width="500" height="100" src="https://live.mdnplay.dev/ko/docs/Web/CSS/pointer-events/runner.html?id=%EB%A7%81%ED%81%AC_%EB%B9%84%ED%99%9C%EC%84%B1%ED%99%94%ED%95%98%EA%B8%B0" loading="lazy"></iframe>
+</div>
+</div></section><h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody>
+<tr><td><a href="https://drafts.csswg.org/css-ui/#pointer-events-control">CSS Basic User Interface Module Level 4 <br><small># pointer-events-control</small></a></td></tr>
+<tr><td><a href="https://svgwg.org/svg2-draft/interact.html#PointerEventsProperty">Scalable Vector Graphics (SVG) 2 <br><small># PointerEventsProperty</small></a></td></tr>
+</tbody>
+</table></div>
+<div class="section-content"><p>Its extension to HTML elements, though present in early drafts of CSS Basic User Interface Module Level 3, has been pushed to its <a href="https://wiki.csswg.org/spec/css4-ui#pointer-events" target="_blank">level 4</a>.</p></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li>The SVG attribute <code><a href="https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/pointer-events" class="only-in-en-us">pointer-events <small>(en-US)</small></a></code>
+</li> <li>The SVG attribute <code><a href="https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/visibility" class="only-in-en-us">visibility <small>(en-US)</small></a></code>
+</li> <li>
+<a href="https://webkit.org/specs/PointerEventsProperty.html" target="_blank">WebKit Specs PointerEventsProperty</a> extended for use in (X)HTML content</li> <li>
+<a href="user-select"><code>user-select</code></a> - controls whether the user can select text</li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/CSS/pointer-events" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/CSS/pointer-events</a>
+  </p>
+</div>

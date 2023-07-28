@@ -1,0 +1,88 @@
+<header><h1>String.prototype.match()</h1></header><div class="section-content"><p><code>match()</code> 메서드는 문자열이 정규식과 매치되는 부분을 검색합니다.</p></div>
+<section aria-labelledby="문법"><h2 id="문법">문법</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="qOij6v9+ZubcTZ92LIfKGQG2JoUDS7mVRjXSIh/N2X8=" data-language="js">str<span class="token punctuation">.</span><span class="token function">match</span><span class="token punctuation">(</span>regexp<span class="token punctuation">)</span>
+</pre>
+</div></div></section><section aria-labelledby="매개변수"><h3 id="매개변수">매개변수</h3>
+<div class="section-content"><dl> <dt id="regexp"><code>regexp</code></dt> <dd> <p>정규식 개체입니다. RegExp가 아닌 객체 obj가 전달되면, <code>new RegExp(obj)</code>를 사용하여 암묵적으로 <a href="../regexp"><code>RegExp</code></a>로 변환됩니다. 매개변수를 전달하지 않고 match()를 사용하면, 빈 문자열:[""]이 있는 <a href="../array"><code>Array</code></a>가 반환됩니다.</p> </dd> </dl></div></section><section aria-labelledby="결과_값"><h3 id="결과_값">결과 값</h3>
+<div class="section-content"><p>문자열이 정규식과 일치하면, 일치하는 전체 문자열을 첫 번째 요소로 포함하는 <a href="../array"><code>Array</code></a>를 반환한 다음 괄호 안에 캡처된 결과가 옵니다. 일치하는 것이 없으면 <a href="../../operators/null"><code>null</code></a>이 반환됩니다.</p></div></section><section aria-labelledby="설명"><h2 id="설명">설명</h2>
+<div class="section-content">
+<p>정규식에 <code>g</code> 플래그가 포함되어있지 않으면, <code>str.match()</code> 는 <a href="../regexp/exec"><code>RegExp.exec()</code></a>와 같은 결과를 반환합니다. 반환된 <a href="../array"><code>Array</code></a>는 원래 문자열의 값을 가지는 <code>input</code> 속성을 포함합니다. 그리고 문자열에서 제로 베이스의 인덱스를 나타내는 <code>index</code> 속성 또한 포함합니다.</p> <p>정규식에 <code>g</code> 플래그가 포함되어 있으면, 일치는 객체가 아닌 일치하는 하위 문자열을 포함하는 <a href="../array"><code>Array</code></a>를 반환합니다. 캡처된 그룹은 반환되지 않습니다. 일치하는 것이 없으면 null이 반환됩니다.</p>
+</div></section><section aria-labelledby="이것도_보세요_regexp_메서드"><h3 id="이것도_보세요_regexp_메서드">이것도 보세요: <code>RegExp</code> 메서드</h3>
+<div class="section-content"><ul> <li>문자열이 정규표현식<a href="../regexp"><code>RegExp</code></a>과 일치하는지 여부를 알아야할 때, <a href="../regexp/test"><code>RegExp.test()</code></a>을 이용해보세요.</li> <li>일치하는 것 중 제일 첫번째 것만 알고싶을 때, <a href="../regexp/exec"><code>RegExp.exec()</code></a>을 대신에 사용하고 싶을겁니다.</li> <li>캡처 그룹을 알고 싶고 전역 플래그가 셋팅되어 있다면, <a href="../regexp/exec"><code>RegExp.exec()</code></a>을 대신에 사용해야합니다.</li> </ul></div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+</section><section aria-labelledby="match_사용하기"><h3 id="match_사용하기">
+<code>match()</code> 사용하기</h3>
+<div class="section-content">
+<p>다음 예제에서는, <code>match()</code>를 사용하여 <code>'Chapter'</code> 라는 단어와 그에 이어지는 1 이상의 숫자, 그리고 그에 이어서 소숫점, 숫자 형태가 반복되는 문자열을 찾는다. 이 정규표현식은 i 플래그를 사용함으로써, 대소문자 구분 없이 찾고자 하는 문자열을 찾는다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="9oIV+DWdbodqdnzhKKnhAjQnxo0J7F3NbiJT5hSlRno=" data-language="js"><span class="token keyword">var</span> str <span class="token operator">=</span> <span class="token string">'For more information, see Chapter 3.4.5.1'</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> re <span class="token operator">=</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">see <span class="token group punctuation">(</span>chapter <span class="token char-set class-name">\d</span><span class="token quantifier number">+</span><span class="token group punctuation">(</span><span class="token special-escape escape">\.</span><span class="token char-set class-name">\d</span><span class="token group punctuation">)</span><span class="token quantifier number">*</span><span class="token group punctuation">)</span></span><span class="token regex-delimiter">/</span><span class="token regex-flags">i</span></span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> found <span class="token operator">=</span> str<span class="token punctuation">.</span><span class="token function">match</span><span class="token punctuation">(</span>re<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>found<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// logs [ 'see Chapter 3.4.5.1',</span>
+<span class="token comment">//        'Chapter 3.4.5.1',</span>
+<span class="token comment">//        '.1',</span>
+<span class="token comment">//        index: 22,</span>
+<span class="token comment">//        input: 'For more information, see Chapter 3.4.5.1' ]</span>
+
+<span class="token comment">// 'see Chapter 3.4.5.1'는 완전한 매치 상태임.</span>
+<span class="token comment">// 'Chapter 3.4.5.1'는 '(chapter \d+(\.\d)*)' 부분에 의해 발견된 것임.</span>
+<span class="token comment">// '.1' 는 '(\.\d)'를 통해 매치된 마지막 값임.</span>
+<span class="token comment">// 'index' 요소가 (22)라는 것은 0에서부터 셀 때 22번째 위치부터 완전 매치된 문자열이 나타남을 의미함.</span>
+<span class="token comment">// 'input' 요소는 입력된 원래 문자열을 나타냄.</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="match와_함께_글로벌g_및_대소문자_무시i_플래그_사용하기"><h3 id="match와_함께_글로벌g_및_대소문자_무시i_플래그_사용하기">
+<code>match()</code>와 함께 글로벌(g) 및 대/소문자 무시(i) 플래그 사용하기</h3>
+<div class="section-content">
+<p>다음 예제는 글로벌(g) 및 대/소문자 무시(i) 플래그를 사용하여 <code>match()</code>를 사용하는 방법을 보여준다. A부터 E 까지의 모든 문자와 a부터 e 까지의 모든 문자가 배열의 각 원소를 구성하는 형태로 반환된다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="fkCs2sZ2LGCQGpZvLZvz9x8ypvk7wZ/YwWWWhvVOzYk=" data-language="js"><span class="token keyword">var</span> str <span class="token operator">=</span> <span class="token string">'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> regexp <span class="token operator">=</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex"><span class="token char-class"><span class="token char-class-punctuation punctuation">[</span><span class="token range">A<span class="token range-punctuation operator">-</span>E</span><span class="token char-class-punctuation punctuation">]</span></span></span><span class="token regex-delimiter">/</span><span class="token regex-flags">gi</span></span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> matches_array <span class="token operator">=</span> str<span class="token punctuation">.</span><span class="token function">match</span><span class="token punctuation">(</span>regexp<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>matches_array<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// ['A', 'B', 'C', 'D', 'E', 'a', 'b', 'c', 'd', 'e']</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="매개변수_없이_match_사용하기"><h3 id="매개변수_없이_match_사용하기">매개변수 없이 <code>match()</code> 사용하기</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="QgimEhFe/ahHJyr8iACN86GCsBQh9XNAoXiEAVBiRyQ=" data-language="js"><span class="token keyword">var</span> str <span class="token operator">=</span> <span class="token string">"Nothing will come of nothing."</span><span class="token punctuation">;</span>
+
+str<span class="token punctuation">.</span><span class="token function">match</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment">// returns [""]</span>
+</pre>
+</div></div></section><section aria-labelledby="정규표현식이_아닌_객체를_매개변수로_사용하기"><h3 id="정규표현식이_아닌_객체를_매개변수로_사용하기">정규표현식이 아닌 객체를 매개변수로 사용하기</h3>
+<div class="section-content">
+<p>매개변수가 문자열이나 숫자(Number)이면, 해당 매개변수는 내부적으로 new RegExp(obj)를 사용하여 <a href="../regexp"><code>RegExp</code></a>로 변환된다. 만약 매개변수가 플러스 기호와 이어지는 숫자형이라면, RegExp() 매서드는 플러스 기호를 무시한다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="Bd0Y8UnjshHEiK7QpsWmAwG+K73wyCL0o/7TBacglI4=" data-language="js"><span class="token keyword">var</span> str1 <span class="token operator">=</span> <span class="token string">"NaN means not a number. Infinity contains -Infinity and +Infinity in JavaScript."</span><span class="token punctuation">,</span>
+    str2 <span class="token operator">=</span> <span class="token string">"My grandfather is 65 years old and My grandmother is 63 years old."</span><span class="token punctuation">,</span>
+    str3 <span class="token operator">=</span> <span class="token string">"The contract was declared null and void."</span><span class="token punctuation">;</span>
+str1<span class="token punctuation">.</span><span class="token function">match</span><span class="token punctuation">(</span><span class="token string">"number"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment">// "number"는 문자열임. ["number"]를 반환함.</span>
+str1<span class="token punctuation">.</span><span class="token function">match</span><span class="token punctuation">(</span><span class="token number">NaN</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token comment">// NaN 타입은 숫자형임. ["NaN"]을 반환함.</span>
+str1<span class="token punctuation">.</span><span class="token function">match</span><span class="token punctuation">(</span><span class="token number">Infinity</span><span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment">// Infinity 타입은 숫자형임. ["Infinity"]를 반환함.</span>
+str1<span class="token punctuation">.</span><span class="token function">match</span><span class="token punctuation">(</span><span class="token operator">+</span><span class="token number">Infinity</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// ["Infinity"]를 반환함.</span>
+str1<span class="token punctuation">.</span><span class="token function">match</span><span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">Infinity</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// ["-Infinity"]를 반환함.</span>
+str2<span class="token punctuation">.</span><span class="token function">match</span><span class="token punctuation">(</span><span class="token number">65</span><span class="token punctuation">)</span><span class="token punctuation">;</span>         <span class="token comment">// ["65"]를 반환함</span>
+str2<span class="token punctuation">.</span><span class="token function">match</span><span class="token punctuation">(</span><span class="token operator">+</span><span class="token number">65</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token comment">// 플러스 기호가 붙은 숫자형. ["65"]를 반환함.</span>
+str3<span class="token punctuation">.</span><span class="token function">match</span><span class="token punctuation">(</span><span class="token keyword">null</span><span class="token punctuation">)</span><span class="token punctuation">;</span>       <span class="token comment">// ["null"]을 반환함.</span>
+</pre>
+</div>
+</div></section><h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://tc39.es/ecma262/multipage/text-processing.html#sec-string.prototype.match">ECMAScript Language Specification <br><small># sec-string.prototype.match</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="../regexp"><code>RegExp</code></a></li> <li><a href="../regexp/exec"><code>RegExp.prototype.exec()</code></a></li> <li><a href="../regexp/test"><code>RegExp.prototype.test()</code></a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/String/match" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/String/match</a>
+  </p>
+</div>

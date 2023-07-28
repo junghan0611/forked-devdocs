@@ -1,0 +1,41 @@
+<header><h1>Navigator.share</h1></header><div class="section-content">
+<div class="notecard experimental" id="sect1"><p><strong>Experimental:</strong> <strong>This is an <a href="https://developer.mozilla.org/en-US/docs/MDN/Writing_guidelines/Experimental_deprecated_obsolete#experimental">experimental technology</a></strong><br>Check the <a href="#browser_compatibility">Browser compatibility table</a> carefully before using this in production.</p></div> <p><code>Navigator.share()</code> 메소드는 Web Share API 의 부분으로서 디바이스의 네이티브 공유하기 메커니즘을 작동시킨다. Web Share API 가 지원되지 않는다면, 이 메소드는 <code>undefined</code> 일 것이다.</p>
+</div>
+<h2 id="syntax">Syntax</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="fTnvHdAcZldUwRGh3ONQQFDl5KPUzdpq8DBp4l/kBtQ=" data-language="js"><span class="token keyword">var</span> sharePromise <span class="token operator">=</span> window<span class="token punctuation">.</span>navigator<span class="token punctuation">.</span><span class="token function">share</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div></div>
+<h3 id="parameters">Parameters</h3>
+<div class="section-content"><ul> <li>
+<em>data</em> <ul> <li>: 공유할 데이터가 담긴 객체. 아래의 필드들 중 적어도 하나는 명시되어야 한다. 사용 가능한 옵션들은:</li> </ul> </li> <li>
+<code>url</code>: 공유될 URL을 나타내는 <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/String"><code>USVString</code></a>.</li> <li>
+<code>text</code>: 공유될 본문을 나타내는 <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/String"><code>USVString</code></a>.</li> <li>
+<code>title</code>: 공유될 제목을 나타내는 <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/String"><code>USVString</code></a>.</li> </ul></div>
+<h3 id="return_value">Return value</h3>
+<div class="section-content">
+<p>사용자가 공유하기 액션을 완료하면 resolve 될 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise"><code>Promise</code> <small>(en-US)</small></a>. <em>data</em> 파라메터가 정확하게 명시되지 않는다면 즉시 reject 될 것이다.</p> <p>예를 들어, 안드로이드용 크롬에서 반환되는 <code>Promise</code> 는 사용자가 공유할 애플리케이션을 선택한 후에 resolve 될 것이다.</p>
+</div>
+<h2 id="examples">Examples</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="iooCOhPkOBdAXPlYssH943pkflKmtNGBnViAT9F3LwI=" data-language="js">navigator<span class="token punctuation">.</span><span class="token function">share</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  <span class="token literal-property property">title</span><span class="token operator">:</span> document<span class="token punctuation">.</span>title<span class="token punctuation">,</span>
+  <span class="token literal-property property">text</span><span class="token operator">:</span> <span class="token string">'Hello World'</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">url</span><span class="token operator">:</span> <span class="token string">'https://developer.mozilla.org'</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// share the URL of MDN</span>
+</pre>
+</div></div>
+<h2 id="명세서">명세서</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://w3c.github.io/web-share/#share-method">Web Share API <br><small># share-method</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/Navigator/share" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/Navigator/share</a>
+  </p>
+</div>

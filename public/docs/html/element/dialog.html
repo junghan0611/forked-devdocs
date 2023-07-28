@@ -1,0 +1,103 @@
+<header><h1>&lt;dialog&gt;: 대화 상자 요소</h1></header><div class="section-content">
+<p><code>&lt;dialog&gt;</code>는 닫을 수 있는 경고, 검사기, 창 등 대화 상자 및 기타 다른 상호작용 가능한 컴포넌트를 나타냅니다.</p> <figure class="table-container"><div class="_table"><table class="properties"> <tbody> <tr> <th scope="row"><a href="../content_categories">콘텐츠 카테고리</a></th> <td>
+<a href="../content_categories#%ed%94%8c%eb%a1%9c%ec%9a%b0_%ec%bd%98%ed%85%90%ec%b8%a0">플로우 콘텐츠</a>, 구획 루트.</td> </tr> <tr> <th scope="row">가능한 콘텐츠</th> <td>
+<a href="../content_categories#%ed%94%8c%eb%a1%9c%ec%9a%b0_%ec%bd%98%ed%85%90%ec%b8%a0">플로우 콘텐츠</a>.</td> </tr> <tr> <th scope="row">태그 생략</th> <td>불가능, 시작과 끝에 태그를 추가하는것은 필수입니다.</td> </tr> <tr> <th scope="row">가능한 부모 요소</th> <td>
+<a href="../content_categories#%ed%94%8c%eb%a1%9c%ec%9a%b0_%ec%bd%98%ed%85%90%ec%b8%a0">플로우 콘텐츠</a>를 허용하는 모든 요소.</td> </tr> <tr> <th scope="row">암시적 ARIA 역할</th> <td><a href="https://developer.mozilla.org/ko/docs/Web/Accessibility/ARIA/Roles/dialog_role"><code>dialog</code></a></td> </tr> <tr> <th scope="row">가능한 ARIA 역할</th> <td><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/alertdialog_role" class="only-in-en-us"><code>alertdialog</code> <small>(en-US)</small></a></td> </tr> <tr> <th scope="row">DOM 인터페이스</th> <td><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement"><code>HTMLDialogElement</code> <small>(en-US)</small></a></td> </tr> </tbody> </table></div></figure>
+</div>
+<h2 id="특성">특성</h2>
+<div class="section-content">
+<p>이 요소는 <a href="../global_attributes">전역 특성</a>을 포함합니다.</p> <div class="notecard warning" id="sect1"> <p><strong>경고:</strong> <code>tabindex</code> 특성을 <code>&lt;dialog&gt;</code> 요소에 사용해서는 안됩니다.</p> </div> <dl> <dt id="open"><a id="attr-open" class="inline-block" href="#attr-open"><b><code>open</code></b></a></dt> <dd> <p>대화 상자가 활성 상태이며 상호작용할 수 있음을 나타냅니다. <code>open</code> 특성이 없을 때 대화 상자가 사용자에게 보여서는 안됩니다.</p> </dd> </dl>
+</div>
+<h2 id="사용_일람">사용 일람</h2>
+<div class="section-content"><ul> <li>
+<code>method="dialog"</code> 특성을 사용한 <a href="form"><code>&lt;form&gt;</code></a> 요소는 제출 시 대화 상자를 닫습니다. 이 때, 대화 상자의 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement/returnValue"><code>returnValue</code> <small>(en-US)</small></a> 속성은 양식을 제출할 때 사용한 버튼의 <a href="https://developer.mozilla.org/ko/docs/Web/HTML/Element/button#attr-value"><code>value</code></a>으로 설정됩니다.</li> <li>CSS <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/::backdrop"><code>::backdrop</code> <small>(en-US)</small></a> <a href="https://developer.mozilla.org/ko/docs/Web/CSS/Pseudo-elements">의사 요소</a>를 사용하면, <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement/showModal"><code>HTMLDialogElement.showModal()</code> <small>(en-US)</small></a> 메서드를 사용해 활성화한 <code>&lt;dialog&gt;</code> 요소의 뒤에 스타일을 적용할 수 있습니다. 예를 들면, 모달 대화 상자가 활성화되어 있는 동안 접근할 수 없는 뒤쪽 요소를 어둡게 만들 때 사용합니다.</li> </ul></div>
+<h2 id="예제">예제</h2>
+
+<h3 id="간단한_예제">간단한 예제</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="OABqnXHnjLu+1+riQDPU/WMe/lKTTLmJ/hF8ZpZVKok=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dialog</span> <span class="token attr-name">open</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>여러분 안녕하세요!<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dialog</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div></div>
+<h3 id="고급_예제">고급 예제</h3>
+<div class="section-content">
+<p>다음 예제는 "상세정보 업데이트" 버튼을 클릭할 경우 양식을 포함한 팝업 대화 상자를 엽니다.</p> <h4 id="html">HTML</h4> <div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="Jt3jHCemhARk0On4X1M1pFbAPtUg3NaRaINWtS4gieQ=" data-language="html"><span class="token comment">&lt;!-- 간단한 양식을 포함한 팝업 대화 상자 --&gt;</span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dialog</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>favDialog<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>form</span> <span class="token attr-name">method</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>dialog<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>label</span><span class="token punctuation">&gt;</span></span>좋아하는 동물:
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>select</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>option</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>option</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>option</span><span class="token punctuation">&gt;</span></span>아르테미아<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>option</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>option</span><span class="token punctuation">&gt;</span></span>레서판다<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>option</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>option</span><span class="token punctuation">&gt;</span></span>거미원숭이<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>option</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>select</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>label</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>menu</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>cancel<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>취소<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>confirmBtn<span class="token punctuation">"</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>default<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>확인<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>menu</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>form</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dialog</span><span class="token punctuation">&gt;</span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>menu</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>updateDetails<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>상세정보 업데이트<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>menu</span><span class="token punctuation">&gt;</span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>output</span> <span class="token attr-name">aria-live</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>polite<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>output</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div> <h4 id="javascript">JavaScript</h4> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="kWdR1TmoPfxgThdsFP7xd2wMUWX5JangP1c1TvmtV04=" data-language="js"><span class="token keyword">var</span> updateButton <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">'updateDetails'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> favDialog <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">'favDialog'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> outputBox <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementsByTagName</span><span class="token punctuation">(</span><span class="token string">'output'</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> selectEl <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementsByTagName</span><span class="token punctuation">(</span><span class="token string">'select'</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> confirmBtn <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">'confirmBtn'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// “Update details” button opens the &lt;dialog&gt; modally</span>
+updateButton<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">'click'</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token function">onOpen</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">typeof</span> favDialog<span class="token punctuation">.</span>showModal <span class="token operator">===</span> <span class="token string">"function"</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    favDialog<span class="token punctuation">.</span><span class="token function">showModal</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+    <span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">"The &lt;dialog&gt; API is not supported by this browser"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// "Favorite animal" input sets the value of the submit button</span>
+selectEl<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">'change'</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token function">onSelect</span><span class="token punctuation">(</span><span class="token parameter">e</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  confirmBtn<span class="token punctuation">.</span>value <span class="token operator">=</span> selectEl<span class="token punctuation">.</span>value<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// "Confirm" button of form triggers "close" on dialog because of [method="dialog"]</span>
+favDialog<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">'close'</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token function">onClose</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  outputBox<span class="token punctuation">.</span>value <span class="token operator">=</span> favDialog<span class="token punctuation">.</span>returnValue <span class="token operator">+</span> <span class="token string">" button clicked - "</span> <span class="token operator">+</span> <span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div>
+</div>
+<h3 id="결과">결과</h3>
+<div class="section-content"><div class="code-example" id="sect2">
+
+<iframe class="sample-code-frame" title="고급 예제 sample" id="frame_고급_예제" width="100%" height="300" src="https://live.mdnplay.dev/ko/docs/Web/HTML/Element/dialog/runner.html?id=%EA%B3%A0%EA%B8%89_%EC%98%88%EC%A0%9C" loading="lazy"></iframe>
+</div></div>
+<h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://html.spec.whatwg.org/multipage/interactive-elements.html#the-dialog-element">HTML Standard <br><small># the-dialog-element</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<h2 id="폴리필">폴리필</h2>
+<div class="section-content"><p>지원하지 않는 브라우저에서 <code>&lt;dialog&gt;</code>를 사용하려면 <a href="https://github.com/GoogleChrome/dialog-polyfill" target="_blank">dialog-polyfill</a>을 추가하세요.</p></div>
+<h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li>
+<code><a href="https://developer.mozilla.org/ko/docs/Web/Reference/Events/close" class="page-not-created">close</a></code> 이벤트</li> <li>
+<code><a href="https://developer.mozilla.org/ko/docs/Web/Reference/Events/cancel" class="page-not-created">cancel</a></code> 이벤트</li> <li>
+<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/::backdrop"><code>::backdrop</code> <small>(en-US)</small></a> 의사 요소</li> <li>
+<a href="https://developer.mozilla.org/en-US/docs/Learn/Forms" class="only-in-en-us">HTML 양식 <small>(en-US)</small></a> 안내서</li> </ul></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/HTML/Element/dialog" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/HTML/Element/dialog</a>
+  </p>
+</div>

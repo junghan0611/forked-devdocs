@@ -1,0 +1,33 @@
+<header><h1>AudioParam.defaultValue</h1></header><div class="section-content"><p><a href="../audioparam"><code>AudioParam</code></a> 인터페이스의 읽기 전용 <code>defaultValue</code> 속성은 <code>AudioParam</code> 을 생성하는 특정한 <a href="../audionode"><code>AudioNode</code></a>에 의해 정의되는 특성들의 초기 값을 나타냅니다.</p></div>
+<h2 id="구문">구문</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="B8GORzjy813YH77wXJgM+FjJSRVfKhMZzKbVEYddv8Q=" data-language="js"><span class="token keyword">var</span> defaultVal <span class="token operator">=</span> audioParam<span class="token punctuation">.</span>defaultValue<span class="token punctuation">;</span>
+</pre>
+</div></div>
+<h3 id="값">값</h3>
+<div class="section-content"><p>부동점 <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Number"><code>Number</code></a>.</p></div>
+<h2 id="예제">예제</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="JGUTKwiQSNAa2SfylTODx01gDeR8AxTd5gQ14c2sNIM=" data-language="js"><span class="token keyword">const</span> audioCtx <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">AudioContext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> gainNode <span class="token operator">=</span> audioCtx<span class="token punctuation">.</span><span class="token function">createGain</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> defaultVal <span class="token operator">=</span> gainNode<span class="token punctuation">.</span>gain<span class="token punctuation">.</span>defaultValue<span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>defaultVal<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 1</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>defaultVal <span class="token operator">===</span> gainNode<span class="token punctuation">.</span>gain<span class="token punctuation">.</span>value<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// true</span>
+</pre>
+</div></div>
+<h2 id="명세서">명세서</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://webaudio.github.io/web-audio-api/#dom-audioparam-defaultvalue">Web Audio API <br><small># dom-audioparam-defaultvalue</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="../web_audio_api/using_web_audio_api">Web Audio API 사용하기</a></li> </ul></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/AudioParam/defaultValue" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/AudioParam/defaultValue</a>
+  </p>
+</div>

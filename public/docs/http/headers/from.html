@@ -1,0 +1,23 @@
+<h1>From</h1>
+<header><h1>From</h1></header><div class="section-content">
+<p><code>From</code> 요청 헤더는 요청한 사용자 에이전트를 제어하는 인간 사용자의 인터넷 이메일을 포함합니다.</p> <p>만약 당신이 (예를 들어 크롤러와 같은) 로보틱 사용자 에이전트를 실행하고 있다면, <code>From</code> 헤더를 반드시 전송해야 하며, 로봇이 한도를 초과하거나 원하지 않으며, 유효하지 않은 요청을 전송하고 있는 경우처럼 서버 상에 문제를 일으키고 있다면 당신에게 해당 이메일로 연락이 가능해야 합니다.</p> <div class="notecard warning" id="sect1"> <p><strong>경고:</strong> 접근 제어 혹은 인증을 위해 <code>From</code> 헤더를 사용해서는 안됩니다.</p> </div> <figure class="table-container"><div class="_table"><table class="properties"> <tbody> <tr> <th scope="row">Header type</th> <td><a href="https://developer.mozilla.org/ko/docs/Glossary/Request_header">Request header</a></td> </tr> <tr> <th scope="row"><a href="https://developer.mozilla.org/ko/docs/Glossary/Forbidden_header_name">Forbidden header name</a></th> <td>no</td> </tr> </tbody> </table></div></figure>
+</div>
+<section aria-labelledby="문법"><h2 id="문법">문법</h2>
+<div class="section-content"><pre class="notranslate">From: &lt;email&gt;
+</pre></div></section><section aria-labelledby="디렉티브"><h2 id="디렉티브">디렉티브</h2>
+<div class="section-content"><dl> <dt id="email">&lt;email&gt;</dt> <dd> <p>기계가 사용 가능한 이메일 주소.</p> </dd> </dl></div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+<div class="section-content"><pre class="notranslate">From: webmaster@example.org
+</pre></div></section><h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://www.rfc-editor.org/rfc/rfc9110#field.from">HTTP Semantics <br><small># field.from</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="함께_참고할_내용"><h2 id="함께_참고할_내용">함께 참고할 내용</h2>
+<div class="section-content"><ul> <li><a href="host"><code>Host</code></a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/HTTP/Headers/From" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/HTTP/Headers/From</a>
+  </p>
+</div>

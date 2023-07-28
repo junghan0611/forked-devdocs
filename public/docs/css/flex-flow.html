@@ -1,0 +1,89 @@
+<header><h1>flex-flow</h1></header><div class="section-content"><p><code>flex-flow</code> <a href="https://developer.mozilla.org/ko/docs/Web/CSS">CSS</a> 속성은 <a href="flex-direction"><code>flex-direction</code></a>, <a href="flex-wrap"><code>flex-wrap</code></a> 속성의 <a href="shorthand_properties">단축 속성</a>입니다.</p></div>
+<section aria-labelledby="시도해보기"><h2 id="시도해보기">시도해보기</h2>
+<div class="section-content"><iframe class="interactive is-default-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/css/flex-flow.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe></div></section><section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="pdDNJyKaX0j9VQyXIgUkjkZjsKhLBG4Xc30Fx32X200=" data-language="css"><span class="token comment">/* flex-flow: &lt;'flex-direction'&gt; */</span>
+<span class="token property">flex-flow</span><span class="token punctuation">:</span> row<span class="token punctuation">;</span>
+<span class="token property">flex-flow</span><span class="token punctuation">:</span> row-reverse<span class="token punctuation">;</span>
+<span class="token property">flex-flow</span><span class="token punctuation">:</span> column<span class="token punctuation">;</span>
+<span class="token property">flex-flow</span><span class="token punctuation">:</span> column-reverse<span class="token punctuation">;</span>
+
+<span class="token comment">/* flex-flow: &lt;'flex-wrap'&gt; */</span>
+<span class="token property">flex-flow</span><span class="token punctuation">:</span> nowrap<span class="token punctuation">;</span>
+<span class="token property">flex-flow</span><span class="token punctuation">:</span> wrap<span class="token punctuation">;</span>
+<span class="token property">flex-flow</span><span class="token punctuation">:</span> wrap-reverse<span class="token punctuation">;</span>
+
+<span class="token comment">/* flex-flow: &lt;'flex-direction'&gt;과 &lt;'flex-wrap'&gt; */</span>
+<span class="token property">flex-flow</span><span class="token punctuation">:</span> row nowrap<span class="token punctuation">;</span>
+<span class="token property">flex-flow</span><span class="token punctuation">:</span> column wrap<span class="token punctuation">;</span>
+<span class="token property">flex-flow</span><span class="token punctuation">:</span> column-reverse wrap-reverse<span class="token punctuation">;</span>
+
+<span class="token comment">/* 전역 값 */</span>
+<span class="token property">flex-flow</span><span class="token punctuation">:</span> inherit<span class="token punctuation">;</span>
+<span class="token property">flex-flow</span><span class="token punctuation">:</span> initial<span class="token punctuation">;</span>
+<span class="token property">flex-flow</span><span class="token punctuation">:</span> unset<span class="token punctuation">;</span>
+</pre>
+</div></div></section><section aria-labelledby="값"><h3 id="값">값</h3>
+<div class="section-content"><p>자세한 내용은 <a href="flex-direction"><code>flex-direction</code></a>과 <a href="flex-wrap"><code>flex-wrap</code></a> 속성을 참고하세요.</p></div></section><section aria-labelledby="형식_구문"><h3 id="형식_구문">형식 구문</h3>
+<div class="section-content"><pre class="notranslate"><span class="token property" id="flex-flow">flex-flow = </span><br>  <span class="token property">&lt;'flex-direction'&gt;</span>  <a href="value_definition_syntax#double_bar">||</a><br>  <span class="token property">&lt;'flex-wrap'&gt;</span>       <br><br></pre></div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="uuySwaxdYVewcl5eqJ+d5uibOy+lHJ5eXIPOVbvmHrM=" data-language="css"><span class="token selector">element</span> <span class="token punctuation">{</span>
+  <span class="token comment">/* Main-axis is the block direction with reversed main-start and main-end. Flex items are laid out in multiple lines */</span>
+  <span class="token property">flex-flow</span><span class="token punctuation">:</span> column-reverse wrap<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div></div></section><section aria-labelledby="명세"><h2 id="명세">명세</h2>
+<div class="section-content"><figure class="table-container"><div class="_table"><table class="properties"><tbody>
+<tr>
+<th scope="row"><a href="initial_value">초기값</a></th>
+<td>as each of the properties of the shorthand:<br><ul>
+<li>
+<a href="flex-direction"><code>flex-direction</code></a>: <code>row</code>
+</li>
+<li>
+<a href="flex-wrap"><code>flex-wrap</code></a>: <code>nowrap</code>
+</li>
+</ul>
+</td>
+</tr>
+<tr>
+<th scope="row">적용대상</th>
+<td>flex containers</td>
+</tr>
+<tr>
+<th scope="row"><a href="inheritance">상속</a></th>
+<td>no</td>
+</tr>
+<tr>
+<th scope="row"><a href="computed_value">계산 값</a></th>
+<td>as each of the properties of the shorthand:<br><ul>
+<li>
+<a href="flex-direction"><code>flex-direction</code></a>: as specified</li>
+<li>
+<a href="flex-wrap"><code>flex-wrap</code></a>: as specified</li>
+</ul>
+</td>
+</tr>
+<tr>
+<th scope="row">Animation type</th>
+<td>as each of the properties of the shorthand:<br><ul>
+<li>
+<a href="flex-direction"><code>flex-direction</code></a>: discrete</li>
+<li>
+<a href="flex-wrap"><code>flex-wrap</code></a>: discrete</li>
+</ul>
+</td>
+</tr>
+</tbody></table></div></figure></div></section><h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li>CSS 플렉스박스 가이드: <em><a href="css_flexible_box_layout/basic_concepts_of_flexbox">Basic Concepts of Flexbox</a></em>
+</li> <li>CSS 플렉스박스 가이드: <em><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_flexible_box_layout/Ordering_flex_items" class="only-in-en-us">Ordering flex items <small>(en-US)</small></a></em>
+</li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/CSS/flex-flow" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/CSS/flex-flow</a>
+  </p>
+</div>

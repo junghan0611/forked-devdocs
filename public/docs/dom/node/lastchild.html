@@ -1,0 +1,31 @@
+<header><h1>element.lastChild</h1></header><h2 id="요약">요약</h2>
+<div class="section-content"><p><strong>lastChild</strong>는 노드의 마지막 자식을 반환합니다.</p></div>
+<h2 id="구문과_값">구문과 값</h2>
+<div class="section-content">
+<div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="aGiUpQdP6bwUv9NvysRbIs9GGjxiYiEVR1gdzsBTwD0=" data-language="js">last_child <span class="token operator">=</span> element<span class="token punctuation">.</span>lastChild
+</pre>
+</div> <p>반환되는 <code>last_child</code>는 노드입니다. 노드의 부모가 요소이면, 자식은 보통 요소 노드, 텍스트 노드, 주석 노드입니다.</p>
+</div>
+<h2 id="예시">예시</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="iuXKUb2wF0pPAL4jCgBisoE9qiBYjxKnki3MvF1PNo8=" data-language="js"><span class="token keyword">var</span> tr <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">"row1"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+corner_td <span class="token operator">=</span> tr<span class="token punctuation">.</span>lastChild<span class="token punctuation">;</span>
+</pre>
+</div></div>
+<h2 id="주의">주의</h2>
+<div class="section-content"><p>자식 요소가 없으면 <code>null</code>을 반환합니다.</p></div>
+<h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="#">DOM Standard <br><small># ref-for-dom-node-lastchild①</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/Node/lastChild" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/Node/lastChild</a>
+  </p>
+</div>

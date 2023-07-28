@@ -1,0 +1,48 @@
+<header><h1>Number.prototype.toPrecision()</h1></header><div class="section-content"><p><code>toPrecision()</code> 메서드는 <a href="../number"><code>Number</code></a> 객체를 지정된 정밀도로 나타내는 문자열을 반환한다.</p></div>
+<section aria-labelledby="시도해보기"><h2 id="시도해보기">시도해보기</h2>
+<div class="section-content"><iframe class="interactive is-js-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/js/number-toprecision.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe></div></section><section aria-labelledby="문법"><h2 id="문법">문법</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="C30wlG1/gnteF6YiRM/Nj/pGm1EM3KZ7dlTMupEvTXg=" data-language="js">    numObj<span class="token punctuation">.</span><span class="token function">toPrecision</span><span class="token punctuation">(</span><span class="token punctuation">[</span>precision<span class="token punctuation">]</span><span class="token punctuation">)</span>
+</pre>
+</div></div></section><section aria-labelledby="파라미터"><h3 id="파라미터">파라미터</h3>
+<div class="section-content"><dl> <dt id="precision"><code>precision</code></dt> <dd> <p>선택적 파라미터. 유효 자릿수를 지정하는 정수.</p> </dd> </dl></div></section><section aria-labelledby="반환_값"><h3 id="반환_값">반환 값</h3>
+<div class="section-content">
+<p>고정 소수점 또는 지수 표기법의 <a href="../number"><code>Number</code></a> 객체를 정밀 유효 숫자로 반올림 한 문자열입니다. <code>toPrecision()</code>에도 적용되는 <a href="tofixed"><code>Number.prototype.toFixed()</code></a> 메서드에 대한 설명에서 반올림에 대한 설명을 참조하세요.</p> <p><code>precision(정밀도)</code> 인수가 생략되면 <a href="tostring"><code>Number.prototype.toString()</code></a>처럼 작동합니다. <code>precision(정밀도)</code> 인수가 정수가 아닌 값이면 가장 가까운 정수로 반올림됩니다.</p>
+</div></section><section aria-labelledby="예외"><h3 id="예외">예외</h3>
+<div class="section-content"><dl> <dt id="rangeerror"><a href="../rangeerror"><code>RangeError</code></a></dt> <dd> <p><code>precision(정밀도)</code>가 1에서 100 사이가 아닌 경우 <a href="../rangeerror"><code>RangeError</code></a>가 발생합니다. 구현은 더 큰 값과 더 작은 값을 지원할 수 있습니다. ECMA-262는 최대 21 자리의 정밀도 만을 요구합니다.</p> </dd> </dl></div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+</section><section aria-labelledby="toprecision_사용"><h3 id="toprecision_사용">
+<code>toPrecision</code> 사용</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="8x8W3JuYh1ah7nhsX0D+nbjuO6J48mLWBgA+5Ov8cMg=" data-language="js"><span class="token keyword">var</span> numObj <span class="token operator">=</span> <span class="token number">5.123456</span><span class="token punctuation">;</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>numObj<span class="token punctuation">.</span><span class="token function">toPrecision</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token comment">// logs '5.123456'</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>numObj<span class="token punctuation">.</span><span class="token function">toPrecision</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment">// logs '5.1235'</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>numObj<span class="token punctuation">.</span><span class="token function">toPrecision</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment">// logs '5.1'</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>numObj<span class="token punctuation">.</span><span class="token function">toPrecision</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment">// logs '5'</span>
+
+numObj <span class="token operator">=</span> <span class="token number">0.000123</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>numObj<span class="token punctuation">.</span><span class="token function">toPrecision</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token comment">// logs '0.000123'</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>numObj<span class="token punctuation">.</span><span class="token function">toPrecision</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment">// logs '0.00012300'</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>numObj<span class="token punctuation">.</span><span class="token function">toPrecision</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment">// logs '0.00012'</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>numObj<span class="token punctuation">.</span><span class="token function">toPrecision</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment">// logs '0.0001'</span>
+
+<span class="token comment">// 일부 상황에서는 지수 표기법이 반환 될 수 있습니다</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token number">1234.5</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toPrecision</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// logs '1.2e+3'</span>
+</pre>
+</div></div></section><h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://tc39.es/ecma262/multipage/numbers-and-dates.html#sec-number.prototype.toprecision">ECMAScript Language Specification <br><small># sec-number.prototype.toprecision</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="see_also"><h2 id="see_also">See also</h2>
+<div class="section-content"><ul> <li><a href="tofixed"><code>Number.prototype.toFixed()</code></a></li> <li><a href="toexponential"><code>Number.prototype.toExponential()</code></a></li> <li><a href="tostring"><code>Number.prototype.toString()</code></a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Number/toPrecision" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Number/toPrecision</a>
+  </p>
+</div>

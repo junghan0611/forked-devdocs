@@ -1,0 +1,73 @@
+<header><h1>font-synthesis</h1></header><div class="section-content"><p><a href="https://developer.mozilla.org/ko/docs/Web/CSS">CSS</a> <code>font-synthesis</code> 속성은 브라우저가 굵은 글꼴과 이탤릭 글꼴을 합성하는 것을 허용할지 설정합니다.</p></div>
+<section aria-labelledby="시도해보기"><h2 id="시도해보기">시도해보기</h2>
+<div class="section-content"><iframe class="interactive is-default-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/css/font-synthesis.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe></div></section><section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content">
+<p><code>font-synthesis</code>는 다음 방법 중 하나를 사용해 지정합니다.</p> <ul> <li>
+<code>none</code> 키워드.</li> <li>
+<code>weight</code> 또는 <code>style</code> 키워드.</li> <li>
+<code>weight</code>와 <code>style</code> 키워드.</li> </ul>
+</div></section><section aria-labelledby="값"><h3 id="값">값</h3>
+<div class="section-content"><dl> <dt id="none"><code>none</code></dt> <dd> <p>굵은 글꼴과 이탤릭 글꼴의 합성을 금지합니다.</p> </dd> <dt id="weight"><code>weight</code></dt> <dd> <p>필요한 경우 굵은 글꼴을 합성할 수 있습니다.</p> </dd> <dt id="style"><code>style</code></dt> <dd> <p>필요한 경우 이탤릭 글꼴을 합성할 수 있습니다.</p> </dd> </dl></div></section><section aria-labelledby="설명"><h2 id="설명">설명</h2>
+<div class="section-content"><p>대부분의 표준 서양 글꼴은 이탤릭과 굵은 글꼴을 포함하고 있으나 상용 글꼴은 그렇지 않은 경우도 많습니다. 한국, 중국, 일본을 포함한 비 알파벳 문화권의 문자 체계는 보통 이런 변형을 포함하지 않으며 브라우저의 글꼴 합성으로 인해 가독성이 떨어질 수 있습니다. 이 두 가지 경우에 대해 <code>font-synthesis</code>를 사용해 기본 글꼴 합성을 끄는 것이 좋을 수도 있습니다.</p></div></section><section aria-labelledby="형식_정의"><h2 id="형식_정의">형식 정의</h2>
+<div class="section-content"><figure class="table-container"><div class="_table"><table class="properties"><tbody>
+<tr>
+<th scope="row"><a href="initial_value">초기값</a></th>
+<td><code>weight style</code></td>
+</tr>
+<tr>
+<th scope="row">적용대상</th>
+<td>all elements. It also applies to <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/::first-letter" class="only-in-en-us"><code>::first-letter</code> <small>(en-US)</small></a> and <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/::first-line" class="only-in-en-us"><code>::first-line</code> <small>(en-US)</small></a>.</td>
+</tr>
+<tr>
+<th scope="row"><a href="inheritance">상속</a></th>
+<td>yes</td>
+</tr>
+<tr>
+<th scope="row"><a href="computed_value">계산 값</a></th>
+<td>as specified</td>
+</tr>
+<tr>
+<th scope="row">Animation type</th>
+<td>discrete</td>
+</tr>
+</tbody></table></div></figure></div></section><section aria-labelledby="형식_구문"><h2 id="형식_구문">형식 구문</h2>
+<div class="section-content"><pre class="notranslate"><span class="token property" id="font-synthesis">font-synthesis = </span><br>  <span class="token keyword">none</span>                               <a href="value_definition_syntax#single_bar">|</a><br>  <a href="value_definition_syntax#brackets">[</a> <span class="token keyword">weight</span> <a href="value_definition_syntax#double_bar">||</a> <span class="token keyword">style</span> <a href="value_definition_syntax#double_bar">||</a> <span class="token keyword">small-caps</span> <a href="value_definition_syntax#brackets">]</a>  <br><br></pre></div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+</section><section aria-labelledby="글꼴_합성_비활성화"><h3 id="글꼴_합성_비활성화">글꼴 합성 비활성화</h3>
+<div class="section-content">
+<h4 id="html">HTML</h4> <div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="Cguy3oX/bsct8j9sLrgrHbwjv8DFNmNeLuXXdQjhsuA=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>em</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>syn<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>절 합성하세요! Synthesize!<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>em</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>br</span><span class="token punctuation">/&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>em</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>no-syn<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>절 합성하지 마세요! Synthesize!<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>em</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div> <h4 id="css">CSS</h4> <div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="QwSbX8S4tvZkXrOlsKcODQmZceuND7Oj5Z91+mZscu0=" data-language="css"><span class="token selector">em</span> <span class="token punctuation">{</span>
+  <span class="token property">font-weight</span><span class="token punctuation">:</span> bold<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token selector">.syn</span> <span class="token punctuation">{</span>
+  <span class="token property">font-synthesis</span><span class="token punctuation">:</span> style weight<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token selector">.no-syn</span> <span class="token punctuation">{</span>
+  <span class="token property">font-synthesis</span><span class="token punctuation">:</span> none<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div> <h4 id="결과">결과</h4>
+<div class="code-example" id="sect1">
+
+<iframe class="sample-code-frame" title="글꼴 합성 비활성화 sample" id="frame_글꼴_합성_비활성화" height="60" src="https://live.mdnplay.dev/ko/docs/Web/CSS/font-synthesis/runner.html?id=%EA%B8%80%EA%BC%B4_%ED%95%A9%EC%84%B1_%EB%B9%84%ED%99%9C%EC%84%B1%ED%99%94" loading="lazy"></iframe>
+</div>
+</div></section><h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://drafts.csswg.org/css-fonts/#font-synthesis">CSS Fonts Module Level 4 <br><small># font-synthesis</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/font-style"><code>font-style</code> <small>(en-US)</small></a></li> <li><a href="font-weight"><code>font-weight</code></a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/CSS/font-synthesis" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/CSS/font-synthesis</a>
+  </p>
+</div>

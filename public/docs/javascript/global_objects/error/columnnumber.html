@@ -1,0 +1,21 @@
+<header><h1>Error.prototype.columnNumber</h1></header><div class="section-content">
+<div class="notecard nonstandard" id="sect1"><p><strong>비표준:</strong> 이 기능은 비표준이므로 실제 프로덕션에서 사용하지 마세요. 모든 사용자 환경에서 작동하지 않을 수 도 있으며, 미래에 호환성 문제가 생길 수 있습니다.</p></div> <p><code>columnNumber</code> 속성은 이 오류가 발생한 파일의 행의 열 번호를 포함합니다.</p>
+</div>
+<section aria-labelledby="예제"><h2 id="예제">예제</h2>
+</section><section aria-labelledby="columnnumber_사용하기"><h3 id="columnnumber_사용하기">columnNumber 사용하기</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="URro6Acx0ohNinAZ6ijXWxdzwphCd+zhpCae6N8VQ7w=" data-language="js"><span class="token keyword">var</span> e <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Error</span><span class="token punctuation">(</span><span class="token string">'Could not parse input'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">throw</span> e<span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>e<span class="token punctuation">.</span>columnNumber<span class="token punctuation">)</span> <span class="token comment">// 0</span>
+</pre>
+</div></div></section><section aria-labelledby="명세"><h2 id="명세">명세</h2>
+<div class="section-content"><p>표준의 일부가 아닙니다.</p></div></section><h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="see_also"><h2 id="see_also">See also</h2>
+<div class="section-content"><ul> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error/stack"><code>Error.prototype.stack</code> <small>(en-US)</small></a></li> <li><a href="linenumber"><code>Error.prototype.lineNumber</code></a></li> <li><a href="filename"><code>Error.prototype.fileName</code></a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Error/columnNumber" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Error/columnNumber</a>
+  </p>
+</div>

@@ -1,0 +1,77 @@
+<header><h1>ServiceWorkerRegistration</h1></header><div class="section-content">
+<div class="notecard experimental" id="sect1"><p><strong>Experimental:</strong> <strong>This is an <a href="https://developer.mozilla.org/en-US/docs/MDN/Writing_guidelines/Experimental_deprecated_obsolete#experimental">experimental technology</a></strong><br>Check the <a href="#browser_compatibility">Browser compatibility table</a> carefully before using this in production.</p></div> <p>The <code>ServiceWorkerRegistration</code> interface of the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API" class="only-in-en-us">ServiceWorker API <small>(en-US)</small></a> represents the service worker registration. You register a service worker to control one or more pages that share the same origin.</p> <p>The lifetime of a service worker registration is beyond that of the <code>ServiceWorkerRegistration</code> objects that represent them within the lifetime of their corresponding service worker clients. The browser maintains a persistent list of active <code>ServiceWorkerRegistration</code> objects.</p> <div class="notecard note" id="sect2"> <p><strong>참고:</strong> This feature is available in <a href="web_workers_api">Web Workers</a>.</p> </div>
+</div>
+<h2 id="properties">Properties</h2>
+<div class="section-content">
+<p><em>Also implements properties from its parent interface,</em> <a href="eventtarget"><code>EventTarget</code></a>.</p> <dl> <dt id="serviceworkerregistration.scope_en-us">
+<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerRegistration/scope"><code>ServiceWorkerRegistration.scope</code> <small>(en-US)</small></a> <span class="badge inline readonly">읽기 전용</span>
+</dt> <dd> <p>Returns a unique identifier for a service worker registration. This must be on the same origin as the document that registers the <a href="serviceworker"><code>ServiceWorker</code></a>.</p> </dd> <dt id="serviceworkerregistration.installing">
+<a href="serviceworkerregistration/installing"><code>ServiceWorkerRegistration.installing</code></a> <strong><span class="badge inline readonly">읽기 전용</span></strong>
+</dt> <dd> <p>Returns a service worker whose state is <code>installing</code>. This is initially set to <code>null</code>.</p> </dd> <dt id="serviceworkerregistration.waiting_en-us">
+<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerRegistration/waiting"><code>ServiceWorkerRegistration.waiting</code> <small>(en-US)</small></a> <strong><span class="badge inline readonly">읽기 전용</span></strong>
+</dt> <dd> <p>Returns a service worker whose state is <code>waiting</code>. This is initially set to <code>null</code>.</p> </dd> <dt id="serviceworkerregistration.active">
+<a href="serviceworkerregistration/active"><code>ServiceWorkerRegistration.active</code></a> <strong><span class="badge inline readonly">읽기 전용</span></strong>
+</dt> <dd> <p>Returns a service worker whose state is either <code>activating</code> or <code>activated</code>. This is initially set to <code>null</code>. An active worker will control a <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/Client"><code>ServiceWorkerClient</code> <small>(en-US)</small></a> if the client's URL falls within the scope of the registration (the <code>scope</code> option set when <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerContainer/register"><code>ServiceWorkerContainer.register</code> <small>(en-US)</small></a> is first called.)</p> </dd> <dt id="serviceworkerregistration.navigationpreload">
+<a href="serviceworkerregistration/navigationpreload"><code>ServiceWorkerRegistration.navigationPreload</code></a> <span class="badge inline readonly">읽기 전용</span>
+</dt> <dd> <p>Returns the instance of <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/NavigationPreloadManager"><code>NavigationPreloadManager</code> <small>(en-US)</small></a> associated with the current service worker registration.</p> </dd> <dt id="serviceworkerregistration.pushmanager_en-us">
+<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerRegistration/pushManager"><code>ServiceWorkerRegistration.pushManager</code> <small>(en-US)</small></a> <span class="badge inline readonly">읽기 전용</span>
+</dt> <dd> <p>Returns a reference to the <a href="pushmanager"><code>PushManager</code></a> interface for managing push subscriptions including subscribing, getting an active subscription, and accessing push permission status.</p> </dd> <dt id="serviceworkerregistration.sync_en-us">
+<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerRegistration/sync"><code>ServiceWorkerRegistration.sync</code> <small>(en-US)</small></a> <strong><abbr class="icon icon-nonstandard" title="비표준. 사용하기전에 다른 브라우저에서도 사용 가능한지 확인 해주세요."> <span class="visually-hidden">비표준</span> </abbr></strong> <span class="badge inline readonly">읽기 전용</span>
+</dt> <dd> <p>Returns a reference to the <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/SyncManager"><code>SyncManager</code> <small>(en-US)</small></a> interface, which manages background synchronization processes.</p> </dd> </dl>
+</div>
+<h3 id="unimplemented_properties">Unimplemented properties</h3>
+<div class="section-content"><dl> <dt id="serviceworkerregistration.periodicsync_en-us">
+<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerRegistration/periodicSync"><code>serviceWorkerRegistration.periodicSync</code> <small>(en-US)</small></a> <abbr class="icon icon-nonstandard" title="비표준. 사용하기전에 다른 브라우저에서도 사용 가능한지 확인 해주세요."> <span class="visually-hidden">비표준</span> </abbr> <span class="badge inline readonly">읽기 전용</span>
+</dt> <dd> <p>Returns a reference to the <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/PeriodicSyncManager"><code>PeriodicSyncManager</code> <small>(en-US)</small></a> interface, which manages periodic background synchronization processes. This was mentioned as an idea in the SW explainer at some point, but as yet has not been implemented anywhere.</p> </dd> </dl></div>
+<h3 id="event_handlers">Event handlers</h3>
+<div class="section-content"><dl> <dt id="serviceworkerregistration.onupdatefound_en-us">
+<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerRegistration/updatefound_event"><code>ServiceWorkerRegistration.onupdatefound</code> <small>(en-US)</small></a> <span class="badge inline readonly">읽기 전용</span>
+</dt> <dd> <p>An <a href="eventtarget/addeventlistener"><code>EventListener</code></a> property called whenever an event of type <code>updatefound</code> is fired; it is fired any time the <a href="serviceworkerregistration/installing"><code>ServiceWorkerRegistration.installing</code></a> property acquires a new service worker.</p> </dd> </dl></div>
+<h2 id="methods">Methods</h2>
+<div class="section-content">
+<p><em>Also implements methods from its parent interface,</em> <a href="eventtarget"><code>EventTarget</code></a>.</p> <dl> <dt id="serviceworkerregistration.getnotifications_en-us"><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerRegistration/getNotifications"><code>ServiceWorkerRegistration.getNotifications()</code> <small>(en-US)</small></a></dt> <dd> <p>Returns a <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Promise"><code>Promise</code></a> that resolves to an array of <a href="notification"><code>Notification</code></a> objects.</p> </dd> <dt id="serviceworkerregistration.shownotification_en-us"><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerRegistration/showNotification"><code>ServiceWorkerRegistration.showNotification()</code> <small>(en-US)</small></a></dt> <dd> <p>Displays the notification with the requested title.</p> </dd> <dt id="serviceworkerregistration.update_en-us"><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerRegistration/update"><code>ServiceWorkerRegistration.update()</code> <small>(en-US)</small></a></dt> <dd> <p>Checks the server for an updated version of the service worker without consulting caches.</p> </dd> <dt id="serviceworkerregistration.unregister_en-us"><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerRegistration/unregister"><code>ServiceWorkerRegistration.unregister()</code> <small>(en-US)</small></a></dt> <dd> <p>Unregisters the service worker registration and returns a <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Promise"><code>Promise</code></a>. The service worker will finish any ongoing operations before it is unregistered.</p> </dd> </dl>
+</div>
+<h2 id="examples">Examples</h2>
+<div class="section-content">
+<p>In this example, the code first checks whether the browser supports service workers and if so registers one. Next, it adds and <code>updatefound</code> event in which it uses the service worker registration to listen for further changes to the service worker's state. If the service worker hasn't changed since the last time it was registered, than the <code>updatefound</code> event will not be fired.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="knVjYaevcsNB7/fbsuIdzp29gba6DWPI/QdhkfUDKUI=" data-language="js"><span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token string">'serviceWorker'</span> <span class="token keyword">in</span> navigator<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  navigator<span class="token punctuation">.</span>serviceWorker<span class="token punctuation">.</span><span class="token function">register</span><span class="token punctuation">(</span><span class="token string">'/sw.js'</span><span class="token punctuation">)</span>
+  <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">registration</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    registration<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">'updatefound'</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token comment">// If updatefound is fired, it means that there's</span>
+      <span class="token comment">// a new service worker being installed.</span>
+      <span class="token keyword">var</span> installingWorker <span class="token operator">=</span> registration<span class="token punctuation">.</span>installing<span class="token punctuation">;</span>
+      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'A new service worker is being installed:'</span><span class="token punctuation">,</span>
+        installingWorker<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+      <span class="token comment">// You can listen for changes to the installing service worker's</span>
+      <span class="token comment">// state via installingWorker.onstatechange</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token punctuation">.</span><span class="token function">catch</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">error</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'Service worker registration failed:'</span><span class="token punctuation">,</span> error<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'Service workers are not supported.'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div>
+</div>
+<h2 id="명세서">명세서</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody>
+<tr><td><a href="https://w3c.github.io/ServiceWorker/#serviceworkerregistration-interface">Service Workers <br><small># serviceworkerregistration-interface</small></a></td></tr>
+<tr><td><a href="https://w3c.github.io/push-api/#extensions-to-the-serviceworkerregistration-interface">Push API <br><small># extensions-to-the-serviceworkerregistration-interface</small></a></td></tr>
+</tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<h2 id="see_also">See also</h2>
+<div class="section-content"><ul> <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API/Using_Service_Workers" class="only-in-en-us">Using Service Workers <small>(en-US)</small></a></li> <li><a href="https://github.com/mdn/sw-test" target="_blank">Service workers basic code example</a></li> <li><a href="https://jakearchibald.github.io/isserviceworkerready/" target="_blank">Is ServiceWorker ready?</a></li> <li><a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Promise"><code>Promise</code></a></li> <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Using_web_workers" class="only-in-en-us">Using web workers <small>(en-US)</small></a></li> </ul></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/ServiceWorkerRegistration" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/ServiceWorkerRegistration</a>
+  </p>
+</div>

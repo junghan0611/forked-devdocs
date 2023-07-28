@@ -1,0 +1,40 @@
+<header><h1>History.scrollRestoration</h1></header><div class="section-content"><p><code>History.scrollRestoration</code> 속성을 사용하면 기록 탐색 시 사용할 스크롤 위치 복원 기능의 기본값을 웹 애플리케이션이 지정할 수 있습니다.</p></div>
+<h2 id="구문">구문</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="inOxOhp9t/akK6rOzZmUFcLXL2HQPqsWz1CxNqLKsfQ=" data-language="js"><span class="token keyword">let</span> scrollRestore <span class="token operator">=</span> history<span class="token punctuation">.</span>scrollRestoration<span class="token punctuation">;</span>
+</pre>
+</div></div>
+<h3 id="값">값</h3>
+<div class="section-content"><dl> <dt id="auto"><code>"auto"</code></dt> <dd> <p>페이지 내에서 사용자의 스크롤이 위치했던 장소로 복원합니다.</p> </dd> <dt id="manual"><code>"manual"</code></dt> <dd> <p>스크롤을 복원하지 않습니다. 사용자가 직접 스크롤해야 합니다.</p> </dd> </dl></div>
+<h2 id="예제">예제</h2>
+
+<h3 id="현재_스크롤_복원_여부_알아내기">현재 스크롤 복원 여부 알아내기</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="tldvWzsubpX6sHiNz3njEtznK9WmpTN8k7N4r3k91S0=" data-language="js"><span class="token keyword">const</span> scrollRestoration <span class="token operator">=</span> history<span class="token punctuation">.</span>scrollRestoration
+<span class="token keyword">if</span> <span class="token punctuation">(</span>scrollRestoration <span class="token operator">===</span> <span class="token string">'manual'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'The location on the page is not restored, user will need to scroll manually.'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div></div>
+<h3 id="스크롤_복원_비활성화">스크롤 복원 비활성화</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="WkczjN9Swa171r7uQdOwHiPEaNqxhj82GQbHgSaCL18=" data-language="js"><span class="token keyword">if</span> <span class="token punctuation">(</span>history<span class="token punctuation">.</span>scrollRestoration<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  window<span class="token punctuation">.</span>history<span class="token punctuation">.</span>scrollRestoration <span class="token operator">=</span> <span class="token string">'manual'</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div></div>
+<h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://html.spec.whatwg.org/multipage/nav-history-apis.html#dom-history-scroll-restoration-dev">HTML Standard <br><small># dom-history-scroll-restoration-dev</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/History/scrollRestoration" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/History/scrollRestoration</a>
+  </p>
+</div>

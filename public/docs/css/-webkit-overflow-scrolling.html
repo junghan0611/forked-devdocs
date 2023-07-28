@@ -1,0 +1,103 @@
+<header><h1>-webkit-overflow-scrolling</h1></header><div class="section-content">
+<div class="notecard nonstandard" id="sect1"><p><strong>비표준:</strong> 이 기능은 비표준이므로 실제 프로덕션에서 사용하지 마세요. 모든 사용자 환경에서 작동하지 않을 수 도 있으며, 미래에 호환성 문제가 생길 수 있습니다.</p></div> <p><a href="https://developer.mozilla.org/ko/docs/Web/CSS">CSS</a> <code>-webkit-overflow-scrolling</code> 속성은 터치 단말기에서 주어진 요소의 모멘텀 기반 스크롤 활성화 여부를 결정합니다.</p>
+<figure class="table-container"><div class="_table"><table class="properties"><tbody>
+<tr>
+<th scope="row"><a href="initial_value">초기값</a></th>
+<td><code>auto</code></td>
+</tr>
+<tr>
+<th scope="row">적용대상</th>
+<td>scrolling boxes</td>
+</tr>
+<tr>
+<th scope="row"><a href="inheritance">상속</a></th>
+<td>yes</td>
+</tr>
+<tr>
+<th scope="row"><a href="computed_value">계산 값</a></th>
+<td>as specified</td>
+</tr>
+<tr>
+<th scope="row">Animation type</th>
+<td>discrete</td>
+</tr>
+</tbody></table></div></figure>
+</div>
+<section aria-labelledby="값"><h2 id="값">값</h2>
+<div class="section-content"><dl> <dt id="auto"><code>auto</code></dt> <dd> <p>"일반적"인 스크롤을 사용합니다. 즉 손가락을 터치 화면에서 떼는 순간 스크롤이 멈춥니다.</p> </dd> <dt id="touch"><code>touch</code></dt> <dd> <p>모멘텀 기반 스크롤을 사용합니다. 스크롤 제스쳐가 끝나고 손가락을 터치 화면에서 떼어도 잠시 스크롤이 지속됩니다. 지속 속도와 시간은 스크롤 제스쳐의 세기에 따라 달라집니다. 또한 새로운 <a href="https://developer.mozilla.org/ko/docs/Glossary/Stacking_context">쌓임 맥락</a>을 생성합니다.</p> </dd> </dl></div></section><section aria-labelledby="형식_구문"><h3 id="형식_구문">형식 구문</h3>
+<div class="section-content">Error: could not find syntax for this item</div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+</section><section aria-labelledby="html"><h3 id="html">HTML</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="eiXnhe5HilwkyG015Z35PbeN3ODj9d0HWfaPhXwmO1Y=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>scroll-touch<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>
+    This paragraph has momentum scrolling
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>scroll-auto<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>
+    This paragraph does not.
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div></div></section><section aria-labelledby="css"><h3 id="css">CSS</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="XBiZjlmLrFcfKRImaPO98fudIpkLp2JW/MXwurLoviQ=" data-language="css"><span class="token selector">div</span> <span class="token punctuation">{</span>
+  <span class="token property">width</span><span class="token punctuation">:</span> 100%<span class="token punctuation">;</span>
+  <span class="token property">overflow</span><span class="token punctuation">:</span> auto<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">p</span> <span class="token punctuation">{</span>
+  <span class="token property">width</span><span class="token punctuation">:</span> 200%<span class="token punctuation">;</span>
+  <span class="token property">background</span><span class="token punctuation">:</span> #f5f9fa<span class="token punctuation">;</span>
+  <span class="token property">border</span><span class="token punctuation">:</span> 2px solid #eaf2f4<span class="token punctuation">;</span>
+  <span class="token property">padding</span><span class="token punctuation">:</span> 10px<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">.scroll-touch</span> <span class="token punctuation">{</span>
+  <span class="token property">-webkit-overflow-scrolling</span><span class="token punctuation">:</span> touch<span class="token punctuation">;</span> <span class="token comment">/* Lets it scroll lazy */</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">.scroll-auto</span> <span class="token punctuation">{</span>
+  <span class="token property">-webkit-overflow-scrolling</span><span class="token punctuation">:</span> auto<span class="token punctuation">;</span> <span class="token comment">/* Stops scrolling immediately */</span>
+<span class="token punctuation">}</span>
+</pre>
+</div></div></section><section aria-labelledby="결과"><h3 id="결과">결과</h3>
+<div class="section-content"><div class="code-example" id="sect2">
+
+<iframe class="sample-code-frame" title="예제 sample" id="frame_예제" src="https://live.mdnplay.dev/ko/docs/Web/CSS/-webkit-overflow-scrolling/runner.html?id=%EC%98%88%EC%A0%9C" loading="lazy"></iframe>
+</div></div></section><section aria-labelledby="명세"><h2 id="명세">명세</h2>
+<div class="section-content">
+<p>명세에 속하지 않습니다. Apple의 <a href="https://developer.apple.com/library/safari/documentation/AppleApplications/Reference/SafariCSSRef/Articles/StandardCSSProperties.html#//apple_ref/css/property/-webkit-overflow-scrolling" target="_blank">Safari CSS Reference에 설명이 있습니다</a>.</p>
+<figure class="table-container"><div class="_table"><table class="properties"><tbody>
+<tr>
+<th scope="row"><a href="initial_value">초기값</a></th>
+<td><code>auto</code></td>
+</tr>
+<tr>
+<th scope="row">적용대상</th>
+<td>scrolling boxes</td>
+</tr>
+<tr>
+<th scope="row"><a href="inheritance">상속</a></th>
+<td>yes</td>
+</tr>
+<tr>
+<th scope="row"><a href="computed_value">계산 값</a></th>
+<td>as specified</td>
+</tr>
+<tr>
+<th scope="row">Animation type</th>
+<td>discrete</td>
+</tr>
+</tbody></table></div></figure>
+</div></section><h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="https://css-tricks.com/snippets/css/momentum-scrolling-on-ios-overflow-elements/" target="_blank">CSS-Tricks article with demo</a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/CSS/-webkit-overflow-scrolling" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/CSS/-webkit-overflow-scrolling</a>
+  </p>
+</div>

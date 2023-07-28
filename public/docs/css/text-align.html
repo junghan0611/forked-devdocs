@@ -1,0 +1,182 @@
+<header><h1>text-align</h1></header><div class="section-content"><p><a href="https://developer.mozilla.org/ko/docs/Web/CSS">CSS</a> <code>text-align</code> 속성은 블록 요소나 표의 칸 상자의 가로 정렬을 설정합니다. 즉 <a href="vertical-align"><code>vertical-align</code></a>과 동일하나 세로가 아닌 가로 방향으로 동작합니다.</p></div>
+<section aria-labelledby="시도해보기"><h2 id="시도해보기">시도해보기</h2>
+<div class="section-content"><iframe class="interactive is-default-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/css/text-align.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe></div></section><section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content">
+<div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="MlZE71NNgqQdlBZaHjtFaf5/Yt3DyQujx+6bkao8CEI=" data-language="css"><span class="token comment">/* 키워드 값 */</span>
+<span class="token property">text-align</span><span class="token punctuation">:</span> left<span class="token punctuation">;</span>
+<span class="token property">text-align</span><span class="token punctuation">:</span> right<span class="token punctuation">;</span>
+<span class="token property">text-align</span><span class="token punctuation">:</span> center<span class="token punctuation">;</span>
+<span class="token property">text-align</span><span class="token punctuation">:</span> justify<span class="token punctuation">;</span>
+<span class="token property">text-align</span><span class="token punctuation">:</span> justify-all<span class="token punctuation">;</span>
+<span class="token property">text-align</span><span class="token punctuation">:</span> start<span class="token punctuation">;</span>
+<span class="token property">text-align</span><span class="token punctuation">:</span> end<span class="token punctuation">;</span>
+<span class="token property">text-align</span><span class="token punctuation">:</span> match-parent<span class="token punctuation">;</span>
+
+<span class="token comment">/* 표 열의 문자 기반 정렬 */</span>
+<span class="token property">text-align</span><span class="token punctuation">:</span> <span class="token string">"."</span><span class="token punctuation">;</span>
+<span class="token property">text-align</span><span class="token punctuation">:</span> <span class="token string">"."</span> center<span class="token punctuation">;</span>
+
+<span class="token comment">/* 블록 정렬 값 (비표준 구문) */</span>
+<span class="token property">text-align</span><span class="token punctuation">:</span> -moz-center<span class="token punctuation">;</span>
+<span class="token property">text-align</span><span class="token punctuation">:</span> -webkit-center<span class="token punctuation">;</span>
+
+<span class="token comment">/* 전역 값 */</span>
+<span class="token property">text-align</span><span class="token punctuation">:</span> inherit<span class="token punctuation">;</span>
+<span class="token property">text-align</span><span class="token punctuation">:</span> initial<span class="token punctuation">;</span>
+<span class="token property">text-align</span><span class="token punctuation">:</span> unset<span class="token punctuation">;</span>
+</pre>
+</div> <p><code>text-align</code> 속성은 다음 방법 중 하나를 사용해 지정합니다.</p> <ul> <li>
+<a href="#start"><code>start</code></a>, <a href="#end"><code>end</code></a>, <a href="#left"><code>left</code></a>, <a href="#right"><code>right</code></a>, <a href="#center"><code>center</code></a>, <a href="#justify"><code>justify</code></a>, <a href="#justify-all"><code>justify-all</code></a>, <a href="#match-parent"><code>match-parent</code></a> 키워드 중 하나.</li> <li>
+<a href="#string"><code>&lt;string&gt;</code></a> 값만 사용. 다른 값은 <a href="#right"><code>right</code></a>을 사용하게 됩니다.</li> <li>키워드 값과 <a href="#string"><code>&lt;string&gt;</code></a> 값 모두 사용.</li> </ul>
+</div></section><section aria-labelledby="값"><h3 id="값">값</h3>
+<div class="section-content"><dl> <dt id="start">
+<code>start</code> <abbr class="icon icon-experimental" title="Experimental. 예상되는 동작은 향후 변경될 수 있습니다."> <span class="visually-hidden">Experimental</span> </abbr>
+</dt> <dd> <p>쓰기 방식이 좌횡서면 <code>left</code>와 같고, 우횡서면 <code>right</code>과 같습니다.</p> </dd> <dt id="end">
+<code>end</code> <abbr class="icon icon-experimental" title="Experimental. 예상되는 동작은 향후 변경될 수 있습니다."> <span class="visually-hidden">Experimental</span> </abbr>
+</dt> <dd> <p>쓰기 방식이 좌횡서면 <code>right</code>과 같고, 우횡서면 <code>left</code>와 같습니다.</p> </dd> <dt id="left"><code>left</code></dt> <dd> <p>인라인 콘텐츠를 줄 상자의 왼쪽 모서리로 정렬합니다.</p> </dd> <dt id="right"><code>right</code></dt> <dd> <p>인라인 콘텐츠를 줄 상자의 오른쪽 모서리로 정렬합니다.</p> </dd> <dt id="center"><code>center</code></dt> <dd> <p>인라인 콘텐츠를 줄 상자의 가운데로 정렬합니다.</p> </dd> <dt id="justify"><code>justify</code></dt> <dd> <p>인라인 콘텐츠를 양쪽 정렬합니다. 마지막 줄을 제외하고, 줄 상자의 왼쪽과 오른쪽 끝에 텍스트를 맞추기 위해 사이 공간을 띄웁니다.</p> </dd> <dt id="justify-all">
+<code>justify-all</code> <abbr class="icon icon-experimental" title="Experimental. 예상되는 동작은 향후 변경될 수 있습니다."> <span class="visually-hidden">Experimental</span> </abbr>
+</dt> <dd> <p><code>justify</code>와 같지만 마지막 줄에도 적용합니다.</p> </dd> <dt id="match-parent">
+<code>match-parent</code> <abbr class="icon icon-experimental" title="Experimental. 예상되는 동작은 향후 변경될 수 있습니다."> <span class="visually-hidden">Experimental</span> </abbr>
+</dt> <dd> <p><code>inherit</code>과 비슷하지만, <code>start</code>와 <code>end</code> 값을 부모의 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/direction"><code>direction</code> <small>(en-US)</small></a>에 맞춰 적절한 <code>left</code>와 <code>right</code> 값으로 치환합니다.</p> </dd> <dt id="string_en-us">
+<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/string"><code>&lt;string&gt;</code> <small>(en-US)</small></a> <abbr class="icon icon-experimental" title="Experimental. 예상되는 동작은 향후 변경될 수 있습니다."> <span class="visually-hidden">Experimental</span> </abbr>
+</dt> <dd> <p>표 칸에 적용할 경우, 칸의 콘텐츠를 해당 문자에 맞춰 정렬합니다.</p> </dd> </dl></div></section><section aria-labelledby="접근성_고려사항"><h2 id="접근성_고려사항">접근성 고려사항</h2>
+<div class="section-content">
+<p>양쪽 정렬 적용 시 생기는 불규칙한 여백은 난독증 등 인지력 저하를 겪고 있는 사용자에게 문제가 될 수 있습니다.</p> <ul> <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/Understanding_WCAG/Perceivable" class="only-in-en-us">MDN Understanding WCAG, Guideline 1.4 explanations <small>(en-US)</small></a></li> <li><a href="https://www.w3.org/TR/UNDERSTANDING-WCAG20/visual-audio-contrast-visual-presentation.html" target="_blank">Understanding Success Criterion 1.4.8 | Understanding WCAG 2.0</a></li> </ul>
+</div></section><section aria-labelledby="형식_정의"><h2 id="형식_정의">형식 정의</h2>
+<div class="section-content"><figure class="table-container"><div class="_table"><table class="properties"><tbody>
+<tr>
+<th scope="row"><a href="initial_value">초기값</a></th>
+<td>
+<code>start</code>, or a nameless value that acts as <code>left</code> if <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/direction" class="only-in-en-us"><code>direction</code> <small>(en-US)</small></a> is <code>ltr</code>, <code>right</code> if <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/direction" class="only-in-en-us"><code>direction</code> <small>(en-US)</small></a> is <code>rtl</code> if <code>start</code> is not supported by the browser.</td>
+</tr>
+<tr>
+<th scope="row">적용대상</th>
+<td>block containers</td>
+</tr>
+<tr>
+<th scope="row"><a href="inheritance">상속</a></th>
+<td>yes</td>
+</tr>
+<tr>
+<th scope="row"><a href="computed_value">계산 값</a></th>
+<td>as specified, except for the <code>match-parent</code> value which is calculated against its parent's <code>direction</code> value and results in a computed value of either <code>left</code> or <code>right</code>
+</td>
+</tr>
+<tr>
+<th scope="row">Animation type</th>
+<td>discrete</td>
+</tr>
+</tbody></table></div></figure></div></section><section aria-labelledby="형식_구문"><h2 id="형식_구문">형식 구문</h2>
+<div class="section-content"><pre class="notranslate"><span class="token property" id="text-align">text-align = </span><br>  <span class="token keyword">start</span>         <a href="value_definition_syntax#single_bar">|</a><br>  <span class="token keyword">end</span>           <a href="value_definition_syntax#single_bar">|</a><br>  <span class="token keyword">left</span>          <a href="value_definition_syntax#single_bar">|</a><br>  <span class="token keyword">right</span>         <a href="value_definition_syntax#single_bar">|</a><br>  <span class="token keyword">center</span>        <a href="value_definition_syntax#single_bar">|</a><br>  <span class="token keyword">justify</span>       <a href="value_definition_syntax#single_bar">|</a><br>  <span class="token keyword">match-parent</span>  <a href="value_definition_syntax#single_bar">|</a><br>  <span class="token keyword">justify-all</span>   <br><br></pre></div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+</section><section aria-labelledby="왼쪽_정렬"><h3 id="왼쪽_정렬">왼쪽 정렬</h3>
+<div class="section-content">
+<h4 id="html">HTML</h4> <div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="5xy98AsVy0zrpIkLMmPag93+nZZjNK2XsKdomLVIMhg=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>example<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+  Integer elementum massa at nulla placerat varius.
+  Suspendisse in libero risus, in interdum massa.
+  Vestibulum ac leo vitae metus faucibus gravida ac in neque.
+  Nullam est eros, suscipit sed dictum quis, accumsan a ligula.
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div> <h4 id="css">CSS</h4> <div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="uKIt0RlGbLhDXzBzRgz3obpjhpTlEJ5XVUaf+Igq+eQ=" data-language="css"><span class="token selector">.example</span> <span class="token punctuation">{</span>
+  <span class="token property">text-align</span><span class="token punctuation">:</span> left<span class="token punctuation">;</span>
+  <span class="token property">border</span><span class="token punctuation">:</span> solid<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div> <h4 id="결과">결과</h4>
+<div class="code-example" id="sect1">
+
+<iframe class="sample-code-frame" title="왼쪽 정렬 sample" id="frame_왼쪽_정렬" width="100%" height="100%" src="https://live.mdnplay.dev/ko/docs/Web/CSS/text-align/runner.html?id=%EC%99%BC%EC%AA%BD_%EC%A0%95%EB%A0%AC" loading="lazy"></iframe>
+</div>
+</div></section><section aria-labelledby="가운데_정렬"><h3 id="가운데_정렬">가운데 정렬</h3>
+<div class="section-content">
+<h4 id="html_2">HTML</h4> <div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="5xy98AsVy0zrpIkLMmPag93+nZZjNK2XsKdomLVIMhg=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>example<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+  Integer elementum massa at nulla placerat varius.
+  Suspendisse in libero risus, in interdum massa.
+  Vestibulum ac leo vitae metus faucibus gravida ac in neque.
+  Nullam est eros, suscipit sed dictum quis, accumsan a ligula.
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div> <h4 id="css_2">CSS</h4> <div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="325rli3Heq1yMmUJz7Dkg0PMSTxiivLtlwHIkgsQGbg=" data-language="css"><span class="token selector">.example</span> <span class="token punctuation">{</span>
+  <span class="token property">text-align</span><span class="token punctuation">:</span> center<span class="token punctuation">;</span>
+  <span class="token property">border</span><span class="token punctuation">:</span> solid<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div> <h4 id="결과_2">결과</h4>
+<div class="code-example" id="sect2">
+
+<iframe class="sample-code-frame" title="가운데 정렬 sample" id="frame_가운데_정렬" width="100%" height="100%" src="https://live.mdnplay.dev/ko/docs/Web/CSS/text-align/runner.html?id=%EA%B0%80%EC%9A%B4%EB%8D%B0_%EC%A0%95%EB%A0%AC" loading="lazy"></iframe>
+</div>
+</div></section><section aria-labelledby="양쪽_정렬"><h3 id="양쪽_정렬">양쪽 정렬</h3>
+<div class="section-content">
+<h4 id="html_3">HTML</h4> <div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="5xy98AsVy0zrpIkLMmPag93+nZZjNK2XsKdomLVIMhg=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>example<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+  Integer elementum massa at nulla placerat varius.
+  Suspendisse in libero risus, in interdum massa.
+  Vestibulum ac leo vitae metus faucibus gravida ac in neque.
+  Nullam est eros, suscipit sed dictum quis, accumsan a ligula.
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div> <h4 id="css_3">CSS</h4> <div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="V/2PUm0qvzHj2OZNZvhoPTgADcquz7jo/iGGvDjnuQ0=" data-language="css"><span class="token selector">.example</span> <span class="token punctuation">{</span>
+  <span class="token property">text-align</span><span class="token punctuation">:</span> justify<span class="token punctuation">;</span>
+  <span class="token property">border</span><span class="token punctuation">:</span> solid<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div> <h4 id="결과_3">결과</h4>
+<div class="code-example" id="sect3">
+
+<iframe class="sample-code-frame" title="양쪽 정렬 sample" id="frame_양쪽_정렬" width="100%" height="100%" src="https://live.mdnplay.dev/ko/docs/Web/CSS/text-align/runner.html?id=%EC%96%91%EC%AA%BD_%EC%A0%95%EB%A0%AC" loading="lazy"></iframe>
+</div>
+</div></section><section aria-labelledby="참고"><h3 id="참고">참고</h3>
+<div class="section-content">
+<p>인라인 콘텐츠를 가운데 정렬하지 않고 자신을 정렬하는 법은 <a href="margin"><code>margin</code></a>을 <code>auto</code>로 설정하는 것입니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="PwBY9RrmF4NLqEmTTOx9jw3U7Jfrbvu2VYEnbXTTqhE=" data-language="css"><span class="token selector">.something</span> <span class="token punctuation">{</span>
+  <span class="token property">margin</span><span class="token punctuation">:</span> auto<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div> <div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="ciKaFkg9N4MQRsacTOfswQUzUklqiRli8DytWMKr0rM=" data-language="css"><span class="token selector">.something</span> <span class="token punctuation">{</span>
+  <span class="token property">margin</span><span class="token punctuation">:</span> 0 auto<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div> <div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="gftLvCWQgxdSpEosHRC6TJ6jS8vD0/a6DReTvDUsPxs=" data-language="css"><span class="token selector">.something</span> <span class="token punctuation">{</span>
+  <span class="token property">margin-left</span><span class="token punctuation">:</span> auto<span class="token punctuation">;</span>
+  <span class="token property">margin-right</span><span class="token punctuation">:</span> auto<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div>
+</div></section><h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody>
+<tr><td><a href="https://drafts.csswg.org/css-logical/#text-align">CSS Logical Properties and Values Level 1 <br><small># text-align</small></a></td></tr>
+<tr><td><a href="https://drafts.csswg.org/css-text/#text-align-property">CSS Text Module Level 3 <br><small># text-align-property</small></a></td></tr>
+</tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li>
+<a href="margin"><code>margin: auto</code></a>, <a href="margin-left"><code>margin-left: auto</code></a>, <a href="vertical-align"><code>vertical-align</code></a>
+</li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/CSS/text-align" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/CSS/text-align</a>
+  </p>
+</div>

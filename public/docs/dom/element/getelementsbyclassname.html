@@ -1,0 +1,84 @@
+<header><h1>Element.getElementsByClassName()</h1></header><div class="section-content">
+<p><a href="../element"><code>Element</code></a>의 메소드 <code>getElementsByClassName()</code> 는 주어진 클래스를 가진 모든 자식 엘리먼트의 실시간 <a href="../htmlcollection"><code>HTMLCollection</code></a> 을 반환합니다.</p> <p><a href="../document"><code>Document</code></a>의 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/Document/getElementsByClassName"><code>getElementsByClassName()</code> <small>(en-US)</small></a> 메소드는 도큐먼트 루트로부터 도큐먼트 전체를 탐색한다는 점을 제외하고는 동일하게 작동합니다.</p>
+</div>
+<h2 id="syntax">Syntax</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="LPtxRklWTN3ookzjfJD0eTQU+A/UnonA74asruF0o20=" data-language="js"><span class="token keyword">var</span> elements <span class="token operator">=</span> element<span class="token punctuation">.</span><span class="token function">getElementsByClassName</span><span class="token punctuation">(</span>names<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div></div>
+<h3 id="parameters">Parameters</h3>
+<div class="section-content"><dl> <dt id="names"><code>names</code></dt> <dd> <p>검색할 클래스 혹은 클래스들을 띄어쓰기로 구분한 <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/String"><code>DOMString</code></a></p> </dd> </dl></div>
+<h3 id="return_value">Return value</h3>
+<div class="section-content"><p>실시간으로 업데이트되는 해당 클래스명을 가진 요소 목록의 <a href="../htmlcollection"><code>HTMLCollection</code></a> 이 반환됩니다.</p></div>
+<h2 id="usage_notes">Usage notes</h2>
+<div class="section-content">
+<p>항상 그렇듯, 반환되는 collection은 실시간입니다. 즉, 함수가 호출된 이후에도 DOM 트리의 현재 상태가 반영됩니다. <code>names</code> 에 해당하는 클래스를 가진 요소가 하위에 추가되면, 그 요소는 즉시 collection에 나타납니다. 비슷하게, <code>names</code> 에 매칭되는 클래스를 갖고 있지 않은 요소에 매칭되는 클래스명이 적용되면, 그 요소 역시 즉시 collection에 나타나게 됩니다.</p> <p>반대도 역시 마찬가지입니다. 클래스명이 더 이상 <code>names</code> 와 일치하지 않게 되면, collection으로 부터 즉시 제거됩니다.</p> <div class="notecard note" id="sect1"> <p><strong>참고:</strong> <a href="https://developer.mozilla.org/ko/docs/Web/HTML/Quirks_Mode_and_Standards_Mode">호환모드</a>에서는 클래스명의 대소문자를 구분하지 않습니다. 그 외의 경우에는, 대소문자를 구분합니다.</p> </div>
+</div>
+<h2 id="examples">Examples</h2>
+
+<h3 id="단일_클래스_찾기">단일 클래스 찾기</h3>
+<div class="section-content">
+<p>요소들 중 하나의 클래스를 포함하고 있는 요소를 검색하기 위해서는, 그 클래스명을 <code>getElementsByClassName()</code>의 인자로 넣으세요:</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="4b3fNRCRJ/fVaTE0THeg9KeTmU3K2R6OInJ+d1EVXLA=" data-language="js">element<span class="token punctuation">.</span><span class="token function">getElementsByClassName</span><span class="token punctuation">(</span><span class="token string">'test'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div> <p>아래의 예시는 <code>main</code> 이라는 <code>id</code> 를 가진 요소의 하위 요소들 중 <code>test</code>라는 클래스를 가진 모든 요소를 탐색합니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="TZn90XqQ/+5xj/ElC5n2oLvBcb06IlLRKiiU+1oYV4o=" data-language="js">document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">'main'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getElementsByClassName</span><span class="token punctuation">(</span><span class="token string">'test'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div>
+</div>
+<h3 id="여러개의_클래스로_탐색하기">여러개의 클래스로 탐색하기</h3>
+<div class="section-content">
+<p><code>red</code> 와 <code>test</code> 라는 클래스를 모두 포함하고 있는 요소를 탐색하기 위해서는 다음과 같이 합니다:</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="ph//cM4r9hlWeR5qZvhEs4dSITa6vXBWLae0752WCLA=" data-language="js">element<span class="token punctuation">.</span><span class="token function">getElementsByClassName</span><span class="token punctuation">(</span><span class="token string">'red test'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div>
+</div>
+<h3 id="결과값_검토하기">결과값 검토하기</h3>
+<div class="section-content">
+<p>collection의 개별 요소를 가져오기 위해 <code>HTMLCollection</code> 의<a href="../htmlcollection/item"><code>item()</code></a> 메소드를 이용하거나 표준 배열 문법을 사용할 수 있습니다. 아래는 잘못된 코드의 예시입니다. <code>"matches"</code> 는 <code>"colorbox"</code> 클래스가 삭제됨에 따라 바로 변경될것이기 때문에 <strong>아래의 코드는 작동하지 않습니다.</strong></p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="7jCyJkozHDMdaQsqjxbVGIuhxIz8tcBkmUMKutSbt7A=" data-language="js"><span class="token keyword">var</span> matches <span class="token operator">=</span> element<span class="token punctuation">.</span><span class="token function">getElementsByClassName</span><span class="token punctuation">(</span><span class="token string">'colorbox'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">var</span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span> i<span class="token operator">&lt;</span>matches<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  matches<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>classList<span class="token punctuation">.</span><span class="token function">remove</span><span class="token punctuation">(</span><span class="token string">'colorbox'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  matches<span class="token punctuation">.</span><span class="token function">item</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">.</span>classList<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token string">'hueframe'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div> <p>대신 다른 방법을 사용하세요. 예시:</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="aHFPmWg7uqjFjQ4MIGURqr4/vAV5AHO8MVBUxbH4DYs=" data-language="js"><span class="token keyword">var</span> matches <span class="token operator">=</span> element<span class="token punctuation">.</span><span class="token function">getElementsByClassName</span><span class="token punctuation">(</span><span class="token string">'colorbox'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">while</span> <span class="token punctuation">(</span>matches<span class="token punctuation">.</span>length <span class="token operator">&gt;</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  matches<span class="token punctuation">.</span><span class="token function">item</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">.</span>classList<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token string">'hueframe'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  matches<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>classList<span class="token punctuation">.</span><span class="token function">remove</span><span class="token punctuation">(</span><span class="token string">'colorbox'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div> <p>위 코드는 <code>"colorbox"</code> 클래스를 가진 모든 자식 요소를 찾고, <code>item(0)</code> 을 호출해 <code>"hueframe"</code>이라는 클래스를 추가합니다 . 그리고 <code>"colorbox"</code> 클래스를 제거합니다(배열 표기법을 사용하여). 다른 요소 (만약 남아있다면) 가 <code>item(0)</code> 이 될 것입니다.</p>
+</div>
+<h3 id="배열_함수를_이용해_결과값을_필터링하기">배열 함수를 이용해 결과값을 필터링하기</h3>
+<div class="section-content">
+<p><a href="../htmlcollection"><code>HTMLCollection</code></a>을 <code>this</code> 로 사용하면 <a class="page-not-created"><code>Array.prototype</code></a> 을 어떤 <a href="../htmlcollection"><code>HTMLCollection</code></a>에서든 사용할 수 있습니다. 아래의 예제에서는 <code>test</code> 클래스를 가진 모든 <a href="https://developer.mozilla.org/ko/docs/Web/HTML/Element/div"><code>&lt;div&gt;</code></a> 요소를 찾아봅니다 :</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="SQVbx7uStiu8XYv6VptRecZxnI0agSHQb5rwXMR0YdA=" data-language="js"><span class="token keyword">var</span> testElements <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementsByClassName</span><span class="token punctuation">(</span><span class="token string">'test'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> testDivs <span class="token operator">=</span> <span class="token class-name">Array</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function">filter</span><span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span>testElements<span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">testElement</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> testElement<span class="token punctuation">.</span>nodeName <span class="token operator">===</span> <span class="token string">'DIV'</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div>
+</div>
+<h2 id="명세서">명세서</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://dom.spec.whatwg.org/#ref-for-dom-element-getelementsbyclassname">DOM Standard <br><small># ref-for-dom-element-getelementsbyclassname</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/Element/getElementsByClassName" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/Element/getElementsByClassName</a>
+  </p>
+</div>

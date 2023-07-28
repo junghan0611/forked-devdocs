@@ -1,0 +1,70 @@
+<header><h1>Document.createElementNS()</h1></header><div class="section-content">
+<p>지정된 네임스페이스 URI와 적합한 이름으로 엘리먼트를 만든다.</p> <p>네임스페이스 URI를 지정하지 않고 엘리먼트를 만들려면 <a href="createelement">createElement</a>메소드를 사용하라.</p>
+</div>
+<h2 id="syntax">Syntax</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="tpsAOjouSmqcT+ZHZ7l9zohnAnbsIDSiwflFhq+rJ9s=" data-language="js"><span class="token keyword">var</span> element <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">createElementNS</span><span class="token punctuation">(</span>namespaceURI<span class="token punctuation">,</span> qualifiedName<span class="token punctuation">[</span><span class="token punctuation">,</span> options<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div></div>
+<h3 id="parameters">Parameters</h3>
+<div class="section-content"><dl> <dt id="tagname"><code>tagName</code></dt> <dd> <p>A string that specifies the type of element to be created. The <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/Node/nodeName"><code>nodeName</code> <small>(en-US)</small></a> of the created element is initialized with the value of <em>tagName</em>. Don't use qualified names (like "html:a") with this method. When called on an HTML document, <code>createElement()</code> converts <em>tagName</em> to lower case before creating the element. In Firefox, Opera, and Chrome, <code>createElement(null)</code> works like <code>createElement("null")</code>.</p> </dd> <dt id="options">
+<code>options</code> <span class="badge inline optional">Optional</span>
+</dt> <dd> <p>An object with the following properties:</p> <dl> <dt id="is"><code>is</code></dt> <dd> <p> The tag name of a custom element previously defined via <code>customElements.define()</code>. See <a href="#web_component_example">Web component example</a> for more details. </p> </dd> </dl> </dd> </dl></div>
+<h3 id="return_value">Return value</h3>
+<div class="section-content"><p>The new <a href="../element"><code>Element</code></a>.</p></div>
+<h2 id="valid_namespace_uris">Valid Namespace URIs</h2>
+<div class="section-content"><ul> <li>HTML - Use <code>http://www.w3.org/1999/xhtml</code>
+</li> <li>SVG - Use <code>http://www.w3.org/2000/svg</code>
+</li> <li>XBL - Use <code>http://www.mozilla.org/xbl</code>
+</li> <li>XUL - Use <code>http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul</code>
+</li> </ul></div>
+<h2 id="example">Example</h2>
+<div class="section-content">
+<p>This creates a new <code>&lt;div&gt;</code> element in the <a href="https://developer.mozilla.org/ko/docs/Glossary/XHTML">XHTML</a> namespace and appends it to the vbox element. Although this is not an extremely useful <a href="https://developer.mozilla.org/ko/docs/XUL" class="page-not-created">XUL</a> document, it does demonstrate the use of elements from two different namespaces within a single document:</p> <div class="code-example">
+<p class="example-header"><span class="language-name">xml</span></p>
+<pre data-signature="5DQqKKKV7G5oWS5j97qYZZyEkqCE6AB2CVVXoUeKyUk=" data-language="xml"><span class="token prolog">&lt;?xml version="1.0"?&gt;</span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>page</span> <span class="token attr-name">xmlns</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul<span class="token punctuation">"</span></span>
+      <span class="token attr-name"><span class="token namespace">xmlns:</span>html</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>http://www.w3.org/1999/xhtml<span class="token punctuation">"</span></span>
+      <span class="token attr-name">title</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>||Working with elements||<span class="token punctuation">"</span></span>
+      <span class="token attr-name">onload</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>init()<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>text/javascript<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token cdata">&lt;![CDATA[
+ var container;
+ var newdiv;
+ var txtnode;
+
+ function init(){
+   container = document.getElementById("ContainerBox");
+   newdiv = document.createElementNS("http://www.w3.org/1999/xhtml","div");
+   txtnode = document.createTextNode("This is text that was constructed dynamically with createElementNS and createTextNode then inserted into the document using appendChild.");
+   newdiv.appendChild(txtnode);
+   container.appendChild(newdiv);
+ }
+
+]]&gt;</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+
+ <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>vbox</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">'</span>ContainerBox<span class="token punctuation">'</span></span> <span class="token attr-name">flex</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">'</span>1<span class="token punctuation">'</span></span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token namespace">html:</span>div</span><span class="token punctuation">&gt;</span></span>
+   The script on this page will add dynamic content below:
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token namespace">html:</span>div</span><span class="token punctuation">&gt;</span></span>
+ <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>vbox</span><span class="token punctuation">&gt;</span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>page</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div> <div class="notecard note" id="sect1"> <p><strong>참고:</strong> The example given above uses inline script which is not recommended in XHTML documents. This particular example is actually an XUL document with embedded XHTML, however, the recommendation still applies.</p> </div>
+</div>
+<h2 id="명세서">명세서</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="#">DOM Standard <br><small># ref-for-dom-document-createelementns①</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<h2 id="see_also">See also</h2>
+<div class="section-content"><ul> <li><a href="createelement"><code>document.createElement()</code></a></li> <li><a href="createtextnode"><code>document.createTextNode()</code></a></li> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/Element/namespaceURI"><code>Element.namespaceURI</code> <small>(en-US)</small></a></li> <li><a href="https://www.w3.org/TR/1999/REC-xml-names-19990114/" target="_blank">Namespaces in XML</a></li> </ul></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/Document/createElementNS" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/Document/createElementNS</a>
+  </p>
+</div>

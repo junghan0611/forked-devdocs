@@ -1,0 +1,47 @@
+<header><h1>window.cancelAnimationFrame()</h1></header><div class="section-content"><p><code>window.cancelAnimationFrame()</code> 메소드는 이전에 <a href="../window/requestanimationframe"><code>window.requestAnimationFrame()</code></a> 을 호출하여 스케줄된 애니메이션 프레임 요청을 취소합니다.</p></div>
+<h2 id="구문">구문</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="JbSaK3KinqAndWC1NTza/nlYwIFNmaLHQ8Ha7JEz9Ps=" data-language="js">window<span class="token punctuation">.</span><span class="token function">cancelAnimationFrame</span><span class="token punctuation">(</span>requestID<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div></div>
+<h3 id="parameters">Parameters</h3>
+<div class="section-content"><dl> <dt id="requestid"><code>requestID</code></dt> <dd> <p>요청된 콜백 <a href="../window/requestanimationframe"><code>window.requestAnimationFrame()</code></a> 을 호출하여 반환된 ID 값.</p> </dd> </dl></div>
+<h2 id="예시">예시</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="LE40JjuHIDRtQQRwF9fBadoBePFp2bvoW+uV5x9fB1E=" data-language="js"><span class="token keyword">var</span> requestAnimationFrame <span class="token operator">=</span> window<span class="token punctuation">.</span>requestAnimationFrame <span class="token operator">||</span> window<span class="token punctuation">.</span>mozRequestAnimationFrame <span class="token operator">||</span>
+                            window<span class="token punctuation">.</span>webkitRequestAnimationFrame <span class="token operator">||</span> window<span class="token punctuation">.</span>msRequestAnimationFrame<span class="token punctuation">;</span>
+
+<span class="token keyword">var</span> cancelAnimationFrame <span class="token operator">=</span> window<span class="token punctuation">.</span>cancelAnimationFrame <span class="token operator">||</span> window<span class="token punctuation">.</span>mozCancelAnimationFrame<span class="token punctuation">;</span>
+
+<span class="token keyword">var</span> start <span class="token operator">=</span> window<span class="token punctuation">.</span>mozAnimationStartTime<span class="token punctuation">;</span>  <span class="token comment">// Firefox 에서만 지원됨. 다른 브라우저에서는 Date.now() 같은 것을 사용할 수 있음.</span>
+
+<span class="token keyword">var</span> myReq<span class="token punctuation">;</span>
+
+<span class="token keyword">function</span> <span class="token function">step</span><span class="token punctuation">(</span><span class="token parameter">timestamp</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">var</span> progress <span class="token operator">=</span> timestamp <span class="token operator">-</span> start<span class="token punctuation">;</span>
+  d<span class="token punctuation">.</span>style<span class="token punctuation">.</span>left <span class="token operator">=</span> Math<span class="token punctuation">.</span><span class="token function">min</span><span class="token punctuation">(</span>progress <span class="token operator">/</span> <span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">200</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">'px'</span><span class="token punctuation">;</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>progress <span class="token operator">&lt;</span> <span class="token number">2000</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    myReq <span class="token operator">=</span> <span class="token function">requestAnimationFrame</span><span class="token punctuation">(</span>step<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+myReq <span class="token operator">=</span> <span class="token function">requestAnimationFrame</span><span class="token punctuation">(</span>step<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token function">cancelAnimationFrame</span><span class="token punctuation">(</span>myReq<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://html.spec.whatwg.org/multipage/imagebitmap-and-animations.html#animationframeprovider-cancelanimationframe">HTML Standard <br><small># animationframeprovider-cancelanimationframe</small></a></td></tr></tbody>
+</table></div>
+<h2 id="함께_보기">함께 보기</h2>
+<div class="section-content"><ul> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/Animation/startTime"><code>window.mozAnimationStartTime</code> <small>(en-US)</small></a></li> <li><a href="../window/requestanimationframe"><code>window.requestAnimationFrame()</code></a></li> </ul></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/Window/cancelAnimationFrame" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/Window/cancelAnimationFrame</a>
+  </p>
+</div>

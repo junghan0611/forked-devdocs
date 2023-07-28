@@ -1,0 +1,110 @@
+<header><h1>Math.ceil()</h1></header><div class="section-content">
+Math.ceil() 함수는 주어진 숫자보다 크거나 같은 숫자 중 가장 작은 숫자를 integer 로 반환합니다.
+</div>
+<section aria-labelledby="syntax_문법"><h2 id="syntax_문법">Syntax (문법)</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="Iho32QK3VLg9rj8KvNvuHIvne33nPr9FXbjTvcCa9ZQ=" data-language="js">    Math<span class="token punctuation">.</span><span class="token function">ceil</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span>
+</pre>
+</div></div></section><section aria-labelledby="parameters_매개변수"><h3 id="parameters_매개변수">Parameters (매개변수)</h3>
+<div class="section-content"><dl> <dt id="x"><code>x</code></dt> <dd> <p>숫자</p> </dd> </dl></div></section><section aria-labelledby="return_value_반환값"><h3 id="return_value_반환값">Return value (반환값)</h3>
+<div class="section-content"><p>주어진 숫자보다 크거나 같은 숫자 중 가장 작은 숫자</p></div></section><section aria-labelledby="description_설명"><h2 id="description_설명">Description (설명)</h2>
+<div class="section-content"><p>ceil() 은 Math 의 정적 메소드이므로, 사용자가 생성하는 Math 객체의 메소드처럼 사용하지 않고, 언제나 Math.ceil() 의 형태로 사용 합니다. (Math 는 생성자가 아님)</p></div></section><section aria-labelledby="examples_예제"><h2 id="examples_예제">Examples (예제)</h2>
+</section><section aria-labelledby="math.ceil_사용_예"><h3 id="math.ceil_사용_예">Math.ceil() 사용 예</h3>
+<div class="section-content">
+<p>다음은 Math.ceil() 의 사용 예입니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="pCqgeSzTMlSg8aeGMXTg0pQ7Cwl9MlSAfoROCUolF4g=" data-language="js">Math<span class="token punctuation">.</span><span class="token function">ceil</span><span class="token punctuation">(</span><span class="token number">.95</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token comment">// 1</span>
+Math<span class="token punctuation">.</span><span class="token function">ceil</span><span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">;</span>      <span class="token comment">// 4</span>
+Math<span class="token punctuation">.</span><span class="token function">ceil</span><span class="token punctuation">(</span><span class="token number">7.004</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// 8</span>
+Math<span class="token punctuation">.</span><span class="token function">ceil</span><span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">0.95</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// -0</span>
+Math<span class="token punctuation">.</span><span class="token function">ceil</span><span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">;</span>     <span class="token comment">// -4</span>
+Math<span class="token punctuation">.</span><span class="token function">ceil</span><span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">7.004</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// -7</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="소수점_처리"><h3 id="소수점_처리">소수점 처리</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="qEm8MZUc6NmFETTWSFgtqNo4PR168mgWzvaBM/t1jQw=" data-language="js"><span class="token comment">// Closure</span>
+<span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">/**
+   * Decimal adjustment of a number.
+   *
+   * @param {String}  type  The type of adjustment.
+   * @param {Number}  value The number.
+   * @param {Integer} exp   The exponent (the 10 logarithm of the adjustment base).
+   * @returns {Number} The adjusted value.
+   */</span>
+  <span class="token keyword">function</span> <span class="token function">decimalAdjust</span><span class="token punctuation">(</span><span class="token parameter">type<span class="token punctuation">,</span> value<span class="token punctuation">,</span> exp</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// If the exp is undefined or zero...</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">typeof</span> exp <span class="token operator">===</span> <span class="token string">'undefined'</span> <span class="token operator">||</span> <span class="token operator">+</span>exp <span class="token operator">===</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">return</span> Math<span class="token punctuation">[</span>type<span class="token punctuation">]</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    value <span class="token operator">=</span> <span class="token operator">+</span>value<span class="token punctuation">;</span>
+    exp <span class="token operator">=</span> <span class="token operator">+</span>exp<span class="token punctuation">;</span>
+    <span class="token comment">// If the value is not a number or the exp is not an integer...</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">isNaN</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span> <span class="token operator">||</span> <span class="token operator">!</span><span class="token punctuation">(</span><span class="token keyword">typeof</span> exp <span class="token operator">===</span> <span class="token string">'number'</span> <span class="token operator">&amp;&amp;</span> exp <span class="token operator">%</span> <span class="token number">1</span> <span class="token operator">===</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">return</span> <span class="token number">NaN</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token comment">// Shift</span>
+    value <span class="token operator">=</span> value<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">split</span><span class="token punctuation">(</span><span class="token string">'e'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    value <span class="token operator">=</span> Math<span class="token punctuation">[</span>type<span class="token punctuation">]</span><span class="token punctuation">(</span><span class="token operator">+</span><span class="token punctuation">(</span>value<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">+</span> <span class="token string">'e'</span> <span class="token operator">+</span> <span class="token punctuation">(</span>value<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">?</span> <span class="token punctuation">(</span><span class="token operator">+</span>value<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">-</span> exp<span class="token punctuation">)</span> <span class="token operator">:</span> <span class="token operator">-</span>exp<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// Shift back</span>
+    value <span class="token operator">=</span> value<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">split</span><span class="token punctuation">(</span><span class="token string">'e'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token operator">+</span><span class="token punctuation">(</span>value<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">+</span> <span class="token string">'e'</span> <span class="token operator">+</span> <span class="token punctuation">(</span>value<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">?</span> <span class="token punctuation">(</span><span class="token operator">+</span>value<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">+</span> exp<span class="token punctuation">)</span> <span class="token operator">:</span> exp<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token comment">// Decimal round</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>Math<span class="token punctuation">.</span>round10<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    Math<span class="token punctuation">.</span><span class="token function-variable function">round10</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">value<span class="token punctuation">,</span> exp</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">return</span> <span class="token function">decimalAdjust</span><span class="token punctuation">(</span><span class="token string">'round'</span><span class="token punctuation">,</span> value<span class="token punctuation">,</span> exp<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token comment">// Decimal floor</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>Math<span class="token punctuation">.</span>floor10<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    Math<span class="token punctuation">.</span><span class="token function-variable function">floor10</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">value<span class="token punctuation">,</span> exp</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">return</span> <span class="token function">decimalAdjust</span><span class="token punctuation">(</span><span class="token string">'floor'</span><span class="token punctuation">,</span> value<span class="token punctuation">,</span> exp<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token comment">// Decimal ceil</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>Math<span class="token punctuation">.</span>ceil10<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    Math<span class="token punctuation">.</span><span class="token function-variable function">ceil10</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">value<span class="token punctuation">,</span> exp</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">return</span> <span class="token function">decimalAdjust</span><span class="token punctuation">(</span><span class="token string">'ceil'</span><span class="token punctuation">,</span> value<span class="token punctuation">,</span> exp<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// Round</span>
+Math<span class="token punctuation">.</span><span class="token function">round10</span><span class="token punctuation">(</span><span class="token number">55.55</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment">// 55.6</span>
+Math<span class="token punctuation">.</span><span class="token function">round10</span><span class="token punctuation">(</span><span class="token number">55.549</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// 55.5</span>
+Math<span class="token punctuation">.</span><span class="token function">round10</span><span class="token punctuation">(</span><span class="token number">55</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>       <span class="token comment">// 60</span>
+Math<span class="token punctuation">.</span><span class="token function">round10</span><span class="token punctuation">(</span><span class="token number">54.9</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>     <span class="token comment">// 50</span>
+Math<span class="token punctuation">.</span><span class="token function">round10</span><span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">55.55</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// -55.5</span>
+Math<span class="token punctuation">.</span><span class="token function">round10</span><span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">55.551</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// -55.6</span>
+Math<span class="token punctuation">.</span><span class="token function">round10</span><span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">55</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>      <span class="token comment">// -50</span>
+Math<span class="token punctuation">.</span><span class="token function">round10</span><span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">55.1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token comment">// -60</span>
+<span class="token comment">// Floor</span>
+Math<span class="token punctuation">.</span><span class="token function">floor10</span><span class="token punctuation">(</span><span class="token number">55.59</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment">// 55.5</span>
+Math<span class="token punctuation">.</span><span class="token function">floor10</span><span class="token punctuation">(</span><span class="token number">59</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>       <span class="token comment">// 50</span>
+Math<span class="token punctuation">.</span><span class="token function">floor10</span><span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">55.51</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// -55.6</span>
+Math<span class="token punctuation">.</span><span class="token function">floor10</span><span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">51</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>      <span class="token comment">// -60</span>
+<span class="token comment">// Ceil</span>
+Math<span class="token punctuation">.</span><span class="token function">ceil10</span><span class="token punctuation">(</span><span class="token number">55.51</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token comment">// 55.6</span>
+Math<span class="token punctuation">.</span><span class="token function">ceil10</span><span class="token punctuation">(</span><span class="token number">51</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token comment">// 60</span>
+Math<span class="token punctuation">.</span><span class="token function">ceil10</span><span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">55.59</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment">// -55.5</span>
+Math<span class="token punctuation">.</span><span class="token function">ceil10</span><span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">59</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>       <span class="token comment">// -50</span>
+</pre>
+</div></div></section><h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://tc39.es/ecma262/multipage/numbers-and-dates.html#sec-math.ceil">ECMAScript Language Specification <br><small># sec-math.ceil</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="see_also_추가_참조"><h2 id="see_also_추가_참조">See also (추가 참조)</h2>
+<div class="section-content"><ul> <li><a href="abs"><code>Math.abs()</code></a></li> <li><a href="floor"><code>Math.floor()</code></a></li> <li><a href="round"><code>Math.round()</code></a></li> <li><a href="sign"><code>Math.sign()</code></a></li> <li><a href="trunc"><code>Math.trunc()</code></a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Math/ceil" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Math/ceil</a>
+  </p>
+</div>

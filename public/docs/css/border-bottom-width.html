@@ -1,0 +1,87 @@
+<header><h1>border-bottom-width</h1></header><div class="section-content"><p><a href="https://developer.mozilla.org/ko/docs/Web/CSS">CSS</a> <code>border-bottom-width</code> 속성은 요소의 아래 테두리 너비를 지정합니다.</p></div>
+<section aria-labelledby="시도해보기"><h2 id="시도해보기">시도해보기</h2>
+<div class="section-content"><iframe class="interactive is-default-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/css/border-bottom-width.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe></div></section><section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="SD1T+PL95U1a4MrY0tb+JpLuOZmn7ZTOYNU2ftlVt/Q=" data-language="css"><span class="token comment">/* 키워드 값 */</span>
+<span class="token property">border-bottom-width</span><span class="token punctuation">:</span> thin<span class="token punctuation">;</span>
+<span class="token property">border-bottom-width</span><span class="token punctuation">:</span> medium<span class="token punctuation">;</span>
+<span class="token property">border-bottom-width</span><span class="token punctuation">:</span> thick<span class="token punctuation">;</span>
+
+<span class="token comment">/* &lt;length&gt; 값 */</span>
+<span class="token property">border-bottom-width</span><span class="token punctuation">:</span> 10em<span class="token punctuation">;</span>
+<span class="token property">border-bottom-width</span><span class="token punctuation">:</span> 3vmax<span class="token punctuation">;</span>
+<span class="token property">border-bottom-width</span><span class="token punctuation">:</span> 6px<span class="token punctuation">;</span>
+
+<span class="token comment">/* 전역 값 */</span>
+<span class="token property">border-bottom-width</span><span class="token punctuation">:</span> inherit<span class="token punctuation">;</span>
+<span class="token property">border-bottom-width</span><span class="token punctuation">:</span> initial<span class="token punctuation">;</span>
+<span class="token property">border-bottom-width</span><span class="token punctuation">:</span> unset<span class="token punctuation">;</span>
+</pre>
+</div></div></section><section aria-labelledby="값"><h3 id="값">값</h3>
+<div class="section-content"><dl> <dt id="line-width"><code>&lt;line-width&gt;</code></dt> <dd> <p>테두리의 너비입니다. 0 이상의 <a href="length"><code>&lt;length&gt;</code></a> 또는 키워드를 사용할 수 있습니다. 키워드는 다음 세 가지 중 하나여야 합니다.</p> <figure class="table-container"><div class="_table"><table> <thead> <tr> <th><code>thin</code></th> <th></th> <th>얇은 테두리</th> </tr> </thead> <tbody> <tr> <td><code>medium</code></td> <td></td> <td>중간 테두리</td> </tr> <tr> <td><code>thick</code></td> <td></td> <td>굵은 테두리</td> </tr> </tbody> </table></div></figure> <div class="notecard note" id="sect1"> <p><strong>참고:</strong> 각 키워드의 굵기를 정의한 명세는 없기 때문에 결과는 구현별로 상이할 수 있습니다. 다만 굵기는 언제나 <code>thin ≤ medium ≤ thick</code>이고, 하나의 문서 내에서 동일합니다.</p> </div> </dd> </dl></div></section><section aria-labelledby="형식_정의"><h2 id="형식_정의">형식 정의</h2>
+<div class="section-content"><figure class="table-container"><div class="_table"><table class="properties"><tbody>
+<tr>
+<th scope="row"><a href="initial_value">초기값</a></th>
+<td><code>medium</code></td>
+</tr>
+<tr>
+<th scope="row">적용대상</th>
+<td>all elements. It also applies to <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/::first-letter" class="only-in-en-us"><code>::first-letter</code> <small>(en-US)</small></a>.</td>
+</tr>
+<tr>
+<th scope="row"><a href="inheritance">상속</a></th>
+<td>no</td>
+</tr>
+<tr>
+<th scope="row"><a href="computed_value">계산 값</a></th>
+<td>the absolute length or <code>0</code> if <a href="border-bottom-style"><code>border-bottom-style</code></a> is <code>none</code> or <code>hidden</code>
+</td>
+</tr>
+<tr>
+<th scope="row">Animation type</th>
+<td>a <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/length#interpolation">length</a>
+</td>
+</tr>
+</tbody></table></div></figure></div></section><section aria-labelledby="형식_구문"><h2 id="형식_구문">형식 구문</h2>
+<div class="section-content"><pre class="notranslate"><span class="token property" id="border-bottom-width">border-bottom-width = </span><br>  <span class="token property">&lt;line-width&gt;</span>  <br><br><span class="token property" id="&lt;line-width&gt;">&lt;line-width&gt; = </span><br>  <a href="length"><span class="token property">&lt;length [0,∞]&gt;</span></a>  <a href="value_definition_syntax#single_bar">|</a><br>  <span class="token keyword">thin</span>            <a href="value_definition_syntax#single_bar">|</a><br>  <span class="token keyword">medium</span>          <a href="value_definition_syntax#single_bar">|</a><br>  <span class="token keyword">thick</span>           <br><br></pre></div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+</section><section aria-labelledby="아래_테두리의_너비_비교"><h3 id="아래_테두리의_너비_비교">아래 테두리의 너비 비교</h3>
+<div class="section-content">
+<h4 id="html">HTML</h4> <div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="beM3pD3W5PMgKMtkYvVY/WAAZ32otwMnTqZRcxLxBfs=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span>Element 1<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span>Element 2<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div> <h4 id="css">CSS</h4> <div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="NgnmmRi/U/GZHo5yuYjPHT+rY3nEq3UkAfIYVugaxn4=" data-language="css"><span class="token selector">div</span> <span class="token punctuation">{</span>
+  <span class="token property">border</span><span class="token punctuation">:</span> 1px solid red<span class="token punctuation">;</span>
+  <span class="token property">margin</span><span class="token punctuation">:</span> 1em 0<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">div:nth-child(1)</span> <span class="token punctuation">{</span>
+  <span class="token property">border-bottom-width</span><span class="token punctuation">:</span> thick<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token selector">div:nth-child(2)</span> <span class="token punctuation">{</span>
+  <span class="token property">border-bottom-width</span><span class="token punctuation">:</span> 2em<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div> <h4 id="결과">결과</h4>
+<div class="code-example" id="sect2">
+
+<iframe class="sample-code-frame" title="아래 테두리의 너비 비교 sample" id="frame_아래_테두리의_너비_비교" width="100%" src="https://live.mdnplay.dev/ko/docs/Web/CSS/border-bottom-width/runner.html?id=%EC%95%84%EB%9E%98_%ED%85%8C%EB%91%90%EB%A6%AC%EC%9D%98_%EB%84%88%EB%B9%84_%EB%B9%84%EA%B5%90" loading="lazy"></iframe>
+</div>
+</div></section><h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://drafts.csswg.org/css-backgrounds/#the-border-width">CSS Backgrounds and Borders Module Level 3 <br><small># the-border-width</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li>테두리 너비 관련 CSS 속성: <a href="border-left-width"><code>border-left-width</code></a>, <a href="border-right-width"><code>border-right-width</code></a>, <a href="border-top-width"><code>border-top-width</code></a>, and <a href="border-width"><code>border-width</code></a>.</li> <li>아래 테두리 관련 CSS 속성: <a href="border"><code>border</code></a>, <a href="border-bottom"><code>border-bottom</code></a>, <a href="border-bottom-style"><code>border-bottom-style</code></a>, and <a href="border-bottom-color"><code>border-bottom-color</code></a>.</li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/CSS/border-bottom-width" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/CSS/border-bottom-width</a>
+  </p>
+</div>

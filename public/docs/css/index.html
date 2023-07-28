@@ -1,0 +1,915 @@
+<header><h1>CSS 참고서</h1></header><div class="section-content"><p><strong>CSS 참고서</strong>를 이용해 <a href="#%ED%82%A4%EC%9B%8C%EB%93%9C_%EC%83%89%EC%9D%B8">알파벳 순서로 정리한</a> 모든 표준 <a href="https://developer.mozilla.org/ko/docs/Web/CSS">CSS</a> 속성, <a href="pseudo-classes">의사 클래스</a>, <a href="pseudo-elements">의사 요소</a>, <a href="css_types">CSS 자료형</a>과 <a href="at-rule">@규칙</a>을 찾아보세요. 또한 <a href="#%EC%84%A0%ED%83%9D%EC%9E%90">유형별로 정리한 CSS 선택자</a>와 <a href="#%EA%B0%9C%EB%85%90">주요 CSS 개념</a>도 찾아볼 수 있습니다. 추가로 간단한 <a href="#dom-css_cssom">DOM-CSS / CSSOM</a> 참조도 들어 있습니다.</p></div>
+<section aria-labelledby="기본_규칙_구문"><h2 id="기본_규칙_구문">기본 규칙 구문</h2>
+</section><section aria-labelledby="스타일_규칙_구문"><h3 id="스타일_규칙_구문">스타일 규칙 구문</h3>
+<div class="section-content">
+<pre class="notranslate">style-rule ::=
+    selectors-list {
+      properties-list
+    }
+</pre> <p>... where :</p> <pre class="notranslate">selectors-list ::=
+    selector[:pseudo-class] [::pseudo-element]
+    [, selectors-list]
+
+properties-list ::=
+    [property : value] [; properties-list]
+</pre> <p>아래 <a href="#%EC%84%A0%ED%83%9D%EC%9E%90">선택자</a>, <a href="#%EC%9D%98%EC%82%AC_%ED%81%B4%EB%9E%98%EC%8A%A4">의사 클래스</a>, <a href="#%EC%9D%98%EC%82%AC_%EC%9A%94%EC%86%8C">의사 요소</a> 목록을 참고하세요. 각 *<code>value</code>*의 구문은 지정한 *<code>property</code>*가 정의하는 자료형에 따라 다릅니다.</p> <h4 id="스타일_규칙_예제">스타일 규칙 예제</h4> <div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="rPyaM+DqeWkQ3DRat1ekqNAuN5+uHfg9NSJ0WNBLzGI=" data-language="css"><span class="token selector">strong</span> <span class="token punctuation">{</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> red<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">div.menu-bar li:hover &gt; ul</span> <span class="token punctuation">{</span>
+  <span class="token property">display</span><span class="token punctuation">:</span> block<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div> <p>CSS 선택자 구문을 설명하는 입문자 단계의 소개 부분은 <a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Selectors">이 자습서</a>에서 찾아볼 수 있습니다. 규칙 정의에서 <a href="syntax">구문</a> 오류가 하나라도 발생하면 규칙 전체가 유효하지 않다는 점을 명심하세요. 유효하지 않은 규칙은 브라우저가 무시합니다. CSS 규칙 정의는 모두 (ASCII) <a href="https://www.w3.org/TR/css-syntax-3/#intro" target="_blank">텍스트에 기반</a>하지만, DOM-CSS / CSSOM (규칙 관리 시스템)은 <a href="https://www.w3.org/TR/cssom/#introduction" target="_blank">객체에 기반</a>합니다.</p>
+</div></section><section aria-labelledby="규칙_구문"><h3 id="규칙_구문">@규칙 구문</h3>
+<div class="section-content"><p>@규칙 체계는 매우 다양하므로 필요한 구체적인 구문을 찾으려면 <a href="at-rule">@규칙</a>을 봐주세요.</p></div></section><section aria-labelledby="키워드_색인"><h2 id="키워드_색인">키워드 색인</h2>
+<div class="section-content">
+<div class="notecard note" id="sect1"> <p><strong>참고:</strong> 이 색인에 있는 속성 이름에는 CSS 표준 이름과 다른 <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Reference#index" class="only-in-en-us">JavaScript 이름 <small>(en-US)</small></a>이 들어가지 않습니다.</p> </div>
+<div class="index" id="sect2"> <h3 id="-">-</h3>
+<ul>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/--*"><code>--*</code> <small>(en-US)</small></a></li>
+<li><a href="-webkit-line-clamp"><code>-webkit-line-clamp</code></a></li>
+</ul>
+<h3 id="a">A</h3>
+<ul>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/abs"><code>abs()</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/accent-color"><code>accent-color</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/acos"><code>acos()</code> <small>(en-US)</small></a></li>
+<li><a href=":active"><code>:active</code></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/@counter-style/additive-symbols"><code>additive-symbols (@counter-style)</code> <small>(en-US)</small></a></li>
+<li><a href="::after"><code>::after (:after)</code></a></li>
+<li><a href="align-content"><code>align-content</code></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/align-items"><code>align-items</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/align-self"><code>align-self</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/align-tracks"><code>align-tracks</code> <small>(en-US)</small></a></li>
+<li><a href="all"><code>all</code></a></li>
+<li><a class="page-not-created"><code>&lt;an-plus-b&gt;</code></a></li>
+<li><a href="angle"><code>&lt;angle&gt;</code></a></li>
+<li><a href="angle-percentage"><code>&lt;angle-percentage&gt;</code></a></li>
+<li><a href="animation"><code>animation</code></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/animation-composition"><code>animation-composition</code> <small>(en-US)</small></a></li>
+<li><a href="animation-delay"><code>animation-delay</code></a></li>
+<li><a href="animation-direction"><code>animation-direction</code></a></li>
+<li><a href="animation-duration"><code>animation-duration</code></a></li>
+<li><a href="animation-fill-mode"><code>animation-fill-mode</code></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/animation-iteration-count"><code>animation-iteration-count</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/animation-name"><code>animation-name</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/animation-play-state"><code>animation-play-state</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/animation-timeline"><code>animation-timeline</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/animation-timing-function"><code>animation-timing-function</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/@font-feature-values"><code>@annotation</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/font-variant-alternates"><code>annotation()</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:any-link"><code>:any-link</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/appearance"><code>appearance</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/ascent-override"><code>ascent-override (@font-face)</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/asin"><code>asin()</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/aspect-ratio"><code>aspect-ratio</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/atan"><code>atan()</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/atan2"><code>atan2()</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/attr"><code>attr()</code> <small>(en-US)</small></a></li>
+</ul>
+<h3 id="b">B</h3>
+<ul>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/::backdrop"><code>::backdrop</code> <small>(en-US)</small></a></li>
+<li><a href="backdrop-filter"><code>backdrop-filter</code></a></li>
+<li><a href="backface-visibility"><code>backface-visibility</code></a></li>
+<li><a href="background"><code>background</code></a></li>
+<li><a href="background-attachment"><code>background-attachment</code></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/background-blend-mode"><code>background-blend-mode</code> <small>(en-US)</small></a></li>
+<li><a href="background-clip"><code>background-clip</code></a></li>
+<li><a href="background-color"><code>background-color</code></a></li>
+<li><a href="background-image"><code>background-image</code></a></li>
+<li><a href="background-origin"><code>background-origin</code></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/background-position"><code>background-position</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/background-position-x"><code>background-position-x</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/background-position-y"><code>background-position-y</code> <small>(en-US)</small></a></li>
+<li><a href="background-repeat"><code>background-repeat</code></a></li>
+<li><a href="background-size"><code>background-size</code></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/@font-palette-values/base-palette"><code>base-palette (@font-palette-values)</code> <small>(en-US)</small></a></li>
+<li><a href="basic-shape"><code>&lt;basic-shape&gt;</code></a></li>
+<li><a href="::before"><code>::before (:before)</code></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:blank"><code>:blank</code> <small>(en-US)</small></a></li>
+<li><a class="page-not-created"><code>bleed (@page)</code></a></li>
+<li><a href="blend-mode"><code>&lt;blend-mode&gt;</code></a></li>
+<li><a class="page-not-created"><code>block-overflow</code></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/block-size"><code>block-size</code> <small>(en-US)</small></a></li>
+<li><a href="filter-function/blur"><code>blur()</code></a></li>
+<li><a href="border"><code>border</code></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/border-block"><code>border-block</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/border-block-color"><code>border-block-color</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/border-block-end"><code>border-block-end</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/border-block-end-color"><code>border-block-end-color</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/border-block-end-style"><code>border-block-end-style</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/border-block-end-width"><code>border-block-end-width</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/border-block-start"><code>border-block-start</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/border-block-start-color"><code>border-block-start-color</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/border-block-start-style"><code>border-block-start-style</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/border-block-start-width"><code>border-block-start-width</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/border-block-style"><code>border-block-style</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/border-block-width"><code>border-block-width</code> <small>(en-US)</small></a></li>
+<li><a href="border-bottom"><code>border-bottom</code></a></li>
+<li><a href="border-bottom-color"><code>border-bottom-color</code></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/border-bottom-left-radius"><code>border-bottom-left-radius</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/border-bottom-right-radius"><code>border-bottom-right-radius</code> <small>(en-US)</small></a></li>
+<li><a href="border-bottom-style"><code>border-bottom-style</code></a></li>
+<li><a href="border-bottom-width"><code>border-bottom-width</code></a></li>
+<li><a href="border-collapse"><code>border-collapse</code></a></li>
+<li><a href="border-color"><code>border-color</code></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/border-end-end-radius"><code>border-end-end-radius</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/border-end-start-radius"><code>border-end-start-radius</code> <small>(en-US)</small></a></li>
+<li><a href="border-image"><code>border-image</code></a></li>
+<li><a href="border-image-outset"><code>border-image-outset</code></a></li>
+<li><a href="border-image-repeat"><code>border-image-repeat</code></a></li>
+<li><a href="border-image-slice"><code>border-image-slice</code></a></li>
+<li><a href="border-image-source"><code>border-image-source</code></a></li>
+<li><a href="border-image-width"><code>border-image-width</code></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/border-inline"><code>border-inline</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/border-inline-color"><code>border-inline-color</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/border-inline-end"><code>border-inline-end</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/border-inline-end-color"><code>border-inline-end-color</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/border-inline-end-style"><code>border-inline-end-style</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/border-inline-end-width"><code>border-inline-end-width</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/border-inline-start"><code>border-inline-start</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/border-inline-start-color"><code>border-inline-start-color</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/border-inline-start-style"><code>border-inline-start-style</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/border-inline-start-width"><code>border-inline-start-width</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/border-inline-style"><code>border-inline-style</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/border-inline-width"><code>border-inline-width</code> <small>(en-US)</small></a></li>
+<li><a href="border-left"><code>border-left</code></a></li>
+<li><a href="border-left-color"><code>border-left-color</code></a></li>
+<li><a href="border-left-style"><code>border-left-style</code></a></li>
+<li><a href="border-left-width"><code>border-left-width</code></a></li>
+<li><a href="border-radius"><code>border-radius</code></a></li>
+<li><a href="border-right"><code>border-right</code></a></li>
+<li><a href="border-right-color"><code>border-right-color</code></a></li>
+<li><a href="border-right-style"><code>border-right-style</code></a></li>
+<li><a href="border-right-width"><code>border-right-width</code></a></li>
+<li><a href="border-spacing"><code>border-spacing</code></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/border-start-end-radius"><code>border-start-end-radius</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/border-start-start-radius"><code>border-start-start-radius</code> <small>(en-US)</small></a></li>
+<li><a href="border-style"><code>border-style</code></a></li>
+<li><a href="border-top"><code>border-top</code></a></li>
+<li><a href="border-top-color"><code>border-top-color</code></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/border-top-left-radius"><code>border-top-left-radius</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/border-top-right-radius"><code>border-top-right-radius</code> <small>(en-US)</small></a></li>
+<li><a href="border-top-style"><code>border-top-style</code></a></li>
+<li><a href="border-top-width"><code>border-top-width</code></a></li>
+<li><a href="border-width"><code>border-width</code></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/bottom"><code>bottom</code> <small>(en-US)</small></a></li>
+<li><a href="@page#page-margin-box-type"><code>@bottom-center</code></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/box-decoration-break"><code>box-decoration-break</code> <small>(en-US)</small></a></li>
+<li><a href="box-shadow"><code>box-shadow</code></a></li>
+<li><a href="box-sizing"><code>box-sizing</code></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/break-after"><code>break-after</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/break-before"><code>break-before</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/break-inside"><code>break-inside</code> <small>(en-US)</small></a></li>
+<li><a href="filter-function/brightness"><code>brightness()</code></a></li>
+</ul>
+<h3 id="c">C</h3>
+<ul>
+<li><a href="calc"><code>calc()</code></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/caption-side"><code>caption-side</code> <small>(en-US)</small></a></li>
+<li><a class="page-not-created"><code>caret</code></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/caret-color"><code>caret-color</code> <small>(en-US)</small></a></li>
+<li><a class="page-not-created"><code>caret-shape</code></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/@font-feature-values"><code>@character-variant</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/font-variant-alternates"><code>character-variant()</code> <small>(en-US)</small></a></li>
+<li><a href="@charset"><code>@charset</code></a></li>
+<li><a href=":checked"><code>:checked</code></a></li>
+<li><a href="basic-shape#circle()"><code>circle()</code></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/clamp"><code>clamp()</code> <small>(en-US)</small></a></li>
+<li><a href="clear"><code>clear</code></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/clip"><code>clip</code> <small>(en-US)</small></a></li>
+<li><a href="clip-path"><code>clip-path</code></a></li>
+<li><a href="color_value"><code>&lt;color&gt;</code></a></li>
+<li><a href="color"><code>color</code></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/color-scheme"><code>color-scheme</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/column-count"><code>column-count</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/column-fill"><code>column-fill</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/column-gap"><code>column-gap</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/column-rule"><code>column-rule</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/column-rule-color"><code>column-rule-color</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/column-rule-style"><code>column-rule-style</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/column-rule-width"><code>column-rule-width</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/column-span"><code>column-span</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/column-width"><code>column-width</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/columns"><code>columns</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/gradient/conic-gradient"><code>conic-gradient()</code> <small>(en-US)</small></a></li>
+<li><a href="contain"><code>contain</code></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/contain-intrinsic-block-size"><code>contain-intrinsic-block-size</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/contain-intrinsic-height"><code>contain-intrinsic-height</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/contain-intrinsic-inline-size"><code>contain-intrinsic-inline-size</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/contain-intrinsic-size"><code>contain-intrinsic-size</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/contain-intrinsic-width"><code>contain-intrinsic-width</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/container"><code>container</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/container-name"><code>container-name</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/container-type"><code>container-type</code> <small>(en-US)</small></a></li>
+<li><a href="content"><code>content</code></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/content-visibility"><code>content-visibility</code> <small>(en-US)</small></a></li>
+<li><a href="filter-function/contrast"><code>contrast()</code></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/cos"><code>cos()</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/counter"><code>&lt;counter&gt;</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/counter-increment"><code>counter-increment</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/counter-reset"><code>counter-reset</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/counter-set"><code>counter-set</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/@counter-style"><code>@counter-style</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/counters"><code>counters()</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/cross-fade"><code>cross-fade()</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/easing-function"><code>cubic-bezier()</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/::cue"><code>::cue</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/::cue-region"><code>::cue-region</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:current"><code>:current</code> <small>(en-US)</small></a></li>
+<li><a href="cursor"><code>cursor</code></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/custom-ident"><code>&lt;custom-ident&gt;</code> <small>(en-US)</small></a></li>
+<li><a href="length#cap"><code>length#cap</code></a></li>
+<li><a href="length#ch"><code>length#ch</code></a></li>
+<li><a href="length#cm"><code>length#cm</code></a></li>
+</ul>
+<h3 id="d">D</h3>
+<ul>
+<li><a href="angle#deg"><code>angle#deg</code></a></li>
+<li><a href=":default"><code>:default</code></a></li>
+<li><a href=":defined"><code>:defined</code></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/descent-override"><code>descent-override (@font-face)</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/dimension"><code>&lt;dimension&gt;</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:dir"><code>:dir</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/direction"><code>direction</code> <small>(en-US)</small></a></li>
+<li><a href=":disabled"><code>:disabled</code></a></li>
+<li><a href="display"><code>display</code></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/display-box"><code>&lt;display-box&gt;</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/display-inside"><code>&lt;display-inside&gt;</code> <small>(en-US)</small></a></li>
+<li><a href="display-internal"><code>&lt;display-internal&gt;</code></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/display-legacy"><code>&lt;display-legacy&gt;</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/display-listitem"><code>&lt;display-listitem&gt;</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/display-outside"><code>&lt;display-outside&gt;</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/filter-function/drop-shadow"><code>drop-shadow()</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/resolution"><code>resolution#dpcm</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/resolution"><code>resolution#dpi</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/resolution"><code>resolution#dppx</code> <small>(en-US)</small></a></li>
+</ul>
+<h3 id="e">E</h3>
+<ul>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/element"><code>element()</code> <small>(en-US)</small></a></li>
+<li><a href="basic-shape#ellipse()"><code>ellipse()</code></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:empty"><code>:empty</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/empty-cells"><code>empty-cells</code> <small>(en-US)</small></a></li>
+<li><a href=":enabled"><code>:enabled</code></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/env"><code>env()</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/exp"><code>exp()</code> <small>(en-US)</small></a></li>
+<li><a href="length#em"><code>length#em</code></a></li>
+<li><a href="length#ex"><code>length#ex</code></a></li>
+</ul>
+<h3 id="f">F</h3>
+<ul>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/@counter-style/fallback"><code>fallback (@counter-style)</code> <small>(en-US)</small></a></li>
+<li><a href="filter"><code>filter</code></a></li>
+<li><a href="filter-function"><code>&lt;filter-function&gt;</code></a></li>
+<li><a href=":first"><code>:first</code></a></li>
+<li><a href=":first-child"><code>:first-child</code></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/::first-letter"><code>::first-letter (:first-letter)</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/::first-line"><code>::first-line (:first-line)</code> <small>(en-US)</small></a></li>
+<li><a href=":first-of-type"><code>:first-of-type</code></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/fit-content"><code>fit-content()</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/flex_value"><code>&lt;flex&gt;</code> <small>(en-US)</small></a></li>
+<li><a href="flex"><code>flex</code></a></li>
+<li><a href="flex-basis"><code>flex-basis</code></a></li>
+<li><a href="flex-direction"><code>flex-direction</code></a></li>
+<li><a href="flex-flow"><code>flex-flow</code></a></li>
+<li><a href="flex-grow"><code>flex-grow</code></a></li>
+<li><a href="flex-shrink"><code>flex-shrink</code></a></li>
+<li><a href="flex-wrap"><code>flex-wrap</code></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/flex_value"><code>flex_value#fr</code> <small>(en-US)</small></a></li>
+<li><a href="float"><code>float</code></a></li>
+<li><a href=":focus"><code>:focus</code></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:focus-visible"><code>:focus-visible</code> <small>(en-US)</small></a></li>
+<li><a href=":focus-within"><code>:focus-within</code></a></li>
+<li><a href="font"><code>font</code></a></li>
+<li><a href="@font-face/font-display"><code>font-display (@font-face)</code></a></li>
+<li><a href="@font-face"><code>@font-face</code></a></li>
+<li><a href="font-family"><code>font-family</code></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-family"><code>font-family (@font-face)</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/@font-palette-values/font-family"><code>font-family (@font-palette-values)</code> <small>(en-US)</small></a></li>
+<li><a href="font-feature-settings"><code>font-feature-settings</code></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-feature-settings"><code>font-feature-settings (@font-face)</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/@font-feature-values"><code>@font-feature-values</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/font-kerning"><code>font-kerning</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/font-language-override"><code>font-language-override</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/font-optical-sizing"><code>font-optical-sizing</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/font-palette"><code>font-palette</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/@font-palette-values"><code>@font-palette-values</code> <small>(en-US)</small></a></li>
+<li><a href="font-size"><code>font-size</code></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/font-size-adjust"><code>font-size-adjust</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/font-stretch"><code>font-stretch</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-stretch"><code>font-stretch (@font-face)</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/font-style"><code>font-style</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-style"><code>font-style (@font-face)</code> <small>(en-US)</small></a></li>
+<li><a href="font-synthesis"><code>font-synthesis</code></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/font-variant"><code>font-variant</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face"><code>font-variant (@font-face)</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/font-variant-alternates"><code>font-variant-alternates</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/font-variant-caps"><code>font-variant-caps</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/font-variant-east-asian"><code>font-variant-east-asian</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/font-variant-emoji"><code>font-variant-emoji</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/font-variant-ligatures"><code>font-variant-ligatures</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/font-variant-numeric"><code>font-variant-numeric</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/font-variant-position"><code>font-variant-position</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/font-variation-settings"><code>font-variation-settings</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-variation-settings"><code>font-variation-settings (@font-face)</code> <small>(en-US)</small></a></li>
+<li><a href="font-weight"><code>font-weight</code></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-weight"><code>font-weight (@font-face)</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/forced-color-adjust"><code>forced-color-adjust</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/src"><code>format()</code> <small>(en-US)</small></a></li>
+<li><a href="frequency"><code>&lt;frequency&gt;</code></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/frequency-percentage"><code>&lt;frequency-percentage&gt;</code> <small>(en-US)</small></a></li>
+<li><a href=":fullscreen"><code>:fullscreen</code></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:future"><code>:future</code> <small>(en-US)</small></a></li>
+</ul>
+<h3 id="g">G</h3>
+<ul>
+<li><a href="angle#grad"><code>angle#grad</code></a></li>
+<li><a href="gap"><code>gap</code></a></li>
+<li><a href="gradient"><code>&lt;gradient&gt;</code></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/::grammar-error"><code>::grammar-error</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/filter-function/grayscale"><code>grayscale()</code> <small>(en-US)</small></a></li>
+<li><a href="grid"><code>grid</code></a></li>
+<li><a href="grid-area"><code>grid-area</code></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/grid-auto-columns"><code>grid-auto-columns</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/grid-auto-flow"><code>grid-auto-flow</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/grid-auto-rows"><code>grid-auto-rows</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/grid-column"><code>grid-column</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/grid-column-end"><code>grid-column-end</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/grid-column-start"><code>grid-column-start</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/grid-row"><code>grid-row</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/grid-row-end"><code>grid-row-end</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/grid-row-start"><code>grid-row-start</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/grid-template"><code>grid-template</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/grid-template-areas"><code>grid-template-areas</code> <small>(en-US)</small></a></li>
+<li><a href="grid-template-columns"><code>grid-template-columns</code></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/grid-template-rows"><code>grid-template-rows</code> <small>(en-US)</small></a></li>
+</ul>
+<h3 id="h">H</h3>
+<ul>
+<li><a href="frequency#hz"><code>frequency#Hz</code></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/hanging-punctuation"><code>hanging-punctuation</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:has"><code>:has</code> <small>(en-US)</small></a></li>
+<li><a href="height"><code>height</code></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS"><code>height (@viewport)</code> <small>(en-US)</small></a></li>
+<li><a class="page-not-created"><code>@historical-forms</code></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:host_function"><code>:host()</code> <small>(en-US)</small></a></li>
+<li><a class="page-not-created"><code>:host-context()</code></a></li>
+<li><a href=":hover"><code>:hover</code></a></li>
+<li><a href="color_value#hsl()"><code>hsl()</code></a></li>
+<li><a href="color_value#hsla()"><code>hsla()</code></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/filter-function/hue-rotate"><code>hue-rotate()</code> <small>(en-US)</small></a></li>
+<li><a class="page-not-created"><code>hwb()</code></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/hyphenate-character"><code>hyphenate-character</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/hyphenate-limit-chars"><code>hyphenate-limit-chars</code> <small>(en-US)</small></a></li>
+<li><a href="hyphens"><code>hyphens</code></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/hypot"><code>hypot()</code> <small>(en-US)</small></a></li>
+</ul>
+<h3 id="i">I</h3>
+<ul>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/ident"><code>&lt;ident&gt;</code> <small>(en-US)</small></a></li>
+<li><a href="image"><code>&lt;image&gt;</code></a></li>
+<li><a href="image#the_image()_functional_notation"><code>image()</code></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/image-orientation"><code>image-orientation</code> <small>(en-US)</small></a></li>
+<li><a href="image-rendering"><code>image-rendering</code></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/image-resolution"><code>image-resolution</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/image/image-set"><code>image-set()</code> <small>(en-US)</small></a></li>
+<li><a href="@import"><code>@import</code></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:in-range"><code>:in-range</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:indeterminate"><code>:indeterminate</code> <small>(en-US)</small></a></li>
+<li><a href="inherit"><code>inherit</code></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/@property/inherits"><code>inherits (@property)</code> <small>(en-US)</small></a></li>
+<li><a href="initial"><code>initial</code></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/initial-letter"><code>initial-letter</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/initial-letter-align"><code>initial-letter-align</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/@property/initial-value"><code>initial-value (@property)</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/inline-size"><code>inline-size</code> <small>(en-US)</small></a></li>
+<li><a class="page-not-created"><code>input-security</code></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/inset"><code>inset</code> <small>(en-US)</small></a></li>
+<li><a href="basic-shape#inset()"><code>inset()</code></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/inset-block"><code>inset-block</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/inset-block-end"><code>inset-block-end</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/inset-block-start"><code>inset-block-start</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/inset-inline"><code>inset-inline</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/inset-inline-end"><code>inset-inline-end</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/inset-inline-start"><code>inset-inline-start</code> <small>(en-US)</small></a></li>
+<li><a href="integer"><code>&lt;integer&gt;</code></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:invalid"><code>:invalid</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/filter-function/invert"><code>invert()</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:is"><code>:is</code> <small>(en-US)</small></a></li>
+<li><a href="isolation"><code>isolation</code></a></li>
+<li><a href="length#ic"><code>length#ic</code></a></li>
+<li><a href="length#in"><code>length#in</code></a></li>
+</ul>
+<h3 id="j">J</h3>
+<ul>
+<li><a href="justify-content"><code>justify-content</code></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/justify-items"><code>justify-items</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/justify-self"><code>justify-self</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/justify-tracks"><code>justify-tracks</code> <small>(en-US)</small></a></li>
+</ul>
+<h3 id="k">K</h3>
+<ul>
+<li><a href="frequency#khz"><code>frequency#kHz</code></a></li>
+<li><a href="@keyframes"><code>@keyframes</code></a></li>
+</ul>
+<h3 id="l">L</h3>
+<ul>
+<li><a class="page-not-created"><code>lab()</code></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:lang"><code>:lang</code> <small>(en-US)</small></a></li>
+<li><a href=":last-child"><code>:last-child</code></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:last-of-type"><code>:last-of-type</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/@layer"><code>@layer</code> <small>(en-US)</small></a></li>
+<li><a class="page-not-created"><code>layer()</code></a></li>
+<li><a class="page-not-created"><code>layer() (@import)</code></a></li>
+<li><a class="page-not-created"><code>lch()</code></a></li>
+<li><a class="page-not-created"><code>leader()</code></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:left"><code>:left</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/left"><code>left</code> <small>(en-US)</small></a></li>
+<li><a href="@page#page-margin-box-type"><code>@left-bottom</code></a></li>
+<li><a href="length"><code>&lt;length&gt;</code></a></li>
+<li><a href="length-percentage"><code>&lt;length-percentage&gt;</code></a></li>
+<li><a href="letter-spacing"><code>letter-spacing</code></a></li>
+<li><a href="line-break"><code>line-break</code></a></li>
+<li><a class="page-not-created"><code>line-clamp</code></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/line-gap-override"><code>line-gap-override (@font-face)</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/line-height"><code>line-height</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/line-height-step"><code>line-height-step</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/line-style"><code>&lt;line-style&gt;</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/gradient/linear-gradient"><code>linear-gradient()</code> <small>(en-US)</small></a></li>
+<li><a href=":link"><code>:link</code></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/list-style"><code>list-style</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/list-style-image"><code>list-style-image</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/list-style-position"><code>list-style-position</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/list-style-type"><code>list-style-type</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/src"><code>local()</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:local-link"><code>:local-link</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/log"><code>log()</code> <small>(en-US)</small></a></li>
+</ul>
+<h3 id="m">M</h3>
+<ul>
+<li><a href="length#mm"><code>length#mm</code></a></li>
+<li><a href="margin"><code>margin</code></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/margin-block"><code>margin-block</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/margin-block-end"><code>margin-block-end</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/margin-block-start"><code>margin-block-start</code> <small>(en-US)</small></a></li>
+<li><a href="margin-bottom"><code>margin-bottom</code></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/margin-inline"><code>margin-inline</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/margin-inline-end"><code>margin-inline-end</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/margin-inline-start"><code>margin-inline-start</code> <small>(en-US)</small></a></li>
+<li><a href="margin-left"><code>margin-left</code></a></li>
+<li><a href="margin-right"><code>margin-right</code></a></li>
+<li><a href="margin-top"><code>margin-top</code></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/margin-trim"><code>margin-trim</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/::marker"><code>::marker</code> <small>(en-US)</small></a></li>
+<li><a class="page-not-created"><code>marks (@page)</code></a></li>
+<li><a href="mask"><code>mask</code></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/mask-border"><code>mask-border</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/mask-border-mode"><code>mask-border-mode</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/mask-border-outset"><code>mask-border-outset</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/mask-border-repeat"><code>mask-border-repeat</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/mask-border-slice"><code>mask-border-slice</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/mask-border-source"><code>mask-border-source</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/mask-border-width"><code>mask-border-width</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/mask-clip"><code>mask-clip</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/mask-composite"><code>mask-composite</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/mask-image"><code>mask-image</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/mask-mode"><code>mask-mode</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/mask-origin"><code>mask-origin</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/mask-position"><code>mask-position</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/mask-repeat"><code>mask-repeat</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/mask-size"><code>mask-size</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/mask-type"><code>mask-type</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/masonry-auto-flow"><code>masonry-auto-flow</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/math-depth"><code>math-depth</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/math-shift"><code>math-shift</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/math-style"><code>math-style</code> <small>(en-US)</small></a></li>
+<li><a href="transform-function/matrix"><code>matrix()</code></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/transform-function/matrix3d"><code>matrix3d()</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/max"><code>max()</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/max-block-size"><code>max-block-size</code> <small>(en-US)</small></a></li>
+<li><a href="max-height"><code>max-height</code></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS"><code>max-height (@viewport)</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/max-inline-size"><code>max-inline-size</code> <small>(en-US)</small></a></li>
+<li><a class="page-not-created"><code>max-lines</code></a></li>
+<li><a href="max-width"><code>max-width</code></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS"><code>max-width (@viewport)</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS"><code>max-zoom (@viewport)</code> <small>(en-US)</small></a></li>
+<li><a href="@media"><code>@media</code></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/min"><code>min()</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/min-block-size"><code>min-block-size</code> <small>(en-US)</small></a></li>
+<li><a href="min-height"><code>min-height</code></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS"><code>min-height (@viewport)</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/min-inline-size"><code>min-inline-size</code> <small>(en-US)</small></a></li>
+<li><a href="min-width"><code>min-width</code></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS"><code>min-width (@viewport)</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS"><code>min-zoom (@viewport)</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/minmax"><code>minmax()</code> <small>(en-US)</small></a></li>
+<li><a href="mix-blend-mode"><code>mix-blend-mode</code></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/mod"><code>mod()</code> <small>(en-US)</small></a></li>
+<li><a href="time#ms"><code>time#ms</code></a></li>
+</ul>
+<h3 id="n">N</h3>
+<ul>
+<li><a href="@namespace"><code>@namespace</code></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/@counter-style/negative"><code>negative (@counter-style)</code> <small>(en-US)</small></a></li>
+<li><a href=":not"><code>:not</code></a></li>
+<li><a href=":nth-child"><code>:nth-child</code></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:nth-col"><code>:nth-col</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:nth-last-child"><code>:nth-last-child</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:nth-last-col"><code>:nth-last-col</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:nth-last-of-type"><code>:nth-last-of-type</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:nth-of-type"><code>:nth-of-type</code> <small>(en-US)</small></a></li>
+<li><a href="number"><code>&lt;number&gt;</code></a></li>
+</ul>
+<h3 id="o">O</h3>
+<ul>
+<li><a href="object-fit"><code>object-fit</code></a></li>
+<li><a href="object-position"><code>object-position</code></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/offset"><code>offset</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/offset-anchor"><code>offset-anchor</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/offset-distance"><code>offset-distance</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/offset-path"><code>offset-path</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/offset-position"><code>offset-position</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/offset-rotate"><code>offset-rotate</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:only-child"><code>:only-child</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:only-of-type"><code>:only-of-type</code> <small>(en-US)</small></a></li>
+<li><a href="opacity"><code>opacity</code></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/filter-function/opacity"><code>opacity()</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:optional"><code>:optional</code> <small>(en-US)</small></a></li>
+<li><a href="order"><code>order</code></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS"><code>orientation (@viewport)</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/@font-feature-values"><code>@ornaments</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/font-variant-alternates"><code>ornaments()</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/orphans"><code>orphans</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:out-of-range"><code>:out-of-range</code> <small>(en-US)</small></a></li>
+<li><a href="outline"><code>outline</code></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/outline-color"><code>outline-color</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/outline-offset"><code>outline-offset</code> <small>(en-US)</small></a></li>
+<li><a href="outline-style"><code>outline-style</code></a></li>
+<li><a href="outline-width"><code>outline-width</code></a></li>
+<li><a href="overflow"><code>&lt;overflow&gt;</code></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/overflow-anchor"><code>overflow-anchor</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/overflow-block"><code>overflow-block</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/overflow-clip-margin"><code>overflow-clip-margin</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/overflow-inline"><code>overflow-inline</code> <small>(en-US)</small></a></li>
+<li><a href="overflow-wrap"><code>overflow-wrap</code></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/overflow-x"><code>overflow-x</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/overflow-y"><code>overflow-y</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/@font-palette-values/override-colors"><code>override-colors (@font-palette-values)</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/overscroll-behavior"><code>overscroll-behavior</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/overscroll-behavior-block"><code>overscroll-behavior-block</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/overscroll-behavior-inline"><code>overscroll-behavior-inline</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/overscroll-behavior-x"><code>overscroll-behavior-x</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/overscroll-behavior-y"><code>overscroll-behavior-y</code> <small>(en-US)</small></a></li>
+</ul>
+<h3 id="p">P</h3>
+<ul>
+<li><a href="pseudo-classes"><code>Pseudo-classes</code></a></li>
+<li><a href="pseudo-elements"><code>Pseudo-elements</code></a></li>
+<li><a href="length#pc"><code>length#pc</code></a></li>
+<li><a href="length#pt"><code>length#pt</code></a></li>
+<li><a href="length#px"><code>length#px</code></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/@counter-style/pad"><code>pad (@counter-style)</code> <small>(en-US)</small></a></li>
+<li><a href="padding"><code>padding</code></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/padding-block"><code>padding-block</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/padding-block-end"><code>padding-block-end</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/padding-block-start"><code>padding-block-start</code> <small>(en-US)</small></a></li>
+<li><a href="padding-bottom"><code>padding-bottom</code></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/padding-inline"><code>padding-inline</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/padding-inline-end"><code>padding-inline-end</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/padding-inline-start"><code>padding-inline-start</code> <small>(en-US)</small></a></li>
+<li><a href="padding-left"><code>padding-left</code></a></li>
+<li><a href="padding-right"><code>padding-right</code></a></li>
+<li><a href="padding-top"><code>padding-top</code></a></li>
+<li><a href="@page"><code>@page</code></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/page"><code>page</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/page-break-after"><code>page-break-after</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/page-break-before"><code>page-break-before</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/page-break-inside"><code>page-break-inside</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/@page/page-orientation"><code>page-orientation (@page)</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/image/paint"><code>paint()</code> <small>(en-US)</small></a></li>
+<li><a href="paint-order"><code>paint-order</code></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/::part"><code>::part</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:past"><code>:past</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/path"><code>path()</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:paused"><code>:paused</code> <small>(en-US)</small></a></li>
+<li><a href="percentage"><code>&lt;percentage&gt;</code></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/perspective"><code>perspective</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/transform-function/perspective"><code>perspective()</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/perspective-origin"><code>perspective-origin</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:picture-in-picture"><code>:picture-in-picture</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/place-content"><code>place-content</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/place-items"><code>place-items</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/place-self"><code>place-self</code> <small>(en-US)</small></a></li>
+<li><a href="::placeholder"><code>::placeholder</code></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:placeholder-shown"><code>:placeholder-shown</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:playing"><code>:playing</code> <small>(en-US)</small></a></li>
+<li><a href="pointer-events"><code>pointer-events</code></a></li>
+<li><a href="basic-shape#polygon()"><code>polygon()</code></a></li>
+<li><a href="position_value"><code>&lt;position&gt;</code></a></li>
+<li><a href="position"><code>position</code></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/pow"><code>pow()</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/@counter-style/prefix"><code>prefix (@counter-style)</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/print-color-adjust"><code>print-color-adjust</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/@property"><code>@property</code> <small>(en-US)</small></a></li>
+</ul>
+<h3 id="q">Q</h3>
+<ul>
+<li><a href="length#q"><code>length#Q</code></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/quotes"><code>quotes</code> <small>(en-US)</small></a></li>
+</ul>
+<h3 id="r">R</h3>
+<ul>
+<li><a href="angle#rad"><code>angle#rad</code></a></li>
+<li><a href="length#rem"><code>length#rem</code></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/gradient/radial-gradient"><code>radial-gradient()</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/@counter-style/range"><code>range (@counter-style)</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/ratio"><code>&lt;ratio&gt;</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/ray"><code>ray()</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:read-only"><code>:read-only</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:read-write"><code>:read-write</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/shape"><code>rect()</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/rem"><code>rem()</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/repeat"><code>repeat()</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/gradient/repeating-conic-gradient"><code>repeating-conic-gradient()</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/gradient/repeating-linear-gradient"><code>repeating-linear-gradient()</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/gradient/repeating-radial-gradient"><code>repeating-radial-gradient()</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:required"><code>:required</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/resize"><code>resize</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/resolution"><code>&lt;resolution&gt;</code> <small>(en-US)</small></a></li>
+<li><a class="page-not-created"><code>reversed()</code></a></li>
+<li><a href="revert"><code>revert</code></a></li>
+<li><a href="color_value#rgb()"><code>rgb()</code></a></li>
+<li><a href="color_value#rgba()"><code>rgba()</code></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:right"><code>:right</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/right"><code>right</code> <small>(en-US)</small></a></li>
+<li><a href="@page#page-margin-box-type"><code>@right-bottom</code></a></li>
+<li><a href=":root"><code>:root</code></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/rotate"><code>rotate</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/transform-function/rotate"><code>rotate()</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/transform-function/rotate3d"><code>rotate3d()</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/transform-function/rotateX"><code>rotateX()</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/transform-function/rotateY"><code>rotateY()</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/transform-function/rotateZ"><code>rotateZ()</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/round"><code>round()</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/row-gap"><code>row-gap</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/ruby-align"><code>ruby-align</code> <small>(en-US)</small></a></li>
+<li><a class="page-not-created"><code>ruby-merge</code></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/ruby-position"><code>ruby-position</code> <small>(en-US)</small></a></li>
+</ul>
+<h3 id="s">S</h3>
+<ul>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/filter-function/saturate"><code>saturate()</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/scale"><code>scale</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/transform-function/scale"><code>scale()</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/transform-function/scale3d"><code>scale3d()</code> <small>(en-US)</small></a></li>
+<li><a href="transform-function/scalex"><code>scaleX()</code></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/transform-function/scaleY"><code>scaleY()</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/transform-function/scaleZ"><code>scaleZ()</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:scope"><code>:scope</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/overflow"><code>scroll()</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/scroll-behavior"><code>scroll-behavior</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/scroll-margin"><code>scroll-margin</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/scroll-margin-block"><code>scroll-margin-block</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/scroll-margin-block-end"><code>scroll-margin-block-end</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/scroll-margin-block-start"><code>scroll-margin-block-start</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/scroll-margin-bottom"><code>scroll-margin-bottom</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/scroll-margin-inline"><code>scroll-margin-inline</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/scroll-margin-inline-end"><code>scroll-margin-inline-end</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/scroll-margin-inline-start"><code>scroll-margin-inline-start</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/scroll-margin-left"><code>scroll-margin-left</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/scroll-margin-right"><code>scroll-margin-right</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/scroll-margin-top"><code>scroll-margin-top</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/scroll-padding"><code>scroll-padding</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/scroll-padding-block"><code>scroll-padding-block</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/scroll-padding-block-end"><code>scroll-padding-block-end</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/scroll-padding-block-start"><code>scroll-padding-block-start</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/scroll-padding-bottom"><code>scroll-padding-bottom</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/scroll-padding-inline"><code>scroll-padding-inline</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/scroll-padding-inline-end"><code>scroll-padding-inline-end</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/scroll-padding-inline-start"><code>scroll-padding-inline-start</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/scroll-padding-left"><code>scroll-padding-left</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/scroll-padding-right"><code>scroll-padding-right</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/scroll-padding-top"><code>scroll-padding-top</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/scroll-snap-align"><code>scroll-snap-align</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/scroll-snap-stop"><code>scroll-snap-stop</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/scroll-snap-type"><code>scroll-snap-type</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/scroll-timeline"><code>@scroll-timeline</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/scroll-timeline"><code>scroll-timeline</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/scroll-timeline-axis"><code>scroll-timeline-axis</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/scroll-timeline-name"><code>scroll-timeline-name</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/scrollbar-color"><code>scrollbar-color</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/scrollbar-gutter"><code>scrollbar-gutter</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/scrollbar-width"><code>scrollbar-width</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/::selection"><code>::selection</code> <small>(en-US)</small></a></li>
+<li><a class="page-not-created"><code>selector()</code></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/filter-function/sepia"><code>sepia()</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/shape"><code>&lt;shape&gt;</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/shape-image-threshold"><code>shape-image-threshold</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/shape-margin"><code>shape-margin</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/shape-outside"><code>shape-outside</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/sign"><code>sign()</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/sin"><code>sin()</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/@page/size"><code>size (@page)</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/size-adjust"><code>size-adjust (@font-face)</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/transform-function/skew"><code>skew()</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/transform-function/skewX"><code>skewX()</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/transform-function/skewY"><code>skewY()</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/::slotted"><code>::slotted</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/@counter-style/speak-as"><code>speak-as (@counter-style)</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/::spelling-error"><code>::spelling-error</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/sqrt"><code>sqrt()</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/src"><code>src (@font-face)</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/easing-function"><code>steps()</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/string"><code>&lt;string&gt;</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/@font-feature-values"><code>@styleset</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/font-variant-alternates"><code>styleset()</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/@font-feature-values"><code>@stylistic</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/font-variant-alternates"><code>stylistic()</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/@counter-style/suffix"><code>suffix (@counter-style)</code> <small>(en-US)</small></a></li>
+<li><a href="@supports"><code>@supports</code></a></li>
+<li><a class="page-not-created"><code>supports() (@import)</code></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/@font-feature-values"><code>@swash</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/font-variant-alternates"><code>swash()</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/@counter-style/symbols"><code>symbols (@counter-style)</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/symbols"><code>symbols()</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/@property/syntax"><code>syntax (@property)</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/@counter-style/system"><code>system (@counter-style)</code> <small>(en-US)</small></a></li>
+<li><a href="time#s"><code>time#s</code></a></li>
+</ul>
+<h3 id="t">T</h3>
+<ul>
+<li><a href="angle#turn"><code>angle#turn</code></a></li>
+<li><a href="tab-size"><code>tab-size</code></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/table-layout"><code>table-layout</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/tan"><code>tan()</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:target"><code>:target</code> <small>(en-US)</small></a></li>
+<li><a class="page-not-created"><code>target-counter()</code></a></li>
+<li><a class="page-not-created"><code>target-counters()</code></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/::target-text"><code>::target-text</code> <small>(en-US)</small></a></li>
+<li><a class="page-not-created"><code>target-text()</code></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:target-within"><code>:target-within</code> <small>(en-US)</small></a></li>
+<li><a href="text-align"><code>text-align</code></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/text-align-last"><code>text-align-last</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/text-combine-upright"><code>text-combine-upright</code> <small>(en-US)</small></a></li>
+<li><a href="text-decoration"><code>text-decoration</code></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/text-decoration-color"><code>text-decoration-color</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/text-decoration-line"><code>text-decoration-line</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/text-decoration-skip"><code>text-decoration-skip</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/text-decoration-skip-ink"><code>text-decoration-skip-ink</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/text-decoration-style"><code>text-decoration-style</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/text-decoration-thickness"><code>text-decoration-thickness</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/text-emphasis"><code>text-emphasis</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/text-emphasis-color"><code>text-emphasis-color</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/text-emphasis-position"><code>text-emphasis-position</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/text-emphasis-style"><code>text-emphasis-style</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/text-indent"><code>text-indent</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/text-justify"><code>text-justify</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/text-orientation"><code>text-orientation</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/text-overflow"><code>text-overflow</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/text-rendering"><code>text-rendering</code> <small>(en-US)</small></a></li>
+<li><a href="text-shadow"><code>text-shadow</code></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/text-size-adjust"><code>text-size-adjust</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/text-transform"><code>text-transform</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/text-underline-offset"><code>text-underline-offset</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/text-underline-position"><code>text-underline-position</code> <small>(en-US)</small></a></li>
+<li><a href="time"><code>&lt;time&gt;</code></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/time-percentage"><code>&lt;time-percentage&gt;</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/easing-function"><code>&lt;timing-function&gt;</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/top"><code>top</code> <small>(en-US)</small></a></li>
+<li><a href="@page#page-margin-box-type"><code>@top-center</code></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/touch-action"><code>touch-action</code> <small>(en-US)</small></a></li>
+<li><a href="transform"><code>transform</code></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/transform-box"><code>transform-box</code> <small>(en-US)</small></a></li>
+<li><a href="transform-function"><code>&lt;transform-function&gt;</code></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/transform-origin"><code>transform-origin</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/transform-style"><code>transform-style</code> <small>(en-US)</small></a></li>
+<li><a href="transition"><code>transition</code></a></li>
+<li><a href="transition-delay"><code>transition-delay</code></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/transition-duration"><code>transition-duration</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/transition-property"><code>transition-property</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/transition-timing-function"><code>transition-timing-function</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/translate"><code>translate</code> <small>(en-US)</small></a></li>
+<li><a href="transform-function/translate"><code>translate()</code></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/transform-function/translate3d"><code>translate3d()</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/transform-function/translateX"><code>translateX()</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/transform-function/translateY"><code>translateY()</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/transform-function/translateZ"><code>translateZ()</code> <small>(en-US)</small></a></li>
+<li><a class="page-not-created"><code>type()</code></a></li>
+</ul>
+<h3 id="u">U</h3>
+<ul>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/unicode-bidi"><code>unicode-bidi</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/unicode-range"><code>unicode-range (@font-face)</code> <small>(en-US)</small></a></li>
+<li><a href="unset"><code>unset</code></a></li>
+<li><a href="url"><code>&lt;url&gt;</code></a></li>
+<li><a href="url#the_url()_functional_notation"><code>url()</code></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:user-invalid"><code>:user-invalid</code> <small>(en-US)</small></a></li>
+<li><a href="user-select"><code>user-select</code></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:user-valid"><code>:user-valid</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS"><code>user-zoom (@viewport)</code> <small>(en-US)</small></a></li>
+</ul>
+<h3 id="v">V</h3>
+<ul>
+<li><a href="length#vh"><code>length#vh</code></a></li>
+<li><a href="length#vmax"><code>length#vmax</code></a></li>
+<li><a href="length#vmin"><code>length#vmin</code></a></li>
+<li><a href="length#vw"><code>length#vw</code></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:valid"><code>:valid</code> <small>(en-US)</small></a></li>
+<li><a href="var()"><code>var()</code></a></li>
+<li><a href="vertical-align"><code>vertical-align</code></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/::view-transition"><code>::view-transition</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/::view-transition-group"><code>::view-transition-group</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/::view-transition-image-pair"><code>::view-transition-image-pair</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/view-transition-name"><code>view-transition-name</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/::view-transition-new"><code>::view-transition-new</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/::view-transition-old"><code>::view-transition-old</code> <small>(en-US)</small></a></li>
+<li><a href="https://developer.mozilla.org/ko/docs/Web/CSS"><code>@viewport</code></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS"><code>viewport-fit (@viewport)</code> <small>(en-US)</small></a></li>
+<li><a href="visibility"><code>visibility</code></a></li>
+<li><a href=":visited"><code>:visited</code></a></li>
+</ul>
+<h3 id="w">W</h3>
+<ul>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:where"><code>:where</code> <small>(en-US)</small></a></li>
+<li><a href="white-space"><code>white-space</code></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/widows"><code>widows</code> <small>(en-US)</small></a></li>
+<li><a href="width"><code>width</code></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS"><code>width (@viewport)</code> <small>(en-US)</small></a></li>
+<li><a href="will-change"><code>will-change</code></a></li>
+<li><a href="word-break"><code>word-break</code></a></li>
+<li><a href="word-spacing"><code>word-spacing</code></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/overflow-wrap"><code>word-wrap</code> <small>(en-US)</small></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/writing-mode"><code>writing-mode</code> <small>(en-US)</small></a></li>
+</ul>
+<h3 id="x">X</h3>
+<ul><li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/resolution"><code>resolution#x</code> <small>(en-US)</small></a></li></ul>
+<h3 id="z">Z</h3>
+<ul>
+<li><a href="z-index"><code>z-index</code></a></li>
+<li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS"><code>zoom (@viewport)</code> <small>(en-US)</small></a></li>
+</ul>
+<h3 id="others">Others</h3>
+<ul><li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/--*"><code>--*</code> <small>(en-US)</small></a></li></ul> </div>
+</div></section><section aria-labelledby="선택자"><h2 id="선택자">선택자</h2>
+<div class="section-content"><p>다음은 <a href="css_selectors">선택자</a> 목록입니다. 선택자를 사용하면 DOM 요소의 다양한 기능에 기반한 조건을 통해 스타일을 입힐 수 있습니다.</p></div></section><section aria-labelledby="기본_선택자"><h3 id="기본_선택자">기본 선택자</h3>
+<div class="section-content">
+<p><strong>기본 선택자</strong>는 선택자의 기초를 이루며, 조합을 통해 더 복잡한 선택자를 생성합니다.</p> <ul> <li>
+<a href="universal_selectors">전체 선택자</a> <code>*</code>, <code>ns|*</code>, <code>*|*</code>, <code>|*</code>
+</li> <li>
+<a href="type_selectors">태그 선택자</a> <em><code>elementname</code></em>
+</li> <li>
+<a href="class_selectors">클래스 선택자</a> <code>.classname</code>
+</li> <li>
+<a href="id_selectors">ID 선택자</a> <code>#idname</code>
+</li> <li>
+<a href="attribute_selectors">속성 선택자</a> <code>[attr=value]</code>
+</li> </ul>
+</div></section><section aria-labelledby="그룹_선택자"><h3 id="그룹_선택자">그룹 선택자</h3>
+<div class="section-content"><dl> <dt id="선택자_목록">
+<a href="selector_list">선택자 목록</a> <code>A, B</code>
+</dt> <dd> <p>A와 B 요소를 모두 선택합니다. 일치하는 여러가지 요소를 선택할 때 사용합니다.</p> </dd> </dl></div></section><section aria-labelledby="결합자"><h3 id="결합자">결합자</h3>
+<div class="section-content">
+<p>결합자는 "*<code>A</code>*는 *<code>B</code><em>의 자식", "</em><code>A</code>*는 *<code>B</code>*와 인접 요소"처럼, 두 개 이상의 선택자끼리 관계를 형성합니다.</p> <dl> <dt id="인접_형제_결합자">
+<a href="adjacent_sibling_combinator">인접 형제 결합자</a> <code>A + B</code>
+</dt> <dd> <p>요소 *<code>A</code>*와 *<code>B</code>*가 같은 부모를 가지며 *<code>B</code>*가 *<code>A</code>*를 바로 뒤따라야 하도록 지정합니다.</p> </dd> <dt id="일반_형제_결합자">
+<a href="general_sibling_combinator">일반 형제 결합자</a> <code>A ~ B</code>
+</dt> <dd> <p>요소 *<code>A</code>*와 *<code>B</code>*가 같은 부모를 가지며 *<code>B</code>*가 *<code>A</code>*를 뒤따라야 하도록 지정합니다. 그러나 *<code>B</code>*가 *<code>A</code>*의 바로 옆에 위치해야 할 필요는 없습니다.</p> </dd> <dt id="자식_결합자">
+<a href="child_combinator">자식 결합자</a> <code>A &gt; B</code>
+</dt> <dd> <p>요소 *<code>B</code>*가 *<code>A</code>*의 바로 밑에 위치해야 하도록 지정합니다.</p> </dd> <dt id="자손_결합자">
+<a href="descendant_combinator">자손 결합자</a> <code>A B</code>
+</dt> <dd> <p>요소 *<code>B</code>*가 *<code>A</code>*의 밑에 위치해야 하도록 지정합니다. 그러나 *<code>B</code>*가 *<code>A</code>*의 바로 아래에 있을 필요는 없습니다.</p> </dd> <dt id="열_결합자">
+<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Column_combinator" class="only-in-en-us">열 결합자 <small>(en-US)</small></a> <code>A || B</code> <abbr class="icon icon-experimental" title="Experimental. 예상되는 동작은 향후 변경될 수 있습니다."> <span class="visually-hidden">Experimental</span> </abbr>
+</dt> <dd> <p>요소 *<code>B</code>*가 표의 열 <em><code>A</code></em> 안에 위치해야 하도록 지정합니다. 여러 열에 걸친 요소는, 각각의 열 모두에 대해 안쪽에 위치한 것으로 간주합니다.</p> </dd> </dl>
+</div></section><section aria-labelledby="의사_클래스요소"><h3 id="의사_클래스요소">의사 클래스/요소</h3>
+<div class="section-content">
+<dl> <dt id="의사_클래스">
+<a href="pseudo-classes">의사 클래스</a> <code>:</code>
+</dt> <dd> <p>요소의 특정 상태를 선택합니다.</p> </dd> <dt id="의사_요소">
+<a href="pseudo-elements">의사 요소</a> <code>::</code>
+</dt> <dd> <p>HTML이 포함하지 않은 객체를 나타냅니다.</p> </dd> </dl> <div class="notecard note" id="sect3"> <p><strong>참고:</strong> <strong>같이 보기:</strong> <a href="https://www.w3.org/TR/selectors/#overview" target="_blank">Selectors Level 4 명세의 선택자 목록.</a></p> </div>
+</div></section><section aria-labelledby="개념"><h2 id="개념">개념</h2>
+</section><section aria-labelledby="구문과_의미"><h3 id="구문과_의미">구문과 의미</h3>
+<div class="section-content"><ul> <li><a href="syntax">CSS 구문</a></li> <li><a href="at-rule">@-규칙</a></li> <li><a href="cascade">종속</a></li> <li><a href="comments">주석</a></li> <li><a href="https://developer.mozilla.org/ko/docs/Glossary/CSS_Descriptor">서술자</a></li> <li><a href="inheritance">상속</a></li> <li><a href="shorthand_properties">단축 속성</a></li> <li><a href="specificity">명시도</a></li> <li><a href="value_definition_syntax">값 정의 구문</a></li> </ul></div></section><section aria-labelledby="값"><h3 id="값">값</h3>
+<div class="section-content"><ul> <li><a href="actual_value">실제값</a></li> <li><a href="computed_value">계산값</a></li> <li><a href="initial_value">초깃값</a></li> <li><a href="resolved_value">결정값</a></li> <li><a href="specified_value">지정값</a></li> <li><a href="used_value">사용값</a></li> </ul></div></section><section aria-labelledby="레이아웃"><h3 id="레이아웃">레이아웃</h3>
+<div class="section-content"><ul> <li><a href="https://developer.mozilla.org/ko/docs/Web/Guide/CSS/Block_formatting_context">블록 서식 맥락</a></li> <li><a href="css_box_model/introduction_to_the_css_box_model">박스 모델</a></li> <li><a href="containing_block">컨테이닝 블록</a></li> <li><a href="layout_mode">레이아웃 모드</a></li> <li><a href="css_box_model/mastering_margin_collapsing">여백 상쇄</a></li> <li><a href="replaced_element">대체 요소</a></li> <li><a href="css_positioned_layout/understanding_z-index/stacking_context">쌓임 맥락</a></li> <li><a href="visual_formatting_model">시각적 서식 맥락</a></li> </ul></div></section><section aria-labelledby="dom-css_cssom"><h2 id="dom-css_cssom">DOM-CSS / CSSOM</h2>
+</section><section aria-labelledby="주요_객체_유형"><h3 id="주요_객체_유형">주요 객체 유형</h3>
+<div class="section-content"><ul> <li><a href="https://developer.mozilla.org/ko/docs/Web/API/Document/styleSheets"><code>DocumentOrShadowRoot.styleSheets</code></a></li> <li><code><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/StyleSheetList">styleSheets <small>(en-US)</small></a>[i].<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/CSSRuleList">cssRules <small>(en-US)</small></a></code></li> <li>
+<code>cssRules[i].<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/CSSRule/cssText">cssText <small>(en-US)</small></a></code> (selector &amp; style)</li> <li><code>cssRules[i].<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/CSSStyleRule/selectorText">selectorText <small>(en-US)</small></a></code></li> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/style"><code>HTMLElement.style</code> <small>(en-US)</small></a></li> <li>
+<code>HTMLElement.style.<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/CSSStyleDeclaration/cssText">cssText <small>(en-US)</small></a></code> (just style)</li> <li><a href="https://developer.mozilla.org/ko/docs/Web/API/Element/className"><code>Element.className</code></a></li> <li><a href="https://developer.mozilla.org/ko/docs/Web/API/Element/classList"><code>Element.classList</code></a></li> </ul></div></section><section aria-labelledby="중요_메서드"><h3 id="중요_메서드">중요 메서드</h3>
+<div class="section-content"><ul> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/CSSStyleSheet/insertRule"><code>CSSStyleSheet.insertRule()</code> <small>(en-US)</small></a></li> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/CSSStyleSheet/deleteRule"><code>CSSStyleSheet.deleteRule()</code> <small>(en-US)</small></a></li> </ul></div></section><section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li>
+<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Mozilla_Extensions" class="only-in-en-us">Mozilla CSS 확장 <small>(en-US)</small></a> (<code>-moz-</code> 접두사 사용)</li> <li>
+<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/WebKit_Extensions" class="only-in-en-us">WebKit CSS 확장 <small>(en-US)</small></a> (대다수 <code>-webkit-</code> 접두사 사용)</li> <li>
+<a href="https://developer.mozilla.org/ko/docs/Web/CSS/Microsoft_Extensions" class="page-not-created">Microsoft CSS 확장</a> (<code>-ms-</code> 접두사 사용)</li> </ul></div></section><section aria-labelledby="외부_링크"><h2 id="외부_링크">외부 링크</h2>
+<div class="section-content"><ul> <li><a href="https://www.w3.org/TR/CSS/#indices" target="_blank">CSS 색인 (w3.org)</a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/CSS/Reference" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/CSS/Reference</a>
+  </p>
+</div>

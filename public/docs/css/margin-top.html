@@ -1,0 +1,71 @@
+<header><h1>margin-top</h1></header><div class="section-content"><p><code>margin-top</code> <a href="https://developer.mozilla.org/ko/docs/Web/CSS">CSS</a> 속성은 요소의 위쪽에 <a href="css_box_model/introduction_to_the_css_box_model">바깥 여백 영역</a>margin area을 설정합니다. 양수 값은 인접 요소와 거리를 넓히고, 음수 값은 더 좁힙니다.</p></div>
+<section aria-labelledby="시도해보기"><h2 id="시도해보기">시도해보기</h2>
+<div class="section-content">
+<iframe class="interactive is-default-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/css/margin-top.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe> <p><a href="https://developer.mozilla.org/ko/docs/Web/HTML/Element/span"><code>&lt;span&gt;</code></a>, <a href="https://developer.mozilla.org/ko/docs/Web/HTML/Element/code"><code>&lt;code&gt;</code></a> 등 <a href="replaced_element">비대체</a>non-replaced 인라인 요소에는 효과가 없습니다.</p>
+</div></section><section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content">
+<div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="M9jbNH/ER2W3JLRILNDvN3bT6fLzg8lSlQfieZ7gnQE=" data-language="css"><span class="token comment">/* &lt;length&gt; 값 */</span>
+<span class="token property">margin-top</span><span class="token punctuation">:</span> 10px<span class="token punctuation">;</span>  <span class="token comment">/* 절대 길이 */</span>
+<span class="token property">margin-top</span><span class="token punctuation">:</span> 1em<span class="token punctuation">;</span>   <span class="token comment">/* 글씨 크기에 상대적 */</span>
+<span class="token property">margin-top</span><span class="token punctuation">:</span> 5%<span class="token punctuation">;</span>    <span class="token comment">/* 가장 가까운 블록 컨테이너의 너비에 상대적 */</span>
+
+<span class="token comment">/* 키워드 값 */</span>
+<span class="token property">margin-top</span><span class="token punctuation">:</span> auto<span class="token punctuation">;</span>
+
+<span class="token comment">/* 전역 값 */</span>
+<span class="token property">margin-top</span><span class="token punctuation">:</span> inherit<span class="token punctuation">;</span>
+<span class="token property">margin-top</span><span class="token punctuation">:</span> initial<span class="token punctuation">;</span>
+<span class="token property">margin-top</span><span class="token punctuation">:</span> unset<span class="token punctuation">;</span>
+</pre>
+</div> <p><code>margin-top</code> 속성은 키워드 <code>auto</code>, <code>&lt;length&gt;</code>, <code>&lt;percentage&gt;</code>를 사용해 설정할 수 있습니다. 값은 양수, 0, 음수가 가능합니다.</p>
+</div></section><section aria-labelledby="값"><h3 id="값">값</h3>
+<div class="section-content"><dl> <dt id="length"><a href="length"><code>&lt;length&gt;</code></a></dt> <dd> <p>바깥 여백 크기의 고정 값.</p> </dd> <dt id="percentage"><a href="percentage"><code>&lt;percentage&gt;</code></a></dt> <dd> <p>바깥 여백 크기와 블록 컨테이너 너비의 비율.</p> </dd> <dt id="auto"><code>auto</code></dt> <dd> <p>브라우저가 적절한 값 선택. <a href="margin"><code>margin</code></a>을 참고하세요.</p> </dd> </dl></div></section><section aria-labelledby="형식_구문"><h3 id="형식_구문">형식 구문</h3>
+<div class="section-content"><pre class="notranslate"><span class="token property" id="margin-top">margin-top = </span><br>  <span class="token property">&lt;length-percentage&gt;</span>  <a href="value_definition_syntax#single_bar">|</a><br>  <span class="token keyword">auto</span>                 <br><br><span class="token property" id="&lt;length-percentage&gt;">&lt;length-percentage&gt; = </span><br>  <a href="length"><span class="token property">&lt;length&gt;</span></a>      <a href="value_definition_syntax#single_bar">|</a><br>  <a href="percentage"><span class="token property">&lt;percentage&gt;</span></a>  <br><br></pre></div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="CVcUsSc67ytihbQZM/BJPRNlERT9GB8BiytfZIshvsw=" data-language="css"><span class="token selector">.content</span> <span class="token punctuation">{</span> <span class="token property">margin-top</span><span class="token punctuation">:</span>   5%<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+<span class="token selector">.sidebox</span> <span class="token punctuation">{</span> <span class="token property">margin-top</span><span class="token punctuation">:</span> 10px<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+<span class="token selector">.logo</span>    <span class="token punctuation">{</span> <span class="token property">margin-top</span><span class="token punctuation">:</span> -5px<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+<span class="token selector">#footer</span>  <span class="token punctuation">{</span> <span class="token property">margin-top</span><span class="token punctuation">:</span>  1em<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+</pre>
+</div></div></section><h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://drafts.csswg.org/css-box/#margin-physical">CSS Box Model Module Level 3 <br><small># margin-physical</small></a></td></tr></tbody>
+</table></div>
+<div class="section-content"><figure class="table-container"><div class="_table"><table class="properties"><tbody>
+<tr>
+<th scope="row"><a href="initial_value">초기값</a></th>
+<td><code>0</code></td>
+</tr>
+<tr>
+<th scope="row">적용대상</th>
+<td>all elements, except elements with table <a href="display"><code>display</code></a> types other than <code>table-caption</code>, <code>table</code> and <code>inline-table</code>. It also applies to <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/::first-letter" class="only-in-en-us"><code>::first-letter</code> <small>(en-US)</small></a> and <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/::first-line" class="only-in-en-us"><code>::first-line</code> <small>(en-US)</small></a>.</td>
+</tr>
+<tr>
+<th scope="row"><a href="inheritance">상속</a></th>
+<td>no</td>
+</tr>
+<tr>
+<th scope="row">Percentages</th>
+<td>refer to the width of the containing block</td>
+</tr>
+<tr>
+<th scope="row"><a href="computed_value">계산 값</a></th>
+<td>the percentage as specified or the absolute length</td>
+</tr>
+<tr>
+<th scope="row">Animation type</th>
+<td>a <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/length#interpolation">length</a>
+</td>
+</tr>
+</tbody></table></div></figure></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/CSS/margin-top" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/CSS/margin-top</a>
+  </p>
+</div>

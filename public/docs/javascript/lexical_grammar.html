@@ -1,0 +1,285 @@
+<header><h1>어휘 문법</h1></header><div class="section-content"><p>이 페이지는 JavaScript의 어휘 문법(lexical grammar)을 설명합니다. ECMAScript 소스 본문은 왼쪽에서 오른쪽 방향으로 분석되고 토큰, 제어문자, 줄바꿈, 주석, 또는 공백으로 구성되는 입력 요소 시퀀스로 바뀝니다. 또한 ECMAScript는 특별한 키워드와 리터럴을 정의하고 있으며 명령문 끝에 자동으로 세미콜론을 추가하는 규칙이 있습니다.</p></div>
+<section aria-labelledby="제어_문자"><h2 id="제어_문자">제어 문자</h2>
+<div class="section-content">
+<p>제어 문자는 눈에 보이지 않지만 스크립트 소스 본문 해석을 제어하는 데 사용됩니다.</p> <figure class="table-container"><div class="_table"><table class="standard-table"> <caption>유니코드 형식 제어 문자</caption> <tbody> <tr> <th>코드 포인트</th> <th>이름</th> <th>축약형</th> <th>설명</th> </tr> <tr> <td><code>U+200C</code></td> <td>Zero width non-joiner</td> <td>&lt;ZWNJ&gt;</td> <td> <p> 특정 언어에서 문자들이 연결선으로 묶이지 않게 하기 위해 문자 사이에 위치한다(<a href="http://en.wikipedia.org/wiki/Zero-width_non-joiner" target="_blank">Wikipedia</a>). </p> </td> </tr> <tr> <td><code>U+200D</code></td> <td>Zero width joiner</td> <td>&lt;ZWJ&gt;</td> <td> <p> 특정 언어에서, 보통은 연결되지 않는 문자이나 해당 문자를 연결된 형태로 그리기 위해서(to be rendered) 사용하며 문자 사이에 위치한다(<a href="http://en.wikipedia.org/wiki/Zero-width_joiner" target="_blank">Wikipedia</a>). </p> </td> </tr> <tr> <td><code>U+FEFF</code></td> <td>Byte order mark</td> <td>&lt;BOM&gt;</td> <td> <p> 스크립트 맨 앞에 두어 스크립트 본문의 byte order와 유니코드를 표시하는 데에 사용한다.(<a href="http://en.wikipedia.org/wiki/Byte_order_mark" target="_blank">Wikipedia</a>). </p> </td> </tr> </tbody> </table></div></figure>
+</div></section><section aria-labelledby="공백"><h2 id="공백">공백</h2>
+<div class="section-content">
+<p>공백 문자는 소스 본문을 읽기 좋게 만들고 토큰을 구분합니다. 이 공백 문자들은 보통 코드의 기능에 필요한 것은 아닙니다. 최소화 도구(<a href="http://en.wikipedia.org/wiki/Minification_%28programming%29" target="_blank">Minification tools</a>)는 종종 전송해야하는 데이터 크기를 줄이기 위해서 공백을 제거합니다.</p> <figure class="table-container"><div class="_table"><table> <thead> <tr> <th>코드 포인트</th> <th>이름</th> <th>축약형</th> <th>설명</th> <th>이스케이프 시퀀스</th> </tr> </thead> <tbody> <tr> <td>U+0009</td> <td>Character tabulation</td> <td>&lt;HT&gt;</td> <td>Horizontal tabulation</td> <td>\t</td> </tr> <tr> <td>U+000B</td> <td>Line tabulation</td> <td>&lt;VT&gt;</td> <td>Vertical tabulation</td> <td>\v</td> </tr> <tr> <td>U+000C</td> <td>Form feed</td> <td>&lt;FF&gt;</td> <td>Page breaking control character (<a href="http://en.wikipedia.org/wiki/Page_break#Form_feed" target="_blank">Wikipedia</a>).</td> <td>\f</td> </tr> <tr> <td>U+0020</td> <td>Space</td> <td>&lt;SP&gt;</td> <td>Normal space</td> <td></td> </tr> <tr> <td>U+00A0</td> <td>No-break space</td> <td>&lt;NBSP&gt;</td> <td>Normal space, but no point at which a line may break</td> <td></td> </tr> <tr> <td>Others</td> <td>Other Unicode space characters</td> <td>&lt;USP&gt;</td> <td><a href="http://en.wikipedia.org/wiki/Space_%28punctuation%29#Spaces_in_Unicode" target="_blank">Spaces in Unicode on Wikipedia</a></td> <td></td> </tr> </tbody> </table></div></figure>
+</div></section><section aria-labelledby="개행_문자"><h2 id="개행_문자">개행 문자</h2>
+<div class="section-content">
+<p>공백문자와 더불어, 개행 문자는 소스 본문의 가독성을 향상시킵니다. 하지만, 몇몇 상황에서 개행 문자는 코드 내부에 숨겨지기 때문에 자바스크립트 코드 실행에 영향을 미칩니다. 개행 문자는 자동 새미콜론 삽입(<a href="#automatic_semicolon_insertion">automatic semicolon insertion</a>) 규칙에도 영향을 줍니다. 개행 문자는 표준 표현방식(<a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Guide/Regular_expressions">regular expressions</a>)의 클래스인 \s로 매치됩니다.</p> <p>아래의 유니코드 문자만이 ECMAScript에서 라인 종결자로 다뤄지며, 라인을 바꾸는 다른 문자들은 공백으로 생각하시면 됩니다(예를 들어, Next Line, NEL, U+0085는 공백으로 간주).</p> <figure class="table-container"><div class="_table"><table> <thead> <tr> <th>코드 포인트</th> <th>이름</th> <th>축약형</th> <th>설명</th> <th>이스케이프 시퀀스</th> </tr> </thead> <tbody> <tr> <td>U+000A</td> <td>Line Feed</td> <td>&lt;LF&gt;</td> <td>New line character in UNIX systems.</td> <td>\n</td> </tr> <tr> <td>U+000D</td> <td>Carriage Return</td> <td>&lt;CR&gt;</td> <td>New line character in Commodore and early Mac systems.</td> <td>\r</td> </tr> <tr> <td>U+2028</td> <td>Line Separator</td> <td>&lt;LS&gt;</td> <td><a href="http://en.wikipedia.org/wiki/Newline" target="_blank">Wikipedia</a></td> <td></td> </tr> <tr> <td>U+2029</td> <td>Paragraph Separator</td> <td>&lt;PS&gt;</td> <td><a href="http://en.wikipedia.org/wiki/Newline" target="_blank">Wikipedia</a></td> <td></td> </tr> </tbody> </table></div></figure>
+</div></section><section aria-labelledby="주석"><h2 id="주석">주석</h2>
+<div class="section-content">
+<p>주석은 힌트, 필기, 제안이나 주의할 점들을 자바스크립트 코드에 넣을 때 사용합니다. 이는 더 쉽게 읽고 이해할 수 있게 도와줍니다. 또한 특정 코드가 실행되지 않도록 막아주기도 합니다. 따라서 주석은 유용한 디버깅 도구라고도 할 수 있습니다.</p> <p>자바스크립트에는 코드 속에 주석을 쓰는 두 가지 방식이 있습니다.</p> <p>첫 번째, '//'로 첨언하기입니다. 이는 아래의 예시처럼 같은 줄에 있는 모든 코드를 주석으로 바꿉니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="N3T81DtLrhwMM8O1Jf4859dhjMje4ifoh6kRibdor7U=" data-language="js"><span class="token keyword">function</span> <span class="token function">comment</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">// 자바스크립트의 각주 한 줄입니다.</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"Hello world!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token function">comment</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div> <p>두 번째, 좀 더 유연하게 쓸 수 있는 '/* */'로 첨언하기입니다.</p> <p>예를 들면, 한 줄에 첨언할 때는 이렇게 쓸 수 있습니다 :</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="u623mNF3fOQYWBo/susL0iIxINmD4NKaeLs6gtK22Mo=" data-language="js"><span class="token keyword">function</span> <span class="token function">comment</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">/* 자바스크립트 각주 한 줄입니다. */</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"Hello world!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token function">comment</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div> <p>여러 줄로 첨언할 때는, 이렇게 씁니다 :</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="YRP+ZyJvFuvN6C8Z2AjhGZZg4XI7EAv+z7vwSRtmU0s=" data-language="js"><span class="token keyword">function</span> <span class="token function">comment</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">/* This comment spans multiple lines. Notice
+     that we don't need to end the comment until we're done. */</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"Hello world!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token function">comment</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div> <p>원한다면, 라인 중간에도 사용할 수 있습니다. 물론 코드의 가독성이 떨어지게 됩니다. 그러니 주의를 기울여 사용해야 합니다:</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="NaPjuo0ug884/Tq8Aor7jyrDdyz/TO1U+Nk2qTKHDdA=" data-language="js"><span class="token keyword">function</span> <span class="token function">comment</span><span class="token punctuation">(</span><span class="token parameter">x</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"Hello "</span> <span class="token operator">+</span> x <span class="token comment">/* insert the value of x */</span> <span class="token operator">+</span> <span class="token string">" !"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token function">comment</span><span class="token punctuation">(</span><span class="token string">"world"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div> <p>게다가, 코드 실행을 막기 위해 코드를 무용화 시키는데도 사용할 수 있습니다. 아래처럼 코드를 코멘트로 감싸는 거죠:</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="7FyST9v4Gdha3GTgn6CnJhaX+lbsbMYESr+d07mEPpU=" data-language="js"><span class="token keyword">function</span> <span class="token function">comment</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">/* console.log("Hello world!"); */</span>
+<span class="token punctuation">}</span>
+<span class="token function">comment</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div> <p>In this case, the <code>console.log()</code> call is never issued, since it's inside a comment. Any number of lines of code can be disabled this way.</p>
+</div></section><section aria-labelledby="해시뱅_주석"><h2 id="해시뱅_주석">해시뱅 주석</h2>
+<div class="section-content">
+<p>A specialized third comment syntax, the <strong>hashbang comment</strong>, is in the process of being standardized in ECMAScript (see the <a href="https://github.com/tc39/proposal-hashbang" target="_blank">Hashbang Grammar proposal</a>).</p> <p>A hashbang comment behaves exactly like a single line-only (<code>//</code>) comment, but it instead begins with <code>#!</code> and <strong>is only valid at the absolute start of a script or module</strong>. Note also that no whitespace of any kind is permitted before the <code>#!</code>. The comment consists of all the characters after <code>#!</code> up to the end of the first line; only one such comment is permitted.</p> <p> The hashbang comment specifies the path to a specific JavaScript interpreter that you want to use to execute the script. An example is as follows: </p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="hSWHDvpo6SaKDgkU3OeO+/wM/T5V5VTito7tk41K8Kw=" data-language="js"><span class="token hashbang comment">#!/usr/bin/env node</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"Hello world"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div> <blockquote> <p><strong>Note:</strong> Hashbang comments in JavaScript mimic <a href="https://en.wikipedia.org/wiki/Shebang_(Unix)" target="_blank">shebangs in Unix</a> used to run files with proper interpreter.</p> </blockquote> <blockquote> <p><strong>Warning:</strong> Although <a href="https://en.wikipedia.org/wiki/Byte_order_mark" target="_blank">BOM</a> before hashbang comment will work in a browser it is not advised to use BOM in a script with hasbang. BOM will not work when you try to run the script in Unix/Linux. So use UTF-8 without BOM if you want to run scripts directly from shell.</p> </blockquote> <p>You must only use the <code>#!</code> comment style to specify a JavaScript interpreter. In all other cases just use a <code>//</code> comment (or mulitiline comment).</p>
+</div></section><section aria-labelledby="키워드"><h2 id="키워드">키워드</h2>
+</section><section aria-labelledby="ecmascript_2015_기준_예약_키워드"><h3 id="ecmascript_2015_기준_예약_키워드">ECMAScript 2015 기준 예약 키워드</h3>
+<div class="section-content"><ul> <li><a href="statements/break"><code>break</code></a></li> <li><a href="statements/switch"><code>case</code></a></li> <li><a href="statements/try...catch"><code>catch</code></a></li> <li><a href="statements/class"><code>class</code></a></li> <li><a href="statements/const"><code>const</code></a></li> <li><a href="statements/continue"><code>continue</code></a></li> <li><a href="statements/debugger"><code>debugger</code></a></li> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/switch"><code>default</code> <small>(en-US)</small></a></li> <li><a href="operators/delete"><code>delete</code></a></li> <li><a href="statements/do...while"><code>do</code></a></li> <li><a href="statements/if...else"><code>else</code></a></li> <li><a href="statements/export"><code>export</code></a></li> <li><a href="statements/class"><code>extends</code></a></li> <li><a href="statements/try...catch"><code>finally</code></a></li> <li><a href="statements/for"><code>for</code></a></li> <li><a href="statements/function"><code>function</code></a></li> <li><a href="statements/if...else"><code>if</code></a></li> <li><a href="statements/import"><code>import</code></a></li> <li><a href="operators/in"><code>in</code></a></li> <li><a href="operators/instanceof"><code>instanceof</code></a></li> <li><a href="operators/new"><code>new</code></a></li> <li><a href="statements/return"><code>return</code></a></li> <li><a href="operators/super"><code>super</code></a></li> <li><a href="statements/switch"><code>switch</code></a></li> <li><a href="operators/this"><code>this</code></a></li> <li><a href="statements/throw"><code>throw</code></a></li> <li><a href="statements/try...catch"><code>try</code></a></li> <li><a href="operators/typeof"><code>typeof</code></a></li> <li><a href="statements/var"><code>var</code></a></li> <li><a href="operators/void"><code>void</code></a></li> <li><a href="statements/while"><code>while</code></a></li> <li><a href="statements/with"><code>with</code></a></li> <li><a href="operators/yield"><code>yield</code></a></li> </ul></div></section><section aria-labelledby="확장_예약_키워드"><h3 id="확장_예약_키워드">확장 예약 키워드</h3>
+<div class="section-content">
+<p>The following are reserved as future keywords by the ECMAScript specification. They have no special functionality at present, but they might at some future time, so they cannot be used as identifiers.</p> <p>These are always reserved:</p> <ul> <li><code>enum</code></li> </ul> <p>The following are only reserved when they are found in strict mode code:</p> <ul> <li><code>implements</code></li> <li><code>interface</code></li> <li><a href="statements/let"><code>let</code></a></li> <li><code>package</code></li> <li><code>private</code></li> <li><code>protected</code></li> <li><code>public</code></li> <li><code>static</code></li> </ul> <p>The following are only reserved when they are found in module code:</p> <ul> <li><code>await</code></li> </ul> <h4 id="구형_표준의_확장_예약_키워드">구형 표준의 확장 예약 키워드</h4> <p>The following are reserved as future keywords by older ECMAScript specifications (ECMAScript 1 till 3).</p> <ul> <li><code>abstract</code></li> <li><code>boolean</code></li> <li><code>byte</code></li> <li><code>char</code></li> <li><code>double</code></li> <li><code>final</code></li> <li><code>float</code></li> <li><code>goto</code></li> <li><code>int</code></li> <li><code>long</code></li> <li><code>native</code></li> <li><code>short</code></li> <li><code>synchronized</code></li> <li><code>throws</code></li> <li><code>transient</code></li> <li><code>volatile</code></li> </ul> <p>Additionally, the literals <code>null</code>, <code>true</code>, and <code>false</code> cannot be used as identifiers in ECMAScript.</p>
+</div></section><section aria-labelledby="예약어_사용법"><h3 id="예약어_사용법">예약어 사용법</h3>
+<div class="section-content">
+<p>Reserved words actually only apply to Identifiers (vs. <code>IdentifierNames</code>) . As described in <a href="http://es5.github.com/#A.1" target="_blank">es5.github.com/#A.1</a>, these are all <code>IdentifierNames</code> which do not exclude <code>ReservedWords</code>.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="hLAwpiM4IDClNqMKeYDP4A6FJYI3MCq4XPC/WEy0l8s=" data-language="js">a<span class="token punctuation">.</span>import
+a<span class="token punctuation">[</span><span class="token string">'import'</span><span class="token punctuation">]</span>
+a <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token keyword">import</span><span class="token operator">:</span> <span class="token string">'test'</span> <span class="token punctuation">}</span><span class="token punctuation">.</span>
+</pre>
+</div> <p>On the other hand the following is illegal because it's an <code>Identifier</code>, which is an <code>IdentifierName</code> without the reserved words. Identifiers are used for <code>FunctionDeclaration, FunctionExpression, VariableDeclaration</code> and so on. <code>IdentifierNames</code> are used for <code>MemberExpression, CallExpression</code> and so on.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="Biw76sFWad+1Dp0t9Zdt/9IJRhEQpG6OTT8wAGE3obk=" data-language="js"><span class="token keyword">function</span> <span class="token keyword">import</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span> <span class="token comment">// Illegal.</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="리터럴"><h2 id="리터럴">리터럴</h2>
+</section><section aria-labelledby="null_리터럴"><h3 id="null_리터럴">Null 리터럴</h3>
+<div class="section-content">
+<p>See also <a href="operators/null"><code>null</code></a> for more information.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="cgGW9YURlcsxX8kfua608E9kiyTHt+iL9UR981J2eQ4=" data-language="js"><span class="token keyword">null</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="불리언_리터럴"><h3 id="불리언_리터럴">불리언 리터럴</h3>
+<div class="section-content">
+<p>See also <a href="global_objects/boolean"><code>Boolean</code></a> for more information.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="iH4osxz3JrLpCZSYPZix64W4j4H6s6LvuqiZpYjKBkE=" data-language="js"><span class="token boolean">true</span>
+<span class="token boolean">false</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="숫자_리터럴"><h3 id="숫자_리터럴">숫자 리터럴</h3>
+<div class="section-content">
+<h4 id="10진법">10진법</h4> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="I8nbXYoT70AhKWvUAOViz7/JBDyNMTcj45PaL5Upr34=" data-language="js"><span class="token number">1234567890</span>
+<span class="token number">42</span>
+
+<span class="token comment">// Caution when using with a leading zero:</span>
+<span class="token number">0888</span> <span class="token comment">// 888 parsed as decimal</span>
+<span class="token number">0777</span> <span class="token comment">// parsed as octal, 511 in decimal</span>
+</pre>
+</div> <p>Note that decimal literals can start with a zero (<code>0</code>) followed by another decimal digit, but If all digits after the leading <code>0</code> are smaller than 8, the number is interpreted as an octal number. This won't throw in JavaScript, see <a href="https://bugzil.la/957513" target="_blank">Firefox bug 957513</a>. See also the page about <a href="global_objects/parseint#octal_interpretations_with_no_radix"><code>parseInt()</code></a>.</p> <h5 id="exponential">Exponential</h5> <p>The decimal exponential literal is specified by the following format: <code>beN</code>; where <code>b</code> is a base number (integer or floating), followed by <code>e</code> char (which serves as separator or <em>exponent indicator</em>) and* *<code>N</code>, which is <em>exponent</em> or *power* number – a signed integer (as per 2019 ECMA-262 specs):</p> <pre class="notranslate">    0e-5   // =&gt; 0
+    0e+5   // =&gt; 0
+    5e1    // =&gt; 50
+    175e-2 // =&gt; 1.75
+    1e3    // =&gt; 1000
+    1e-3   // =&gt; 0.001
+</pre> <h4 id="2진법">2진법</h4> <p>Binary number syntax uses a leading zero followed by a lowercase or uppercase Latin letter "B" (<code>0b</code> or <code>0B</code>). Because this syntax is new in ECMAScript 2015, see the browser compatibility table, below. If the digits after the <code>0b</code> are not 0 or 1, the following <a href="global_objects/syntaxerror"><code>SyntaxError</code></a> is thrown: "Missing binary digits after 0b".</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="a2HjI+7plVlXkciTwD4yYHVp0YBE/Ml4DnJeqHIgOeQ=" data-language="js"><span class="token keyword">var</span> <span class="token constant">FLT_SIGNBIT</span>  <span class="token operator">=</span> <span class="token number">0b10000000000000000000000000000000</span><span class="token punctuation">;</span> <span class="token comment">// 2147483648</span>
+<span class="token keyword">var</span> <span class="token constant">FLT_EXPONENT</span> <span class="token operator">=</span> <span class="token number">0b01111111100000000000000000000000</span><span class="token punctuation">;</span> <span class="token comment">// 2139095040</span>
+<span class="token keyword">var</span> <span class="token constant">FLT_MANTISSA</span> <span class="token operator">=</span> <span class="token number">0B00000000011111111111111111111111</span><span class="token punctuation">;</span> <span class="token comment">// 8388607</span>
+</pre>
+</div> <h4 id="8진법">8진법</h4> <p>Octal number syntax uses a leading zero followed by a lowercase or uppercase Latin letter "O" (<code>0o</code> or <code>0O)</code>. Because this syntax is new in ECMAScript 2015, see the browser compatibility table, below. If the digits after the <code>0o</code> are outside the range (01234567), the following <a href="global_objects/syntaxerror"><code>SyntaxError</code></a> is thrown: "Missing octal digits after 0o".</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="5jBWiPeVr9nN7uaAppeCx0eu2kmPjEs42LJV3hlcBeE=" data-language="js"><span class="token keyword">var</span> n <span class="token operator">=</span> <span class="token number">0O755</span><span class="token punctuation">;</span> <span class="token comment">// 493</span>
+<span class="token keyword">var</span> m <span class="token operator">=</span> <span class="token number">0o644</span><span class="token punctuation">;</span> <span class="token comment">// 420</span>
+
+<span class="token comment">// Also possible with just a leading zero (see note about decimals above)</span>
+<span class="token number">0755</span>
+<span class="token number">0644</span>
+</pre>
+</div> <h4 id="16진법">16진법</h4> <p>Hexadecimal number syntax uses a leading zero followed by a lowercase or uppercase Latin letter "X" (<code>0x</code> or <code>0X)</code>. If the digits after 0x are outside the range (0123456789ABCDEF), the following <a href="global_objects/syntaxerror"><code>SyntaxError</code></a> is thrown: "Identifier starts immediately after numeric literal".</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="PEq1sSHo/XL6atQxwh2Tty6LzNkBxOuLQmP+m2CseLs=" data-language="js"><span class="token number">0xFFFFFFFFFFFFFFFFF</span> <span class="token comment">// 295147905179352830000</span>
+<span class="token number">0x123456789ABCDEF</span>   <span class="token comment">// 81985529216486900</span>
+<span class="token number">0XA</span>                 <span class="token comment">// 10</span>
+</pre>
+</div> <h4 id="bigint_literal">BigInt literal</h4> <p>The <a href="global_objects/bigint"><code>BigInt</code></a> type is a numeric primitive in JavaScript that can represent integers with arbitrary precision. BigInt literals are created by appending <code>n</code> to the end of an integer.</p> <pre class="notranslate">    123456789123456789n     // 123456789123456789
+    0o777777777777n         // 68719476735
+    0x123456789ABCDEFn      // 81985529216486895‬
+    0b11101001010101010101n // 955733
+</pre> <p>Note that legacy octal numbers with just a leading zero won't work for <code>BigInt</code>:</p> <pre data-language="plain">// 0755n
+// SyntaxError: invalid BigInt syntax
+</pre> <p>For octal <code>BigInt</code> numbers, always use zero followed by the letter "o" (uppercase or lowercase):</p> <pre data-language="plain">0o755n
+</pre> <p>For more information about <code>BigInt</code>, see also <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Data_structures#bigint_type">JavaScript data structures</a>.</p> <h4 id="numeric_separators">Numeric separators</h4> <p>To improve readability for numeric literals, underscores (<code>_</code>, <code>U+005F</code>) can be used as separators:</p> <pre class="notranslate">    // separators in decimal numbers
+    1_000_000_000_000
+    1_050.95
+
+    // separators in binary numbers
+    0b1010_0001_1000_0101
+
+    // separators in octal numbers
+    0o2_2_5_6
+
+    // separators in hex numbers
+    0xA0_B0_C0
+
+    // separators in BigInts
+    1_000_000_000_000_000_000_000n
+</pre> <p>Note these limitations:</p> <pre data-language="plain">// More than one underscore in a row is not allowed
+100__000; // SyntaxError
+
+// Not allowed at the end of numeric literals
+100_; // SyntaxError
+
+// Can not be used after leading 0
+0_1; // SyntaxError
+</pre>
+</div></section><section aria-labelledby="객체_리터럴"><h3 id="객체_리터럴">객체 리터럴</h3>
+<div class="section-content">
+<p>See also <a href="global_objects/object"><code>Object</code></a> and <a href="operators/object_initializer">Object initializer</a> for more information.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="3jJ+urSAa5mdjiJZM44/gPvExKiIuTWnMDsPQwMAEKY=" data-language="js"><span class="token keyword">var</span> o <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token literal-property property">a</span><span class="token operator">:</span> <span class="token string">'foo'</span><span class="token punctuation">,</span> <span class="token literal-property property">b</span><span class="token operator">:</span> <span class="token string">'bar'</span><span class="token punctuation">,</span> <span class="token literal-property property">c</span><span class="token operator">:</span> <span class="token number">42</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token comment">// shorthand notation. New in ES2015</span>
+<span class="token keyword">var</span> a <span class="token operator">=</span> <span class="token string">'foo'</span><span class="token punctuation">,</span> b <span class="token operator">=</span> <span class="token string">'bar'</span><span class="token punctuation">,</span> c <span class="token operator">=</span> <span class="token number">42</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> o <span class="token operator">=</span> <span class="token punctuation">{</span>a<span class="token punctuation">,</span> b<span class="token punctuation">,</span> c<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token comment">// instead of</span>
+<span class="token keyword">var</span> o <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token literal-property property">a</span><span class="token operator">:</span> a<span class="token punctuation">,</span> <span class="token literal-property property">b</span><span class="token operator">:</span> b<span class="token punctuation">,</span> <span class="token literal-property property">c</span><span class="token operator">:</span> c <span class="token punctuation">}</span><span class="token punctuation">;</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="배열_리터럴"><h3 id="배열_리터럴">배열 리터럴</h3>
+<div class="section-content">
+<p>See also <a href="global_objects/array"><code>Array</code></a> for more information.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="I6zhjjUE28r+mBqp6+S6UCfCAGkI9VoJiy0xNJCTm34=" data-language="js"><span class="token punctuation">[</span><span class="token number">1954</span><span class="token punctuation">,</span> <span class="token number">1974</span><span class="token punctuation">,</span> <span class="token number">1990</span><span class="token punctuation">,</span> <span class="token number">2014</span><span class="token punctuation">]</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="문자열_리터럴"><h3 id="문자열_리터럴">문자열 리터럴</h3>
+<div class="section-content">
+<p>A string literal is zero or more Unicode code points enclosed in single or double quotes. Unicode code points may also be represented by an escape sequence. All code points may appear literally in a string literal except for these closing quote code points:</p> <ul> <li>U+005C (backslash),</li> <li>U+000D &lt;CR&gt;,</li> <li>and U+000A &lt;LF&gt;.</li> </ul> <p>Prior to the <a href="https://github.com/tc39/proposal-json-superset" target="_blank">proposal to make all JSON text valid ECMA-262</a>, U+2028 &lt;LS&gt; and U+2029 &lt;PS&gt;, were also disallowed from appearing unescaped in string literals.</p> <p>Any code points may appear in the form of an escape sequence. String literals evaluate to ECMAScript String values. When generating these String values Unicode code points are UTF-16 encoded.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="jufuKVN48Uj4E0EAGiXCQ6P4UNfjZ34NPJQmNL5Z73c=" data-language="js"><span class="token string">'foo'</span>
+<span class="token string">"bar"</span>
+</pre>
+</div> <h4 id="16진수_이스케이프_시퀀스">16진수 이스케이프 시퀀스</h4> <p>Hexadecimal escape sequences consist of <code>\x</code> followed by exactly two hexadecimal digits representing a code unit or code point in the range 0x0000 to 0x00FF.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="dl1+AM8H4IdmN8QJ5fWZDyh/53GrJh0EtyB7rMz64w0=" data-language="js"><span class="token string">'\xA9'</span> <span class="token comment">// "©"</span>
+</pre>
+</div> <h4 id="유니코드_이스케이프_시퀀스">유니코드 이스케이프 시퀀스</h4> <p>A Unicode escape sequence consists of exactly four hexadecimal digits following <code>\u</code>. It represents a code unit in the UTF-16 encoding. For code points U+0000 to U+FFFF, the code unit is equal to the code point. Code points U+10000 to U+10FFFF require two escape sequences representing the two code units (a surrogate pair) used to encode the character; the surrogate pair is distinct from the code point.</p> <p>See also <a href="global_objects/string/fromcharcode"><code>String.fromCharCode()</code></a> and <a href="global_objects/string/charcodeat"><code>String.prototype.charCodeAt()</code></a>.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="ip2yckyQHzfHObBt6iOLZYZ1G7fzEhC2RaXU1as5slc=" data-language="js"><span class="token string">'\u00A9'</span> <span class="token comment">// "©" (U+A9)</span>
+</pre>
+</div> <h4 id="유니코드_코드_포인트_시퀀스">유니코드 코드 포인트 시퀀스</h4> <p>A Unicode code point escape consists of <code>\u{</code>, followed by a code point in hexadecimal base, followed by <code>}</code>. The value of the hexadecimal digits must be in the range 0 and 0x10FFFF inclusive. Code points in the range U+10000 to U+10FFFF do not need to be represented as a surrogate pair. Code point escapes were added to JavaScript in ECMAScript 2015 (ES6).</p> <p>See also <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/fromCodePoint"><code>String.fromCodePoint()</code> <small>(en-US)</small></a> and <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/codePointAt"><code>String.prototype.codePointAt()</code> <small>(en-US)</small></a>.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="ib+mgJxilKpe7cv5WygAAy/mEg5ccD6FmUCXxJxtmf0=" data-language="js"><span class="token string">'\u{2F804}'</span> <span class="token comment">// CJK COMPATIBILITY IDEOGRAPH-2F804 (U+2F804)</span>
+
+<span class="token comment">// the same character represented as a surrogate pair</span>
+<span class="token string">'\uD87E\uDC04'</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="정규_표현식_리터럴"><h3 id="정규_표현식_리터럴">정규 표현식 리터럴</h3>
+<div class="section-content">
+<p>See also <a href="global_objects/regexp"><code>RegExp</code></a> for more information.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="QpgbvYSyHmOHLMfT/LXWDy1o4QMK1xdq6VBpmuv7Q0k=" data-language="js"><span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">ab<span class="token quantifier number">+</span>c</span><span class="token regex-delimiter">/</span><span class="token regex-flags">g</span></span>
+
+<span class="token comment">// An "empty" regular expression literal</span>
+<span class="token comment">// The empty non-capturing group is necessary</span>
+<span class="token comment">// to avoid ambiguity with single-line comments.</span>
+<span class="token operator">/</span><span class="token punctuation">(</span><span class="token operator">?</span><span class="token operator">:</span><span class="token punctuation">)</span><span class="token operator">/</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="템플릿_리터럴"><h3 id="템플릿_리터럴">템플릿 리터럴</h3>
+<div class="section-content">
+<p>See also <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals" class="only-in-en-us">template strings <small>(en-US)</small></a> for more information.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="T70KDOKKSo44rUk50QVco9NBtbP+pgJ1PLp8JIo6XOs=" data-language="js"><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">string text</span><span class="token template-punctuation string">`</span></span>
+
+<span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">string text line 1
+ string text line 2</span><span class="token template-punctuation string">`</span></span>
+
+<span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">string text </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>expression<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string"> string text</span><span class="token template-punctuation string">`</span></span>
+
+tag <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">string text </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>expression<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string"> string text</span><span class="token template-punctuation string">`</span></span>
+</pre>
+</div>
+</div></section><section aria-labelledby="자동_세미콜론_삽입"><h2 id="자동_세미콜론_삽입">자동 세미콜론 삽입</h2>
+<div class="section-content">
+<p>Some <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Statements">JavaScript statements</a> must be terminated with semicolons and are therefore affected by automatic semicolon insertion (ASI):</p> <ul> <li>Empty statement</li> <li>
+<code>let</code>, <code>const</code>, variable statement</li> <li>
+<code>import</code>, <code>export</code>, module declaration</li> <li>Expression statement</li> <li><code>debugger</code></li> <li>
+<code>continue</code>, <code>break</code>, <code>throw</code>
+</li> <li><code>return</code></li> </ul> <p>The ECMAScript specification mentions <a href="https://tc39.github.io/ecma262/#sec-rules-of-automatic-semicolon-insertion" target="_blank">three rules of semicolon insertion</a>.</p> <ol> <li>A semicolon is inserted before, when a <a href="#line_terminators">Line terminator</a> or "}" is encountered that is not allowed by the grammar. <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="McwGHISrFzahuh6ysB2a9XdMl/BuoOa5qcigiNmUzeI=" data-language="js"><span class="token punctuation">{</span> <span class="token number">1</span> <span class="token number">2</span> <span class="token punctuation">}</span> <span class="token number">3</span>
+
+<span class="token comment">// is transformed by ASI into</span>
+
+<span class="token punctuation">{</span> <span class="token number">1</span> <span class="token number">2</span> <span class="token punctuation">;</span><span class="token punctuation">}</span> <span class="token number">3</span><span class="token punctuation">;</span>
+</pre>
+</div> </li> <li> A semicolon is inserted at the end, when the end of the input stream of tokens is detected and the parser is unable to parse the single input stream as a complete program. Here <code>++</code> is not treated as a <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators#increment" class="only-in-en-us">postfix operator <small>(en-US)</small></a> applying to variable <code>b</code>, because a line terminator occurs between <code>b</code> and <code>++</code>. <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="G93pRwep46BiPlQBvJWSzd8xn2iUAGlWthPuvhRbHGM=" data-language="js">a <span class="token operator">=</span> b
+<span class="token operator">++</span>c
+
+<span class="token comment">// is transformend by ASI into</span>
+
+a <span class="token operator">=</span> b<span class="token punctuation">;</span>
+<span class="token operator">++</span>c<span class="token punctuation">;</span>
+</pre>
+</div> </li> <li>A semicolon is inserted at the end, when a statement with restricted productions in the grammar is followed by a line terminator. These statements with "no LineTerminator here" rules are: <ul> <li>PostfixExpressions (<code>++</code> and <code>--</code>)</li> <li><code>continue</code></li> <li><code>break</code></li> <li><code>return</code></li> <li>
+<code>yield</code>, <code>yield*</code>
+</li> <li><code>module</code></li> </ul> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="xsWw0gB/NZsREfbR5rhUOu24jZOk6gRHYLimMb8ucyA=" data-language="js"><span class="token keyword">return</span>
+a <span class="token operator">+</span> b
+
+<span class="token comment">// is transformed by ASI into</span>
+
+<span class="token keyword">return</span><span class="token punctuation">;</span>
+a <span class="token operator">+</span> b<span class="token punctuation">;</span>
+</pre>
+</div> </li> </ol>
+</div></section><h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://tc39.es/ecma262/multipage/ecmascript-language-lexical-grammar.html">ECMAScript Language Specification <br></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="global_objects/boolean"><code>Boolean</code></a></li> <li><a href="global_objects/number"><code>Number</code></a></li> <li><a href="global_objects/regexp"><code>RegExp</code></a></li> <li><a href="global_objects/string"><code>String</code></a></li> <li><a href="https://whereswalden.com/2013/08/12/micro-feature-from-es6-now-in-firefox-aurora-and-nightly-binary-and-octal-numbers/" target="_blank">Jeff Walden: Binary and octal numbers</a></li> <li><a href="https://mathiasbynens.be/notes/javascript-escapes" target="_blank">Mathias Bynens: JavaScript character escape sequences</a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Lexical_grammar" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Lexical_grammar</a>
+  </p>
+</div>

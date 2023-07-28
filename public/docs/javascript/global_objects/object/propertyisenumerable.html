@@ -1,0 +1,89 @@
+<header><h1>Object.prototype.propertyIsEnumerable()</h1></header><div class="section-content"><p><code>propertyIsEnumerable()</code> 메서드는 특정 속성이 열거가능한지 여부를 나타내는 불리언 값을 반환합니다.</p></div>
+<section aria-labelledby="시도해보기"><h2 id="시도해보기">시도해보기</h2>
+<div class="section-content"><iframe class="interactive is-js-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/js/object-prototype-propertyisenumerable.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe></div></section><section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="I7j2jRlOGMAyJwqRs1jpPZdXuPF1oPf0PrestKlZOvY=" data-language="js">obj<span class="token punctuation">.</span><span class="token function">propertyIsEnumerable</span><span class="token punctuation">(</span>prop<span class="token punctuation">)</span>
+</pre>
+</div></div></section><section aria-labelledby="매개변수"><h3 id="매개변수">매개변수</h3>
+<div class="section-content"><dl> <dt id="prop"><code>prop</code></dt> <dd> <p>테스트 할 속성의 이름.</p> </dd> </dl></div></section><section aria-labelledby="반환_값"><h3 id="반환_값">반환 값</h3>
+<div class="section-content"><p>특정 속성이 열거가능한지 여부를 나타내는 <a href="../boolean"><code>Boolean</code></a>.</p></div></section><section aria-labelledby="설명"><h2 id="설명">설명</h2>
+<div class="section-content"><p>모든 객체는 <code>propertyIsEnumerable</code> 메소드를 가지고 있습니다. 이 메소드는 프로토타입 체인을 통해 상속된 특성을 제외하고 개체에 지정된 속성을 <a href="../../statements/for...in"><code>for...in</code></a> 루프로 열거할 수 있는지 여부를 확인할 수 있습니다. 개체에 지정된 속성이 없으면 이 메소드는 <code>false</code>를 반환합니다.</p></div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+</section><section aria-labelledby="a_basic_use_of_propertyisenumerable"><h3 id="a_basic_use_of_propertyisenumerable">A basic use of <code>propertyIsEnumerable</code>
+</h3>
+<div class="section-content">
+<p>The following example shows the use of <code>propertyIsEnumerable</code> on objects and arrays:</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="MXb7g7p2hfT1WMUzuPxtUueGiGqKL6KEuHQZcrOu43E=" data-language="js"><span class="token keyword">var</span> o <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> a <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+o<span class="token punctuation">.</span>prop <span class="token operator">=</span> <span class="token string">'is enumerable'</span><span class="token punctuation">;</span>
+a<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">'is enumerable'</span><span class="token punctuation">;</span>
+
+o<span class="token punctuation">.</span><span class="token function">propertyIsEnumerable</span><span class="token punctuation">(</span><span class="token string">'prop'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment">// returns true</span>
+a<span class="token punctuation">.</span><span class="token function">propertyIsEnumerable</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token comment">// returns true</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="user-defined_versus_built-in_objects"><h3 id="user-defined_versus_built-in_objects">User-defined versus built-in objects</h3>
+<div class="section-content">
+<p>The following example demonstrates the enumerability of user-defined versus built-in properties:</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="crxX1kLxpcp2vwLsZayAJGdY06eLwfBYGmES1hCGKOo=" data-language="js"><span class="token keyword">var</span> a <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'is enumerable'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+a<span class="token punctuation">.</span><span class="token function">propertyIsEnumerable</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>          <span class="token comment">// returns true</span>
+a<span class="token punctuation">.</span><span class="token function">propertyIsEnumerable</span><span class="token punctuation">(</span><span class="token string">'length'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment">// returns false</span>
+
+Math<span class="token punctuation">.</span><span class="token function">propertyIsEnumerable</span><span class="token punctuation">(</span><span class="token string">'random'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment">// returns false</span>
+<span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">propertyIsEnumerable</span><span class="token punctuation">(</span><span class="token string">'Math'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>     <span class="token comment">// returns false</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="direct_versus_inherited_properties"><h3 id="direct_versus_inherited_properties">Direct versus inherited properties</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="lzaHc7k1VrDvU90XfM11WKW+dPlWU+cEtLtpThYTKBM=" data-language="js"><span class="token keyword">var</span> a <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+a<span class="token punctuation">.</span><span class="token function">propertyIsEnumerable</span><span class="token punctuation">(</span><span class="token string">'constructor'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>         <span class="token comment">// returns false</span>
+
+<span class="token keyword">function</span> <span class="token function">firstConstructor</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">this</span><span class="token punctuation">.</span>property <span class="token operator">=</span> <span class="token string">'is not enumerable'</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+firstConstructor<span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function-variable function">firstMethod</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">function</span> <span class="token function">secondConstructor</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function-variable function">method</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token function">method</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> <span class="token string">'is enumerable'</span><span class="token punctuation">;</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+secondConstructor<span class="token punctuation">.</span>prototype <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">firstConstructor</span><span class="token punctuation">;</span>
+secondConstructor<span class="token punctuation">.</span>prototype<span class="token punctuation">.</span>constructor <span class="token operator">=</span> secondConstructor<span class="token punctuation">;</span>
+
+<span class="token keyword">var</span> o <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">secondConstructor</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+o<span class="token punctuation">.</span>arbitraryProperty <span class="token operator">=</span> <span class="token string">'is enumerable'</span><span class="token punctuation">;</span>
+
+o<span class="token punctuation">.</span><span class="token function">propertyIsEnumerable</span><span class="token punctuation">(</span><span class="token string">'arbitraryProperty'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment">// returns true</span>
+o<span class="token punctuation">.</span><span class="token function">propertyIsEnumerable</span><span class="token punctuation">(</span><span class="token string">'method'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>              <span class="token comment">// returns true</span>
+o<span class="token punctuation">.</span><span class="token function">propertyIsEnumerable</span><span class="token punctuation">(</span><span class="token string">'property'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>            <span class="token comment">// returns false</span>
+
+o<span class="token punctuation">.</span>property <span class="token operator">=</span> <span class="token string">'is enumerable'</span><span class="token punctuation">;</span>
+
+o<span class="token punctuation">.</span><span class="token function">propertyIsEnumerable</span><span class="token punctuation">(</span><span class="token string">'property'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>            <span class="token comment">// returns true</span>
+
+<span class="token comment">// These return false as they are on the prototype which</span>
+<span class="token comment">// propertyIsEnumerable does not consider (even though the last two</span>
+<span class="token comment">// are iteratable with for-in)</span>
+o<span class="token punctuation">.</span><span class="token function">propertyIsEnumerable</span><span class="token punctuation">(</span><span class="token string">'prototype'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment">// returns false (as of JS 1.8.1/FF3.6)</span>
+o<span class="token punctuation">.</span><span class="token function">propertyIsEnumerable</span><span class="token punctuation">(</span><span class="token string">'constructor'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// returns false</span>
+o<span class="token punctuation">.</span><span class="token function">propertyIsEnumerable</span><span class="token punctuation">(</span><span class="token string">'firstMethod'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// returns false</span>
+</pre>
+</div></div></section><h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://tc39.es/ecma262/multipage/fundamental-objects.html#sec-object.prototype.propertyisenumerable">ECMAScript Language Specification <br><small># sec-object.prototype.propertyisenumerable</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Enumerability_and_ownership_of_properties" class="only-in-en-us">Enumerability and ownership of properties <small>(en-US)</small></a></li> <li><a href="../../statements/for...in"><code>for...in</code></a></li> <li><a href="keys"><code>Object.keys()</code></a></li> <li><a href="defineproperty"><code>Object.defineProperty()</code></a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Object/propertyIsEnumerable" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Object/propertyIsEnumerable</a>
+  </p>
+</div>

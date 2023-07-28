@@ -1,0 +1,73 @@
+<header><h1>&lt;sup&gt;: 위 첨자 요소</h1></header><div class="section-content"><p><strong>HTML</strong> <code>&lt;sup&gt;</code> 요소는 활자 배치를 위 첨자로 해야 하는 인라인 텍스트를 지정합니다. 위 첨자는 보통 더 작은 글씨 크기를 가지고, 기준선을 위로 올려 렌더링 합니다.</p></div>
+<h2 id="시도해보기">시도해보기</h2>
+<div class="section-content">
+<iframe class="interactive is-tabbed-shorter-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/tabbed/sup.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe> <figure class="table-container"><div class="_table"><table class="properties"> <tbody> <tr> <th scope="row"><a href="../content_categories">콘텐츠 카테고리</a></th> <td> <a href="../content_categories#%ed%94%8c%eb%a1%9c%ec%9a%b0_%ec%bd%98%ed%85%90%ec%b8%a0">플로우 콘텐츠</a>, <a href="../content_categories#%ea%b5%ac%eb%ac%b8_%ec%bd%98%ed%85%90%ec%b8%a0">구문 콘텐츠</a>, 뚜렷한 콘텐츠. </td> </tr> <tr> <th scope="row">가능한 콘텐츠</th> <td>
+<a href="../content_categories#%ea%b5%ac%eb%ac%b8_%ec%bd%98%ed%85%90%ec%b8%a0">구문 콘텐츠</a>.</td> </tr> <tr> <th scope="row">태그 생략</th> <td>불가능, 시작과 끝에 태그를 추가하는것은 필수입니다.</td> </tr> <tr> <th scope="row">가능한 부모 요소</th> <td>
+<a href="../content_categories#%ea%b5%ac%eb%ac%b8_%ec%bd%98%ed%85%90%ec%b8%a0">구문 콘텐츠</a>를 허용하는 모든 요소.</td> </tr> <tr> <th scope="row">가능한 ARIA 역할</th> <td>모두</td> </tr> <tr> <th scope="row">DOM 인터페이스</th> <td><a href="https://developer.mozilla.org/ko/docs/Web/API/HTMLElement"><code>HTMLElement</code></a></td> </tr> </tbody> </table></div></figure>
+</div>
+<h2 id="특성">특성</h2>
+<div class="section-content"><p>이 요소는 <a href="../global_attributes">전역 특성</a>만 포함합니다.</p></div>
+<h2 id="사용_일람">사용 일람</h2>
+<div class="section-content">
+<p><code>&lt;sup&gt;</code> 요소는 타이포그래피적인 이유에 맞춰서만 사용해야 합니다. 타이포그래피적 이유란 기존의 관례나 표준이 위 첨자로 나타내는 경우를 말하며, 단순히 작은 글자를 위로 올려야 할 때는 사용해서는 안됩니다.</p> <p>예를 들어 비즈니스나 상품의 <a href="https://en.wikipedia.org/wiki/Wordmark" target="_blank">워드마크</a> 글씨 기준선을 올려야 한다면 <code>&lt;sup&gt;</code> 대신 CSS(대개 <a href="https://developer.mozilla.org/ko/docs/Web/CSS/vertical-align"><code>vertical-align</code></a>)를 사용해야 합니다. <code>vertical-align: super</code>를 사용할 수도 있고, 기준선을 50% 올려야 한다면 <code>vertical-align: 50%</code>로도 쓸 수 있습니다.</p> <p><code>&lt;sup&gt;</code>의 적절한 사용처의 몇 가지는 다음과 같습니다.</p> <ul> <li>"x<sup>3</sup>" 등 거듭제곱 연산의 지수 표기. 더 복잡한 표기를 해야 할 경우 <a href="https://developer.mozilla.org/ko/docs/Web/MathML">MathML</a>을 고려하세요. 아래의 <a href="#%EC%A7%80%EC%88%98_%ED%91%9C%EA%B8%B0">지수 표기</a> 예제를 참고하세요.</li> <li>Displaying <a href="https://en.wikipedia.org/wiki/Superior_letter" target="_blank">superior letter</a>, which is used in some languages when rendering certain abbreviations. For example, in French, the word "mademoiselle" can be abbreviated "M<sup>lle</sup>"); this is an acceptable use case. See <a href="#superior_lettering">Superior lettering</a> for examples.</li> <li>"4<sup>th</sup>" 등 서수 표기. 아래의 <a href="#%EC%84%9C%EC%88%98_%ED%91%9C%EA%B8%B0">서수 표기</a> 예제를 참고하세요.</li> </ul>
+</div>
+<h2 id="예제">예제</h2>
+
+<h3 id="지수_표기">지수 표기</h3>
+<div class="section-content">
+<p>위 첨자를 가장 많이 사용할만한 곳 중 하나는 거듭제곱의 지수 표기입니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="arsK0zfLHlBimCGcUlqSiOpT9pmwXDQEPgRD9CXKwno=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>One of the most common equations in all of physics is
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>var</span><span class="token punctuation">&gt;</span></span>E<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>var</span><span class="token punctuation">&gt;</span></span>=<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>var</span><span class="token punctuation">&gt;</span></span>m<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>var</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>var</span><span class="token punctuation">&gt;</span></span>c<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>var</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>sup</span><span class="token punctuation">&gt;</span></span>2<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>sup</span><span class="token punctuation">&gt;</span></span>.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div>
+<div class="code-example" id="sect1">
+
+<iframe class="sample-code-frame" title="지수 표기 sample" id="frame_지수_표기" width="650" height="80" src="https://live.mdnplay.dev/ko/docs/Web/HTML/Element/sup/runner.html?id=%EC%A7%80%EC%88%98_%ED%91%9C%EA%B8%B0" loading="lazy"></iframe>
+</div>
+</div>
+<h3 id="superior_lettering">Superior lettering</h3>
+<div class="section-content">
+<p>Superior lettering is not technically the same thing as superscript. However, it is common to use <code>&lt;sup&gt;</code> to present superior lettering in HTML. Among the most common uses of superior lettering is the presentation of certain abbreviations in French:</p> <div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="htBaORvyqtGvLwr21mj+XbEeGdAt9HpaTG9h8tV8Y0s=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>Robert a présenté son rapport à M<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>sup</span><span class="token punctuation">&gt;</span></span>lle<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>sup</span><span class="token punctuation">&gt;</span></span> Bernard.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div> <p>The resulting output:</p>
+<div class="code-example" id="sect2">
+
+<iframe class="sample-code-frame" title="Superior lettering sample" id="frame_superior_lettering" width="650" height="80" src="https://live.mdnplay.dev/ko/docs/Web/HTML/Element/sup/runner.html?id=superior_lettering" loading="lazy"></iframe>
+</div>
+</div>
+<h3 id="서수_표기">서수 표기</h3>
+<div class="section-content">
+<p>영어 "fourth", 스페인어 "quinto" 등 서수는 숫자와, 위 첨자로 표기한 언어별 특정 텍스트를 사용해 축약할 수 있습니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="b7mn1jP/Y/pMdnAw8MNu2pTcx0VdmVYKGupt6d9r2iM=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>The ordinal number "fifth" can be abbreviated in various
+languages as follows:<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ul</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">&gt;</span></span>English: 5<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>sup</span><span class="token punctuation">&gt;</span></span>th<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>sup</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">&gt;</span></span>French: 5<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>sup</span><span class="token punctuation">&gt;</span></span>ème<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>sup</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>ul</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div>
+<div class="code-example" id="sect3">
+
+<iframe class="sample-code-frame" title="서수 표기 sample" id="frame_서수_표기" width="650" height="160" src="https://live.mdnplay.dev/ko/docs/Web/HTML/Element/sup/runner.html?id=%EC%84%9C%EC%88%98_%ED%91%9C%EA%B8%B0" loading="lazy"></iframe>
+</div>
+</div>
+<h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-sub-and-sup-elements">HTML Standard <br><small># the-sub-and-sup-elements</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li>아래 첨자를 나타내는 <a href="sub"><code>&lt;sub&gt;</code></a> 요소. 위 첨자와 아래 첨자가 같은 공간에 공존할 수는 없습니다. 따라서 화학의 질량수/원자 번호 표기 등을 구현하려면 <a href="https://developer.mozilla.org/ko/docs/Web/MathML">MathML</a>이 필요합니다.</li> <li>
+<a href="https://developer.mozilla.org/en-US/docs/Web/MathML/Element/msub" class="only-in-en-us"><code>&lt;msub&gt;</code> <small>(en-US)</small></a>, <a href="https://developer.mozilla.org/en-US/docs/Web/MathML/Element/msup" class="only-in-en-us"><code>&lt;msup&gt;</code> <small>(en-US)</small></a>, <a href="https://developer.mozilla.org/en-US/docs/Web/MathML/Element/msubsup" class="only-in-en-us"><code>&lt;msubsup&gt;</code> <small>(en-US)</small></a> MathML 요소.</li> <li>CSS <a href="https://developer.mozilla.org/ko/docs/Web/CSS/vertical-align"><code>vertical-align</code></a> 속성.</li> </ul></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/HTML/Element/sup" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/HTML/Element/sup</a>
+  </p>
+</div>

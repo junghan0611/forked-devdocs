@@ -1,0 +1,53 @@
+<header><h1>Reflect.getPrototypeOf()</h1></header><div class="section-content"><p><code>Reflect.getPrototypeOf()</code> 정적 메서드는 주어진 객체의 프로토타입을 반환합니다. <a href="../object/getprototypeof"><code>Object.getPrototypeOf()</code></a>와 거의 동일합니다.</p></div>
+<section aria-labelledby="시도해보기"><h2 id="시도해보기">시도해보기</h2>
+<div class="section-content"><iframe class="interactive is-js-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/js/reflect-getprototypeof.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe></div></section><section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="RniTLcjSaq60pPWckf6N0RVq0RPHFbOf6JrwAKiRLWY=" data-language="js">Reflect<span class="token punctuation">.</span><span class="token function">getPrototypeOf</span><span class="token punctuation">(</span>target<span class="token punctuation">)</span>
+</pre>
+</div></div></section><section aria-labelledby="매개변수"><h3 id="매개변수">매개변수</h3>
+<div class="section-content"><dl> <dt id="target"><code>target</code></dt> <dd> <p>프로토타입을 가져올 대상 객체.</p> </dd> </dl></div></section><section aria-labelledby="반환_값"><h3 id="반환_값">반환 값</h3>
+<div class="section-content"><p>주어진 객체의 프로토타입. 상속한 속성이 없으면 <a href="../../operators/null"><code>null</code></a>을 반환합니다.</p></div></section><section aria-labelledby="예외"><h3 id="예외">예외</h3>
+<div class="section-content"><p><code>target</code>이 <a href="../object"><code>Object</code></a>가 아니면 <a href="../typeerror"><code>TypeError</code></a>.</p></div></section><section aria-labelledby="설명"><h2 id="설명">설명</h2>
+<div class="section-content"><p><code>Reflect.getPrototypeOf()</code> 메서드는 주어진 객체의 프로토타입(<code>[[Prototype]]</code> 내부 객체의 값 등)을 반환합니다.</p></div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+</section><section aria-labelledby="reflect.getprototypeof_사용하기"><h3 id="reflect.getprototypeof_사용하기">
+<code>Reflect.getPrototypeOf()</code> 사용하기</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="Eh8o7aKxAEXA0N/9Xo6wN/H9Ocofvd7d1xMyM+HPdtU=" data-language="js">Reflect<span class="token punctuation">.</span><span class="token function">getPrototypeOf</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Object.prototype</span>
+Reflect<span class="token punctuation">.</span><span class="token function">getPrototypeOf</span><span class="token punctuation">(</span><span class="token class-name">Object</span><span class="token punctuation">.</span>prototype<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// null</span>
+Reflect<span class="token punctuation">.</span><span class="token function">getPrototypeOf</span><span class="token punctuation">(</span>Object<span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span><span class="token keyword">null</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// null</span>
+</pre>
+</div></div></section><section aria-labelledby="object.getprototypeof와_비교"><h3 id="object.getprototypeof와_비교">
+<code>Object.getPrototypeOf()</code>와 비교</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="dnwT0AxRTgem31oqvGoR4O9R6S++ZERLi388IYo2ueQ=" data-language="js"><span class="token comment">// 객체에는 동일한 결과</span>
+Object<span class="token punctuation">.</span><span class="token function">getPrototypeOf</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// Object.prototype</span>
+Reflect<span class="token punctuation">.</span><span class="token function">getPrototypeOf</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Object.prototype</span>
+
+<span class="token comment">// ES5에서는 비객체 대상에서 모두 오류</span>
+Object<span class="token punctuation">.</span><span class="token function">getPrototypeOf</span><span class="token punctuation">(</span><span class="token string">'foo'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// Throws TypeError</span>
+Reflect<span class="token punctuation">.</span><span class="token function">getPrototypeOf</span><span class="token punctuation">(</span><span class="token string">'foo'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Throws TypeError</span>
+
+<span class="token comment">// ES2015에서는 Reflect만 오류, Object는 객체로 변환</span>
+Object<span class="token punctuation">.</span><span class="token function">getPrototypeOf</span><span class="token punctuation">(</span><span class="token string">'foo'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// String.prototype</span>
+Reflect<span class="token punctuation">.</span><span class="token function">getPrototypeOf</span><span class="token punctuation">(</span><span class="token string">'foo'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Throws TypeError</span>
+
+<span class="token comment">// ES2015 Object 동작을 따라하려면 객체 변환과정 필요</span>
+Reflect<span class="token punctuation">.</span><span class="token function">getPrototypeOf</span><span class="token punctuation">(</span><span class="token function">Object</span><span class="token punctuation">(</span><span class="token string">'foo'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// String.prototype</span>
+</pre>
+</div></div></section><h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://tc39.es/ecma262/multipage/reflection.html#sec-reflect.getprototypeof">ECMAScript Language Specification <br><small># sec-reflect.getprototypeof</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="../reflect"><code>Reflect</code></a></li> <li><a href="../object/getprototypeof"><code>Object.getPrototypeOf()</code></a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Reflect/getPrototypeOf" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Reflect/getPrototypeOf</a>
+  </p>
+</div>

@@ -1,0 +1,26 @@
+<header><h1>HTMLMediaElement.src</h1></header><div class="section-content">
+<p> <code>HTMLMediaElement.src</code> 속성은 요소(element)에서 사용할 미디어 리소스의 URL을 나타내는 HTML 미디어 요소의 <code>src</code> 속성 값을 반영합니다. </p> <div class="notecard note" id="sect1"> <p> <strong>참고:</strong> 현재 해당 요소에서 사용 중인 미디어 리소스의 URL을 확인하는 가장 좋은 방법은 <a href="currentsrc"><code>currentSrc</code></a> 속성의 값을 살펴보는 것입니다. 이 속성은 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLSourceElement"><code>HTMLSourceElement</code> <small>(en-US)</small></a> (<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/source"><code>&lt;source&gt;</code> <small>(en-US)</small></a> 요소를 의미합니다)에 제공된 목록에서 최상의 또는 선호하는 미디어 리소스의 선택도 고려합니다. </p> </div>
+</div>
+<h2 id="값">값</h2>
+<div class="section-content"><p> 요소에서 사용할 미디어 리소스의 URL을 포함하는 문자열 객체입니다. 이 속성은 HTML 요소의 <code>src</code> 속성 값을 반영합니다. </p></div>
+<h2 id="예제">예제</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="QDYn/bVb02mPG9z8KropMEzlePKTacxt/o8L9anadLY=" data-language="js"><span class="token keyword">const</span> obj <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">createElement</span><span class="token punctuation">(</span><span class="token string">"video"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>obj<span class="token punctuation">.</span>src<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// ""</span>
+</pre>
+</div></div>
+<h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://html.spec.whatwg.org/multipage/media.html#dom-media-src">HTML Standard <br><small># dom-media-src</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li>src를 정의하는 인터페이스는 <a href="../htmlmediaelement"><code>HTMLMediaElement</code></a>입니다.</li> </ul></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/HTMLMediaElement/src" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/HTMLMediaElement/src</a>
+  </p>
+</div>

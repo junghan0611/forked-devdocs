@@ -1,0 +1,115 @@
+<header><h1>typeof</h1></header><div class="section-content"><p><code>typeof</code> 연산자는 피연산자의 평가 전 자료형을 나타내는 문자열을 반환합니다.</p></div>
+<section aria-labelledby="시도해보기"><h2 id="시도해보기">시도해보기</h2>
+<div class="section-content"><iframe class="interactive is-js-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/js/expressions-typeof.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe></div></section><section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content">
+<p><code>typeof</code> 연산자는 피연산자 앞에 위치합니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="6ijU/S/vMepCl6uEgFZKgiLkT2/bOSp5Q/MP7mRF0Ks=" data-language="js">    <span class="token keyword">typeof</span> operand
+    <span class="token keyword">typeof</span><span class="token punctuation">(</span>operand<span class="token punctuation">)</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="매개변수"><h3 id="매개변수">매개변수</h3>
+<div class="section-content"><dl> <dt id="operand"><code>operand</code></dt> <dd> <p>자료형을 가져올 객체 또는 <a href="https://developer.mozilla.org/ko/docs/Glossary/Primitive">원시값</a>을 나타내는 표현식.</p> </dd> </dl></div></section><section aria-labelledby="설명"><h2 id="설명">설명</h2>
+<div class="section-content">
+<p><code>typeof</code>가 반환할 수 있는 값을 아래 표에서 볼 수 있습니다. 자료형과 원시값에 대한 자세한 정보는 <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Data_structures">JavaScript 자료형과 자료구조</a> 페이지를 참고하세요.</p> <figure class="table-container"><div class="_table"><table> <thead> <tr> <th>Type</th> <th>Result</th> </tr> </thead> <tbody> <tr> <td><a href="https://developer.mozilla.org/ko/docs/Glossary/Undefined">Undefined</a></td> <td><code>"undefined"</code></td> </tr> <tr> <td><a href="https://developer.mozilla.org/ko/docs/Glossary/Null">Null</a></td> <td>
+<code>"object"</code> (<a href="#null">아래</a> 참고)</td> </tr> <tr> <td><a href="https://developer.mozilla.org/ko/docs/Glossary/Boolean">Boolean</a></td> <td><code>"boolean"</code></td> </tr> <tr> <td><a href="https://developer.mozilla.org/ko/docs/Glossary/Number">Number</a></td> <td><code>"number"</code></td> </tr> <tr> <td><a href="https://developer.mozilla.org/ko/docs/Glossary/BigInt">BigInt</a></td> <td><code>"bigint"</code></td> </tr> <tr> <td><a href="https://developer.mozilla.org/ko/docs/Glossary/String">String</a></td> <td><code>"string"</code></td> </tr> <tr> <td>
+<a href="../global_objects/symbol">Symbol</a> (ECMAScript 2015에서 추가)</td> <td><code>"symbol"</code></td> </tr> <tr> <td>호스트 객체 (JS 환경에서 제공)</td> <td><em>구현체마다 다름</em></td> </tr> <tr> <td>
+<a href="https://developer.mozilla.org/ko/docs/Glossary/Function">Function</a> 객체 (ECMA-262 표현으로는 [[Call]]을 구현하는 객체)</td> <td><code>"function"</code></td> </tr> <tr> <td>다른 모든 객체</td> <td><code>"object"</code></td> </tr> </tbody> </table></div></figure> <div class="notecard note" id="sect1"> <p><strong>참고:</strong> ECMAScript 2019 and older permitted implementations to have <code>typeof</code> return any implementation-defined string value for non-callable non-standard exotic objects.</p> <p>The only known browser to have actually taken advantage of this is old Internet Explorer (see <a href="#ie-specific_notes">below</a>).</p> </div>
+</div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="o8ORYPr7nvZCEgNlDqPtdm3PgFvyA805lTXpE1zLJwU=" data-language="js"><span class="token comment">// Numbers</span>
+<span class="token keyword">typeof</span> <span class="token number">37</span> <span class="token operator">===</span> <span class="token string">'number'</span><span class="token punctuation">;</span>
+<span class="token keyword">typeof</span> <span class="token number">3.14</span> <span class="token operator">===</span> <span class="token string">'number'</span><span class="token punctuation">;</span>
+<span class="token keyword">typeof</span> Math<span class="token punctuation">.</span><span class="token constant">LN2</span> <span class="token operator">===</span> <span class="token string">'number'</span><span class="token punctuation">;</span>
+<span class="token keyword">typeof</span> <span class="token number">Infinity</span> <span class="token operator">===</span> <span class="token string">'number'</span><span class="token punctuation">;</span>
+<span class="token keyword">typeof</span> <span class="token number">NaN</span> <span class="token operator">===</span> <span class="token string">'number'</span><span class="token punctuation">;</span> <span class="token comment">// Despite being "Not-A-Number"</span>
+<span class="token keyword">typeof</span> <span class="token function">Number</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">===</span> <span class="token string">'number'</span><span class="token punctuation">;</span> <span class="token comment">// but never use this form!</span>
+
+<span class="token keyword">typeof</span> <span class="token number">42n</span> <span class="token operator">===</span> <span class="token string">'bigint'</span><span class="token punctuation">;</span>
+
+
+<span class="token comment">// Strings</span>
+<span class="token keyword">typeof</span> <span class="token string">""</span> <span class="token operator">===</span> <span class="token string">'string'</span><span class="token punctuation">;</span>
+<span class="token keyword">typeof</span> <span class="token string">"bla"</span> <span class="token operator">===</span> <span class="token string">'string'</span><span class="token punctuation">;</span>
+<span class="token keyword">typeof</span> <span class="token punctuation">(</span><span class="token keyword">typeof</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">===</span> <span class="token string">'string'</span><span class="token punctuation">;</span> <span class="token comment">// typeof always returns a string</span>
+<span class="token keyword">typeof</span> <span class="token function">String</span><span class="token punctuation">(</span><span class="token string">"abc"</span><span class="token punctuation">)</span> <span class="token operator">===</span> <span class="token string">'string'</span><span class="token punctuation">;</span> <span class="token comment">// but never use this form!</span>
+
+
+<span class="token comment">// Booleans</span>
+<span class="token keyword">typeof</span> <span class="token boolean">true</span> <span class="token operator">===</span> <span class="token string">'boolean'</span><span class="token punctuation">;</span>
+<span class="token keyword">typeof</span> <span class="token boolean">false</span> <span class="token operator">===</span> <span class="token string">'boolean'</span><span class="token punctuation">;</span>
+<span class="token keyword">typeof</span> <span class="token function">Boolean</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span> <span class="token operator">===</span> <span class="token string">'boolean'</span><span class="token punctuation">;</span> <span class="token comment">// but never use this form!</span>
+
+
+<span class="token comment">// Symbols</span>
+<span class="token keyword">typeof</span> <span class="token function">Symbol</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">===</span> <span class="token string">'symbol'</span>
+<span class="token keyword">typeof</span> <span class="token function">Symbol</span><span class="token punctuation">(</span><span class="token string">'foo'</span><span class="token punctuation">)</span> <span class="token operator">===</span> <span class="token string">'symbol'</span>
+<span class="token keyword">typeof</span> Symbol<span class="token punctuation">.</span>iterator <span class="token operator">===</span> <span class="token string">'symbol'</span>
+
+
+<span class="token comment">// Undefined</span>
+<span class="token keyword">typeof</span> <span class="token keyword">undefined</span> <span class="token operator">===</span> <span class="token string">'undefined'</span><span class="token punctuation">;</span>
+<span class="token keyword">typeof</span> declaredButUndefinedVariable <span class="token operator">===</span> <span class="token string">'undefined'</span><span class="token punctuation">;</span>
+<span class="token keyword">typeof</span> undeclaredVariable <span class="token operator">===</span> <span class="token string">'undefined'</span><span class="token punctuation">;</span>
+
+
+<span class="token comment">// Objects</span>
+<span class="token keyword">typeof</span> <span class="token punctuation">{</span><span class="token literal-property property">a</span><span class="token operator">:</span><span class="token number">1</span><span class="token punctuation">}</span> <span class="token operator">===</span> <span class="token string">'object'</span><span class="token punctuation">;</span>
+
+<span class="token comment">// use Array.isArray or Object.prototype.toString.call</span>
+<span class="token comment">// to differentiate regular objects from arrays</span>
+<span class="token keyword">typeof</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">]</span> <span class="token operator">===</span> <span class="token string">'object'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">typeof</span> <span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">===</span> <span class="token string">'object'</span><span class="token punctuation">;</span>
+
+
+<span class="token comment">// The following is confusing. Don't use!</span>
+<span class="token keyword">typeof</span> <span class="token keyword">new</span> <span class="token class-name">Boolean</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span> <span class="token operator">===</span> <span class="token string">'object'</span><span class="token punctuation">;</span>
+<span class="token keyword">typeof</span> <span class="token keyword">new</span> <span class="token class-name">Number</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">===</span> <span class="token string">'object'</span><span class="token punctuation">;</span>
+<span class="token keyword">typeof</span> <span class="token keyword">new</span> <span class="token class-name">String</span><span class="token punctuation">(</span><span class="token string">"abc"</span><span class="token punctuation">)</span> <span class="token operator">===</span> <span class="token string">'object'</span><span class="token punctuation">;</span>
+
+
+<span class="token comment">// Functions</span>
+<span class="token keyword">typeof</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token punctuation">}</span> <span class="token operator">===</span> <span class="token string">'function'</span><span class="token punctuation">;</span>
+<span class="token keyword">typeof</span> <span class="token keyword">class</span> <span class="token class-name">C</span> <span class="token punctuation">{</span><span class="token punctuation">}</span> <span class="token operator">===</span> <span class="token string">'function'</span><span class="token punctuation">;</span>
+<span class="token keyword">typeof</span> Math<span class="token punctuation">.</span>sin <span class="token operator">===</span> <span class="token string">'function'</span><span class="token punctuation">;</span>
+</pre>
+</div></div></section><section aria-labelledby="추가_정보"><h2 id="추가_정보">추가 정보</h2>
+</section><section aria-labelledby="null"><h3 id="null"><code>null</code></h3>
+<div class="section-content">
+<div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="bXi7ln8zjqcL86AqpeLoOUxGb2ZpqC5QFZiIWncuvNY=" data-language="js"><span class="token comment">// This stands since the beginning of JavaScript</span>
+<span class="token keyword">typeof</span> <span class="token keyword">null</span> <span class="token operator">===</span> <span class="token string">'object'</span><span class="token punctuation">;</span>
+</pre>
+</div> <p>자바스크립트를 처음 구현할 때, 자바스크립트 값은 타입 태그와 값으로 표시되었습니다. 객체의 타입 태그는 0이었습니다. <code>null</code>은 Null pointer(대부분의 플랫폼에서 <code>0x00</code>)로 표시되었습니다. 그 결과 null은 타입 태그로 0을 가지며, 따라서 <code>typeof</code>는 object를 반환합니다. (<a href="https://2ality.com/2013/10/typeof-null.html" target="_blank">참고 문서</a>)</p> <p>ECMAScript에 수정이 제안(opt-in을 통해)되었으나 <a href="https://web.archive.org/web/20160331031419/http://wiki.ecmascript.org:80/doku.php?id=harmony:typeof_null" target="_blank">거절되었습니다</a>. 제안된 것은 다음과 같습니다. <code>typeof null === 'null'.</code></p>
+</div></section><section aria-labelledby="regular_expressions"><h3 id="regular_expressions">Regular expressions</h3>
+<div class="section-content">
+<p>Callable regular expressions were a non-standard addition in some browsers.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="nTxPtG+TeXxaiOioccBeLhiXT0Ug/AR1B3aJ7iGKGPI=" data-language="js"><span class="token keyword">typeof</span> <span class="token operator">/</span>s<span class="token operator">/</span> <span class="token operator">===</span> <span class="token string">'function'</span><span class="token punctuation">;</span> <span class="token comment">// Chrome 1-12 Non-conform to ECMAScript 5.1</span>
+<span class="token keyword">typeof</span> <span class="token operator">/</span>s<span class="token operator">/</span> <span class="token operator">===</span> <span class="token string">'object'</span><span class="token punctuation">;</span>   <span class="token comment">// Firefox 5+  Conform to ECMAScript 5.1</span>
+</pre>
+</div>
+</div></section><h2 id="명세서">명세서</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://tc39.es/ecma262/multipage/ecmascript-language-expressions.html#sec-typeof-operator">ECMAScript Language Specification <br><small># sec-typeof-operator</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="ie_참고사항"><h2 id="ie_참고사항">IE 참고사항</h2>
+<div class="section-content">
+<p>On IE 6, 7, and 8 a lot of host objects are objects and not functions. For example:</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="Sq4dDRDWkm80Am/giL8JwuFsLcWaVHPSzQF7Ln8nqtk=" data-language="js"><span class="token keyword">typeof</span> alert <span class="token operator">===</span> <span class="token string">'object'</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="instanceof"><code>instanceof</code></a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Operators/typeof" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Operators/typeof</a>
+  </p>
+</div>

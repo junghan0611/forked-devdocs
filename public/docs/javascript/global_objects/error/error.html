@@ -1,0 +1,42 @@
+<header><h1>Error() 생성자</h1></header><div class="section-content"><p><code>Error</code> 생성자는 오류 객체를 생성합니다.</p></div>
+<section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="luTSfWWRbVaUUTldfGqqXVsJww77NklvPDbAE8EL3eg=" data-language="js"><span class="token keyword">new</span> <span class="token class-name">Error</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">new</span> <span class="token class-name">Error</span><span class="token punctuation">(</span>message<span class="token punctuation">)</span>
+<span class="token keyword">new</span> <span class="token class-name">Error</span><span class="token punctuation">(</span>message<span class="token punctuation">,</span> fileName<span class="token punctuation">)</span>
+<span class="token keyword">new</span> <span class="token class-name">Error</span><span class="token punctuation">(</span>message<span class="token punctuation">,</span> fileName<span class="token punctuation">,</span> lineNumber<span class="token punctuation">)</span>
+</pre>
+</div></div></section><section aria-labelledby="매개변수"><h3 id="매개변수">매개변수</h3>
+<div class="section-content"><dl> <dt id="message">
+<code>message</code> <span class="badge inline optional">Optional</span>
+</dt> <dd> <p>사람이 읽을 수 있는 오류 메시지입니다.</p> </dd> <dt id="filename">
+<code>fileName</code> <span class="badge inline optional">Optional</span><abbr class="icon icon-nonstandard" title="비표준. 사용하기전에 다른 브라우저에서도 사용 가능한지 확인 해주세요."> <span class="visually-hidden">비표준</span> </abbr>
+</dt> <dd> <p> 생성할 <code>Error</code> 객체의 <code>fileName</code> 속성으로 설정할 값입니다. 기본 값은 <code>Error()</code> 생성자를 호출한 파일의 이름입니다. </p> </dd> <dt id="linenumber">
+<code>lineNumber</code> <span class="badge inline optional">Optional</span><abbr class="icon icon-nonstandard" title="비표준. 사용하기전에 다른 브라우저에서도 사용 가능한지 확인 해주세요."> <span class="visually-hidden">비표준</span> </abbr>
+</dt> <dd> <p> 생성할 <code>Error</code> 객체의 <code>lineNumber</code> 속성으로 설정할 값입니다. 기본 값은 <code>Error()</code> 생성자를 호출한 줄의 번호입니다. </p> </dd> </dl></div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+</section><section aria-labelledby="생성자_또는_함수_호출"><h3 id="생성자_또는_함수_호출">생성자 또는 함수 호출</h3>
+<div class="section-content">
+<p> <code>Error</code>를 <a href="../../operators/new"><code>new</code></a> 없이 함수로써 호출한 경우에도 <code>Error</code> 객체를 반환합니다. 따라서 단순히 <code>Error</code>를 호출하기만 해도 <code>new</code> 키워드를 사용한 것과 같은 결과를 낳습니다. </p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="eZ9wR1AXte/C8Jwtx8SXs0COGTDHNqYWysygFcqhEOs=" data-language="js"><span class="token comment">// 함수로 호출해도...</span>
+<span class="token keyword">const</span> x <span class="token operator">=</span> <span class="token function">Error</span><span class="token punctuation">(</span><span class="token string">'함수 호출로 만들기!'</span><span class="token punctuation">)</span>
+
+<span class="token comment">// ...이렇게 생성자로 사용한 것과 같은 결과</span>
+<span class="token keyword">const</span> y <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Error</span><span class="token punctuation">(</span><span class="token string">'"new" 키워드를 써서 만들기!'</span><span class="token punctuation">)</span>
+</pre>
+</div>
+</div></section><h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://tc39.es/ecma262/multipage/fundamental-objects.html#sec-error-constructor">ECMAScript Language Specification <br><small># sec-error-constructor</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="../../statements/throw"><code>throw</code></a></li> <li><a href="../../statements/try...catch"><code>try...catch</code></a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Error/Error" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Error/Error</a>
+  </p>
+</div>

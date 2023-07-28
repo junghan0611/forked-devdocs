@@ -1,0 +1,87 @@
+<header><h1>box-sizing</h1></header><div class="section-content"><p><code>box-sizing</code> <a href="https://developer.mozilla.org/ko/docs/Web/CSS">CSS</a> 속성은 요소의 너비와 높이를 계산하는 방법을 지정합니다.</p></div>
+<section aria-labelledby="시도해보기"><h2 id="시도해보기">시도해보기</h2>
+<div class="section-content">
+<iframe class="interactive is-default-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/css/box-sizing.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe> <p>CSS 박스 모델의 기본값에서, 지정한 너비와 높이는 요소의 콘텐츠 박스 크기에만 적용됩니다. 요소에 테두리나 안쪽 여백이 있으면 너비와 높이에 더해서 화면에 그립니다. 따라서 크기를 설정할 때, 원하는 크기를 얻으려면 테두리나 안쪽 여백을 고려해야 합니다.</p> <p><code>box-sizing</code> 속성을 사용해 이 방식을 바꿀 수 있습니다.</p> <ul> <li>
+<code>content-box</code>는 기본 CSS 박스 크기 결정법을 사용합니다. 요소의 너비를 100 픽셀로 설정하면 콘텐츠 영역이 100 픽셀 너비를 가지고, 테두리와 안쪽 여백은 이에 더해집니다.</li> <li>
+<code>border-box</code>는 테두리와 안쪽 여백의 크기도 요소의 크기로 고려합니다. 너비를 100 픽셀로 설정하고 테두리와 안쪽 여백을 추가하면, 콘텐츠 영역이 줄어들어 총 너비 100 픽셀을 유지합니다. 대부분의 경우 이 편이 크기를 조절할 때 쉽습니다.</li> </ul>
+</div></section><section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content"><p><code>box-sizing</code> 속성은 다음 키워드 중 하나로 지정할 수 있습니다.</p></div></section><section aria-labelledby="값"><h3 id="값">값</h3>
+<div class="section-content">
+<dl> <dt id="content-box"><code>content-box</code></dt> <dd> <p>CSS 표준이 정의한 초기 기본값. <a href="width"><code>width</code></a>와 <a href="height"><code>height</code></a> 속성이 콘텐츠 영역만 포함하고 안팎 여백과 테두리는 포함하지 않습니다. 즉 <code>.box {width: 350px; border: 10px solid black;}</code>을 적용한 요소의 너비는 <code>370px</code>입니다.</p> </dd> </dl> <p>요소의 크기는 너비 = 콘텐츠 너비, 높이 = 콘텐츠 높이로 계산하고 테두리와 안쪽 여백은 식에 넣지 않습니다.</p> <ul> <li>
+<code>border-box</code> <ul> <li>: <a href="width"><code>width</code></a> 와 <a href="height"><code>height</code></a> 속성이 안쪽 여백과 테두리는 포함하고, 바깥 여백은 포함하지 않습니다. 안쪽 여백과 테두리가 요소 상자 안에 위치함을 유의하세요. 즉 <code>.box {width: 350px; border: 10px solid black;}</code>을 적용한 요소의 너비는 <code>350px</code>입니다. 콘텐츠 영역의 크기는 음수일 수 없으므로 <code>border-box</code>를 사용해 요소를 사라지게 할 수는 없습니다.</li> </ul>요소의 크기는 너비 = 테두리 + 안쪽 여백 + 콘텐츠 너비, 높이 = 테두리 + 안쪽 여백 + 콘텐츠 높이로 계산합니다. </li> </ul>
+</div></section><section aria-labelledby="형식_구문"><h3 id="형식_구문">형식 구문</h3>
+<div class="section-content"><pre class="notranslate"><span class="token property" id="box-sizing">box-sizing = </span><br>  <span class="token keyword">content-box</span>  <a href="value_definition_syntax#single_bar">|</a><br>  <span class="token keyword">border-box</span>   <br><br></pre></div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+<div class="section-content"><p>다음 예제는 두 개의 동일한 요소의 크기가 서로 다른 <code>box-sizing</code> 값으로 어떻게 달라지는지 보입니다.</p></div></section><section aria-labelledby="html"><h3 id="html">HTML</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="djYCliUhM+goquCMTenilVfAVhOREox17xEluTJpRVA=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>content-box<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Content box<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>br</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>border-box<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Border box<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div></div></section><section aria-labelledby="css"><h3 id="css">CSS</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="uV9X+12kxXh8eMrzdu0Ag/+ocy+lWZRNXY8wsTX7ScI=" data-language="css"><span class="token selector">div</span> <span class="token punctuation">{</span>
+  <span class="token property">width</span><span class="token punctuation">:</span> 160px<span class="token punctuation">;</span>
+  <span class="token property">height</span><span class="token punctuation">:</span> 80px<span class="token punctuation">;</span>
+  <span class="token property">padding</span><span class="token punctuation">:</span> 20px<span class="token punctuation">;</span>
+  <span class="token property">border</span><span class="token punctuation">:</span> 8px solid red<span class="token punctuation">;</span>
+  <span class="token property">background</span><span class="token punctuation">:</span> yellow<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">.content-box</span> <span class="token punctuation">{</span>
+  <span class="token property">box-sizing</span><span class="token punctuation">:</span> content-box<span class="token punctuation">;</span>
+  <span class="token comment">/* Total width: 160px + (2 * 20px) + (2 * 8px) = 216px
+     Total height: 80px + (2 * 20px) + (2 * 8px) = 136px
+     Content box width: 160px
+     Content box height: 80px */</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">.border-box</span> <span class="token punctuation">{</span>
+  <span class="token property">box-sizing</span><span class="token punctuation">:</span> border-box<span class="token punctuation">;</span>
+  <span class="token comment">/* Total width: 160px
+     Total height: 80px
+     Content box width: 160px - (2 * 20px) - (2 * 8px) = 104px
+     Content box height: 80px - (2 * 20px) - (2 * 8px) = 24px */</span>
+<span class="token punctuation">}</span>
+</pre>
+</div></div></section><section aria-labelledby="결과"><h3 id="결과">결과</h3>
+<div class="section-content"><div class="code-example" id="sect1">
+
+<iframe class="sample-code-frame" title="예제 sample" id="frame_예제" width="auto" height="300" src="https://live.mdnplay.dev/ko/docs/Web/CSS/box-sizing/runner.html?id=%EC%98%88%EC%A0%9C" loading="lazy"></iframe>
+</div></div></section><h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://drafts.csswg.org/css-sizing/#box-sizing">CSS Box Sizing Module Level 3 <br><small># box-sizing</small></a></td></tr></tbody>
+</table></div>
+<div class="section-content"><figure class="table-container"><div class="_table"><table class="properties"><tbody>
+<tr>
+<th scope="row"><a href="initial_value">초기값</a></th>
+<td><code>content-box</code></td>
+</tr>
+<tr>
+<th scope="row">적용대상</th>
+<td>all elements that accept width or height</td>
+</tr>
+<tr>
+<th scope="row"><a href="inheritance">상속</a></th>
+<td>no</td>
+</tr>
+<tr>
+<th scope="row"><a href="computed_value">계산 값</a></th>
+<td>as specified</td>
+</tr>
+<tr>
+<th scope="row">Animation type</th>
+<td>discrete</td>
+</tr>
+</tbody></table></div></figure></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="css_box_model/introduction_to_the_css_box_model">CSS 기본 박스 모델</a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/CSS/box-sizing" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/CSS/box-sizing</a>
+  </p>
+</div>

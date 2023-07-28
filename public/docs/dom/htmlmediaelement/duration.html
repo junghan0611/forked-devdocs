@@ -1,0 +1,25 @@
+<header><h1>HTMLMediaElement.duration</h1></header><div class="section-content"><p> "읽기 전용" <a href="../htmlmediaelement"><code>HTMLMediaElement</code></a> 속성 **<code>duration</code>**은 요소의 미디어 길이를 초 단위로 나타냅니다. </p></div>
+<h2 id="값">값</h2>
+<div class="section-content"><p> 미디어의 지속 시간을 초 단위로 나타내는 배정밀도 부동 소수점 값입니다. 사용 가능한 미디어 데이터가 없으면 <code>NaN</code> 값이 반환됩니다. 만약 요소의 미디어에 라이브 미디어 스트림과 같이 전체 길이(초)가 없는 경우 <code>duration</code>은 <code>+Infinity</code>입니다. </p></div>
+<h2 id="예제">예제</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="KT4F1jwP5D4x2794+9y73SG+PHYTnkfzbPjdc4cWopk=" data-language="js"><span class="token keyword">const</span> obj <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">createElement</span><span class="token punctuation">(</span><span class="token string">"video"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>obj<span class="token punctuation">.</span>duration<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// NaN</span>
+</pre>
+</div></div>
+<h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://html.spec.whatwg.org/multipage/media.html#dom-media-duration-dev">HTML Standard <br><small># dom-media-duration-dev</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="https://developer.mozilla.org/ko/docs/Web/Media">웹 미디어 기술</a></li> <li>미디어의 현재 재생 위치는 <a href="currenttime"><code>HTMLMediaElement.currentTime</code></a>를 참고하세요.</li> <li>
+<a href="https://developer.mozilla.org/ko/docs/Web/HTML/Element/audio"><code>&lt;audio&gt;</code></a>와 <a href="https://developer.mozilla.org/ko/docs/Web/HTML/Element/video"><code>&lt;video&gt;</code></a> 요소들을 참고하세요.</li> </ul></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/HTMLMediaElement/duration" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/HTMLMediaElement/duration</a>
+  </p>
+</div>

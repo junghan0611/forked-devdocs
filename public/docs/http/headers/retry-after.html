@@ -1,0 +1,32 @@
+<h1>Retry-After</h1>
+<header><h1>Retry-After</h1></header><div class="section-content">
+<p><code>Retry-After</code> 응답 HTTP 헤더는 다음에 올 요청이 이루어지기 전에 사용자 에이전트가 대기해야 하는 시간을 가르킵니다. 이 헤더가 사용되는 주요한 두 가지 경우가 있습니다:</p> <ul> <li>
+<a href="../status/503"><code>503</code></a> (Service Unavailable) 응답이 전송된 경우, 서비스가 얼마나 오랫동안 이용 불가능한지 예측되는 시간을 가르킵니다.</li> <li>
+<a href="../status/301"><code>301</code></a> (Moved Permanently)와 같은, 리다이렉트 응답이 전송된 경우, 리다이렉트 요청을 하기 이전에 사용자 에이전트가 대기해주길 원하는 최소한의 시간을 가르킵니다.</li> </ul> <figure class="table-container"><div class="_table"><table class="properties"> <tbody> <tr> <th scope="row">Header type</th> <td><a href="https://developer.mozilla.org/ko/docs/Glossary/Response_header">Response header</a></td> </tr> <tr> <th scope="row"><a href="https://developer.mozilla.org/ko/docs/Glossary/Forbidden_header_name">Forbidden header name</a></th> <td>no</td> </tr> </tbody> </table></div></figure>
+</div>
+<section aria-labelledby="문법"><h2 id="문법">문법</h2>
+<div class="section-content"><pre class="notranslate">Retry-After: &lt;http-date&gt;
+Retry-After: &lt;delay-seconds&gt;
+</pre></div></section><section aria-labelledby="디렉티브"><h2 id="디렉티브">디렉티브</h2>
+<div class="section-content"><dl> <dt id="http-date">&lt;http-date&gt;</dt> <dd> <p>해당 시간 이후 재시도하도록 합니다. HTTP 날짜 포맷에 과한 더 자세한 내용은 <a href="date"><code>Date</code></a> 헤더를 참고하시기 바랍니다.</p> </dd> <dt id="delay-seconds">&lt;delay-seconds&gt;</dt> <dd> <p>응답이 수신된 이후 지연시키기 위한 초를 가르키는 음수를 불허하는 10진수 정수값입니다.</p> </dd> </dl></div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+</section><section aria-labelledby="예정된_다운타임_다루기"><h3 id="예정된_다운타임_다루기">예정된 다운타임 다루기</h3>
+<div class="section-content">
+<p>클라이언트와 서버 양측의 <code>Retry-After</code> 헤더 지원은 여전히 부조화스럽습니다. 하지만, Googlebot과 같은, 어떤 크롤러와 스파이더들은 <code>Retry-After</code> 헤더를 지킵니다. 검색 엔진이 다운타임이 경과한 경우 당신의 사이트에 대한 인덱싱을 유지할 것이기에, <a href="../status/503"><code>503</code></a> (Service Unavailable) 응답에서 해당 헤더를 함께 보내는 것은 유용합니다.</p> <pre class="notranslate">Retry-After: Wed, 21 Oct 2015 07:28:00 GMT
+Retry-After: 120
+</pre>
+</div></section><h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://www.rfc-editor.org/rfc/rfc9110#field.retry-after">HTTP Semantics <br><small># field.retry-after</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="함께_참고할_내용"><h2 id="함께_참고할_내용">함께 참고할 내용</h2>
+<div class="section-content"><ul> <li><a href="https://webmasters.googleblog.com/2011/01/how-to-deal-with-planned-site-downtime.html" target="_blank">Google Webmaster blog: How to deal with planned site downtime</a></li> <li>
+<a href="../status/503"><code>503</code></a> (Service Unavailable)</li> <li>
+<a href="../status/301"><code>301</code></a> (Moved Permanently)</li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/HTTP/Headers/Retry-After" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/HTTP/Headers/Retry-After</a>
+  </p>
+</div>

@@ -1,0 +1,242 @@
+<header><h1>content</h1></header><div class="section-content">
+<p><a href="https://developer.mozilla.org/ko/docs/Web/CSS">CSS</a> <code>content</code> 속성은 생성한 값으로 요소를 대체합니다. <code>content</code> 속성으로 추가한 요소는 "익명 <a href="replaced_element">대체 요소</a>"입니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="bSyngH871fnnUEk9mSAF+Ka2CgOjWcgN7RuEQYje8Js=" data-language="css"><span class="token comment">/* 다른 값과 조합할 수 없는 키워드 */</span>
+<span class="token property">content</span><span class="token punctuation">:</span> normal<span class="token punctuation">;</span>
+<span class="token property">content</span><span class="token punctuation">:</span> none<span class="token punctuation">;</span>
+
+<span class="token comment">/* &lt;image&gt; 값 */</span>
+<span class="token property">content</span><span class="token punctuation">:</span> <span class="token url"><span class="token function">url</span><span class="token punctuation">(</span><span class="token string url">"http://www.example.com/test.png"</span><span class="token punctuation">)</span></span><span class="token punctuation">;</span>
+<span class="token property">content</span><span class="token punctuation">:</span> <span class="token function">linear-gradient</span><span class="token punctuation">(</span>#e66465<span class="token punctuation">,</span> #9198e5<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">/* 생성한 값의 대체 텍스트, Level 3 명세에서 추가 */</span>
+<span class="token property">content</span><span class="token punctuation">:</span> <span class="token url"><span class="token function">url</span><span class="token punctuation">(</span><span class="token string url">"http://www.example.com/test.png"</span><span class="token punctuation">)</span></span> / <span class="token string">"This is the alt text"</span><span class="token punctuation">;</span>
+
+<span class="token comment">/* 앞선 값은 모두 ::before와 ::after에만 적용 가능 */</span>
+
+<span class="token comment">/* &lt;string&gt; 값 */</span>
+<span class="token property">content</span><span class="token punctuation">:</span> <span class="token string">"prefix"</span><span class="token punctuation">;</span>
+
+<span class="token comment">/* &lt;counter&gt; 값 */</span>
+<span class="token property">content</span><span class="token punctuation">:</span> <span class="token function">counter</span><span class="token punctuation">(</span>chapter_counter<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token property">content</span><span class="token punctuation">:</span> <span class="token function">counters</span><span class="token punctuation">(</span>section_counter<span class="token punctuation">,</span> <span class="token string">"."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">/* HTML 속성값으로 연결하는 attr() */</span>
+<span class="token property">content</span><span class="token punctuation">:</span> <span class="token function">attr</span><span class="token punctuation">(</span>value string<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">/* 언어와 요소 위치 기반 키워드 */</span>
+<span class="token property">content</span><span class="token punctuation">:</span> open-quote<span class="token punctuation">;</span>
+<span class="token property">content</span><span class="token punctuation">:</span> close-quote<span class="token punctuation">;</span>
+<span class="token property">content</span><span class="token punctuation">:</span> no-open-quote<span class="token punctuation">;</span>
+<span class="token property">content</span><span class="token punctuation">:</span> no-close-quote<span class="token punctuation">;</span>
+
+<span class="token comment">/* normal과 none을 제외하면 여러 키워드를 함께 사용할 수 있음 */</span>
+<span class="token property">content</span><span class="token punctuation">:</span> open-quote chapter_counter<span class="token punctuation">;</span>
+
+<span class="token comment">/* 전역 값 */</span>
+<span class="token property">content</span><span class="token punctuation">:</span> inherit<span class="token punctuation">;</span>
+<span class="token property">content</span><span class="token punctuation">:</span> initial<span class="token punctuation">;</span>
+<span class="token property">content</span><span class="token punctuation">:</span> unset<span class="token punctuation">;</span>
+</pre>
+</div>
+<figure class="table-container"><div class="_table"><table class="properties"><tbody>
+<tr>
+<th scope="row"><a href="initial_value">초기값</a></th>
+<td><code>normal</code></td>
+</tr>
+<tr>
+<th scope="row">적용대상</th>
+<td>All elements, tree-abiding pseudo-elements, and page margin boxes</td>
+</tr>
+<tr>
+<th scope="row"><a href="inheritance">상속</a></th>
+<td>no</td>
+</tr>
+<tr>
+<th scope="row"><a href="computed_value">계산 값</a></th>
+<td>On elements, always computes to <code>normal</code>. On <a href="::before"><code>::before</code></a> and <a href="::after"><code>::after</code></a>, if <code>normal</code> is specified, computes to <code>none</code>. Otherwise, for URI values, the absolute URI; for <code>attr()</code> values, the resulting string; for other keywords, as specified.</td>
+</tr>
+<tr>
+<th scope="row">Animation type</th>
+<td>discrete</td>
+</tr>
+</tbody></table></div></figure>
+</div>
+<section aria-labelledby="구문"><h2 id="구문">구문</h2>
+</section><section aria-labelledby="값"><h3 id="값">값</h3>
+<div class="section-content"><dl> <dt id="none"><code>none</code></dt> <dd> <p>의사 요소를 생성하지 않음.</p> </dd> <dt id="normal"><code>normal</code></dt> <dd> <p><code>::before</code>와 <code>::after</code> 의사 요소인 경우 <code>none</code>.</p> </dd> <dt id="string_en-us"><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/string"><code>&lt;string&gt;</code> <small>(en-US)</small></a></dt> <dd> <p>요소의 "대체 텍스트". 모든 숫자와 문자가 가능합니다. 단, 라틴계 문자가 아닌 경우 유니코드 이스케이프 시퀀스를 사용해 인코딩해야 합니다. 예를 들어, <code>\000A9</code>는 저작권 기호입니다.</p> </dd> <dt id="image"><a href="image"><code>&lt;image&gt;</code></a></dt> <dd> <p><a href="url"><code>&lt;url&gt;()</code></a>이나 <a href="gradient"><code>&lt;gradient&gt;</code></a> 자료형을 사용한 <a href="image"><code>&lt;image&gt;</code></a>, 또는 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/element"><code>element()</code> <small>(en-US)</small></a> 함수를 사용해 가리킨, 보여줄 웹페이지의 일부.</p> </dd> <dt id="counter_en-us"><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/counter"><code>&lt;counter&gt;()</code> <small>(en-US)</small></a></dt> <dd> <p>보통 숫자인 <a href="css_counter_styles/using_css_counters">CSS 카운터 값</a>.<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/counter"><code>counter()</code> <small>(en-US)</small></a>나 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/counters"><code>counters()</code> <small>(en-US)</small></a> 함수를 사용해 지정할 수 있습니다.</p> <p><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/counter"><code>counter()</code> <small>(en-US)</small></a> 함수는 <code>counter(&lt;var&gt;name&lt;/var&gt;)</code>과 <code>counter(&lt;var&gt;name&lt;/var&gt;, &lt;var&gt;style&lt;/var&gt;)</code>의 두 형태를 가지고 있습니다. 생성하는 값은 주어진 의사 요소의 현재 범위에서, 해당하는 이름을 가진 가장 안쪽 카운터의 값입니다. 지정한 스타일(기본 <code>decimal</code>)에 맞춰 서식을 적용합니다.</p> <p><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/counters"><code>counters()</code> <small>(en-US)</small></a> 함수 역시 <code>counters(&lt;var&gt;name&lt;/var&gt;, &lt;var&gt;string&lt;/var&gt;)'과 'counters(&lt;var&gt;name&lt;/var&gt;, &lt;var&gt;string&lt;/var&gt;, &lt;var&gt;style&lt;/var&gt;)</code>의 두 형태를 가집니다. 생성하는 값은 주어진 의사 요소의 현재 범위에서, 해당하는 이름을 가진 카운터 값의 목록으로 바깥쪽부터 시작하며 주어진 문자열을 사용해 구분합니다. 지정한 스타일(기본 <code>decimal</code>)에 맞춰 서식을 적용합니다..</p> </dd> <dt id="attrx"><code>attr(x)</code></dt> <dd> <p>문자열로 변환한, 요소 속성 <code>x</code>의 값. <code>x</code> 속성이 존재하지 않으면 빈 문자열을 반환합니다. 속성명의 대소문자 구분 여부는 문서 언어에 따릅니다.</p> </dd> <dt id="open-quote">
+<code>open-quote</code> | <code>close-quote</code>
+</dt> <dd> <p><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/quotes"><code>quotes</code> <small>(en-US)</small></a> 속성에서 가져온 적절한 문자열을 사용해 대체.</p> </dd> <dt id="no-open-quote">
+<code>no-open-quote</code> | <code>no-close-quote</code>
+</dt> <dd> <p>콘텐츠는 추가하지 않고, 대신 따옴표의 중첩 단계를 증감.</p> </dd> </dl></div></section><section aria-labelledby="형식_구문"><h3 id="형식_구문">형식 구문</h3>
+<div class="section-content"><pre class="notranslate"><span class="token property" id="content">content = </span><br>  <span class="token keyword">normal</span>                                              <a href="value_definition_syntax#single_bar">|</a><br>  <span class="token keyword">none</span>                                                <a href="value_definition_syntax#single_bar">|</a><br>  <a href="value_definition_syntax#brackets">[</a> <span class="token property">&lt;content-replacement&gt;</span> <a href="value_definition_syntax#single_bar">|</a> <span class="token property">&lt;content-list&gt;</span> <a href="value_definition_syntax#brackets">]</a> <a href="value_definition_syntax#brackets">[</a> / <a href="value_definition_syntax#brackets">[</a> <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/string" class="only-in-en-us"><span class="token property">&lt;string&gt;</span> <small>(en-US)</small></a> <a href="value_definition_syntax#single_bar">|</a> <span class="token property">&lt;counter&gt;</span> <a href="value_definition_syntax#brackets">]</a><a href="value_definition_syntax#plus">+</a> <a href="value_definition_syntax#brackets">]</a><a href="value_definition_syntax#question_mark">?</a>  <a href="value_definition_syntax#single_bar">|</a><br>  <span class="token function">element(</span> <span class="token function">)</span>                                          <br><br><span class="token property" id="&lt;content-replacement&gt;">&lt;content-replacement&gt; = </span><br>  <span class="token property">&lt;image&gt;</span>  <br><br><span class="token property" id="&lt;content-list&gt;">&lt;content-list&gt; = </span><br>  <a href="value_definition_syntax#brackets">[</a> <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/string" class="only-in-en-us"><span class="token property">&lt;string&gt;</span> <small>(en-US)</small></a> <a href="value_definition_syntax#single_bar">|</a> <span class="token keyword">contents</span> <a href="value_definition_syntax#single_bar">|</a> <span class="token property">&lt;image&gt;</span> <a href="value_definition_syntax#single_bar">|</a> <span class="token property">&lt;counter&gt;</span> <a href="value_definition_syntax#single_bar">|</a> <span class="token property">&lt;quote&gt;</span> <a href="value_definition_syntax#single_bar">|</a> <span class="token property">&lt;target&gt;</span> <a href="value_definition_syntax#single_bar">|</a> <span class="token property">&lt;leader()&gt;</span> <a href="value_definition_syntax#brackets">]</a><a href="value_definition_syntax#plus">+</a>  <br><br><span class="token property" id="&lt;counter&gt;">&lt;counter&gt; = </span><br>  <span class="token property">&lt;counter()&gt;</span>   <a href="value_definition_syntax#single_bar">|</a><br>  <span class="token property">&lt;counters()&gt;</span>  <br><br><span class="token property" id="&lt;image&gt;">&lt;image&gt; = </span><br>  <span class="token property">&lt;url&gt;</span>       <a href="value_definition_syntax#single_bar">|</a><br>  <a href="gradient"><span class="token property">&lt;gradient&gt;</span></a>  <br><br><span class="token property" id="&lt;quote&gt;">&lt;quote&gt; = </span><br>  <span class="token keyword">open-quote</span>      <a href="value_definition_syntax#single_bar">|</a><br>  <span class="token keyword">close-quote</span>     <a href="value_definition_syntax#single_bar">|</a><br>  <span class="token keyword">no-open-quote</span>   <a href="value_definition_syntax#single_bar">|</a><br>  <span class="token keyword">no-close-quote</span>  <br><br><span class="token property" id="&lt;target&gt;">&lt;target&gt; = </span><br>  <span class="token property">&lt;target-counter()&gt;</span>   <a href="value_definition_syntax#single_bar">|</a><br>  <span class="token property">&lt;target-counters()&gt;</span>  <a href="value_definition_syntax#single_bar">|</a><br>  <span class="token property">&lt;target-text()&gt;</span>      <br><br><span class="token property" id="&lt;leader()&gt;">&lt;leader()&gt; = </span><br>  <span class="token function">leader(</span> <span class="token property">&lt;leader-type&gt;</span> <span class="token function">)</span>  <br><br><span class="token property" id="&lt;counter()&gt;">&lt;counter()&gt; = </span><br>  <span class="token function">counter(</span> <a href="counter-name" class="page-not-created"><span class="token property">&lt;counter-name&gt;</span></a> , <span class="token property">&lt;counter-style&gt;</span><a href="value_definition_syntax#question_mark">?</a> <span class="token function">)</span>  <br><br><span class="token property" id="&lt;counters()&gt;">&lt;counters()&gt; = </span><br>  <span class="token function">counters(</span> <a href="counter-name" class="page-not-created"><span class="token property">&lt;counter-name&gt;</span></a> , <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/string" class="only-in-en-us"><span class="token property">&lt;string&gt;</span> <small>(en-US)</small></a> , <span class="token property">&lt;counter-style&gt;</span><a href="value_definition_syntax#question_mark">?</a> <span class="token function">)</span>  <br><br><span class="token property" id="&lt;url&gt;">&lt;url&gt; = </span><br>  <span class="token function">url(</span> <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/string" class="only-in-en-us"><span class="token property">&lt;string&gt;</span> <small>(en-US)</small></a> <a href="url-modifier" class="page-not-created"><span class="token property">&lt;url-modifier&gt;</span></a><a href="value_definition_syntax#asterisk">*</a> <span class="token function">)</span>  <a href="value_definition_syntax#single_bar">|</a><br>  <span class="token function">src(</span> <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/string" class="only-in-en-us"><span class="token property">&lt;string&gt;</span> <small>(en-US)</small></a> <a href="url-modifier" class="page-not-created"><span class="token property">&lt;url-modifier&gt;</span></a><a href="value_definition_syntax#asterisk">*</a> <span class="token function">)</span>  <br><br><span class="token property" id="&lt;target-counter()&gt;">&lt;target-counter()&gt; = </span><br>  <span class="token function">target-counter(</span> <a href="value_definition_syntax#brackets">[</a> <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/string" class="only-in-en-us"><span class="token property">&lt;string&gt;</span> <small>(en-US)</small></a> <a href="value_definition_syntax#single_bar">|</a> <span class="token property">&lt;url&gt;</span> <a href="value_definition_syntax#brackets">]</a> , <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/custom-ident" class="only-in-en-us"><span class="token property">&lt;custom-ident&gt;</span> <small>(en-US)</small></a> , <span class="token property">&lt;counter-style&gt;</span><a href="value_definition_syntax#question_mark">?</a> <span class="token function">)</span>  <br><br><span class="token property" id="&lt;target-counters()&gt;">&lt;target-counters()&gt; = </span><br>  <span class="token function">target-counters(</span> <a href="value_definition_syntax#brackets">[</a> <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/string" class="only-in-en-us"><span class="token property">&lt;string&gt;</span> <small>(en-US)</small></a> <a href="value_definition_syntax#single_bar">|</a> <span class="token property">&lt;url&gt;</span> <a href="value_definition_syntax#brackets">]</a> , <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/custom-ident" class="only-in-en-us"><span class="token property">&lt;custom-ident&gt;</span> <small>(en-US)</small></a> , <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/string" class="only-in-en-us"><span class="token property">&lt;string&gt;</span> <small>(en-US)</small></a> , <span class="token property">&lt;counter-style&gt;</span><a href="value_definition_syntax#question_mark">?</a> <span class="token function">)</span>  <br><br><span class="token property" id="&lt;target-text()&gt;">&lt;target-text()&gt; = </span><br>  <span class="token function">target-text(</span> <a href="value_definition_syntax#brackets">[</a> <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/string" class="only-in-en-us"><span class="token property">&lt;string&gt;</span> <small>(en-US)</small></a> <a href="value_definition_syntax#single_bar">|</a> <span class="token property">&lt;url&gt;</span> <a href="value_definition_syntax#brackets">]</a> , <a href="value_definition_syntax#brackets">[</a> <span class="token keyword">content</span> <a href="value_definition_syntax#single_bar">|</a> <span class="token keyword">before</span> <a href="value_definition_syntax#single_bar">|</a> <span class="token keyword">after</span> <a href="value_definition_syntax#single_bar">|</a> <span class="token keyword">first-letter</span> <a href="value_definition_syntax#brackets">]</a><a href="value_definition_syntax#question_mark">?</a> <span class="token function">)</span>  <br><br><span class="token property" id="&lt;leader-type&gt;">&lt;leader-type&gt; = </span><br>  <span class="token keyword">dotted</span>    <a href="value_definition_syntax#single_bar">|</a><br>  <span class="token keyword">solid</span>     <a href="value_definition_syntax#single_bar">|</a><br>  <span class="token keyword">space</span>     <a href="value_definition_syntax#single_bar">|</a><br>  <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/string" class="only-in-en-us"><span class="token property">&lt;string&gt;</span> <small>(en-US)</small></a>  <br><br><span class="token property" id="&lt;counter-style&gt;">&lt;counter-style&gt; = </span><br>  <a href="counter-style-name" class="page-not-created"><span class="token property">&lt;counter-style-name&gt;</span></a>  <a href="value_definition_syntax#single_bar">|</a><br>  <span class="token property">&lt;symbols()&gt;</span>           <br><br><span class="token property" id="&lt;symbols()&gt;">&lt;symbols()&gt; = </span><br>  <span class="token function">symbols(</span> <span class="token property">&lt;symbols-type&gt;</span><a href="value_definition_syntax#question_mark">?</a> <a href="value_definition_syntax#brackets">[</a> <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/string" class="only-in-en-us"><span class="token property">&lt;string&gt;</span> <small>(en-US)</small></a> <a href="value_definition_syntax#single_bar">|</a> <span class="token property">&lt;image&gt;</span> <a href="value_definition_syntax#brackets">]</a><a href="value_definition_syntax#plus">+</a> <span class="token function">)</span>  <br><br><span class="token property" id="&lt;symbols-type&gt;">&lt;symbols-type&gt; = </span><br>  <span class="token keyword">cyclic</span>      <a href="value_definition_syntax#single_bar">|</a><br>  <span class="token keyword">numeric</span>     <a href="value_definition_syntax#single_bar">|</a><br>  <span class="token keyword">alphabetic</span>  <a href="value_definition_syntax#single_bar">|</a><br>  <span class="token keyword">symbolic</span>    <a href="value_definition_syntax#single_bar">|</a><br>  <span class="token keyword">fixed</span>       <br><br></pre></div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+</section><section aria-labelledby="헤딩과_따옴표"><h3 id="헤딩과_따옴표">헤딩과 따옴표</h3>
+<div class="section-content">
+<p>다음 예제는 인용구 주변에 따옴표를 추가하고, 헤딩 앞에 단어 "Chapter"를 추가합니다.</p> <h4 id="html">HTML</h4> <div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="95Xg1tpEcay7q+YxExqSzoQQS8+TsmcC7ZGOlfw/ANw=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span><span class="token punctuation">&gt;</span></span>5<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h1</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>According to Sir Tim Berners-Lee,
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>q</span> <span class="token attr-name">cite</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>http://www.w3.org/People/Berners-Lee/FAQ.html#Internet<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>I was
+    lucky enough to invent the Web at the time when the Internet
+    already existed - and had for a decade and a half.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>q</span><span class="token punctuation">&gt;</span></span>
+  We must understand that there is nothing fundamentally wrong
+  with building on the contributions of others.
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span><span class="token punctuation">&gt;</span></span>6<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h1</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>According to the Mozilla Manifesto,
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>q</span> <span class="token attr-name">cite</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>http://www.mozilla.org/en-US/about/manifesto/<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Individuals
+    must have the ability to shape the Internet and
+    their own experiences on the Internet.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>q</span><span class="token punctuation">&gt;</span></span>
+  Therefore, we can infer that contributing to the open web
+  can protect our own individual experiences on it.
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div> <h4 id="css">CSS</h4> <div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="eVxaLZZkK4NvkXpzaf5GDNkKGK1+KRYtQ4Q1KT3NvY8=" data-language="css"><span class="token selector">q</span> <span class="token punctuation">{</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> blue<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">q::before</span> <span class="token punctuation">{</span>
+  <span class="token property">content</span><span class="token punctuation">:</span> open-quote<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">q::after</span> <span class="token punctuation">{</span>
+  <span class="token property">content</span><span class="token punctuation">:</span> close-quote<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">h1::before</span>  <span class="token punctuation">{</span>
+  <span class="token property">content</span><span class="token punctuation">:</span> <span class="token string">"Chapter "</span><span class="token punctuation">;</span>  <span class="token comment">/* The trailing space creates separation
+                           between the added content and the
+                           rest of the content */</span>
+<span class="token punctuation">}</span>
+</pre>
+</div> <h4 id="결과">결과</h4>
+<div class="code-example" id="sect1">
+
+<iframe class="sample-code-frame" title="헤딩과 따옴표 sample" id="frame_헤딩과_따옴표" width="100%" height="200" src="https://live.mdnplay.dev/ko/docs/Web/CSS/content/runner.html?id=%ED%97%A4%EB%94%A9%EA%B3%BC_%EB%94%B0%EC%98%B4%ED%91%9C" loading="lazy"></iframe>
+</div>
+</div></section><section aria-labelledby="이미지와_텍스트"><h3 id="이미지와_텍스트">이미지와 텍스트</h3>
+<div class="section-content">
+<p>다음 예제는 링크 앞에 이미지를 추가합니다. 이미지를 가져오지 못한 경우 텍스트를 대신 추가합니다.</p> <h4 id="html_2">HTML</h4> <div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="Jn3hPfb6cfyvzQDt7R4ftPsf+9T3K0o74FKjZLb77Hk=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>http://www.mozilla.org/en-US/<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Mozilla Home Page<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div> <h4 id="css_2">CSS</h4> <div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="aM0uAHXwQL+LIWBYqsdttioprUzs1DiuBpO+asJH6Rk=" data-language="css"><span class="token selector">a::before</span> <span class="token punctuation">{</span>
+  <span class="token property">content</span><span class="token punctuation">:</span> <span class="token url"><span class="token function">url</span><span class="token punctuation">(</span><span class="token string url">"https://mozorg.cdn.mozilla.net/media/img/favicon.ico"</span><span class="token punctuation">)</span></span> <span class="token string">" MOZILLA: "</span><span class="token punctuation">;</span>
+  <span class="token property">font</span><span class="token punctuation">:</span> x-small Arial<span class="token punctuation">,</span> sans-serif<span class="token punctuation">;</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> gray<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div> <h4 id="결과_2">결과</h4>
+<div class="code-example" id="sect2">
+
+<iframe class="sample-code-frame" title="이미지와 텍스트 sample" id="frame_이미지와_텍스트" width="100%" height="60" src="https://live.mdnplay.dev/ko/docs/Web/CSS/content/runner.html?id=%EC%9D%B4%EB%AF%B8%EC%A7%80%EC%99%80_%ED%85%8D%EC%8A%A4%ED%8A%B8" loading="lazy"></iframe>
+</div>
+</div></section><section aria-labelledby="클래스_사용"><h3 id="클래스_사용">클래스 사용</h3>
+<div class="section-content">
+<p>다음 예제는 목록의 특별한 항목 뒤에 추가 텍스트를 삽입합니다.</p> <h4 id="html_3">HTML</h4> <div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="RNmlkbgHrJP0O7SVnoQdGE/AAbZTvKCjVKtXjESe/wk=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h2</span><span class="token punctuation">&gt;</span></span>Paperback Best Sellers<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h2</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ol</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">&gt;</span></span>Political Thriller<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>new-entry<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Halloween Stories<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">&gt;</span></span>My Biography<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>new-entry<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Vampire Romance<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>ol</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div> <h4 id="css_3">CSS</h4> <div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="5bOB4BJpsyWKHHdYozYUcxz9ojXhoXc2y1rIRHI77AU=" data-language="css"><span class="token selector">.new-entry::after</span> <span class="token punctuation">{</span>
+  <span class="token property">content</span><span class="token punctuation">:</span> <span class="token string">" New!"</span><span class="token punctuation">;</span>  <span class="token comment">/* The leading space creates separation
+                        between the added content and the
+                        rest of the content */</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> red<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div> <h4 id="결과_3">결과</h4>
+<div class="code-example" id="sect3">
+
+<iframe class="sample-code-frame" title="클래스 사용 sample" id="frame_클래스_사용" width="100%" height="160" src="https://live.mdnplay.dev/ko/docs/Web/CSS/content/runner.html?id=%ED%81%B4%EB%9E%98%EC%8A%A4_%EC%82%AC%EC%9A%A9" loading="lazy"></iframe>
+</div>
+</div></section><section aria-labelledby="이미지와_요소_속성"><h3 id="이미지와_요소_속성">이미지와 요소 속성</h3>
+<div class="section-content">
+<p>다음 예제는 링크 앞에 이미지를 추가하고, 뒤에 <code>id</code> 속성의 값을 붙입니다.</p> <h4 id="html_4">HTML</h4> <div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="mEyKM5r0S3IHTjqW/i9sf5I5gFHsShoH4FQmX23V55k=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ul</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>moz<span class="token punctuation">"</span></span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>http://www.mozilla.org/<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+    Mozilla Home Page<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>mdn<span class="token punctuation">"</span></span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>https://developer.mozilla.org/<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+    Mozilla Developer Network<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>ul</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div> <h4 id="css_4">CSS</h4> <div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="6ZvbHm6PhygpX9iQrAIzBVgJMRRgimU9rlpsLKzkZEA=" data-language="css"><span class="token selector">a</span> <span class="token punctuation">{</span>
+  <span class="token property">text-decoration</span><span class="token punctuation">:</span> none<span class="token punctuation">;</span>
+  <span class="token property">border-bottom</span><span class="token punctuation">:</span> 3px dotted navy<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">a::after</span> <span class="token punctuation">{</span>
+  <span class="token property">content</span><span class="token punctuation">:</span> <span class="token string">" ("</span> <span class="token function">attr</span><span class="token punctuation">(</span>id<span class="token punctuation">)</span> <span class="token string">")"</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">#moz::before</span> <span class="token punctuation">{</span>
+  <span class="token property">content</span><span class="token punctuation">:</span> <span class="token url"><span class="token function">url</span><span class="token punctuation">(</span><span class="token string url">"https://mozorg.cdn.mozilla.net/media/img/favicon.ico"</span><span class="token punctuation">)</span></span> <span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">#mdn::before</span> <span class="token punctuation">{</span>
+  <span class="token property">content</span><span class="token punctuation">:</span> <span class="token url"><span class="token function">url</span><span class="token punctuation">(</span><span class="token string url">"mdn-favicon16.png"</span><span class="token punctuation">)</span></span> <span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">li</span> <span class="token punctuation">{</span>
+  <span class="token property">margin</span><span class="token punctuation">:</span> 1em<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div> <h4 id="결과_4">결과</h4>
+<div class="code-example" id="sect4">
+
+<iframe class="sample-code-frame" title="이미지와 요소 속성 sample" id="frame_이미지와_요소_속성" width="100%" height="160" src="https://live.mdnplay.dev/ko/docs/Web/CSS/content/runner.html?id=%EC%9D%B4%EB%AF%B8%EC%A7%80%EC%99%80_%EC%9A%94%EC%86%8C_%EC%86%8D%EC%84%B1" loading="lazy"></iframe>
+</div>
+</div></section><section aria-labelledby="요소_대체"><h3 id="요소_대체">요소 대체</h3>
+<div class="section-content">
+<p>다음 예제는 요소의 콘텐츠를 이미지로 대체합니다. <a href="url"><code>&lt;url&gt;()</code></a> 또는 <a href="image"><code>&lt;image&gt;</code></a> 사용하면 콘텐츠를 대체합니다. 요소를 대체했으므로 <code>::before</code>나 <code>::after</code>는 생성하지 않습니다.</p> <h4 id="html_5">HTML</h4> <div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="oHs3u08x6BPhu6qadArjhpBOeFi23CONFTseHeY/YdY=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>replaced<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Mozilla<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div> <h4 id="css_5">CSS</h4> <div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="BBqw4IHpzJxhiQGqTMQJFFL1LuSnFxU0yjAbucFMqAk=" data-language="css"><span class="token selector">#replaced</span> <span class="token punctuation">{</span>
+  <span class="token property">content</span><span class="token punctuation">:</span> <span class="token url"><span class="token function">url</span><span class="token punctuation">(</span><span class="token string url">"mdn.svg"</span><span class="token punctuation">)</span></span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">#replaced::after</span> <span class="token punctuation">{</span> <span class="token comment">/* will not show if element replacement is supported */</span>
+  <span class="token property">content</span><span class="token punctuation">:</span> <span class="token string">" ("</span> <span class="token function">attr</span><span class="token punctuation">(</span>id<span class="token punctuation">)</span> <span class="token string">")"</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div> <h4 id="결과_5">결과</h4>
+<div class="code-example" id="sect5">
+
+<iframe class="sample-code-frame" title="요소 대체 sample" id="frame_요소_대체" width="100%" height="200" src="https://live.mdnplay.dev/ko/docs/Web/CSS/content/runner.html?id=%EC%9A%94%EC%86%8C_%EB%8C%80%EC%B2%B4" loading="lazy"></iframe>
+</div>
+</div></section><section aria-labelledby="접근성_고려사항"><h2 id="접근성_고려사항">접근성 고려사항</h2>
+<div class="section-content">
+<p>CSS로 생성한 콘텐츠는 <a href="https://developer.mozilla.org/ko/docs/Web/API/Document_Object_Model/Introduction">DOM</a>이 포함하지 않고, <a href="https://developer.mozilla.org/ko/docs/Learn/Accessibility/What_is_accessibility">접근성 트리</a>에도 들어가지 않습니다. 따라서 특정 접근성 기술/브라우저 조합이 내용을 표현하지 않을 수 있습니다. 콘텐츠가 포함한 정보가 페이지의 목적을 이해하는 것에 중요하다면 주 문서로 포함하는 것이 좋습니다.</p> <ul> <li><a href="https://tink.uk/accessibility-support-for-css-generated-content/" target="_blank">Accessibility support for CSS generated content – Tink</a></li> <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/Understanding_WCAG/Perceivable" class="only-in-en-us">Explanation of WCAG, Guideline 1.3 – MDN <small>(en-US)</small></a></li> <li><a href="https://www.w3.org/TR/UNDERSTANDING-WCAG20/content-structure-separation-programmatic.html" target="_blank">Understanding Success Criterion 1.3.1 | W3C Understanding WCAG 2.0</a></li> </ul>
+</div></section><h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://drafts.csswg.org/css-content/#content-property">CSS Generated Content Module Level 3 <br><small># content-property</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="::after"><code>::after</code></a></li> <li><a href="::before"><code>::before</code></a></li> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/::marker"><code>::marker</code> <small>(en-US)</small></a></li> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/quotes"><code>quotes</code> <small>(en-US)</small></a></li> <li>
+<a href="url"><code>url()</code></a> 함수</li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/CSS/content" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/CSS/content</a>
+  </p>
+</div>

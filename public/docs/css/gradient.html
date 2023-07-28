@@ -1,0 +1,70 @@
+<header><h1>&lt;gradient&gt;</h1></header><div class="section-content"><p><code>&lt;gradient&gt;</code> <a href="https://developer.mozilla.org/ko/docs/Web/CSS">CSS</a> <a href="css_types">자료형</a>은 <a href="image"><code>&lt;image&gt;</code></a>의 특별한 종류로 여러 색의 점진적인 변화를 나타냅니다.</p></div>
+<section aria-labelledby="시도해보기"><h2 id="시도해보기">시도해보기</h2>
+<div class="section-content">
+<iframe class="interactive is-default-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/css/type-gradient.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe>  <p>CSS 그레이디언트는 <a href="image#no_intrinsic">원본 크기가 없습니다</a>. 즉 실제 크기나 선호 크기가 없습니다. 그레이디언트의 크기는 적용하는 요소의 크기와 동일해집니다.</p>
+</div></section><section aria-labelledby="구문"><h2 id="구문">구문</h2>
+</section><section aria-labelledby="그레이디언트_함수"><h3 id="그레이디언트_함수">그레이디언트 함수</h3>
+<div class="section-content">
+<p><code>&lt;gradient&gt;</code> 자료형은 아래 나열한 함수 중 하나를 사용해 생성합니다.</p> <h4 id="선형_그레이디언트">선형 그레이디언트</h4> <p>가상의 선을 따라 여러 색 사이를 전이합니다. <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/gradient/linear-gradient"><code>linear-gradient()</code> <small>(en-US)</small></a> 함수를 사용해 생성합니다.</p>   <div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="9zu0atn1nm/C1suV2nmxIAWG9g+wgFT2ZRb6lFH7IVI=" data-language="css"><span class="token selector">.linear-gradient</span> <span class="token punctuation">{</span>
+  <span class="token property">background</span><span class="token punctuation">:</span> <span class="token function">linear-gradient</span><span class="token punctuation">(</span>to right<span class="token punctuation">,</span>
+      red<span class="token punctuation">,</span> orange<span class="token punctuation">,</span> yellow<span class="token punctuation">,</span> green<span class="token punctuation">,</span> blue<span class="token punctuation">,</span> indigo<span class="token punctuation">,</span> violet<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div>
+<div class="code-example" id="sect2">
+
+<iframe class="sample-code-frame" title="선형 그레이디언트 sample" id="frame_선형_그레이디언트" width="240" height="80" src="https://live.mdnplay.dev/ko/docs/Web/CSS/gradient/runner.html?id=%EC%84%A0%ED%98%95_%EA%B7%B8%EB%A0%88%EC%9D%B4%EB%94%94%EC%96%B8%ED%8A%B8" loading="lazy"></iframe>
+</div> <h4 id="원형_그레이디언트">원형 그레이디언트</h4> <p>중심점으로부터 바깥으로 여러 색 사이를 전이합니다. <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/gradient/radial-gradient"><code>radial-gradient()</code> <small>(en-US)</small></a> 함수를 사용해 생성합니다.</p>   <div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="1LxS3tVnM0vSWiJITZRUq2L35+GAyyD5t4qwOduOvzs=" data-language="css"><span class="token selector">.radial-gradient</span> <span class="token punctuation">{</span>
+  <span class="token property">background</span><span class="token punctuation">:</span> <span class="token function">radial-gradient</span><span class="token punctuation">(</span>red<span class="token punctuation">,</span> yellow<span class="token punctuation">,</span> <span class="token function">rgb</span><span class="token punctuation">(</span>30<span class="token punctuation">,</span> 144<span class="token punctuation">,</span> 255<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div>
+<div class="code-example" id="sect3">
+
+<iframe class="sample-code-frame" title="원형 그레이디언트 sample" id="frame_원형_그레이디언트" width="240" height="80" src="https://live.mdnplay.dev/ko/docs/Web/CSS/gradient/runner.html?id=%EC%9B%90%ED%98%95_%EA%B7%B8%EB%A0%88%EC%9D%B4%EB%94%94%EC%96%B8%ED%8A%B8" loading="lazy"></iframe>
+</div> <h4 id="반복_그레이디언트">반복 그레이디언트</h4> <p>요소를 꽉 채울 때까지 그레이디언트를 필요한 만큼 반복합니다. <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/gradient/repeating-linear-gradient"><code>repeating-linear-gradient()</code> <small>(en-US)</small></a>나 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/gradient/repeating-radial-gradient"><code>repeating-radial-gradient()</code> <small>(en-US)</small></a> 함수를 사용해 생성합니다.</p>   <div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="6HpX4/jW3H8clW/7prQjUSI+a5ZpHrMskoCbSvrH3as=" data-language="css"><span class="token selector">.linear-repeat</span> <span class="token punctuation">{</span>
+  <span class="token property">background</span><span class="token punctuation">:</span> <span class="token function">repeating-linear-gradient</span><span class="token punctuation">(</span>to top left<span class="token punctuation">,</span>
+      lightpink<span class="token punctuation">,</span> lightpink 5px<span class="token punctuation">,</span> white 5px<span class="token punctuation">,</span> white 10px<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">.radial-repeat</span> <span class="token punctuation">{</span>
+  <span class="token property">background</span><span class="token punctuation">:</span> <span class="token function">repeating-radial-gradient</span><span class="token punctuation">(</span>powderblue<span class="token punctuation">,</span> powderblue 8px<span class="token punctuation">,</span> white 8px<span class="token punctuation">,</span> white 16px<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div>
+<div class="code-example" id="sect4">
+
+<iframe class="sample-code-frame" title="반복 그레이디언트 sample" id="frame_반복_그레이디언트" width="220" height="180" src="https://live.mdnplay.dev/ko/docs/Web/CSS/gradient/runner.html?id=%EB%B0%98%EB%B3%B5_%EA%B7%B8%EB%A0%88%EC%9D%B4%EB%94%94%EC%96%B8%ED%8A%B8" loading="lazy"></iframe>
+</div> <h4 id="원뿔_그레이디언트">원뿔 그레이디언트</h4> <p>원을 따라 여러 색 사이를 전이합니다. <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/gradient/conic-gradient"><code>conic-gradient()</code> <small>(en-US)</small></a> 함수를 사용해 생성합니다.</p>   <div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="DIHKu7r/lVYs8Kca1o3WAaaCerOwiB0sRUoQzFwBTE4=" data-language="css"><span class="token selector">.conic-gradient</span> <span class="token punctuation">{</span>
+  <span class="token property">background</span><span class="token punctuation">:</span> <span class="token function">conic-gradient</span><span class="token punctuation">(</span>lightpink<span class="token punctuation">,</span> white<span class="token punctuation">,</span> powderblue<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div>
+<div class="code-example" id="sect5">
+
+<iframe class="sample-code-frame" title="원뿔 그레이디언트 sample" id="frame_원뿔_그레이디언트" width="240" height="80" src="https://live.mdnplay.dev/ko/docs/Web/CSS/gradient/runner.html?id=%EC%9B%90%EB%BF%94_%EA%B7%B8%EB%A0%88%EC%9D%B4%EB%94%94%EC%96%B8%ED%8A%B8" loading="lazy"></iframe>
+</div>
+</div></section><section aria-labelledby="보간"><h2 id="보간">보간</h2>
+<div class="section-content"><p>색과 관련한 다른 보간과 마찬가지로, 그레이디언트도 색과 투명도가 동시에 변할 때 예상하지 못한 회색이 등장하는걸 방지하기 위해 알파 채널을 미리 곱한 색 공간을 사용해 계산합니다. 오래 된 브라우저에서 <a href="color_value#transparent_%ED%82%A4%EC%9B%8C%EB%93%9C"><code>&lt;color&gt;</code></a> 키워드를 사용할 땐 다르게 행동할 수 있음을 주의하세요.</p></div></section><h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://drafts.csswg.org/css-images-4/#gradients">CSS Images Module Level 4 <br><small># gradients</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_images/Using_CSS_gradients" class="only-in-en-us">CSS 그레이디언트 사용하기 <small>(en-US)</small></a></li> <li>그레이디언트 함수: <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/gradient/linear-gradient"><code>linear-gradient()</code> <small>(en-US)</small></a>, <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/gradient/radial-gradient"><code>radial-gradient()</code> <small>(en-US)</small></a>, <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/gradient/repeating-linear-gradient"><code>repeating-linear-gradient()</code> <small>(en-US)</small></a>, <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/gradient/repeating-radial-gradient"><code>repeating-radial-gradient()</code> <small>(en-US)</small></a>
+</li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/CSS/gradient" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/CSS/gradient</a>
+  </p>
+</div>

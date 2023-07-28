@@ -1,0 +1,45 @@
+<header><h1>Math.tanh()</h1></header><div class="section-content">
+<p><code>Math.tanh()</code> 함수는 쌍곡탄젠트 값을 반환합니다. 수식으로는 아래와 같습니다.</p> <p> <math display="block"> <semantics> <mrow> <mo lspace="0em" rspace="0em">tanh</mo> <mi>x</mi> <mo>=</mo> <mfrac> <mrow> <mo lspace="0em" rspace="0em">sinh</mo> <mi>x</mi> </mrow> <mrow> <mo lspace="0em" rspace="0em">cosh</mo> <mi>x</mi> </mrow> </mfrac> <mo>=</mo> <mfrac> <mrow> <msup> <mi>e</mi> <mi>x</mi> </msup> <mo>-</mo> <msup> <mi>e</mi> <mrow> <mo>-</mo> <mi>x</mi> </mrow> </msup> </mrow> <mrow> <msup> <mi>e</mi> <mi>x</mi> </msup> <mo>+</mo> <msup> <mi>e</mi> <mrow> <mo>-</mo> <mi>x</mi> </mrow> </msup> </mrow> </mfrac> <mo>=</mo> <mfrac> <mrow> <msup> <mi>e</mi> <mrow> <mn>2</mn> <mi>x</mi> </mrow> </msup> <mo>-</mo> <mn>1</mn> </mrow> <mrow> <msup> <mi>e</mi> <mrow> <mn>2</mn> <mi>x</mi> </mrow> </msup> <mo>+</mo> <mn>1</mn> </mrow> </mfrac> </mrow> <annotation encoding="TeX">\tanh x = \frac{\sinh x}{\cosh x} = \frac {e^x - e^{-x}} {e^x + e^{-x}} = \frac{e^{2x} - 1}{e^{2x}+1}</annotation> </semantics> </math> </p>
+</div>
+<section aria-labelledby="시도해보기"><h2 id="시도해보기">시도해보기</h2>
+<div class="section-content"><iframe class="interactive is-js-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/js/math-tanh.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe></div></section><section aria-labelledby="syntax"><h2 id="syntax">Syntax</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="Gb34f/pvKeL+Y36u8rdsdCM+XoK2+bdv/4SpncQ9X7o=" data-language="js">    Math<span class="token punctuation">.</span><span class="token function">tanh</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span>
+</pre>
+</div></div></section><section aria-labelledby="파라미터"><h3 id="파라미터">파라미터</h3>
+<div class="section-content"><dl> <dt id="x"><code>x</code></dt> <dd> <p>숫자.</p> </dd> </dl></div></section><section aria-labelledby="반환_값"><h3 id="반환_값">반환 값</h3>
+<div class="section-content"><p>주어진 수의 쌍곡탄젠트 값</p></div></section><section aria-labelledby="설명"><h2 id="설명">설명</h2>
+<div class="section-content"><p><code>tanh()</code> 은 <code>Math</code>의 정적 메서드이므로 사용자가 만든 <code>Math</code> 객체의 메서드가 아닌 항상 <code>Math.tanh()</code> 으로 사용합니다 (<code>Math</code> 는 생성자가 아닙니다.).</p></div></section><section aria-labelledby="예"><h2 id="예">예</h2>
+</section><section aria-labelledby="using_math.tanh"><h3 id="using_math.tanh">Using <code>Math.tanh()</code>
+</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="zB/BCNAsshlOI0aUJ+R9GcAGUt3Y/A/ryGy97VOXuEA=" data-language="js">Math<span class="token punctuation">.</span><span class="token function">tanh</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token comment">// 0</span>
+Math<span class="token punctuation">.</span><span class="token function">tanh</span><span class="token punctuation">(</span><span class="token number">Infinity</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 1</span>
+Math<span class="token punctuation">.</span><span class="token function">tanh</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token comment">// 0.7615941559557649</span>
+</pre>
+</div></div></section><section aria-labelledby="polyfill"><h2 id="polyfill">Polyfill</h2>
+<div class="section-content">
+<p>This can be emulated with the help of the <a href="exp"><code>Math.exp()</code></a> function:</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="XJc/4hiBogovqAETV0i9THJcasQk9w17geBamKmlCHs=" data-language="js">Math<span class="token punctuation">.</span>tanh <span class="token operator">=</span> Math<span class="token punctuation">.</span>tanh <span class="token operator">||</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">x</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">var</span> a <span class="token operator">=</span> Math<span class="token punctuation">.</span><span class="token function">exp</span><span class="token punctuation">(</span><span class="token operator">+</span>x<span class="token punctuation">)</span><span class="token punctuation">,</span> b <span class="token operator">=</span> Math<span class="token punctuation">.</span><span class="token function">exp</span><span class="token punctuation">(</span><span class="token operator">-</span>x<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> a <span class="token operator">==</span> <span class="token number">Infinity</span> <span class="token operator">?</span> <span class="token number">1</span> <span class="token operator">:</span> b <span class="token operator">==</span> <span class="token number">Infinity</span> <span class="token operator">?</span> <span class="token operator">-</span><span class="token number">1</span> <span class="token operator">:</span> <span class="token punctuation">(</span>a <span class="token operator">-</span> b<span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token punctuation">(</span>a <span class="token operator">+</span> b<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div>
+</div></section><h2 id="명세서">명세서</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://tc39.es/ecma262/multipage/numbers-and-dates.html#sec-math.tanh">ECMAScript Language Specification <br><small># sec-math.tanh</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="함께_보기"><h2 id="함께_보기">함께 보기</h2>
+<div class="section-content"><ul> <li><a href="acosh"><code>Math.acosh()</code></a></li> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/asinh"><code>Math.asinh()</code> <small>(en-US)</small></a></li> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/atanh"><code>Math.atanh()</code> <small>(en-US)</small></a></li> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/cosh"><code>Math.cosh()</code> <small>(en-US)</small></a></li> <li><a href="sinh"><code>Math.sinh()</code></a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Math/tanh" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Math/tanh</a>
+  </p>
+</div>

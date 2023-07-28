@@ -1,0 +1,39 @@
+<h1>PATCH</h1>
+<header><h1>PATCH</h1></header><div class="section-content">
+<p><strong>HTTP PATCH</strong> 메소드는 리소스의 부분적인 수정을 할 때에 사용됩니다.</p> <p>HTTP <a href="put"><code>PUT</code></a> 메소드는 문서 전체의 완전한 교체만을 허용합니다. 반면 <code>PATCH</code> 메소드는 <code>PUT</code> 메소드와 달리 멱등성을 가지지 않는데, 이는 동일한 patch 요청이 다른 결과를 야기할 수도 있음을 뜻합니다. 하지만 PATCH를 PUT과 같은 방식으로 사용함으로써 멱등성을 가지게 할 수도 있습니다.</p> <p><code>PATCH</code> (혹은 <code>PUT</code>)는 다른 리소스에게 부수효과(side-effects)를 일으킬 가능성이 있습니다.</p> <p>서버가 <code>PATCH</code>를 지원하는지 알 수 있게끔 하기 위해, 서버는 <a href="../headers/allow"><code>Allow</code></a> 리스트 혹은 <a href="../headers/access-control-allow-methods"><code>Access-Control-Allow-Methods</code></a> (for CORS) 응답 헤더를 통해 이를 명시할 수 있습니다.</p> <p>PATCH가 허용되는지 확인할 수 있는 또 다른 (암묵적인)지표로 <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Accept-Patch" class="only-in-en-us"><code>Accept-Patch</code> <small>(en-US)</small></a>의 존재 유무를 들 수 있는데, 이를 통해 patch 문서 양식이 서버에 받아 들여졌음을 알 수 있습니다.</p> <figure class="table-container"><div class="_table"><table class="properties"> <tbody> <tr> <th scope="row">Request has body</th> <td>Yes</td> </tr> <tr> <th scope="row">Successful response has body</th> <td>Yes</td> </tr> <tr> <th scope="row"><a href="https://developer.mozilla.org/ko/docs/Glossary/Safe">Safe</a></th> <td>No</td> </tr> <tr> <th scope="row"><a href="https://developer.mozilla.org/ko/docs/Glossary/Idempotent">Idempotent</a></th> <td>No</td> </tr> <tr> <th scope="row"><a href="https://developer.mozilla.org/ko/docs/Glossary/Cacheable">Cacheable</a></th> <td>No</td> </tr> <tr> <th scope="row">Allowed in <a href="https://developer.mozilla.org/en-US/docs/Learn/Forms" class="only-in-en-us">HTML forms <small>(en-US)</small></a>
+</th> <td>No</td> </tr> </tbody> </table></div></figure>
+</div>
+<section aria-labelledby="syntax"><h2 id="syntax">Syntax</h2>
+<div class="section-content"><pre class="notranslate">PATCH /file.txt HTTP/1.1
+</pre></div></section><section aria-labelledby="example"><h2 id="example">Example</h2>
+</section><section aria-labelledby="request"><h3 id="request">Request</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="WMrjwP8Rbzkg0Mk3QWWBNKijBIt4B2s+tgyVrBgLdlE=" data-language="html">PATCH /file.txt HTTP/1.1
+Host: www.example.com
+Content-Type: application/example
+If-Match: "e0023aa4e"
+Content-Length: 100
+
+[description of changes]
+</pre>
+</div></div></section><section aria-labelledby="response"><h3 id="response">Response</h3>
+<div class="section-content">
+<p>성공적인 응답은 2xx 상태 코드를 통해서 확인할 수 있습니다.</p> <p>아래의 예시에서는 <a href="../status/204"><code>204</code></a> 응답이 사용되었는데, 이는 응답이 유의미한 body를 전달하고 있지 않기 때문입니다. {HTTPStatus("200")}} 응답에서는 body에 유의미한 데이터가 포함되어 있음을 유추할 수 있습니다.</p> <pre class="newpage notranslate">HTTP/1.1 204 No Content
+Content-Location: /file.txt
+ETag: "e0023aa4f"</pre>
+</div></section><h2 id="명세서">명세서</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://www.rfc-editor.org/rfc/rfc5789">RFC 5789 <br></a></td></tr></tbody>
+</table></div>
+<section aria-labelledby="see_also"><h2 id="see_also">See also</h2>
+<div class="section-content"><ul> <li><a href="../status/204"><code>204</code></a></li> <li>
+<a href="../headers/allow"><code>Allow</code></a>, <a href="../headers/access-control-allow-methods"><code>Access-Control-Allow-Methods</code></a>
+</li> <li>
+<a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Accept-Patch" class="only-in-en-us"><code>Accept-Patch</code> <small>(en-US)</small></a> – specifies the patch document formats accepted by the server.</li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/HTTP/Methods/PATCH" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/HTTP/Methods/PATCH</a>
+  </p>
+</div>

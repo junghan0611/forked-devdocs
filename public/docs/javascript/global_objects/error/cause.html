@@ -1,0 +1,51 @@
+<header><h1>Error.prototype.cause</h1></header><div class="section-content">
+<p><code>cause</code> 속성은 오류의 구체적인 원래 원인을 나타냅니다.</p> <p>예외를 잡아서 다시 예외를 발생시킬 때 원래 발생한 오류에 접근 할 수 있으면서 보다 구체적인 혹은 유용한 에러 메시지를 추가할때 사용합니다.</p>
+</div>
+<section aria-labelledby="값"><h2 id="값">값</h2>
+<div class="section-content">
+<p><code>options.cause</code> 인자의 <a href="error"><code>Error()</code> 생성자</a>에 전달되는 값입니다.</p> <p>값은 어떤 타입이든 가능합니다. <code>catch</code>문의 변수 역시 <code>Error</code>라고 확신할 수 없는 것과 마찬가지로 여러분이 처리할 오류의 <code>cause</code>에 <code>Error</code>가 있다고 가정하지 마시기 바랍니다. 아래의 예제 "오류 원인으로 구조화된 데이터 제공"는 의도적으로 오류가 아닌 것을 <code>cause</code>로 제공하는 경우를 보여줍니다.</p>
+</div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+</section><section aria-labelledby="cause와_함께_오류_재발생시키기"><h3 id="cause와_함께_오류_재발생시키기">cause와 함께 오류 재발생시키기</h3>
+<div class="section-content">
+<p>오류를 발견하고 새 메시지로 다시 던지는 것이 유용할 수 있습니다. 이 경우 그림과 같이 새 <code>Error</code>에 대한 원래 오류를 생성자에 전달해야 합니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="WDMWKODj5V8DR068MtKjISR4wvcTg5SO8RGt3tioLdE=" data-language="js"><span class="token keyword">try</span> <span class="token punctuation">{</span>
+  <span class="token function">connectToDatabase</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span>err<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">Error</span><span class="token punctuation">(</span><span class="token string">'Connecting to database failed.'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> <span class="token literal-property property">cause</span><span class="token operator">:</span> err <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div> <p>보다 자세한 예제는 <a href="../error#differentiate_between_similar_errors">Error &gt; Differentiate between similar errors</a>를 참조하세요.</p>
+</div></section><section aria-labelledby="오류_원인으로_구조화된_데이터_제공"><h3 id="오류_원인으로_구조화된_데이터_제공">오류 원인으로 구조화된 데이터 제공</h3>
+<div class="section-content">
+<p>사람을 위해 쓰인 오류 메시지는 기계 구문 분석에는 적합하지 않을 수 있습니다. 왜냐하면 기계 구문 분석은 단어 변경이나 구두점 변경으로도 기존 분석이 제대로 동작하지 않을 수 있기 때문입니다. 그래서 함수에서 오류를 발생시킬 때, 사람이 읽을 수 있는 오류 메시지의 대안으로 기계 구문 분석을 위해 구조화된 데이터로 원인을 제공할 수 있습니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="8NZO48zco3mJv6PJS/FS6DlQTWGx6fRCeTfr+SfBM7c=" data-language="js"><span class="token keyword">function</span> <span class="token function">makeRSA</span><span class="token punctuation">(</span><span class="token parameter">p<span class="token punctuation">,</span> q</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>Number<span class="token punctuation">.</span><span class="token function">isInteger</span><span class="token punctuation">(</span>p<span class="token punctuation">)</span> <span class="token operator">||</span> <span class="token operator">!</span>Number<span class="token punctuation">.</span><span class="token function">isInteger</span><span class="token punctuation">(</span>q<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">Error</span><span class="token punctuation">(</span><span class="token string">'RSA key generation requires integer inputs.'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+      <span class="token literal-property property">cause</span><span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token literal-property property">code</span><span class="token operator">:</span> <span class="token string">'NonInteger'</span><span class="token punctuation">,</span> <span class="token literal-property property">values</span><span class="token operator">:</span> <span class="token punctuation">[</span>p<span class="token punctuation">,</span> q<span class="token punctuation">]</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token function">areCoprime</span><span class="token punctuation">(</span>p<span class="token punctuation">,</span> q<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">Error</span><span class="token punctuation">(</span><span class="token string">'RSA key generation requires two co-prime integers.'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+      <span class="token literal-property property">cause</span><span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token literal-property property">code</span><span class="token operator">:</span> <span class="token string">'NonCoprime'</span><span class="token punctuation">,</span> <span class="token literal-property property">values</span><span class="token operator">:</span> <span class="token punctuation">[</span>p<span class="token punctuation">,</span> q<span class="token punctuation">]</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token comment">// rsa algorithm…</span>
+<span class="token punctuation">}</span>
+</pre>
+</div>
+</div></section><h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://tc39.es/ecma262/multipage/fundamental-objects.html#sec-installerrorcause">ECMAScript Language Specification <br><small># sec-installerrorcause</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="message"><code>Error.prototype.message</code></a></li> <li><a href="tostring"><code>Error.prototype.toString()</code></a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Error/cause" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Error/cause</a>
+  </p>
+</div>

@@ -1,0 +1,84 @@
+<h1>Access-Control-Allow-Origin</h1>
+<header><h1>Access-Control-Allow-Origin</h1></header><div class="section-content">
+<p><code>Access-Control-Allow-Origin</code> 응답 헤더는 이 응답이 주어진 <a href="https://developer.mozilla.org/ko/docs/Glossary/Origin">origin</a>으로부터의 요청 코드와 공유될 수 있는지를 나타냅니다.</p> <figure class="table-container"><div class="_table"><table class="properties"> <tbody> <tr> <th scope="row">Header type</th> <td><a href="https://developer.mozilla.org/ko/docs/Glossary/Response_header">Response header</a></td> </tr> <tr> <th scope="row"><a href="https://developer.mozilla.org/ko/docs/Glossary/Forbidden_header_name">Forbidden header name</a></th> <td>no</td> </tr> </tbody> </table></div></figure>
+</div>
+<section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content"><pre class="notranslate">Access-Control-Allow-Origin: *
+Access-Control-Allow-Origin: &lt;origin&gt;
+Access-Control-Allow-Origin: null
+</pre></div></section><section aria-labelledby="지시자"><h2 id="지시자">지시자</h2>
+<div class="section-content"><dl> <dt id="sect1"><code>*</code></dt> <dd> <p><em>credential</em>이 없는 요청들에 와일드카드로써 문자 값 "*"이 명시될 수 있습니다. 이 값은 브라우저에 리소스에 접근하는 임의의 origin으로부터의 요청 코드를 허용함을 알립니다. 와일드카드를 credential과 함께 사용하려고 하면 <a href="../cors/errors/corsnotsupportingcredentials">오류가 발생</a>합니다.</p> </dd> <dt id="origin"><code>&lt;origin&gt;</code></dt> <dd> <p>origin을 명시합니다. 하나의 origin만 명시될 수 있습니다.</p> </dd> </dl></div></section><section aria-labelledby="예시"><h2 id="예시">예시</h2>
+<div class="section-content">
+<p>브라우저에 리소스에 접근하는 임의의 origin으로부터의 요청을 허용한다고 알리는 응답은 다음을 포함할 것입니다:</p> <pre class="notranslate">Access-Control-Allow-Origin: *
+</pre> <p>브라우저에 <code>https://developer.mozilla.org</code>으로부터의 요청을 허용한다고 알리는 응답은 다음을 포함할 것입니다:</p> <pre class="notranslate">Access-Control-Allow-Origin: https://developer.mozilla.org
+</pre> <p>가능한 <code>Access-Control-Allow-Origin</code> 값을 허용된 origin 집합으로 제한하는 것은 요청 헤더의 <a href="origin"><code>Origin</code></a>를 검사하는 서버 측 코드가 필요합니다. 이를 허용된 origin 리스트와 비교하고, <a href="origin"><code>Origin</code></a> 값이 리스트에 있으면 <code>Access-Control-Allow-Origin</code> 값을 <a href="origin"><code>Origin</code></a>과 동일한 값으로 설정합니다.</p>
+</div></section><section aria-labelledby="cors_and_caching"><h3 id="cors_and_caching">CORS and caching</h3>
+<div class="section-content">
+<p>서버가 ("<code>*</code>" 와일드카드 외에) 명시적인 origin을 <code>Access-Control-Allow-Origin</code> 과 함께 응답으로 보내면, 응답은 값이 <code>Origin</code>인 <a href="vary"><code>Vary</code></a> 응답 헤더 또한 포함해야 합니다 — 브라우저에 서버가 <code>Origin</code> 요청 헤더의 값에 따라 다르게 응답할 수 있음을 알리기 위해.</p> <pre class="notranslate">Access-Control-Allow-Origin: https://developer.mozilla.org
+Vary: Origin
+</pre>
+</div></section><section aria-labelledby="handling_cors_on_the_server_java_example"><h3 id="handling_cors_on_the_server_java_example">Handling CORS on the server (Java example)</h3>
+<div class="section-content">
+<p>다음의 Java 코드는 CORS 요청 헤더를 설정합니다. 코드가 어떻게 <code>Access-Control-Allow-Origin</code> 값을 <a href="origin"><code>Origin</code></a> 요청 헤더와 동일한 값을 설정하는지 알아 두십시오.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">java</span></p>
+<pre data-signature="e2LamixEt7XH0r7VtWrVM7vzpCkA7uiDw1BAZEcttJ0=" data-language="java"><span class="token keyword">import</span> <span class="token import"><span class="token namespace">java<span class="token punctuation">.</span>io<span class="token punctuation">.</span></span><span class="token class-name">IOException</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">javax<span class="token punctuation">.</span>servlet<span class="token punctuation">.</span></span><span class="token class-name">Filter</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">javax<span class="token punctuation">.</span>servlet<span class="token punctuation">.</span></span><span class="token class-name">FilterChain</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">javax<span class="token punctuation">.</span>servlet<span class="token punctuation">.</span></span><span class="token class-name">FilterConfig</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">javax<span class="token punctuation">.</span>servlet<span class="token punctuation">.</span></span><span class="token class-name">ServletException</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">javax<span class="token punctuation">.</span>servlet<span class="token punctuation">.</span></span><span class="token class-name">ServletRequest</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">javax<span class="token punctuation">.</span>servlet<span class="token punctuation">.</span></span><span class="token class-name">ServletResponse</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">javax<span class="token punctuation">.</span>servlet<span class="token punctuation">.</span>http<span class="token punctuation">.</span></span><span class="token class-name">HttpServletRequest</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">javax<span class="token punctuation">.</span>servlet<span class="token punctuation">.</span>http<span class="token punctuation">.</span></span><span class="token class-name">HttpServletResponse</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>slf4j<span class="token punctuation">.</span></span><span class="token class-name">Logger</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>slf4j<span class="token punctuation">.</span></span><span class="token class-name">LoggerFactory</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>stereotype<span class="token punctuation">.</span></span><span class="token class-name">Component</span></span><span class="token punctuation">;</span>
+
+
+<span class="token annotation punctuation">@Component</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">SimpleCORSFilter</span> <span class="token keyword">implements</span> <span class="token class-name">Filter</span> <span class="token punctuation">{</span>
+
+<span class="token keyword">private</span> <span class="token keyword">final</span> <span class="token class-name">Logger</span> log <span class="token operator">=</span> <span class="token class-name">LoggerFactory</span><span class="token punctuation">.</span><span class="token function">getLogger</span><span class="token punctuation">(</span><span class="token class-name">SimpleCORSFilter</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">public</span> <span class="token class-name">SimpleCORSFilter</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    log<span class="token punctuation">.</span><span class="token function">info</span><span class="token punctuation">(</span><span class="token string">"SimpleCORSFilter init"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token annotation punctuation">@Override</span>
+<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">doFilter</span><span class="token punctuation">(</span><span class="token class-name">ServletRequest</span> req<span class="token punctuation">,</span> <span class="token class-name">ServletResponse</span> res<span class="token punctuation">,</span> <span class="token class-name">FilterChain</span> chain<span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">IOException</span><span class="token punctuation">,</span> <span class="token class-name">ServletException</span> <span class="token punctuation">{</span>
+
+    <span class="token class-name">HttpServletRequest</span> request <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token class-name">HttpServletRequest</span><span class="token punctuation">)</span> req<span class="token punctuation">;</span>
+    <span class="token class-name">HttpServletResponse</span> response <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token class-name">HttpServletResponse</span><span class="token punctuation">)</span> res<span class="token punctuation">;</span>
+    response<span class="token punctuation">.</span><span class="token function">setHeader</span><span class="token punctuation">(</span><span class="token string">"Access-Control-Allow-Origin"</span><span class="token punctuation">,</span> request<span class="token punctuation">.</span><span class="token function">getHeader</span><span class="token punctuation">(</span><span class="token string">"Origin"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    response<span class="token punctuation">.</span><span class="token function">setHeader</span><span class="token punctuation">(</span><span class="token string">"Access-Control-Allow-Credentials"</span><span class="token punctuation">,</span> <span class="token string">"true"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    response<span class="token punctuation">.</span><span class="token function">setHeader</span><span class="token punctuation">(</span><span class="token string">"Access-Control-Allow-Methods"</span><span class="token punctuation">,</span> <span class="token string">"POST, GET, OPTIONS, DELETE"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    response<span class="token punctuation">.</span><span class="token function">setHeader</span><span class="token punctuation">(</span><span class="token string">"Access-Control-Max-Age"</span><span class="token punctuation">,</span> <span class="token string">"3600"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    response<span class="token punctuation">.</span><span class="token function">setHeader</span><span class="token punctuation">(</span><span class="token string">"Access-Control-Allow-Headers"</span><span class="token punctuation">,</span> <span class="token string">"Content-Type, Accept, X-Requested-With, remember-me"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    chain<span class="token punctuation">.</span><span class="token function">doFilter</span><span class="token punctuation">(</span>req<span class="token punctuation">,</span> res<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token annotation punctuation">@Override</span>
+<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">init</span><span class="token punctuation">(</span><span class="token class-name">FilterConfig</span> filterConfig<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<span class="token punctuation">}</span>
+
+<span class="token annotation punctuation">@Override</span>
+<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">destroy</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<span class="token punctuation">}</span>
+
+<span class="token punctuation">}</span>
+</pre>
+</div>
+</div></section><h2 id="명세서">명세서</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://fetch.spec.whatwg.org/#http-access-control-allow-origin">Fetch Standard <br><small># http-access-control-allow-origin</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="참고"><h2 id="참고">참고</h2>
+<div class="section-content"><ul> <li><a href="origin"><code>Origin</code></a></li> <li><a href="vary"><code>Vary</code></a></li> <li><a href="https://gist.github.com/wildoctopus/3730b5c60f9d5224f6c2418d07708e21" target="_blank">CORS 문제를 어떻게 해결하나요?</a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/HTTP/Headers/Access-Control-Allow-Origin" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/HTTP/Headers/Access-Control-Allow-Origin</a>
+  </p>
+</div>

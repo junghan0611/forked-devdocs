@@ -1,0 +1,99 @@
+<header><h1>Document.getElementById()</h1></header><div class="section-content">
+<p><code>Document.getElementById()</code> 메서드는 주어진 문자열과 일치하는 <a href="../element/id"><code>id</code></a> 속성을 가진 요소를 찾고, 이를 나타내는 <a href="../element"><code>Element</code></a> 객체를 반환합니다. ID는 문서 내에서 유일해야 하기 때문에 특정 요소를 빠르게 찾을 때 유용합니다.</p> <p>ID가 없는 요소에 접근하려면 <a href="queryselector"><code>Document.querySelector()</code></a>를 사용하세요. 모든 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Glossary/CSS_Selector">선택자 <small>(en-US)</small></a>를 사용할 수 있습니다.</p>
+</div>
+<h2 id="구문">구문</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="DE1lEfG48RhaiD/v6F2aAAgdeZj3mWc4+s0zZtTIzNs=" data-language="js">document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span>id<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div></div>
+<h3 id="매개변수">매개변수</h3>
+<div class="section-content"><dl> <dt id="id"><code>id</code></dt> <dd> <p>찾으려는 요소 ID. ID는 대소문자를 구분하는 문자열로, 문서 내에서 유일해야 합니다. 즉, 하나의 값은 하나의 요소만 사용할 수 있습니다.</p> </dd> </dl></div>
+<h3 id="반환_값">반환 값</h3>
+<div class="section-content"><p>주어진 ID와 일치하는 DOM 요소를 나타내는 <a href="../element"><code>Element</code></a> 객체. 문서 내에 주어진 ID가 없으면 <code>null</code>.</p></div>
+<h2 id="예제">예제</h2>
+
+<h3 id="html">HTML</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="5dGLe6+BPVLgREicPsHJgUrLUuQYzm0Vkcj3k2wF7bY=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>title</span><span class="token punctuation">&gt;</span></span>getElementById 예제<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>title</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>para<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>어떤 글<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token special-attr"><span class="token attr-name">onclick</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token value javascript language-javascript"><span class="token function">changeColor</span><span class="token punctuation">(</span><span class="token string">'blue'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span><span class="token punctuation">"</span></span></span><span class="token punctuation">&gt;</span></span>blue<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token special-attr"><span class="token attr-name">onclick</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token value javascript language-javascript"><span class="token function">changeColor</span><span class="token punctuation">(</span><span class="token string">'red'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span><span class="token punctuation">"</span></span></span><span class="token punctuation">&gt;</span></span>red<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div></div>
+<h3 id="javascript">JavaScript</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="wRkaqEJIPFh5vvwoPTBeWUzJNeX8xw8813v45V/8lco=" data-language="js"><span class="token keyword">function</span> <span class="token function">changeColor</span><span class="token punctuation">(</span><span class="token parameter">newColor</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">var</span> elem <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">'para'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  elem<span class="token punctuation">.</span>style<span class="token punctuation">.</span>color <span class="token operator">=</span> newColor<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div></div>
+<h3 id="결과">결과</h3>
+<div class="section-content"><div class="code-example" id="sect1">
+
+<iframe class="sample-code-frame" title="예제 sample" id="frame_예제" width="250" height="100" src="https://live.mdnplay.dev/ko/docs/Web/API/Document/getElementById/runner.html?id=%EC%98%88%EC%A0%9C" loading="lazy"></iframe>
+</div></div>
+<h2 id="용법">용법</h2>
+<div class="section-content">
+<p>메서드 이름 중 <code>"Id"</code>의 대소문자가 정확해야 합니다. <code>getElementByID()</code>가 자연스러워 보일지라도 유효하지 않은 이름이기에 사용할 수 없습니다.</p> <p><a href="queryselector"><code>Document.querySelector()</code></a>나 <a href="queryselectorall"><code>Document.querySelectorAll()</code></a>과는 달리 <code>getElementById()</code>는 전역 <code>document</code> 객체의 메서드로만 사용할 수 있고, DOM의 다른 객체는 메서드로 가지고 있지 않습니다. ID 값은 문서 전체에서 유일해야 하며 "국지적"인 버전을 쓸 이유가 없기 때문입니다.</p>
+</div>
+<h3 id="예제_2">예제</h3>
+<div class="section-content">
+<div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="ebeEuEHKebNIc5wapQ+G7+ZooPXMCnc7AVLYToezVio=" data-language="html"><span class="token doctype"><span class="token punctuation">&lt;!</span><span class="token doctype-tag">doctype</span> <span class="token name">html</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">charset</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>UTF-8<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>title</span><span class="token punctuation">&gt;</span></span>Document<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>title</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>parent-id<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>hello word1<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>test1<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>hello word2<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>hello word3<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>hello word4<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">&gt;</span></span><span class="token script"><span class="token language-javascript">
+        <span class="token keyword">var</span> parentDOM <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">'parent-id'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">var</span> test1<span class="token operator">=</span>parentDOM<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">'test1'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">//throw error</span>
+        <span class="token comment">//Uncaught TypeError: parentDOM.getElementById is not a function</span>
+    </span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div> <p><code>id</code>에 맞는 요소가 없을 때 <code>getElementById()</code>는 <code>null</code>을 반환합니다. 매개변수 <code>id</code>가 대소문자를 구분한다는 점을 기억하세요. <code>document.getElementById("Main")</code>는 <code>&lt;div id="main"&gt;</code> 대신 <code>null</code>을 반환하는데 "M"과 "m"을 구분하기 때문입니다.</p> <p><strong>문서에 없는 요소</strong>는 <code>getElementById()</code>가 팀색하지 않습니다. 요소를 동적으로 생성해서 ID를 부여하더라도, <a href="../node/insertbefore"><code>Node.insertBefore()</code></a>나 비슷한 메서드로 문서 트리에 삽입해야 <code>getElementById()</code>로 접근할 수 있습니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="dLYsENGWgT/2YoZraAT61ipu5nvObzWOtDWi2SnB1fY=" data-language="js"><span class="token keyword">var</span> element <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">createElement</span><span class="token punctuation">(</span><span class="token string">'div'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+element<span class="token punctuation">.</span>id <span class="token operator">=</span> <span class="token string">'testqq'</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> el <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">'testqq'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// el이 null!</span>
+</pre>
+</div> <p><strong>HTML이 아닌 문서</strong>. DOM 구현체는 요소의 어떤 속성이 ID인지 알고 있어야 합니다. 문서의 DTD가 정의하고 있지 않으면, 속성명이 "id"라고 해도 ID 유형인건 아닙니다. <a href="https://developer.mozilla.org/ko/docs/Glossary/XHTML">XHTML</a>, <a href="https://developer.mozilla.org/ko/docs/XUL" class="page-not-created">XUL</a> 등 자주 쓰이는 문서의 경우 <code>id</code> 속성을 ID 유형으로 정의하고 있습니다. ID 유형의 속성이 어떤 것인지 모르는 다른 구현의 경우 <code>null</code>을 반환합니다.</p>
+</div>
+<h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="#">DOM Standard <br><small># ref-for-dom-nonelementparentnode-getelementbyid②</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li>
+<a href="../document"><code>Document</code></a>는 문서 안의 요소에 접근할 수 있는 다른 메서드와 속성으로의 참조를 가지고 있습니다.</li> <li>
+<a href="queryselector"><code>Document.querySelector()</code></a>를 사용하면 <code>'div.myclass'</code> 처럼 선택자로 요소를 탐색할 수 있습니다.</li> <li>
+<a href="https://developer.mozilla.org/ko/docs/xml/xml:id" class="page-not-created">xml:id</a> - <code>getElementById()</code>가 (Ajax 호출 등으로 받은) XML 문서에서 "xml:id" 속성 값을 사용할 수 있도록 도와주는 메서드를 가지고 있습니다.</li> </ul></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/Document/getElementById" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/Document/getElementById</a>
+  </p>
+</div>

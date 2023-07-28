@@ -1,0 +1,45 @@
+<header><h1>isFinite()</h1></header><div class="section-content"><p><code>isFinite()</code> 전역 함수는 주어진 값이 유한수인지 판별합니다. 필요한 경우 매개변수를 먼저 숫자로 변환합니다.</p></div>
+<section aria-labelledby="시도해보기"><h2 id="시도해보기">시도해보기</h2>
+<div class="section-content"><iframe class="interactive is-js-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/js/globalprops-isfinite.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe></div></section><section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="gKE/vj0cZrTiNWiDoPSLd2n82fjmGrZt6jWMp8SXEHc=" data-language="js">    <span class="token function">isFinite</span><span class="token punctuation">(</span>testValue<span class="token punctuation">)</span>
+</pre>
+</div></div></section><section aria-labelledby="매개변수"><h3 id="매개변수">매개변수</h3>
+<div class="section-content"><dl> <dt id="testvalue"><code>testValue</code></dt> <dd> <p>유한한지 판별할 값.</p> </dd> </dl></div></section><section aria-labelledby="반환_값"><h3 id="반환_값">반환 값</h3>
+<div class="section-content"><p><code>testValue</code>가 양 또는 음의 <a href="infinity"><code>Infinity</code></a>, <a href="nan"><code>NaN</code></a>, 또는 <a href="undefined"><code>undefined</code></a>면 <code>false</code>, 아니면 <code>true</code>.</p></div></section><section aria-labelledby="설명"><h2 id="설명">설명</h2>
+<div class="section-content">
+<p><code>isFinite()</code>은 최상위 함수로 어떤 객체와도 연결되지 않았습니다.</p> <p>숫자가 유한수인지 판별하기 위해 <code>isFinite()</code>을 사용할 수 있습니다. <code>isFinite()</code>은 주어진 수를 검사해 그 값이 <code>NaN</code>, 양의 무한대, 또는 음의 무한대이면 <code>false</code>를 반환합니다. 그렇지 않으면 <code>true</code>를 반환합니다.</p>
+</div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+</section><section aria-labelledby="isfinite_사용하기"><h3 id="isfinite_사용하기">
+<code>isFinite()</code> 사용하기</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="bucITBxDTDB+yM75FmdPtyLKou3MgNQ8Sb7RfAvd2Ng=" data-language="js"><span class="token function">isFinite</span><span class="token punctuation">(</span><span class="token number">Infinity</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// false</span>
+<span class="token function">isFinite</span><span class="token punctuation">(</span><span class="token number">NaN</span><span class="token punctuation">)</span><span class="token punctuation">;</span>       <span class="token comment">// false</span>
+<span class="token function">isFinite</span><span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">Infinity</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// false</span>
+
+<span class="token function">isFinite</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>         <span class="token comment">// true</span>
+<span class="token function">isFinite</span><span class="token punctuation">(</span><span class="token number">2e64</span><span class="token punctuation">)</span><span class="token punctuation">;</span>      <span class="token comment">// true</span>
+<span class="token function">isFinite</span><span class="token punctuation">(</span><span class="token number">910</span><span class="token punctuation">)</span><span class="token punctuation">;</span>       <span class="token comment">// true</span>
+
+<span class="token function">isFinite</span><span class="token punctuation">(</span><span class="token keyword">null</span><span class="token punctuation">)</span><span class="token punctuation">;</span>      <span class="token comment">// true, would've been false with the</span>
+                     <span class="token comment">// more robust Number.isFinite(null)</span>
+
+<span class="token function">isFinite</span><span class="token punctuation">(</span><span class="token string">'0'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>       <span class="token comment">// true, would've been false with the</span>
+                     <span class="token comment">// more robust Number.isFinite("0")</span>
+</pre>
+</div></div></section><h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://tc39.es/ecma262/multipage/global-object.html#sec-isfinite-number">ECMAScript Language Specification <br><small># sec-isfinite-number</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="number/isfinite"><code>Number.isFinite()</code></a></li> <li><a href="number/nan"><code>Number.NaN()</code></a></li> <li><a href="number/positive_infinity"><code>Number.POSITIVE_INFINITY</code></a></li> <li><a href="number/negative_infinity"><code>Number.NEGATIVE_INFINITY</code></a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/isFinite" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/isFinite</a>
+  </p>
+</div>

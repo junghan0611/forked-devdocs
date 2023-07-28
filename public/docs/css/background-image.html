@@ -1,0 +1,98 @@
+<header><h1>background-image</h1></header><div class="section-content"><p><a href="https://developer.mozilla.org/ko/docs/Web/CSS">CSS</a> <code>background-image</code> 속성은 요소의 배경 이미지를 한 개나 여러 개 지정합니다.</p></div>
+<section aria-labelledby="시도해보기"><h2 id="시도해보기">시도해보기</h2>
+<div class="section-content">
+<iframe class="interactive is-default-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/css/background-image.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe>  <p>여러 개의 배경 이미지는 쌓임 맥락에 따라 서로의 위에 놓입니다. 맨 처음 지정한 이미지가 제일 위에(사용자에게 제일 가까운 것 처럼) 위치합니다.</p> <p><a href="border">테두리</a>는 배경 이미지 위에, <a href="background-color"><code>background-color</code></a>는 밑에 그려집니다. 요소 박스와 테두리에 관련하여 배경 이미지를 어떻게 그릴지는 <a href="background-clip"><code>background-clip</code></a>과 <a href="background-origin"><code>background-origin</code></a> CSS 속성이 정의합니다.</p> <p>브라우저는 값에 유효하지 않은 URI를 지정하는 등 주어진 이미지를 그릴 수 없을 때 <code>none</code> 키워드를 사용한 것처럼 처리합니다.</p> <div class="notecard note" id="sect2"> <p><strong>참고:</strong> 지정한 이미지가 불투명해서 아래의 배경색을 볼 수 없더라도 <a href="background-color"><code>background-color</code></a>는 지정해야 합니다. 네트워크가 내려가는 등 이미지를 불러올 수 없는 상황에서 배경 색이 대체할 수 있기 때문입니다,</p> </div>
+</div></section><section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content">
+<p>각각의 배경 이미지는 <a href="#none"><code>none</code></a> 키워드나 <a href="image"><code>&lt;image&gt;</code></a> 값으로 지정할 수 있습니다.</p> <p>여러 개의 배경 이미지를 지정하려면 쉼표로 구분한 다수의 값을 지정하세요.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="eaZbgLJVbLBS2RBO1lVKvaPOgwJpdKR8OIoICyiF4Hk=" data-language="css"><span class="token property">background-image</span><span class="token punctuation">:</span>
+  <span class="token function">linear-gradient</span><span class="token punctuation">(</span>to bottom<span class="token punctuation">,</span> <span class="token function">rgba</span><span class="token punctuation">(</span>255<span class="token punctuation">,</span>255<span class="token punctuation">,</span>0<span class="token punctuation">,</span>0.5<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">rgba</span><span class="token punctuation">(</span>0<span class="token punctuation">,</span>0<span class="token punctuation">,</span>255<span class="token punctuation">,</span>0.5<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  <span class="token url"><span class="token function">url</span><span class="token punctuation">(</span><span class="token string url">'catfront.png'</span><span class="token punctuation">)</span></span><span class="token punctuation">;</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="값"><h3 id="값">값</h3>
+<div class="section-content"><dl> <dt id="none"><code>none</code></dt> <dd> <p>배경 이미지의 부재를 나타내는 키워드입니다.</p> </dd> <dt id="image"><a href="image"><code>&lt;image&gt;</code></a></dt> <dd> <p>배경으로 사용할 이미지입니다. <a href="css_backgrounds_and_borders/using_multiple_backgrounds">여러 개의 배경 이미지</a>를 사용할 땐 쉼표로 구분한 다수의 값을 지정하세요.</p> </dd> </dl></div></section><section aria-labelledby="접근성_고려사항"><h2 id="접근성_고려사항">접근성 고려사항</h2>
+<div class="section-content">
+<p>브라우저는 배경 이미지에 대한 어떠한 추가 정보도 접근성 보조 기술에 제공하지 않습니다. 특히 스크린 리더의 경우 배경 이미지의 존재 유무조차 알려주지 않습니다. 이미지가 페이지 목적의 이해에 필수적인 정보를 갖고 있다면 문서에서 구조적으로 설명하는 편이 좋습니다.</p> <ul> <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/Understanding_WCAG/Perceivable" class="only-in-en-us">MDN Understanding WCAG, Guideline 1.1 explanations <small>(en-US)</small></a></li> <li><a href="https://www.w3.org/TR/2016/NOTE-UNDERSTANDING-WCAG20-20161007/text-equiv-all.html" target="_blank">Understanding Success Criterion 1.1.1 | W3C Understanding WCAG 2.0</a></li> </ul>
+</div></section><section aria-labelledby="형식_정의"><h2 id="형식_정의">형식 정의</h2>
+<div class="section-content"><figure class="table-container"><div class="_table"><table class="properties"><tbody>
+<tr>
+<th scope="row"><a href="initial_value">초기값</a></th>
+<td><code>none</code></td>
+</tr>
+<tr>
+<th scope="row">적용대상</th>
+<td>all elements. It also applies to <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/::first-letter" class="only-in-en-us"><code>::first-letter</code> <small>(en-US)</small></a> and <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/::first-line" class="only-in-en-us"><code>::first-line</code> <small>(en-US)</small></a>.</td>
+</tr>
+<tr>
+<th scope="row"><a href="inheritance">상속</a></th>
+<td>no</td>
+</tr>
+<tr>
+<th scope="row"><a href="computed_value">계산 값</a></th>
+<td>as specified, but with <a href="url"><code>url</code></a> values made absolute</td>
+</tr>
+<tr>
+<th scope="row">Animation type</th>
+<td>discrete</td>
+</tr>
+</tbody></table></div></figure></div></section><section aria-labelledby="형식_구문"><h2 id="형식_구문">형식 구문</h2>
+<div class="section-content"><pre class="notranslate"><span class="token property" id="background-image">background-image = </span><br>  <span class="token property">&lt;bg-image&gt;</span><a href="value_definition_syntax#hash_mark">#</a>  <br><br><span class="token property" id="&lt;bg-image&gt;">&lt;bg-image&gt; = </span><br>  <span class="token property">&lt;image&gt;</span>  <a href="value_definition_syntax#single_bar">|</a><br>  <span class="token keyword">none</span>     <br><br><span class="token property" id="&lt;image&gt;">&lt;image&gt; = </span><br>  <span class="token property">&lt;url&gt;</span>       <a href="value_definition_syntax#single_bar">|</a><br>  <a href="gradient"><span class="token property">&lt;gradient&gt;</span></a>  <br><br><span class="token property" id="&lt;url&gt;">&lt;url&gt; = </span><br>  <span class="token function">url(</span> <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/string" class="only-in-en-us"><span class="token property">&lt;string&gt;</span> <small>(en-US)</small></a> <a href="url-modifier" class="page-not-created"><span class="token property">&lt;url-modifier&gt;</span></a><a href="value_definition_syntax#asterisk">*</a> <span class="token function">)</span>  <a href="value_definition_syntax#single_bar">|</a><br>  <span class="token function">src(</span> <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/string" class="only-in-en-us"><span class="token property">&lt;string&gt;</span> <small>(en-US)</small></a> <a href="url-modifier" class="page-not-created"><span class="token property">&lt;url-modifier&gt;</span></a><a href="value_definition_syntax#asterisk">*</a> <span class="token function">)</span>  <br><br></pre></div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+</section><section aria-labelledby="배경_이미지_레이어링"><h3 id="배경_이미지_레이어링">배경 이미지 레이어링</h3>
+<div class="section-content">
+<p>별 모양 이미지는 배경이 투명하고, 고양이 이미지 위에 위치합니다.</p> <h4 id="html">HTML</h4> <div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="kS0SWZBKGMTnv+ktNW+59nbhTRUQR+nUKQ14rzOOu6g=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>catsandstars<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+    This paragraph is full of cats<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>br</span> <span class="token punctuation">/&gt;</span></span>and stars.
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>This paragraph is not.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>catsandstars<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+    Here are more cats for you.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>br</span> <span class="token punctuation">/&gt;</span></span>Look at them!
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>And no more.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div> <h4 id="css">CSS</h4> <div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="ucRqrkCJdyfwgvAkbUO9qHCVgRAGh85uSNY99aKZV/k=" data-language="css"><span class="token selector">p</span> <span class="token punctuation">{</span>
+  <span class="token property">font-size</span><span class="token punctuation">:</span> 1.5em<span class="token punctuation">;</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> #FE7F88<span class="token punctuation">;</span>
+  <span class="token property">background-image</span><span class="token punctuation">:</span> none<span class="token punctuation">;</span>
+  <span class="token property">background-color</span><span class="token punctuation">:</span> transparent<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">div</span> <span class="token punctuation">{</span>
+  <span class="token property">background-image</span><span class="token punctuation">:</span>
+      <span class="token url"><span class="token function">url</span><span class="token punctuation">(</span><span class="token string url">"mdn_logo_only_color.png"</span><span class="token punctuation">)</span></span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">.catsandstars</span> <span class="token punctuation">{</span>
+  <span class="token property">background-image</span><span class="token punctuation">:</span>
+      <span class="token url"><span class="token function">url</span><span class="token punctuation">(</span><span class="token string url">"startransparent.gif"</span><span class="token punctuation">)</span></span><span class="token punctuation">,</span>
+      <span class="token url"><span class="token function">url</span><span class="token punctuation">(</span><span class="token string url">"catfront.png"</span><span class="token punctuation">)</span></span><span class="token punctuation">;</span>
+  <span class="token property">background-color</span><span class="token punctuation">:</span> transparent<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div> <h4 id="결과">결과</h4>
+<div class="code-example" id="sect3">
+
+<iframe class="sample-code-frame" title="배경 이미지 레이어링 sample" id="frame_배경_이미지_레이어링" src="https://live.mdnplay.dev/ko/docs/Web/CSS/background-image/runner.html?id=%EB%B0%B0%EA%B2%BD_%EC%9D%B4%EB%AF%B8%EC%A7%80_%EB%A0%88%EC%9D%B4%EC%96%B4%EB%A7%81" loading="lazy"></iframe>
+</div>
+</div></section><h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://drafts.csswg.org/css-backgrounds/#background-image">CSS Backgrounds and Borders Module Level 3 <br><small># background-image</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="css_images/implementing_image_sprites_in_css">CSS로 이미지 스프라이트 구현하기</a></li> <li><a href="https://developer.mozilla.org/ko/docs/Web/HTML/Element/img"><code>&lt;img&gt;</code></a></li> <li>이미지 관련 자료형: <a href="image"><code>&lt;image&gt;</code></a>, <a href="gradient"><code>&lt;gradient&gt;</code></a>
+</li> <li>이미지 관련 함수: <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/gradient/linear-gradient"><code>linear-gradient()</code> <small>(en-US)</small></a>, <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/gradient/radial-gradient"><code>radial-gradient()</code> <small>(en-US)</small></a>, <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/gradient/repeating-linear-gradient"><code>repeating-linear-gradient()</code> <small>(en-US)</small></a>, <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/gradient/repeating-radial-gradient"><code>repeating-radial-gradient()</code> <small>(en-US)</small></a>, <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/element"><code>element()</code> <small>(en-US)</small></a>, <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/image/image"><code>image()</code> <small>(en-US)</small></a>, <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/image/image-set"><code>image-set()</code> <small>(en-US)</small></a>, <a href="url"><code>url()</code></a>
+</li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/CSS/background-image" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/CSS/background-image</a>
+  </p>
+</div>

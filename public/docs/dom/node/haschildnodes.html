@@ -1,0 +1,31 @@
+<header><h1>Node.hasChildNodes()</h1></header><div class="section-content"><p><code>Node.hasChildNodes()</code> 메소드는 현재 노드(<a href="../node"><code>Node</code></a>)에게 자식노드(<a href="https://developer.mozilla.org/en-US/docs/Web/API/Node/childNodes" class="only-in-en-us">child nodes <small>(en-US)</small></a>)가 있는지를 <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Boolean"><code>Boolean</code></a> 값으로 반환합니다.</p></div>
+<h2 id="구문">구문</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="BvdLsAG273xgjgd06x/vDKgTrD3lcAz/rBEq5IE+Xnc=" data-language="js">node<span class="token punctuation">.</span><span class="token function">hasChildNodes</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+</pre>
+</div></div>
+<h2 id="예시">예시</h2>
+<div class="section-content">
+<p>아래 예시에서는 "foo"라는 id를 가진 요소를 찾고 "foo" 요소에게 자식노드가 있으면 첫번째 자식노드를 제거해줍니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="nUJcGAEI0lgjdpaAwgnWKnnxDeme3S1JxVSh/lPP4FM=" data-language="js"><span class="token keyword">var</span> foo <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">"foo"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">if</span> <span class="token punctuation">(</span> foo<span class="token punctuation">.</span><span class="token function">hasChildNodes</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  foo<span class="token punctuation">.</span><span class="token function">removeChild</span><span class="token punctuation">(</span> foo<span class="token punctuation">.</span>childNodes<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div>
+</div>
+<h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="#">DOM Standard <br><small># ref-for-dom-node-haschildnodes①</small></a></td></tr></tbody>
+</table></div>
+<h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="childnodes"><code>Node.childNodes</code></a></li> <li><a class="page-not-created"><code>Node.hasAttributes</code></a></li> </ul></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/Node/hasChildNodes" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/Node/hasChildNodes</a>
+  </p>
+</div>

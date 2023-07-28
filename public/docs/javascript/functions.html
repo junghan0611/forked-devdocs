@@ -1,0 +1,358 @@
+<header><h1>함수</h1></header><div class="section-content">
+<p>보통 <strong>함수</strong>란 자신의 외부(재귀 함수의 경우 스스로) 코드가 '호출'할 수 있는 하위 프로그램입니다. 프로그램과 마찬가지로, 함수 역시 명령문의 시퀀스로 구성된 함수 본문을 가집니다. 함수에 값을 '전달'하면, 함수는 값을 '반환'할 것입니다.</p> <p>JavaScript의 함수는 다른 모든 객체처럼 속성과 메서드를 가질 수 있으므로 일급(first-class) 객체입니다. 다른 객체와 함수를 구별하는 것은, 함수는 호출할 수 있다는 점입니다. 간단히 말해, 함수는 <a href="global_objects/function"><code>Function</code></a> 객체입니다.</p> <p><a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Guide/Functions">JavaScript 함수 안내서</a>에서 더 많은 예제와 설명을 확인하세요.</p>
+</div>
+<section aria-labelledby="설명"><h2 id="설명">설명</h2>
+<div class="section-content">
+<p>JavaScript에서 모든 함수는 <code>Function</code> 객체입니다. <a href="global_objects/function"><code>Function</code></a> 문서에서 속성과 메서드 정보를 확인하세요.</p> <p>함수가 기본 값 외의 원하는 값을 반환하도록 하려면 <a href="statements/return"><code>return</code></a> 문으로 반환할 값을 지정해야 합니다. 반환문 없는 함수는 기본 값을 반환합니다. <a href="operators/new"><code>new</code></a> 키워드로 호출하는 <a href="global_objects/object/constructor">생성자</a>의 경우, 기본 반환 값은 함수의 <code>this</code>가 가리키는 값입니다. 그 외의 모든 함수의 경우, 기본 반환 값은 <a href="global_objects/undefined"><code>undefined</code></a>입니다.</p> <p>함수 호출의 매개변수는 함수의 인수(arguments)입니다. 인수는 함수에 값으로서 전달되므로, 함수가 인수의 값을 바꿔도 이 변화는 전역적 또는 호출한 함수에 반영되지 않습니다. 그러나, 객체 참조 역시 (특별한) 값입니다. 함수 내에서 참조된 객체의 속성을 바꾸면, 아래 예제와 같이 이 변화는 함수 밖에서도 확인할 수 있습니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="+WWkLlLxUdAw59GB9dtVEMprURRoe0asG5bVP1h6rUk=" data-language="js"><span class="token comment">/* 함수 'myFunc' 선언 */</span>
+<span class="token keyword">function</span> <span class="token function">myFunc</span><span class="token punctuation">(</span><span class="token parameter">theObject</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+   theObject<span class="token punctuation">.</span>brand <span class="token operator">=</span> <span class="token string">"쌍용"</span><span class="token punctuation">;</span>
+ <span class="token punctuation">}</span>
+
+ <span class="token comment">/*
+  * 변수 'mycar' 선언;
+  * 새 객체를 만들고 초기화;
+  * 'mycar'에 객체 참조를 할당
+  */</span>
+ <span class="token keyword">var</span> mycar <span class="token operator">=</span> <span class="token punctuation">{</span>
+   <span class="token literal-property property">brand</span><span class="token operator">:</span> <span class="token string">"현대"</span><span class="token punctuation">,</span>
+   <span class="token literal-property property">model</span><span class="token operator">:</span> <span class="token string">"엑셀"</span><span class="token punctuation">,</span>
+   <span class="token literal-property property">year</span><span class="token operator">:</span> <span class="token number">1994</span>
+ <span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+ <span class="token comment">/* '현대' 기록 */</span>
+ console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>mycar<span class="token punctuation">.</span>brand<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+ <span class="token comment">/* 객체 참조를 함수에 전달 */</span>
+ <span class="token function">myFunc</span><span class="token punctuation">(</span>mycar<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+ <span class="token comment">/*
+  * 함수가 객체의 'brand' 속성을 바꿨으므로
+  * '쌍용' 출력.
+  */</span>
+ console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>mycar<span class="token punctuation">.</span>brand<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div> <p><a href="operators/this"><code>this</code> 키워드</a>는 현재 실행 중인 함수를 참조하는 것이 아닙니다. 그러므로 함수 본문 내에서도 <code>Function</code> 객체를 참조할 땐 이름을 사용해야 합니다.</p>
+</div></section><section aria-labelledby="함수_정의하기"><h2 id="함수_정의하기">함수 정의하기</h2>
+<div class="section-content"><p>함수를 정의하는 방법에는 여러 가지가 있습니다.</p></div></section><section aria-labelledby="함수_선언_function_명령문"><h3 id="함수_선언_function_명령문">함수 선언 (<code>function</code> 명령문)</h3>
+<div class="section-content">
+<p>함수 선언에 사용할 수 있는 특별한 구문이 있습니다. (자세한 정보는 <a href="statements/function">함수 선언</a>을 참고하세요)</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="EUkSiPv5JXq2haIR4QDFfQjMS8aIdPiQCJRhzAFRdK0=" data-language="js"><span class="token keyword">function</span> <span class="token function">name</span><span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">[</span>param<span class="token punctuation">[</span><span class="token punctuation">,</span> param<span class="token punctuation">[</span><span class="token punctuation">,</span> <span class="token operator">...</span> param<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">]</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+   statements
+<span class="token punctuation">}</span>
+</pre>
+</div> <dl> <dt id="name"><code>name</code></dt> <dd> <p>함수의 이름.</p> </dd> <dt id="param"><code>param</code></dt> <dd> <p>함수에 전달할 인수의 이름.</p> </dd> <dt id="statements"><code>statements</code></dt> <dd> <p>함수 본문을 구성할 명령문.</p> </dd> </dl>
+</div></section><section aria-labelledby="함수_표현식_function_표현식"><h3 id="함수_표현식_function_표현식">함수 표현식 (<code>function</code> 표현식)</h3>
+<div class="section-content">
+<p>함수 표현식은 함수 선언과 비슷하고 구문도 같습니다. (자세한 정보는 <a href="operators/function">함수 표현식</a>을 참고하세요) 함수 표현식은 더 큰 표현식의 일부로 사용할 수 있습니다. 함수 표현식을 사용하면 이름이 붙은 '유명 함수' 표현식(이름이 호출 스택 등에 표시됨)과, 이름이 없는 '익명 함수' 표현식을 정의할 수 있습니다. 함수 표현식은 스코프의 상단으로 <a href="https://developer.mozilla.org/ko/docs/Glossary/Hoisting">호이스팅</a> 되지 않으므로, 코드 내에 나타나기 전에 먼저 사용할 수 없습니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="vcbGHFbRUzUOM9yveTMi68VObeu3mfNh4llY7ParEVk=" data-language="js"><span class="token keyword">function</span> <span class="token punctuation">[</span>name<span class="token punctuation">]</span><span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">[</span>param<span class="token punctuation">[</span><span class="token punctuation">,</span> param<span class="token punctuation">[</span><span class="token punctuation">,</span> <span class="token operator">...</span> param<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">]</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+   statements
+<span class="token punctuation">}</span>
+</pre>
+</div> <dl> <dt id="name_2"><code>name</code></dt> <dd> <p>함수 이름. 생략할 경우 익명 함수가 됩니다.</p> </dd> <dt id="param_2"><code>param</code></dt> <dd> <p>함수에 전달할 인수의 이름.</p> </dd> <dt id="statements_2"><code>statements</code></dt> <dd> <p>함수 본문을 구성할 명령문.</p> </dd> </dl> <p>다음은 <code>name</code>을 사용하지 않은 <strong>익명</strong> 함수 표현식의 예시입니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="hmpPhq34iDTq4YzvsYw1dp/8AkZUmmHw8Ut0nnTg9bM=" data-language="js"><span class="token keyword">var</span> <span class="token function-variable function">myFunction</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    statements
+<span class="token punctuation">}</span>
+</pre>
+</div> <p>선언 시에 이름을 제공해서 <strong>유명</strong> 함수 표현식을 생성하는 것도 가능합니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="ClWfaAdDV1Ang9cq2Lr3rqjA35bGo3KiOk9wVnMkhrk=" data-language="js"><span class="token keyword">var</span> <span class="token function-variable function">myFunction</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token function">namedFunction</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    statements
+<span class="token punctuation">}</span>
+</pre>
+</div> <p>함수 표현식에 이름을 붙여주는 것의 장점 중 하나는, 오류가 발생했을 때 스택 추적에 함수의 이름이 나타나므로 원인을 찾기 쉽다는 것입니다.</p> <p>위의 두 코드 조각 모두 <code>function</code> 키워드가 맨 앞에 오지 않는 것을 볼 수 있습니다. 함수를 선언하지만 <code>function</code>이 맨 처음이 아닌 경우가 함수 표현식입니다.</p> <p>한 번만 사용하는 함수의 경우 자주 사용하는 패턴으로 <a href="https://developer.mozilla.org/ko/docs/Glossary/IIFE">IIFE</a>(Immediately Invokable Function Expression, 즉시 실행 함수 표현식)가 있습니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="/1QKXcmpymA075lgUSqtii3pVHmybBPj7lektkNlMdI=" data-language="js"><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    statements
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div> <p>IIFE는 선언 즉시 실행하는 함수 표현식입니다.</p>
+</div></section><section aria-labelledby="생성기_함수_선언_function_명령문"><h3 id="생성기_함수_선언_function_명령문">생성기 함수 선언 (<code>function*</code> 명령문)</h3>
+<div class="section-content">
+<p>생성기 함수 선언에 사용할 수 있는 특별한 구문이 있습니다. (자세한 정보는 <a href="statements/function*"><code>function*</code> 명령문</a>을 참고하세요)</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="DbkEHfjFFx8botg/45UQUplabdH1DnIOrH40DgMMCDk=" data-language="js"><span class="token keyword">function</span><span class="token operator">*</span> <span class="token function">name</span><span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">[</span>param<span class="token punctuation">[</span><span class="token punctuation">,</span> param<span class="token punctuation">[</span><span class="token punctuation">,</span> <span class="token operator">...</span> param<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">]</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+   statements
+<span class="token punctuation">}</span>
+</pre>
+</div> <dl> <dt id="name_3"><code>name</code></dt> <dd> <p>함수의 이름.</p> </dd> <dt id="param_3"><code>param</code></dt> <dd> <p>함수에 전달할 인수의 이름.</p> </dd> <dt id="statements_3"><code>statements</code></dt> <dd> <p>함수 본문을 구성할 명령문.</p> </dd> </dl>
+</div></section><section aria-labelledby="생성기_함수_표현식_function_표현식"><h3 id="생성기_함수_표현식_function_표현식">생성기 함수 표현식 (<code>function*</code> 표현식)</h3>
+<div class="section-content">
+<p>생성기 함수 표현식은 생성기 함수 선언과 비슷하고 구문도 같습니다. (자세한 정보는 <a href="operators/function*"><code>function*</code> 표현식</a>을 참고하세요)</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="JaKCPupyKdc2TqKuL07fEjtk2vOgqP2Jlr4cpr3XM3Y=" data-language="js"><span class="token keyword">function</span><span class="token operator">*</span> <span class="token punctuation">[</span>name<span class="token punctuation">]</span><span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">[</span>param<span class="token punctuation">[</span><span class="token punctuation">,</span> param<span class="token punctuation">[</span><span class="token punctuation">,</span> <span class="token operator">...</span> param<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">]</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+   statements
+<span class="token punctuation">}</span>
+</pre>
+</div> <dl> <dt id="name_4"><code>name</code></dt> <dd> <p>함수 이름. 생략할 경우 익명 함수가 됩니다.</p> </dd> <dt id="param_4"><code>param</code></dt> <dd> <p>함수에 전달할 인수의 이름.</p> </dd> <dt id="statements_4"><code>statements</code></dt> <dd> <p>함수 본문을 구성할 명령문.</p> </dd> </dl>
+</div></section><section aria-labelledby="화살표_함수_표현식"><h3 id="화살표_함수_표현식">화살표 함수 표현식 (=&gt;)</h3>
+<div class="section-content">
+<p>화살표 함수 표현식은 구문이 더 짧으며, <code>this</code> 값을 어휘적으로 바인딩합니다. (자세한 정보는 <a href="functions/arrow_functions">화살표 함수</a>를 참고하세요)</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="vfjd70tDUsfBgp+xUa85eBNzEI3QG2W7sLVeOlygolw=" data-language="js"><span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">[</span>param<span class="token punctuation">[</span><span class="token punctuation">,</span> param<span class="token punctuation">]</span><span class="token punctuation">]</span></span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+   statements
+<span class="token punctuation">}</span>
+
+<span class="token parameter">param</span> <span class="token operator">=&gt;</span> expression
+</pre>
+</div> <dl> <dt id="param_5"><code>param</code></dt> <dd> <p>인수의 이름. 인수를 하나도 받지 않을 경우 <code>()</code>로 표시해야 합니다. 하나의 인수만 받는 경우 <code>foo =&gt; 1</code>과 같이 괄호를 생략할 수 있습니다.</p> </dd> <dt id="statements_5">
+<code>statements</code> 또는 <code>expression</code>
+</dt> <dd> <p>함수 본문. 다수의 명령문으로 구성할 경우 중괄호로 묶어야 합니다. 단일 표현식만으로 구성할 경우 중괄호로 묶지 않아도 되며, 이 때는 해당 표현식을 함수 반환 시 사용합니다.</p> </dd> </dl>
+</div></section><section aria-labelledby="function_생성자"><h3 id="function_생성자">
+<code>Function</code> 생성자</h3>
+<div class="section-content">
+<div class="notecard note" id="sect1"> <p><strong>참고:</strong> <code>Function</code> 생성자를 사용해 함수를 생성하면 일부 JavaScript 엔진 최적화를 적용할 수 없으며, 그 외에도 다른 여러 문제가 발생하므로 권장하지 않습니다.</p> </div> <p>다른 모든 객체처럼, <code>new</code> 연산자를 사용해서 <a href="global_objects/function"><code>Function</code></a> 객체를 생성할 수 있습니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="6Ahqav71pyapF6cw2SkTqRjTlPjJGJItGa22zBi1qVw=" data-language="js"><span class="token keyword">new</span> <span class="token class-name">Function</span> <span class="token punctuation">(</span>arg1<span class="token punctuation">,</span> arg2<span class="token punctuation">,</span> <span class="token operator">...</span> argN<span class="token punctuation">,</span> functionBody<span class="token punctuation">)</span>
+</pre>
+</div> <dl> <dt id="arg1_arg2_..._argn"><code>arg1, arg2, ... argN</code></dt> <dd> <p>함수가 형식 매개변수로 사용할 0개 이상의 이름. 모두 올바른 JavaScript 식별자, 또는 쉼표로 구분한 식별자 목록이어야 합니다. ("<code>x</code>", "<code>theValue</code>", "<code>a,b</code>" 등)</p> </dd> <dt id="functionbody"><code>functionBody</code></dt> <dd> <p>함수 본문으로 사용할 JavaScript 명령문을 담은 문자열.</p> </dd> </dl> <p><code>Function</code> 생성자를 함수로 호출(<code>new</code> 연산자 없이 호출)하는 것도 동일하게 동작합니다.</p>
+</div></section><section aria-labelledby="generatorfunction_생성자"><h3 id="generatorfunction_생성자">
+<code>GeneratorFunction</code> 생성자</h3>
+<div class="section-content">
+<div class="notecard note" id="sect2"> <p><strong>참고:</strong> <code>GeneratorFunction</code>은 전역 객체가 아니며, 다른 생성기 함수 인스턴스에서 가져와야 합니다. <a href="global_objects/generatorfunction"><code>GeneratorFunction</code></a> 문서에서 자세한 정보를 확인하세요.</p> </div> <div class="notecard note" id="sect3"> <p><strong>참고:</strong> <code>GeneratorFunction</code> 생성자를 사용해 함수를 생성하면 일부 JavaScript 엔진 최적화를 적용할 수 없으며, 그 외에도 다른 여러 문제가 발생하므로 권장하지 않습니다.</p> </div> <p>다른 모든 객체처럼, <code>new</code> 연산자를 사용해서 <a href="global_objects/generatorfunction"><code>GeneratorFunction</code></a> 객체를 생성할 수 있습니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="FA4ER9WsKIY+a/YX8dz6Lr2/HLi/FL+f2/R8HQ4Nu18=" data-language="js"><span class="token keyword">new</span> <span class="token class-name">GeneratorFunction</span> <span class="token punctuation">(</span>arg1<span class="token punctuation">,</span> arg2<span class="token punctuation">,</span> <span class="token operator">...</span> argN<span class="token punctuation">,</span> functionBody<span class="token punctuation">)</span>
+</pre>
+</div> <dl> <dt id="arg1_arg2_..._argn_2"><code>arg1, arg2, ... argN</code></dt> <dd> <p>함수가 형식 매개변수로 사용할 0개 이상의 이름. 모두 올바른 JavaScript 식별자, 또는 쉼표로 구분한 식별자 목록이어야 합니다. ("<code>x</code>", "<code>theValue</code>", "<code>a,b</code>" 등)</p> </dd> <dt id="functionbody_2"><code>functionBody</code></dt> <dd> <p>함수 본문으로 사용할 JavaScript 명령문을 담은 문자열.</p> </dd> </dl> <p><code>GeneratorFunction</code> 생성자를 함수로 호출(<code>new</code> 연산자 없이 호출)하는 것도 동일하게 동작합니다.</p>
+</div></section><section aria-labelledby="함수_매개변수"><h2 id="함수_매개변수">함수 매개변수</h2>
+</section><section aria-labelledby="매개변수_기본_값"><h3 id="매개변수_기본_값">매개변수 기본 값</h3>
+<div class="section-content"><p>매개변수 기본 값을 사용하면, 값을 전달하지 않았거나 <code>undefined</code>를 전달한 경우 형식 매개변수를 기본 값으로 초기화할 수 있습니다. <a href="functions/default_parameters">매개변수 기본 값</a>에서 자세한 정보를 확인하세요.</p></div></section><section aria-labelledby="나머지_매개변수"><h3 id="나머지_매개변수">나머지 매개변수</h3>
+<div class="section-content"><p>나머지 매개변수 구문은 정해지지 않은 임의 수의 매개변수를 배열로서 나타낼 수 있습니다. <a href="functions/rest_parameters">나머지 매개변수</a>에서 자세한 정보를 확인하세요.</p></div></section><section aria-labelledby="arguments_객체"><h2 id="arguments_객체">
+<code>arguments</code> 객체</h2>
+<div class="section-content">
+<p>함수 본문 내에서 <code>arguments</code> 객체를 사용해서 함수의 인수를 참조할 수 있습니다. <a href="functions/arguments"><code>arguments</code></a> 문서를 참고하세요.</p> <ul> <li>
+<a href="functions/arguments"><code>arguments</code></a>: 현재 실행 중인 함수에 전달된 인수를 담은 유사 배열 객체입니다.</li> <li>
+<a href="functions/arguments/callee"><code>arguments.callee</code></a>: 현재 실행 중인 함수입니다.</li> <li>
+<a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Functions/arguments/caller" class="page-not-created"><code>arguments.caller</code></a>: 현재 실행 중인 함수를 호출한 함수입니다.</li> <li>
+<a href="functions/arguments/length"><code>arguments.length</code></a>: 함수에 전달한 인수의 수입니다.</li> </ul>
+</div></section><section aria-labelledby="메서드_함수_정의하기"><h2 id="메서드_함수_정의하기">메서드 함수 정의하기</h2>
+</section><section aria-labelledby="접근자와_설정자_함수"><h3 id="접근자와_설정자_함수">접근자와 설정자 함수</h3>
+<div class="section-content">
+<p>속성 추가를 지원하는 객체라면 내장 객체와 사용자 정의 객체 양쪽 모두에 접근자 메서드와 설정자 메서드를 정의할 수 있습니다. 접근자와 설정자 정의 구문은 객체 리터럴 구문을 사용합니다.</p> <dl> <dt id="get"><a href="functions/get"><code>get</code></a></dt> <dd> <p>객체의 속성에 접근하면 호출할 함수를 바인딩합니다.</p> </dd> <dt id="set"><a href="functions/set"><code>set</code></a></dt> <dd> <p>객체의 속성에 할당을 시도하면 호출할 함수를 바인딩합니다.</p> </dd> </dl>
+</div></section><section aria-labelledby="메서드_정의_구문"><h3 id="메서드_정의_구문">메서드 정의 구문</h3>
+<div class="section-content">
+<p>ECMAScript 2015부터는 메서드 역시 접근자/설정자와 유사한 짧은 구문으로 정의할 수 있습니다. <a href="functions/method_definitions">메서드 정의</a> 문서를 참고하세요.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="W+ZjO6kWTbCUMAK4lOlISEDMQjhrTFNbdaHbtLHEMz4=" data-language="js"><span class="token keyword">var</span> obj <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token function">bar</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="생성자_vs._선언문_vs._표현식"><h2 id="생성자_vs._선언문_vs._표현식">생성자 vs. 선언문 vs. 표현식</h2>
+<div class="section-content">
+<p>아래의 세 코드 조각을 비교해보세요.</p> <p><code>multiply</code> 변수에 <code>Function</code> 생성자로 정의한 함수를 할당하는 코드입니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="AYAh+NFLaO7L4ULiBDItW+wbLUgihLPAZJRDALQy79M=" data-language="js"><span class="token keyword">var</span> multiply <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Function</span><span class="token punctuation">(</span><span class="token string">'x'</span><span class="token punctuation">,</span> <span class="token string">'y'</span><span class="token punctuation">,</span> <span class="token string">'return x * y'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div> <p><code>multiply</code>라는 이름의 함수를 선언하는 선언문입니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="29q/7Qrazlgnn5jJHUwL6iWkREStsaHdLl72d6sR0L8=" data-language="js"><span class="token keyword">function</span> <span class="token function">multiply</span><span class="token punctuation">(</span><span class="token parameter">x<span class="token punctuation">,</span> y</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+   <span class="token keyword">return</span> x <span class="token operator">*</span> y<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div> <p><code>multiply</code> 변수에 익명 함수 표현식을 할당하는 코드입니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="CM9hHvdu+SWc/9ZKaodNgkQ23qKU/goDUxUbxW8+/qs=" data-language="js"><span class="token keyword">var</span> <span class="token function-variable function">multiply</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">x<span class="token punctuation">,</span> y</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+   <span class="token keyword">return</span> x <span class="token operator">*</span> y<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</pre>
+</div> <p><code>multiply</code> 변수에 이름이 <code>func_name</code>인 함수 표현식을 할당하는 코드입니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="n6U+qOMV1aoyIUtegILtWTcjsnw8ci35+2GsTIjbyQA=" data-language="js"><span class="token keyword">var</span> <span class="token function-variable function">multiply</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token function">func_name</span><span class="token punctuation">(</span><span class="token parameter">x<span class="token punctuation">,</span> y</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+   <span class="token keyword">return</span> x <span class="token operator">*</span> y<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="차이"><h3 id="차이">차이</h3>
+<div class="section-content">
+<p>세 코드 모두 비슷한 일을 하지만, 몇 가지 작은 차이가 존재합니다.</p> <p>우선, 함수의 이름과 함수를 할당한 변수는 서로 다릅니다. 함수의 이름은 바꿀 수 없으나, 함수를 할당한 변수는 다시 할당할 수 있습니다. 또한 (함수 표현식의 경우) 함수의 이름은 자신의 본문에서만 사용할 수 있습니다. 외부에서 사용하려고 시도하면, 이전에 함수 이름과 같은 변수를 <code>var</code>로 선언한 경우 <code>undefined</code>, 그 외의 경우 오류가 발생합니다. 예를 들면...</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="HCZURqmfzO7lv3abK9wrCoqGQfa/LjJrezjvk8nthGw=" data-language="js"><span class="token keyword">var</span> <span class="token function-variable function">y</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token function">x</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token function">alert</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 오류 발생</span>
+</pre>
+</div> <p>함수 이름은 함수가 <a href="global_objects/function/tostring"><code>Function</code>의 <code>toString()</code> 메서드</a>를 통해 직렬화되는 경우에도 보입니다.</p> <p>함수 이름과 달리, 함수를 할당한 변수는 자신의 스코프에 의해서만 제한되며 이 스코프는 함수 선언의 스코프를 반드시 포함합니다.</p> <p>네 번째 코드 조각에서 볼 수 있듯, 함수의 이름과 함수를 할당한 변수의 이름은 서로 다를 수 있으며 둘 사이에는 아무 관계도 없습니다. 그런데 함수 선언의 경우 함수 이름과 동일한 이름의 변수 또한 생성합니다. 따라서, 함수 표현식으로 정의하는 함수와 달리, 함수 선언으로 정의한 함수는 자신의 스코프 내에서 이름으로 접근할 수 있습니다.</p> <p><code>new Function</code>으로 정의한 함수는 이름을 갖지 않습니다.</p> <p>함수 표현식이나 <code>Function</code> 생성자로 정의한 함수와 달리, 함수 선언으로 정의한 함수는 자신의 선언보다 앞서 먼저 호출하는 것이 가능합니다. 예를 들면...</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="AZ8DECKPQqr6f2kt5cNmwF+5qEl02rdJ62+nUiW0Nfk=" data-language="js"><span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 안녕! 경고창 등장</span>
+<span class="token keyword">function</span> <span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+   <span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">'안녕!'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div> <p>함수 표현식과 함수 선언으로 정의하는 함수는 현재 스코프를 상속합니다. 즉, 함수가 클로저를 형성합니다. 반면 <code>Function</code> 생성자로 정의한 함수는 (다른 모든 함수가 상속하는) 전역 스코프를 제외하면 어떠한 스코프도 상속하지 않습니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="PF/Y/f2J2X3fld7T1eaTFRb2ghwuU4cvdFJIgS01VhY=" data-language="js"><span class="token comment">/*
+ * Declare and initialize a variable 'p' (global)
+ * and a function 'myFunc' (to change the scope) inside which
+ * declare a varible with same name 'p' (current) and
+ * define three functions using three different ways:-
+ *     1. function declaration
+ *     2. function expression
+ *     3. function constructor
+ * each of which will log 'p'
+ */</span>
+<span class="token keyword">var</span> p <span class="token operator">=</span> <span class="token number">5</span><span class="token punctuation">;</span>
+<span class="token keyword">function</span> <span class="token function">myFunc</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">var</span> p <span class="token operator">=</span> <span class="token number">9</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">function</span> <span class="token function">decl</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>p<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">var</span> <span class="token function-variable function">expr</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>p<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">;</span>
+    <span class="token keyword">var</span> cons <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Function</span><span class="token punctuation">(</span><span class="token string">'\tconsole.log(p);'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token function">decl</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">expr</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">cons</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token function">myFunc</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">/*
+ * Logs:-
+ * 9  - for 'decl' by function declaration (current scope)
+ * 9  - for 'expr' by function expression (current scope)
+ * 5  - for 'cons' by Function constructor (global scope)
+ */</span>
+</pre>
+</div> <p>함수 표현식과 함수 선언으로 정의한 함수에 대해서는 한 번만 구문 분석을 수행하지만, <code>Function</code> 생성자로 정의한 함수의 경우 아닙니다. <code>Function</code> 생성자로 정의한 함수를 호출하면 매번 함수 본문 문자열을 새로 파싱해야 합니다. 함수 표현식의 경우 매번 새로운 클로저를 생성하지만, 함수 본문을 다시 파싱하지는 않습니다. 따라서 함수 표현식 역시 "<code>new Function(...)</code>"보다 빠릅니다. 그러니 가능하다면 <code>Function</code> 생성자를 피해야 합니다.</p> <p>단, 함수 표현식의 본문 문자열 내에서 정의하는 함수 표현식과 선언 본문은 다시 파싱하지 않습니다. 예를 들면...</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="dlHYqSit2kdXT67kChCjoqBmWMF1qE3ojHm6+1Z9ZcQ=" data-language="js"><span class="token keyword">var</span> foo <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Function</span><span class="token punctuation">(</span><span class="token string">"var bar = \'FOO!\';\nreturn(function() {\n\talert(bar);\n});"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 함수 본문 문자열의 "function() {\n\talert(bar);\n}" 부분은 다시 파싱하지 않음</span>
+</pre>
+</div> <p>함수 선언은 아주 쉽게 (때로는 무심코) 함수 표현식으로 바꿀 수 있습니다. 다음 두 가지 중 하나라도 만족할 경우 함수 선언이 아니라 함수 표현식이 됩니다.</p> <ul> <li>표현식의 일부가 될 때</li> <li>함수나 스크립트의 '본 요소'가 아닌 경우. '본 요소'는 함수나 스크립트 본문의, 중첩되지 않은 명령문을 의미합니다.</li> </ul> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="gL9wGr4VrhMe8Et9NEIncILLOh2VolRjmrAAzb8Yklk=" data-language="js"><span class="token keyword">var</span> x <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>               <span class="token comment">// 본 요소</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span>x <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>            <span class="token comment">// 본 요소</span>
+   x <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">;</span>               <span class="token comment">// 본 요소가 아님</span>
+   <span class="token keyword">function</span> <span class="token function">boo</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>     <span class="token comment">// 본 요소가 아님</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">function</span> <span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>         <span class="token comment">// 본 요소</span>
+   <span class="token keyword">var</span> y <span class="token operator">=</span> <span class="token number">20</span><span class="token punctuation">;</span>           <span class="token comment">// 본 요소</span>
+   <span class="token keyword">function</span> <span class="token function">bar</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>     <span class="token comment">// 본 요소</span>
+   <span class="token keyword">while</span> <span class="token punctuation">(</span>y <span class="token operator">==</span> <span class="token number">10</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>     <span class="token comment">// 본 요소</span>
+      <span class="token keyword">function</span> <span class="token function">blah</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span> <span class="token comment">// 본 요소가 아님</span>
+      y<span class="token operator">++</span><span class="token punctuation">;</span>               <span class="token comment">// 본 요소가 아님</span>
+   <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="예제"><h3 id="예제">예제</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="odm/k3RyKnruRaBoxRYegE3hYyxrf8pm29tgol7v290=" data-language="js"><span class="token comment">// 함수 선언</span>
+<span class="token keyword">function</span> <span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+
+<span class="token comment">// 함수 표현식</span>
+<span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token function">bar</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+<span class="token comment">// 함수 표현식</span>
+<span class="token function-variable function">x</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token function">hello</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+
+<span class="token keyword">if</span> <span class="token punctuation">(</span>x<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+   <span class="token comment">// 함수 표현식</span>
+   <span class="token keyword">function</span> <span class="token function">world</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// 함수 선언</span>
+<span class="token keyword">function</span> <span class="token function">a</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+   <span class="token comment">// 함수 선언</span>
+   <span class="token keyword">function</span> <span class="token function">b</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+   <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token comment">// 함수 표현식</span>
+      <span class="token keyword">function</span> <span class="token function">c</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+   <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</pre>
+</div></div></section><section aria-labelledby="블록_레벨_함수"><h2 id="블록_레벨_함수">블록 레벨 함수</h2>
+<div class="section-content">
+<p>ES2015부터, <a href="strict_mode">엄격 모드</a>에서는 블록 내의 함수 범위가 해당 블록으로 제한됩니다. ES2015 이전에는 블록 레벨 함수를 엄격 모드에서 사용할 수 없었습니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="s6g41xeq//OSGOfReGoQEdLmGA11CJ1kvASRFsipVpA=" data-language="js"><span class="token string">'use strict'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">function</span> <span class="token function">f</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token number">1</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token punctuation">{</span>
+  <span class="token keyword">function</span> <span class="token function">f</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token number">2</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token function">f</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">===</span> <span class="token number">1</span><span class="token punctuation">;</span> <span class="token comment">// true</span>
+
+<span class="token comment">// 엄격 모드가 아닐 경우 f() === 2</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="비엄격_모드의_블록_레벨_함수"><h3 id="비엄격_모드의_블록_레벨_함수">비엄격 모드의 블록 레벨 함수</h3>
+<div class="section-content">
+<p>한 마디로, 안 됩니다.</p> <p>비엄격 모드에서의 블록 내 함수 선언은 이상하게 동작합니다. 예를 들어,</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="4YQIKkxquqkPDOD5bEMmSyDIp88jDaU3KPT9QZ508gk=" data-language="js"><span class="token keyword">if</span> <span class="token punctuation">(</span>shouldDefineZero<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+   <span class="token keyword">function</span> <span class="token function">zero</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token comment">// 위험: 호환성 위험</span>
+      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"zero입니다."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</pre>
+</div> <p>ES2015에 따르면 <code>shouldDefineZero</code>가 거짓인 경우, <code>zero</code>를 정의해선 안된다고 합니다. 조건문의 블록을 실행하지 않기 때문입니다. 그러나 이는 새롭게 명세에 추가된 부분으로, 이전엔 동작을 정의하지 않았습니다. 따라서 일부 브라우저에서는 블록의 실행 유무에 관계 없이 <code>zero</code>를 정의할 수 있습니다.</p> <p><a href="strict_mode">엄격 모드</a> 아래에서는 ES2015를 지원하는 브라우저라면 모두 <code>shouldDefineZero</code>가 참일 때, <code>if</code> 블록 스코프에 한정해 <code>zero</code>를 정의할 것입니다.</p> <p>함수를 조건적으로 정의하는 더 안전한 방법은 함수 표현식을 변수에 할당하는 것입니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="YTA8XJiWw3WzSUerSawzoudKKjPS0CTY/HGX3HJK+G0=" data-language="js"><span class="token keyword">var</span> zero<span class="token punctuation">;</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+   <span class="token function-variable function">zero</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"zero입니다."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="예제_2"><h2 id="예제_2">예제</h2>
+</section><section aria-labelledby="숫자_서식화"><h3 id="숫자_서식화">숫자 서식화</h3>
+<div class="section-content">
+<p>다음 예제는 주어진 숫자에 선행 0을 추가해 원하는 길이로 맞추는 함수입니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="1HHSs0TjWGekPocCRVdotWhGiYdxPI6R9ime6D+kyYg=" data-language="js"><span class="token keyword">function</span> <span class="token function">padZeros</span><span class="token punctuation">(</span><span class="token parameter">num<span class="token punctuation">,</span> totalLen</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+   <span class="token keyword">var</span> numStr <span class="token operator">=</span> num<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>             <span class="token comment">// 반환 값을 문자열로 초기화</span>
+   <span class="token keyword">var</span> numZeros <span class="token operator">=</span> totalLen <span class="token operator">-</span> numStr<span class="token punctuation">.</span>length<span class="token punctuation">;</span> <span class="token comment">// 필요한 0의 수 계산</span>
+   <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">var</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> numZeros<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      numStr <span class="token operator">=</span> <span class="token string">"0"</span> <span class="token operator">+</span> numStr<span class="token punctuation">;</span>
+   <span class="token punctuation">}</span>
+   <span class="token keyword">return</span> numStr<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div> <p>다음 명령문에서 <code>padZeros</code> 함수를 호출합니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="B0WMBpo30Vw7fM+UJRoo9Z80KfzGkGkx4EKFuXLia7k=" data-language="js"><span class="token keyword">var</span> result<span class="token punctuation">;</span>
+result <span class="token operator">=</span> <span class="token function">padZeros</span><span class="token punctuation">(</span><span class="token number">42</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// "0042"</span>
+result <span class="token operator">=</span> <span class="token function">padZeros</span><span class="token punctuation">(</span><span class="token number">42</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// "42"</span>
+result <span class="token operator">=</span> <span class="token function">padZeros</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// "0005"</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="함수_존재_여부_판단"><h3 id="함수_존재_여부_판단">함수 존재 여부 판단</h3>
+<div class="section-content">
+<p><code>typeof</code> 연산자를 사용하면 함수의 존재 여부를 판단할 수 있습니다. 아래 예제에서는 <code>window</code> 객체의 <code>noFunc</code>라는 속성이 함수인지 확인합니다. 그 후, 함수라면 호출하고, 함수가 아니면 임의의 다른 동작을 수행합니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="q6n8i3e6MNJUzKIdRTstLQZTxWd0ztZwW1zeJgz0Sug=" data-language="js"> <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token string">'function'</span> <span class="token operator">==</span> <span class="token keyword">typeof</span> window<span class="token punctuation">.</span>noFunc<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+   <span class="token comment">// noFunc() 사용</span>
+ <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+   <span class="token comment">// 다른 동작 수행</span>
+ <span class="token punctuation">}</span>
+</pre>
+</div> <p><code>if</code> 조건에 <code>noFunc</code>의 참조를 사용한 것에 주의하세요. 이름 뒤에 괄호 "()"를 붙이지 않았으므로 함수를 실제로 호출한 것은 아닙니다.</p>
+</div></section><h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://tc39.es/ecma262/multipage/ecmascript-language-functions-and-classes.html#sec-function-definitions">ECMAScript Language Specification <br><small># sec-function-definitions</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="statements/function"><code>function</code> 명령문</a></li> <li><a href="operators/function"><code>function</code> 표현식</a></li> <li><a href="statements/function*"><code>function*</code> 명령문</a></li> <li><a href="operators/function*"><code>function*</code> 표현식</a></li> <li><a href="global_objects/function"><code>Function</code></a></li> <li><a href="global_objects/generatorfunction"><code>GeneratorFunction</code></a></li> <li><a href="functions/arrow_functions">화살표 함수</a></li> <li><a href="functions/default_parameters">매개변수 기본 값</a></li> <li><a href="functions/rest_parameters">나머지 매개변수</a></li> <li><a href="functions/arguments"><code>arguments</code> 객체</a></li> <li><a href="functions/get">접근자</a></li> <li><a href="functions/set">설정자</a></li> <li><a href="functions/method_definitions">메서드 정의</a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Functions" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Functions</a>
+  </p>
+</div>

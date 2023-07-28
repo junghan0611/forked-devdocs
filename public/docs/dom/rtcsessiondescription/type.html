@@ -1,0 +1,39 @@
+<header><h1>RTCSessionDescription.type</h1></header><div class="section-content">
+<div class="notecard experimental" id="sect1"><p><strong>Experimental:</strong> <strong>This is an <a href="https://developer.mozilla.org/en-US/docs/MDN/Writing_guidelines/Experimental_deprecated_obsolete#experimental">experimental technology</a></strong><br>Check the <a href="#browser_compatibility">Browser compatibility table</a> carefully before using this in production.</p></div> <p>읽기 전용 값인 **<code>RTCSessionDescription.type</code>**은 세션 설명의 타입을 알려주는 <code>RTCSdpType</code>타입의 값입니다.</p>
+</div>
+<h2 id="syntax">Syntax</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="nRKbnWqVIdf5LZDpov+s++hyLp+cbknHuaxpY12Mn7Y=" data-language="js"><span class="token keyword">var</span> value <span class="token operator">=</span> sessionDescription<span class="token punctuation">.</span>type<span class="token punctuation">;</span>
+sessionDescription<span class="token punctuation">.</span>type <span class="token operator">=</span> value<span class="token punctuation">;</span>
+</pre>
+</div></div>
+<h3 id="값">값</h3>
+<div class="section-content">
+<p><code>RTCSdpType</code> 타입의 열거체에 사용 가능한 값들이 정의되어 있습니다.</p> <p>아래는 사용 가능한 값들입니다:</p> <ul> <li>
+<code>"offer"</code>, offer 혹은 answer 교환 과정에서 처음으로 제안된 세션 설명입니다.</li> <li>
+<code>"answer"</code>, offer 혹은 answer 교환 과정에서 채택한 세션 설명입니다.</li> <li>
+<code>"pranswer"</code>, 임시로 지정한 answer 입니다. 이 세션 설명 값은 채택한 값이 존재하면 변할 수도 있습니다.</li> <li>"<code>rollback</code>", 가장 최근의 안정적인 상태의 offer 혹은 answer 상태로 되돌아가라는 세션 설명입니다.</li> </ul>
+</div>
+<h2 id="example">Example</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="dgsVklSKp4DAOKCpBwUJD0yknCevd9BNe3PAQuoafQM=" data-language="js"><span class="token comment">// The remote description has been set previously on pc, a RTCPeerconnection</span>
+
+<span class="token function">alert</span><span class="token punctuation">(</span>pc<span class="token punctuation">.</span>remoteDescription<span class="token punctuation">.</span>type<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div></div>
+<h2 id="사양서">사양서</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://w3c.github.io/webrtc-pc/#dom-rtcsessiondescription-type">WebRTC: Real-Time Communication in Browsers <br><small># dom-rtcsessiondescription-type</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<h2 id="참조">참조</h2>
+<div class="section-content"><ul> <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/WebRTC_API" class="only-in-en-us">WebRTC <small>(en-US)</small></a></li> </ul></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/RTCSessionDescription/type" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/RTCSessionDescription/type</a>
+  </p>
+</div>

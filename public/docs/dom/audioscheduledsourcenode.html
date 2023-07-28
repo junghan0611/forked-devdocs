@@ -1,0 +1,27 @@
+<header><h1>AudioScheduledSourceNode</h1></header><div class="section-content">
+<p>Web Audio API의 일부인 <code>AudioScheduledSourceNode</code> 인터페이스는 (선택적으로는 명시된 시간에) 시작되고 정지되는 능력을 공유하는 몇몇 유형의 오디오 소스 노드 인터페이스에 대한 부모 인터페이스입니다. 구체적으로 말하면, 이 인터페이스는 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/AudioScheduledSourceNode/start"><code>start()</code> <small>(en-US)</small></a>와 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/AudioScheduledSourceNode/stop"><code>stop()</code> <small>(en-US)</small></a> 메서드 뿐만 아니라, <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/AudioScheduledSourceNode/ended_event"><code>onended</code> <small>(en-US)</small></a> 이벤트 처리기 또한 정의합니다.</p> <div class="notecard note" id="sect1"> <p><strong>참고:</strong> <code>AudioScheduledSourceNode</code> 객체는 직접적으로 생성될 수 없습니다. 대신, <a href="audiobuffersourcenode"><code>AudioBufferSourceNode</code></a>, <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/OscillatorNode"><code>OscillatorNode</code> <small>(en-US)</small></a>, <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/ConstantSourceNode"><code>ConstantSourceNode</code> <small>(en-US)</small></a>와 같이 이 인터페이스를 확장하는 인터페이스를 대신 사용하십시오.</p> </div> <p>다르게 서술되지 않는 한, <code>AudioScheduledSourceNode</code> 에 기반한 노드는 재생되고 있지 않을 때 무음을 출력합니다 (즉, <code>start()</code> 가 호출되기 전 그리고 <code>stop()</code> 이 호출된 후). 항상 그렇듯이, 무음은 0의 값을 가진 샘플들의 스트림으로 표현됩니다.</p>
+</div>
+<h2 id="속성">속성</h2>
+<div class="section-content"><p>부모 인터페이스인 <a href="audionode"><code>AudioNode</code></a>로부터 속성을 상속받습니다.</p></div>
+<h2 id="메서드">메서드</h2>
+<div class="section-content">
+<p>부모 인터페이스인 <a href="audionode"><code>AudioNode</code></a>로부터 메서드를 상속받고, 다음의 메서드를 추가합니다.</p> <dl> <dt id="start_en-us"><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/AudioScheduledSourceNode/start"><code>start()</code> <small>(en-US)</small></a></dt> <dd> <p>노드가 명시된 시간에 일정한 소리 재생을 시작하도록 예정합니다. 만약 시간이 명시되지 않으면, 노드는 즉시 재생을 시작합니다.</p> </dd> <dt id="stop_en-us"><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/AudioScheduledSourceNode/stop"><code>stop()</code> <small>(en-US)</small></a></dt> <dd> <p>노드가 명시된 시간에 재생을 멈추도록 예정합니다. 만약 시간이 명시되지 않으면, 노드는 즉시 재생을 정지합니다.</p> </dd> </dl>
+</div>
+<h2 id="이벤트">이벤트</h2>
+<div class="section-content">
+<p><a href="eventtarget/addeventlistener"><code>addEventListener()</code></a>를 사용하거나 이 인터페이스의 <code>oneventname</code> 속성에 이벤트 수신기를 할당하여 아래의 이벤트를 수신하십시오.</p> <dl> <dt id="ended"><a href="https://developer.mozilla.org/en-US/docs/Web/API/AudioScheduledSourceNode/ended_event" class="only-in-en-us"><code>ended</code> <small>(en-US)</small></a></dt> <dd> <p> 소스 노드가 재생을 정지했을 때 발생되는데, 그 이유는 노드가 예정된 정지 시간에 도달했기 때문이거나, 오디오의 전체 재생이 수행되었거나, 혹은 전체 버퍼가 재생되었기 때문입니다. 또한 <a href="https://developer.mozilla.org/en-US/docs/Web/API/AudioScheduledSourceNode/ended_event" class="only-in-en-us"><code>onended</code> <small>(en-US)</small></a> 이벤트 처리기 속성으로도 사용 가능합니다. </p> </dd> </dl>
+</div>
+<h2 id="명세서">명세서</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://webaudio.github.io/web-audio-api/#AudioScheduledSourceNode">Web Audio API <br><small># AudioScheduledSourceNode</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="web_audio_api/using_web_audio_api">Web Audio API 사용하기</a></li> <li><a href="audionode"><code>AudioNode</code></a></li> </ul></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/AudioScheduledSourceNode" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/AudioScheduledSourceNode</a>
+  </p>
+</div>

@@ -1,0 +1,49 @@
+<header><h1>Date.prototype.getTime()</h1></header><div class="section-content">
+<p><strong>getTime()</strong> 메서드는 표준시에 따라 지정된 날짜의 시간에 해당하는 숫자 값을 반환합니다.</p> <p>이 메서드를 사용하면 다른 <a href="../date"><code>Date</code></a> 객체에 날짜와 시간을 지정할 수 있습니다. 이 메소드는 기능적으로 <a href="valueof"><code>valueOf()</code></a> 메소드와 동일합니다.</p>
+</div>
+<section aria-labelledby="syntax"><h2 id="syntax">Syntax</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="WHtxPKZQR+0DdGYkyMcgwb8x8REdgOhfVMXoD00f5zA=" data-language="js">    dateObj<span class="token punctuation">.</span><span class="token function">getTime</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+</pre>
+</div></div></section><section aria-labelledby="return_value"><h3 id="return_value">Return value</h3>
+<div class="section-content"><p>1970 년 1 월 1 일 00:00:00 UTC와 주어진 날짜 사이의 경과 시간 (밀리 초)을 나타내는 숫자입니다.</p></div></section><section aria-labelledby="examples"><h2 id="examples">Examples</h2>
+</section><section aria-labelledby="날짜_복사에_gettime_사용"><h3 id="날짜_복사에_gettime_사용">날짜 복사에 getTime () 사용</h3>
+<div class="section-content">
+<p>동일한 시간 값으로 날짜 객체를 생성합니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="ltbm6RuRScv/XKf1DATH5HK1HZBYTaW2bW+KQm8X21k=" data-language="js"><span class="token comment">// 월은 0부터 시작하여 생일은 1995 년 1 월 10 일이됩니다.</span>
+<span class="token keyword">var</span> birthday <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token number">1994</span><span class="token punctuation">,</span> <span class="token number">12</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> copy <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+copy<span class="token punctuation">.</span><span class="token function">setTime</span><span class="token punctuation">(</span>birthday<span class="token punctuation">.</span><span class="token function">getTime</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="측정_실행_시간"><h3 id="측정_실행_시간">측정 실행 시간</h3>
+<div class="section-content">
+<p>새로 생성 된 <a href="../date"><code>Date</code></a> 객체에서 두 개의 연속 getTime () 호출을 뺀 후에이 두 호출 사이의 시간 범위를 지정하십시오. 일부 작업의 실행 시간을 계산하는 데 사용할 수 있습니다. 불필요한 <a href="../date"><code>Date</code></a> 객체를 인스턴스화하지 않으려면 <a href="now"><code>Date.now()</code></a>를 참조하십시오.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="qDehLjFDXSFEZW+Ctnr56U5mFL19YfGd7VaVjcu48pg=" data-language="js"><span class="token keyword">var</span> end<span class="token punctuation">,</span> start<span class="token punctuation">;</span>
+
+start <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">var</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token number">1000</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  Math<span class="token punctuation">.</span><span class="token function">sqrt</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+end <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'Operation took '</span> <span class="token operator">+</span> <span class="token punctuation">(</span>end<span class="token punctuation">.</span><span class="token function">getTime</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span> start<span class="token punctuation">.</span><span class="token function">getTime</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">' msec'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div>
+</div></section><h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://tc39.es/ecma262/multipage/numbers-and-dates.html#sec-date.prototype.gettime">ECMAScript Language Specification <br><small># sec-date.prototype.gettime</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="see_also"><h2 id="see_also">See also</h2>
+<div class="section-content"><ul> <li><a href="settime"><code>Date.prototype.setTime()</code></a></li> <li><a href="valueof"><code>Date.prototype.valueOf()</code></a></li> <li><a href="now"><code>Date.now()</code></a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Date/getTime" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Date/getTime</a>
+  </p>
+</div>

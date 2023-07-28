@@ -1,0 +1,55 @@
+<header><h1>Storage</h1></header><div class="section-content">
+<p><a href="web_storage_api">Web Storage API</a>의 <code>Storage</code> 인터페이스는 특정 도메인을 위한 세션 저장소 또는 로컬 저장소의 접근 경로로서 데이터를 추가하고 수정하거나 삭제할 수 있습니다.</p> <p>도메인의 세션 저장소를 수정해야 하면 <a href="window/sessionstorage"><code>Window.sessionStorage</code></a>에, 로컬 저장소를 수정해야 하면 <a href="window/localstorage"><code>Window.localStorage</code></a>에 접근하세요.</p>
+</div>
+<h2 id="속성">속성</h2>
+<div class="section-content"><dl> <dt id="storage.length">
+<a href="storage/length"><code>Storage.length</code></a> <span class="badge inline readonly">읽기 전용</span>
+</dt> <dd> <p><code>Storage</code> 객체에 저장된 데이터 항목의 수를 반환합니다.</p> </dd> </dl></div>
+<h2 id="메서드">메서드</h2>
+<div class="section-content"><dl> <dt id="storage.key"><a href="storage/key"><code>Storage.key()</code></a></dt> <dd> <p>주어진 숫자 <code>n</code>에 대하여 저장소의 <code>n</code>번째 항목 키를 반환합니다.</p> </dd> <dt id="storage.getitem_en-us"><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/Storage/getItem"><code>Storage.getItem()</code> <small>(en-US)</small></a></dt> <dd> <p>주어진 키에 연결된 값을 반환합니다.</p> </dd> <dt id="storage.setitem_en-us"><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/Storage/setItem"><code>Storage.setItem()</code> <small>(en-US)</small></a></dt> <dd> <p>키가 저장소에 존재하는 경우 값을 재설정합니다. 존재하지 않으면 키와 값을 저장소에 추가합니다.</p> </dd> <dt id="storage.removeitem"><a href="storage/removeitem"><code>Storage.removeItem()</code></a></dt> <dd> <p>주어진 키를 저장소에서 제거합니다.</p> </dd> <dt id="storage.clear_en-us"><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/Storage/clear"><code>Storage.clear()</code> <small>(en-US)</small></a></dt> <dd> <p>저장소의 모든 키를 저장소에서 제거합니다.</p> </dd> </dl></div>
+<h2 id="예제">예제</h2>
+<div class="section-content">
+<p>아래 코드에서는 <code>localStorage</code>에 접근해 <code>Storage</code> 객체를 접근합니다. 우선 <code>!localStorage.getItem('bgcolor')</code>를 사용해 데이터가 저장소에 존재하는지 알아냅니다. 데이터가 있으면 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/Storage/getItem"><code>Storage.getItem()</code> <small>(en-US)</small></a>으로 회수한 후 <code>setStyles()</code>로 페이지 스타일을 바꿉니다. 데이터가 없으면 <code>populateStorage()</code> 함수를 호출하고, 그 안에서는 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/Storage/setItem"><code>Storage.setItem()</code> <small>(en-US)</small></a>을 통해 데이터를 설정합니다. 그 후에는 동일하게 <code>setStyles()</code>를 사용합니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="bOayKlDq2cw3pJXVonln4clx4h6oS7I8n9Z5k70TJ8Q=" data-language="js"><span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span>localStorage<span class="token punctuation">.</span><span class="token function">getItem</span><span class="token punctuation">(</span><span class="token string">'bgcolor'</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token function">populateStorage</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+  <span class="token function">setStyles</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">function</span> <span class="token function">populateStorage</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  localStorage<span class="token punctuation">.</span><span class="token function">setItem</span><span class="token punctuation">(</span><span class="token string">'bgcolor'</span><span class="token punctuation">,</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">'bgcolor'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>value<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  localStorage<span class="token punctuation">.</span><span class="token function">setItem</span><span class="token punctuation">(</span><span class="token string">'font'</span><span class="token punctuation">,</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">'font'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>value<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  localStorage<span class="token punctuation">.</span><span class="token function">setItem</span><span class="token punctuation">(</span><span class="token string">'image'</span><span class="token punctuation">,</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">'image'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>value<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">function</span> <span class="token function">setStyles</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">var</span> currentColor <span class="token operator">=</span> localStorage<span class="token punctuation">.</span><span class="token function">getItem</span><span class="token punctuation">(</span><span class="token string">'bgcolor'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">var</span> currentFont <span class="token operator">=</span> localStorage<span class="token punctuation">.</span><span class="token function">getItem</span><span class="token punctuation">(</span><span class="token string">'font'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">var</span> currentImage <span class="token operator">=</span> localStorage<span class="token punctuation">.</span><span class="token function">getItem</span><span class="token punctuation">(</span><span class="token string">'image'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">'bgcolor'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>value <span class="token operator">=</span> currentColor<span class="token punctuation">;</span>
+  document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">'font'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>value <span class="token operator">=</span> currentFont<span class="token punctuation">;</span>
+  document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">'image'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>value <span class="token operator">=</span> currentImage<span class="token punctuation">;</span>
+
+  htmlElem<span class="token punctuation">.</span>style<span class="token punctuation">.</span>backgroundColor <span class="token operator">=</span> <span class="token string">'#'</span> <span class="token operator">+</span> currentColor<span class="token punctuation">;</span>
+  pElem<span class="token punctuation">.</span>style<span class="token punctuation">.</span>fontFamily <span class="token operator">=</span> currentFont<span class="token punctuation">;</span>
+  imgElem<span class="token punctuation">.</span><span class="token function">setAttribute</span><span class="token punctuation">(</span><span class="token string">'src'</span><span class="token punctuation">,</span> currentImage<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div> <div class="notecard note" id="sect1"> <p><strong>참고:</strong> 실제 작동 예제는 저희의 <a href="https://mdn.github.io/dom-examples/web-storage/" target="_blank">Web Storage Demo</a>에서 볼 수 있습니다.</p> </div>
+</div>
+<h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://html.spec.whatwg.org/multipage/webstorage.html#storage">HTML Standard <br><small># storage</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="web_storage_api/using_the_web_storage_api">Web Storage API 사용하기</a></li> <li><a href="window/localstorage"><code>Window.localStorage</code></a></li> <li><a href="window/sessionstorage"><code>Window.sessionStorage</code></a></li> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/CacheStorage"><code>CacheStorage</code> <small>(en-US)</small></a></li> </ul></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/Storage" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/Storage</a>
+  </p>
+</div>

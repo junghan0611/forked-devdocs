@@ -1,0 +1,31 @@
+<header><h1>ArrayBuffer</h1></header><div class="section-content">
+<p><code>ArrayBuffer</code> 객체는 일반적인 고정 길이 원시 이진 데이터 버퍼를 나타냅니다.</p> <p>ArrayBuffer는 바이트로 구성된 배열로, 다른 언어에서는 종종 "바이트 배열"이라고 부릅니다. <code>ArrayBuffer</code>에 담긴 정보를 직접 수정하는 것은 불가능하지만, 대신 <a href="typedarray">형식화 배열</a>이나 <a href="dataview"><code>DataView</code></a> 객체를 통해 버퍼를 특정 형식으로 나타내고, 이를 통해 버퍼의 내용을 읽거나 쓸 수 있습니다.</p> <p><a href="arraybuffer/arraybuffer"><code>ArrayBuffer()</code></a> 생성자는 주어진 길이(바이트)를 가진 새로운 <code>ArrayBuffer</code>를 생성합니다. <a href="https://developer.mozilla.org/en-US/docs/Glossary/Base64" class="only-in-en-us">Base64 <small>(en-US)</small></a> 문자열이나 <a href="https://developer.mozilla.org/en-US/docs/Web/API/FileReader/readAsArrayBuffer" class="only-in-en-us">로컬 파일 <small>(en-US)</small></a>과 같은 기존 데이터에서도 배열 버퍼를 생성할 수 있습니다.</p> <p><code>ArrayBuffer</code>는 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Transferable_objects">Transferable objects <small>(en-US)</small></a>입니다.</p>
+</div>
+<section aria-labelledby="생성자"><h2 id="생성자">생성자</h2>
+<div class="section-content"><dl> <dt id="arraybuffer"><a href="arraybuffer/arraybuffer"><code>ArrayBuffer()</code></a></dt> <dd> <p>새로운 <code>ArrayBuffer</code> 객체를 생성합니다.</p> </dd> </dl></div></section><section aria-labelledby="정적_속성"><h2 id="정적_속성">정적 속성</h2>
+<div class="section-content"><dl> <dt id="get_arraybufferspecies_en-us"><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer/@@species"><code>get ArrayBuffer[@@species]</code> <small>(en-US)</small></a></dt> <dd> <p>파생 개체를 만드는 데 사용되는 생성자 함수입니다.</p> </dd> </dl></div></section><section aria-labelledby="정적_메서드"><h2 id="정적_메서드">정적 메서드</h2>
+<div class="section-content"><dl> <dt id="arraybuffer.isviewarg"><a href="arraybuffer/isview"><code>ArrayBuffer.isView(<var>arg</var>)</code></a></dt> <dd> <p><code>arg</code> 유형이 <a href="typedarray">형식화 배열 객체</a>이거나 <a href="dataview"><code>DataView</code></a>와 같은 ArrayBuffer 중 하나인 경우, <code>true</code>를 반환합니다. 그렇지 않으면 <code>false</code>를 반환합니다.</p> </dd> </dl></div></section><section aria-labelledby="인스턴스_속성"><h2 id="인스턴스_속성">인스턴스 속성</h2>
+<div class="section-content"><dl> <dt id="arraybuffer.prototype.bytelength"><a href="arraybuffer/bytelength"><code>ArrayBuffer.prototype.byteLength</code></a></dt> <dd> <p>ArrayBuffer의 읽기 전용 크기(바이트)입니다. 배열리 구성될 때 설정되며 변경할 수 없습니다.</p> </dd> </dl></div></section><section aria-labelledby="인스턴스_메서드"><h2 id="인스턴스_메서드">인스턴스 메서드</h2>
+<div class="section-content"><dl> <dt id="arraybuffer.prototype.slice"><a href="arraybuffer/slice"><code>ArrayBuffer.prototype.slice()</code></a></dt> <dd> <p>컨탠츠의 <code>begin</code>(포함)부터 <code>end</code>(제외)까지 해당 <code>ArrayBuffer</code>의 바이트 복사본인 새 <code>ArrayBuffer</code>를 반환합니다. <code>begin</code> 또는 <code>end</code>가 음수이면 처음부터가 아니라 배열 끝에서 인덱스를 참조합니다.</p> </dd> </dl></div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+</section><section aria-labelledby="arraybuffer_만들기"><h3 id="arraybuffer_만들기">ArrayBuffer 만들기</h3>
+<div class="section-content">
+<p>이 예에서는 버퍼를 참조하는 <a href="int32array"><code>Int32Array</code></a> 뷰가 있는 8바이트 버퍼를 만듭니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="jGSW28OYS17rXiUfW56bCUZ29s8On08Hsa4jfb3115M=" data-language="js"><span class="token keyword">const</span> buffer <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayBuffer</span><span class="token punctuation">(</span><span class="token number">8</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> view <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Int32Array</span><span class="token punctuation">(</span>buffer<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div>
+</div></section><h2 id="명세서">명세서</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://tc39.es/ecma262/multipage/structured-data.html#sec-arraybuffer-objects">ECMAScript Language Specification <br><small># sec-arraybuffer-objects</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="https://github.com/zloirock/core-js#ecmascript-typed-arrays" target="_blank">Polyfill of <code>ArrayBuffer</code> in <code>core-js</code></a></li> <li><a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Guide/Typed_arrays">JavaScript 형식화 배열</a></li> <li><a href="sharedarraybuffer"><code>SharedArrayBuffer</code></a></li> <li><a href="../errors/invalid_array_length">RangeError: invalid array length</a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer</a>
+  </p>
+</div>

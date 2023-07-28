@@ -1,0 +1,53 @@
+<header><h1>Window.sessionStorage</h1></header><div class="section-content">
+<p><code>sessionStorage</code> 읽기 전용 속성은 현재 <a href="https://developer.mozilla.org/ko/docs/Glossary/Origin">출처</a> 세션의 <a href="../storage"><code>Storage</code></a> 객체에 접근합니다. <code>sessionStorage</code>는 <a href="localstorage"><code>localStorage</code></a>와 비슷하지만, <code>localStorage</code>의 데이터는 만료되지 않고, <code>sessionStorage</code>의 데이터는 <strong>페이지 세션</strong>이 끝날 때 제거되는 차이가 있습니다.</p> <ul> <li>페이지 세션은 브라우저가 열려있는 한 새로고침과 페이지 복구를 거쳐도 남아있습니다.</li> <li><strong>페이지를 새로운 탭이나 창에서 열면, 세션 쿠키의 동작과는 다르게 최상위 브라우징 맥락의 값을 가진 새로운 세션을 생성합니다.</strong></li> <li>같은 URL을 다수의 탭/창에서 열면 각각의 탭/창에 대해 새로운 <code>sessionStorage</code>를 생성합니다.</li> <li>탭/창을 닫으면 세션이 끝나고 <code>sessionStorage</code> 안의 객체를 초기화합니다.</li> </ul> <p><code>sessionStorage</code>에 저장한 자료는 <strong>페이지 프로토콜별로 구분</strong>합니다. 특히 HTTP(<a href="https://example.com" target="_blank">http://example.com</a>)로 방문한 페이지에서 저장한 데이터는 같은 페이지의 HTTPS(<a href="https://example.com" target="_blank">https://example.com</a>)와는 다른 <code>sessionStorage</code>에 저장됩니다.</p> <p>키와 값은 <strong>항상</strong> 각 문자에 2바이트를 할당하는 UTF-16 <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/String"><code>DOMString</code></a>의 형태로 저장합니다. 객체와 마찬가지로 정수 키는 자동으로 문자열로 변환합니다.</p>
+</div>
+<h2 id="구문">구문</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="jTiA3BrIUr7nNJUm+0ftBeFqwepoPK0o9JTYgZyihf8=" data-language="js">myStorage <span class="token operator">=</span> window<span class="token punctuation">.</span>sessionStorage<span class="token punctuation">;</span>
+</pre>
+</div></div>
+<h3 id="값">값</h3>
+<div class="section-content"><p>현재 <a href="https://developer.mozilla.org/ko/docs/Glossary/Origin">출처</a>의 세션 저장 공간에 접근할 수 있는 <a href="../storage"><code>Storage</code></a> 객체.</p></div>
+<h3 id="예외">예외</h3>
+<div class="section-content"><dl> <dt id="securityerror"><code>SecurityError</code></dt> <dd> <p>요청이 정책의 결정을 위반했거나, 출처가 <a href="https://developer.mozilla.org/ko/docs/Web/Security/Same-origin_policy#%EC%B6%9C%EC%B2%98%EC%9D%98_%EC%A0%95%EC%9D%98">유효한 스킴/호스트/포트 튜플</a>이 아닌 경우. 유효하지 않은 튜플은 출처가 <code>file:</code>이나 <code>data:</code> 스킴을 사용했을 때 발생할 수 있습니다. 예외의 예를 들자면 사용자가 특정 출처의 지속성 데이터를 거부하도록 브라우저를 설정하는 경우가 있습니다.</p> </dd> </dl></div>
+<h2 id="예제">예제</h2>
+<div class="section-content">
+<p>아래 코드는 현재 출처의 세션 <a href="../storage"><code>Storage</code></a> 객체에 접근한 후, <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/Storage/setItem"><code>Storage.setItem()</code> <small>(en-US)</small></a>을 사용해 항목 하나를 추가합니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="05pdzj09fiPqePPqG8LoSvOl4ocMrhpFLeIHUyAvXtY=" data-language="js">sessionStorage<span class="token punctuation">.</span><span class="token function">setItem</span><span class="token punctuation">(</span><span class="token string">'myCat'</span><span class="token punctuation">,</span> <span class="token string">'Tom'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div> <p>다음 예제는 텍스트 필드의 문장을 자동 저장하여 브라우저가 의도치 않게 재시작 되었을 경우 자동으로 텍스트 필드의 내용을 저장된 문장으로 복구하여 작성한 내용이 사라지지 않게 합니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="ejp5vMySApudPb43+JpQuxesuyyxm0tRBu75olq9uUo=" data-language="js"><span class="token comment">// 추적할 텍스트 입력 칸 가져오기</span>
+<span class="token keyword">let</span> field <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">"field"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// 자동저장 값이 존재하는지 판별</span>
+<span class="token comment">// (의도치 않게 페이지를 새로 불러올 경우에만 발생)</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span>sessionStorage<span class="token punctuation">.</span><span class="token function">getItem</span><span class="token punctuation">(</span><span class="token string">"autosave"</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">// 입력 칸의 콘텐츠 복구</span>
+  field<span class="token punctuation">.</span>value <span class="token operator">=</span> sessionStorage<span class="token punctuation">.</span><span class="token function">getItem</span><span class="token punctuation">(</span><span class="token string">"autosave"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// 텍스트 입력 칸의 변화 수신</span>
+field<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">"change"</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">// 결과를 세션에 저장</span>
+  sessionStorage<span class="token punctuation">.</span><span class="token function">setItem</span><span class="token punctuation">(</span><span class="token string">"autosave"</span><span class="token punctuation">,</span> field<span class="token punctuation">.</span>value<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div> <div class="notecard note" id="sect1"> <p><strong>참고:</strong> <a href="../web_storage_api/using_the_web_storage_api">Web Storage API 사용하기</a> 문서에서 전체 예제를 살펴보세요.</p> </div>
+</div>
+<h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://html.spec.whatwg.org/multipage/webstorage.html#dom-sessionstorage-dev">HTML Standard <br><small># dom-sessionstorage-dev</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="../web_storage_api/using_the_web_storage_api">Web Storage API 사용하기</a></li> <li><a href="localstorage"><code>Window.localStorage</code></a></li> </ul></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/Window/sessionStorage" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/Window/sessionStorage</a>
+  </p>
+</div>

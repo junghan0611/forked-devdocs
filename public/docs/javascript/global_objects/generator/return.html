@@ -1,0 +1,94 @@
+<header><h1>Generator.prototype.return()</h1></header><div class="section-content"><p>제너레이터의 <code>return()</code> 메서드는 현재 중단된 위치에서 제너레이터 본체에 리턴 문이 삽입 된 것처럼 작동합니다. 이는 <a href="../../statements/try...catch#the_finally-block"><code>try...finally</code></a> 블록을 사용하여 제너레이터를 정리 할 수 있도록 합니다.</p></div>
+<section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content"> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="yQWTzHYecziXFZ+YJ0PTPTWnPsxgtL6wS2nSBGrcJTQ=" data-language="js">generatorObject<span class="token punctuation">.</span><span class="token function">return</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="매개변수"><h2 id="매개변수">매개변수</h2>
+<div class="section-content"><dl> <dt id="value"><code>value</code></dt> <dd> <p>반환할 값입니다.</p> </dd> </dl></div></section><section aria-labelledby="반환_값"><h2 id="반환_값">반환 값</h2>
+<div class="section-content">
+<p>두 개의 속성을 가진 <a href="../object"><code>객체</code></a>이고, 이 속성은 다음과 같습니다.</p> <dl> <dt id="done"><code>done</code></dt> <dd> <p>불리언 값입니다.</p> <ul> <li>제너레이터 함수의 제어 흐름이 끝에 도달한 경우 <code>true</code>입니다.</li> <li>제너레이터 함수의 제어 흐름이 끝에 도달하지 않고 더 많은 값을 생성할 수 있는 경우 <code>false</code>입니다. 이는 <code>return</code>이 <a href="../../statements/try...catch#the_finally-block"><code>try...finally</code></a>에서 실행되었고 <code>finally</code> 블록에는 더 많은 <code>yield</code> 식이 있을때만 발생할 수 있습니다.</li> </ul> </dd> <dt id="value_2"><code>value</code></dt> <dd> <p>인수로 지정된 값이며, 만약 <code>yield</code> 식이 <a href="../../statements/try...catch#the_finally-block"><code>try...finally</code></a>로 감싸진 경우, 이 값은 <code>finally</code> 블록에서 yield 되거나 반환된 값입니다.</p> </dd> </dl>
+</div></section><section aria-labelledby="설명"><h2 id="설명">설명</h2>
+<div class="section-content"><p><code>return()</code> 메서드는 현재 중단된 위치의 제너레이터 본체에 삽입된 <code>return value;</code>처럼 보일 수 있습니다. 여기서 <code>value</code>는 <code>return()</code> 메서드에 전달된 값입니다. 따라서 일반적인 흐름에서 <code>return(value)</code>를 호출하면 <code>{ done: true, value: value }</code>가 반환됩니다. 그러나 <code>yield</code> 식이 <code>try...finally</code> 블록으로 감싸진 경우, 제어 흐름은 함수를 종료 하지 않고 <code>finally</code> 블록이 실행되도록 합니다. 이 경우 반환되는 값은 다를 수 있으며 <code>finally</code> 블록 내에 더 많은 <code>yield</code>식이 있다면 <code>done</code>도 <code>false</code>일 수 있습니다.</p></div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+</section><section aria-labelledby="return_사용하기"><h3 id="return_사용하기">return() 사용하기</h3>
+<div class="section-content">
+<p>다음 예제에서는 간단한 제너레이터와 <code>return</code> 메서드 사용을 보여줍니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="Iq+y26qRi75Hlo5qnB7lW9+QpZcAB/CFBv/nShlL2G4=" data-language="js"><span class="token keyword">function</span><span class="token operator">*</span> <span class="token function">gen</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">yield</span> <span class="token number">1</span><span class="token punctuation">;</span>
+  <span class="token keyword">yield</span> <span class="token number">2</span><span class="token punctuation">;</span>
+  <span class="token keyword">yield</span> <span class="token number">3</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">const</span> g <span class="token operator">=</span> <span class="token function">gen</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+g<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token comment">// { value: 1, done: false }</span>
+g<span class="token punctuation">.</span><span class="token function">return</span><span class="token punctuation">(</span><span class="token string">'foo'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// { value: "foo", done: true }</span>
+g<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token comment">// { value: undefined, done: true }</span>
+</pre>
+</div> <p>제너레이터가 이미 "완료" 상태 일때 <code>return(value)</code>가 호출되면 제너레이터는 "완료" 상태를 유지합니다.</p> <p>인수를 지정하지 않으면 반환된 객체의 <code>value</code> 속성은 <code>undefined</code>가 됩니다. 인수가 제공되면 <code>yield</code> 식이 <code>try...finally</code>로 감싸지지 않는 한 반환된 객체의 <code>value</code> 속성은 해당 값이 됩니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="3EgGevvWSRly3JGXg1PvlTz1TvZeJw3F/ltYkPGUYZ8=" data-language="js"><span class="token keyword">function</span><span class="token operator">*</span> <span class="token function">gen</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">yield</span> <span class="token number">1</span><span class="token punctuation">;</span>
+  <span class="token keyword">yield</span> <span class="token number">2</span><span class="token punctuation">;</span>
+  <span class="token keyword">yield</span> <span class="token number">3</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">const</span> g <span class="token operator">=</span> <span class="token function">gen</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+g<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// { value: 1, done: false }</span>
+g<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// { value: 2, done: false }</span>
+g<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// { value: 3, done: false }</span>
+g<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// { value: undefined, done: true }</span>
+g<span class="token punctuation">.</span><span class="token function">return</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// { value: undefined, done: true }</span>
+g<span class="token punctuation">.</span><span class="token function">return</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// { value: 1, done: true }</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="try...finally와_함께_return_사용하기"><h3 id="try...finally와_함께_return_사용하기">try...finally와 함께 return() 사용하기</h3>
+<div class="section-content">
+<p><code>yield</code> 식이 <code>try...finally</code> 블록으로 감싸진 경우에만 <code>return</code> 메소드가 호출되었다는 사실을 제너레이터에게 알릴 수 있습니다.</p> <p><code>try...finally</code> 문에서 <code>finally</code> 블록은 항상 실행되기 때문에 <code>try</code> 블록 안 일시 중단된 제너레이터에서 <code>return</code> 메서드가 호출되면 제너레이터의 실행이 <code>finally</code> 블록으로 진행됩니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="y0NLtXbrQBNH0udg6jNsalYEK5e9Ec3I28+xoODtRzY=" data-language="js"><span class="token keyword">function</span><span class="token operator">*</span> <span class="token function">gen</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">yield</span> <span class="token number">1</span><span class="token punctuation">;</span>
+  <span class="token keyword">try</span> <span class="token punctuation">{</span>
+    <span class="token keyword">yield</span> <span class="token number">2</span><span class="token punctuation">;</span>
+    <span class="token keyword">yield</span> <span class="token number">3</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span> <span class="token keyword">finally</span> <span class="token punctuation">{</span>
+    <span class="token keyword">yield</span> <span class="token string">'cleanup'</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">const</span> g1 <span class="token operator">=</span> <span class="token function">gen</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+g1<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// { value: 1, done: false }</span>
+
+<span class="token comment">// try...finally 전에 실행이 일시 중단됩니다.</span>
+g1<span class="token punctuation">.</span><span class="token function">return</span><span class="token punctuation">(</span><span class="token string">'early return'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// { value: 'early return', done: true }</span>
+
+<span class="token keyword">const</span> g2 <span class="token operator">=</span> <span class="token function">gen</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+g2<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// { value: 1, done: false }</span>
+g2<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// { value: 2, done: false }</span>
+
+<span class="token comment">// try...finally 내에서 실행이 일시 중단됩니다.</span>
+g2<span class="token punctuation">.</span><span class="token function">return</span><span class="token punctuation">(</span><span class="token string">'early return'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// { value: 'cleanup', done: false }</span>
+
+<span class="token comment">// 완료 값은 유지됩니다.</span>
+g2<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// { value: 'early return', done: true }</span>
+
+<span class="token comment">// 제너레이터가 완료된 상태입니다.</span>
+g2<span class="token punctuation">.</span><span class="token function">return</span><span class="token punctuation">(</span><span class="token string">'not so early return'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// { value: 'not so early return', done: true }</span>
+</pre>
+</div>
+</div></section><h2 id="명세서">명세서</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://tc39.es/ecma262/multipage/control-abstraction-objects.html#sec-generator.prototype.return">ECMAScript Language Specification <br><small># sec-generator.prototype.return</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="../../statements/function*"><code>function*</code></a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Generator/return" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Generator/return</a>
+  </p>
+</div>

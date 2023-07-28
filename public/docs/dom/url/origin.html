@@ -1,0 +1,34 @@
+<header><h1>URL.origin</h1></header><div class="section-content">
+<p><a href="../url"><code>URL</code></a> 인터페이스의 <code>origin</code> 읽기 전용 속성은 표현 중인 URL의 출처를 유니코드로 직렬화한 <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/String"><code>USVString</code></a>을 반환합니다. 정확한 구조는 URL의 유형에 따라 다릅니다.</p> <ul> <li>
+<code>http</code> 또는 <code>https</code> URL은 스킴 뒤 <code>'://'</code>, 도메인, <code>':'</code>, 마지막으로 포트(명시적으로 지정한 경우)로 구성됩니다.</li> <li>
+<code>file:</code> URL은 브라우저마다 다릅니다.</li> <li>
+<code>blob:</code> URL은 <code>blob:</code> 뒤의 URL 출처를 반환합니다. 예를 들어, <code>"blob:https://mozilla.org"</code>인 경우 <code>"https://mozilla.org"</code>를 반환합니다.</li> </ul>
+<div class="notecard note" id="sect1"> <p><strong>참고:</strong> 이 기능은 <a href="../web_workers_api">Web Worker</a>에서 사용할 수 있습니다</p> </div>
+</div>
+<h2 id="구문">구문</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="gOw0dbAPaIEWuDwol8DwdQ/e7yRJacbtBwqe8UNTHA0=" data-language="js"><span class="token keyword">const</span> originString <span class="token operator">=</span> url<span class="token punctuation">.</span>origin
+</pre>
+</div></div>
+<h3 id="값">값</h3>
+<div class="section-content"><p>A <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/String"><code>USVString</code></a>.</p></div>
+<h2 id="예제">예제</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="CeEDUSZZKeT+dQu634+RMCR9t7qkYZuX0S7gLj40MLM=" data-language="js"><span class="token keyword">const</span> url <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">URL</span><span class="token punctuation">(</span><span class="token string">"blob:https://mozilla.org:443/"</span><span class="token punctuation">)</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>url<span class="token punctuation">.</span>origin<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Logs 'https://mozilla.org'</span>
+</pre>
+</div></div>
+<h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://url.spec.whatwg.org/#dom-url-origin">URL Standard <br><small># dom-url-origin</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/URL/origin" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/URL/origin</a>
+  </p>
+</div>

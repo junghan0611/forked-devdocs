@@ -1,0 +1,49 @@
+<header><h1>Promise.prototype.finally()</h1></header><div class="section-content">
+<p><code>finally()</code> 메소드는 <a href="../promise"><code>Promise</code></a> 객체를 반환합니다. Promise가 처리되면 충족되거나 거부되는지 여부에 관계없이 지정된 콜백 함수가 실행됩니다. 이것은 Promise가 성공적으로 수행 되었는지 거절되었는지에 관계없이 <code>Promise</code>가 처리 된 후에 코드가 무조건 한 번은 실행되는 것을 제공합니다.</p> <p>이것은 Promise의 <a href="then"><code>then()</code></a>과 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/catch"><code>catch()</code> <small>(en-US)</small></a> 핸들러에서의 코드 중복을 피하게 합니다.</p>
+</div>
+<section aria-labelledby="문법"><h2 id="문법">문법</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="WHvgqU+XR1cyh+6i9S1gpBc7z9CVq3aSMnHB0rhptoI=" data-language="js">p<span class="token punctuation">.</span><span class="token function">finally</span><span class="token punctuation">(</span>onFinally<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+p<span class="token punctuation">.</span><span class="token function">finally</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// settled (fulfilled or rejected)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div></div></section><section aria-labelledby="parameters"><h3 id="parameters">Parameters</h3>
+<div class="section-content"><dl> <dt id="onfinally"><code>onFinally</code></dt> <dd> <p><code>Promise</code>가 처리된 후 <a href="../function"><code>Function</code></a> 이 호출됩니다.</p> </dd> </dl></div></section><section aria-labelledby="return_value"><h3 id="return_value">Return value</h3>
+<div class="section-content"><p><code>finally</code> 핸들러는 <code>onFinally</code> 라는 지정된 함수의 <a href="../promise"><code>Promise</code></a>가 반환됩니다.</p></div></section><section aria-labelledby="설명"><h2 id="설명">설명</h2>
+<div class="section-content">
+<p><code>finally()</code> 메서드는 결과에 관계없이 promise가 처리되면 무언가를 프로세싱 또는 정리를 수행하려는 경우에 유용합니다.</p> <p><code>finally()</code> 메서드는 <code>.then(onFinally, onFinally)</code> 를 호출하는 것과 매우 비슷하지만 몇 가지 차이점이 있습니다:</p> <ul> <li>함수를 인라인으로 만들 때, 두 번 선언해야 하지 않고 한 번만 전달하거나 그것을 위한 변수를 만들 수 있습니다.</li> <li>
+<code>finally</code> 콜백은 어떠한 인수도 전달받지 않습니다, 왜냐하면 promise가 이행되었는지 또는 거부되었는지를 판단할 수 없기 때문입니다. promise의 왜 거부되었는지 또는 이행되었을때 반환되는 값이 필요하지 않거나 제공할 필요가 없을 때 활용합니다.</li> <li>Promise.reject (3) .finally (() =&gt; {}) Promise.reject (3) .finally (() =&gt; {}) (약속 안 함) )는 3으로 거부됩니다.</li> <li>
+<code>Promise.resolve(2).then(() =&gt; {}, () =&gt; {})</code>(<code>undefined</code>로 해결될) 와 달리, <code>Promise.resolve(2).finally(() =&gt; {})</code> 는 값 <code>2</code>로 해결됩니다.</li> <li>유사하게 <code>Promise.reject(3).then(() =&gt; {}, () =&gt; {})</code> (<code>undefined</code>로 거부될)와는 달리 <code>Promise.reject(3).finally(() =&gt; {})</code> 는 값 <code>3</code>로 거부됩니다.</li> </ul> <div class="notecard note" id="sect1"> <p><strong>참고:</strong> <code>finally</code> 콜백에서 <code>throw</code> (또는 거부된 promise를 반환)하면 <code>throw()</code>를 호출 할 때 지정된 거부 이유로 새롭게 만들어진 promise를 반환합니다.</p> </div>
+</div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="ek59AW4bPnfl2+yUuS6vo4aperUKzKdGlU0Thr3VLGY=" data-language="js"><span class="token keyword">let</span> isLoading <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+
+<span class="token function">fetch</span><span class="token punctuation">(</span>myRequest<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">response</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">var</span> contentType <span class="token operator">=</span> response<span class="token punctuation">.</span>headers<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">"content-type"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span>contentType <span class="token operator">&amp;&amp;</span> contentType<span class="token punctuation">.</span><span class="token function">includes</span><span class="token punctuation">(</span><span class="token string">"application/json"</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">return</span> response<span class="token punctuation">.</span><span class="token function">json</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">TypeError</span><span class="token punctuation">(</span><span class="token string">"Oops, we haven't got JSON!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">json</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token comment">/* process your JSON further */</span> <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token punctuation">.</span><span class="token function">catch</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">error</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>error<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token punctuation">.</span><span class="token function">finally</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> isLoading <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div></div></section><h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://tc39.es/ecma262/multipage/control-abstraction-objects.html#sec-promise.prototype.finally">ECMAScript Language Specification <br><small># sec-promise.prototype.finally</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="더보기"><h2 id="더보기">더보기</h2>
+<div class="section-content"><ul> <li><a href="../promise"><code>Promise</code></a></li> <li><a href="then"><code>Promise.prototype.then()</code></a></li> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/catch"><code>Promise.prototype.catch()</code> <small>(en-US)</small></a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Promise/finally" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Promise/finally</a>
+  </p>
+</div>

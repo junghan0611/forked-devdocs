@@ -1,0 +1,40 @@
+<header><h1>URLSearchParams.toString()</h1></header><div class="section-content">
+<p><a href="../urlsearchparams"><code>URLSearchParams</code></a> 인터페이스의 <code>toString()</code> 메서드는 URL에 사용할 수 있는 쿼리 문자열을 반환합니다.</p> <div class="notecard note" id="sect1"> <p><strong>참고:</strong> 이 메서드는 선행 <code>'?'</code>를 붙이지 않은 쿼리 문자열을 반환합니다. 이 동작은 <code>'?'</code>를 포함한 값을 반환하는 <a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLAnchorElement/search" class="only-in-en-us"><code>window.location.search</code> <small>(en-US)</small></a>와 다릅니다.</p> </div>
+<div class="notecard note" id="sect2"> <p><strong>참고:</strong> 이 기능은 <a href="../web_workers_api">Web Worker</a>에서 사용할 수 있습니다</p> </div>
+</div>
+<h2 id="구문">구문</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="Lq0jsvmSlW5IOdPLUza9KVGj1ExJnl+VrQ7DchaWjuU=" data-language="js"><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+</pre>
+</div></div>
+<h3 id="매개변수">매개변수</h3>
+<div class="section-content"><p>없음.</p></div>
+<h3 id="반환_값">반환 값</h3>
+<div class="section-content"><p>물음표 없는 문자열입니다. 아무런 검색 매개변수도 설정하지 않은 경우에는 빈 문자열을 반환합니다.</p></div>
+<h2 id="예제">예제</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="QzcVaw4dDgtKKg27NOdaYYV23OSyVoaouTlazMzJS4Q=" data-language="js"><span class="token keyword">const</span> url <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">URL</span><span class="token punctuation">(</span><span class="token string">'https://example.com?foo=1&amp;bar=2'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> params <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">URLSearchParams</span><span class="token punctuation">(</span>url<span class="token punctuation">.</span>search<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// 두 번째 foo 매개변수 추가</span>
+params<span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span><span class="token string">'foo'</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>params<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 'foo=1&amp;bar=2&amp;foo=4' 출력</span>
+</pre>
+</div></div>
+<h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://url.spec.whatwg.org/#urlsearchparams-stringification-behavior">URL Standard <br><small># urlsearchparams-stringification-behavior</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li>
+<a href="../url"><code>URL</code></a> 인터페이스.</li> <li><a href="https://developers.google.com/web/updates/2016/01/urlsearchparams?hl=en" target="_blank">Google Developers: Easy URL manipulation with URLSearchParams</a></li> </ul></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/URLSearchParams/toString" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/URLSearchParams/toString</a>
+  </p>
+</div>

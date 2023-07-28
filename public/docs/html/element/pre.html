@@ -1,0 +1,67 @@
+<header><h1>&lt;pre&gt;</h1></header><div class="section-content"><p><code>&lt;pre&gt;</code>는 미리 서식을 지정한 텍스트를 나타내며, HTML에 작성한 내용 그대로 표현합니다. 텍스트는 보통 고정폭 글꼴을 사용해 렌더링하고, 요소 내 공백문자를 그대로 유지합니다.</p></div>
+<h2 id="시도해보기">시도해보기</h2>
+<div class="section-content">
+<iframe class="interactive is-tabbed-standard-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/tabbed/pre.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe>  <figure class="table-container"><div class="_table"><table class="properties"> <tbody> <tr> <th scope="row"><a href="../content_categories">콘텐츠 카테고리</a></th> <td>
+<a href="../content_categories#%ea%b5%ac%eb%ac%b8_%ec%bd%98%ed%85%90%ec%b8%a0">플로우 콘텐츠</a>, 뚜렷한 콘텐츠.</td> </tr> <tr> <th scope="row">가능한 콘텐츠</th> <td>
+<a href="../content_categories#%ea%b5%ac%eb%ac%b8_%ec%bd%98%ed%85%90%ec%b8%a0">구문 콘텐츠</a>.</td> </tr> <tr> <th scope="row">태그 생략</th> <td>불가능, 시작과 끝에 태그를 추가하는것은 필수입니다.</td> </tr> <tr> <th scope="row">가능한 부모 요소</th> <td>
+<a href="../content_categories#%ea%b5%ac%eb%ac%b8_%ec%bd%98%ed%85%90%ec%b8%a0">플로우 콘텐츠</a>를 허용하는 모든 요소.</td> </tr> <tr> <th scope="row">가능한 ARIA 역할</th> <td>모두</td> </tr> <tr> <th scope="row">DOM 인터페이스</th> <td><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLPreElement"><code>HTMLPreElement</code> <small>(en-US)</small></a></td> </tr> </tbody> </table></div></figure>
+</div>
+<h2 id="특성">특성</h2>
+<div class="section-content">
+<p>이 요소는 <a href="../global_attributes">전역 특성</a>만 포함합니다.</p> </div>
+<h2 id="예제">예제</h2>
+
+<h3 id="html">HTML</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="CVWygENipuDDARGT1QUN4oKv5LPHJREYN4/mJyuD3/M=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>CSS로 글자 색을 바꾸는건 쉽습니다.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>pre</span><span class="token punctuation">&gt;</span></span>
+body {
+  color:red;
+}
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>pre</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div></div>
+<h3 id="결과">결과</h3>
+<div class="section-content"><div class="code-example" id="sect2">
+
+<iframe class="sample-code-frame" title="예제 sample" id="frame_예제" src="https://live.mdnplay.dev/ko/docs/Web/HTML/Element/pre/runner.html?id=%EC%98%88%EC%A0%9C" loading="lazy"></iframe>
+</div></div>
+<h2 id="접근성_고려사항">접근성 고려사항</h2>
+<div class="section-content">
+<p><code>&lt;pre&gt;</code> 요소로 만든 이미지나 도표에 대한 대체 설명을 지정하는 것이 중요합니다. 대체 설명은 분명하고 간결하게 이미지 또는 도표 콘텐츠를 설명해야 합니다.</p> <p>시력이 낮은 사용자가 스크린 리더와 같은 보조 기술을 사용 중이라면, 미리 서식 적용한 텍스트의 문자를 차례대로 읽어서는 이게 무엇을 의미하는지 이해하지 못할 수 있습니다.</p> <p><a href="figure"><code>&lt;figure&gt;</code></a>과 <a href="figcaption"><code>&lt;figcaption&gt;</code></a>에 더해 <a href="../global_attributes#id"><code>id</code></a>와 <a href="https://developer.mozilla.org/ko/docs/Web/Accessibility/ARIA">ARIA</a> <code>role</code>과 <code>aria-labelledby</code> 특성을 조합하면 <code>&lt;pre&gt;</code>를 마치 이미지처럼 표현하면서 <code>&lt;figcaption&gt;</code>을 대체 설명으로 사용할 수 있습니다.</p>
+</div>
+<h3 id="예제_2">예제</h3>
+<div class="section-content">
+<pre class="notranslate">&lt;figure role="img" aria-labelledby="cow-caption"&gt;
+  &lt;pre&gt;
+  _______________________
+&lt; 나는 이 분야의 전문가다. &gt;
+  -----------------------
+         \   ^__^
+          \  (oo)\_______
+             (__)\       )\/\
+                 ||----w |
+                 ||     ||
+  &lt;/pre&gt;
+  &lt;figcaption id="cow-caption"&gt;
+    소 한 마리가 "나는 이 분야의 전문가다"라고 말하고 있습니다. 소는 미리 서식을 적용한 텍스트로 그려져있습니다.
+  &lt;/figcaption&gt;
+&lt;/figure&gt;
+</pre> <ul> <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/Understanding_WCAG/Perceivable" class="only-in-en-us">MDN Understanding WCAG, Guideline 1.1 explanations <small>(en-US)</small></a></li> <li><a href="https://www.w3.org/TR/WCAG20-TECHS/H86.html" target="_blank">H86: Providing text alternatives for ASCII art, emoticons, and leetspeak | W3C Techniques for WCAG 2.0</a></li> </ul>
+</div>
+<h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-pre-element">HTML Standard <br><small># the-pre-element</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li>CSS: <a href="https://developer.mozilla.org/ko/docs/Web/CSS/white-space"><code>white-space</code></a>, <a href="https://developer.mozilla.org/ko/docs/Web/CSS/word-break"><code>word-break</code></a>
+</li> </ul></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/HTML/Element/pre" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/HTML/Element/pre</a>
+  </p>
+</div>

@@ -4,10 +4,10 @@ module Docs
 
     # release = '2023-04-24'
     self.name = 'HTML'
-    self.base_url = 'https://developer.mozilla.org/en-US/docs/Web/HTML'
+    self.base_url = 'https://developer.mozilla.org/ko/docs/Web/HTML'
     self.links = {
-      home: 'https://developer.mozilla.org/en-US/docs/Web/HTML',
-      code: 'https://github.com/mdn/content/tree/main/files/en-us/web/html'
+      home: 'https://developer.mozilla.org/ko/docs/Web/HTML',
+      code: 'https://github.com/mdn/translated-content/tree/main/files/ko/web/html'
     }
 
     html_filters.push 'html/clean_html', 'html/entries'
@@ -24,7 +24,7 @@ module Docs
       '/Global_attributes/data-%2A' => '/Global_attributes/data-*' }
 
     options[:fix_urls] = ->(url) do
-      url.sub! 'https://developer.mozilla.org/en-US/docs/HTML/', "#{Html.base_url}/" unless url.include?('Content_categories')
+      url.sub! 'https://developer.mozilla.org/ko/docs/HTML/', "#{Html.base_url}/" unless url.include?('Content_categories')
       url
     end
 

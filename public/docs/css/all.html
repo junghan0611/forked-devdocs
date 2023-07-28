@@ -1,0 +1,101 @@
+<header><h1>all</h1></header><div class="section-content"><p><a href="https://developer.mozilla.org/ko/docs/Web/CSS">CSS</a> <code>all</code> <a href="shorthand_properties">단축 속성</a>은 요소의 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/unicode-bidi"><code>unicode-bidi</code> <small>(en-US)</small></a>, <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/direction"><code>direction</code> <small>(en-US)</small></a>, <a href="using_css_custom_properties">CSS 사용자 지정 속성</a>을 제외한 모든 속성을 초기화합니다. 초깃값, 상속값, 아니면 다른 스타일시트 출처의 값으로 설정할 수 있습니다.</p></div>
+<section aria-labelledby="시도해보기"><h2 id="시도해보기">시도해보기</h2>
+<div class="section-content"><iframe class="interactive is-default-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/css/all.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe></div></section><section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content">
+<div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="tPOjCbkcsFmQTo9n0oGBR/0k94TnUZwFAkC0UXI93h0=" data-language="css"><span class="token comment">/* 전역 값 */</span>
+<span class="token property">all</span><span class="token punctuation">:</span> initial<span class="token punctuation">;</span>
+<span class="token property">all</span><span class="token punctuation">:</span> inherit<span class="token punctuation">;</span>
+<span class="token property">all</span><span class="token punctuation">:</span> unset<span class="token punctuation">;</span>
+
+<span class="token comment">/* CSS Cascading and Inheritance Level 4 */</span>
+<span class="token property">all</span><span class="token punctuation">:</span> revert<span class="token punctuation">;</span>
+</pre>
+</div> <p><code>all</code> 속성은 CSS 전역 키워드 값 중 하나를 사용해 지정합니다. 그러나 어느것도 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/unicode-bidi"><code>unicode-bidi</code> <small>(en-US)</small></a>와 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/direction"><code>direction</code> <small>(en-US)</small></a> 속성에는 영향을 주지 않는 점을 주의하세요.</p>
+</div></section><section aria-labelledby="값"><h3 id="값">값</h3>
+<div class="section-content"><dl> <dt id="initial"><a href="initial"><code>initial</code></a></dt> <dd> <p>요소의 모든 속성을 <a href="initial_value">초깃값</a>으로 변경합니다.</p> </dd> <dt id="inherit"><a href="inherit"><code>inherit</code></a></dt> <dd> <p>요소의 모든 속성을 <a href="inheritance">상속값</a>으로 변경합니다.</p> </dd> <dt id="unset"><a href="unset"><code>unset</code></a></dt> <dd> <p>요소의 모든 속성을, 속성이 값을 상속하는 경우 상속값으로, 아니면 초깃값으로 변경합니다.</p> </dd> <dt id="revert"><a href="revert"><code>revert</code></a></dt> <dd> <p>선언이 속한 스타일시트의 출처에 따라 다른 동작을 합니다.</p> <ul> <li>
+<a href="cascade#user-agent_stylesheets">사용자 에이전트 출처</a> <ul> <li>: <code>unset</code>과 동일합니다.</li> </ul> </li> <li>
+<a href="cascade#user_stylesheets">사용자 출처</a> <ul> <li>
+<a href="cascade">: 종속</a>을 사용자 에이전트 단계까지 되돌려서, <a href="specified_value">지정값</a>이 마치 저작자와 사용자 단계의 규칙이 없었던 것처럼 계산되도록 합니다.</li> </ul> </li> <li>
+<a href="cascade#author_stylesheets">저작자 출처</a> <ul> <li>
+<a href="cascade">: 종속</a>을 사용자 에이전트 단계까지 되돌려서, <a href="specified_value">지정값</a>이 마치 저작자 단계의 규칙이 없었던 것처럼 계산되도록 합니다. <code>revert</code>만 고려했을 때, 저작자 출처는 재정의(Override) 및 애니메이션(Animation) 출처를 포함합니다.</li> </ul> </li> </ul> </dd> </dl></div></section><section aria-labelledby="형식_정의"><h2 id="형식_정의">형식 정의</h2>
+<div class="section-content"><figure class="table-container"><div class="_table"><table class="properties"><tbody>
+<tr>
+<th scope="row"><a href="initial_value">초기값</a></th>
+<td>There is no practical initial value for it.</td>
+</tr>
+<tr>
+<th scope="row">적용대상</th>
+<td>all elements</td>
+</tr>
+<tr>
+<th scope="row"><a href="inheritance">상속</a></th>
+<td>no</td>
+</tr>
+<tr>
+<th scope="row"><a href="computed_value">계산 값</a></th>
+<td>as the specified value applies to each property this is a shorthand for.</td>
+</tr>
+<tr>
+<th scope="row">Animation type</th>
+<td>as each of the properties of the shorthand (all properties but <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/unicode-bidi" class="only-in-en-us"><code>unicode-bidi</code> <small>(en-US)</small></a> and <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/direction" class="only-in-en-us"><code>direction</code> <small>(en-US)</small></a>)</td>
+</tr>
+</tbody></table></div></figure></div></section><section aria-labelledby="형식_구문"><h2 id="형식_구문">형식 구문</h2>
+<div class="section-content"><pre class="notranslate"><span class="token property" id="all">all = </span><br>  <span class="token keyword">initial</span>       <a href="value_definition_syntax#single_bar">|</a><br>  <span class="token keyword">inherit</span>       <a href="value_definition_syntax#single_bar">|</a><br>  <span class="token keyword">unset</span>         <a href="value_definition_syntax#single_bar">|</a><br>  <span class="token keyword">revert</span>        <a href="value_definition_syntax#single_bar">|</a><br>  <span class="token keyword">revert-layer</span>  <br><br></pre></div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+</section><section aria-labelledby="html"><h3 id="html">HTML</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="jbRYxNxL+d1WSq1rMFyfc4XBbKXHEjrtUYDz+GErpvo=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>blockquote</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>quote<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>blockquote</span><span class="token punctuation">&gt;</span></span>
+Phasellus eget velit sagittis.
+</pre>
+</div></div></section><section aria-labelledby="css"><h3 id="css">CSS</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="5qy/JLChryDTSeReKJhc+VcVcCwZh7o6c2N1hrEfDQQ=" data-language="css"><span class="token selector">body</span> <span class="token punctuation">{</span>
+  <span class="token property">font-size</span><span class="token punctuation">:</span> small<span class="token punctuation">;</span>
+  <span class="token property">background-color</span><span class="token punctuation">:</span> #F0F0F0<span class="token punctuation">;</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> blue<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">blockquote</span> <span class="token punctuation">{</span>
+  <span class="token property">background-color</span><span class="token punctuation">:</span> skyblue<span class="token punctuation">;</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> red<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div></div></section><section aria-labelledby="결과"><h3 id="결과">결과</h3>
+<div class="section-content">
+<h4 id="all_속성_없음">
+<code>all</code> 속성 없음</h4>  
+<div class="code-example" id="sect1">
+
+<iframe class="sample-code-frame" title="all 속성 없음" id="frame_ex0" width="200" height="125" src="https://live.mdnplay.dev/ko/docs/Web/CSS/all/runner.html?id=ex0" loading="lazy"></iframe>
+</div> <p>The <a href="https://developer.mozilla.org/ko/docs/Web/HTML/Element/blockquote"><code>&lt;blockquote&gt;</code></a>가 브라우저 기본 스타일과 함께, 지정한 배경 및 텍스트 색상을 사용합니다. 또한 블록 요소로 동작하여 뒤의 텍스트가 아래에 위치합니다.</p> <h4 id="allunset"><code>all:unset</code></h4>  
+<div class="code-example" id="sect2">
+
+<iframe class="sample-code-frame" title="all:unset" id="frame_ex1" width="200" height="125" src="https://live.mdnplay.dev/ko/docs/Web/CSS/all/runner.html?id=ex1" loading="lazy"></iframe>
+</div> <p><a href="https://developer.mozilla.org/ko/docs/Web/HTML/Element/blockquote"><code>&lt;blockquote&gt;</code></a>가 브라우저 기본 스타일을 사용하지 않습니다. 이제 인라인 요소(초깃값)이며, <a href="background-color"><code>background-color</code></a>가 <code>transparent</code>(초깃값)입니다. 그러나 <a href="font-size"><code>font-size</code></a>는 여전히 <code>small</code>(상속값)이고 <a href="color"><code>color</code></a>도 <code>blue</code>(상속값)입니다.</p> <h4 id="allinitial"><code>all:initial</code></h4>  
+<div class="code-example" id="sect3">
+
+<iframe class="sample-code-frame" title="all:initial" id="frame_ex2" width="200" height="125" src="https://live.mdnplay.dev/ko/docs/Web/CSS/all/runner.html?id=ex2" loading="lazy"></iframe>
+</div> <p><a href="https://developer.mozilla.org/ko/docs/Web/HTML/Element/blockquote"><code>&lt;blockquote&gt;</code></a>가 브라우저 기본 스타일을 사용하지 않습니다. 이제 인라인 요소(초깃값)이며, <a href="background-color"><code>background-color</code></a>가 <code>transparent</code>(초깃값)이고, <a href="font-size"><code>font-size</code></a>는 <code>normal</code>(초깃값), <a href="color"><code>color</code></a>는 <code>black</code>(초깃값)입니다.</p> <h4 id="allinherit"><code>all:inherit</code></h4>  
+<div class="code-example" id="sect4">
+
+<iframe class="sample-code-frame" title="all:inherit" id="frame_ex3" width="200" height="125" src="https://live.mdnplay.dev/ko/docs/Web/CSS/all/runner.html?id=ex3" loading="lazy"></iframe>
+</div> <p><a href="https://developer.mozilla.org/ko/docs/Web/HTML/Element/blockquote"><code>&lt;blockquote&gt;</code></a>가 브라우저 기본 스타일을 사용하지 않습니다. 블록 요소(부모 <a href="https://developer.mozilla.org/ko/docs/Web/HTML/Element/body"><code>&lt;body&gt;</code></a>에서 상속)이고, <a href="background-color"><code>background-color</code></a>은 <code>#F0F0F0</code>(상속값), <a href="font-size"><code>font-size</code></a>는 <code>small</code>(상속값), <a href="color"><code>color</code></a>는 <code>blue</code>(상속값)입니다.</p>
+</div></section><h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://drafts.csswg.org/css-cascade/#all-shorthand">CSS Cascading and Inheritance Level 4 <br><small># all-shorthand</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><p>CSS 전역 키워드 값: <a href="initial"><code>initial</code></a>, <a href="inherit"><code>inherit</code></a>, <a href="unset"><code>unset</code></a>, <a href="revert"><code>revert</code></a></p></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/CSS/all" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/CSS/all</a>
+  </p>
+</div>

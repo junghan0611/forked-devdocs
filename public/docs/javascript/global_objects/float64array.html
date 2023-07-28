@@ -1,0 +1,57 @@
+<header><h1>Float64Array</h1></header><div class="section-content"><p> <code>Float64Array</code> 형식화 배열(TypedArray)은 플랫폼의 바이트 순서를 따르는 64비트 부동 소수점(C의 <code>double</code> 데이터 타입에 대응) 배열입니다. 바이트 순서를 제어해야 하는 경우 대신 <a href="dataview"><code>DataView</code></a>를 사용합니다. 배열의 내용은 0으로 초기화됩니다. 배열이 생성되면 객체의 메서드를 사용하거나 표준 배열 인덱스 구문(즉, 대괄호 표기법 사용)을 사용하여 배열의 요소를 참조할 수 있습니다. </p></div>
+<section aria-labelledby="생성자"><h2 id="생성자">생성자</h2>
+<div class="section-content"><dl> <dt id="float64array"><a href="float64array/float64array"><code>Float64Array()</code></a></dt> <dd> <p>새로운 <code>Float64Array</code> 객체를 생성합니다.</p> </dd> </dl></div></section><section aria-labelledby="정적_속성"><h2 id="정적_속성">정적 속성</h2>
+<div class="section-content">
+<p>부모 <a href="typedarray"><code>TypedArray</code></a>에서 정적 속성을 상속합니다.</p> <dl> <dt id="float64array.bytes_per_element"><a href="typedarray/bytes_per_element"><code>Float64Array.BYTES_PER_ELEMENT</code></a></dt> <dd> <p>요소 크기를 숫자로 반환합니다. <code>Float64Array</code>의 경우 <code>8</code> 입니다.</p> </dd> <dt id="float64array.name"><a href="function/name"><code>Float64Array.name</code></a></dt> <dd> <p>생성자 이름을 문자열로 반환합니다. <code>Float64Array</code> 타입의 경우 <code>"Float64Array"</code>입니다.</p> </dd> </dl>
+</div></section><section aria-labelledby="정적_메서드"><h2 id="정적_메서드">정적 메서드</h2>
+<div class="section-content"><p>부모 <a href="typedarray"><code>TypedArray</code></a>에서 정적 메서드를 상속합니다.</p></div></section><section aria-labelledby="인스턴스_속성"><h2 id="인스턴스_속성">인스턴스 속성</h2>
+<div class="section-content">
+<p>부모 <a href="typedarray"><code>TypedArray</code></a>에서 인스턴스 속성을 상속합니다.</p> <dl> <dt id="float64array.prototype.bytes_per_element"><a href="typedarray/bytes_per_element"><code>Float64Array.prototype.BYTES_PER_ELEMENT</code></a></dt> <dd> <p>요소 크기를 숫자로 반환합니다. <code>Float64Array</code>의 경우 <code>8</code> 입니다.</p> </dd> </dl>
+</div></section><section aria-labelledby="인스턴스_메서드"><h2 id="인스턴스_메서드">인스턴스 메서드</h2>
+<div class="section-content"><p>부모 <a href="typedarray"><code>TypedArray</code></a>에서 인스턴스 메서드를 상속합니다.</p></div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+</section><section aria-labelledby="float64array를_생성하기_위한_각기_다른_여러_방법"><h3 id="float64array를_생성하기_위한_각기_다른_여러_방법">
+<code>Float64Array</code>를 생성하기 위한 각기 다른 여러 방법</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="uX08O1b9aiquoDu2V44fRALBsl8t/aPkgmoHc0ER/3c=" data-language="js"><span class="token comment">// 길이로부터 생성</span>
+<span class="token keyword">const</span> float64 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Float64Array</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+float64<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">42</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>float64<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 42</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>float64<span class="token punctuation">.</span>length<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 2</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>float64<span class="token punctuation">.</span><span class="token constant">BYTES_PER_ELEMENT</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 8</span>
+
+<span class="token comment">// 배열로부터 생성</span>
+<span class="token keyword">const</span> x <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Float64Array</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">21</span><span class="token punctuation">,</span> <span class="token number">31</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>x<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 31</span>
+
+<span class="token comment">// 다른 TypedArray로부터 생성</span>
+<span class="token keyword">const</span> y <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Float64Array</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>y<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 21</span>
+
+<span class="token comment">// ArrayBuffer로부터 생성</span>
+<span class="token keyword">const</span> buffer <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayBuffer</span><span class="token punctuation">(</span><span class="token number">64</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> z <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Float64Array</span><span class="token punctuation">(</span>buffer<span class="token punctuation">,</span> <span class="token number">8</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>z<span class="token punctuation">.</span>byteOffset<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 8</span>
+
+<span class="token comment">// 순회로부터 생성</span>
+<span class="token keyword">const</span> iterable <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">function</span><span class="token operator">*</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">yield</span><span class="token operator">*</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> float64FromIterable <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Float64Array</span><span class="token punctuation">(</span>iterable<span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>float64FromIterable<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// Float64Array [1, 2, 3]</span>
+</pre>
+</div></div></section><h2 id="명세서">명세서</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://tc39.es/ecma262/multipage/indexed-collections.html#table-49">ECMAScript Language Specification <br><small># table-49</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="https://github.com/zloirock/core-js#ecmascript-typed-arrays" target="_blank"><code>core-js</code>에서 <code>Float64Array</code>의 폴리필</a></li> <li><a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Guide/Typed_arrays">JavaScript 형식화 배열</a></li> <li><a href="arraybuffer"><code>ArrayBuffer</code></a></li> <li><a href="dataview"><code>DataView</code></a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Float64Array" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Float64Array</a>
+  </p>
+</div>

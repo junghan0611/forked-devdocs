@@ -1,0 +1,32 @@
+<header><h1>AnimationEvent: AnimationEvent() 생성자</h1></header><div class="section-content"><p><code>AnimationEvent()</code> 생성자는 애니메이션에 관련된 이벤트를 나타내는 <a href="../animationevent"><code>AnimationEvent</code></a> 객체를 새로 생성하고 반환합니다.</p></div>
+<h2 id="구문">구문</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="dW0VaFuSuOeoui1FzQxnN1RH6rOm/DGSOm76LbiqA8g=" data-language="js"><span class="token keyword">new</span> <span class="token class-name">AnimationEvent</span><span class="token punctuation">(</span>type<span class="token punctuation">)</span>
+<span class="token keyword">new</span> <span class="token class-name">AnimationEvent</span><span class="token punctuation">(</span>type<span class="token punctuation">,</span> options<span class="token punctuation">)</span>
+</pre>
+</div></div>
+<h3 id="매개변수">매개변수</h3>
+<div class="section-content"><dl> <dt id="type"><code>type</code></dt> <dd> <p><code>AnimationEvent</code>의 유형을 나타내는 문자열입니다. 대소문자를 구분하며 브라우저는<code>animationstart</code>, <code>animationend</code>, <code>animationiteration</code>을 사용합니다.</p> </dd> <dt id="options">
+<code>options</code> <span class="badge inline optional">Optional</span>
+</dt> <dd> <p><a href="../event/event"><code>Event()</code></a>에서 사용할 수 있는 속성에 더해 다음 속성들도 포함하는 객체입니다.</p> <dl> <dt id="animationname">
+<code>animationName</code> <span class="badge inline optional">Optional</span>
+</dt> <dd> <p>트랜지션에 연관된 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/animation-name"><code>animation-name</code> <small>(en-US)</small></a> CSS 속성 값을 담은 문자열입니다. 기본 값은 <code>""</code>입니다.</p> </dd> <dt id="elapsedtime">
+<code>elapsedTime</code> <span class="badge inline optional">Optional</span>
+</dt> <dd> <p>이 이벤트가 발생한 시점까지 애니메이션이 재생된 총 시간을 나타내는 <code>float</code> 값입니다. 초 단위며, 애니메이션이 일시중지됐던 시간은 제외합니다. <code>animationstart</code> 이벤트의 <code>elapsedTime</code>은 <a href="https://developer.mozilla.org/ko/docs/Web/CSS/animation-delay"><code>animation-delay</code></a>의 값이 음수인 경우에만 <code>(-1 * delay)</code>가 되고, 그 외에는 <code>0.0</code>입니다.</p> </dd> <dt id="pseudoelement">
+<code>pseudoElement</code> <span class="badge inline optional">Optional</span>
+</dt> <dd> <p>애니메이션이 재생 중인 <a href="https://developer.mozilla.org/ko/docs/Web/CSS/Pseudo-elements">의사 요소</a>의 이름을 담은, <code>'::'</code>으로 시작하는 문자열입니다. 애니메이션이 일반 요소에서 재생 중이라면 빈 문자열(<code>''</code>)을 반환합니다.</p> </dd> </dl> </dd> </dl></div>
+<h2 id="명세서">명세서</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://drafts.csswg.org/css-animations/#dom-animationevent-animationevent">CSS Animations Level 1 <br><small># dom-animationevent-animationevent</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="https://developer.mozilla.org/ko/docs/Web/CSS/CSS_animations/Using_CSS_animations">CSS 애니메이션 사용하기</a></li> <li> 애니메이션 관련 CSS 속성과 @규칙: <a href="https://developer.mozilla.org/ko/docs/Web/CSS/animation"><code>animation</code></a>, <a href="https://developer.mozilla.org/ko/docs/Web/CSS/animation-delay"><code>animation-delay</code></a>, <a href="https://developer.mozilla.org/ko/docs/Web/CSS/animation-direction"><code>animation-direction</code></a>, <a href="https://developer.mozilla.org/ko/docs/Web/CSS/animation-duration"><code>animation-duration</code></a>, <a href="https://developer.mozilla.org/ko/docs/Web/CSS/animation-fill-mode"><code>animation-fill-mode</code></a>, <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/animation-iteration-count"><code>animation-iteration-count</code> <small>(en-US)</small></a>, <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/animation-name"><code>animation-name</code> <small>(en-US)</small></a>, <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/animation-play-state"><code>animation-play-state</code> <small>(en-US)</small></a>, <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/animation-timing-function"><code>animation-timing-function</code> <small>(en-US)</small></a>, <a href="https://developer.mozilla.org/ko/docs/Web/CSS/@keyframes"><code>@keyframes</code></a> </li> <li>이 생성자가 속한 <a href="../animationevent"><code>AnimationEvent</code></a> 인터페이스.</li> </ul></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/AnimationEvent/AnimationEvent" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/AnimationEvent/AnimationEvent</a>
+  </p>
+</div>

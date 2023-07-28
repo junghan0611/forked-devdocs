@@ -1,0 +1,71 @@
+<h1>Set-Cookie</h1>
+<header><h1>Set-Cookie</h1></header><div class="section-content">
+<p><code>Set-Cookie</code> HTTP 응답 헤더는 서버에서 사용자 브라우저에 쿠키를 전송하기 위해 사용됩니다.</p> <p>자세한 정보를 보려면 <a href="../cookies">HTTP cookies</a>에 수록된 가이드를 읽으세요.</p> <figure class="table-container"><div class="_table"><table class="properties"> <tbody> <tr> <th scope="row">Header type</th> <td><a href="https://developer.mozilla.org/ko/docs/Glossary/Response_header">Response header</a></td> </tr> <tr> <th scope="row"><a href="https://developer.mozilla.org/ko/docs/Glossary/Forbidden_header_name">Forbidden header name</a></th> <td>no</td> </tr> </tbody> </table></div></figure>
+</div>
+<section aria-labelledby="문법"><h2 id="문법">문법</h2>
+<div class="section-content"><pre class="notranslate">Set-Cookie: &lt;cookie-name&gt;=&lt;cookie-value&gt;
+Set-Cookie: &lt;cookie-name&gt;=&lt;cookie-value&gt;; Expires=&lt;date&gt;
+Set-Cookie: &lt;cookie-name&gt;=&lt;cookie-value&gt;; Max-Age=&lt;non-zero-digit&gt;
+Set-Cookie: &lt;cookie-name&gt;=&lt;cookie-value&gt;; Domain=&lt;domain-value&gt;
+Set-Cookie: &lt;cookie-name&gt;=&lt;cookie-value&gt;; Path=&lt;path-value&gt;
+Set-Cookie: &lt;cookie-name&gt;=&lt;cookie-value&gt;; Secure
+Set-Cookie: &lt;cookie-name&gt;=&lt;cookie-value&gt;; HttpOnly
+
+Set-Cookie: &lt;cookie-name&gt;=&lt;cookie-value&gt;; SameSite=Strict
+Set-Cookie: &lt;cookie-name&gt;=&lt;cookie-value&gt;; SameSite=Lax
+
+// Multiple directives are also possible, for example:
+Set-Cookie: &lt;cookie-name&gt;=&lt;cookie-value&gt;; Domain=&lt;domain-value&gt;; Secure; HttpOnly
+</pre></div></section><section aria-labelledby="디렉티브"><h2 id="디렉티브">디렉티브</h2>
+<div class="section-content"><dl> <dt id="cookie-namecookie-value"><code>&lt;cookie-name&gt;=&lt;cookie-value&gt;</code></dt> <dd> <p>쿠키는 "이름-값" 페어로 시작됩니다.</p> <ul> <li>
+<code>&lt;cookie-name&gt;</code> 는 제어 문자 및 공백, 탭(\t)를 제외한 아스키 문자로 구성되어야 합니다. 또한, "( ) &lt; &gt; @ , ; : \ " / [ ] ? = { }" 같은 문자도 포함할 수 없습니다.</li> <li>A <code>&lt;cookie-value&gt;</code> 는 필요하다면 쌍 따운표로 묶여질 수 있고 아스키 코드 문자로 구성되어야 하고, <code>&lt;cookie-name&gt;</code>처럼 제어 문자, 공백, 쌍 따운표, 콤마, 세미콜론, 역 슬래쉬(\)는 사용할 수 없습니다. <strong>엔코딩</strong>: 쿠기 값에 대해서 URL 엔코딩을 사용하는 구현 기법들이 많지만, RFC 명세에서 요구하는 것은 아닙니다. 단지, &lt;cookie-value&gt;에 허용된 문자에 대한 요구사항을 만족시킬 뿐이죠.</li> <li>
+<code>__Secure-</code>: <code>__Secure-</code> (대쉬는 프리픽스의 일부입니다)로 시작되는 쿠키 이름은 반드시 <code>secure</code> 플래그가 설정되어야 하고, 보안 페이지(HTTPS)여야 합니다.</li> <li>
+<code>__Host-</code>: <code>__Host-</code> 로 시작되는 쿠키들은 <code>secure</code> 플래그가 설정되어야 하며, 마찬가지로 보안 페이지(HTTPS)여야 하고, 도메인이 지정되지 않아야 합니다. (따라서 서브 도메인에 쿠키를 공유할 수 없습니다) 그리고, 경로는 반드시 "/"여야 합니다.</li> </ul> </dd> <dt id="expiresdate">Expires=&lt;date&gt; <span class="badge inline optional">Optional</span>
+</dt> <dd> <p>HTTP 타임스템프로 기록된 쿠키의 최대 생존 시간(수명). 세부 형태를 확인하려면 <a href="date"><code>Date</code></a>를 참조하세요. 지정되지 않았다면, <strong>세션 쿠키</strong>로서 취급되며, 클라이언트가 종료될 때 파기 됩니다. 그러나 많은 웹 브라우져에서 세션이라고 불리는 기능(그러니까 모든 탭을 기억했다가 브라우져를 다시 켜면 복구된다던지 하는 기능)을 구현합니다. 쿠키들 또한 함께 복원되므로, 정확히 말해서 브라우져를 닫은 적이 없는 게 되는 것이죠.</p> <p>만료 시간이 지정되면, 시간 및 날자로 이뤄진 값은 서버가 아니라 클라이언트에 상대적인 값으로 취급됩니다.</p> </dd> <dt id="max-agenumber">Max-Age=&lt;number&gt; <span class="badge inline optional">Optional</span>
+</dt> <dd> <p>쿠키가 만료될 때 까지의 시간 (초 단위). 0 또는 음수가 지정되면 해당 쿠키는 즉시 만료되며, 오래된 브라우저(ie6, ie7 그리고 ie8)은 이 헤더를 지원하지 않습니다. 다른 브라우저들은 둘 다(<code>Expires</code> 와 <code>Max-Age)</code> 지정되었을 때 <code>Max-Age</code> 값을 더 우선시합니다.</p> </dd> <dt id="domaindomain-value">Domain=&lt;domain-value&gt; <span class="badge inline optional">Optional</span>
+</dt> <dd> <p>쿠키가 적용되어야 하는 호스트를 지정. 지정되어 있지 않으면 현재 문서 URI를 기준으로 적용됩니다만, 서브 도메인을 포함하지 않습니다. 이전의 설계와 달리, 도메인의 선두에 위치한 점들은 무시됩니다. 도메인이 지정되면, 서브도메인들은 항상 포함됩니다.</p> </dd> <dt id="pathpath-value">Path=&lt;path-value&gt; <span class="badge inline optional">Optional</span>
+</dt> <dd> <p>쿠키 헤더를 보내기 전에 요청 된 리소스에 있어야하는 URL 경로를 나타냅니다. % x2F ( "/") 문자는 디렉토리 구분 기호로 해석되며 하위 디렉토리도 일치합니다 (예: path=/docs, "/docs", "/docs/Web/"또는 "/docs/Web/HTTP "가 모두 일치합니다).</p> </dd> <dt id="secure">Secure <span class="badge inline optional">Optional</span>
+</dt> <dd> <p>보안 쿠키들은 서버에서 요청이 SSL을 사용하며, HTTPS 프로토콜을 사용할 때에만 전송됩니다. 그러나 기밀 정보나 민감한 정보들은 HTTP 쿠키에 보관되거나 그걸로 전송되어선 안됩니다. 왜냐하면, 그 전체 메커니즘이 본질적으로 보안이 결여되어 있고, 거기 들어있는 어떤 정보도 암호화되지 않기 때문입니다.</p> <div class="notecard note" id="sect1"> <p><strong>참고:</strong> <strong>노트:</strong> 비 보안 사이트(<code>http:</code>)들은 "보안" 쿠키를 더이상 설정할 수 없습니다(Chrome 52+ 및 Firefox 52+).</p> </div> </dd> <dt id="httponly">HttpOnly <span class="badge inline optional">Optional</span>
+</dt> <dd> <p>HTTP-only cookies aren't accessible via JavaScript through the property, the <a href="https://developer.mozilla.org/ko/docs/Web/API/XMLHttpRequest"><code>XMLHttpRequest</code></a> and <a href="https://developer.mozilla.org/ko/docs/Web/API/Request"><code>Request</code></a> APIs to mitigate attacks against cross-site scripting (<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Glossary/Cross-site_scripting">XSS <small>(en-US)</small></a>).</p> </dd> <dt id="samesitestrict_samesitelax"> SameSite=Strict SameSite=Lax <span class="badge inline optional">Optional</span> <abbr class="icon icon-experimental" title="Experimental. 예상되는 동작은 향후 변경될 수 있습니다."> <span class="visually-hidden">Experimental</span> </abbr> </dt> <dd> <p>Allows servers to assert that a cookie ought not to be sent along with cross-site requests, which provides some protection against cross-site request forgery attacks (<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Glossary/CSRF">CSRF <small>(en-US)</small></a>).</p> </dd> </dl></div></section><section aria-labelledby="examples"><h2 id="examples">Examples</h2>
+</section><section aria-labelledby="session_cookie"><h3 id="session_cookie">Session cookie</h3>
+<div class="section-content">
+<p>Session cookies will get removed when the client is shut down. They don't specify the <code>Expires</code> or <code>Max-Age</code> directives. Note that web browser have often enabled session restoring.</p> <pre class="notranslate">Set-Cookie: sessionid=38afes7a8; HttpOnly; Path=/
+</pre>
+</div></section><section aria-labelledby="permanent_cookie"><h3 id="permanent_cookie">Permanent cookie</h3>
+<div class="section-content">
+<p>Instead of expiring when the client is closed, permanent cookies expire at a specific date (<code>Expires</code>) or after a specific length of time (<code>Max-Age</code>).</p> <pre class="notranslate">Set-Cookie: id=a3fWa; Expires=Wed, 21 Oct 2015 07:28:00 GMT; Secure; HttpOnly
+</pre>
+</div></section><section aria-labelledby="invalid_domains"><h3 id="invalid_domains">Invalid domains</h3>
+<div class="section-content">
+<p>A cookie belonging to a domain that does not include the origin server <a href="https://tools.ietf.org/html/rfc6265#section-4.1.2.3" target="_blank">should be rejected by the user agent</a>. The following cookie will be rejected if it was set by a server hosted on originalcompany.com.</p> <pre class="notranslate">Set-Cookie: qwerty=219ffwef9w0f; Domain=somecompany.co.uk; Path=/; Expires=Wed, 30 Aug 2019 00:00:00 GMT
+</pre>
+</div></section><section aria-labelledby="cookie_prefixes"><h3 id="cookie_prefixes">Cookie prefixes</h3>
+<div class="section-content">
+<p>Cookies names with the prefixes <code>__Secure-</code> and <code>__Host-</code> can be used only if they are set with the <code>secure</code> directive from a secure (HTTPS) origin. In addition, cookies with the <code>__Host-</code> prefix must have a path of "/" (the entire host) and must not have a domain attribute. For clients that don't implement cookie prefixes, you cannot count on having these additional assurances and the cookies will always be accepted.</p> <pre class="notranslate">// Both accepted when from a secure origin (HTTPS)
+Set-Cookie: __Secure-ID=123; Secure; Domain=example.com
+Set-Cookie: __Host-ID=123; Secure; Path=/
+
+// Rejected due to missing Secure directive
+Set-Cookie: __Secure-id=1
+
+// Rejected due to the missing Path=/ directive
+Set-Cookie: __Host-id=1; Secure
+
+// Rejected due to setting a domain
+Set-Cookie: __Host-id=1; Secure; Path=/; domain=example.com
+</pre>
+</div></section><h2 id="명세서">명세서</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://httpwg.org/specs/rfc6265.html#sane-set-cookie">HTTP State Management Mechanism <br><small># sane-set-cookie</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="compatibility_notes"><h2 id="compatibility_notes">Compatibility notes</h2>
+<div class="section-content"><ul> <li>Starting with Chrome 52 and Firefox 52, insecure sites (<code>http:</code>) can't set cookies with the "secure" directive anymore.</li> </ul></div></section><section aria-labelledby="see_also"><h2 id="see_also">See also</h2>
+<div class="section-content"><ul> <li><a href="../cookies">HTTP cookies</a></li> <li><a href="cookie"><code>Cookie</code></a></li> <li><a href="https://developer.mozilla.org/ko/docs/Web/API/Document/cookie"><code>Document.cookie</code></a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/HTTP/Headers/Set-Cookie" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/HTTP/Headers/Set-Cookie</a>
+  </p>
+</div>

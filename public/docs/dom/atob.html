@@ -1,0 +1,40 @@
+<header><h1>atob()</h1></header><div class="section-content">
+<p><code>atob()</code> 함수는 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Glossary/Base64">Base64 <small>(en-US)</small></a> 인코딩된 문자열 데이터를 디코딩합니다. ASCII 값 0부터 31까지의 제어 문자처럼 통신에 사용하면 문제가 발생할 수 있는 데이터를 <a href="btoa"><code>btoa()</code></a>로 인코딩해 전송하고, 받는 쪽에서는 <code>atob()</code>로 디코딩하면 문제 없이 원래 데이터를 가져올 수 있습니다.</p> <p>유니코드 또는 UTF-8 문자열의 인코딩/디코딩에 대해서는 <a href="btoa"><code>btoa()</code></a> 문서의 "유니코드 문자열" 부분을 참고하세요.</p>
+</div>
+<h2 id="구문">구문</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="EwCa/9R2OdNMpXUyy7VbdtRqMYQbbL82c9F3UGcLtfw=" data-language="js"><span class="token function">atob</span><span class="token punctuation">(</span>encodedData<span class="token punctuation">)</span>
+</pre>
+</div></div>
+<h3 id="매개변수">매개변수</h3>
+<div class="section-content"><dl> <dt id="encodeddata"><code>encodedData</code></dt> <dd> <p>base64 인코딩된 데이터를 담은 <a href="domstring/binary" class="page-not-created">이진 문자열</a>입니다.</p> </dd> </dl></div>
+<h3 id="반환_값">반환 값</h3>
+<div class="section-content"><p><code>encodedData</code>를 디코딩한 ASCII 문자열.</p></div>
+<h3 id="예외">예외</h3>
+<div class="section-content"><dl> <dt id="invalidcharactererror">
+<code>InvalidCharacterError</code> <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/DOMException"><code>DOMException</code> <small>(en-US)</small></a>
+</dt> <dd> <p><code>encodedData</code>가 유효한 base64 데이터가 아니면 발생합니다.</p> </dd> </dl></div>
+<h2 id="예제">예제</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="hEgUtdqWX+6A+G8jLXT60S94tbeVlM+WBo6NMsEGpao=" data-language="js"><span class="token keyword">const</span> encodedData <span class="token operator">=</span> <span class="token function">btoa</span><span class="token punctuation">(</span><span class="token string">'Hello, world'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 문자열 인코딩</span>
+<span class="token keyword">const</span> decodedData <span class="token operator">=</span> <span class="token function">atob</span><span class="token punctuation">(</span>encodedData<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 문자열 디코딩</span>
+</pre>
+</div></div>
+<h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://html.spec.whatwg.org/multipage/webappapis.html#dom-atob-dev">HTML Standard <br><small># dom-atob-dev</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li>
+<a href="https://github.com/zloirock/core-js" target="_blank"><code>core-js</code></a>의 <a href="https://github.com/zloirock/core-js#base64-utility-methods" target="_blank"><code>atob</code> 폴리필</a>
+</li> <li><a href="https://developer.mozilla.org/ko/docs/Web/HTTP/Basics_of_HTTP/Data_URLs"><code>data</code> URL</a></li> <li><a href="btoa"><code>btoa()</code></a></li> </ul></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/atob" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/atob</a>
+  </p>
+</div>

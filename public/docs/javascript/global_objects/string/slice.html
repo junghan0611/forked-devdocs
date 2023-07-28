@@ -1,0 +1,67 @@
+<header><h1>String.prototype.slice()</h1></header><div class="section-content"><p><code>slice()</code> 메소드는 문자열의 일부를 추출하면서 새로운 문자열을 반환합니다.</p></div>
+<section aria-labelledby="시도해보기"><h2 id="시도해보기">시도해보기</h2>
+<div class="section-content"><iframe class="interactive is-js-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/js/string-slice.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe></div></section><section aria-labelledby="문법"><h2 id="문법">문법</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="1RAySc0b+0IhrtpvNhBP9Rl68BRcqfUwOTmSXMEl8l8=" data-language="js">str<span class="token punctuation">.</span><span class="token function">slice</span><span class="token punctuation">(</span>beginIndex<span class="token punctuation">[</span><span class="token punctuation">,</span> endIndex<span class="token punctuation">]</span><span class="token punctuation">)</span>
+</pre>
+</div></div></section><section aria-labelledby="매개변수"><h3 id="매개변수">매개변수</h3>
+<div class="section-content"><dl> <dt id="beginindex"><code>beginIndex</code></dt> <dd>추출 시작점인 0부터 시작하는 인덱스입니다. 만약 음수라면, beginIndex는 <code>strLength(문자열 길이) + beginIndex</code>로 취급됩니다. (예를 들어 <code>beginIndex</code>가 -3이면 시작점은 <code>strLength - 3</code>).</dd> <dd>만약 <code>beginIndex</code>가 <code>strLength</code> 보다 크거나 같은 경우, <code>slice()</code>는 빈 문자열을 반환합니다.</dd> <dt id="endindex">
+<code>endIndex</code><span class="badge inline optional">Optional</span>
+</dt> <dd>0부터 시작하는 추출 종료점 인덱스로 그 직전까지 추출됩니다. 인덱스 위치의 문자는 추출에 포함되지 않습니다.</dd> <dd>만약 <code>endIndex</code>가 생략된다면, <code>slice()</code>는 문자열 마지막까지 추출합니다. 만약 음수라면, endIndex는 <code>strLength(문자열 길이) + endIndex</code> 로 취급됩니다(예를 들어 <code>endIndex</code>가 -3이면 종료점은 <code>strLength - 3</code>).</dd> </dl></div></section><section aria-labelledby="반환_값"><h3 id="반환_값">반환 값</h3>
+<div class="section-content"><p>문자열의 추출된 부분을 담는 새로운 문자열이 반환됩니다.</p></div></section><section aria-labelledby="설명"><h2 id="설명">설명</h2>
+<div class="section-content">
+<p><code>slice()</code>는 문자열로부터 텍스트를 추출하고 새 문자열을 반환합니다. 문자열의 변경은 다른 문자열에 영향을 미치지 않습니다.</p> <p><code>slice()</code>는 <code>endIndex</code>를 포함하지 않고 추출합니다. <code>str.slice(1, 4)</code>는 두 번째 문자부터 네 번째 문자까지 추출합니다 (1, 2, 3 인덱스 문자).</p> <p><code>str.slice(2, -1)</code>는 세 번째 문자부터 문자열의 마지막에서 두 번째 문자까지 추출합니다.</p>
+</div></section><section aria-labelledby="예시"><h2 id="예시">예시</h2>
+</section><section aria-labelledby="slice를_사용하여_새_문자열_생성하기"><h3 id="slice를_사용하여_새_문자열_생성하기">
+<code>slice()</code>를 사용하여 새 문자열 생성하기</h3>
+<div class="section-content">
+<p>아래 예시는 새 문자열을 생성하기 위해 <code>slice()</code>를 사용합니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="Q14AEh/qFs60Et/oz+Lza4sNaXHFI5NC3/ftKwephmw=" data-language="js"><span class="token keyword">var</span> str1 <span class="token operator">=</span> <span class="token string">'The morning is upon us.'</span><span class="token punctuation">,</span> <span class="token comment">// the length of str1 is 23.</span>
+    str2 <span class="token operator">=</span> str1<span class="token punctuation">.</span><span class="token function">slice</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">8</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    str3 <span class="token operator">=</span> str1<span class="token punctuation">.</span><span class="token function">slice</span><span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    str4 <span class="token operator">=</span> str1<span class="token punctuation">.</span><span class="token function">slice</span><span class="token punctuation">(</span><span class="token number">12</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    str5 <span class="token operator">=</span> str1<span class="token punctuation">.</span><span class="token function">slice</span><span class="token punctuation">(</span><span class="token number">30</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>str2<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// OUTPUT: he morn</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>str3<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// OUTPUT: morning is upon u</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>str4<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// OUTPUT: is upon us.</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>str5<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// OUTPUT: ""</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="음수_인덱스로_slice_사용하기"><h3 id="음수_인덱스로_slice_사용하기">음수 인덱스로 <code>slice()</code> 사용하기</h3>
+<div class="section-content">
+<p>아래 예시는 <code>slice()</code>에 음수 인덱스를 사용합니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="r4WILEoHe2nsR3CSC1mhll+xl7VlvG6O5GBHD0dQ1WQ=" data-language="js"><span class="token keyword">var</span> str <span class="token operator">=</span> <span class="token string">'The morning is upon us.'</span><span class="token punctuation">;</span>
+str<span class="token punctuation">.</span><span class="token function">slice</span><span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span>     <span class="token comment">// returns 'us.'</span>
+str<span class="token punctuation">.</span><span class="token function">slice</span><span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// returns 'us'</span>
+str<span class="token punctuation">.</span><span class="token function">slice</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// returns 'The morning is upon us'</span>
+</pre>
+</div> <p>아래의 예시는 시작 인덱스를 찾기 위해 문자열의 끝에서부터 역방향으로 <code>11</code>개를 세고 끝 인덱스를 찾기 위해 문자열의 시작에서부터 정방향으로 <code>16</code>개를 셉니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="u9u8cC5VvHhZvNzqKaFkmD4nncRvqDkibDe4Z1t+FpA=" data-language="js">console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>str<span class="token punctuation">.</span><span class="token function">slice</span><span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">11</span><span class="token punctuation">,</span> <span class="token number">16</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">// =&gt; "is u";</span>
+</pre>
+</div> <p>아래에서는 시작 인덱스를 찾기 위해 문자열의 처음부터 정방향으로 <code>11</code>개를 세고 끝 인덱스를 찾기 위해 끝에서부터 <code>7</code>개를 셉니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="x1BQRHzAfutJoOjr3Co8ivimLqVBNfc/DLeKPDBNwKY=" data-language="js">console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>str<span class="token punctuation">.</span><span class="token function">slice</span><span class="token punctuation">(</span><span class="token number">11</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">7</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">// =&gt; "is u";</span>
+</pre>
+</div> <p>이 인수는 끝에서부터 5로 역순으로 계산하여 시작 인덱스를 찾은 다음 끝에서부터 1을 거쳐 끝 인덱스를 찾습니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="PuTod5yt7zD1/lcdLDGtFmKJ3VNIlZoBjNT6ilp4HtE=" data-language="js">console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>str<span class="token punctuation">.</span><span class="token function">slice</span><span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">5</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">// =&gt; "n us";</span>
+</pre>
+</div>
+</div></section><h2 id="명세서">명세서</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://tc39.es/ecma262/multipage/text-processing.html#sec-string.prototype.slice">ECMAScript Language Specification <br><small># sec-string.prototype.slice</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="see_also"><h2 id="see_also">See also</h2>
+<div class="section-content"><ul> <li><a href="substr"><code>String.prototype.substr()</code></a></li> <li><a href="substring"><code>String.prototype.substring()</code></a></li> <li><a href="../array/slice"><code>Array.prototype.slice()</code></a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/String/slice" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/String/slice</a>
+  </p>
+</div>

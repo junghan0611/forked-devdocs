@@ -1,0 +1,39 @@
+<header><h1>Document.body</h1></header><div class="section-content"><p><code>Document.body</code> 속성은 현재 문서의 <a href="https://developer.mozilla.org/ko/docs/Web/HTML/Element/body"><code>&lt;body&gt;</code></a> 혹은 <a href="https://developer.mozilla.org/ko/docs/Web/HTML/Element/frameset"><code>&lt;frameset&gt;</code></a> 노드를 나타냅니다. 일치하는 요소가 존재하지 않으면 <code>null</code>을 반환합니다.</p></div>
+<h2 id="구문">구문</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="q8jB75cAqMok2OxQIn1F2YDGuOnSLYPuAPVdCX6pDm8=" data-language="js"><span class="token keyword">const</span> objRef <span class="token operator">=</span> document<span class="token punctuation">.</span>body
+document<span class="token punctuation">.</span>body <span class="token operator">=</span> objRef
+</pre>
+</div></div>
+<h2 id="예제">예제</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="ezXD+rfrUtDa/Z4WvsEMdkzDOjLII+V785Cte316gtQ=" data-language="js"><span class="token comment">// HTML: &lt;body id="oldBodyElement"&gt;&lt;/body&gt;</span>
+<span class="token function">alert</span><span class="token punctuation">(</span>document<span class="token punctuation">.</span>body<span class="token punctuation">.</span>id<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// "oldBodyElement"</span>
+
+<span class="token keyword">let</span> aNewBodyElement <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">createElement</span><span class="token punctuation">(</span><span class="token string">"body"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+aNewBodyElement<span class="token punctuation">.</span>id <span class="token operator">=</span> <span class="token string">"newBodyElement"</span><span class="token punctuation">;</span>
+document<span class="token punctuation">.</span>body <span class="token operator">=</span> aNewBodyElement<span class="token punctuation">;</span>
+<span class="token function">alert</span><span class="token punctuation">(</span>document<span class="token punctuation">.</span>body<span class="token punctuation">.</span>id<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// "newBodyElement"</span>
+</pre>
+</div></div>
+<h2 id="참고">참고</h2>
+<div class="section-content">
+<p><code>Document.body</code>는 문서의 콘텐츠를 수용하는 요소입니다. <code>&lt;body&gt;</code> 콘텐츠를 가지고 있는 문서는 <code>&lt;body&gt;</code> 요소를 반환하고, 프레임셋을 가지고 있는 문서는 가장 바깥쪽의 <code>&lt;frameset&gt;</code> 요소를 반환합니다.</p> <p><code>body</code> 속성에 새로운 값을 설정할 수 있긴 하지만, 문서에 새로운 본문을 설정하는건 <code>&lt;body&gt;</code> 요소가 가지고 있던 모든 자식을 제거하는 것과 같습니다.</p>
+</div>
+<h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://html.spec.whatwg.org/multipage/dom.html#dom-document-body-dev">HTML Standard <br><small># dom-document-body-dev</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="head"><code>Document.head</code></a></li> </ul></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/Document/body" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/Document/body</a>
+  </p>
+</div>

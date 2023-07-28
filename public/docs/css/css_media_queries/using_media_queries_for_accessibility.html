@@ -1,0 +1,51 @@
+<header><h1>접근성을 위한 미디어 쿼리 사용하기</h1></header><div class="section-content"><p><strong>미디어쿼리</strong>(<strong>Media Queries</strong>)는 장애를 가진 사용자가 웹사이트를 더 쉽게 이해할 수 있도록 도울 수 있습니다.</p></div>
+<section aria-labelledby="애니메이션_동작_축소하기reduced_motion"><h2 id="애니메이션_동작_축소하기reduced_motion">애니메이션 동작 축소하기(Reduced Motion)</h2>
+<div class="section-content">
+<p>깜빡이거나 반짝이는 애니메이션은 주의력결핍 과잉행동증후군(ADHD)와 같은 인지 문제를 가진 사람들에게 문제가 될 수 있습니다. 이러한 종류의 애니메이션 동작들은 전정편두통, 뇌전증, 편두통과 광과민증을 유발할 수 있습니다.</p> <p>또한, 이 애니메이션 동작을 줄이는 방법을 통해 배터리가 부족한 사람이나 보급형 스마트폰 및 컴퓨터를 사용하는 사람들에게 도음을 줄 수 있습니다.</p>
+</div></section><section aria-labelledby="문법"><h3 id="문법">문법</h3>
+<div class="section-content"><dl> <dt id="no-preference"><code>no-preference</code></dt> <dd> <p>사용자가 시스템에 관련된 설정을 하지 않았다는 것을 의미합니다.</p> </dd> <dt id="reduce"><code>reduce</code></dt> <dd> <p>사용자가 시스템에 애니메이션 동작을 최소화하도록 설정하였다는 것을 의미합니다. 가급적이면 필수적이지 않은 동작은 모두 제거됩니다.</p> </dd> </dl></div></section><section aria-labelledby="예제"><h3 id="예제">예제</h3>
+<div class="section-content">
+<p>이 예제는 접근성 설정에서 동작 줄이기를 설정하지 않으면 난잡한 애니메이션이 실행됩니다.</p> <h4 id="html">HTML</h4> <div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="yBjaNy4uhKwg+AeEHT41cPu6jj9UdVCKsx/MWwq/riE=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>animation<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>animated box<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div> <h4 id="css">CSS</h4> <div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="yERSOgkbo6xkFrNgHwpWity5rbYUBdldWAlDaxYLovY=" data-language="css"><span class="token selector">.animation</span> <span class="token punctuation">{</span>
+  <span class="token property">-webkit-animation</span><span class="token punctuation">:</span> vibrate 0.3s linear infinite both<span class="token punctuation">;</span>
+  <span class="token property">animation</span><span class="token punctuation">:</span> vibrate 0.3s linear infinite both<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token atrule"><span class="token rule">@media</span> <span class="token punctuation">(</span><span class="token property">prefers-reduced-motion</span><span class="token punctuation">:</span> reduce<span class="token punctuation">)</span></span> <span class="token punctuation">{</span>
+  <span class="token selector">.animation</span> <span class="token punctuation">{</span>
+    <span class="token property">animation</span><span class="token punctuation">:</span> none<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="고대비_모드_high_contrast_mode"><h2 id="고대비_모드_high_contrast_mode">고대비 모드 (High Contrast Mode)</h2>
+<div class="section-content">
+<div class="notecard nonstandard" id="sect1"><p><strong>비표준:</strong> 이 기능은 비표준이므로 실제 프로덕션에서 사용하지 마세요. 모든 사용자 환경에서 작동하지 않을 수 도 있으며, 미래에 호환성 문제가 생길 수 있습니다.</p></div> <p><strong>-ms-high-contrast</strong> <a href="https://developer.mozilla.org/ko/docs/Web/CSS">CSS media 속성</a>은 애플리케이션이 고대비 모드인지, 어떤 색상으로 강조되어 있는지를 정의하는 <a href="../microsoft_extensions" class="page-not-created">Microsoft 확장기능</a>입니다.</p> <p>저시력 사용자나 대비감도에 문제가 있는 사람뿐만 아니라 직사광선 아래에서 컴퓨터나 휴대폰을 사용하는 사람에게도 도움이 됩니다.</p>
+</div></section><section aria-labelledby="문법_2"><h3 id="문법_2">문법</h3>
+<div class="section-content"><p><code>-ms-high-contrast</code> 미디어 속성(Media Feature)은 다음 값 중 하나를 지정하여 사용할 수 있습니다.</p></div></section><section aria-labelledby="속성값"><h3 id="속성값">속성값</h3>
+<div class="section-content"><dl> <dt id="active"><code>active</code></dt> <dd> <p>시스템이 색상과 관계없이 고대비 모드로 설정되었을 때 후속 스타일링 규칙이 적용됨을 나타냅니다.</p> </dd> <dt id="black-on-white"><code>black-on-white</code></dt> <dd> <p>시스템이 흰 바탕에 검은 글씨 고대비 모드로 설정되었을 때 후속 스타일링 규칙이 적용됨을 나타냅니다.</p> </dd> <dt id="white-on-black"><code>white-on-black</code></dt> <dd> <p>시스템이 검은 바탕에 흰 글씨 고대비 모드로 설정되었을 때 후속 스타일링 규칙이 적용됨을 나타냅니다.</p> </dd> </dl></div></section><section aria-labelledby="예제_2"><h3 id="예제_2">예제</h3>
+<div class="section-content">
+<p>다음 선언된 스타일들은 어플리케이션이 모든 종류의 색상, black-on-white 색상, white-on-black 색상의 고대비 모드로 표시되도록 합니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="4anXBY0xatCvLrw2mMdsKru+EzNW7oD+W5kGH5aoTlA=" data-language="css"><span class="token atrule"><span class="token rule">@media</span> screen <span class="token keyword">and</span> <span class="token punctuation">(</span><span class="token property">-ms-high-contrast</span><span class="token punctuation">:</span> active<span class="token punctuation">)</span></span> <span class="token punctuation">{</span>
+  <span class="token comment">/* 모든 고대비 모드에 대한 스타일 규칙입니다 */</span>
+<span class="token punctuation">}</span>
+<span class="token atrule"><span class="token rule">@media</span> screen <span class="token keyword">and</span> <span class="token punctuation">(</span><span class="token property">-ms-high-contrast</span><span class="token punctuation">:</span> black-on-white<span class="token punctuation">)</span></span> <span class="token punctuation">{</span>
+  <span class="token selector">div</span> <span class="token punctuation">{</span> <span class="token property">background-image</span><span class="token punctuation">:</span> <span class="token url"><span class="token function">url</span><span class="token punctuation">(</span><span class="token string url">'image-bw.png'</span><span class="token punctuation">)</span></span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token atrule"><span class="token rule">@media</span> screen <span class="token keyword">and</span> <span class="token punctuation">(</span><span class="token property">-ms-high-contrast</span><span class="token punctuation">:</span> white-on-black<span class="token punctuation">)</span></span> <span class="token punctuation">{</span>
+  <span class="token selector">div</span> <span class="token punctuation">{</span> <span class="token property">background-image</span><span class="token punctuation">:</span> <span class="token url"><span class="token function">url</span><span class="token punctuation">(</span><span class="token string url">'image-wb.png'</span><span class="token punctuation">)</span></span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</pre>
+</div>
+</div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/CSS/CSS_media_queries/Using_media_queries_for_accessibility" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/CSS/CSS_media_queries/Using_media_queries_for_accessibility</a>
+  </p>
+</div>

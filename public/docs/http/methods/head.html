@@ -1,0 +1,20 @@
+<h1>HEAD</h1>
+<header><h1>HEAD</h1></header><div class="section-content">
+<p><code>HEAD</code>는 특정 리소스를 <a href="get"><code>GET</code></a> 메서드로 요청했을 때 돌아올 헤더를 요청합니다.</p> <p><code>HEAD</code> 메서드에 대한 응답은 본문을 가져선 안되며, 본문이 존재하더라도 무시해야 합니다. 그러나, <a href="../headers/content-length"><code>Content-Length</code></a>처럼 본문 콘텐츠를 설명하는 <a href="https://developer.mozilla.org/ko/docs/Glossary/Entity_header">개체 헤더</a>는 포함할 수 있습니다. 이 때, 개체 헤더는 비어있어야 하는 <code>HEAD</code>의 본문과는 관련이 없고, 대신 <a href="get"><code>GET</code></a> 메서드로 동일한 리소스를 요청했을 때의 본문을 설명합니다.</p> <p><code>HEAD</code> 요청의 응답이 캐시했던 이전 <a href="get"><code>GET</code></a> 메서드의 응답을 유효하지 않다고 표시할 경우, 새로운 <code>GET</code> 요청을 생성하지 않더라도 캐시를 무효화합니다.</p> <figure class="table-container"><div class="_table"><table class="properties"> <tbody> <tr> <th scope="row">요청에 본문 존재</th> <td>아니오</td> </tr> <tr> <th scope="row">성공 응답에 본문 존재</th> <td>아니오</td> </tr> <tr> <th scope="row"><a href="https://developer.mozilla.org/ko/docs/Glossary/Safe">안전함</a></th> <td>예</td> </tr> <tr> <th scope="row"><a href="https://developer.mozilla.org/ko/docs/Glossary/Idempotent">멱등성</a></th> <td>예</td> </tr> <tr> <th scope="row"><a href="https://developer.mozilla.org/ko/docs/Glossary/Cacheable">캐시 가능</a></th> <td>예</td> </tr> <tr> <th scope="row">HTML 양식에서 사용 가능</th> <td>아니오</td> </tr> </tbody> </table></div></figure>
+</div>
+<section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content"><pre class="notranslate">HEAD /index.html
+</pre></div></section><h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://www.rfc-editor.org/rfc/rfc9110#HEAD">HTTP Semantics <br><small># HEAD</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="get"><code>GET</code></a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/HTTP/Methods/HEAD" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/HTTP/Methods/HEAD</a>
+  </p>
+</div>

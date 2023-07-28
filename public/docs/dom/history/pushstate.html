@@ -1,0 +1,53 @@
+<header><h1>History: pushState() 메서드</h1></header><div class="section-content">
+<p><a href="https://developer.mozilla.org/ko/docs/Web/HTML">HTML</a> 문서에서, <code>history.pushState()</code> 메서드는 브라우저의 세션 기록 스택에 항목을 추가합니다.</p> <p>이 메서드는 <a href="https://developer.mozilla.org/ko/docs/Glossary/Asynchronous">비동기</a>로 동작합니다. 네비게이션이 언제 완료되었는지 결정하기 위해 <a href="../window/popstate_event"><code>popstate</code></a> 이벤트에 대한 수신기를 추가합니다. 이때 <code>state</code> 매개변수를 사용할 수 있습니다.</p>
+</div>
+<h2 id="구문">구문</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="sDXWpJUXNbn2Cz4xi3sML2lfzQQdz3Ony1RCQ3DtkX4=" data-language="js"><span class="token function">pushState</span><span class="token punctuation">(</span>state<span class="token punctuation">,</span> unused<span class="token punctuation">)</span>
+<span class="token function">pushState</span><span class="token punctuation">(</span>state<span class="token punctuation">,</span> unused<span class="token punctuation">,</span> url<span class="token punctuation">)</span>
+</pre>
+</div></div>
+<h3 id="매개변수">매개변수</h3>
+<div class="section-content"><dl> <dt id="state"><code>state</code></dt> <dd> <p><code>state</code> 객체는 <code>pushState()</code>에 의해 생성되어 새로운 기록 항목과 관련된 JavaScript 객체입니다. 사용자가 새로운 <code>state</code>로 이동할 때마다 <a href="../window/popstate_event"><code>popstate</code></a> 이벤트가 발생되고 이벤트 <code>state</code> 속성은 기록 항목의 <code>state</code> 객체 복사본을 포함합니다.</p> <p><code>state</code> 객체는 직렬화될 수 있는 모든 것일 수 있습니다. Firefox는 사용자가 브라우저를 다시 시작한 후 복원될 수 있도록 사용자의 디스크에 <code>state</code> 객체를 저장하기 때문에, <code>state</code> 객체의 직렬화된 표현에 16MiB의 크기 제한을 적용합니다. 이보다 더 큰 직렬화된 표현 <code>state</code> 객체를 <code>pushState()</code>에 전달하면 메서드는 예외를 발생시킵니다. 이보다 더 많은 공간이 필요하다면 <a href="../window/sessionstorage"><code>sessionStorage</code></a> 혹은 <a href="../window/localstorage"><code>localStorage</code></a>를 사용하는 것이 좋습니다.</p> </dd> <dt id="unused"><code>unused</code></dt> <dd> <p>이 매개변수는 역사적인 이유로 존재해서 생략할 수 없습니다. 빈 문자열을 전달하는 것이 나중에 메서드가 변경될 경우에도 안전합니다.</p> </dd> <dt id="url">
+<code>url</code> <span class="badge inline optional">Optional</span>
+</dt> <dd> <p>새로운 기록 항목의 URL입니다. 브라우저는 <code>pushState()</code> 호출 후에는 이 URL을 로드하려고 시도하지 않습니다. 하지만, 예를 들어 사용자가 브라우저를 다시 시작한 후에는 나중에 URL을 로드하려고 시도할 수 있습니다. 새로운 URL은 절대 경로일 필요가 없습니다. 상대 경로인 경우 현재 URL을 기준으로 해결됩니다. 새로운 URL은 현재 URL과 같은 <a href="https://developer.mozilla.org/ko/docs/Glossary/Origin">출처</a>여야 합니다. 그렇지 않으면, <code>pushState()</code>는 예외를 발생시킵니다. 이 매개변수가 지정되지 않으면, 문서의 현재 URL로 설정됩니다.</p> </dd> </dl></div>
+<h3 id="반환_값">반환 값</h3>
+<div class="section-content"><p>없음 (<a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/undefined"><code>undefined</code></a>).</p></div>
+<h2 id="설명">설명</h2>
+<div class="section-content">
+<p>어떤 의미에서 <code>pushState()</code>를 호출하는 것은 <code>window.location = "#foo"</code>를 설정하는 것과 유사합니다. 둘 다 현재 문서와 연결된 다른 기록 항목을 생성하고 활성화합니다. 그러나 <code>pushState()</code>에는 몇 가지 이점이 있습니다.</p> <ul> <li>새로운 URL은 현재 URL과 같은 출처에서 모든 URL이 될 수 있습니다. 반면, <a href="../window/location"><code>window.location</code></a>을 설정하는 것은 오직 해시를 수정하는 경우에만 동일한 문서를 유지할 수 있습니다.</li> <li>페이지의 URL 변경은 선택 사항입니다. 반면, <code>window.location = "#foo";</code>를 설정하는 것은 현재 해시가 <code>#foo</code>가 아닌 경우에만 새로운 기록 항목을 생성합니다.</li> <li>임의 데이터를 새로운 기록 항목과 연결할 수 있습니다. 해시 기반 접근에서는 모든 관련 데이터를 짧은 문자열로 인코딩할 필요가 있습니다.</li> </ul> <p>새로운 URL이 오래된 URL과 오직 해시만 다를지라도 <code>pushState()</code>는 <a href="../window/hashchange_event"><code>hashchange</code></a> 이벤트를 발생시키지 않습니다.</p>
+</div>
+<h2 id="예제">예제</h2>
+<div class="section-content"><p>다음 코드는 상태와 url를 설정하는 새로운 브라우저 기록 항목을 생성합니다.</p></div>
+<h3 id="javascript">JavaScript</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="RUyma6gmsRGBo31K+WMRyjQcl7w4dK3j2fuchb8K+V0=" data-language="js"><span class="token keyword">const</span> state <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token literal-property property">page_id</span><span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token literal-property property">user_id</span><span class="token operator">:</span> <span class="token number">5</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> url <span class="token operator">=</span> <span class="token string">"hello-world.html"</span><span class="token punctuation">;</span>
+
+history<span class="token punctuation">.</span><span class="token function">pushState</span><span class="token punctuation">(</span>state<span class="token punctuation">,</span> <span class="token string">""</span><span class="token punctuation">,</span> url<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div></div>
+<h3 id="쿼리_매개변수_변경">쿼리 매개변수 변경</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="lYe9OraKLzQz+KTOCNrWxDq/OS9VblPa8ghvIdmRm7g=" data-language="js"><span class="token keyword">const</span> url <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">URL</span><span class="token punctuation">(</span>location<span class="token punctuation">)</span><span class="token punctuation">;</span>
+url<span class="token punctuation">.</span>searchParams<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span><span class="token string">"foo"</span><span class="token punctuation">,</span> <span class="token string">"bar"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+history<span class="token punctuation">.</span><span class="token function">pushState</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token string">""</span><span class="token punctuation">,</span> url<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div></div>
+<h2 id="명세서">명세서</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://html.spec.whatwg.org/multipage/nav-history-apis.html#dom-history-pushstate-dev">HTML Standard <br><small># dom-history-pushstate-dev</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/History_API/Working_with_the_History_API" class="only-in-en-us">Working with the History API <small>(en-US)</small></a></li> <li><a href="../window/popstate_event">Window: popstate event</a></li> </ul></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/History/pushState" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/History/pushState</a>
+  </p>
+</div>

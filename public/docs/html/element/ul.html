@@ -1,0 +1,105 @@
+<header><h1>&lt;ul&gt;</h1></header><div class="section-content"><p><code>&lt;ul&gt;</code>는 정렬되지 않은 목록을 나타냅니다. 보통 불릿으로 표현합니다.</p></div>
+<h2 id="시도해보기">시도해보기</h2>
+<div class="section-content">
+<iframe class="interactive is-tabbed-standard-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/tabbed/ul.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe>  <figure class="table-container"><div class="_table"><table class="properties"> <tbody> <tr> <th scope="row"><a href="../content_categories">콘텐츠 카테고리</a></th> <td> <a href="../content_categories#%ed%94%8c%eb%a1%9c%ec%9a%b0_%ec%bd%98%ed%85%90%ec%b8%a0">플로우 콘텐츠</a>. 또한, 최소 하나의 <a href="li"><code>&lt;li&gt;</code></a> 요소를 자식으로 둔다면 <a href="../content_categories#%eb%9a%9c%eb%a0%b7%ed%95%9c_%ec%bb%a8%ed%85%90%ec%b8%a0">뚜렷한 콘텐츠</a>. </td> </tr> <tr> <th scope="row">가능한 콘텐츠</th> <td> 0개 이상의 <a href="li"><code>&lt;li&gt;</code></a>, <a href="script"><code>&lt;script&gt;</code></a>, <a href="template"><code>&lt;template&gt;</code></a> 요소. </td> </tr> <tr> <th scope="row">태그 생략</th> <td>불가능, 시작과 끝에 태그를 추가하는것은 필수입니다.</td> </tr> <tr> <th scope="row">가능한 부모 요소</th> <td>
+<a href="../content_categories#%ed%94%8c%eb%a1%9c%ec%9a%b0_%ec%bd%98%ed%85%90%ec%b8%a0">플로우 콘텐츠</a>를 허용하는 모든 요소.</td> </tr> <tr> <th scope="row">가능한 ARIA 역할</th> <td> <a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/directory_role" class="only-in-en-us"><code>directory</code> <small>(en-US)</small></a>, <a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/group_role" class="only-in-en-us"><code>group</code> <small>(en-US)</small></a>, <a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/listbox_role" class="only-in-en-us"><code>listbox</code> <small>(en-US)</small></a>, <a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/menu_role" class="only-in-en-us"><code>menu</code> <small>(en-US)</small></a>, <a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/menubar_role" class="only-in-en-us"><code>menubar</code> <small>(en-US)</small></a>, <a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/radiogroup_role" class="only-in-en-us"><code>radiogroup</code> <small>(en-US)</small></a>, <a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/tablist_role" class="only-in-en-us"><code>tablist</code> <small>(en-US)</small></a>, <a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/toolbar_role" class="only-in-en-us"><code>toolbar</code> <small>(en-US)</small></a>, <a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/tree_role" class="only-in-en-us"><code>tree</code> <small>(en-US)</small></a>, <a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/presentation_role" class="only-in-en-us"><code>presentation</code> <small>(en-US)</small></a> </td> </tr> <tr> <th scope="row">DOM 인터페이스</th> <td><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLUListElement"><code>HTMLUListElement</code> <small>(en-US)</small></a></td> </tr> </tbody> </table></div></figure>
+</div>
+<h2 id="특성">특성</h2>
+<div class="section-content">
+<p>이 요소는 <a href="../global_attributes">전역 특성</a>만 포함합니다.</p> </div>
+<h2 id="사용_일람">사용 일람</h2>
+<div class="section-content">
+<p>보통 비정렬 목록의 항목은 선행하는 불릿 <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/::marker" class="only-in-en-us">마커 <small>(en-US)</small></a>와 함께 표시합니다.</p> <p><code>&lt;ul&gt;</code>과 <a href="ol"><code>&lt;ol&gt;</code></a>은 필요한 만큼 중첩할 수 있고, 서로 교차할 수도 있습니다.</p> <p><code>&lt;ul&gt;</code>과 <a href="ol"><code>&lt;ol&gt;</code></a>은 모두 목록을 나타냅니다. 차이가 있다면 <code>&lt;ul&gt;</code>에서는 순서가 중요하지 않다는 점입니다. 항목의 순서를 바꿨을 때 의미도 바뀐다면 <a href="ol"><code>&lt;ol&gt;</code></a>을 사용하세요. 그렇지 않으면 <code>&lt;ul&gt;</code>을 사용할 수 있습니다.</p>
+</div>
+<h2 id="예제">예제</h2>
+
+<h3 id="간단한_예제">간단한 예제</h3>
+<div class="section-content">
+<div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="n7kxjao4feyxWliQCMdrMcy8RxCttlQhOI9lg8Od7fc=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ul</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">&gt;</span></span>first item<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">&gt;</span></span>second item<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">&gt;</span></span>third item<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>ul</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div>
+<div class="code-example" id="sect4">
+
+<iframe class="sample-code-frame" title="간단한 예제 sample" id="frame_간단한_예제" width="400" height="100" src="https://live.mdnplay.dev/ko/docs/Web/HTML/Element/ul/runner.html?id=%EA%B0%84%EB%8B%A8%ED%95%9C_%EC%98%88%EC%A0%9C" loading="lazy"></iframe>
+</div>
+</div>
+<h3 id="중첩_목록">중첩 목록</h3>
+<div class="section-content">
+<div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="RA3nFqxH20EvCdWhZtPunw5BneyCIiToY3C69yvrfhg=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ul</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">&gt;</span></span>first item<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">&gt;</span></span>second item
+  <span class="token comment">&lt;!-- Look, the closing &lt;/li&gt; tag is not placed here! --&gt;</span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ul</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">&gt;</span></span>second item first subitem<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">&gt;</span></span>second item second subitem
+      <span class="token comment">&lt;!-- Same for the second nested unordered list! --&gt;</span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ul</span><span class="token punctuation">&gt;</span></span>
+          <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">&gt;</span></span>second item second subitem first sub-subitem<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">&gt;</span></span>
+          <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">&gt;</span></span>second item second subitem second sub-subitem<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">&gt;</span></span>
+          <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">&gt;</span></span>second item second subitem third sub-subitem<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>ul</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">&gt;</span></span> <span class="token comment">&lt;!-- Closing &lt;/li&gt; tag for the li that
+                  contains the third unordered list --&gt;</span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">&gt;</span></span>second item third subitem<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>ul</span><span class="token punctuation">&gt;</span></span>
+  <span class="token comment">&lt;!-- Here is the closing &lt;/li&gt; tag --&gt;</span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">&gt;</span></span>third item<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>ul</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div>
+<div class="code-example" id="sect5">
+
+<iframe class="sample-code-frame" title="중첩 목록 sample" id="frame_중첩_목록" width="400" height="220" src="https://live.mdnplay.dev/ko/docs/Web/HTML/Element/ul/runner.html?id=%EC%A4%91%EC%B2%A9_%EB%AA%A9%EB%A1%9D" loading="lazy"></iframe>
+</div>
+</div>
+<h3 id="비정렬_목록_안의_정렬_목록">비정렬 목록 안의 정렬 목록</h3>
+<div class="section-content">
+<div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="x1QdJZHyy2U8cVWQ2ARZIW1+NNjy2WozZYeeOGw8a1Q=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ul</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">&gt;</span></span>first item<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">&gt;</span></span>second item
+  <span class="token comment">&lt;!-- Look, the closing &lt;/li&gt; tag is not placed here! --&gt;</span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ol</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">&gt;</span></span>second item first subitem<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">&gt;</span></span>second item second subitem<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">&gt;</span></span>second item third subitem<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>ol</span><span class="token punctuation">&gt;</span></span>
+  <span class="token comment">&lt;!-- Here is the closing &lt;/li&gt; tag --&gt;</span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">&gt;</span></span>third item<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>ul</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div>
+<div class="code-example" id="sect6">
+
+<iframe class="sample-code-frame" title="비정렬 목록 안의 정렬 목록 sample" id="frame_비정렬_목록_안의_정렬_목록" width="400" height="150" src="https://live.mdnplay.dev/ko/docs/Web/HTML/Element/ul/runner.html?id=%EB%B9%84%EC%A0%95%EB%A0%AC_%EB%AA%A9%EB%A1%9D_%EC%95%88%EC%9D%98_%EC%A0%95%EB%A0%AC_%EB%AA%A9%EB%A1%9D" loading="lazy"></iframe>
+</div>
+</div>
+<h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-ul-element">HTML Standard <br><small># the-ul-element</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li>리스트 관련 다른 요소: <a href="ol"><code>&lt;ol&gt;</code></a>, <a href="li"><code>&lt;li&gt;</code></a>, <a href="menu"><code>&lt;menu&gt;</code></a>
+</li> <li>
+<code>&lt;ol&gt;</code> 요소와 유용하게 사용할 수 있는 CSS 속성 <ul> <li>서수를 표현할 방식을 지정하는 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/list-style"><code>list-style</code> <small>(en-US)</small></a> 속성.</li> <li>복잡한 중첩 목록을 처리하기 위한 <a href="https://developer.mozilla.org/ko/docs/Web/CSS/CSS_counter_styles/Using_CSS_counters">CSS 카운터</a>
+</li> <li>더 이상 사용하지 않는 <code>compact</code> 특성을 대체할 수 있는 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/line-height"><code>line-height</code> <small>(en-US)</small></a>
+</li> <li>항목의 들여쓰기를 조정하기 위한 <a href="https://developer.mozilla.org/ko/docs/Web/CSS/margin"><code>margin</code></a> 속성.</li> </ul> </li> </ul></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/HTML/Element/ul" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/HTML/Element/ul</a>
+  </p>
+</div>

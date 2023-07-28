@@ -1,0 +1,52 @@
+<header><h1>itemref</h1></header><div class="section-content">
+<p><code>itemref</code> <a href="../global_attributes">전역 특성</a>을 사용하면 <a href="../global_attributes#itemscope"><code>itemscope</code></a> 특성을 가진 요소 바깥의 속성도 아이템과 연결할 수 있습니다.</p> <p><code>itemref</code> 특성에는 문서 내 다른 요소의 <a href="../global_attributes#id"><code>id</code></a> 목록(<a href="../global_attributes#itemid"><code>itemid</code></a> 아님)을 제공해야 합니다.</p> <p><code>itemref</code> 특성은 <code>itemscope</code> 특성을 지정한 요소에만 추가할 수 있습니다.</p> <div class="notecard note" id="sect1"> <p><strong>참고:</strong><code>itemref</code> 특성은 마이크로데이터 데이터 모델의 일부가 아니며, 트리 구조를 따르지 않는 데이터에 웹 작성자가 주석을 추가하는 것을 돕는 구문 구조에 불과합니다. 예를 들어, 표의 열이 별개의 아이템인데 데이터 속성은 열을 구성하는 칸에 포함하고 싶은 경우 사용할 수 있습니다.</p> </div>
+</div>
+<h2 id="예제">예제</h2>
+
+<h3 id="html">HTML</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="9aLFvA0migi5cw061WXgp6JQbk1KPE+iifmiL+JnCTU=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">itemscope</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>amanda<span class="token punctuation">"</span></span> <span class="token attr-name">itemref</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>a b<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>a<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Name: <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span> <span class="token attr-name">itemprop</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>name<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Amanda<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">&gt;</span></span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>b<span class="token punctuation">"</span></span> <span class="token attr-name">itemprop</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>band<span class="token punctuation">"</span></span> <span class="token attr-name">itemscope</span> <span class="token attr-name">itemref</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>c<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>c<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>Band: <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span> <span class="token attr-name">itemprop</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>name<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Jazz Band<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">&gt;</span></span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>Size: <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span> <span class="token attr-name">itemprop</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>size<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>12<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">&gt;</span></span> players<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div></div>
+<h3 id="구조화_데이터">구조화 데이터</h3>
+<div class="section-content">
+<p>(<a href="https://json-ld.org/" target="_blank">JSON-LD</a> 형식)</p> <div class="code-example">
+<p class="example-header"><span class="language-name">json</span></p>
+<pre data-signature="5jNQMtf3O3MRZQx7fZ9yYG5u9+qWyZHWHMU1biaoWz0=" data-language="json"><span class="token punctuation">{</span>
+  <span class="token property">"@id"</span><span class="token operator">:</span> <span class="token string">"amanda"</span><span class="token punctuation">,</span>
+  <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"Amanda"</span><span class="token punctuation">,</span>
+  <span class="token property">"band"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token property">"@id"</span><span class="token operator">:</span> <span class="token string">"b"</span><span class="token punctuation">,</span>
+    <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"Jazz Band"</span><span class="token punctuation">,</span>
+    <span class="token property">"size"</span><span class="token operator">:</span> <span class="token number">12</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</pre>
+</div>
+</div>
+<h3 id="결과">결과</h3>
+<div class="section-content"><div class="code-example" id="sect2">
+
+<iframe class="sample-code-frame" title="예제 sample" id="frame_예제" src="https://live.mdnplay.dev/ko/docs/Web/HTML/Global_attributes/itemref/runner.html?id=%EC%98%88%EC%A0%9C" loading="lazy"></iframe>
+</div></div>
+<h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://html.spec.whatwg.org/multipage/microdata.html#attr-itemref">HTML Standard <br><small># attr-itemref</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li>다른 <a href="../global_attributes">전역 특성</a>.</li> <li>마이크로데이터 관련 다른 전역 특성 <ul> <li><a href="../global_attributes#itemid"><code>itemid</code></a></li> <li><a href="../global_attributes#itemprop"><code>itemprop</code></a></li> <li><a href="../global_attributes#itemref"><code>itemref</code></a></li> <li><a href="../global_attributes#itemtype"><code>itemtype</code></a></li> </ul> </li> </ul></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/HTML/Global_attributes/itemref" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/HTML/Global_attributes/itemref</a>
+  </p>
+</div>

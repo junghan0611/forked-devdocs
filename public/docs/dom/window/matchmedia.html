@@ -1,0 +1,37 @@
+<header><h1>Window.matchMedia()</h1></header><div class="section-content"><p><code>Window.matchMedia()</code> 메서드는 주어진 <a href="https://developer.mozilla.org/ko/docs/Web/CSS/CSS_media_queries/Using_media_queries">미디어 쿼리</a> 문자열의 분석 결과를 나타내는 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/MediaQueryList"><code>MediaQueryList</code> <small>(en-US)</small></a> 객체를 반환합니다.</p></div>
+<h2 id="구문">구문</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="zdx+yxEyKDpoWllU8dP3BisYtII0tpt0+3kzKWvlMeQ=" data-language="js">window<span class="token punctuation">.</span><span class="token function">matchMedia</span><span class="token punctuation">(</span>mediaQueryString<span class="token punctuation">)</span>
+</pre>
+</div></div>
+<h3 id="매개변수">매개변수</h3>
+<div class="section-content"><dl> <dt id="mediaquerystring"><code>mediaQueryString</code></dt> <dd> <p>분석할 미디어 쿼리를 나타내는 문자열.</p> </dd> </dl></div>
+<h3 id="반환_값">반환 값</h3>
+<div class="section-content"><p>주어진 미디어 쿼리에 대한 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/MediaQueryList"><code>MediaQueryList</code> <small>(en-US)</small></a> 객체,</p></div>
+<h2 id="예제">예제</h2>
+<div class="section-content">
+<p>다음 예제는 화면이 매우 좁을 때 다른 작업을 수행합니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="LBL/5WS6xdwwhKeCBOHemM9PAEEr0zcUYOFiySXVZjg=" data-language="js"><span class="token keyword">if</span> <span class="token punctuation">(</span>window<span class="token punctuation">.</span><span class="token function">matchMedia</span><span class="token punctuation">(</span><span class="token string">"(min-width: 400px)"</span><span class="token punctuation">)</span><span class="token punctuation">.</span>matches<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">/* 뷰포트 너비가 400 픽셀 이상 */</span>
+<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+  <span class="token comment">/* 뷰포트 너비가 400 픽셀 미만 */</span>
+<span class="token punctuation">}</span>
+</pre>
+</div> <p>더 많은 예제는 <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_media_queries/Testing_media_queries" class="only-in-en-us">Testing media queries programmatically <small>(en-US)</small></a>를 참고하세요.</p>
+</div>
+<h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://drafts.csswg.org/cssom-view/#dom-window-matchmedia">CSSOM View Module <br><small># dom-window-matchmedia</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="https://developer.mozilla.org/ko/docs/Web/CSS/CSS_media_queries/Using_media_queries">미디어 쿼리 사용하기</a></li> <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_media_queries/Testing_media_queries" class="only-in-en-us">Using media queries from code <small>(en-US)</small></a></li> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/MediaQueryList"><code>MediaQueryList</code> <small>(en-US)</small></a></li> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/MediaQueryList"><code>MediaQueryListListener</code> <small>(en-US)</small></a></li> </ul></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/Window/matchMedia" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/Window/matchMedia</a>
+  </p>
+</div>

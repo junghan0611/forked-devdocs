@@ -1,0 +1,39 @@
+<header><h1>Storage.removeItem()</h1></header><div class="section-content"><p><a href="../storage"><code>Storage</code></a> 인터페이스의 removeItem() 메소드에 키 이름을 파라미터로 전달하면 스토리지에서 해당 키를 삭제합니다.</p></div>
+<h2 id="문법">문법</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="0Sr78aRiIRUsDcfLDUZaK5/y/KvK/t20MnIY6ZWUQbU=" data-language="js">storage<span class="token punctuation">.</span><span class="token function">removeItem</span><span class="token punctuation">(</span>keyName<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div></div>
+<h3 id="파라미터">파라미터</h3>
+<div class="section-content"><dl> <dt id="keyname"><em><strong>keyName</strong></em></dt> <dd> <p>삭제하고자 하는 키 이름(<a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/String"><code>DOMString</code></a>).</p> </dd> </dl></div>
+<h3 id="반환값">반환값</h3>
+<div class="section-content"><p><em>반환값 없음.</em></p></div>
+<h2 id="예제">예제</h2>
+<div class="section-content">
+<p>아래의 함수는 로컬 스토리지에 3 개의 데이터 아이템을 생성한 후 그 중 하나를 삭제합니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="smutzejOCcA5xg8zixxaP16+OYj6ggljt6Xr5Lhm2PY=" data-language="js"><span class="token keyword">function</span> <span class="token function">populateStorage</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  localStorage<span class="token punctuation">.</span><span class="token function">setItem</span><span class="token punctuation">(</span><span class="token string">'bgcolor'</span><span class="token punctuation">,</span> <span class="token string">'red'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  localStorage<span class="token punctuation">.</span><span class="token function">setItem</span><span class="token punctuation">(</span><span class="token string">'font'</span><span class="token punctuation">,</span> <span class="token string">'Helvetica'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  localStorage<span class="token punctuation">.</span><span class="token function">setItem</span><span class="token punctuation">(</span><span class="token string">'image'</span><span class="token punctuation">,</span> <span class="token string">'myCat.png'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  localStorage<span class="token punctuation">.</span><span class="token function">removeItem</span><span class="token punctuation">(</span><span class="token string">'image'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div> <div class="notecard note" id="sect1"> <p><strong>참고:</strong> 실 사용 예제는 <a href="https://github.com/mdn/web-storage-demo" target="_blank">Web Storage Demo</a>를 참고하시기 바랍니다.</p> </div>
+</div>
+<h2 id="명세서">명세서</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://html.spec.whatwg.org/multipage/webstorage.html#dom-storage-removeitem-dev">HTML Standard <br><small># dom-storage-removeitem-dev</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><p><a href="../web_storage_api/using_the_web_storage_api">Web Storage API 사용하기</a></p></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/Storage/removeItem" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/Storage/removeItem</a>
+  </p>
+</div>

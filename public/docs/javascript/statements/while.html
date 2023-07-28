@@ -1,0 +1,36 @@
+<header><h1>while</h1></header><div class="section-content"><p><strong>while문</strong>은 조건문이 참일 때 실행되는 반복문이다. 조건은 문장안이 실행되기 전에 참, 거짓을 판단한다.</p></div>
+<section aria-labelledby="문법"><h2 id="문법">문법</h2>
+<div class="section-content">
+<div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="le4j27faJJTIqoYPGiLLqaIJD74bDkys/eUxTDBZu9c=" data-language="js">    <span class="token keyword">while</span> <span class="token punctuation">(</span>condition<span class="token punctuation">)</span>
+      statement
+</pre>
+</div> <dl> <dt id="조건"><code>조건</code></dt> <dd> <p>반복이 시작되기 전에 조건문은 참,거짓을 판단받게 된다. 만약 조건문이 참이라면, while문 안의 문장들이 실행된다. 거짓이라면, 문장은 그냥 while 반복문 후로 넘어간다.</p> </dd> <dt id="문장"><code>문장</code></dt> <dd> <p>조건문이 참일 때만 while문 속의 문장들이 실행된다. 반복문 속에 여러개의 문장을 사용하고 싶다면 중괄호 { } 를 통해 문장들을 하나로 묶어야 한다.</p> </dd> </dl>
+</div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+<div class="section-content">
+<p>다음의 while문은 n이 3보다 작을 때까지 반복한다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="MsvUH7urPfm04LClhF5gI9OpMtRbQiukfkV5t3NMzBE=" data-language="js"><span class="token keyword">var</span> n <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> x <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+
+<span class="token keyword">while</span> <span class="token punctuation">(</span>n <span class="token operator">&lt;</span> <span class="token number">3</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  n<span class="token operator">++</span><span class="token punctuation">;</span>
+  x <span class="token operator">+=</span> n<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div> <p>반복을 살펴보면, n을 x에 계속 더하게 된다. 그러므로 x와 n 변수는 다음의 값을 갖는다.</p> <ul> <li>첫번째 반복; n=1 과 x=1</li> <li>두번째 반복; n=2 과 x=3</li> <li>세번째 반복; n=3 과 x=6</li> </ul> <p>세번째 반복후, n&lt;3 이라는 초건은 더 이상 참이아니가 되므로 반복은 종료된다</p>
+</div></section><h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://tc39.es/ecma262/multipage/ecmascript-language-statements-and-declarations.html#sec-while-statement">ECMAScript Language Specification <br><small># sec-while-statement</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="see_also"><h2 id="see_also">See also</h2>
+<div class="section-content"><ul> <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/do...while"><code>do...while</code></a></li> <li><a href="for"><code>for</code></a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Statements/while" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Statements/while</a>
+  </p>
+</div>

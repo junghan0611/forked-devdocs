@@ -1,0 +1,85 @@
+<header><h1>Document.readyState</h1></header><div class="section-content">
+<p><code>Document.readyState</code> 속성을 통해 <a href="../document"><code>document</code></a>의 로딩 상태를 확인할 수 있다.</p> <p>Document.readyState 속성 값이 바뀔 때 <a href="readystatechange_event"><code>readystatechange</code></a> 이벤트가 <a href="../document"><code>document</code></a>에서 일어난다.</p>
+</div>
+<h2 id="syntax">Syntax</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="bC90XUMUk0SxyKuLX3Ejz7Oj2NDBuKpWXpkxc6bO/PQ=" data-language="js"><span class="token keyword">var</span> string <span class="token operator">=</span> document<span class="token punctuation">.</span>readyState<span class="token punctuation">;</span>
+</pre>
+</div></div>
+<h3 id="values">Values</h3>
+<div class="section-content">
+<p><code>document의 readyState</code> 상태는 아래 3가지가 될 수 있다.</p> <dl> <dt id="loading"><code>loading</code></dt> <dd> <p><a href="../document"><code>document</code></a> 로딩 중.</p> </dd> <dt id="interactive"><code>interactive</code></dt> <dd> <p>문서의 로딩은 끝이 나고 해석 중 이지만 images, stylesheets, frames과 같은 하위 자원들은 로딩되고 있는 상태이다.</p> </dd> <dt id="complete"><code>complete</code></dt> <dd> <p>문서와 모든 하위 자원들의 로드가 완료된 상태이다. 이 상태는 <a href="../window/load_event"><code>load</code></a> 이벤트가 발생되기 직전 상태이다.</p> </dd> </dl>
+</div>
+<h2 id="examples">Examples</h2>
+
+<h3 id="different_states_of_readiness">Different states of readiness</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="hknPLZyd28gKmbONQOiiLYk7qCIiFB1eidMUS1zwcs4=" data-language="js"><span class="token keyword">switch</span> <span class="token punctuation">(</span>document<span class="token punctuation">.</span>readyState<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">case</span> <span class="token string">"loading"</span><span class="token operator">:</span>
+    <span class="token comment">// The document is still loading.</span>
+    <span class="token keyword">break</span><span class="token punctuation">;</span>
+  <span class="token keyword">case</span> <span class="token string">"interactive"</span><span class="token operator">:</span>
+    <span class="token comment">// The document has finished loading. We can now access the DOM elements.</span>
+    <span class="token comment">// But sub-resources such as images, stylesheets and frames are still loading.</span>
+    <span class="token keyword">var</span> span <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">createElement</span><span class="token punctuation">(</span><span class="token string">"span"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    span<span class="token punctuation">.</span>textContent <span class="token operator">=</span> <span class="token string">"A &lt;span&gt; element."</span><span class="token punctuation">;</span>
+    document<span class="token punctuation">.</span>body<span class="token punctuation">.</span><span class="token function">appendChild</span><span class="token punctuation">(</span>span<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">break</span><span class="token punctuation">;</span>
+  <span class="token keyword">case</span> <span class="token string">"complete"</span><span class="token operator">:</span>
+    <span class="token comment">// The page is fully loaded.</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"The first CSS rule is: "</span> <span class="token operator">+</span> document<span class="token punctuation">.</span>styleSheets<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>cssRules<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>cssText<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">break</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div></div>
+<h3 id="readystatechange_as_an_alternative_to_domcontentloaded_event">readystatechange as an alternative to DOMContentLoaded event</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="R2cqn0ODcKqWuRprxPlDPNK4XQNkOlpceXzgSte7FlU=" data-language="js"><span class="token comment">// Alternative to DOMContentLoaded event</span>
+document<span class="token punctuation">.</span><span class="token function-variable function">onreadystatechange</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>document<span class="token punctuation">.</span>readyState <span class="token operator">===</span> <span class="token string">'interactive'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">initApplication</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</pre>
+</div></div>
+<h3 id="readystatechange_as_an_alternative_to_load_event">readystatechange as an alternative to load event</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="AdRE1U9u5awJp/ebmXF0CRU1Bp9hzMJ0AVi3HR7U2ag=" data-language="js"><span class="token comment">// Alternative to load event</span>
+document<span class="token punctuation">.</span><span class="token function-variable function">onreadystatechange</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>document<span class="token punctuation">.</span>readyState <span class="token operator">===</span> <span class="token string">'complete'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">initApplication</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</pre>
+</div></div>
+<h3 id="readystatechange_as_event_listener_to_insert_or_modify_the_dom_before_domcontentloaded">readystatechange as event listener to insert or modify the DOM before DOMContentLoaded</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="rr2YmD11EPDoDzjyo5JVUtCfvE2JAM2E+4xyZ1KHTmI=" data-language="js">document<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">'readystatechange'</span><span class="token punctuation">,</span> <span class="token parameter">event</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>event<span class="token punctuation">.</span>target<span class="token punctuation">.</span>readyState <span class="token operator">===</span> <span class="token string">'interactive'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">initLoader</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>event<span class="token punctuation">.</span>target<span class="token punctuation">.</span>readyState <span class="token operator">===</span> <span class="token string">'complete'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">initApp</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div></div>
+<h2 id="명세서">명세서</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://html.spec.whatwg.org/multipage/dom.html#current-document-readiness">HTML Standard <br><small># current-document-readiness</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li>관련 이벤트 <ul> <li><a href="readystatechange_event"><code>readystatechange</code></a></li> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/Document/DOMContentLoaded_event"><code>DOMContentLoaded</code> <small>(en-US)</small></a></li> <li><a href="../window/load_event"><code>load</code></a></li> </ul> </li> </ul></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/Document/readyState" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/Document/readyState</a>
+  </p>
+</div>

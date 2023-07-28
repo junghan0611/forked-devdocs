@@ -1,0 +1,46 @@
+<header><h1>Symbol.for()</h1></header><div class="section-content"><p> <code>Symbol.for(key)</code> 메서드는 주어진 키를 사용해 런타임 범위의 심볼 레지스트리에서 존재하는 심볼을 찾고, 존재할 경우 이를 반환합니다. 존재하지 않는 경우에는 해당 키를 사용해 전역 심볼 레지스트리에 새로운 심볼을 생성합니다. </p></div>
+<section aria-labelledby="시도해보기"><h2 id="시도해보기">시도해보기</h2>
+<div class="section-content"><iframe class="interactive is-js-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/js/symbol-for.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe></div></section><section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="Sl9ap1Vt4NduITwc9eg+rdJzPV7f4eypFnoOLHNJ9dw=" data-language="js">Symbol<span class="token punctuation">.</span><span class="token function">for</span><span class="token punctuation">(</span>key<span class="token punctuation">)</span>
+</pre>
+</div></div></section><section aria-labelledby="매개변수"><h3 id="매개변수">매개변수</h3>
+<div class="section-content"><dl> <dt id="key"><code>key</code></dt> <dd> <p>문자열, 필수. 심볼에 대한 키(심볼을 설명하기 위해서도 사용됨).</p> </dd> </dl></div></section><section aria-labelledby="반환_값"><h3 id="반환_값">반환 값</h3>
+<div class="section-content"><p>주어진 키를 갖는 존재하는 심볼. 존재하지 않을 경우 새로운 심볼이 생성되고 반환됨.</p></div></section><section aria-labelledby="설명"><h2 id="설명">설명</h2>
+<div class="section-content"><p> <code>Symbol()</code>과 대조적으로, <code>Symbol.for()</code> 함수는 전역 심볼 레지스트리 목록에서 사용 가능한 심볼을 생성합니다. <code>Symbol.for()</code>는 호출할 때마다 새로운 심볼을 생성하지는 않으며 레지스트리에서 주어진 <code>key</code>를 갖는 심볼이 이미 존재하는지를 먼저 확인합니다. 존재하는 경우 해당하는 심볼이 반환됩니다. 주어진 키를 갖는 심볼이 존재하지 않는 경우, <code>Symbol.for()</code>는 새로운 전역 심볼을 생성합니다. </p></div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+</section><section aria-labelledby="symbol.for_사용하기"><h3 id="symbol.for_사용하기">Symbol.for() 사용하기</h3>
+<div class="section-content">
+<div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="Uj13YAISACB1Q4kDGx5e7FJjQbn+Bk3vsxgtqBOFvFI=" data-language="js">Symbol<span class="token punctuation">.</span><span class="token function">for</span><span class="token punctuation">(</span><span class="token string">'foo'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 새로운 전역 심볼을 생성</span>
+Symbol<span class="token punctuation">.</span><span class="token function">for</span><span class="token punctuation">(</span><span class="token string">'foo'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 이미 생성된 심볼을 반환</span>
+
+<span class="token comment">// 동일한 전역 심볼이지만 지역적으로는 그렇지 않음</span>
+Symbol<span class="token punctuation">.</span><span class="token function">for</span><span class="token punctuation">(</span><span class="token string">'bar'</span><span class="token punctuation">)</span> <span class="token operator">===</span> Symbol<span class="token punctuation">.</span><span class="token function">for</span><span class="token punctuation">(</span><span class="token string">'bar'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// true</span>
+<span class="token function">Symbol</span><span class="token punctuation">(</span><span class="token string">'bar'</span><span class="token punctuation">)</span> <span class="token operator">===</span> <span class="token function">Symbol</span><span class="token punctuation">(</span><span class="token string">'bar'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// false</span>
+
+<span class="token comment">// 키는 설명으로 사용되기도 함</span>
+<span class="token keyword">var</span> sym <span class="token operator">=</span> Symbol<span class="token punctuation">.</span><span class="token function">for</span><span class="token punctuation">(</span><span class="token string">'mario'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+sym<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// "Symbol(mario)"</span>
+</pre>
+</div> <p>전역 심볼 키와 다른 (라이브러리 코드) 전역 심볼의 이름 충돌을 피하려면, 심볼에 접두어를 붙이는 것이 좋습니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="djiEfMcXMr+41pnLwwl/RRdlcwwJhK7yKB6oDXZI99M=" data-language="js">Symbol<span class="token punctuation">.</span><span class="token function">for</span><span class="token punctuation">(</span><span class="token string">'mdn.foo'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+Symbol<span class="token punctuation">.</span><span class="token function">for</span><span class="token punctuation">(</span><span class="token string">'mdn.bar'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div>
+</div></section><h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://tc39.es/ecma262/multipage/fundamental-objects.html#sec-symbol.for">ECMAScript Language Specification <br><small># sec-symbol.for</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="keyfor"><code>Symbol.keyFor()</code></a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Symbol/for" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Symbol/for</a>
+  </p>
+</div>

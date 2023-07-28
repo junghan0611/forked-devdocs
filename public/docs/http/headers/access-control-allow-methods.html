@@ -1,0 +1,32 @@
+<h1>Access-Control-Allow-Methods</h1>
+<header><h1>Access-Control-Allow-Methods</h1></header><div class="section-content">
+<p><code>Access-Control-Allow-Methods</code> 헤더는 <a href="https://developer.mozilla.org/ko/docs/Glossary/Preflight_request">사전 요청</a>에 대한 응답으로 리소스에 접근할 때 허용되는 메서드를 지정합니다.</p> <figure class="table-container"><div class="_table"><table class="properties"> <tbody> <tr> <th scope="row">헤더 타입</th> <td><a href="https://developer.mozilla.org/ko/docs/Glossary/Response_header">응답 헤더</a></td> </tr> <tr> <th scope="row"><a href="https://developer.mozilla.org/ko/docs/Glossary/Forbidden_header_name">금지된 헤더 이름</a></th> <td>no</td> </tr> </tbody> </table></div></figure>
+</div>
+<section aria-labelledby="문법"><h2 id="문법">문법</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">http</span></p>
+<pre data-signature="RGC+BsVfr5S23ZWMamoZJzkUCOHbz2yFsIJGtDVtCEk=" data-language="http"><span class="token header"><span class="token header-name keyword">Access-Control-Allow-Methods</span><span class="token punctuation">:</span> <span class="token header-value">&lt;method&gt;, &lt;method&gt;, …</span></span>
+<span class="token header"><span class="token header-name keyword">Access-Control-Allow-Methods</span><span class="token punctuation">:</span> <span class="token header-value">*</span></span>
+</pre>
+</div></div></section><section aria-labelledby="디렉티브"><h2 id="디렉티브">디렉티브</h2>
+<div class="section-content"><dl> <dt id="method"><code>&lt;method&gt;</code></dt> <dd> <p>허용된 <a href="../methods">HTTP 요청 메서드</a>의 목록이며 콤마로 구분됩니다.</p> </dd> <dt id="sect1">
+<code>*</code> (와일드카드)</dt> <dd> <p><code>*</code>는 자격 증명이 없는 요청 (<a href="../cookies">쿠키</a>나 HTTP 인증 정보가 없는 요청)에 대해서만 특수 와일드카드 값으로 취급됩니다. 자격 증명이 있는 요청에서는 특별한 의미를 갖지 않고 단순히 "*"라는 메서드 이름으로 취급됩니다.</p> </dd> </dl></div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">http</span></p>
+<pre data-signature="rO3Kb0AwdiZlKCjH+fp22fL38Guzm9f0ijyixn+gqN4=" data-language="http"><span class="token header"><span class="token header-name keyword">Access-Control-Allow-Methods</span><span class="token punctuation">:</span> <span class="token header-value">POST, GET, OPTIONS</span></span>
+<span class="token header"><span class="token header-name keyword">Access-Control-Allow-Methods</span><span class="token punctuation">:</span> <span class="token header-value">*</span></span>
+</pre>
+</div></div></section><h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://fetch.spec.whatwg.org/#http-access-control-allow-methods">Fetch Standard <br><small># http-access-control-allow-methods</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="access-control-allow-origin"><code>Access-Control-Allow-Origin</code></a></li> <li><a href="access-control-expose-headers"><code>Access-Control-Expose-Headers</code></a></li> <li><a href="access-control-allow-headers"><code>Access-Control-Allow-Headers</code></a></li> <li><a href="access-control-request-method"><code>Access-Control-Request-Method</code></a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/HTTP/Headers/Access-Control-Allow-Methods" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/HTTP/Headers/Access-Control-Allow-Methods</a>
+  </p>
+</div>

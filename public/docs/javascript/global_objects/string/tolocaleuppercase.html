@@ -1,0 +1,47 @@
+<header><h1>String.prototype.toLocaleUpperCase()</h1></header><div class="section-content"><p><code>toLocaleUpperCase()</code> 메서드는 어떤 지역 특정 대/소문자 매핑에 따른 대문자로 변환된 문자열 값을 반환합니다.</p></div>
+<section aria-labelledby="시도해보기"><h2 id="시도해보기">시도해보기</h2>
+<div class="section-content"><iframe class="interactive is-js-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/js/string-tolocaleuppercase.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe></div></section><section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="0SKesACxDBZrVP5+Og9y/OO6k8ep3ky0a2FY79ZKNoU=" data-language="js"><span class="token function">toLocaleUpperCase</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token function">toLocaleUpperCase</span><span class="token punctuation">(</span>locales<span class="token punctuation">)</span>
+</pre>
+</div></div></section><section aria-labelledby="매개변수"><h3 id="매개변수">매개변수</h3>
+<div class="section-content"><dl> <dt id="locales">
+<code>locales</code> <span class="badge inline optional">Optional</span>
+</dt> <dd> <p>BCP 47 언어 태그가 있는 문자열 또는 이런 문자열을 가진 배열. 어떤 지역 특정 대/소문자 매핑에 따른 대문자로 변환하는데 사용된 지역을 나타냅니다. 일반 양식과 <code>locales</code> 인수의 설명에 대해서 <a href="../intl#locale_identification_and_negotiation">Locale identification and negotiation</a>를 참조하세요.</p> </dd> </dl></div></section><section aria-labelledby="반환_값"><h3 id="반환_값">반환 값</h3>
+<div class="section-content"><p>어떤 지역 특정 대/소문자 매핑에 따른 대문자로 변환된 문자열을 나타낸 새 문자열.</p></div></section><section aria-labelledby="예외"><h3 id="예외">예외</h3>
+<div class="section-content"><ul> <li>
+<code>locale</code> 인수가 올바른 언어 태그가 아닌 경우 <a href="../rangeerror"><code>RangeError</code></a> ("잘못된 언어 태그: xx_yy")가 발생합니다.</li> <li>배열 요소가 문자열 유형이 아닌 경우 <a href="../typeerror"><code>TypeError</code></a> ("지역 인수에 있는 잘못된 요소")가 발생합니다.</li> </ul></div></section><section aria-labelledby="설명"><h2 id="설명">설명</h2>
+<div class="section-content">
+<p><code>theLocaleUpperCase()</code> 메서드는 지역 특정 대/소문자 맴핑에 따른 대문자로 변환된 문자열 값을 반환합니다. <code>toLocaleUpperCase()</code>는 문자열 자체 값에 영향을 미치지 않습니다. 대부분의 경우, <a href="touppercase"><code>toUpperCase()</code></a>와 같은 결과를 제공하지만 터키와 같은 일부 지역에서는 대/소문자 매핑이 유니코드의 기존 대/소문자 매핑을 따르지 않아 다른 결과가 있을 수 있습니다.</p> <p>또한 대문자로 변환될 때 어떤 문자는 두 개 (혹은 그 이상) 문자를 생성할 수 있으므로 변환이 반드시 1:1 문자 맴핑일 필요는 없다는 것을 알아야 합니다. 그러므로 문자열 결과 길이는 입력 길이와 다를 수 있습니다. 이것은 또한 변환이 안정적이지 않음을 의미합니다. 즉, 구문 <code>x.toLocaleLowerCase() === x.toLocaleUpperCase().toLocaleLowerCase()</code>는 <code>false</code>를 반환할 수 있습니다.</p>
+</div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+</section><section aria-labelledby="tolocaleuppercase_사용"><h3 id="tolocaleuppercase_사용">toLocaleUpperCase() 사용</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="bgabec8zhUMlJQI8tAACoMMq49Sxd8A9kEioN91ioQ8=" data-language="js"><span class="token string">"alphabet"</span><span class="token punctuation">.</span><span class="token function">toLocaleUpperCase</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 'ALPHABET'</span>
+
+<span class="token string">"Gesäß"</span><span class="token punctuation">.</span><span class="token function">toLocaleUpperCase</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 'GESÄSS'</span>
+
+<span class="token string">"i\u0307"</span><span class="token punctuation">.</span><span class="token function">toLocaleUpperCase</span><span class="token punctuation">(</span><span class="token string">"lt-LT"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 'I'</span>
+
+<span class="token keyword">const</span> locales <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">"lt"</span><span class="token punctuation">,</span> <span class="token string">"LT"</span><span class="token punctuation">,</span> <span class="token string">"lt-LT"</span><span class="token punctuation">,</span> <span class="token string">"lt-u-co-phonebk"</span><span class="token punctuation">,</span> <span class="token string">"lt-x-lietuva"</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token string">"i\u0307"</span><span class="token punctuation">.</span><span class="token function">toLocaleUpperCase</span><span class="token punctuation">(</span>locales<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 'I'</span>
+</pre>
+</div></div></section><h2 id="명세서">명세서</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody>
+<tr><td><a href="https://tc39.es/ecma262/multipage/text-processing.html#sec-string.prototype.tolocaleuppercase">ECMAScript Language Specification <br><small># sec-string.prototype.tolocaleuppercase</small></a></td></tr>
+<tr><td><a href="https://tc39.es/ecma402/#sup-string.prototype.tolocaleuppercase">ECMAScript Internationalization API Specification <br><small># sup-string.prototype.tolocaleuppercase</small></a></td></tr>
+</tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="tolocalelowercase"><code>String.prototype.toLocaleLowerCase()</code></a></li> <li><a href="tolowercase"><code>String.prototype.toLowerCase()</code></a></li> <li><a href="touppercase"><code>String.prototype.toUpperCase()</code></a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/String/toLocaleUpperCase" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/String/toLocaleUpperCase</a>
+  </p>
+</div>

@@ -1,0 +1,40 @@
+<header><h1>URLSearchParams.get()</h1></header><div class="section-content">
+<p><a href="../urlsearchparams"><code>URLSearchParams</code></a> 인터페이스의 <code>get()</code> 메서드는 지정한 키와 연관된 첫 번째 값을 반환합니다.</p>
+<div class="notecard note" id="sect1"> <p><strong>참고:</strong> 이 기능은 <a href="../web_workers_api">Web Worker</a>에서 사용할 수 있습니다</p> </div>
+</div>
+<h2 id="구문">구문</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="lyCOBxsu7kBktOtRGraGEvLar02dFTEniRw72lYFit4=" data-language="js"><span class="token function">get</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span>
+</pre>
+</div></div>
+<h3 id="매개변수">매개변수</h3>
+<div class="section-content"><dl> <dt id="name"><code>name</code></dt> <dd> <p>반환할 매개변수의 이름입니다.</p> </dd> </dl></div>
+<h3 id="return_value">Return value</h3>
+<div class="section-content"><p>검색 매개변수를 찾으면 문자열, 아니면 **<code>null</code>**입니다.</p></div>
+<h2 id="예제">예제</h2>
+<div class="section-content">
+<p>페이지 URL이 <code>https://example.com/?name=Jonathan&amp;age=18</code>이라고 가정할 때, 다음 코드로 'name'과 'age' 매개변수를 가져올 수 있습니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="+nYkso9v1aI7QyDccQL3zh7l38mtK6Uti+7gLKnl9oM=" data-language="js"><span class="token keyword">let</span> params <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">URLSearchParams</span><span class="token punctuation">(</span>document<span class="token punctuation">.</span>location<span class="token punctuation">.</span>search<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">let</span> name <span class="token operator">=</span> params<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">"name"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 문자열 "Jonathan"</span>
+<span class="token keyword">let</span> age <span class="token operator">=</span> <span class="token function">parseInt</span><span class="token punctuation">(</span>params<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">"age"</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 숫자 18</span>
+</pre>
+</div> <p>쿼리 문자열에 존재하지 않는 매개변수를 가져오려고 시도하면 **<code>null</code>**을 반환합니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="tw7Bg+qFs/4lAxLHqRemuRxQNKbwWO5/aTfDtwjweZU=" data-language="js"><span class="token keyword">let</span> address <span class="token operator">=</span> params<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">"address"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// null</span>
+</pre>
+</div>
+</div>
+<h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://url.spec.whatwg.org/#dom-urlsearchparams-get">URL Standard <br><small># dom-urlsearchparams-get</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/URLSearchParams/get" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/URLSearchParams/get</a>
+  </p>
+</div>

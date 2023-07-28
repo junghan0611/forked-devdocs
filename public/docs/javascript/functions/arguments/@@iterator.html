@@ -1,0 +1,34 @@
+<header><h1>arguments[@@iterator]()</h1></header><div class="section-content"><p><code>@@iterator</code> 속성의 초기값은 <a href="../../global_objects/array/values"><code>Array.prototype.values</code></a> 속성의 초기값과 같은 함수 객체입니다.</p></div>
+<section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content"><pre class="notranslate">arguments[Symbol.iterator]()
+</pre></div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+</section><section aria-labelledby="for...of_반복문을_사용한_반복"><h3 id="for...of_반복문을_사용한_반복">
+<code>for...of</code> 반복문을 사용한 반복</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="7iyrS/MDzv8qyf9H/LscrJqJN/GpTbSTWL55lSUXlHM=" data-language="js"><span class="token keyword">function</span> <span class="token function">f</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">// 브라우저가 for...of 반복문과</span>
+  <span class="token comment">// for 반복문 안의 let 범위의 변수를 지원해야 합니다.</span>
+  <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> letter <span class="token keyword">of</span> arguments<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>letter<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token function">f</span><span class="token punctuation">(</span><span class="token string">'w'</span><span class="token punctuation">,</span> <span class="token string">'y'</span><span class="token punctuation">,</span> <span class="token string">'k'</span><span class="token punctuation">,</span> <span class="token string">'o'</span><span class="token punctuation">,</span> <span class="token string">'p'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div></div></section><h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody>
+<tr><td><a href="https://tc39.es/ecma262/multipage/ordinary-and-exotic-objects-behaviours.html#sec-createunmappedargumentsobject">ECMAScript Language Specification <br><small># sec-createunmappedargumentsobject</small></a></td></tr>
+<tr><td><a href="https://tc39.es/ecma262/multipage/ordinary-and-exotic-objects-behaviours.html#sec-createmappedargumentsobject">ECMAScript Language Specification <br><small># sec-createmappedargumentsobject</small></a></td></tr>
+</tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="../../global_objects/array/values"><code>Array.prototype.values()</code></a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Functions/arguments/@@iterator" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Functions/arguments/@@iterator</a>
+  </p>
+</div>

@@ -1,0 +1,39 @@
+<header><h1>&lt;center&gt;</h1></header><div class="section-content"><div class="notecard deprecated" id="sect1"><p><strong>지원이 중단되었습니다:</strong> This feature is no longer recommended. Though some browsers might still support it, it may have already been removed from the relevant web standards, may be in the process of being dropped, or may only be kept for compatibility purposes. Avoid using it, and update existing code if possible; see the <a href="#browser_compatibility">compatibility table</a> at the bottom of this page to guide your decision. Be aware that this feature may cease to work at any time.</p></div></div>
+<h2 id="개요">개요</h2>
+<div class="section-content">
+<p>이 HTML Center (<code>&lt;center&gt;</code>)요소는 또다른 블록요소을 포함하거나, 인라인요소(Inline)를 포함할 수 있는 <a href="https://developer.mozilla.org/ko/docs/Glossary/Block-level_content">블록속성(block-level)</a> 의 요소이다. 그리고 해당 &lt;center&gt; 요소안에 포함된 전체요소는 &lt;center&gt;의 내용안에 가운데 정렬이 된다. (통상적으로 <a href="body"><code>&lt;body&gt;</code></a>로 쓰임).</p> <p>이 태그는 HTML4(또는 XHTML 1)이후에는 잘사용되지 않고, CSS의 <a href="https://developer.mozilla.org/ko/docs/Web/CSS/text-align"><code>text-align</code></a> 속성이 즐겨 사용된다. <a href="div"><code>&lt;div&gt;</code></a> 요소나 <a href="p"><code>&lt;p&gt;</code></a>요소 같은 블록속성이 있는 요소에 사용될 수 있다.또 다른 방법으로는 CSS속성을 사용하여 <a href="https://developer.mozilla.org/ko/docs/Web/CSS/margin-left"><code>margin-left</code></a> 또는 <a href="https://developer.mozilla.org/ko/docs/Web/CSS/margin-right"><code>margin-right</code></a> 또는 margin을 자동(Css("margin") 를 <code>0 auto)</code>으로 설정한다.</p>
+</div>
+<h2 id="dom_인터페이스">DOM 인터페이스</h2>
+<div class="section-content">
+<p>이 요소는 <a href="https://developer.mozilla.org/ko/docs/Web/API/HTMLElement"><code>HTMLElement</code></a> 인터페이스를 구현합니다.</p> <div class="notecard note" id="sect2"> <p><strong>참고:</strong> <strong>Implementation note:</strong> up to Gecko 1.9.2 inclusive, Firefox implements the <a href="https://developer.mozilla.org/ko/docs/Web/API/HTMLSpanElement"><code>HTMLSpanElement</code></a> interface for this element.</p> </div>
+</div>
+<h2 id="예제_1">예제 1</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="bpCWmqSJ5DmDmERpbZ3xyvBm4qNfDhmbxe4XlW9hjXc=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>center</span><span class="token punctuation">&gt;</span></span>This text will be centered.
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>So will this paragraph.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>center</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div></div>
+<h2 id="예제_2_css_대안">예제 2 (CSS 대안)</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="vGqfGpADZ3r71hEJfVCyx9MSYSrMJ8vjR9Apzhl0T+s=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token special-attr"><span class="token attr-name">style</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token value css language-css"><span class="token property">text-align</span><span class="token punctuation">:</span>center</span><span class="token punctuation">"</span></span></span><span class="token punctuation">&gt;</span></span>This text will be centered.
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>So will this paragraph.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div></div>
+<h2 id="예제_3_css_대안">예제 3 (CSS 대안)</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="1Gg6ifcDhwetR+l4tYvVTO++x2Vs8SwMVlJQ4F+nCFU=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token special-attr"><span class="token attr-name">style</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token value css language-css"><span class="token property">text-align</span><span class="token punctuation">:</span>center</span><span class="token punctuation">"</span></span></span><span class="token punctuation">&gt;</span></span>This line will be centered.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>br</span><span class="token punctuation">&gt;</span></span>
+And so will this line.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div></div>
+<h2 id="메모">메모</h2>
+<div class="section-content"><p>Applying <a href="https://developer.mozilla.org/ko/docs/Web/CSS/text-align"><code>text-align</code></a><code>:center</code> to a <a href="div"><code>&lt;div&gt;</code></a> or <a href="p"><code>&lt;p&gt;</code></a> element centers the <em>contents</em> of those elements while leaving their overall dimensions unchanged.</p></div>
+<h2 id="더_보기">더 보기</h2>
+<div class="section-content"><ul> <li><a href="https://developer.mozilla.org/ko/docs/Web/CSS/text-align"><code>text-align</code></a></li> <li><a href="https://developer.mozilla.org/ko/docs/Web/CSS/display"><code>display</code></a></li> </ul></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/HTML/Element/center" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/HTML/Element/center</a>
+  </p>
+</div>

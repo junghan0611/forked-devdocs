@@ -1,0 +1,41 @@
+<header><h1>Document.styleSheetSets</h1></header><div class="section-content">
+<div class="notecard deprecated" id="sect1"><p><strong>지원이 중단되었습니다:</strong> This feature is no longer recommended. Though some browsers might still support it, it may have already been removed from the relevant web standards, may be in the process of being dropped, or may only be kept for compatibility purposes. Avoid using it, and update existing code if possible; see the <a href="#browser_compatibility">compatibility table</a> at the bottom of this page to guide your decision. Be aware that this feature may cease to work at any time.</p></div>
+<div class="notecard nonstandard" id="sect2"><p><strong>비표준:</strong> 이 기능은 비표준이므로 실제 프로덕션에서 사용하지 마세요. 모든 사용자 환경에서 작동하지 않을 수 도 있으며, 미래에 호환성 문제가 생길 수 있습니다.</p></div> <p>**<code>styleSheetSets</code>**의 읽기 전용 속성은 현재 사용 가능한 모든 스타일 시트 세트의 live 리스트를 반환합니다.</p>
+</div>
+<h2 id="문법">문법</h2>
+<div class="section-content">
+<div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="ojow7AukTj9T0q4hQpMWokmTg9ytsdoOZXdEBqk2PLs=" data-language="js"><span class="token keyword">var</span> sets <span class="token operator">=</span> document<span class="token punctuation">.</span>styleSheetSets<span class="token punctuation">;</span>
+</pre>
+</div> <p>반환시, <code>sets</code>는 사용할 수 있는 스타일 시트 세트의 리스트.</p>
+</div>
+<h2 id="예시">예시</h2>
+<div class="section-content">
+<p>ID가 "sheetList"인 <a href="https://developer.mozilla.org/ko/docs/Web/HTML/Element/ul"><code>&lt;ul&gt;</code></a> (list) 요소가 주어지면, 사용 가능한 모든 스타일 시트 세트의 이름으로 아래와 같은 코드로 채울 수 있습니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="K5RZH4WC1M8Fo8GXYn00cKfbihRvBqqq2sRP4M3be4c=" data-language="js"><span class="token keyword">let</span> list <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">'sheetList'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">let</span> sheets <span class="token operator">=</span> document<span class="token punctuation">.</span>styleSheetSets<span class="token punctuation">;</span>
+
+list<span class="token punctuation">.</span>innerHTML <span class="token operator">=</span> <span class="token string">''</span><span class="token punctuation">;</span>
+
+<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> sheets<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">let</span> item <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">createElement</span><span class="token punctuation">(</span><span class="token string">'li'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  item<span class="token punctuation">.</span>innerHTML <span class="token operator">=</span> sheets<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+  list<span class="token punctuation">.</span><span class="token function">appendChild</span><span class="token punctuation">(</span>item<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div>
+</div>
+<h2 id="notes">Notes</h2>
+<div class="section-content"><p>사용 가능한 스타일 시트 세트 리스트는 문서에 사용 가능한 모든 스타일 시트를 열거하여 구성되고, <a href="stylesheets"><code>document.styleSheets</code></a> 속성에 나열된 순서대로, 리스트에 제목을 가진 각각의 스타일 시트 <code>title</code>을 추가합니다. 중복 항목이 리스트에서 삭제됨. (대소문자 구분 비교 사용).</p></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<h2 id="더보기">더보기</h2>
+<div class="section-content"><ul> <li><a href="../stylesheet"><code>Stylesheet</code></a></li> <li><a href="stylesheets"><code>document.styleSheets</code></a></li> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/Document/lastStyleSheetSet"><code>document.lastStyleSheetSet</code> <small>(en-US)</small></a></li> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/Document/preferredStyleSheetSet"><code>document.preferredStyleSheetSet</code> <small>(en-US)</small></a></li> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/Document/selectedStyleSheetSet"><code>document.selectedStyleSheetSet</code> <small>(en-US)</small></a></li> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/Document/enableStyleSheetsForSet"><code>document.enableStyleSheetsForSet()</code> <small>(en-US)</small></a></li> </ul></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/Document/styleSheetSets" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/Document/styleSheetSets</a>
+  </p>
+</div>

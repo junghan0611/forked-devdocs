@@ -1,0 +1,43 @@
+<header><h1>Math.fround()</h1></header><div class="section-content"><p><code>Math.fround()</code> 함수는 <a href="https://en.wikipedia.org/wiki/Single-precision_floating-point_format" target="_blank">single precision</a> 포맷으로 표현할 수 있는 실수들 중에서 가장 가까운 숫자를 리턴합니다.</p></div>
+<section aria-labelledby="문법"><h2 id="문법">문법</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="fmk5hxpBgDHOmYgVuhKxyOcWmGT+bc76OsUoagG1fkg=" data-language="js">    Math<span class="token punctuation">.</span><span class="token function">fround</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span>
+</pre>
+</div></div></section><section aria-labelledby="파라메터"><h3 id="파라메터">파라메터</h3>
+<div class="section-content"><dl> <dt id="x"><code>x</code></dt> <dd> <p>숫자.</p> </dd> </dl></div></section><section aria-labelledby="설명"><h2 id="설명">설명</h2>
+<div class="section-content"><p><code>fround()</code> 가 <code>Math</code> 객체의 정적 메소드이기 때문에, 반드시 <code>Math.fround()</code> 같은 형태로 사용해야 합니다. <code>Math</code> 객체를 직접 만들어서 호출하는 방식으로 사용하지 않습니다 (<code>Math</code> 는 생성자가 아닙니다).</p></div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+</section><section aria-labelledby="math.fround_사용법"><h3 id="math.fround_사용법"><code>Math.fround() 사용법</code></h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="bIKXTbGW5xpbLVCv1neZGvS2k7OAa5F/Edt1H8GXCMI=" data-language="js">Math<span class="token punctuation">.</span><span class="token function">fround</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>     <span class="token comment">// 0</span>
+Math<span class="token punctuation">.</span><span class="token function">fround</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>     <span class="token comment">// 1</span>
+Math<span class="token punctuation">.</span><span class="token function">fround</span><span class="token punctuation">(</span><span class="token number">1.337</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 1.3370000123977661</span>
+Math<span class="token punctuation">.</span><span class="token function">fround</span><span class="token punctuation">(</span><span class="token number">1.5</span><span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment">// 1.5</span>
+Math<span class="token punctuation">.</span><span class="token function">fround</span><span class="token punctuation">(</span><span class="token number">NaN</span><span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment">// NaN</span>
+</pre>
+</div></div></section><section aria-labelledby="polyfill"><h2 id="polyfill">Polyfill</h2>
+<div class="section-content">
+<p>만약 <a href="../float32array"><code>Float32Array</code></a> 가 지원된다면, Math.fround() 를 다음 함수로 흉내낼 수 있습니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="+VHFeREzUZbqftdLS00AMhg6WCTUNWf1Slg8/3zMXt4=" data-language="js">Math<span class="token punctuation">.</span>fround <span class="token operator">=</span> Math<span class="token punctuation">.</span>fround <span class="token operator">||</span> <span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">array</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">x</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> array<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> x<span class="token punctuation">,</span> array<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token function">Float32Array</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div>
+</div></section><h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://tc39.es/ecma262/multipage/numbers-and-dates.html#sec-math.fround">ECMAScript Language Specification <br><small># sec-math.fround</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="see_also"><h2 id="see_also">See also</h2>
+<div class="section-content"><ul> <li><a href="round"><code>Math.round()</code></a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Math/fround" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Math/fround</a>
+  </p>
+</div>

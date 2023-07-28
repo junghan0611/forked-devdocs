@@ -1,0 +1,26 @@
+<h1>Vary</h1>
+<header><h1>Vary</h1></header><div class="section-content">
+<p> <code>Vary</code> HTTP 응답 헤더는 요청 메시지의 메서드 및 URL을 제외하고 응답 내용에 영향을 준 부분을 설명합니다. 대부분 이 헤더는 <a href="../content_negotiation">콘텐츠 협상</a>이 사용 중일 때 캐시 키를 생성하는 데 사용됩니다. </p> <p> <a href="../status/304"><code>304</code></a> <code>Not Modified</code> 응답과 "기본" 응답을 포함하여 지정된 URL에 대한 모든 응답에 동일한 <code>Vary</code> 헤더 값을 사용해야 합니다. </p> <figure class="table-container"><div class="_table"><table class="properties"> <tbody> <tr> <th scope="row">헤더 타입</th> <td><a href="https://developer.mozilla.org/ko/docs/Glossary/Response_header">응답 헤더</a></td> </tr> <tr> <th scope="row"><a href="https://developer.mozilla.org/ko/docs/Glossary/Forbidden_header_name">금지된 헤더 이름</a></th> <td>아니오</td> </tr> </tbody> </table></div></figure>
+</div>
+<section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">http</span></p>
+<pre data-signature="pACZrPDpXuO2sdjRnhFTF3x9HUKMDsIytzsZlmSXgLA=" data-language="http"><span class="token header"><span class="token header-name keyword">Vary</span><span class="token punctuation">:</span> <span class="token header-value">*</span></span>
+<span class="token header"><span class="token header-name keyword">Vary</span><span class="token punctuation">:</span> <span class="token header-value">&lt;header-name&gt;, &lt;header-name&gt;, ...</span></span>
+</pre>
+</div></div></section><section aria-labelledby="지시어"><h2 id="지시어">지시어</h2>
+<div class="section-content"><dl> <dt id="sect1">*</dt> <dd> <p>요청 헤더 이외의 요소가 이 응답 생성에 영향을 미쳤음을 나타냅니다. 응답이 캐시할 수 없음을 의미합니다.</p> </dd> <dt id="header-name">&lt;header-name&gt;</dt> <dd> <p>응답 생성에 영향을 줄 수 있는 요청 헤더 이름을 쉼표로 구분한 목록입니다.</p> </dd> </dl></div></section><h2 id="명세서">명세서</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://www.rfc-editor.org/rfc/rfc9110#field.vary">HTTP Semantics <br><small># field.vary</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="호환성_노트"><h2 id="호환성_노트">호환성 노트</h2>
+<div class="section-content"><ul> <li><a href="https://docs.microsoft.com/archive/blogs/ieinternals/vary-with-care" target="_blank">Vary with care – Vary header problems in IE6-9</a></li> </ul></div></section><section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="https://www.smashingmagazine.com/2017/11/understanding-vary-header/" target="_blank">Understanding The Vary Header - Smashing Magazine</a></li> <li><a href="https://www.fastly.com/blog/best-practices-using-vary-header" target="_blank">Best Practices for Using the Vary Header – fastly.com</a></li> <li><a href="../content_negotiation">컨텐츠 협상</a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/HTTP/Headers/Vary" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/HTTP/Headers/Vary</a>
+  </p>
+</div>

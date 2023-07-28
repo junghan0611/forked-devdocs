@@ -1,0 +1,31 @@
+<header><h1>RTCIceCandidate. toJSON()</h1></header><div class="section-content"><p><a href="../rtcicecandidate"><code>RTCIceCandidate</code></a> 메소드인 **<code>toJSON()</code>**은 JSON 형식으로 호출된 RTCIceCandidate를 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/RTCIceCandidate/RTCIceCandidate"><code>RTCIceCandidateInit</code> <small>(en-US)</small></a> 객체 형식으로 변환합니다. .</p></div>
+<h2 id="syntax">Syntax</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="CnHQSKmjelGjgpXiZjvHjk/zqYUsDcuXLHX6vh5x3Ho=" data-language="js">json <span class="token operator">=</span> RTCIceCandidate<span class="token punctuation">.</span><span class="token function">toJSON</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div></div>
+<h3 id="반환_값">반환 값</h3>
+<div class="section-content">
+<p><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/RTCIceCandidate/RTCIceCandidate"><code>RTCIceCandidateInit</code> <small>(en-US)</small></a> 딕셔너리에 상응하는 객체로, <code>RTCIceCandidate</code> 객체의 해당하는 값으로 설정됩니다.</p> <p>반환된 객체에 대한 문자열화된 버전의 객체는 <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify"><code>stringify()</code></a>를 호출해서 가져올 수 있습니다. 아래의 <a href="#example">예시</a>를 참조하십시오.</p>
+</div>
+<h2 id="예시">예시</h2>
+<div class="section-content">
+<p>아래의 샘플 코드는 <code>candidate</code> 변수의 <code>RTCIceCandidate</code>를 나타내는 JSON 문자열을 가져옵니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="hiot339Fkb7waEJil8nliQw+aBv2D43XxGcDMLSM+C4=" data-language="js"><span class="token keyword">var</span> jsonString <span class="token operator">=</span> candidate<span class="token punctuation">.</span><span class="token function">toJSON</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div>
+</div>
+<h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://w3c.github.io/webrtc-pc/#dom-rtcicecandidate-tojson">WebRTC: Real-Time Communication in Browsers <br><small># dom-rtcicecandidate-tojson</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/RTCIceCandidate/toJSON" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/RTCIceCandidate/toJSON</a>
+  </p>
+</div>

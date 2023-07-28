@@ -1,0 +1,56 @@
+<header><h1>URL()</h1></header><div class="section-content">
+<p><code>URL()</code> 생성자는 매개변수로 제공한 URL을 나타내는 새로운 <a href="../url"><code>URL</code></a> 객체를 반환합니다.</p> <p>주어진 기준 URL이나 결과 URL이 유효하지 않은 URL일 경우, JavaScript <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/TypeError"><code>TypeError</code></a> 예외가 발생합니다.</p>
+<div class="notecard note" id="sect1"> <p><strong>참고:</strong> 이 기능은 <a href="../web_workers_api">Web Worker</a>에서 사용할 수 있습니다</p> </div>
+</div>
+<h2 id="구문">구문</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="rk0/c/Cishz3FANGh366/tlCs9LAm5afu4JFI/I+718=" data-language="js"><span class="token keyword">const</span> url <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">URL</span><span class="token punctuation">(</span>url <span class="token punctuation">[</span><span class="token punctuation">,</span> base<span class="token punctuation">]</span><span class="token punctuation">)</span>
+</pre>
+</div></div>
+<h3 id="매개변수">매개변수</h3>
+<div class="section-content">
+<dl> <dt id="url"><code>url</code></dt> <dd> <p>절대 또는 상대 URL을 나타내는 <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/String"><code>USVString</code></a>. <code>url</code>이 상대 URL인 경우 <code>base</code> 매개변수를 기준 URL로 사용하므로 <code>base</code>도 필수로 지정해야 합니다. 절대 URL인 경우 <code>base</code>는 무시합니다.</p> </dd> <dt id="base">
+<code>base</code> <span class="badge inline optional">Optional</span>
+</dt> <dd> <p><code>url</code> 매개변수가 상대 URL인 경우 사용할 기준 URL을 나타내는 <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/String"><code>USVString</code></a>. 기본값은 <code>''</code>입니다.</p> </dd> </dl> <div class="notecard note" id="sect2"> <p><strong>참고:</strong> <code>base</code>에는 기존에 존재하는 <a href="../url"><code>URL</code></a> 객체도 사용할 수 있습니다. 그러면 <a class="page-not-created"><code>href</code></a> 속성을 사용해 스스로 문자열화합니다.</p> </div>
+</div>
+<h3 id="예외">예외</h3>
+<div class="section-content"><figure class="table-container"><div class="_table"><table> <thead> <tr> <th>예외</th> <th>설명</th> </tr> </thead> <tbody> <tr> <td><a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/TypeError"><code>TypeError</code></a></td> <td>절대 URL인 경우 <code>url</code>, 상대 URL인 경우 <code>base</code> + <code>url</code>이 유효하지 않은 URL인 경우.</td> </tr> </tbody> </table></div></figure></div>
+<h2 id="예제">예제</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="Jj1Bte+hMfDOIwo/xqow93T2J80I35QFA/LkE39Gns4=" data-language="js"><span class="token comment">// Base urls</span>
+<span class="token keyword">let</span> m <span class="token operator">=</span> <span class="token string">'https://developer.mozilla.org'</span><span class="token punctuation">;</span>
+<span class="token keyword">let</span> a <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">URL</span><span class="token punctuation">(</span><span class="token string">"/"</span><span class="token punctuation">,</span> m<span class="token punctuation">)</span><span class="token punctuation">;</span>                                <span class="token comment">// =&gt; 'https://developer.mozilla.org/'</span>
+<span class="token keyword">let</span> b <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">URL</span><span class="token punctuation">(</span>m<span class="token punctuation">)</span><span class="token punctuation">;</span>                                     <span class="token comment">// =&gt; 'https://developer.mozilla.org/'</span>
+
+        <span class="token keyword">new</span> <span class="token class-name">URL</span><span class="token punctuation">(</span><span class="token string">'en-US/docs'</span><span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token punctuation">;</span>                      <span class="token comment">// =&gt; 'https://developer.mozilla.org/en-US/docs'</span>
+<span class="token keyword">let</span> d <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">URL</span><span class="token punctuation">(</span><span class="token string">'/en-US/docs'</span><span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token punctuation">;</span>                     <span class="token comment">// =&gt; 'https://developer.mozilla.org/en-US/docs'</span>
+        <span class="token keyword">new</span> <span class="token class-name">URL</span><span class="token punctuation">(</span><span class="token string">'/en-US/docs'</span><span class="token punctuation">,</span> d<span class="token punctuation">)</span><span class="token punctuation">;</span>                     <span class="token comment">// =&gt; 'https://developer.mozilla.org/en-US/docs'</span>
+        <span class="token keyword">new</span> <span class="token class-name">URL</span><span class="token punctuation">(</span><span class="token string">'/en-US/docs'</span><span class="token punctuation">,</span> a<span class="token punctuation">)</span><span class="token punctuation">;</span>                     <span class="token comment">// =&gt; 'https://developer.mozilla.org/en-US/docs'</span>
+
+        <span class="token keyword">new</span> <span class="token class-name">URL</span><span class="token punctuation">(</span><span class="token string">'/en-US/docs'</span><span class="token punctuation">,</span> <span class="token string">"https://developer.mozilla.org/fr-FR/toto"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                                                       <span class="token comment">// =&gt; 'https://developer.mozilla.org/en-US/docs'</span>
+
+        <span class="token keyword">new</span> <span class="token class-name">URL</span><span class="token punctuation">(</span><span class="token string">'/en-US/docs'</span><span class="token punctuation">,</span> <span class="token string">''</span><span class="token punctuation">)</span><span class="token punctuation">;</span>                    <span class="token comment">// Raises a TypeError exception as '' is not a valid URL</span>
+        <span class="token keyword">new</span> <span class="token class-name">URL</span><span class="token punctuation">(</span><span class="token string">'/en-US/docs'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>                        <span class="token comment">// Raises a TypeError exception as '/en-US/docs' is not a valid URL</span>
+        <span class="token keyword">new</span> <span class="token class-name">URL</span><span class="token punctuation">(</span><span class="token string">'http://www.example.com'</span><span class="token punctuation">,</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>           <span class="token comment">// =&gt; 'http://www.example.com/'</span>
+        <span class="token keyword">new</span> <span class="token class-name">URL</span><span class="token punctuation">(</span><span class="token string">'http://www.example.com'</span><span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token punctuation">;</span>          <span class="token comment">// =&gt; 'http://www.example.com/'</span>
+
+        <span class="token keyword">new</span> <span class="token class-name">URL</span><span class="token punctuation">(</span><span class="token string">"//foo.com"</span><span class="token punctuation">,</span> <span class="token string">"https://example.com"</span><span class="token punctuation">)</span>    <span class="token comment">// =&gt; 'https://foo.com' (see relative URLs)</span>
+</pre>
+</div></div>
+<h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://url.spec.whatwg.org/#constructors">URL Standard <br><small># constructors</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li>생성자가 속한 <a href="../url"><code>URL</code></a> 인터페이스.</li> </ul></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/URL/URL" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/URL/URL</a>
+  </p>
+</div>

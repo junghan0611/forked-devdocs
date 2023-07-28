@@ -1,0 +1,29 @@
+<header><h1>Document.adoptNode()</h1></header><div class="section-content">
+<p>외부 문서로부터 노드를 가져온다. 해당 노드와 그 하위트리는 기존의 문서에서 지워지고 해당 노드의 <a href="https://developer.mozilla.org/en-US/docs/Web/API/Node/ownerDocument"><code>ownerDocument</code></a> 는 현재 문서로 바뀐다. 그리고 그 노드는 현재의 문서에 삽입된다.</p> <p><strong>Gecko 1.9 (Firefox 3)부터 지원</strong></p>
+</div>
+<h2 id="문법">문법</h2>
+<div class="section-content">
+<div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="owbj4iDDkFWaMI6bBmvmsaWxDcsT1i/Vy4ZZoJof9pc=" data-language="js">node <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">adoptNode</span><span class="token punctuation">(</span>externalNode<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div> <dl> <dt id="node"><code>node</code></dt> <dd> <p>는 현재 문서에 삽입될 노드를 의미. 아직 해당 문서에 삽입되기 전이기 때문에 새로운 노드의 <a href="https://developer.mozilla.org/en-US/docs/Web/API/Node/parentNode" class="only-in-en-us"><code>parentNode</code> <small>(en-US)</small></a>는 <code>null</code> 이다.</p> </dd> <dt id="externalnode"><code>externalNode</code></dt> <dd> <p>는 노드를 가져오기 위한 외부 문서에 있는 노드를 의미.</p> </dd> </dl>
+</div>
+<h2 id="예제">예제</h2>
+<div class="section-content">{{todo}}</div>
+<h2 id="알아두기">알아두기</h2>
+<div class="section-content">
+<p>보통 <code>adoptNode</code> 호출은 다른 방식으로 구현된 곳에서 노드를 불러오기 때문에 실패하는 경우가 많다. 하지만 브라우저로 인한 문제인 경우는 문제가 된다.</p> <p> Nodes from external documents should be cloned using <a href="importnode"><code>document.importNode()</code></a> (or adopted using <a href="adoptnode" aria-current="page"><code>document.adoptNode()</code></a>) before they can be inserted into the current document. For more on the <a href="../node/ownerdocument"><code>Node.ownerDocument</code></a> issues, see the <a href="https://www.w3.org/DOM/faq.html#ownerdoc" target="_blank">W3C DOM FAQ</a>. </p> <p> Firefox doesn't currently enforce this rule (it did for a while during the development of Firefox 3, but too many sites break when this rule is enforced). We encourage Web developers to fix their code to follow this rule for improved future compatibility. </p>
+</div>
+<h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="#">DOM Standard <br><small># ref-for-dom-document-adoptnode①</small></a></td></tr></tbody>
+</table></div>
+<h2 id="더_보기">더 보기</h2>
+<div class="section-content"><ul> <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Document/importNode" class="only-in-en-us">document.importNode <small>(en-US)</small></a></li> </ul></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/Document/adoptNode" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/Document/adoptNode</a>
+  </p>
+</div>

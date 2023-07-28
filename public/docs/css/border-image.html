@@ -1,0 +1,164 @@
+<header><h1>border-image</h1></header><div class="section-content"><p><code>border-image</code> <a href="https://developer.mozilla.org/ko/docs/Web/CSS">CSS</a> 속성은 요소의 주위에 이미지를 그립니다. 일반 <a href="border">테두리</a>를 대체합니다.</p></div>
+<section aria-labelledby="시도해보기"><h2 id="시도해보기">시도해보기</h2>
+<div class="section-content">
+<iframe class="interactive is-default-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/css/border-image.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe> <p><code>border-image</code>는 <a href="border-image-source"><code>border-image-source</code></a>, <a href="border-image-slice"><code>border-image-slice</code></a>, <a href="border-image-width"><code>border-image-width</code></a>, <a href="border-image-outset"><code>border-image-outset</code></a>, <a href="border-image-repeat"><code>border-image-repeat</code></a>의 <a href="shorthand_properties">단축 속성</a>입니다. 다른 단축 속성과 마찬가지로, 생략한 속성은 <a href="initial_value">초기값</a>으로 설정됩니다.</p> <div class="notecard note" id="sect1"> <p><strong>참고:</strong> 테두리 이미지를 불러오는데 실패할 경우에 대비해 <a href="border-style"><code>border-style</code></a> 속성을 설정해야 합니다. 사실 명세에 따르면 필수로 지정해야 하지만 모든 브라우저가 그렇게 구현하지는 않았습니다.</p> </div>
+</div></section><section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content">
+<div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="UbwA2czu8JwlbAQw8Gt3XlGQjbo/Nm6WDwjTlzblnVQ=" data-language="css"><span class="token comment">/* 이미지 | 슬라이스 */</span>
+<span class="token property">border-image</span><span class="token punctuation">:</span> <span class="token function">linear-gradient</span><span class="token punctuation">(</span>red<span class="token punctuation">,</span> blue<span class="token punctuation">)</span> 27<span class="token punctuation">;</span>
+
+<span class="token comment">/* 이미지 | 슬라이스 | 반복 */</span>
+<span class="token property">border-image</span><span class="token punctuation">:</span> <span class="token url"><span class="token function">url</span><span class="token punctuation">(</span><span class="token string url">"/images/border.png"</span><span class="token punctuation">)</span></span> 27 space<span class="token punctuation">;</span>
+
+<span class="token comment">/* 이미지 | 슬라이스 | 너비 */</span>
+<span class="token property">border-image</span><span class="token punctuation">:</span> <span class="token function">linear-gradient</span><span class="token punctuation">(</span>red<span class="token punctuation">,</span> blue<span class="token punctuation">)</span> 27 / 35px<span class="token punctuation">;</span>
+
+<span class="token comment">/* 이미지 | 슬라이스 | 너비 | 거리 | 반복 */</span>
+<span class="token property">border-image</span><span class="token punctuation">:</span> <span class="token url"><span class="token function">url</span><span class="token punctuation">(</span><span class="token string url">"/images/border.png"</span><span class="token punctuation">)</span></span> 27 23 / 50px 30px / 1rem round space<span class="token punctuation">;</span>
+</pre>
+</div> <p><code>border-image</code> 속성은 아래 나열한 값 중 한 개에서 다섯 개 사이를 사용해 지정할 수 있습니다.</p> <div class="notecard note" id="sect2"> <p><strong>참고:</strong> 만약 <a href="border-image-source"><code>border-image-source</code></a>의 <a href="computed_value">계산값</a>이 <code>none</code>이거나 이미지를 그릴 수 없다면 <a href="border-style"><code>border-style</code></a>이 대신 보여집니다.</p> </div>
+</div></section><section aria-labelledby="값"><h3 id="값">값</h3>
+<div class="section-content"><dl> <dt id="border-image-source"><code>&lt;'border-image-source'&gt;</code></dt> <dd> <p>원본 이미지. <a href="border-image-source"><code>border-image-source</code></a>를 참고하세요.</p> </dd> <dt id="border-image-slice"><code>&lt;'border-image-slice'&gt;</code></dt> <dd> <p>이미지를 구역별로 나눌 때 사용할 슬라이스 크기. 네 개 값까지 지정할 수 있습니다. <a href="border-image-slice"><code>border-image-slice</code></a>를 참고하세요.</p> </dd> <dt id="border-image-width"><code>&lt;'border-image-width'&gt;</code></dt> <dd> <p>테두리 이미지 너비. 네 개 값까지 지정할 수 있습니다. <a href="border-image-width"><code>border-image-width</code></a>를 참고하세요.</p> </dd> <dt id="border-image-outset"><code>&lt;'border-image-outset'&gt;</code></dt> <dd> <p>테두리 이미지와 요소 외곽의 거리. 네 개 값까지 지정할 수 있습니다. <a href="border-image-outset"><code>border-image-outset</code></a>을 참고하세요.</p> </dd> <dt id="border-image-repeat"><code>&lt;'border-image-repeat'&gt;</code></dt> <dd> <p>원본 이미지의 모서리 구역을 테두리의 크기에 맞출 때의 조정 방법. 두 개 값까지 지정할 수 있습니다. <a href="border-image-repeat"><code>border-image-repeat</code></a>을 참고하세요.</p> </dd> </dl></div></section><section aria-labelledby="형식_구문"><h3 id="형식_구문">형식 구문</h3>
+<div class="section-content"><pre class="notranslate"><span class="token property" id="border-image">border-image = </span><br>  <span class="token property">&lt;'border-image-source'&gt;</span>                             <a href="value_definition_syntax#double_bar">||</a><br>  <span class="token property">&lt;'border-image-slice'&gt;</span> <a href="value_definition_syntax#brackets">[</a> / <span class="token property">&lt;'border-image-width'&gt;</span> <a href="value_definition_syntax#single_bar">|</a> / <span class="token property">&lt;'border-image-width'&gt;</span><a href="value_definition_syntax#question_mark">?</a> / <span class="token property">&lt;'border-image-outset'&gt;</span> <a href="value_definition_syntax#brackets">]</a><a href="value_definition_syntax#question_mark">?</a>  <a href="value_definition_syntax#double_bar">||</a><br>  <span class="token property">&lt;'border-image-repeat'&gt;</span>                             <br><br></pre></div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+</section><section aria-labelledby="비트맵"><h3 id="비트맵">비트맵</h3>
+<div class="section-content">
+<p>이번 예제는 요소의 테두리에 마름모 패턴을 적용합니다. 테두리 이미지의 원본은 가로 81픽셀, 세로 81픽셀의 ".png" 파일로, 8개의 마름모가 사각형의 테두리를 이루고 있습니다.</p> <p> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFEAAABRBAMAAABYoVcFAAAAG1BMVEVHcEz/vVv/TgD/SwD/vlz/TAD/vlz/vlz/TADTDIMZAAAAB3RSTlMAJyfm5szMl8qI7QAAAUBJREFUSMftljFuwzAMReWcwIOQOUXQC3TKqilrpqBjO+UCQXmALjp2ZFkW+QUQIIds1iY8/QdbIgWFUMfnKfCYfsUEUThcvsQsPmcNhXP+5+R0paSgksuZk5GIpYhKLnOyKImlgGqOk0XJUkQ115NV2aWAWm5LVuUmRdRyLdmUTQqo59ZkU65SRD1Xk11ZpYBEbkl25SJFJHIl+cHKIgV0Ct9imu9iIf0Bujmc9u+0/7tjP+1n5Dh3ey056tNe844+svemo9/td0g4zkEbiKZr0hYOKNJTkyJatjBpSkCRSJMiWo86aUqBIpEmRbSVZNKUHUUiTYqIWydpyoYikSZFJLpxlA5IdPgoHdBDXjA/sHJAdqf9O+3/7thP+xk5zt1eS476tNe8o4/svenod/sdsr9t9rfN/rbZ3zbvftu8AGy2tt00JFbvAAAAAElFTkSuQmCC" alt="an example borderimage" width="81" height="81" loading="lazy"> </p> <h4 id="html">HTML</h4> <div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="kzD7YLs6upz1w7C+NUzHP13D09PJS4+N2csNT6gza3o=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>bitmap<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>This element is surrounded by a bitmap-based border image!<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div> <h4 id="css">CSS</h4> <p>마름모 하나의 크기에 맞추기 위해, 81을 3으로 나눈 <code>27</code>을 슬라이스 크기로 사용하여 원본 이미지를 모서리와 테두리 구역으로 나눕니다. 테두리 이미지의 중앙을 요소 테두리의 가운데로 맞추기 위해 거리도 각 너비의 절반으로 설정합니다. 마지막으로 반복 값에 <code>round</code>를 지정해 모서리가 끊기거나 잘리지 않도록 설정합니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="AIVWqSsgtabNqlQ+voYmiV9y9utRA3wWrznumQoG1tY=" data-language="css"><span class="token selector">#bitmap</span> <span class="token punctuation">{</span>
+  <span class="token property">width</span><span class="token punctuation">:</span> 200px<span class="token punctuation">;</span>
+  <span class="token property">background-color</span><span class="token punctuation">:</span> #ffa<span class="token punctuation">;</span>
+  <span class="token property">border</span><span class="token punctuation">:</span> 36px solid orange<span class="token punctuation">;</span>
+  <span class="token property">margin</span><span class="token punctuation">:</span> 30px<span class="token punctuation">;</span>
+  <span class="token property">padding</span><span class="token punctuation">:</span> 10px<span class="token punctuation">;</span>
+
+  <span class="token property">border-image</span><span class="token punctuation">:</span>
+      <span class="token url"><span class="token function">url</span><span class="token punctuation">(</span><span class="token string url">"border.png"</span><span class="token punctuation">)</span></span>  <span class="token comment">/* 원본 이미지 */</span>
+      27 /                    <span class="token comment">/* 슬라이스 */</span>
+      36px 28px 18px 8px /    <span class="token comment">/* 너비 */</span>
+      18px 14px 9px 4px       <span class="token comment">/* 거리 */</span>
+      round<span class="token punctuation">;</span>                  <span class="token comment">/* 반복 */</span>
+<span class="token punctuation">}</span>
+</pre>
+</div> <h4 id="결과">결과</h4>
+<div class="code-example" id="sect3">
+
+<iframe class="sample-code-frame" title="비트맵 sample" id="frame_비트맵" width="100%" height="200" src="https://live.mdnplay.dev/ko/docs/Web/CSS/border-image/runner.html?id=%EB%B9%84%ED%8A%B8%EB%A7%B5" loading="lazy"></iframe>
+</div>
+</div></section><section aria-labelledby="그레이디언트"><h3 id="그레이디언트">그레이디언트</h3>
+<div class="section-content">
+<h4 id="html_2">HTML</h4> <div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="OKH0pJ0DBZZduYyYR2Qr8KLCWokrDquERy07UhImEyk=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>gradient<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>그레이디언트 기반 테두리 이미지에 둘러 쌓인 요소에요!<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div> <h4 id="css_2">CSS</h4> <div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="PreC5pbsKmCkBsGCKwMI06dzH2HzLuLlJGv+c1bSPPI=" data-language="css"><span class="token selector">#gradient</span> <span class="token punctuation">{</span>
+  <span class="token property">width</span><span class="token punctuation">:</span> 200px<span class="token punctuation">;</span>
+  <span class="token property">border</span><span class="token punctuation">:</span> 30px solid<span class="token punctuation">;</span>
+  <span class="token property">border-image</span><span class="token punctuation">:</span> <span class="token function">repeating-linear-gradient</span><span class="token punctuation">(</span>45deg<span class="token punctuation">,</span> #f33<span class="token punctuation">,</span> #3bf<span class="token punctuation">,</span> #f33 30px<span class="token punctuation">)</span> 60<span class="token punctuation">;</span>
+  <span class="token property">padding</span><span class="token punctuation">:</span> 20px<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div> <h4 id="결과_2">결과</h4>
+<div class="code-example" id="sect4">
+
+<iframe class="sample-code-frame" title="그레이디언트 sample" id="frame_그레이디언트" src="https://live.mdnplay.dev/ko/docs/Web/CSS/border-image/runner.html?id=%EA%B7%B8%EB%A0%88%EC%9D%B4%EB%94%94%EC%96%B8%ED%8A%B8" loading="lazy"></iframe>
+</div>
+</div></section><section aria-labelledby="접근성_고려사항"><h2 id="접근성_고려사항">접근성 고려사항</h2>
+<div class="section-content">
+<p>보조 기술은 테두리 이미지를 읽을 수 없습니다. 이미지가 페이지 목적의 이해에 필수적인 정보를 갖고 있다면 문서에서 구조적으로 설명하는 편이 좋습니다.</p> <ul> <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/Understanding_WCAG/Perceivable" class="only-in-en-us">MDN Understanding WCAG, Guideline 1.1 explanations <small>(en-US)</small></a></li> <li><a href="https://www.w3.org/TR/2016/NOTE-UNDERSTANDING-WCAG20-20161007/text-equiv-all.html" target="_blank">Understanding Success Criterion 1.1.1 | Understanding WCAG 2.0</a></li> </ul>
+</div></section><h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://drafts.csswg.org/css-backgrounds/#the-border-image">CSS Backgrounds and Borders Module Level 3 <br><small># the-border-image</small></a></td></tr></tbody>
+</table></div>
+<div class="section-content"><figure class="table-container"><div class="_table"><table class="properties"><tbody>
+<tr>
+<th scope="row"><a href="initial_value">초기값</a></th>
+<td>as each of the properties of the shorthand:<br><ul>
+<li>
+<a href="border-image-source"><code>border-image-source</code></a>: <code>none</code>
+</li>
+<li>
+<a href="border-image-slice"><code>border-image-slice</code></a>: <code>100%</code>
+</li>
+<li>
+<a href="border-image-width"><code>border-image-width</code></a>: <code>1</code>
+</li>
+<li>
+<a href="border-image-outset"><code>border-image-outset</code></a>: <code>0</code>
+</li>
+<li>
+<a href="border-image-repeat"><code>border-image-repeat</code></a>: <code>stretch</code>
+</li>
+</ul>
+</td>
+</tr>
+<tr>
+<th scope="row">적용대상</th>
+<td>all elements, except internal table elements when <a href="border-collapse"><code>border-collapse</code></a> is <code>collapse</code>. It also applies to <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/::first-letter" class="only-in-en-us"><code>::first-letter</code> <small>(en-US)</small></a>.</td>
+</tr>
+<tr>
+<th scope="row"><a href="inheritance">상속</a></th>
+<td>no</td>
+</tr>
+<tr>
+<th scope="row">Percentages</th>
+<td>as each of the properties of the shorthand:<br><ul>
+<li>
+<a href="border-image-slice"><code>border-image-slice</code></a>: refer to the size of the border image</li>
+<li>
+<a href="border-image-width"><code>border-image-width</code></a>: refer to the width or height of the border image area</li>
+</ul>
+</td>
+</tr>
+<tr>
+<th scope="row"><a href="computed_value">계산 값</a></th>
+<td>as each of the properties of the shorthand:<br><ul>
+<li>
+<a href="border-image-outset"><code>border-image-outset</code></a>: as specified, but with relative lengths converted into absolute lengths</li>
+<li>
+<a href="border-image-repeat"><code>border-image-repeat</code></a>: as specified</li>
+<li>
+<a href="border-image-slice"><code>border-image-slice</code></a>: one to four percentage(s) (as specified) or absolute length(s), plus the keyword <code>fill</code> if specified</li>
+<li>
+<a href="border-image-source"><code>border-image-source</code></a>: <code>none</code> or the image with its URI made absolute</li>
+<li>
+<a href="border-image-width"><code>border-image-width</code></a>: as specified, but with relative lengths converted into absolute lengths</li>
+</ul>
+</td>
+</tr>
+<tr>
+<th scope="row">Animation type</th>
+<td>as each of the properties of the shorthand:<br><ul>
+<li>
+<a href="border-image-outset"><code>border-image-outset</code></a>: by computed value type</li>
+<li>
+<a href="border-image-repeat"><code>border-image-repeat</code></a>: discrete</li>
+<li>
+<a href="border-image-slice"><code>border-image-slice</code></a>: by computed value type</li>
+<li>
+<a href="border-image-source"><code>border-image-source</code></a>: discrete</li>
+<li>
+<a href="border-image-width"><code>border-image-width</code></a>: by computed value type</li>
+</ul>
+</td>
+</tr>
+</tbody></table></div></figure></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="border"><code>border</code></a></li> <li><a href="outline"><code>outline</code></a></li> <li><a href="box-shadow"><code>box-shadow</code></a></li> <li><a href="background-image"><code>background-image</code></a></li> <li>
+<a href="url"><code>url()</code></a> 함수</li> <li>그레이디언트 함수: <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/gradient/conic-gradient"><code>conic-gradient()</code> <small>(en-US)</small></a>, <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/gradient/linear-gradient"><code>linear-gradient()</code> <small>(en-US)</small></a>, <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/gradient/repeating-linear-gradient"><code>repeating-linear-gradient()</code> <small>(en-US)</small></a>, <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/gradient/radial-gradient"><code>radial-gradient()</code> <small>(en-US)</small></a>, <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/gradient/repeating-radial-gradient"><code>repeating-radial-gradient()</code> <small>(en-US)</small></a>
+</li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/CSS/border-image" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/CSS/border-image</a>
+  </p>
+</div>

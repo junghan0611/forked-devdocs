@@ -1,0 +1,31 @@
+<header><h1>상속</h1></header><div class="section-content"><p>MDN 내 각 <a href="index">CSS 속성(property) 정의</a> 페이지의 요약절은 그 속성이 기본(default)으로 상속되는지("Inherited: Yes") 혹은 상속되지 않는지("Inherited: no") 쓰여 있습니다. 이 상속 여부는 요소의 속성에 어떤 값이 지정되지 않을 때 일어나는 일을 제어합니다.</p></div>
+<section aria-labelledby="상속되는_속성"><h2 id="상속되는_속성">상속되는 속성</h2>
+<div class="section-content">
+<p>요소의 <strong>상속되는 속성</strong>에 값이 지정되지 않은 경우, 요소는 부모 요소의 해당 속성의 <a href="computed_value">계산값</a>을 얻습니다. 오직 문서의 루트 요소만 속성의 요약절에 주어진 <a href="initial_value">초기값</a>을 얻습니다.</p> <p>상속되는 속성의 대표적인 예는 <a href="color"><code>color</code></a> 속성입니다. 주어진 스타일 규칙:</p> <div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="H7tmE/b6i6Z/EFfhGHEv+pYgRT+ATeiHz62VhVQ49CY=" data-language="css"><span class="token selector">p</span> <span class="token punctuation">{</span> <span class="token property">color</span><span class="token punctuation">:</span> green <span class="token punctuation">}</span>
+</pre>
+</div> <p>과 마크업:</p> <div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="7t9h8+YX6lNsOWJO0q24LYTDoiRJClt3wN2866HCQe8=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>This paragraph has <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>em</span><span class="token punctuation">&gt;</span></span>emphasized text<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>em</span><span class="token punctuation">&gt;</span></span> in it.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div> <p><code>em</code> 요소는 <code>p</code> 요소로부터 <a href="color"><code>color</code></a> 속성값을 상속했기 때문에, "emphasized text"는 녹색으로 보입니다. 속성의 초기값(페이지가 어떤 색을 지정하지 않았을 때 루트 요소에 사용된 색)을 얻지 <em>않</em>습니다.</p>
+</div></section><section aria-labelledby="상속되지_않는_속성"><h2 id="상속되지_않는_속성">상속되지 않는 속성</h2>
+<div class="section-content">
+<p>요소의 <strong>상속되지 않는 속성</strong>(Mozilla 코드에서는 가끔 <strong>reset 속성</strong>으로 불림)에 어떤 값이 지정되지 않는 경우, 요소는 그 속성의 <a href="initial_value">초기값</a>을 얻습니다(속성의 요약절에 지정된 대로).</p> <p>상속되지 않는 속성의 대표적인 예는 <a href="border"><code>border</code></a> 속성입니다. 주어진 스타일 규칙:</p> <div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="WfmfuP+HehaN48zxgYDn9P30U82ei6S0RAEZkqQeP4o=" data-language="css"> <span class="token selector">p</span> <span class="token punctuation">{</span> <span class="token property">border</span><span class="token punctuation">:</span> medium solid <span class="token punctuation">}</span>
+</pre>
+</div> <p>과 마크업:</p> <div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="q8JQ/hVcTBvpnUdTIxnolO8kc7Q+eGDMgS0bdq31Mmc=" data-language="html">  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>This paragraph has <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>em</span><span class="token punctuation">&gt;</span></span>emphasized text<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>em</span><span class="token punctuation">&gt;</span></span> in it.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div> <p>"emphasized text"는 테두리가 없습니다(<a href="border-style"><code>border-style</code></a>의 초기값이 <code>none</code>이기 때문에).</p>
+</div></section><section aria-labelledby="참고"><h2 id="참고">참고</h2>
+<div class="section-content"><p><a href="inherit"><code>inherit</code></a> 키워드는 작성자가 명시적으로 상속을 지정할 수 있게 합니다. 상속되는 속성과 상속되지 않는 속성 모두에 작동합니다.</p></div></section><section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="index">CSS 참고서</a></li> <li>CSS 주요 개념 <ul> <li><a href="syntax">CSS 문법</a></li> <li><a href="at-rule">@규칙</a></li> <li><a href="comments">주석</a></li> <li><a href="specificity">명시도</a></li> <li><a href="inheritance" aria-current="page">상속</a></li> <li><a href="css_box_model/introduction_to_the_css_box_model">박스 모델</a></li> <li><a href="layout_mode">레이아웃 모드</a></li> <li><a href="visual_formatting_model">시각적 서식 모델</a></li> <li><a href="css_box_model/mastering_margin_collapsing">마진 중첩</a></li> <li>값 <ul> <li><a href="initial_value">초깃값</a></li> <li><a href="computed_value">계산값</a></li> <li><a href="resolved_value">결정값</a></li> <li><a href="specified_value">지정값</a></li> <li><a href="used_value">사용값</a></li> <li><a href="actual_value">실제값</a></li> </ul> </li> <li><a href="value_definition_syntax">값 정의 구문</a></li> <li><a href="shorthand_properties">단축 속성</a></li> <li><a href="replaced_element">대체 요소</a></li> </ul> </li> <li><a href="inherit"><code>inherit</code></a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/CSS/Inheritance" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/CSS/Inheritance</a>
+  </p>
+</div>

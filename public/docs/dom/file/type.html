@@ -1,0 +1,51 @@
+<header><h1>File.type</h1></header><div class="section-content"><p><code>type</code> 속성은 <a href="../file"><code>File</code></a> 객체가 나타내는 파일의 미디어 유형(<a href="https://developer.mozilla.org/ko/docs/Web/HTTP/Basics_of_HTTP/MIME_types">MIME</a>)을 반환합니다.</p></div>
+<h2 id="값">값</h2>
+<div class="section-content"><p>파일의 미디어 유형(MIME)을 포함한 문자열입니다. 예를 들어, PNG 이미지라면 "image/png"입니다.</p></div>
+<h2 id="예제">예제</h2>
+
+<h3 id="html">HTML</h3>
+<div class="section-content">
+<div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="LbBd8dpVDg4P26u80HqtQX+HUf9Y79o5ghuF59fHycA=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>file<span class="token punctuation">"</span></span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>filepicker<span class="token punctuation">"</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>fileList<span class="token punctuation">"</span></span> <span class="token attr-name">multiple</span> <span class="token punctuation">/&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>output</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>output<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>output</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div> 
+</div>
+<h3 id="javascript">JavaScript</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="gRANDJt+F1n87i2MF7eq9aUUwKy/dQ2Zuej++zbvJk8=" data-language="js"><span class="token keyword">const</span> output <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">'output'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> filepicker <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">'filepicker'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+filepicker<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">'change'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">event</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> files <span class="token operator">=</span> event<span class="token punctuation">.</span>target<span class="token punctuation">.</span>files<span class="token punctuation">;</span>
+  output<span class="token punctuation">.</span>textContent <span class="token operator">=</span> <span class="token string">''</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">const</span> file <span class="token keyword">of</span> files<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    output<span class="token punctuation">.</span>textContent <span class="token operator">+=</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>file<span class="token punctuation">.</span>name<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">: </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>file<span class="token punctuation">.</span>type <span class="token operator">||</span> <span class="token string">'알 수 없음'</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">\n</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div></div>
+<h3 id="결과">결과</h3>
+<div class="section-content">
+<div class="code-example" id="sect1">
+
+<iframe class="sample-code-frame" title="예제 sample" id="frame_예제" src="https://live.mdnplay.dev/ko/docs/Web/API/File/type/runner.html?id=%EC%98%88%EC%A0%9C" loading="lazy"></iframe>
+</div> <div class="notecard note" id="sect2"> <p><strong>참고:</strong> 현재 구현에서, 브라우저들은 파일의 미디어 유형을 확인할 때 실제 바이트스트림을 읽지 않으며 대신 파일의 확장자로 추측할 뿐입니다. 즉, PNG 이미지 파일의 이름을 .txt로 바꾸면 "<em>image/png</em>"가 아니라 "<em>text/plain</em>"을 반환합니다. 그리고 <code>type</code> 속성은 이미지, HTML 문서, 오디오와 비디오처럼 흔한 파일 확장자만 인지할 수 있고, 보다 덜 일반적인 확장자에 대해서는 빈 문자열을 반환합니다. 게다가 클라이언트 설정(Windows 레지스트리 등)에 따라서 흔한 파일 유형에서도 예상치 못한 값을 반환할 가능성이 있습니다. <code>type</code></p> </div>
+</div>
+<h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://w3c.github.io/FileAPI/#dfn-type">File API <br><small># dfn-type</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="../file_api/using_files_from_web_applications">웹 어플리케이션에서 파일 사용하기</a></li> <li><a href="https://textslashplain.com/2018/07/26/be-skeptical-of-client-reported-mime-content-types/" target="_blank">Be skeptical of client-reported MIME types</a></li> </ul></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/File/type" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/File/type</a>
+  </p>
+</div>

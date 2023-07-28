@@ -1,0 +1,210 @@
+<header><h1>발전된 애니메이션</h1></header><div class="section-content">
+<ul class="prev-next"> <li><a class="button secondary" href="basic_animations">« 이전</a></li> <li><a class="button secondary only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Pixel_manipulation_with_canvas">다음 » <small>(en-US)</small></a></li> </ul> <p>마지막 챕터에서 우리는 몇가지 <a href="basic_animations">간단한 애니메이션들</a>을 만들었고 이제 이것들을 어떻게 움직이게 하는지 안다. 이 챕터에서 우리는 각각의 모션들을 자세히 살펴보고 애니메이션을 더 발전시키기 위해 몇가지 물리 동작을 추가할 것이다.</p>
+</div>
+<h2 id="공_그리기">공 그리기</h2>
+<div class="section-content">
+<p>우리는 애니메이션 공부를 위해 공을 사용할 것이다. 먼저 캔버스에 공을 그려보자. 다음 코드를 통해 준비해보자.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="ajHWvGquAILjFmc2nd4mBhaXYxg/PraPhRICo6+Kg9s=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>canvas</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>canvas<span class="token punctuation">"</span></span> <span class="token attr-name">width</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>600<span class="token punctuation">"</span></span> <span class="token attr-name">height</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>300<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>canvas</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div> <p>언제나처럼, 우리는 context를 먼저 그려야 한다. 공을 그리기 위해 우리는 캔버스에 그림을 그리기 위한 프로퍼티와 <code>draw()</code> 메소드를 가진 <code>ball</code> 오브젝트를 생성할 것이다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="AdadiEsfS5Zk3yAdR5yeuSdbCvRHh6bf7StJok8RF00=" data-language="js"><span class="token keyword">var</span> canvas <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">'canvas'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> ctx <span class="token operator">=</span> canvas<span class="token punctuation">.</span><span class="token function">getContext</span><span class="token punctuation">(</span><span class="token string">'2d'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">var</span> ball <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token literal-property property">x</span><span class="token operator">:</span> <span class="token number">100</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">y</span><span class="token operator">:</span> <span class="token number">100</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">radius</span><span class="token operator">:</span> <span class="token number">25</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">color</span><span class="token operator">:</span> <span class="token string">'blue'</span><span class="token punctuation">,</span>
+  <span class="token function-variable function">draw</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    ctx<span class="token punctuation">.</span><span class="token function">beginPath</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    ctx<span class="token punctuation">.</span><span class="token function">arc</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>x<span class="token punctuation">,</span> <span class="token keyword">this</span><span class="token punctuation">.</span>y<span class="token punctuation">,</span> <span class="token keyword">this</span><span class="token punctuation">.</span>radius<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> Math<span class="token punctuation">.</span><span class="token constant">PI</span> <span class="token operator">*</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    ctx<span class="token punctuation">.</span><span class="token function">closePath</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    ctx<span class="token punctuation">.</span>fillStyle <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>color<span class="token punctuation">;</span>
+    ctx<span class="token punctuation">.</span><span class="token function">fill</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+ball<span class="token punctuation">.</span><span class="token function">draw</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div> <p>특이할 건 없다. 이공은 사실상 간단한 원이고 그리는 방법은 다음<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/arc"><code>arc()</code> <small>(en-US)</small></a> 메소드에서 참고할 수 있다.</p>
+</div>
+<h2 id="속도_추가하기">속도 추가하기</h2>
+<div class="section-content">
+<p>우리한테는 이제 공이 있다. 이제 이 튜토리얼 <a href="basic_animations">마지막 챕터</a>에서 배웠던 것과 같은 기본 애니메이션을 추가할 준비가 되었다. 다시 한 번, 애니메이션 컨트롤은 <a href="../../window/requestanimationframe"><code>window.requestAnimationFrame()</code></a>가 도와주 것이다. 공은 위치에 속도 벡터를 추가하여 움직일 수 있게 된다. 각각의 프레임에, 우리는<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/clearRect">clear <small>(en-US)</small></a>를 캔버스에 주어 오래된 원을 이전 프래임에서 지운다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="SQ73w4xSAr8rCDZMaXTZNM0spHyCyrmXpBCT0OOEqW4=" data-language="js"><span class="token keyword">var</span> canvas <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">'canvas'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> ctx <span class="token operator">=</span> canvas<span class="token punctuation">.</span><span class="token function">getContext</span><span class="token punctuation">(</span><span class="token string">'2d'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> raf<span class="token punctuation">;</span>
+
+<span class="token keyword">var</span> ball <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token literal-property property">x</span><span class="token operator">:</span> <span class="token number">100</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">y</span><span class="token operator">:</span> <span class="token number">100</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">vx</span><span class="token operator">:</span> <span class="token number">5</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">vy</span><span class="token operator">:</span> <span class="token number">2</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">radius</span><span class="token operator">:</span> <span class="token number">25</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">color</span><span class="token operator">:</span> <span class="token string">'blue'</span><span class="token punctuation">,</span>
+  <span class="token function-variable function">draw</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    ctx<span class="token punctuation">.</span><span class="token function">beginPath</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    ctx<span class="token punctuation">.</span><span class="token function">arc</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>x<span class="token punctuation">,</span> <span class="token keyword">this</span><span class="token punctuation">.</span>y<span class="token punctuation">,</span> <span class="token keyword">this</span><span class="token punctuation">.</span>radius<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> Math<span class="token punctuation">.</span><span class="token constant">PI</span> <span class="token operator">*</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    ctx<span class="token punctuation">.</span><span class="token function">closePath</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    ctx<span class="token punctuation">.</span>fillStyle <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>color<span class="token punctuation">;</span>
+    ctx<span class="token punctuation">.</span><span class="token function">fill</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">function</span> <span class="token function">draw</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  ctx<span class="token punctuation">.</span><span class="token function">clearRect</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span> canvas<span class="token punctuation">.</span>width<span class="token punctuation">,</span> canvas<span class="token punctuation">.</span>height<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  ball<span class="token punctuation">.</span><span class="token function">draw</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  ball<span class="token punctuation">.</span>x <span class="token operator">+=</span> ball<span class="token punctuation">.</span>vx<span class="token punctuation">;</span>
+  ball<span class="token punctuation">.</span>y <span class="token operator">+=</span> ball<span class="token punctuation">.</span>vy<span class="token punctuation">;</span>
+  raf <span class="token operator">=</span> window<span class="token punctuation">.</span><span class="token function">requestAnimationFrame</span><span class="token punctuation">(</span>draw<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+canvas<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">'mouseover'</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">e</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  raf <span class="token operator">=</span> window<span class="token punctuation">.</span><span class="token function">requestAnimationFrame</span><span class="token punctuation">(</span>draw<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+canvas<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">'mouseout'</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">e</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  window<span class="token punctuation">.</span><span class="token function">cancelAnimationFrame</span><span class="token punctuation">(</span>raf<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+ball<span class="token punctuation">.</span><span class="token function">draw</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div>
+</div>
+<h2 id="경계">경계</h2>
+<div class="section-content">
+<p>경계 충돌 테스트의 필요 없이 우리가 만든 공은 캔버스 밖으로 빠르게 빠져나갈 것입니다. 우리는 공의 <code>x</code> 와 <code>y</code> 위치가 캔버스 차원을 빠져나갔는지 체크해서 방향과 속도를 바꿔주어야 합니다. 그러기 위해서 우리는 <code>draw</code> 메소드에 다음 확인사항을 추가할 것입니다.:</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="wo5AicrzDFUc93JcriE/RsmdwoDAVM7JE2/jNuwZDDo=" data-language="js"><span class="token keyword">if</span> <span class="token punctuation">(</span>ball<span class="token punctuation">.</span>y <span class="token operator">+</span> ball<span class="token punctuation">.</span>vy <span class="token operator">&gt;</span> canvas<span class="token punctuation">.</span>height <span class="token operator">||</span> ball<span class="token punctuation">.</span>y <span class="token operator">+</span> ball<span class="token punctuation">.</span>vy <span class="token operator">&lt;</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  ball<span class="token punctuation">.</span>vy <span class="token operator">=</span> <span class="token operator">-</span>ball<span class="token punctuation">.</span>vy<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span>ball<span class="token punctuation">.</span>x <span class="token operator">+</span> ball<span class="token punctuation">.</span>vx <span class="token operator">&gt;</span> canvas<span class="token punctuation">.</span>width <span class="token operator">||</span> ball<span class="token punctuation">.</span>x <span class="token operator">+</span> ball<span class="token punctuation">.</span>vx <span class="token operator">&lt;</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  ball<span class="token punctuation">.</span>vx <span class="token operator">=</span> <span class="token operator">-</span>ball<span class="token punctuation">.</span>vx<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div>
+</div>
+<h3 id="first_demo">First demo</h3>
+<div class="section-content">
+<p>이제 동작을 확인해 봅시다. 시작하려먼 마우스를 캔버스 안으로 움직여 주세요.</p>  
+<div class="code-example" id="sect1">
+
+<iframe class="sample-code-frame" title="First demo sample" id="frame_first_demo" width="610" height="310" src="https://live.mdnplay.dev/ko/docs/Web/API/Canvas_API/Tutorial/Advanced_animations/runner.html?id=first_demo" loading="lazy"></iframe>
+</div>
+</div>
+<h2 id="가속">가속</h2>
+<div class="section-content">
+<p>움직임을 좀 더 리얼하게 만들기 위해, 우리는 속도를 다음과 같이 줄 겁니다. 예를 들어:</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="s8MIywAzZCzoRXkH4BtGNKuUS9kLCVjwa/QBXa6KPBs=" data-language="js">ball<span class="token punctuation">.</span>vy <span class="token operator">*=</span> <span class="token number">.99</span><span class="token punctuation">;</span>
+ball<span class="token punctuation">.</span>vy <span class="token operator">+=</span> <span class="token number">.25</span><span class="token punctuation">;</span>
+</pre>
+</div> <p>이것은 각 프레임의 세로 속도를 줄여주어, 공이 결국 바닥에서 튀게 만듭니다.</p>  
+<div class="code-example" id="sect2">
+
+<iframe class="sample-code-frame" title="가속" id="frame_second_demo" width="610" height="310" src="https://live.mdnplay.dev/ko/docs/Web/API/Canvas_API/Tutorial/Advanced_animations/runner.html?id=second_demo" loading="lazy"></iframe>
+</div>
+</div>
+<h2 id="후행_효과">후행 효과</h2>
+<div class="section-content">
+<p>지금까지 우리는 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/clearRect"><code>clearRect</code> <small>(en-US)</small></a>메소드를 사용해서 이전 프레임을 지웠다. 만약 당신이 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/fillRect"><code>fillRect</code> <small>(en-US)</small></a>르 사용하여 약간 투명도를 준다면, 쉽게 후행 효과(Trailing effect)를 만들 수 있을 것이다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="ti0YEAGaNKCXsNguh6/gQnze47KKaKvTIp9PBNrM0Ow=" data-language="js">ctx<span class="token punctuation">.</span>fillStyle <span class="token operator">=</span> <span class="token string">'rgba(255, 255, 255, 0.3)'</span><span class="token punctuation">;</span>
+ctx<span class="token punctuation">.</span><span class="token function">fillRect</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> canvas<span class="token punctuation">.</span>width<span class="token punctuation">,</span> canvas<span class="token punctuation">.</span>height<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div>  
+<div class="code-example" id="sect3">
+
+<iframe class="sample-code-frame" title="후행 효과" id="frame_third_demo" width="610" height="310" src="https://live.mdnplay.dev/ko/docs/Web/API/Canvas_API/Tutorial/Advanced_animations/runner.html?id=third_demo" loading="lazy"></iframe>
+</div>
+</div>
+<h2 id="마우스_컨트롤_추가하기">마우스 컨트롤 추가하기</h2>
+<div class="section-content">
+<p>공을 컨트롤 하기 위해, 우리는 <a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/mousemove_event"><code>mousemove</code></a> 이벤트를 사용하여 마우스를 따라오게 할 것이다. <a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/click_event"><code>click</code></a> 이벤트를 통해 공을 놓으면 다시 공이 튀도록 할 것이다.</p>  <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="Wt2GcGYAuQl+NEUdzVqW0mDAigN46r9rT6UW8QpJuno=" data-language="js"><span class="token keyword">var</span> canvas <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">'canvas'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> ctx <span class="token operator">=</span> canvas<span class="token punctuation">.</span><span class="token function">getContext</span><span class="token punctuation">(</span><span class="token string">'2d'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> raf<span class="token punctuation">;</span>
+<span class="token keyword">var</span> running <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+
+<span class="token keyword">var</span> ball <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token literal-property property">x</span><span class="token operator">:</span> <span class="token number">100</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">y</span><span class="token operator">:</span> <span class="token number">100</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">vx</span><span class="token operator">:</span> <span class="token number">5</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">vy</span><span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">radius</span><span class="token operator">:</span> <span class="token number">25</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">color</span><span class="token operator">:</span> <span class="token string">'blue'</span><span class="token punctuation">,</span>
+  <span class="token function-variable function">draw</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    ctx<span class="token punctuation">.</span><span class="token function">beginPath</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    ctx<span class="token punctuation">.</span><span class="token function">arc</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>x<span class="token punctuation">,</span> <span class="token keyword">this</span><span class="token punctuation">.</span>y<span class="token punctuation">,</span> <span class="token keyword">this</span><span class="token punctuation">.</span>radius<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> Math<span class="token punctuation">.</span><span class="token constant">PI</span> <span class="token operator">*</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    ctx<span class="token punctuation">.</span><span class="token function">closePath</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    ctx<span class="token punctuation">.</span>fillStyle <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>color<span class="token punctuation">;</span>
+    ctx<span class="token punctuation">.</span><span class="token function">fill</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">function</span> <span class="token function">clear</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  ctx<span class="token punctuation">.</span>fillStyle <span class="token operator">=</span> <span class="token string">'rgba(255, 255, 255, 0.3)'</span><span class="token punctuation">;</span>
+  ctx<span class="token punctuation">.</span><span class="token function">fillRect</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span>canvas<span class="token punctuation">.</span>width<span class="token punctuation">,</span>canvas<span class="token punctuation">.</span>height<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">function</span> <span class="token function">draw</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token function">clear</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  ball<span class="token punctuation">.</span><span class="token function">draw</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  ball<span class="token punctuation">.</span>x <span class="token operator">+=</span> ball<span class="token punctuation">.</span>vx<span class="token punctuation">;</span>
+  ball<span class="token punctuation">.</span>y <span class="token operator">+=</span> ball<span class="token punctuation">.</span>vy<span class="token punctuation">;</span>
+
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>ball<span class="token punctuation">.</span>y <span class="token operator">+</span> ball<span class="token punctuation">.</span>vy <span class="token operator">&gt;</span> canvas<span class="token punctuation">.</span>height <span class="token operator">||</span> ball<span class="token punctuation">.</span>y <span class="token operator">+</span> ball<span class="token punctuation">.</span>vy <span class="token operator">&lt;</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    ball<span class="token punctuation">.</span>vy <span class="token operator">=</span> <span class="token operator">-</span>ball<span class="token punctuation">.</span>vy<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>ball<span class="token punctuation">.</span>x <span class="token operator">+</span> ball<span class="token punctuation">.</span>vx <span class="token operator">&gt;</span> canvas<span class="token punctuation">.</span>width <span class="token operator">||</span> ball<span class="token punctuation">.</span>x <span class="token operator">+</span> ball<span class="token punctuation">.</span>vx <span class="token operator">&lt;</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    ball<span class="token punctuation">.</span>vx <span class="token operator">=</span> <span class="token operator">-</span>ball<span class="token punctuation">.</span>vx<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  raf <span class="token operator">=</span> window<span class="token punctuation">.</span><span class="token function">requestAnimationFrame</span><span class="token punctuation">(</span>draw<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+canvas<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">'mousemove'</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">e</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>running<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">clear</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    ball<span class="token punctuation">.</span>x <span class="token operator">=</span> e<span class="token punctuation">.</span>clientX<span class="token punctuation">;</span>
+    ball<span class="token punctuation">.</span>y <span class="token operator">=</span> e<span class="token punctuation">.</span>clientY<span class="token punctuation">;</span>
+    ball<span class="token punctuation">.</span><span class="token function">draw</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+canvas<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">'click'</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">e</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>running<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    raf <span class="token operator">=</span> window<span class="token punctuation">.</span><span class="token function">requestAnimationFrame</span><span class="token punctuation">(</span>draw<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    running <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+canvas<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">'mouseout'</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">e</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  window<span class="token punctuation">.</span><span class="token function">cancelAnimationFrame</span><span class="token punctuation">(</span>raf<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  running <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+ball<span class="token punctuation">.</span><span class="token function">draw</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div> <p>마우스로 공을 움직이고, 클릭을 통해 놓아보자.</p>
+<div class="code-example" id="sect4">
+
+<iframe class="sample-code-frame" title="마우스 컨트롤 추가하기" id="frame_adding_mouse_control" width="610" height="310" src="https://live.mdnplay.dev/ko/docs/Web/API/Canvas_API/Tutorial/Advanced_animations/runner.html?id=adding_mouse_control" loading="lazy"></iframe>
+</div>
+</div>
+<h2 id="breakout">Breakout</h2>
+<div class="section-content"><p>이 짧은 챕터는 발전된 애니메이션을 만들기 위한 조금의 기술을 설명했다. 여기에 더 많은 것들이 있다! 노나 벽돌을 추가해서 이 튜토리얼을 <a href="http://en.wikipedia.org/wiki/Breakout_%28video_game%29" target="_blank">Breakout</a> 으로 발전시키는 건 어떨까? <a href="https://developer.mozilla.org/ko/docs/Games">Game development</a>에서 게임에 관련된 글들을 찾아보자.</p></div>
+<h2 id="더보기">더보기</h2>
+<div class="section-content">
+<ul> <li><a href="../../window/requestanimationframe"><code>window.requestAnimationFrame()</code></a></li> <li><a href="https://developer.mozilla.org/en-US/docs/Games/Techniques" class="only-in-en-us">Efficient animation for web games <small>(en-US)</small></a></li> </ul>
+<ul class="prev-next"> <li><a class="button secondary" href="basic_animations">« 이전</a></li> <li><a class="button secondary only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Pixel_manipulation_with_canvas">다음 » <small>(en-US)</small></a></li> </ul>
+</div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/Canvas_API/Tutorial/Advanced_animations" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/Canvas_API/Tutorial/Advanced_animations</a>
+  </p>
+</div>

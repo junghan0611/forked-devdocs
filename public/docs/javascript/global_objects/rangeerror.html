@@ -1,0 +1,56 @@
+<header><h1>RangeError</h1></header><div class="section-content"><p><code>RangeError</code> 객체는 어떤 값이 집합에 없거나 허용되는 범위가 아닐 때 오류를 나타냅니다.</p></div>
+<section aria-labelledby="설명"><h2 id="설명">설명</h2>
+<div class="section-content">
+<p>어떤 값을 그 값이 포함되는 범위를 허용하지 않는 함수에 인수로 전달하려 할 때 <code>RangeError</code>가 발생합니다.</p> <p>이 문제는 다음과 같은 경우에 발생할 수 있습니다.</p> <ul> <li>허용되는 문자열이 아닌 값을 <a href="string/normalize"><code>String.prototype.normalize()</code></a>에 전달하거나,</li> <li>
+<a href="array"><code>Array</code></a> 생성자를 통해 잘못된 길이의 배열을 만드려고 시도하거나,</li> <li> 숫자 메서드 <a href="number/toexponential"><code>Number.prototype.toExponential()</code></a>, <a href="number/tofixed"><code>Number.prototype.toFixed()</code></a> 혹은 <a href="number/toprecision"><code>Number.prototype.toPrecision()</code></a>에 나쁜 값을 전달하는 경우. </li> </ul> <p> <code>RangeError</code>는 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Glossary/Serializable_object">직렬화 가능한 객체 <small>(en-US)</small></a>이기 때문에, <a href="https://developer.mozilla.org/ko/docs/Web/API/structuredClone"><code>structuredClone()</code></a>로 복제하거나 <a href="https://developer.mozilla.org/ko/docs/Web/API/Worker/postMessage"><code>postMessage()</code></a>를 사용하여 <a href="https://developer.mozilla.org/ko/docs/Web/API/Worker">Workers</a> 간에 복사할 수 있습니다. </p>
+</div></section><section aria-labelledby="생성자"><h2 id="생성자">생성자</h2>
+<div class="section-content"><dl> <dt id="rangeerror"><a href="rangeerror/rangeerror"><code>RangeError()</code></a></dt> <dd> <p>새로운 <code>RangeError</code> 객체를 만듭니다.</p> </dd> </dl></div></section><section aria-labelledby="인스턴스_속성"><h2 id="인스턴스_속성">인스턴스 속성</h2>
+<div class="section-content"><dl> <dt id="rangeerror.prototype.message"><a href="error/message"><code>RangeError.prototype.message</code></a></dt> <dd> <p>오류 메시지. <a href="error/message"><code>Error.prototype.message</code></a>를 상속되었습니다.</p> </dd> <dt id="rangeerror.prototype.name"><a href="error/name"><code>RangeError.prototype.name</code></a></dt> <dd> <p>오류 이름. <a href="error"><code>Error</code></a>로부터 상속되었습니다.</p> </dd> <dt id="rangeerror.prototype.cause"><a href="error/cause"><code>RangeError.prototype.cause</code></a></dt> <dd> <p>에러 원인. <a href="error"><code>Error</code></a>로부터 상속되었습니다..</p> </dd> <dt id="rangeerror.prototype.filename"><a href="error/filename"><code>RangeError.prototype.fileName</code></a></dt> <dd> <p>오류가 발생한 파일 경로. <a href="error"><code>Error</code></a>로부터 상속되었습니다.</p> </dd> <dt id="rangeerror.prototype.linenumber"><a href="error/linenumber"><code>RangeError.prototype.lineNumber</code></a></dt> <dd> <p>오류가 발생한 곳의 줄 위치. <a href="error"><code>Error</code></a>로부터 상속되었습니다.</p> </dd> <dt id="rangeerror.prototype.columnnumber"><a href="error/columnnumber"><code>RangeError.prototype.columnNumber</code></a></dt> <dd> <p>오류가 발생한 곳의 열 위치. <a href="error"><code>Error</code></a>로부터 상속되었습니다.</p> </dd> <dt id="rangeerror.prototype.stack_en-us"><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error/stack"><code>RangeError.prototype.stack</code> <small>(en-US)</small></a></dt> <dd> <p>스택 추적. <a href="error"><code>Error</code></a>로부터 상속되었습니다.</p> </dd> </dl></div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+</section><section aria-labelledby="rangeerror_사용하기숫자_값일_경우"><h3 id="rangeerror_사용하기숫자_값일_경우">RangeError 사용하기(숫자 값일 경우)</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="kB5auXNAW/KqaG3fkunjFuj/DjM5nTruShqktLxLdRU=" data-language="js"><span class="token keyword">function</span> <span class="token function">check</span><span class="token punctuation">(</span><span class="token parameter">n</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token punctuation">(</span>n <span class="token operator">&gt;=</span> <span class="token operator">-</span><span class="token number">500</span> <span class="token operator">&amp;&amp;</span> n <span class="token operator">&lt;=</span> <span class="token number">500</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">RangeError</span><span class="token punctuation">(</span><span class="token string">"The argument must be between -500 and 500."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">try</span> <span class="token punctuation">{</span>
+  <span class="token function">check</span><span class="token punctuation">(</span><span class="token number">2000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span>error<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>error <span class="token keyword">instanceof</span> <span class="token class-name">RangeError</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// Handle the error</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</pre>
+</div></div></section><section aria-labelledby="rangeerror_사용하기_숫자값이_아닐_경우"><h3 id="rangeerror_사용하기_숫자값이_아닐_경우">RangeError 사용하기 (숫자값이 아닐 경우)</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="4xew5v42FwylkKIt+y//cKoUXElRTtMwK9od7UjJs5c=" data-language="js"><span class="token keyword">function</span> <span class="token function">check</span><span class="token punctuation">(</span><span class="token parameter">value</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token punctuation">[</span><span class="token string">"apple"</span><span class="token punctuation">,</span> <span class="token string">"banana"</span><span class="token punctuation">,</span> <span class="token string">"carrot"</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">includes</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">RangeError</span><span class="token punctuation">(</span>
+      <span class="token string">'The argument must be an "apple", "banana", or "carrot".'</span>
+    <span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">try</span> <span class="token punctuation">{</span>
+  <span class="token function">check</span><span class="token punctuation">(</span><span class="token string">"cabbage"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span>error<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>error <span class="token keyword">instanceof</span> <span class="token class-name">RangeError</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// Handle the error</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</pre>
+</div></div></section><h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://tc39.es/ecma262/multipage/fundamental-objects.html#sec-native-error-types-used-in-this-standard-rangeerror">ECMAScript Language Specification <br><small># sec-native-error-types-used-in-this-standard-rangeerror</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="error"><code>Error</code></a></li> <li><a href="array"><code>Array</code></a></li> <li><a href="number/toexponential"><code>Number.prototype.toExponential()</code></a></li> <li><a href="number/tofixed"><code>Number.prototype.toFixed()</code></a></li> <li><a href="number/toprecision"><code>Number.prototype.toPrecision()</code></a></li> <li><a href="string/normalize"><code>String.prototype.normalize()</code></a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/RangeError" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/RangeError</a>
+  </p>
+</div>

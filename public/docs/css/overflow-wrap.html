@@ -1,0 +1,74 @@
+<header><h1>overflow-wrap</h1></header><div class="section-content">
+<p><code>overflow-wrap</code> CSS 요소는 어떤 문자가 내용 칸 밖으로 넘치지 않게 브라우저가 단어 마디 안에 줄을 바꿔야 할 것인지 아닌지를 정할 때 사용됩니다.</p> <div class="notecard note" id="sect1"> <p><strong>참고:</strong> <a href="word-break"><code>word-break</code></a>와는 달리, <code>overflow-wrap</code>은 모든 단어가 넘치지 않으면 자신의 줄 안에 놓여 있을 수 없을 때 줄 바꿈을 한 번만 할 것입니다.</p> </div> <p>이 속성은 처음에 마이크로소프트에서 표준이 아니고 접두어가 없는 <code>word-wrap</code>으로 나왔고, 대부분 브라우저에서 똑같은 이름으로 구현되었습니다. 요즘은 <code>overflow-wrap</code>으로 다시 지어지고, <code>word-wrap</code>은 동의어가 되었습니다.</p>
+</div>
+<section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content">
+<div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="CXC4MQrx891d1OWLqSzr++fIf5h1BsMDSzEyonfF7sU=" data-language="css"><span class="token comment">/* Keyword values */</span>
+<span class="token property">overflow-wrap</span><span class="token punctuation">:</span> normal<span class="token punctuation">;</span>
+<span class="token property">overflow-wrap</span><span class="token punctuation">:</span> break-word<span class="token punctuation">;</span>
+
+<span class="token comment">/* Global values */</span>
+<span class="token property">overflow-wrap</span><span class="token punctuation">:</span> inherit<span class="token punctuation">;</span>
+<span class="token property">overflow-wrap</span><span class="token punctuation">:</span> initial<span class="token punctuation">;</span>
+<span class="token property">overflow-wrap</span><span class="token punctuation">:</span> unset<span class="token punctuation">;</span>
+</pre>
+</div> <p><code>overflow-wrap</code> 속성은 아래에 나열돼 있는 값들 중 단 하나로 정해집니다.</p>
+</div></section><section aria-labelledby="값"><h3 id="값">값</h3>
+<div class="section-content"><dl> <dt id="normal"><code>normal</code></dt> <dd> <p>줄이 오직 (두 단어 사이의 공백과 같이) 보통의 줄 바꿈 지점에서만 줄을 바꿉니다.</p> </dd> <dt id="break-word"><code>break-word</code></dt> <dd> <p>보통 안 바꿔지는 단어들을 한 줄에서 대신 줄을 바꿀 만한 지점이 없을 시 임의의 지점에서 줄을 바꿉니다.</p> </dd> </dl></div></section><section aria-labelledby="기본적인_구문"><h3 id="기본적인_구문">기본적인 구문</h3>
+<div class="section-content"><pre class="notranslate"><span class="token property" id="overflow-wrap">overflow-wrap = </span><br>  <span class="token keyword">normal</span>      <a href="value_definition_syntax#single_bar">|</a><br>  <span class="token keyword">break-word</span>  <a href="value_definition_syntax#single_bar">|</a><br>  <span class="token keyword">anywhere</span>    <br><br></pre></div></section><section aria-labelledby="예시"><h2 id="예시">예시</h2>
+<div class="section-content"><p>이 예시는 긴 단어를 넘길 때 <code>overflow-wrap</code>, <code>word-break</code>, 그리고 <code>hyphens</code>의 결과를 비교합니다.</p></div></section><section aria-labelledby="html"><h3 id="html">HTML</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="kP6w8f5N4Cxmmrn81vVrgWqW4xoz/024nM2uquNruXs=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>normal<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>They say the fishing is excellent at
+  Lake Chargoggagoggmanchauggagoggchaubunagungamaugg,
+  though I've never been there myself. (normal)<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>overflow-wrap<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>They say the fishing is excellent at
+  Lake Chargoggagoggmanchauggagoggchaubunagungamaugg,
+  though I've never been there myself. (overflow-wrap)<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>word-break<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>They say the fishing is excellent at
+  Lake Chargoggagoggmanchauggagoggchaubunagungamaugg,
+  though I've never been there myself. (word-break)<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>hyphens<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>They say the fishing is excellent at
+  Lake Chargoggagoggmanchauggagoggchaubunagungamaugg,
+  though I've never been there myself. (hyphens)<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div></div></section><section aria-labelledby="css"><h3 id="css">CSS</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="TF52kjhkZ7Gb0o6mhBQ1tYE5ahP7ykl58xg3U3ULkjs=" data-language="css"><span class="token selector">p</span> <span class="token punctuation">{</span>
+  <span class="token property">width</span><span class="token punctuation">:</span> 13em<span class="token punctuation">;</span>
+  <span class="token property">background</span><span class="token punctuation">:</span> gold<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">.overflow-wrap</span> <span class="token punctuation">{</span>
+  <span class="token property">overflow-wrap</span><span class="token punctuation">:</span> break-word<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">.word-break</span> <span class="token punctuation">{</span>
+  <span class="token property">word-break</span><span class="token punctuation">:</span> break-all<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">.hyphens</span> <span class="token punctuation">{</span>
+  <span class="token property">hyphens</span><span class="token punctuation">:</span> auto<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div></div></section><section aria-labelledby="result"><h3 id="result">Result</h3>
+<div class="section-content"><div class="code-example" id="sect2">
+
+<iframe class="sample-code-frame" title="예시" id="frame_example" width="100%" height="260" src="https://live.mdnplay.dev/ko/docs/Web/CSS/overflow-wrap/runner.html?id=example" loading="lazy"></iframe>
+</div></div></section><h2 id="명세서">명세서</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://drafts.csswg.org/css-text/#overflow-wrap-property">CSS Text Module Level 3 <br><small># overflow-wrap-property</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="바로_보기"><h2 id="바로_보기">바로 보기</h2>
+<div class="section-content"><ul> <li><a href="word-break"><code>word-break</code></a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/CSS/overflow-wrap" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/CSS/overflow-wrap</a>
+  </p>
+</div>

@@ -1,0 +1,27 @@
+<header><h1>ImageData</h1></header><div class="section-content"><p><code>ImageData</code> 인터페이스는 <a href="https://developer.mozilla.org/ko/docs/Web/HTML/Element/canvas"><code>&lt;canvas&gt;</code></a> 엘리먼트 영역의 기저의 픽셀데이터를 나타냅니다<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/ImageData/ImageData"><code>ImageData()</code> <small>(en-US)</small></a>생성자나 canvas객체에 연결된 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D"><code>CanvasRenderingContext2D</code> <small>(en-US)</small></a>객체의 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/createImageData"><code>createImageData()</code> <small>(en-US)</small></a>나 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/getImageData"><code>getImageData()</code> <small>(en-US)</small></a>메소드로 생성할 수 있습니다. <strong>ImageData</strong>는 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/putImageData"><code>putImageData()</code> <small>(en-US)</small></a>의 인자로 전달할 수 있으며, 이를 통해 canvas의 일부로 반영할 수 있습니다.</p></div>
+<h2 id="constructors">Constructors</h2>
+<div class="section-content"><dl> <dt id="imagedata_en-us">
+<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/ImageData/ImageData"><code>ImageData()</code> <small>(en-US)</small></a> <abbr class="icon icon-experimental" title="Experimental. 예상되는 동작은 향후 변경될 수 있습니다."> <span class="visually-hidden">Experimental</span> </abbr>
+</dt> <dd> <p>인자로 주어진 <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Uint8ClampedArray"><code>Uint8ClampedArray</code></a>로 부터 해당 크기에 맞는 ImageData객체를 생성합니다. 만약 인자가 주어지지 않으면 검정색 사각형 이미지를 생성합니다. <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/createImageData"><code>createImageData()</code> <small>(en-US)</small></a>는 worker에서 사용할 수 없기 때문에, ImageData의 생성자를 이용하는 것이 가장 일반적인 방법입니다.</p> </dd> </dl></div>
+<h2 id="properties">Properties</h2>
+<div class="section-content"><dl> <dt id="imagedata.data_en-us">
+<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/ImageData/data"><code>ImageData.data</code> <small>(en-US)</small></a> <span class="badge inline readonly">읽기 전용</span>
+</dt> <dd> <p><a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Uint8ClampedArray"><code>Uint8ClampedArray</code></a>형식이며 1차원 배열로 RGBA순서로 정의된 이미지 데이터를 나타내니다. 각 원소는 정수값으로 0에서 255사이의 값을 갖습니다.</p> </dd> <dt id="imagedata.height_en-us">
+<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/ImageData/height"><code>ImageData.height</code> <small>(en-US)</small></a> <span class="badge inline readonly">읽기 전용</span>
+</dt> <dd> <p>unsigned long형식으로 ImageData의 pixel기준의 실제 높이값입니다.</p> </dd> <dt id="imagedata.width_en-us">
+<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/ImageData/width"><code>ImageData.width</code> <small>(en-US)</small></a> <span class="badge inline readonly">읽기 전용</span>
+</dt> <dd> <p>unsigned long형식으로 ImageData의 pixel기준의 실제 가로값입니다.</p> </dd> </dl></div>
+<h2 id="명세서">명세서</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://html.spec.whatwg.org/multipage/canvas.html#imagedata">HTML Standard <br><small># imagedata</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<h2 id="see_also">See also</h2>
+<div class="section-content"><ul> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D"><code>CanvasRenderingContext2D</code> <small>(en-US)</small></a></li> <li>The <a href="https://developer.mozilla.org/ko/docs/Web/HTML/Element/canvas"><code>&lt;canvas&gt;</code></a> element and its associated interface, <a href="htmlcanvaselement"><code>HTMLCanvasElement</code></a>.</li> </ul></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/ImageData" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/ImageData</a>
+  </p>
+</div>

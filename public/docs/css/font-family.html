@@ -1,0 +1,114 @@
+<header><h1>font-family</h1></header><div class="section-content"><p>CSS <code>font-family</code> 속성은 선택된 요소에 우선 순위가 지정된 font family 이름과 generic family 이름을 지정할 수 있게 해줍니다.</p></div>
+<section aria-labelledby="시도해보기"><h2 id="시도해보기">시도해보기</h2>
+<div class="section-content">
+<iframe class="interactive is-default-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/css/font-family.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe> <p>값은 콤마로 구분하여 대체가 될 수 있음을 나타냅니다. 브라우저는 폰트 목록에서 컴퓨터에 설치되어 있거나 <a href="@font-face"><code>@font-face</code></a> 규칙을 이용하여 다운로드 받을 수 있는 폰트 중 가장 첫번째 폰트를 선택할 것입니다.</p> <p>웹 제작자는 font-family 목록에 최소 한 개의 generic family를 추가해야 하는데, 시스템이나 <a href="@font-face"><code>@font-face</code></a> 규칙을 이용 해 다운로드 받은 폰트 중에 특정 폰트가 있다는 것을 보장할 수 없기 때문입니다. generic family는 브라우저가 대체할 수 있는 폰트가 필요한 경우 선택할 수 있게 해줍니다.</p> <p>font-size를 설정하거나 다른 폰트 관련 속성들을 한꺼번에 지정하는 경우 <a href="font"><code>font</code></a>가 단축형으로 자주 사용됩니다.</p>
+</div></section><section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content">
+<div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="x5iqGnO7FsLYoA1OsuIFzrOYHkAzlcRC56Q5hWgzO/s=" data-language="css"><span class="token comment">/* A font family name and a generic family name */</span>
+<span class="token property">font-family</span><span class="token punctuation">:</span> Gill Sans Extrabold<span class="token punctuation">,</span> sans-serif<span class="token punctuation">;</span>
+<span class="token property">font-family</span><span class="token punctuation">:</span> <span class="token string">"Goudy Bookletter 1911"</span><span class="token punctuation">,</span> sans-serif<span class="token punctuation">;</span>
+
+<span class="token comment">/* A generic family name only */</span>
+<span class="token property">font-family</span><span class="token punctuation">:</span> serif<span class="token punctuation">;</span>
+<span class="token property">font-family</span><span class="token punctuation">:</span> sans-serif<span class="token punctuation">;</span>
+<span class="token property">font-family</span><span class="token punctuation">:</span> monospace<span class="token punctuation">;</span>
+<span class="token property">font-family</span><span class="token punctuation">:</span> cursive<span class="token punctuation">;</span>
+<span class="token property">font-family</span><span class="token punctuation">:</span> fantasy<span class="token punctuation">;</span>
+<span class="token property">font-family</span><span class="token punctuation">:</span> system-ui<span class="token punctuation">;</span>
+
+<span class="token comment">/* Global values */</span>
+<span class="token property">font-family</span><span class="token punctuation">:</span> inherit<span class="token punctuation">;</span>
+<span class="token property">font-family</span><span class="token punctuation">:</span> initial<span class="token punctuation">;</span>
+<span class="token property">font-family</span><span class="token punctuation">:</span> unset<span class="token punctuation">;</span>
+</pre>
+</div> <p>The <code>font-family</code> property lists one or more font families, separated by commas. Each font family is specified as either a <a href="#family-name">&lt;family-name&gt;</a> or a <a href="#generic-name">&lt;generic-name&gt;</a> value.</p> <p>The example below lists two font families, the first with a <code>&lt;family-name&gt;</code> and the second with a <code>&lt;generic-name&gt;</code>:</p> <pre class="notranslate">font-family: Gill Sans Extrabold, sans-serif;
+</pre>
+</div></section><section aria-labelledby="값"><h3 id="값">값</h3>
+<div class="section-content"><dl> <dt id="family-name"><code>&lt;family-name&gt;</code></dt> <dd> <p>The name of a font family. For example, "Times" and "Helvetica" are font families. Font family names containing whitespace should be quoted.</p> </dd> <dt id="generic-name"><code>&lt;generic-name&gt;</code></dt> <dd> <p>Generic font families are a fallback mechanism, a means of preserving some of the style sheet author's intent when none of the specified fonts are available. Generic family names are keywords and must not be quoted. A generic font family should be the last item in the list of font family names. The following keywords are defined:</p> <dl> <dt id="serif"><code>serif</code></dt> <dd> <p> Glyphs have finishing strokes, flared or tapering ends, or have actual serifed endings. E.g. Lucida Bright, Lucida Fax, Palatino, "Palatino Linotype", Palladio, "URW Palladio", serif. </p> </dd> <dt id="sans-serif"><code>sans-serif</code></dt> <dd> <p> Glyphs have stroke endings that are plain. E.g. "Open Sans", "Fira Sans", "Lucida Sans", "Lucida Sans Unicode", "Trebuchet MS", "Liberation Sans", "Nimbus Sans L", sans-serif. </p> </dd> <dt id="monospace"><code>monospace</code></dt> <dd> <p> All glyphs have the same fixed width. E.g. "Fira Mono", "DejaVu Sans Mono", Menlo, Consolas, "Liberation Mono", Monaco, "Lucida Console", monospace. </p> </dd> <dt id="cursive"><code>cursive</code></dt> <dd> <p> Glyphs in cursive fonts generally have either joining strokes or other cursive characteristics beyond those of italic typefaces. The glyphs are partially or completely connected, and the result looks more like handwritten pen or brush writing than printed letterwork. E.g. "Brush Script MT", "Brush Script Std", "Lucida Calligraphy", "Lucida Handwriting", "Apple Chancery", cursive. </p> </dd> <dt id="fantasy"><code>fantasy</code></dt> <dd> <p> Fantasy fonts are primarily decorative fonts that contain playful representations of characters. E.g. Papyrus, Herculanum, Party LET, Curlz MT, Harrington, fantasy. </p> </dd> <dt id="system-ui"><code>system-ui</code></dt> <dd> <p>Glyphs are taken from the default user interface font on a given platform. Because typographic traditions vary widely across the world, this generic is provided for typefaces that don't map cleanly into the other generics.</p> </dd> </dl> </dd> </dl></div></section><section aria-labelledby="유효한_폰트_패밀리_이름"><h3 id="유효한_폰트_패밀리_이름">유효한 폰트 패밀리 이름</h3>
+<div class="section-content">
+<p>Font family names must either be given quoted as strings, or unquoted as a sequence of one or more identifiers. This means that punctuation characters and digits at the start of each token must be escaped in unquoted font family names.</p> <p>For example, the following declarations are valid:</p> <div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="xt2kNdT1HdEdyR0zgqnWEsBhE9a1g2hiN2/jzf6669w=" data-language="css"><span class="token property">font-family</span><span class="token punctuation">:</span> Gill Sans Extrabold<span class="token punctuation">,</span> sans-serif<span class="token punctuation">;</span>
+<span class="token property">font-family</span><span class="token punctuation">:</span> <span class="token string">"Goudy Bookletter 1911"</span><span class="token punctuation">,</span> sans-serif<span class="token punctuation">;</span>
+</pre>
+</div> <p>The following declarations are <strong>invalid</strong>:</p> <div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="YZoYwDPy3J/NF++DA8VDXaesT79XDYDB3FGO1xIy1Bs=" data-language="css"><span class="token property">font-family</span><span class="token punctuation">:</span> Goudy Bookletter 1911<span class="token punctuation">,</span> sans-serif<span class="token punctuation">;</span>
+<span class="token property">font-family</span><span class="token punctuation">:</span> Red/Black<span class="token punctuation">,</span> sans-serif<span class="token punctuation">;</span>
+<span class="token property">font-family</span><span class="token punctuation">:</span> <span class="token string">"Lucida"</span> Grande<span class="token punctuation">,</span> sans-serif<span class="token punctuation">;</span>
+<span class="token property">font-family</span><span class="token punctuation">:</span> Ahem!<span class="token punctuation">,</span> sans-serif<span class="token punctuation">;</span>
+<span class="token property">font-family</span><span class="token punctuation">:</span> test<span class="token atrule"><span class="token rule">@foo</span><span class="token punctuation">,</span> sans-serif<span class="token punctuation">;</span></span>
+<span class="token property">font-family</span><span class="token punctuation">:</span> #POUND<span class="token punctuation">,</span> sans-serif<span class="token punctuation">;</span>
+<span class="token property">font-family</span><span class="token punctuation">:</span> Hawaii 5-0<span class="token punctuation">,</span> sans-serif<span class="token punctuation">;</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="형식_구문"><h3 id="형식_구문">형식 구문</h3>
+<div class="section-content"><pre class="notranslate"><span class="token property" id="font-family">font-family = </span><br>  <a href="value_definition_syntax#brackets">[</a> <a href="family-name" class="page-not-created"><span class="token property">&lt;family-name&gt;</span></a> <a href="value_definition_syntax#single_bar">|</a> <a href="generic-family" class="page-not-created"><span class="token property">&lt;generic-family&gt;</span></a> <a href="value_definition_syntax#brackets">]</a><a href="value_definition_syntax#hash_mark">#</a>  <br><br></pre></div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+</section><section aria-labelledby="some_common_font_families"><h3 id="some_common_font_families">Some common font families</h3>
+<div class="section-content">
+<div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="G11Nnj6R3MEqBm0FCu0AWXYNp0+iRJU3+v6LvuFmdx0=" data-language="css"><span class="token selector">.serif</span> <span class="token punctuation">{</span>
+  <span class="token property">font-family</span><span class="token punctuation">:</span> Times<span class="token punctuation">,</span> Times New Roman<span class="token punctuation">,</span> Georgia<span class="token punctuation">,</span> serif<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">.sansserif</span> <span class="token punctuation">{</span>
+  <span class="token property">font-family</span><span class="token punctuation">:</span> Verdana<span class="token punctuation">,</span> Arial<span class="token punctuation">,</span> Helvetica<span class="token punctuation">,</span> sans-serif<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">.monospace</span> <span class="token punctuation">{</span>
+  <span class="token property">font-family</span><span class="token punctuation">:</span> Lucida Console<span class="token punctuation">,</span> Courier<span class="token punctuation">,</span> monospace<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">.cursive</span> <span class="token punctuation">{</span>
+  <span class="token property">font-family</span><span class="token punctuation">:</span> cursive<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">.fantasy</span> <span class="token punctuation">{</span>
+  <span class="token property">font-family</span><span class="token punctuation">:</span> fantasy<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div> 
+<div class="code-example" id="sect1">
+
+<iframe class="sample-code-frame" title="Some common font families sample" id="frame_some_common_font_families" width="600" height="220" src="https://live.mdnplay.dev/ko/docs/Web/CSS/font-family/runner.html?id=some_common_font_families" loading="lazy"></iframe>
+</div>
+</div></section><h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody>
+<tr><td><a href="https://drafts.csswg.org/css-fonts/#generic-font-families">CSS Fonts Module Level 4 <br><small># generic-font-families</small></a></td></tr>
+<tr><td><a href="https://drafts.csswg.org/css-fonts/#font-family-prop">CSS Fonts Module Level 4 <br><small># font-family-prop</small></a></td></tr>
+</tbody>
+</table></div>
+<div class="section-content"><figure class="table-container"><div class="_table"><table class="properties"><tbody>
+<tr>
+<th scope="row"><a href="initial_value">초기값</a></th>
+<td>depends on user agent</td>
+</tr>
+<tr>
+<th scope="row">적용대상</th>
+<td>all elements. It also applies to <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/::first-letter" class="only-in-en-us"><code>::first-letter</code> <small>(en-US)</small></a> and <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/::first-line" class="only-in-en-us"><code>::first-line</code> <small>(en-US)</small></a>.</td>
+</tr>
+<tr>
+<th scope="row"><a href="inheritance">상속</a></th>
+<td>yes</td>
+</tr>
+<tr>
+<th scope="row"><a href="computed_value">계산 값</a></th>
+<td>as specified</td>
+</tr>
+<tr>
+<th scope="row">Animation type</th>
+<td>discrete</td>
+</tr>
+</tbody></table></div></figure></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/CSS/font-family" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/CSS/font-family</a>
+  </p>
+</div>

@@ -1,0 +1,31 @@
+<header><h1>&lt;time&gt;</h1></header><div class="section-content"><p><code>&lt;time&gt;</code> <a href="https://developer.mozilla.org/ko/docs/Web/CSS">CSS</a> <a href="css_types">자료형</a>은 시간 값을 초나 밀리초 단위로 나타냅니다. <a href="animation"><code>animation</code></a>, <a href="transition"><code>transition</code></a>과 관련 속성에서 사용합니다.</p></div>
+<section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content">
+<p><code>&lt;time&gt;</code> 자료형은 <a href="number"><code>&lt;number&gt;</code></a>와, 그 뒤에 붙는 아래 단위 중 하나로 이루어져 있습니다. 선택 사항으로 하나의 <code>+</code> 또는 <code>-</code> 기호를 맨 앞에 붙일 수 있습니다. 다른 모든 수치와 마찬가지로 단위와 숫자 사이에는 공백이 없습니다.</p> <div class="notecard note" id="sect1"> <p><strong>참고:</strong> <code>0</code>은 단위와 상관 없이 언제나 동일하지만 시간 단위를 생략할 수 없습니다. 즉 <code>0</code>은 유효하지 않은 구문이며 <code>0s</code>나 <code>0ms</code>를 나타내지 않습니다.</p> </div>
+</div></section><section aria-labelledby="단위"><h3 id="단위">단위</h3>
+<div class="section-content">
+<dl> <dt id="s"><code>s</code></dt> <dd> <p>시간을 초 단위로 나타냅니다. 예시: <code>0s</code>, <code>1.5s</code>, <code>-60s</code>.</p> </dd> <dt id="ms"><code>ms</code></dt> <dd> <p>시간을 밀리초 단위로 나타냅니다. 예시: <code>0ms</code>, <code>150.25ms</code>, <code>-60000ms</code>.</p> </dd> </dl> <div class="notecard note" id="sect2"> <p><strong>참고:</strong> <code>s</code>와 <code>ms</code>의 변환은 <code>1s</code> = <code>1000ms</code>를 따릅니다.</p> </div>
+</div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+</section><section aria-labelledby="유효한_시간"><h3 id="유효한_시간">유효한 시간</h3>
+<div class="section-content"><pre class="notranslate">12s         양의 정수
+-456ms      음의 정수
+4.3ms       정수 아닌 실수
+14mS        단위는 대소문자 구분을 하지 않지만, 대문자는 추천하지 않음
++0s         + 뒤의 0과 단위
+-0ms        - 뒤의 0과 단위
+</pre></div></section><section aria-labelledby="유효하지_않은_시간"><h3 id="유효하지_않은_시간">유효하지 않은 시간</h3>
+<div class="section-content"><pre data-language="plain">0           &lt;length&gt;는 단위 없는 0을 받을 수 있지만, &lt;time&gt;은 불가능
+12.0        단위가 없으므로 &lt;number&gt;지만 &lt;time&gt;이 아님
+7 ms        수와 단위 사이에 공백은 불허
+</pre></div></section><h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://drafts.csswg.org/css-values/#time">CSS Values and Units Module Level 4 <br><small># time</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/CSS/time" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/CSS/time</a>
+  </p>
+</div>

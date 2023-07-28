@@ -1,0 +1,37 @@
+<header><h1>Storage.length</h1></header><div class="section-content"><p><a href="../storage"><code>Storage</code></a> 인터페이스의 <code>length</code> 읽기 전용 속성은 <code>Storage</code> 객체에 저장된 데이터 항목의 수를 반환합니다.</p></div>
+<h2 id="구문">구문</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="ZVCtpgCOQfPzIfN5Blam73F5Iiz+ggvFEpsPz7hSiCI=" data-language="js">length <span class="token operator">=</span> storage<span class="token punctuation">.</span>length<span class="token punctuation">;</span>
+</pre>
+</div></div>
+<h3 id="반환_값">반환 값</h3>
+<div class="section-content"><p><code>Storage</code> 객체에 저장된 항목의 수.</p></div>
+<h2 id="예제">예제</h2>
+<div class="section-content">
+<p>다음의 함수는 현재 도메인의 로컬 저장소에 세 개의 항목을 추가한 후 저장소 항목의 수를 반환합니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="ehUlgcVZc4QPWDPQQ+WQUnvPO5a15LWApX8hee+olxM=" data-language="js"><span class="token keyword">function</span> <span class="token function">populateStorage</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  localStorage<span class="token punctuation">.</span><span class="token function">setItem</span><span class="token punctuation">(</span><span class="token string">'bgcolor'</span><span class="token punctuation">,</span> <span class="token string">'yellow'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  localStorage<span class="token punctuation">.</span><span class="token function">setItem</span><span class="token punctuation">(</span><span class="token string">'font'</span><span class="token punctuation">,</span> <span class="token string">'Helvetica'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  localStorage<span class="token punctuation">.</span><span class="token function">setItem</span><span class="token punctuation">(</span><span class="token string">'image'</span><span class="token punctuation">,</span> <span class="token string">'cats.png'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">return</span> localStorage<span class="token punctuation">.</span>length<span class="token punctuation">;</span> <span class="token comment">// Should return 3</span>
+<span class="token punctuation">}</span>
+</pre>
+</div> <div class="notecard note" id="sect1"> <p><strong>참고:</strong> 실제 사용 예제를 보시려면 저희의 <a href="https://mdn.github.io/dom-examples/web-storage/" target="_blank">Web Storage Demo</a>를 방문하세요.</p> </div>
+</div>
+<h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://html.spec.whatwg.org/multipage/webstorage.html#dom-storage-length-dev">HTML Standard <br><small># dom-storage-length-dev</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="../web_storage_api/using_the_web_storage_api">Web Storage API 사용하기</a></li> </ul></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/Storage/length" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/Storage/length</a>
+  </p>
+</div>

@@ -1,0 +1,76 @@
+<header><h1>extends</h1></header><div class="section-content"><p><code>extends</code> 키워드는 클래스를 다른 클래스의 자식으로 만들기 위해 <a href="../statements/class">class 선언</a> 또는 <a href="../operators/class">class 식</a>에 사용됩니다.</p></div>
+<section aria-labelledby="시도해보기"><h2 id="시도해보기">시도해보기</h2>
+<div class="section-content"><iframe class="interactive is-taller-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/js/classes-extends.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe></div></section><section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content"><pre class="notranslate">    class ChildClass extends ParentClass { ... }
+</pre></div></section><section aria-labelledby="설명"><h2 id="설명">설명</h2>
+<div class="section-content">
+<p><code>extends</code> 키워드는 내장 객체뿐만 아니라 사용자 정의 클래스를 하위 클래스로 만들기 위해 사용될 수 있습니다.</p> <p>확장( 클래스)의 <code>.prototype</code>은 <a href="../global_objects/object"><code>Object</code></a> 또는 <a href="../operators/null"><code>null</code></a>이어야 합니다.</p>
+</div></section><section aria-labelledby="예"><h2 id="예">예</h2>
+</section><section aria-labelledby="extends_사용하기"><h3 id="extends_사용하기">
+<code>extends</code> 사용하기</h3>
+<div class="section-content">
+<p>첫 번째 예는 <code>Polygon</code> 클래스로부터 <code>Square</code> 클래스를 만듭니다. 이 예는 <a href="https://googlechrome.github.io/samples/classes-es6/index.html" target="_blank">live demo</a> <a href="https://github.com/GoogleChrome/samples/blob/gh-pages/classes-es6/index.html" target="_blank">(source)</a>에서 발췌했습니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="gYhD0BURKLYs3cJqVmnbtm231xifhVDs8FVvAmq9mN0=" data-language="js"><span class="token keyword">class</span> <span class="token class-name">Square</span> <span class="token keyword">extends</span> <span class="token class-name">Polygon</span> <span class="token punctuation">{</span>
+  <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token parameter">length</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 여기서, length와 함께 부모 클래스의 생성자를 호출</span>
+    <span class="token comment">// Polygon의 너비 및 높이가 제공됨</span>
+    <span class="token keyword">super</span><span class="token punctuation">(</span>length<span class="token punctuation">,</span> length<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// 주의: 파생 클래스에서, super()가 먼저 호출되어야 'this'를</span>
+    <span class="token comment">// 사용할 수 있습니다. 이를 빼먹으면 참조 오류가 발생합니다.</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>name <span class="token operator">=</span> <span class="token string">'Square'</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token keyword">get</span> <span class="token function">area</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span>height <span class="token operator">*</span> <span class="token keyword">this</span><span class="token punctuation">.</span>width<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token keyword">set</span> <span class="token function">area</span><span class="token punctuation">(</span><span class="token parameter">value</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>area <span class="token operator">=</span> value<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="내장_객체에_extends_사용하기"><h3 id="내장_객체에_extends_사용하기">내장 객체에 <code>extends</code> 사용하기</h3>
+<div class="section-content">
+<p>이 예제는 내장 객체 <a href="../global_objects/date"><code>Date</code></a>를 확장합니다. 이 예제는 <a href="https://googlechrome.github.io/samples/classes-es6/index.html" target="_blank">live demo</a> <a href="https://github.com/GoogleChrome/samples/blob/gh-pages/classes-es6/index.html" target="_blank">(source)</a>에서 발췌했습니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="J/vpjee48M94RxNnzyFt6dku/NhLpSd4k5+rgEtZ7VA=" data-language="js"><span class="token keyword">class</span> <span class="token class-name">myDate</span> <span class="token keyword">extends</span> <span class="token class-name">Date</span> <span class="token punctuation">{</span>
+  <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">super</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token function">getFormattedDate</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">var</span> months <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'Jan'</span><span class="token punctuation">,</span><span class="token string">'Feb'</span><span class="token punctuation">,</span><span class="token string">'Mar'</span><span class="token punctuation">,</span><span class="token string">'Apr'</span><span class="token punctuation">,</span><span class="token string">'May'</span><span class="token punctuation">,</span><span class="token string">'Jun'</span><span class="token punctuation">,</span><span class="token string">'Jul'</span><span class="token punctuation">,</span><span class="token string">'Aug'</span><span class="token punctuation">,</span><span class="token string">'Sep'</span><span class="token punctuation">,</span><span class="token string">'Oct'</span><span class="token punctuation">,</span><span class="token string">'Nov'</span><span class="token punctuation">,</span><span class="token string">'Dec'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">getDate</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">"-"</span> <span class="token operator">+</span> months<span class="token punctuation">[</span><span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">getMonth</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">]</span> <span class="token operator">+</span> <span class="token string">"-"</span> <span class="token operator">+</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">getFullYear</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="null_확장"><h3 id="null_확장">
+<code>null</code> 확장</h3>
+<div class="section-content">
+<p><a href="../operators/null"><code>null</code></a>에서 확장은 prototype 객체가 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object"><code>Object.prototype</code> <small>(en-US)</small></a>으로부터 상속받지 않은 것을 제외하면 보통 클래스처럼 동작합니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="QnpLVXG6bk83udfkr7+PVh8F3bTANla/DSeE3bZCX6A=" data-language="js"><span class="token keyword">class</span> <span class="token class-name">nullExtends</span> <span class="token keyword">extends</span> <span class="token class-name">null</span> <span class="token punctuation">{</span>
+  <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+Object<span class="token punctuation">.</span><span class="token function">getPrototypeOf</span><span class="token punctuation">(</span>nullExtends<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Function.prototype</span>
+Object<span class="token punctuation">.</span><span class="token function">getPrototypeOf</span><span class="token punctuation">(</span>nullExtends<span class="token punctuation">.</span>prototype<span class="token punctuation">)</span> <span class="token comment">// null</span>
+</pre>
+</div>
+</div></section><h2 id="명세서">명세서</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://tc39.es/ecma262/multipage/ecmascript-language-functions-and-classes.html#sec-class-definitions">ECMAScript Language Specification <br><small># sec-class-definitions</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="참조"><h2 id="참조">참조</h2>
+<div class="section-content"><ul> <li><a href="../classes">Classes</a></li> <li><a href="../operators/super">super</a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Classes/extends" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Classes/extends</a>
+  </p>
+</div>

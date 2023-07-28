@@ -1,0 +1,58 @@
+<header><h1>ReadableStream</h1></header><div class="section-content"><p><a href="streams_api">Streams API</a>의 <code>ReadableStream</code> 인터페이스는 바이트 데이터를 읽을수 있는 스트림을 제공합니다. <a href="fetch_api">Fetch API</a>는 Response 객체의 body 속성을 통하여 <code>ReadableStream</code>의 구체적인 인스턴스를 제공합니다.</p></div>
+<h2 id="constructor">Constructor</h2>
+<div class="section-content"><dl> <dt id="readablestream_en-us"><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream/ReadableStream"><code>ReadableStream()</code> <small>(en-US)</small></a></dt> <dd> <p>읽을수 있는 스트림 객체를 생성하고 리턴합니다.</p> </dd> </dl></div>
+<h2 id="properties">Properties</h2>
+<div class="section-content"><dl> <dt id="readablestream.locked_en-us">
+<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream/locked"><code>ReadableStream.locked</code> <small>(en-US)</small></a> <span class="badge inline readonly">읽기 전용</span>
+</dt> <dd> <p><code>locked</code>는 Readable stream이 reader에 고정되어 있는지(<a href="https://streams.spec.whatwg.org/#locked-to-a-reader" target="_blank">locaked to a reader</a>) 확인하는 getter 입니다.</p> </dd> </dl></div>
+<h2 id="methods">Methods</h2>
+<div class="section-content"><dl> <dt id="readablestream.cancel_en-us"><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream/cancel"><code>ReadableStream.cancel()</code> <small>(en-US)</small></a></dt> <dd> <p>스트림을 취소하여, 소비자가 스트림에 대해 관심이 없음을 알립니다. The supplied reason argument will be given to the underlying source, which may or may not use it.</p> </dd> <dt id="readablestream.getreader_en-us"><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream/getReader"><code>ReadableStream.getReader()</code> <small>(en-US)</small></a></dt> <dd> <p>Reader를 만들고 스트림을 그 Reader에 고정 시킵니다. 스트림이 고정되어 있는 동안에는 다른 Reader를 얻을수 없습니다.</p> </dd> <dt id="readablestream.pipethrough_en-us"><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream/pipeThrough"><code>ReadableStream.pipeThrough()</code> <small>(en-US)</small></a></dt> <dd> <p>Provides a chainable way of piping the current stream through a transform stream or any other writable/readable pair.</p> </dd> <dt id="readablestream.pipeto_en-us"><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream/pipeTo"><code>ReadableStream.pipeTo()</code> <small>(en-US)</small></a></dt> <dd> <p>인자로 넘기는 <a href="writablestream"><code>WritableStream</code></a>과 현재의 ReadableStream을 연결하고 프로미스를 리턴합니다. 이 프로미스는 파이핑 프로세스가 성공적으로 완료될때 fulfil되며 애러가 발생했을때 reject됩니다.</p> </dd> <dt id="readablestream.tee_en-us"><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream/tee"><code>ReadableStream.tee()</code> <small>(en-US)</small></a></dt> <dd> <p>The <code>tee</code> method <a href="https://streams.spec.whatwg.org/#tee-a-readable-stream" id="ref-for-tee-a-readable-stream②" target="_blank">tees</a> this readable stream, returning a two-element array containing the two resulting branches as new <a href="readablestream" aria-current="page"><code>ReadableStream</code></a> instances. Each of those streams receives the same incoming data.</p> </dd> </dl></div>
+<h2 id="examples">Examples</h2>
+<div class="section-content">
+<p>아래 예시에서, 다른 리소스에서 fetch된 HTML 조각들을 스트림 하기위해 가공의 <a href="response"><code>Response</code></a>를 만듭니다. 이것은<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array"><code>Uint8Array</code> <small>(en-US)</small></a>로 구성된 <a href="readablestream" aria-current="page"><code>ReadableStream</code></a> 의 사용법을 보여줍니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="1SvlH4PmtnZqV3U8cQ16sqmB/CekU4So77GU2FCWJAg=" data-language="js"><span class="token function">fetch</span><span class="token punctuation">(</span><span class="token string">"https://www.example.org/"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">response</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> reader <span class="token operator">=</span> response<span class="token punctuation">.</span>body<span class="token punctuation">.</span><span class="token function">getReader</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">const</span> stream <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ReadableStream</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    <span class="token function">start</span><span class="token punctuation">(</span><span class="token parameter">controller</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token comment">// 아래 함수는 각 data chunck를 다룬다.</span>
+      <span class="token keyword">function</span> <span class="token function">push</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">// "done"은 Boolean 이며 value는 "Uint8Array 이다."</span>
+        reader<span class="token punctuation">.</span><span class="token function">read</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> done<span class="token punctuation">,</span> value <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+          <span class="token comment">// 더이상 읽은 데이터가 없는가?</span>
+          <span class="token keyword">if</span> <span class="token punctuation">(</span>done<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token comment">// 브라우저에게 데이터 전달이 끝났다고 알린다.</span>
+            controller<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">return</span><span class="token punctuation">;</span>
+          <span class="token punctuation">}</span>
+
+          <span class="token comment">// 데이터를 얻고 컨트롤러를 통하여 그 데이터를 브라우저에 넘긴다.</span>
+          controller<span class="token punctuation">.</span><span class="token function">enqueue</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span><span class="token punctuation">;</span>
+          <span class="token function">push</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+      <span class="token function">push</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Response</span><span class="token punctuation">(</span>stream<span class="token punctuation">,</span> <span class="token punctuation">{</span> <span class="token literal-property property">headers</span><span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token string-property property">"Content-Type"</span><span class="token operator">:</span> <span class="token string">"text/html"</span> <span class="token punctuation">}</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div>
+</div>
+<h2 id="명세서">명세서</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://streams.spec.whatwg.org/#rs-class">Streams Standard <br><small># rs-class</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<h2 id="see_also">See Also</h2>
+<div class="section-content"><ul> <li>
+<a href="https://whatwg-stream-visualizer.glitch.me/" target="_blank">WHATWG Stream Visualiser</a>, for a basic visualisation of readable, writable, and transform streams.</li> </ul></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/ReadableStream" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/ReadableStream</a>
+  </p>
+</div>

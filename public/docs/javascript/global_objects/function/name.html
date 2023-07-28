@@ -1,0 +1,72 @@
+<header><h1>Function.name</h1></header><div class="section-content">
+<p><code>function.name</code> 속성(property)은 함수 이름을 반환합니다.</p>
+<figure class="table-container"><div class="_table"><table class="standard-table"> <thead> <tr> <th class="header" colspan="2">Property attributes of <code>Function.name</code>
+</th> </tr> </thead> <tbody> <tr> <td>Writable</td> <td>불가능</td> </tr> <tr> <td>Enumerable</td> <td>불가능</td> </tr> <tr> <td>Configurable</td> <td>가능</td> </tr> </tbody> </table></div></figure> <p>비표준, ES6 이전 구현에서는 설정가능(<code>configurable</code>) attribute도 <code>false</code>였음을 주의하세요.</p>
+</div>
+<section aria-labelledby="설명"><h2 id="설명">설명</h2>
+<div class="section-content">
+<p><code>name</code> 속성은 함수 이름 또는 (ES6 구현 이전) 익명(anonymous) 함수에 대해서는 빈 문자열을 반환합니다:</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="HHhZu1Rmuvip2/70UopAfwnBiJa+54ysNhT/sDZylSI=" data-language="js"><span class="token keyword">function</span> <span class="token function">doSomething</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>doSomething<span class="token punctuation">.</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// logs "doSomething"</span>
+</pre>
+</div> <p><code>new Function(...)</code> 또는 그냥 <code>Function(...)</code> 구문으로 생성된 함수는 <code>name</code> 속성을 빈 문자열로 설정합니다. 다음 예에서는 익명 함수가 생성되므로 <code>name</code>은 빈 문자열을 반환합니다:</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="VcBoEVUuFDcLdgknbYjkD77ck0bplHqcyqEcrp32zL0=" data-language="js"><span class="token keyword">var</span> <span class="token function-variable function">f</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> object <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token function-variable function">someMethod</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>f<span class="token punctuation">.</span>name <span class="token operator">==</span> <span class="token string">''</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// true</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>object<span class="token punctuation">.</span>someMethod<span class="token punctuation">.</span>name <span class="token operator">==</span> <span class="token string">''</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 역시 true</span>
+</pre>
+</div> <p>ES6 함수를 구현한 브라우저는 익명 함수 이름을 그 구문상 위치로부터 추측할 수 있습니다. 예를 들어:</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="Copeh5t9X2ICXnBa2ADIsVLioIoU+rjewUGF4hUb8y8=" data-language="js"><span class="token keyword">var</span> <span class="token function-variable function">f</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>f<span class="token punctuation">.</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// "f"</span>
+</pre>
+</div> <p><a href="../../operators/function">function 식</a>에서 이름으로 함수를 정의할 수 있습니다:</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="eUFXCq+nroaSQQbofMnHP9xGdoh6gOudd4ujjNqb4Ro=" data-language="js"><span class="token keyword">var</span> object <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token function-variable function">someMethod</span><span class="token operator">:</span> <span class="token keyword">function</span> <span class="token function">object_someMethod</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>object<span class="token punctuation">.</span>someMethod<span class="token punctuation">.</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// logs "object_someMethod"</span>
+
+<span class="token keyword">try</span> <span class="token punctuation">{</span> object_someMethod <span class="token punctuation">}</span> <span class="token keyword">catch</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span> <span class="token punctuation">{</span> console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+<span class="token comment">// ReferenceError: object_someMethod가 정의되지 않음</span>
+</pre>
+</div> <p>함수 이름은 바꿀 수 없습니다, 이 속성은 읽기 전용입니다:</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="nmlMOEK9LGLOI7GOhS7CU4LGHwxMNXyQ+OLmUYUWKuc=" data-language="js"><span class="token keyword">var</span> object <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token comment">// 익명</span>
+  <span class="token function-variable function">someMethod</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+object<span class="token punctuation">.</span>someMethod<span class="token punctuation">.</span>name <span class="token operator">=</span> <span class="token string">'someMethod'</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>object<span class="token punctuation">.</span>someMethod<span class="token punctuation">.</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 빈 문자열, someMethod는 익명</span>
+</pre>
+</div> <p>그러나 바꾸려면, <a href="../object/defineproperty"><code>Object.defineProperty()</code></a>를 사용할 수 있습니다.</p>
+</div></section><section aria-labelledby="예"><h2 id="예">예</h2>
+<div class="section-content">
+<p>객체의 'class'를 확인하기 위해 <code>obj.constructor.name</code>을 사용할 수 있습니다:</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="v4Emub+mAxZJrFSeOHTHanUaLWf8AeiUU2cNkIFhheY=" data-language="js"><span class="token keyword">function</span> <span class="token function">a</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+
+<span class="token keyword">var</span> b <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">a</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>b<span class="token punctuation">.</span>constructor<span class="token punctuation">.</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// logs "a"</span>
+</pre>
+</div>
+</div></section><h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://tc39.es/ecma262/multipage/fundamental-objects.html#sec-function-instances-name">ECMAScript Language Specification <br><small># sec-function-instances-name</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Function/name" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Function/name</a>
+  </p>
+</div>

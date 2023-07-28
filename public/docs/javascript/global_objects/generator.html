@@ -1,0 +1,54 @@
+<header><h1>Generator</h1></header><div class="section-content"><p><code>Generator</code> 객체는 <a href="../statements/function*">generator function</a> 으로부터 반환되며, <a href="../iteration_protocols#the_iterable_protocol">반복 가능한 프로토콜</a>과 <a href="../iteration_protocols#the_iterator_protocol">반복자 프로토콜</a>을 모두 준수합니다.</p></div>
+<section aria-labelledby="constructor"><h2 id="constructor">Constructor</h2>
+<div class="section-content">
+<p>이 객체는 바로 인스턴스화할 될 수 없습니다. 대신 <a href="../statements/function*">제너레이터 함수</a>를 통해 <code>Generator</code> 인스턴스를 반환할 수 있습니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="gL/Bw6jRjVM0RO/ozcWjpwUU0MsdMfZt233qVjBfIPo=" data-language="js"><span class="token keyword">function</span><span class="token operator">*</span> <span class="token function">generator</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">yield</span> <span class="token number">1</span><span class="token punctuation">;</span>
+  <span class="token keyword">yield</span> <span class="token number">2</span><span class="token punctuation">;</span>
+  <span class="token keyword">yield</span> <span class="token number">3</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">const</span> gen <span class="token operator">=</span> <span class="token function">generator</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// "Generator { }"</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>gen<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>value<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 1</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>gen<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>value<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 2</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>gen<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>value<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 3</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="인스턴스_메서드"><h2 id="인스턴스_메서드">인스턴스 메서드</h2>
+<div class="section-content"><dl> <dt id="generator.prototype.next"><a href="generator/next"><code>Generator.prototype.next()</code></a></dt> <dd> <p><a href="../operators/yield"><code>yield</code></a> 표현식을 통해 yield된 값을 반환합니다.</p> </dd> <dt id="generator.prototype.return"><a href="generator/return"><code>Generator.prototype.return()</code></a></dt> <dd> <p>주어진 값을 반환하고 제너레이터를 종료합니다.</p> </dd> <dt id="generator.prototype.throw"><a href="generator/throw"><code>Generator.prototype.throw()</code></a></dt> <dd> <p>제너레이터에 오류를 발생시킵니다. (해당 제너레이터 내에서 오류가 발생한 경우가 아닌 한 제너레이터도 완료)</p> </dd> </dl></div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+</section><section aria-labelledby="무한_제너레이터"><h3 id="무한_제너레이터">무한 제너레이터</h3>
+<div class="section-content">
+<p>제너레이터 함수를 사용하면 값은 필요할 때까지 계산되지 않습니다. 따라서 제너레이터는 잠재적으로 무한한 데이터 구조를 정의할 수 있습니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="g20eN3BFUJstOfhU6PH/74QtIzolemAQ9XxI2gsIcbE=" data-language="js"><span class="token keyword">function</span><span class="token operator">*</span> <span class="token function">infinite</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">let</span> index <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">yield</span> index<span class="token operator">++</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">const</span> generator <span class="token operator">=</span> <span class="token function">infinite</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// "Generator { }"</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>generator<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>value<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 0</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>generator<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>value<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 1</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>generator<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>value<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 2</span>
+<span class="token comment">// ...</span>
+</pre>
+</div>
+</div></section><h2 id="명세서">명세서</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://tc39.es/ecma262/multipage/control-abstraction-objects.html#sec-generator-objects">ECMAScript Language Specification <br><small># sec-generator-objects</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="../statements/function*"><code>function*</code></a></li> <li><a href="../operators/function*"><code>function*</code> expression</a></li> <li><a href="generatorfunction"><code>GeneratorFunction</code></a></li> <li><a href="../iteration_protocols">반복자 프로토콜</a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Generator" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Generator</a>
+  </p>
+</div>

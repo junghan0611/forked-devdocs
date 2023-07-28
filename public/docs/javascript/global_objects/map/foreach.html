@@ -1,0 +1,51 @@
+<header><h1>Map.prototype.forEach()</h1></header><div class="section-content"><p><code>forEach()</code> 메서드는 삽입 순서에 따라 <code>Map</code> 객체의 각 키/값 쌍마다 한 번씩 제공된 함수를 실행합니다.</p></div>
+<section aria-labelledby="시도해보기"><h2 id="시도해보기">시도해보기</h2>
+<div class="section-content"><iframe class="interactive is-js-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/js/map-prototype-foreach.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe></div></section><section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="6N+adUHmFtAF6mo6XEo27roOMyYFQkTewHMUILx51sI=" data-language="js"><span class="token function">forEach</span><span class="token punctuation">(</span>callbackFn<span class="token punctuation">)</span>
+<span class="token function">forEach</span><span class="token punctuation">(</span>callbackFn<span class="token punctuation">,</span> thisArg<span class="token punctuation">)</span>
+</pre>
+</div></div></section><section aria-labelledby="매개변수"><h3 id="매개변수">매개변수</h3>
+<div class="section-content"><dl> <dt id="callbackfn"><code>callbackFn</code></dt> <dd> <p>맵의 각 항목에 대해 실행할 함수입니다. 이 함수는 다음 인수를 사용하여 호출됩니다:</p> <dl> <dt id="value"><code>value</code></dt> <dd> <p>각 반복의 값입니다.</p> </dd> <dt id="key"><code>key</code></dt> <dd> <p>각 반복의 키입니다.</p> </dd> <dt id="map"><code>map</code></dt> <dd> <p>반복되는 map입니다.</p> </dd> </dl> </dd> <dt id="thisarg">
+<code>thisArg</code> <span class="badge inline optional">Optional</span>
+</dt> <dd> <p><code>callbackFn</code>을 실행하고 있을 때 <code>this</code>로 사용하는 값.</p> </dd> </dl></div></section><section aria-labelledby="반환_값"><h3 id="반환_값">반환 값</h3>
+<div class="section-content"><p><a href="../undefined"><code>undefined</code></a>.</p></div></section><section aria-labelledby="설명"><h2 id="설명">설명</h2>
+<div class="section-content">
+<p> <code>forEach</code> 메서드는 실제로 존재하는 맵의 각 키에 대해 제공된 <code>callback</code>을 한 번씩 실행합니다. 삭제된 키에 대해서는 호출되지 않습니다. 그러나 값은 존재하지만 <code>undefined</code>값일 경우에는 <code>callback</code>이 실행됩니다. </p> <p><code>callback</code>은 <strong>인자 3개</strong>와 함께 호출됩니다.</p> <ul> <li>항목의 <code>value</code>
+</li> <li>항목의 <code>key</code>
+</li> <li>순회하고 있는 <code>Map</code>
+</li> </ul> <p> <code>thisArg</code>가 <code>forEach</code>의 매개 변수로 제공되면 호출 시 <code>this</code> 값으로 사용하기 위해 <code>callback</code>에 전달됩니다. 그렇지 않으면 <code>undefined</code> 값이 <code>this</code> 값으로 사용되도록 전달됩니다. <code>callback</code>이 궁극적으로 관찰할 수 있는 <code>this</code> 값은 <a href="../../operators/this">함수가 보는 <code>this</code>를 결정하기 위한 일반적인 규칙</a>에 따라 결정됩니다. </p> <p> <code>forEach</code>가 완료되기 전에 삭제했다가 다시 추가한 경우를 제외하고 각 값은 한 번씩 방문합니다. 방문하기 전에 삭제된 값에 대해서는 <code>callback</code>이 호출되지 않습니다. <code>forEach</code>가 완료되기 전에 추가된 새 값은 나중에 방문합니다. </p>
+</div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+</section><section aria-labelledby="map_객체의_내용을_출력하기"><h3 id="map_객체의_내용을_출력하기">Map 객체의 내용을 출력하기</h3>
+<div class="section-content">
+<p>다음 코드는 <code>Map</code> 객체에서 각 요소의 내용을 한 줄의 로그로 남깁니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="0DJMlGagdZ8+WnPg9uLZc9t3RJGVqYxGhGldgCGLNjk=" data-language="js"><span class="token keyword">function</span> <span class="token function">logMapElements</span><span class="token punctuation">(</span><span class="token parameter">value<span class="token punctuation">,</span> key<span class="token punctuation">,</span> map</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">map.get('</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>key<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">') = </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>value<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">new</span> <span class="token class-name">Map</span><span class="token punctuation">(</span><span class="token punctuation">[</span>
+  <span class="token punctuation">[</span><span class="token string">"foo"</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+  <span class="token punctuation">[</span><span class="token string">"bar"</span><span class="token punctuation">,</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+  <span class="token punctuation">[</span><span class="token string">"baz"</span><span class="token punctuation">,</span> <span class="token keyword">undefined</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span>logMapElements<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// Logs:</span>
+<span class="token comment">// "map.get('foo') = 3"</span>
+<span class="token comment">// "map.get('bar') = [object Object]"</span>
+<span class="token comment">// "map.get('baz') = undefined"</span>
+</pre>
+</div>
+</div></section><h2 id="명세서">명세서</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://tc39.es/ecma262/multipage/keyed-collections.html#sec-map.prototype.foreach">ECMAScript Language Specification <br><small># sec-map.prototype.foreach</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="../array/foreach"><code>Array.prototype.forEach()</code></a></li> <li><a href="../set/foreach"><code>Set.prototype.forEach()</code></a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Map/forEach" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Map/forEach</a>
+  </p>
+</div>

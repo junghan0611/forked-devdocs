@@ -1,0 +1,225 @@
+<header><h1>Iteration protocols</h1></header><div class="section-content">
+<p>ECMAScript 2015 (ES6)에는 새로운 문법이나 built-in 뿐만이 아니라, protocols(표현법들)도 추가되었습니다. 이 protocol 은 일정 규칙만 충족한다면 어떠한 객체에 의해서도 구현될 수 있습니다.</p> <p>2개의 protocol이 있습니다. <a href="#iterable">iterable protocol</a> 과 <a href="#iterator">iterator protocol</a>.</p>
+</div>
+<section aria-labelledby="the_iterable_protocol"><h2 id="the_iterable_protocol">The iterable protocol</h2>
+<div class="section-content">
+<p><strong>iterable</strong> protocol 은 JavaScript 객체들이, 예를 들어 <a href="statements/for...of"><code>for..of</code></a> 구조에서 어떠한 value 들이 loop 되는 것과 같은 iteration 동작을 정의하거나 사용자 정의하는 것을 허용합니다. 다른 type 들(<a href="global_objects/object"><code>Object</code></a> 와 같은)이 그렇지 않은 반면에, 어떤 built-in type 들은 <a href="global_objects/array"><code>Array</code></a> 또는 <a href="global_objects/map"><code>Map</code></a> 과 같은 default iteration 동작으로 <a href="#builtin_iterables">built-in iterables</a> 입니다.</p> <p><strong>iterable</strong> 하기 위해서 object는 <strong>@@iterator</strong> 메소드를 구현해야 합니다. 이것은 object (또는 <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Inheritance_and_the_prototype_chain">prototype chain</a> 의 오브젝트 중 하나) 가 <a href="global_objects/symbol/iterator"><code>Symbol.iterator</code></a> <code>key</code> 의 속성을 가져야 한다는 것을 의미합니다 :</p> <figure class="table-container"><div class="_table"><table> <thead> <tr> <th>Property</th> <th>Value</th> </tr> </thead> <tbody> <tr> <td><code>[Symbol.iterator]</code></td> <td>object를 반환하는, arguments 없는 function. <a href="iteration_protocols#iterator" aria-current="page">iterator protocol</a> 을 따른다.</td> </tr> </tbody> </table></div></figure> <p>어떠한 객체가 반복(Iterate)되어야 한다면 이 객체의 <code>@@iterator</code> 메소드가 인수없이 호출되고, 반환된 <strong>iterator</strong>는 반복을 통해서 획득할 값들을 얻을 때 사용됩니다.</p>
+</div></section><section aria-labelledby="the_iterator_protocol"><h2 id="the_iterator_protocol">The iterator protocol</h2>
+<div class="section-content">
+<p><strong>iterator</strong> protocol 은 value( finite 또는 infinite) 들의 sequence 를 만드는 표준 방법을 정의합니다.</p> <p>객체가 <code>next()</code> 메소드를 가지고 있고, 아래의 규칙에 따라 구현되었다면 그 객체는 iterator이다:</p> <figure class="table-container"><div class="_table"><table class="standard-table"> <tbody> <tr> <th scope="col">Property</th> <th scope="col">Value</th> </tr> <tr> <td><code>next</code></td> <td> <p>아래 2개의 속성들을 가진 object 를 반환하는 arguments 없는 함수 :</p> <ul> <li>
+<code>done</code> (boolean) <ul> <li> Iterator(반복자)가 마지막 반복 작업을 마쳤을 경우 <code>true</code>. 만약 iterator(반복자)에 <em>return 값</em>이 있다면 <code>value</code>의 값으로 지정된다. 반환 값에 대한 설명은 <a href="https://www.2ality.com/2013/06/iterators-generators.html#generators-as-threads" target="_blank">여기</a>. </li> <li> Iterator(반복자)의 작업이 남아있을 경우 <code>false</code>. Iterator(반복자)에 <code>done</code> 프로퍼티 자체를 특정짓지 않은 것과 동일하다. </li> </ul> </li> <li> <code>value</code> - Iterator(반복자)으로부터 반환되는 모든 자바스크립트 값이며 <code>done</code>이 <code>true</code>일 경우 생략될 수 있다. </li> </ul> </td> </tr> </tbody> </table></div></figure> <p>몇몇 iterator들은 iterable(반복 가능)이다:</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="amaC6lw/IaqoBwVToE+vaNjr62URpIvtLpbTZtioKtg=" data-language="js"><span class="token keyword">var</span> someArray <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> someArrayEntries <span class="token operator">=</span> someArray<span class="token punctuation">.</span><span class="token function">entries</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+someArrayEntries<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>           <span class="token comment">// "[object Array Iterator]"</span>
+someArrayEntries <span class="token operator">===</span> someArrayEntries<span class="token punctuation">[</span>Symbol<span class="token punctuation">.</span>iterator<span class="token punctuation">]</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token comment">// true</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="iteration_protocols_사용_예시"><h2 id="iteration_protocols_사용_예시">Iteration protocols 사용 예시</h2>
+<div class="section-content">
+<p><a href="global_objects/string"><code>String</code></a> 은 built-in iterable 객체의 한 예시입니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="jRQuuNycYn5LLyzJLP7D5Md6/T0X9n5MM/94rdeRltU=" data-language="js"><span class="token keyword">var</span> someString <span class="token operator">=</span> <span class="token string">"hi"</span><span class="token punctuation">;</span>
+<span class="token keyword">typeof</span> someString<span class="token punctuation">[</span>Symbol<span class="token punctuation">.</span>iterator<span class="token punctuation">]</span><span class="token punctuation">;</span>          <span class="token comment">// "function"</span>
+</pre>
+</div> <p><code>String</code> 의 기본 iterator 는 string 의 문자를 하나씩 반환합니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="aY+pAFn7SLNtqylq9JeWkX/0OuZum45B8dN6/trWJsk=" data-language="js"><span class="token keyword">var</span> iterator <span class="token operator">=</span> someString<span class="token punctuation">[</span>Symbol<span class="token punctuation">.</span>iterator<span class="token punctuation">]</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+iterator <span class="token operator">+</span> <span class="token string">""</span><span class="token punctuation">;</span>                               <span class="token comment">// "[object String Iterator]"</span>
+
+iterator<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>                             <span class="token comment">// { value: "h", done: false }</span>
+iterator<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>                             <span class="token comment">// { value: "i", done: false }</span>
+iterator<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>                             <span class="token comment">// { value: undefined, done: true }</span>
+</pre>
+</div> <p><a href="operators/spread_syntax">spread operator</a>와 같은 특정 내장 구조(built-in constructs)들은 실제로는 동일한 iteration protocol을 사용한다:</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="56HtLe9rFj3J5os2bZ0KiwzmFym9td+HyF6s3jSQNfE=" data-language="js"><span class="token punctuation">[</span><span class="token operator">...</span>someString<span class="token punctuation">]</span>                              <span class="token comment">// ["h", "i"]</span>
+</pre>
+</div> <p>사용자만의 <code>@@iterator</code>를 특정함으로써 원하는 반복 행위(iteration behavior)를 설정할 수 있다:</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="c7MxS+lAF8oYv3gyovo6j0kDcTMiBAO46ZJwMNNNnkc=" data-language="js"><span class="token keyword">var</span> someString <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">String</span><span class="token punctuation">(</span><span class="token string">"hi"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>          <span class="token comment">// need to construct a String object explicitly to avoid auto-boxing</span>
+
+someString<span class="token punctuation">[</span>Symbol<span class="token punctuation">.</span>iterator<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token punctuation">{</span> <span class="token comment">// this is the iterator object, returning a single element, the string "bye"</span>
+    <span class="token function-variable function">next</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>_first<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>_first <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token punctuation">{</span> <span class="token literal-property property">value</span><span class="token operator">:</span> <span class="token string">"bye"</span><span class="token punctuation">,</span> <span class="token literal-property property">done</span><span class="token operator">:</span> <span class="token boolean">false</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token punctuation">{</span> <span class="token literal-property property">done</span><span class="token operator">:</span> <span class="token boolean">true</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">_first</span><span class="token operator">:</span> <span class="token boolean">true</span>
+  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</pre>
+</div> <p>재설정된 <code>@@iterator</code>가 어떻게 내장 구조(built-in constructs)의 반복 행위에 영향을 주는지 참고:</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="1e7KMJNbcSqszQH/7vkH6K0YB0eZT/iypIOo+pAlEPY=" data-language="js"><span class="token punctuation">[</span><span class="token operator">...</span>someString<span class="token punctuation">]</span><span class="token punctuation">;</span>                              <span class="token comment">// ["bye"]</span>
+someString <span class="token operator">+</span> <span class="token string">""</span><span class="token punctuation">;</span>                              <span class="token comment">// "hi"</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="iterable_예시"><h2 id="iterable_예시">Iterable 예시</h2>
+</section><section aria-labelledby="내장_iterables"><h3 id="내장_iterables">내장 iterables</h3>
+<div class="section-content"><p><a href="global_objects/string"><code>String</code></a>, <a href="global_objects/array"><code>Array</code></a>, <a href="global_objects/typedarray"><code>TypedArray</code></a>, <a href="global_objects/map"><code>Map</code></a> and <a href="global_objects/set"><code>Set</code></a> 는 모두 내장 iterable이다. 이 객체들의 프로토타입 객체들은 모두 <code>@@iterator</code> 메소드를 가지고 있기 때문이다.</p></div></section><section aria-labelledby="사용자_정의된_iterables"><h3 id="사용자_정의된_iterables">사용자 정의된 iterables</h3>
+<div class="section-content">
+<p>이렇게 고유한 iterables 를 만들 수 있다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="Vd4I7e/gdDOtusbTuMwtIrOAGRH2QyaGLulgZabR/mc=" data-language="js"><span class="token keyword">var</span> myIterable <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+myIterable<span class="token punctuation">[</span>Symbol<span class="token punctuation">.</span>iterator<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token operator">*</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">yield</span> <span class="token number">1</span><span class="token punctuation">;</span>
+    <span class="token keyword">yield</span> <span class="token number">2</span><span class="token punctuation">;</span>
+    <span class="token keyword">yield</span> <span class="token number">3</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token punctuation">[</span><span class="token operator">...</span>myIterable<span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment">// [1, 2, 3]</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="iterable을_허용하는_내장_api들"><h3 id="iterable을_허용하는_내장_api들">Iterable을 허용하는 내장 API들</h3>
+<div class="section-content">
+<p>Iterable을 허용하는 많은 내장 API들이 있다. 예를 들어: <a href="global_objects/map"><code>Map([iterable])</code></a>, <a href="global_objects/weakmap"><code>WeakMap([iterable])</code></a>, <a href="global_objects/set"><code>Set([iterable])</code></a> and <a href="global_objects/weakset"><code>WeakSet([iterable])</code></a>이 그것이다:</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="EPvhYkZIopDlGvMolrQnP/3x51r0R7LMdVU0WcM0gVg=" data-language="js"><span class="token keyword">var</span> myObj <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token keyword">new</span> <span class="token class-name">Map</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token string">"a"</span><span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token string">"b"</span><span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token string">"c"</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>               <span class="token comment">// "b"</span>
+<span class="token keyword">new</span> <span class="token class-name">WeakMap</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token string">"a"</span><span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token punctuation">[</span>myObj<span class="token punctuation">,</span><span class="token string">"b"</span><span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token punctuation">[</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token string">"c"</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>myObj<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// "b"</span>
+<span class="token keyword">new</span> <span class="token class-name">Set</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">has</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span>                               <span class="token comment">// true</span>
+<span class="token keyword">new</span> <span class="token class-name">Set</span><span class="token punctuation">(</span><span class="token string">"123"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">has</span><span class="token punctuation">(</span><span class="token string">"2"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>                                 <span class="token comment">// true</span>
+<span class="token keyword">new</span> <span class="token class-name">WeakSet</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token operator">*</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">yield</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+    <span class="token keyword">yield</span> myObj<span class="token punctuation">;</span>
+    <span class="token keyword">yield</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">has</span><span class="token punctuation">(</span>myObj<span class="token punctuation">)</span><span class="token punctuation">;</span>                                         <span class="token comment">// true</span>
+</pre>
+</div> <p>뿐만 아니라 <a href="global_objects/promise/all"><code>Promise.all(iterable)</code></a>, <a href="global_objects/promise/race"><code>Promise.race(iterable)</code></a>와 <a href="global_objects/array/from"><code>Array.from()</code></a> 또한 해당된다.</p>
+</div></section><section aria-labelledby="iterable과_함께_사용되는_문법"><h3 id="iterable과_함께_사용되는_문법">Iterable과 함께 사용되는 문법</h3>
+<div class="section-content">
+<p><a href="statements/for...of"><code>for-of</code></a> loops, <a href="operators/spread_syntax">spread operator</a>, <code>yield*와</code> <a href="operators/destructuring_assignment">destructuring assignment</a>는 iterable과 함께 사용되는 구문(statements)과 표현(expressions)이다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="KyakkbCD7LrwmSVzGz0P3LPMRNjZK7uwyb83v6AflEA=" data-language="js"><span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">let</span> value <span class="token keyword">of</span> <span class="token punctuation">[</span><span class="token string">"a"</span><span class="token punctuation">,</span> <span class="token string">"b"</span><span class="token punctuation">,</span> <span class="token string">"c"</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token comment">// "a"</span>
+<span class="token comment">// "b"</span>
+<span class="token comment">// "c"</span>
+
+<span class="token punctuation">[</span><span class="token operator">...</span><span class="token string">"abc"</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment">// ["a", "b", "c"]</span>
+
+<span class="token keyword">function</span><span class="token operator">*</span> <span class="token function">gen</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+  <span class="token keyword">yield</span><span class="token operator">*</span> <span class="token punctuation">[</span><span class="token string">"a"</span><span class="token punctuation">,</span> <span class="token string">"b"</span><span class="token punctuation">,</span> <span class="token string">"c"</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token function">gen</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// { value:"a", done:false }</span>
+
+<span class="token punctuation">[</span>a<span class="token punctuation">,</span> b<span class="token punctuation">,</span> c<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Set</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">"a"</span><span class="token punctuation">,</span> <span class="token string">"b"</span><span class="token punctuation">,</span> <span class="token string">"c"</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+a <span class="token comment">// "a"</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="잘_정의되지_못한_iterables"><h3 id="잘_정의되지_못한_iterables">잘 정의되지 못한 iterables</h3>
+<div class="section-content">
+<p>만약 Iterable의 <code>@@iterator</code> 메소드가 iterator 객체를 반환하지 않는다면 그것은 잘 정의되지 못한 iterable이라고 할 수 있다. 이러한 iterable을 사용하는 것은 런타임 예외나 예상치 못한 결과를 불러올 수 있다:</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="FC80O/Rf36FmBtX6NgoBhp8Y7d+zyXMe/RdDWWRffRg=" data-language="js"><span class="token keyword">var</span> nonWellFormedIterable <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+nonWellFormedIterable<span class="token punctuation">[</span>Symbol<span class="token punctuation">.</span>iterator<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token number">1</span>
+<span class="token punctuation">[</span><span class="token operator">...</span>nonWellFormedIterable<span class="token punctuation">]</span> <span class="token comment">// TypeError: [] is not a function</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="iterator_예시"><h2 id="iterator_예시">Iterator 예시</h2>
+</section><section aria-labelledby="간단한_iterator"><h3 id="간단한_iterator">간단한 iterator</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="WrXt++lIjNAyS3Q0UzKbBT+sUYkZPIxIHM3tA6jKFek=" data-language="js"><span class="token keyword">function</span> <span class="token function">makeIterator</span><span class="token punctuation">(</span><span class="token parameter">array</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">var</span> nextIndex <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">return</span> <span class="token punctuation">{</span>
+       <span class="token function-variable function">next</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+           <span class="token keyword">return</span> nextIndex <span class="token operator">&lt;</span> array<span class="token punctuation">.</span>length <span class="token operator">?</span>
+               <span class="token punctuation">{</span><span class="token literal-property property">value</span><span class="token operator">:</span> array<span class="token punctuation">[</span>nextIndex<span class="token operator">++</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token literal-property property">done</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">}</span> <span class="token operator">:</span>
+               <span class="token punctuation">{</span><span class="token literal-property property">done</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+       <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">var</span> it <span class="token operator">=</span> <span class="token function">makeIterator</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">'yo'</span><span class="token punctuation">,</span> <span class="token string">'ya'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>it<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>value<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 'yo'</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>it<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>value<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 'ya'</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>it<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>done<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// true</span>
+</pre>
+</div></div></section><section aria-labelledby="무한_iterator"><h3 id="무한_iterator">무한 iterator</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="Km3rOMJ3Wxde9tRTBaqWGPSPeA1VP0PD75qpi1aOKsU=" data-language="js"><span class="token keyword">function</span> <span class="token function">idMaker</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">var</span> index <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">return</span> <span class="token punctuation">{</span>
+       <span class="token function-variable function">next</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+           <span class="token keyword">return</span> <span class="token punctuation">{</span><span class="token literal-property property">value</span><span class="token operator">:</span> index<span class="token operator">++</span><span class="token punctuation">,</span> <span class="token literal-property property">done</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+       <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">var</span> it <span class="token operator">=</span> <span class="token function">idMaker</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>it<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>value<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// '0'</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>it<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>value<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// '1'</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>it<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>value<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// '2'</span>
+<span class="token comment">// ...</span>
+</pre>
+</div></div></section><section aria-labelledby="generator와_함께_사용된_iterator"><h3 id="generator와_함께_사용된_iterator">Generator와 함께 사용된 iterator</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="LtrmEnHoV3UYCpKTWyat/lWQwcUFBSDLj2RFYHjB6tc=" data-language="js"><span class="token keyword">function</span><span class="token operator">*</span> <span class="token function">makeSimpleGenerator</span><span class="token punctuation">(</span><span class="token parameter">array</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">var</span> nextIndex <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">while</span><span class="token punctuation">(</span>nextIndex <span class="token operator">&lt;</span> array<span class="token punctuation">.</span>length<span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token keyword">yield</span> array<span class="token punctuation">[</span>nextIndex<span class="token operator">++</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">var</span> gen <span class="token operator">=</span> <span class="token function">makeSimpleGenerator</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">'yo'</span><span class="token punctuation">,</span> <span class="token string">'ya'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>gen<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>value<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 'yo'</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>gen<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>value<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 'ya'</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>gen<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>done<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// true</span>
+
+
+
+<span class="token keyword">function</span><span class="token operator">*</span> <span class="token function">idMaker</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">var</span> index <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token keyword">while</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span>
+        <span class="token keyword">yield</span> index<span class="token operator">++</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">var</span> gen <span class="token operator">=</span> <span class="token function">idMaker</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>gen<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>value<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// '0'</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>gen<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>value<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// '1'</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>gen<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>value<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// '2'</span>
+<span class="token comment">// ...</span>
+</pre>
+</div></div></section><section aria-labelledby="generator_object_는_iterator_또는_iterable_인가"><h2 id="generator_object_는_iterator_또는_iterable_인가">generator object 는 iterator 또는 iterable 인가?</h2>
+<div class="section-content">
+<p><a href="global_objects/generator">generator object</a> 는 iterator 이면서 iterable 입니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="5kEtnmFzvq187HKESKFz5OU7ld3t1U2ROdNV+ujJC8M=" data-language="js"><span class="token keyword">var</span> <span class="token function-variable function">aGeneratorObject</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token operator">*</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">yield</span> <span class="token number">1</span><span class="token punctuation">;</span>
+    <span class="token keyword">yield</span> <span class="token number">2</span><span class="token punctuation">;</span>
+    <span class="token keyword">yield</span> <span class="token number">3</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">typeof</span> aGeneratorObject<span class="token punctuation">.</span>next<span class="token punctuation">;</span>
+<span class="token comment">// "function", 이것은 next 메서드를 가지고 있기 때문에 iterator입니다.</span>
+<span class="token keyword">typeof</span> aGeneratorObject<span class="token punctuation">[</span>Symbol<span class="token punctuation">.</span>iterator<span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token comment">// "function", 이것은 @@iterator 메서드를 가지고 있기 때문에 iterable입니다.</span>
+aGeneratorObject<span class="token punctuation">[</span>Symbol<span class="token punctuation">.</span>iterator<span class="token punctuation">]</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">===</span> aGeneratorObject<span class="token punctuation">;</span>
+<span class="token comment">// true, 이 Object의 @@iterator 메서드는 자기자신(iterator)을 리턴하는 것으로 보아 잘 정의된 iterable이라고 할 수 있습니다.</span>
+<span class="token punctuation">[</span><span class="token operator">...</span>aGeneratorObject<span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token comment">// [1, 2, 3]</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="see_also"><h2 id="see_also">See also</h2>
+<div class="section-content"><ul> <li>ES6 제너레이터에 대한 더 상세한 정보는 <a href="statements/function*">the function*() documentation</a> 를 참조하시기 바랍니다.</li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Iteration_protocols" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Iteration_protocols</a>
+  </p>
+</div>

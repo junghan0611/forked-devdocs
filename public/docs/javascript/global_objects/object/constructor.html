@@ -1,0 +1,114 @@
+<header><h1>Object.prototype.constructor</h1></header><div class="section-content"><p>인스턴스의 프로토타입을 만든 <a href="../object"><code>Object</code></a> 함수의 참조를 반환합니다. 이 속성값은 함수 자체의 참조임을 주의하세요, 함수 이름을 포함하는 문자열이 아니라. 그 값은 <code>1</code>, <code>true</code> 및 <code>"test"</code>와 같은 원시(primitive) 값에 대해서만 읽기 전용입니다.</p></div>
+<section aria-labelledby="설명"><h2 id="설명">설명</h2>
+<div class="section-content">
+<p>모든 객체는 자신의 <code>prototype</code>으로부터 <code>constructor</code> 속성을 상속합니다:</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="eUQF3Zp3XDE6UyTc/5zKrxugv71QQ5ZvmvsmvLgavK4=" data-language="js">    <span class="token keyword">var</span> o <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+    o<span class="token punctuation">.</span>constructor <span class="token operator">===</span> Object<span class="token punctuation">;</span> <span class="token comment">// true</span>
+
+    <span class="token keyword">var</span> o <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Object</span><span class="token punctuation">;</span>
+    o<span class="token punctuation">.</span>constructor <span class="token operator">===</span> Object<span class="token punctuation">;</span> <span class="token comment">// true</span>
+
+    <span class="token keyword">var</span> a <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    a<span class="token punctuation">.</span>constructor <span class="token operator">===</span> Array<span class="token punctuation">;</span> <span class="token comment">// true</span>
+
+    <span class="token keyword">var</span> a <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Array</span><span class="token punctuation">;</span>
+    a<span class="token punctuation">.</span>constructor <span class="token operator">===</span> Array<span class="token punctuation">;</span> <span class="token comment">// true</span>
+
+    <span class="token keyword">var</span> n <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Number</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    n<span class="token punctuation">.</span>constructor <span class="token operator">===</span> Number<span class="token punctuation">;</span> <span class="token comment">// true</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+</section><section aria-labelledby="객체의_생성자_표시하기"><h3 id="객체의_생성자_표시하기">객체의 생성자 표시하기</h3>
+<div class="section-content">
+<p>다음 예는 프로토타입이 <code>Tree</code>인 그 형의 객체 <code>theTree</code>를 만듭니다. 그 다음 객체 <code>theTree</code>의 <code>constructor</code>를 표시합니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="rb32gGTvFqzwbl6sT1jbHI58xk9uk6/4cG2sBOkOw2Y=" data-language="js"><span class="token keyword">function</span> <span class="token function">Tree</span><span class="token punctuation">(</span><span class="token parameter">name</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">this</span><span class="token punctuation">.</span>name <span class="token operator">=</span> name<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">var</span> theTree <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Tree</span><span class="token punctuation">(</span><span class="token string">'Redwood'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'theTree.constructor is '</span> <span class="token operator">+</span> theTree<span class="token punctuation">.</span>constructor<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div> <p>이 예는 다음 출력을 표시합니다:</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="zoAEowQLM9hJC0PWTNSx2rxA5J2qnTtDpFloO1VVbz0=" data-language="js">theTree<span class="token punctuation">.</span>constructor is <span class="token keyword">function</span> <span class="token function">Tree</span><span class="token punctuation">(</span><span class="token parameter">name</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">this</span><span class="token punctuation">.</span>name <span class="token operator">=</span> name<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="객체의_생성자_바꾸기"><h3 id="객체의_생성자_바꾸기">객체의 생성자 바꾸기</h3>
+<div class="section-content">
+<p>다음 예는 일반 객체의 constructor 값을 수정하는 법을 보입니다. <code>true</code>, <code>1</code> 및 <code>"test"</code>만이 원래 읽기 전용 생성자를 갖기에 영향을 받지 않습니다. 이 예는 객체의 <code>constructor</code> 속성에 의존하는 게 항상 안전하지는 않음을 보입니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="NWx+5gR5yGTstfY/AExByKnhUBoBYYsOKiD3k0W0D38=" data-language="js"><span class="token keyword">function</span> <span class="token function">Type</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+
+<span class="token keyword">var</span> types <span class="token operator">=</span> <span class="token punctuation">[</span>
+  <span class="token keyword">new</span> <span class="token class-name">Array</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+  <span class="token keyword">new</span> <span class="token class-name">Boolean</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  <span class="token boolean">true</span><span class="token punctuation">,</span>             <span class="token comment">// 바뀌지 않음</span>
+  <span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  <span class="token keyword">new</span> <span class="token class-name">Error</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  <span class="token keyword">new</span> <span class="token class-name">Function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+  Math<span class="token punctuation">,</span>
+  <span class="token keyword">new</span> <span class="token class-name">Number</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  <span class="token number">1</span><span class="token punctuation">,</span>                <span class="token comment">// 바뀌지 않음</span>
+  <span class="token keyword">new</span> <span class="token class-name">Object</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token keyword">new</span> <span class="token class-name">RegExp</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex"><span class="token group punctuation">(?:</span><span class="token group punctuation">)</span></span><span class="token regex-delimiter">/</span></span><span class="token punctuation">,</span>
+  <span class="token keyword">new</span> <span class="token class-name">String</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  <span class="token string">'test'</span>            <span class="token comment">// 바뀌지 않음</span>
+<span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">var</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> types<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  types<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>constructor <span class="token operator">=</span> Type<span class="token punctuation">;</span>
+  types<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">[</span>types<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>constructor<span class="token punctuation">,</span> types<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token keyword">instanceof</span> <span class="token class-name">Type</span><span class="token punctuation">,</span> types<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>types<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span><span class="token string">'\n'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div> <p>이 예는 다음 출력을 표시합니다:</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="n//b6hxbg1pwd5b69TioQMedkIqQPbWTsrPeNVHxL2g=" data-language="js"><span class="token keyword">function</span> <span class="token function">Type</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token boolean">false</span><span class="token punctuation">,</span>
+<span class="token keyword">function</span> <span class="token function">Type</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token boolean">false</span><span class="token punctuation">,</span>
+<span class="token keyword">function</span> <span class="token function">Type</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token boolean">false</span><span class="token punctuation">,</span><span class="token boolean">false</span>
+<span class="token keyword">function</span> <span class="token function">Boolean</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token punctuation">[</span>native code<span class="token punctuation">]</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token boolean">false</span><span class="token punctuation">,</span><span class="token boolean">true</span>
+<span class="token keyword">function</span> <span class="token function">Type</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token boolean">false</span><span class="token punctuation">,</span>Mon Sep <span class="token number">01</span> <span class="token number">2014</span> <span class="token number">16</span><span class="token operator">:</span><span class="token number">03</span><span class="token operator">:</span><span class="token number">49</span> <span class="token constant">GMT</span><span class="token operator">+</span><span class="token number">0600</span>
+<span class="token keyword">function</span> <span class="token function">Type</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token boolean">false</span><span class="token punctuation">,</span>Error
+<span class="token keyword">function</span> <span class="token function">Type</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token boolean">false</span><span class="token punctuation">,</span><span class="token keyword">function</span> <span class="token function">anonymous</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+<span class="token punctuation">}</span>
+<span class="token keyword">function</span> <span class="token function">Type</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token boolean">false</span><span class="token punctuation">,</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+<span class="token keyword">function</span> <span class="token function">Type</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token boolean">false</span><span class="token punctuation">,</span><span class="token punctuation">[</span>object Math<span class="token punctuation">]</span>
+<span class="token keyword">function</span> <span class="token function">Type</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token boolean">false</span><span class="token punctuation">,</span><span class="token number">0</span>
+<span class="token keyword">function</span> <span class="token function">Number</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token punctuation">[</span>native code<span class="token punctuation">]</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token boolean">false</span><span class="token punctuation">,</span><span class="token number">1</span>
+<span class="token keyword">function</span> <span class="token function">Type</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token boolean">false</span><span class="token punctuation">,</span><span class="token punctuation">[</span>object Object<span class="token punctuation">]</span>
+<span class="token keyword">function</span> <span class="token function">Type</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token boolean">false</span><span class="token punctuation">,</span><span class="token punctuation">[</span>object Object<span class="token punctuation">]</span>
+<span class="token keyword">function</span> <span class="token function">Type</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token boolean">false</span><span class="token punctuation">,</span><span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex"><span class="token group punctuation">(?:</span><span class="token group punctuation">)</span></span><span class="token regex-delimiter">/</span></span>
+<span class="token keyword">function</span> <span class="token function">Type</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token boolean">false</span><span class="token punctuation">,</span><span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex"><span class="token group punctuation">(?:</span><span class="token group punctuation">)</span></span><span class="token regex-delimiter">/</span></span>
+<span class="token keyword">function</span> <span class="token function">Type</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token boolean">false</span><span class="token punctuation">,</span>
+<span class="token keyword">function</span> <span class="token function">String</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token punctuation">[</span>native code<span class="token punctuation">]</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token boolean">false</span><span class="token punctuation">,</span>test
+</pre>
+</div>
+</div></section><h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://tc39.es/ecma262/multipage/fundamental-objects.html#sec-object.prototype.constructor">ECMAScript Language Specification <br><small># sec-object.prototype.constructor</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Object/constructor" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Object/constructor</a>
+  </p>
+</div>

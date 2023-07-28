@@ -1,0 +1,48 @@
+<header><h1>element.firstChild</h1></header><h2 id="요약">요약</h2>
+<div class="section-content"><p>트리에서 노드의 첫 번째 자식이나 <code>null</code>(노드가 자식이 없으면)을 반환합니다.</p></div>
+<h2 id="구문">구문</h2>
+<div class="section-content">
+<div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="8UPdQXW8NOWT9hbZnNwSt614NLv6Sk8qQ/LlNmnK5D4=" data-language="js">childNode <span class="token operator">=</span> node<span class="token punctuation">.</span>firstChild<span class="token punctuation">;</span>
+</pre>
+</div> <p><code>childNode</code>는 자식이 있으면 <code>node</code>의 첫 번째 자식 참조이고 없으면 <code>null</code>입니다.</p>
+</div>
+<h2 id="예시">예시</h2>
+<div class="section-content">
+<p>이 예는 <code>firstChild</code>의 쓰임과 공백 노드가 어떻게 이 프로퍼티 사용을 방해하는 지 실제로 보입니다. Gecko DOM에서 공백 처리에 관한 더 많은 정보는 <a href="#notes">Notes</a> 절을 보세요.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="sF3q5DXHvttHT2W4PfLvUyamvEieTDKfqECnRRfkWa8=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>para-01<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span><span class="token punctuation">&gt;</span></span>First span<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>text/javascript<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token script"><span class="token language-javascript">
+  <span class="token keyword">var</span> p01 <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">'para-01'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">alert</span><span class="token punctuation">(</span>p01<span class="token punctuation">.</span>firstChild<span class="token punctuation">.</span>nodeName<span class="token punctuation">)</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div> <p>위에서, alert은 텍스트 노드가 여는 태그 &lt;p&gt;의 끝과 여는 태그 &lt;span&gt; 사이에 공백을 유지하여 삽입되었기 때문에 '#text'를 보입니다. space 하나에서 여럿, return, tab 등 <strong>어떤</strong> 공백이든 #text 노드에 삽입되게 됩니다.</p> <p>다른 #text 노드는 닫는 태그 &lt;/span&gt;과 닫는 태그 &lt;/p&gt; 사이에 삽입됩니다.</p> <p>이 공백을 소스에서 제거하면, #text 노드는 삽입되지 않고 span 요소가 paragraph의 첫 번째 자식이 됩니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="mUosob97ZV+YbI/ReXyvwgvjVc+JsUPsEIrXc07Bsz8=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>para-01<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span><span class="token punctuation">&gt;</span></span>First span<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>text/javascript<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token script"><span class="token language-javascript">
+  <span class="token keyword">var</span> p01 <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">'para-01'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">alert</span><span class="token punctuation">(</span>p01<span class="token punctuation">.</span>firstChild<span class="token punctuation">.</span>nodeName<span class="token punctuation">)</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div> <p>이제 alert은 'SPAN'을 보입니다.</p>
+</div>
+<h2 id="주의">주의</h2>
+<div class="section-content">
+<p> Gecko 기반 브라우저는 소스 마크업에서 공백을 나타내기 위해 문서 내에 텍스트 노드를 삽입합니다. 그러므로 예를 들어 <a href="firstchild" aria-current="page"><code>Node.firstChild</code></a>나 <a href="previoussibling"><code>Node.previousSibling</code></a>을 통해서 얻은 노드는 작성자가 얻으려 한 실제 요소와는 달리 공백 텍스트 노드를 참조할 지도 모릅니다. </p> <p> 더 많은 정보는 <a href="https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model/Whitespace" class="only-in-en-us">Whitespace in the DOM <small>(en-US)</small></a>과 <a href="https://www.w3.org/DOM/faq.html#emptytext" target="_blank">W3C DOM 3 FAQ: Why are some Text nodes empty?</a>를 보세요. </p>
+</div>
+<h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="#">DOM Standard <br><small># ref-for-dom-node-firstchild①</small></a></td></tr></tbody>
+</table></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/Node/firstChild" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/Node/firstChild</a>
+  </p>
+</div>

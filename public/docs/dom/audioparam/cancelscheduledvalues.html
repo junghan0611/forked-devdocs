@@ -1,0 +1,33 @@
+<header><h1>AudioParam.cancelScheduledValues()</h1></header><div class="section-content"><p><a href="../audioparam"><code>AudioParam</code></a> 인터페이스의 <code>cancelScheduledValues()</code> 메서드는 <code>AudioParam</code> 에 예정된 모든 미래의 변화를 취소합니다.</p></div>
+<h2 id="구문">구문</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="8iFXrdZUyYFo3wEPSz59Bx8n0IR92MvXOtxl4lmP1Lc=" data-language="js"><span class="token keyword">var</span> AudioParam <span class="token operator">=</span> AudioParam<span class="token punctuation">.</span><span class="token function">cancelScheduledValues</span><span class="token punctuation">(</span>startTime<span class="token punctuation">)</span>
+</pre>
+</div></div>
+<h3 id="매개변수">매개변수</h3>
+<div class="section-content"><dl> <dt id="starttime">startTime</dt> <dd> <p><a href="../audiocontext"><code>AudioContext</code></a>가 처음 생성된 이후 모든 예정된 변화가 취소될 시간 (초 단위로 표현됨) 을 나타내는 double.</p> </dd> </dl></div>
+<h3 id="반환">반환</h3>
+<div class="section-content"><p>이 <code>AudioParam</code> 객체에 대한 참조. 몇몇 오래된 구현에서 이 메서드는 void를 반환합니다.</p></div>
+<h2 id="예제">예제</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="ylc30zXqqAPr1hdW2aFFYr8s/bTo0L+h6P1Vsy6/qIM=" data-language="js"><span class="token keyword">var</span> gainNode <span class="token operator">=</span> audioCtx<span class="token punctuation">.</span><span class="token function">createGain</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+gainNode<span class="token punctuation">.</span>gain<span class="token punctuation">.</span><span class="token function">setValueCurveAtTime</span><span class="token punctuation">(</span>waveArray<span class="token punctuation">,</span> audioCtx<span class="token punctuation">.</span>currentTime<span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 'gain' 이 AudioParam입니다.</span>
+gainNode<span class="token punctuation">.</span>gain<span class="token punctuation">.</span><span class="token function">cancelScheduledValues</span><span class="token punctuation">(</span>audioCtx<span class="token punctuation">.</span>currentTime<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div></div>
+<h2 id="명세서">명세서</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://webaudio.github.io/web-audio-api/#dom-audioparam-cancelscheduledvalues">Web Audio API <br><small># dom-audioparam-cancelscheduledvalues</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="../web_audio_api/using_web_audio_api">Web Audio API 사용하기</a></li> </ul></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/AudioParam/cancelScheduledValues" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/AudioParam/cancelScheduledValues</a>
+  </p>
+</div>

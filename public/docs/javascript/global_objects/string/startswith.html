@@ -1,0 +1,39 @@
+<header><h1>String.prototype.startsWith()</h1></header><div class="section-content"><p><code>startsWith()</code> 메서드는 어떤 문자열이 특정 문자로 시작하는지 확인하여 결과를 <code>true</code> 혹은 <code>false</code>로 반환합니다.</p></div>
+<section aria-labelledby="시도해보기"><h2 id="시도해보기">시도해보기</h2>
+<div class="section-content"><iframe class="interactive is-js-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/js/string-startswith.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe></div></section><section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="GAO2+HijLOGZfd7nA6JySCAH11UyNt2jGzF/J4LILAM=" data-language="js"><span class="token function">startsWith</span><span class="token punctuation">(</span>searchString<span class="token punctuation">)</span>
+<span class="token function">startsWith</span><span class="token punctuation">(</span>searchString<span class="token punctuation">,</span> position<span class="token punctuation">)</span>
+</pre>
+</div></div></section><section aria-labelledby="매개변수"><h3 id="매개변수">매개변수</h3>
+<div class="section-content"><dl> <dt id="searchstring"><code>searchString</code></dt> <dd> <p>문자열의 시작 지점에서 탐색할 문자열. 정규표현식이 올 수 없습니다.</p> </dd> <dt id="position">
+<code>position</code> <span class="badge inline optional">Optional</span>
+</dt> <dd> <p><code>searchString</code>을 탐색할 위치. 기본값은 <code>0</code>.</p> </dd> </dl></div></section><section aria-labelledby="반환_값"><h3 id="반환_값">반환 값</h3>
+<div class="section-content"><p>대상 문자열이 주어진 문자로 시작하면 <code>true</code>, 아니면 <code>false</code>.</p></div></section><section aria-labelledby="예외"><h3 id="예외">예외</h3>
+<div class="section-content"><dl> <dt id="typeerror"><a href="../typeerror"><code>TypeError</code></a></dt> <dd> <p><code>searchString</code>이 <a href="../regexp#special_handling_for_regexes">정규식일 경우</a>.</p> </dd> </dl></div></section><section aria-labelledby="설명"><h2 id="설명">설명</h2>
+<div class="section-content"><p><code>startsWith</code> 메소드로 어떤 문자열이 다른 문자열로 시작하는지 확인 할 수 있습니다. 대소문자를 구분합니다.</p></div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+</section><section aria-labelledby="startswith_사용하기"><h3 id="startswith_사용하기">
+<code>startsWith()</code> 사용하기</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="oRqbhQ7eDeA3+DdPShdzmwbFIdX68eH4ld/ntYaCq3M=" data-language="js"><span class="token keyword">const</span> str <span class="token operator">=</span> <span class="token string">"To be, or not to be, that is the question."</span><span class="token punctuation">;</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>str<span class="token punctuation">.</span><span class="token function">startsWith</span><span class="token punctuation">(</span><span class="token string">"To be"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// true</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>str<span class="token punctuation">.</span><span class="token function">startsWith</span><span class="token punctuation">(</span><span class="token string">"not to be"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// false</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>str<span class="token punctuation">.</span><span class="token function">startsWith</span><span class="token punctuation">(</span><span class="token string">"not to be"</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// true</span>
+</pre>
+</div></div></section><h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://tc39.es/ecma262/multipage/text-processing.html#sec-string.prototype.startswith">ECMAScript Language Specification <br><small># sec-string.prototype.startswith</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="https://github.com/zloirock/core-js#ecmascript-string-and-regexp" target="_blank"><code>core-js</code>에서 <code>String.prototype.startsWith</code>의 폴리필</a></li> <li><a href="endswith"><code>String.prototype.endsWith()</code></a></li> <li><a href="includes"><code>String.prototype.includes()</code></a></li> <li><a href="indexof"><code>String.prototype.indexOf()</code></a></li> <li><a href="lastindexof"><code>String.prototype.lastIndexOf()</code></a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/String/startsWith" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/String/startsWith</a>
+  </p>
+</div>

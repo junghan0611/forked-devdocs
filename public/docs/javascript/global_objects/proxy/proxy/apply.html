@@ -1,0 +1,53 @@
+<header><h1>handler.apply()</h1></header><div class="section-content"><p><code>handler.apply()</code> 메서드는 함수 호출에 대한 트랩입니다.</p></div>
+<section aria-labelledby="시도해보기"><h2 id="시도해보기">시도해보기</h2>
+<div class="section-content"><iframe class="interactive is-taller-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/js/proxyhandler-apply.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe></div></section><section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="tK8mvyV22Y+5xVhKDWAYQND4xt5DFOgNeAL/JuOL3MY=" data-language="js"><span class="token keyword">var</span> p <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Proxy</span><span class="token punctuation">(</span>target<span class="token punctuation">,</span> <span class="token punctuation">{</span>
+  <span class="token function-variable function">apply</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">target<span class="token punctuation">,</span> thisArg<span class="token punctuation">,</span> argumentsList</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div></div></section><section aria-labelledby="매개_변수"><h3 id="매개_변수">매개 변수</h3>
+<div class="section-content">
+<p> 다음 매개변수는 <code>apply()</code> 메소드에 전달됩니다. <code>this</code>는 핸들러에 바인딩됩니다. </p> <dl> <dt id="target"><code>target</code></dt> <dd> <p>호출할 수 있는 대상 객체</p> </dd> <dt id="thisarg"><code>thisArg</code></dt> <dd> <p>호출에 대한 <code>this</code> 인수</p> </dd> <dt id="argumentslist"><code>argumentsList</code></dt> <dd> <p>호출에 대한 인수 목록</p> </dd> </dl>
+</div></section><section aria-labelledby="반환_값"><h3 id="반환_값">반환 값</h3>
+<div class="section-content"><p><code>apply()</code> 메서드는 어떤 값이든 반환할 수 있습니다.</p></div></section><section aria-labelledby="설명"><h2 id="설명">설명</h2>
+<div class="section-content"><p><code>handler.apply()</code> 메서드는 함수 호출에 대한 트랩입니다.</p></div></section><section aria-labelledby="가로채기"><h3 id="가로채기">가로채기</h3>
+<div class="section-content">
+<p>이 트랩은 다음 작업을 가로챌 수 있습니다.</p> <ul> <li><code>proxy(...args)</code></li> <li>
+<a href="../../function/apply"><code>Function.prototype.apply()</code></a>와 <a href="../../function/call"><code>Function.prototype.call()</code></a>
+</li> <li><a href="../../reflect/apply"><code>Reflect.apply()</code></a></li> </ul>
+</div></section><section aria-labelledby="불변_조건"><h3 id="불변_조건">불변 조건</h3>
+<div class="section-content">
+<p>다음 불변 조건이 위반되면 프록시는 <a href="../../typeerror"><code>TypeError</code></a>를 발생시킵니다.</p> <p>대상 객체는 그 자체로 호출이 가능해야합니다. 즉, 함수 객체여야 합니다.</p>
+</div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+</section><section aria-labelledby="함수_호출_가로채기"><h3 id="함수_호출_가로채기">함수 호출 가로채기</h3>
+<div class="section-content">
+<p>다음 코드는 함수 호출을 트랩합니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="mQMY/Y6PdIJIc8gEYDYFbiaJpf2K6cWbcHGGKYWzoFg=" data-language="js"><span class="token keyword">const</span> p <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Proxy</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+  <span class="token function">apply</span><span class="token punctuation">(</span><span class="token parameter">target<span class="token punctuation">,</span> thisArg<span class="token punctuation">,</span> argumentsList</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">called: </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>argumentsList<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> argumentsList<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">+</span> argumentsList<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">+</span> argumentsList<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token function">p</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// "호출: 1,2,3"</span>
+                         <span class="token comment">// 6</span>
+</pre>
+</div>
+</div></section><h2 id="명세서">명세서</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://tc39.es/ecma262/multipage/ordinary-and-exotic-objects-behaviours.html#sec-proxy-object-internal-methods-and-internal-slots-call-thisargument-argumentslist">ECMAScript Language Specification <br><small># sec-proxy-object-internal-methods-and-internal-slots-call-thisargument-argumentslist</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="../../proxy"><code>Proxy</code></a></li> <li><a href="../proxy"><code>Proxy()</code> 생성자</a></li> <li><a href="../../function/apply"><code>Function.prototype.apply()</code></a></li> <li><a href="../../function/call"><code>Function.prototype.call()</code></a></li> <li><a href="../../reflect/apply"><code>Reflect.apply()</code></a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Proxy/Proxy/apply" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Proxy/Proxy/apply</a>
+  </p>
+</div>

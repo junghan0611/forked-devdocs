@@ -1,0 +1,48 @@
+<header><h1>Set.prototype.forEach()</h1></header><div class="section-content"><p><code>forEach()</code> 메서드는 주어진 함수를 <code>Set</code> 요소 각각에 대해 삽입 순서대로 실행합니다.</p></div>
+<section aria-labelledby="시도해보기"><h2 id="시도해보기">시도해보기</h2>
+<div class="section-content"><iframe class="interactive is-js-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/js/set-prototype-foreach.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe></div></section><section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="YnAOM+U/J/7bqmWiVOm8nQzCadptIa+nhDvLEnc0ahs=" data-language="js">mySet<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span>callback<span class="token punctuation">[</span><span class="token punctuation">,</span> thisArg<span class="token punctuation">]</span><span class="token punctuation">)</span>
+</pre>
+</div></div></section><section aria-labelledby="매개변수"><h3 id="매개변수">매개변수</h3>
+<div class="section-content"><dl> <dt id="callback"><code>callback</code></dt> <dd>각 요소에 대해 실행할 함수. 다음 세 가지 인수를 받습니다.</dd> <dd> <dl> <dt id="currentvalue">
+<code>currentValue</code>, <code>currentKey</code>
+</dt> <dd>처리할 현재 요소. <code>Set</code>은 키를 갖지 않으므로 두 인수 모두에 값을 전달합니다.</dd> <dt id="set"><code>set</code></dt> <dd>
+<code>forEach()</code>를 호출한 <code>Set</code>.</dd> </dl> </dd> <dt id="thisarg"><code>thisArg</code></dt> <dd>
+<code>callback</code>을 실행할 때 <code>this</code>로 사용할 값.</dd> </dl></div></section><section aria-labelledby="반환_값"><h3 id="반환_값">반환 값</h3>
+<div class="section-content"><p><a href="../undefined"><code>undefined</code></a>.</p></div></section><section aria-labelledby="설명"><h2 id="설명">설명</h2>
+<div class="section-content">
+<p><code>forEach()</code> 메서드는 주어진 <code>callback</code>을 <code>Set</code>에 존재하는 요소에 대해 한 번씩 실행합니다. 삭제한 값에 대해선 실행하지 않습니다. 그러나 존재하되 값이 <a href="../undefined"><code>undefined</code></a>인 경우엔 실행합니다.</p> <p><code>callback</code>은 다음 세 인수와 함께 호출됩니다.</p> <ul> <li><strong>요소 값</strong></li> <li><strong>요소 키</strong></li> <li><code>Set</code></li> </ul> <p>그러나 <code>Set</code>은 키 값을 사용하지 않으므로, 처음 두 개의 매개변수 모두 <strong>요소 값</strong>을 받습니다. 이는 <a href="../map/foreach"><code>Map</code></a>과 <a href="../array/foreach"><code>Array</code></a>에서 사용하는 <code>forEach()</code>와 동일한 형태를 유지하기 위해서입니다.</p> <p><code>thisArg</code> 매개변수를 <code>forEach()</code>에 제공한 경우 <code>callback</code>을 호출할 때 전달해 <code>this</code>의 값으로 쓰입니다. 전달하지 않으면 <code>undefined</code>를 사용하며, 최종 <code>this</code> 값은 <a href="../../operators/this">함수의 <code>this</code>를 결정하는 평소 규칙</a>을 따릅니다.</p> <p><code>forEach()</code>는 각각의 값을 한 번씩 방문하지만, 순회를 끝내기 전에 제거하고 다시 추가한 값은 예외입니다. 방문하기 전 제거한 값에 대해서는 <code>callback</code>을 호출하지 않습니다. <code>forEach()</code>가 끝나기 전 추가한 요소는 방문합니다.</p> <p><code>forEach()</code>는 <code>Set</code> 객체의 요소에 대해 <code>callback</code>을 실행만 하며 값을 반환하지는 않습니다.</p>
+</div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+</section><section aria-labelledby="set의_내용물_기록하기"><h3 id="set의_내용물_기록하기">
+<code>Set</code>의 내용물 기록하기</h3>
+<div class="section-content">
+<p>다음 코드는 <code>Set</code>의 요소 각각을 새로운 줄에 기록합니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="y+mMl/hi6J960I3o+vpkEuix5pg9IEeb8GfIFmdXsGI=" data-language="js"><span class="token keyword">function</span> <span class="token function">logSetElements</span><span class="token punctuation">(</span><span class="token parameter">value1<span class="token punctuation">,</span> value2<span class="token punctuation">,</span> <span class="token keyword">set</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'s['</span> <span class="token operator">+</span> value1 <span class="token operator">+</span> <span class="token string">'] = '</span> <span class="token operator">+</span> value2<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">new</span> <span class="token class-name">Set</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">'foo'</span><span class="token punctuation">,</span> <span class="token string">'bar'</span><span class="token punctuation">,</span> <span class="token keyword">undefined</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span>logSetElements<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// 콘솔 로그:</span>
+<span class="token comment">// "s[foo] = foo"</span>
+<span class="token comment">// "s[bar] = bar"</span>
+<span class="token comment">// "s[undefined] = undefined"</span>
+</pre>
+</div>
+</div></section><h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://tc39.es/ecma262/multipage/keyed-collections.html#sec-set.prototype.foreach">ECMAScript Language Specification <br><small># sec-set.prototype.foreach</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="../array/foreach"><code>Array.prototype.forEach()</code></a></li> <li><a href="../map/foreach"><code>Map.prototype.forEach()</code></a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Set/forEach" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Set/forEach</a>
+  </p>
+</div>

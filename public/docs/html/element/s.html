@@ -1,0 +1,61 @@
+<header><h1>&lt;s&gt;</h1></header><div class="section-content"><p><code>&lt;s&gt;</code>는 글자에 취소선, 즉 글자를 가로지르는 선을 그립니다. <code>&lt;s&gt;</code> 요소를 사용해 이제 관계 없거나 더 이상 정확하지 않은 부분을 나타내세요. 그러나, <code>&lt;s&gt;</code>는 문서의 편집 기록을 나타내는 용도로는 적합하지 않습니다. 상황에 따라 <a href="del"><code>&lt;del&gt;</code></a>과 <a href="ins"><code>&lt;ins&gt;</code></a> 요소를 대신 사용하세요.</p></div>
+<h2 id="시도해보기">시도해보기</h2>
+<div class="section-content">
+<iframe class="interactive is-tabbed-shorter-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/tabbed/s.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe>  <figure class="table-container"><div class="_table"><table class="properties"> <tbody> <tr> <th scope="row"><a href="../content_categories">콘텐츠 카테고리</a></th> <td> <a href="../content_categories#%ed%94%8c%eb%a1%9c%ec%9a%b0_%ec%bd%98%ed%85%90%ec%b8%a0">플로우 콘텐츠</a>, <a href="../content_categories#%ea%b5%ac%eb%ac%b8_%ec%bd%98%ed%85%90%ec%b8%a0">구문 콘텐츠</a>. </td> </tr> <tr> <th scope="row">가능한 콘텐츠</th> <td>
+<a href="../content_categories#%ea%b5%ac%eb%ac%b8_%ec%bd%98%ed%85%90%ec%b8%a0">구문 콘텐츠</a>.</td> </tr> <tr> <th scope="row">태그 생략</th> <td>불가능, 시작과 끝에 태그를 추가하는것은 필수입니다.</td> </tr> <tr> <th scope="row">가능한 부모 요소</th> <td>
+<a href="../content_categories#%ea%b5%ac%eb%ac%b8_%ec%bd%98%ed%85%90%ec%b8%a0">구문 콘텐츠</a>를 허용하는 모든 요소.</td> </tr> <tr> <th scope="row">가능한 ARIA 역할</th> <td>모두</td> </tr> <tr> <th scope="row">DOM 요소</th> <td><a href="https://developer.mozilla.org/ko/docs/Web/API/HTMLElement"><code>HTMLElement</code></a></td> </tr> </tbody> </table></div></figure>
+</div>
+<h2 id="특성">특성</h2>
+<div class="section-content"><p>이 요소는 <a href="../global_attributes">전역 특성</a>만 포함합니다.</p></div>
+<h2 id="예제">예제</h2>
+<div class="section-content">
+<div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="DTbFAMo4HTLyTJ2zpVd60O0WyousJ+juMCM/508iCO4=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>s</span><span class="token punctuation">&gt;</span></span>Today's Special: Salmon<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>s</span><span class="token punctuation">&gt;</span></span> SOLD OUT<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>br</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div>
+<div class="code-example" id="sect2">
+
+<iframe class="sample-code-frame" title="예제 sample" id="frame_예제" src="https://live.mdnplay.dev/ko/docs/Web/HTML/Element/s/runner.html?id=%EC%98%88%EC%A0%9C" loading="lazy"></iframe>
+</div>
+</div>
+<h2 id="접근성_고려사항">접근성 고려사항</h2>
+<div class="section-content">
+<p>대부분의 스크린 리더는 기본값에서 <code>&lt;s&gt;</code> 요소의 존재를 표현하지 않습니다. 그러나 CSS <a href="https://developer.mozilla.org/ko/docs/Web/CSS/content"><code>content</code></a> 속성과 <a href="https://developer.mozilla.org/ko/docs/Web/CSS/::before"><code>::before</code></a>, <a href="https://developer.mozilla.org/ko/docs/Web/CSS/::after"><code>::after</code></a> 의사 요소를 사용하면 소리내어 읽도록 할 수 있습니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="9FNsFTau8ApnuZOA5EcJ3bfohBVqFel3lBl6WvA/wOs=" data-language="css"><span class="token selector">s::before,
+s::after</span> <span class="token punctuation">{</span>
+  <span class="token property">clip-path</span><span class="token punctuation">:</span> <span class="token function">inset</span><span class="token punctuation">(</span>100%<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token property">clip</span><span class="token punctuation">:</span> <span class="token function">rect</span><span class="token punctuation">(</span>1px<span class="token punctuation">,</span> 1px<span class="token punctuation">,</span> 1px<span class="token punctuation">,</span> 1px<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token property">height</span><span class="token punctuation">:</span> 1px<span class="token punctuation">;</span>
+  <span class="token property">overflow</span><span class="token punctuation">:</span> hidden<span class="token punctuation">;</span>
+  <span class="token property">position</span><span class="token punctuation">:</span> absolute<span class="token punctuation">;</span>
+  <span class="token property">white-space</span><span class="token punctuation">:</span> nowrap<span class="token punctuation">;</span>
+  <span class="token property">width</span><span class="token punctuation">:</span> 1px<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">s::before</span> <span class="token punctuation">{</span>
+  <span class="token property">content</span><span class="token punctuation">:</span> <span class="token string">" [취소선 시작] "</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">s::after</span> <span class="token punctuation">{</span>
+  <span class="token property">content</span><span class="token punctuation">:</span> <span class="token string">" [취소선 끝] "</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div> <p>스크린 리더 사용자 일부는 지나치게 자세한 안내를 유발할 수 있는 콘텐츠의 표현을 의도적으로 꺼놓습니다. 그러므로 이 방식을 남용해선 안되며, 콘텐츠의 이해에 취소선의 유무가 꼭 필요할 때만 사용해야 합니다.</p> <ul> <li><a href="https://developer.paciellogroup.com/blog/2017/12/short-note-on-making-your-mark-more-accessible/" target="_blank">Short note on making your mark (more accessible) | The Paciello Group</a></li> <li><a href="https://adrianroselli.com/2017/12/tweaking-text-level-styles.html" target="_blank">Tweaking Text Level Styles | Adrian Roselli</a></li> </ul>
+</div>
+<h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-s-element">HTML Standard <br><small># the-s-element</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li>자료가 <strong>삭제</strong>된 경우 사용하는 <a href="del"><code>&lt;del&gt;</code></a> 요소.</li> <li>
+<code>&lt;s&gt;</code> 요소의 시각적 요소를 재현할 수 있는 CSS <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/text-decoration-line"><code>text-decoration-line</code> <small>(en-US)</small></a> 속성.</li> </ul></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/HTML/Element/s" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/HTML/Element/s</a>
+  </p>
+</div>

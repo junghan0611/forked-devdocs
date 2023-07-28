@@ -1,0 +1,71 @@
+<header><h1>&lt;sub&gt;: 아래 첨자 요소</h1></header><div class="section-content"><p><strong>HTML</strong> <code>&lt;sub&gt;</code> 요소는 활자 배치를 아래 첨자로 해야 하는 인라인 텍스트를 지정합니다. 아래 첨자는 보통 더 작은 글씨 크기를 가지고, 기준선을 아래로 내려 렌더링 합니다.</p></div>
+<h2 id="시도해보기">시도해보기</h2>
+<div class="section-content">
+<iframe class="interactive is-tabbed-shorter-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/tabbed/sub.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe> <figure class="table-container"><div class="_table"><table class="properties"> <tbody> <tr> <th scope="row"><a href="../content_categories">콘텐츠 카테고리</a></th> <td> <a href="../content_categories#%ed%94%8c%eb%a1%9c%ec%9a%b0_%ec%bd%98%ed%85%90%ec%b8%a0">플로우 콘텐츠</a>, <a href="../content_categories#%ea%b5%ac%eb%ac%b8_%ec%bd%98%ed%85%90%ec%b8%a0">구문 콘텐츠</a>, 뚜렷한 콘텐츠. </td> </tr> <tr> <th scope="row">가능한 콘텐츠</th> <td>
+<a href="../content_categories#%ea%b5%ac%eb%ac%b8_%ec%bd%98%ed%85%90%ec%b8%a0">구문 콘텐츠</a>.</td> </tr> <tr> <th scope="row">태그 생략</th> <td>불가능, 시작과 끝에 태그를 추가하는것은 필수입니다.</td> </tr> <tr> <th scope="row">가능한 부모 요소</th> <td>
+<a href="../content_categories#%ea%b5%ac%eb%ac%b8_%ec%bd%98%ed%85%90%ec%b8%a0">구문 콘텐츠</a>를 허용하는 모든 요소.</td> </tr> <tr> <th scope="row">가능한 ARIA 역할</th> <td>모두</td> </tr> <tr> <th scope="row">DOM 인터페이스</th> <td><a href="https://developer.mozilla.org/ko/docs/Web/API/HTMLElement"><code>HTMLElement</code></a></td> </tr> </tbody> </table></div></figure>
+</div>
+<h2 id="특성">특성</h2>
+<div class="section-content"><p>이 요소는 <a href="../global_attributes">전역 특성</a>만 포함합니다.</p></div>
+<h2 id="사용_일람">사용 일람</h2>
+<div class="section-content">
+<p><code>&lt;sub&gt;</code> 요소는 타이포그래피적인 이유에 맞춰서만 사용해야 합니다. 타이포그래피적 이유란 기존의 관례나 표준이 아래 첨자로 나타내는 경우를 말하며, 단순히 작은 글자를 아래로 올려야 할 때는 사용해서는 안됩니다.</p> <p>예를 들어 비즈니스나 상품의 <a href="https://en.wikipedia.org/wiki/Wordmark" target="_blank">워드마크</a> 글씨 기준선을 내려야 한다면 <code>&lt;sub&gt;</code> 대신 CSS(대개 <a href="https://developer.mozilla.org/ko/docs/Web/CSS/vertical-align"><code>vertical-align</code></a>)를 사용해야 합니다. <code>vertical-align: sub</code>를 사용할 수도 있고, 기준선을 25% 내려야 한다면 <code>vertical-align: -25%</code>로도 쓸 수 있습니다.</p> <p><code>&lt;sub&gt;</code>의 적절한 사용처 몇 가지는 다음과 같습니다.</p> <ul> <li>각주 표기. 아래의 <a href="#%EA%B0%81%EC%A3%BC_%ED%91%9C%EA%B8%B0">각주 표기</a> 예제를 참고하세요.</li> <li>수학 변수의 숫자 표기. <a href="https://developer.mozilla.org/ko/docs/Web/MathML">MathML</a>을 사용하는 방향을 고려하세요. <a href="#%EB%B3%80%EC%88%98_%ED%91%9C%EA%B8%B0">변수 표기</a> 예제를 참고하세요.</li> <li>화학식에서 원소의 수를 나타낼 때. (개발자의 친구, C8H10N4O2, 카페인) 아래의 <a href="#%ED%99%94%ED%95%99%EC%8B%9D">화학식</a> 예제를 참고하세요.</li> </ul>
+</div>
+<h2 id="예제">예제</h2>
+
+<h3 id="각주_표기">각주 표기</h3>
+<div class="section-content">
+<p>각주의 숫자를 아래 첨자로 나타내는 경우도 있으며, <code>&lt;sub&gt;</code>가 흔히 쓰이는 경우입니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="drHhiNtgnnO3XjAvTgrVpTx8tcrQKX0gZrrt0jo2dL4=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>According to the computations by Nakamura, Johnson, and
+Mason<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>sub</span><span class="token punctuation">&gt;</span></span>1<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>sub</span><span class="token punctuation">&gt;</span></span> this will result in the complete annihilation
+of both particles.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div>
+<div class="code-example" id="sect1">
+
+<iframe class="sample-code-frame" title="각주 표기 sample" id="frame_각주_표기" width="650" height="80" src="https://live.mdnplay.dev/ko/docs/Web/HTML/Element/sub/runner.html?id=%EA%B0%81%EC%A3%BC_%ED%91%9C%EA%B8%B0" loading="lazy"></iframe>
+</div>
+</div>
+<h3 id="변수_표기">변수 표기</h3>
+<div class="section-content">
+<p>수학에서는 같은 축 위의 점 여럿과 같이, 동일한 개념을 가리키는 변수의 무리는 같은 변수명을 사용하며, 뒤의 아래 첨자 숫자로 서로 구분합니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="1EX0x6Y0uY0DBvLOZqmrxia/yySVDqc5LfyySxX9MCM=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>The horizontal coordinates' positions along the X-axis are
+represented as <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>var</span><span class="token punctuation">&gt;</span></span>x<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>sub</span><span class="token punctuation">&gt;</span></span>1<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>sub</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>var</span><span class="token punctuation">&gt;</span></span> ... <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>var</span><span class="token punctuation">&gt;</span></span>x<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>sub</span><span class="token punctuation">&gt;</span></span>n<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>sub</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>var</span><span class="token punctuation">&gt;</span></span>.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div>
+<div class="code-example" id="sect2">
+
+<iframe class="sample-code-frame" title="변수 표기 sample" id="frame_변수_표기" width="650" height="80" src="https://live.mdnplay.dev/ko/docs/Web/HTML/Element/sub/runner.html?id=%EB%B3%80%EC%88%98_%ED%91%9C%EA%B8%B0" loading="lazy"></iframe>
+</div>
+</div>
+<h3 id="화학식">화학식</h3>
+<div class="section-content">
+<p>화학식에서 특정 원자의 수를 나타낼 때 아래 첨자를 사용합니다. H20의 아래 첨자 "2"는 화학식이 나타내는 물질에 수소 원자가 2개 존재한다는 뜻입니다.:</p> <div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="JJE0a8+o2Vaqk85aLQI0KN44iFeMZMPRivCboe2fgBo=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>Almost every developer's favorite molecule is
+C<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>sub</span><span class="token punctuation">&gt;</span></span>8<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>sub</span><span class="token punctuation">&gt;</span></span>H<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>sub</span><span class="token punctuation">&gt;</span></span>10<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>sub</span><span class="token punctuation">&gt;</span></span>N<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>sub</span><span class="token punctuation">&gt;</span></span>4<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>sub</span><span class="token punctuation">&gt;</span></span>O<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>sub</span><span class="token punctuation">&gt;</span></span>2<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>sub</span><span class="token punctuation">&gt;</span></span>, which is
+commonly known as "caffeine."<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div>
+<div class="code-example" id="sect3">
+
+<iframe class="sample-code-frame" title="화학식 sample" id="frame_화학식" width="650" height="120" src="https://live.mdnplay.dev/ko/docs/Web/HTML/Element/sub/runner.html?id=%ED%99%94%ED%95%99%EC%8B%9D" loading="lazy"></iframe>
+</div>
+</div>
+<h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-sub-and-sup-elements">HTML Standard <br><small># the-sub-and-sup-elements</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li>위 첨자를 나타내는 <a href="sup"><code>&lt;sup&gt;</code></a> 요소. 위 첨자와 아래 첨자가 같은 공간에 공존할 수는 없습니다. 따라서 화학의 질량수/원자 번호 표기 등을 구현하려면 <a href="https://developer.mozilla.org/ko/docs/Web/MathML">MathML</a>이 필요합니다.</li> <li>
+<a href="https://developer.mozilla.org/en-US/docs/Web/MathML/Element/msub" class="only-in-en-us"><code>&lt;msub&gt;</code> <small>(en-US)</small></a>, <a href="https://developer.mozilla.org/en-US/docs/Web/MathML/Element/msup" class="only-in-en-us"><code>&lt;msup&gt;</code> <small>(en-US)</small></a>, <a href="https://developer.mozilla.org/en-US/docs/Web/MathML/Element/msubsup" class="only-in-en-us"><code>&lt;msubsup&gt;</code> <small>(en-US)</small></a> MathML 요소.</li> <li>CSS <a href="https://developer.mozilla.org/ko/docs/Web/CSS/vertical-align"><code>vertical-align</code></a> 속성.</li> </ul></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/HTML/Element/sub" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/HTML/Element/sub</a>
+  </p>
+</div>

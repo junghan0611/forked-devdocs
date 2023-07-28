@@ -1,0 +1,48 @@
+<header><h1>:fullscreen</h1></header><div class="section-content"><p><a href="https://developer.mozilla.org/ko/docs/Web/CSS">CSS</a> <code>:fullscreen</code> <a href="pseudo-classes">의사 클래스</a>는 전체 화면 모드에 진입한 모든 요소와 일치합니다. 다수의 요소가 전체 화면 중이라면 그 요소 모두 선택합니다.</p></div>
+<section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content">Error: could not find syntax for this item</div></section><section aria-labelledby="사용_참고"><h2 id="사용_참고">사용 참고</h2>
+<div class="section-content"><p><code>:fullscreen</code> 의사 클래스는 요소가 전체 화면과 일반적인 모습을 넘나들 때마다 크기, 스타일, 레이아웃 등을 조정하도록 스타일시트를 설정할 수 있습니다.</p></div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+<div class="section-content"><p>이번 예제에서는 문서의 전체 화면 여부에 따라 버튼의 색을 변경합니다. 스타일 변경은 JavaScript 없이 CSS에서만 처리합니다.</p></div></section><section aria-labelledby="html"><h3 id="html">HTML</h3>
+<div class="section-content">
+<p>페이지의 HTML 구조는 다음과 같습니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="2ESzV6ea35HfXYxzoum4pklDVC1GmQ26+RDosmXKQ7I=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span><span class="token punctuation">&gt;</span></span>MDN Web Docs Demo: :fullscreen pseudo-class<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h1</span><span class="token punctuation">&gt;</span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>This demo uses the <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>code</span><span class="token punctuation">&gt;</span></span>:fullscreen<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>code</span><span class="token punctuation">&gt;</span></span> pseudo-class to automatically
+  change the style of a button used to toggle full-screen mode on and off,
+  entirely using CSS.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>fs-toggle<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Toggle Fullscreen<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div> <p>ID가 <code>"fs-toggle"</code>인 <a href="https://developer.mozilla.org/ko/docs/Web/HTML/Element/button"><code>&lt;button&gt;</code></a>은 문서가 전체 화면이면 흐릿한 빨강, 그렇지 않으면 흐릿한 초록으로 색이 바뀝니다.</p>
+</div></section><section aria-labelledby="css"><h3 id="css">CSS</h3>
+<div class="section-content">
+<p>스타일 마법은 CSS에서 일어납니다. 두 가지 규칙을 사용할 것으로, 첫 번째는 전체 화면이 아닐 때 전체 화면 버튼의 배경색을 설정합니다. 중요한 것은 <code>:not(:fullscreen)</code>으로, <code>:fullscreen</code> 의사 클래스와 일치하지 않는 요소를 선택합니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="wbJnr716hO2adHanNaBRS8D79a1R3yvOezZY23xQusA=" data-language="css"><span class="token selector">#fs-toggle:not(:fullscreen)</span> <span class="token punctuation">{</span>
+  <span class="token property">background-color</span><span class="token punctuation">:</span> #afa<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div> <p>문서가 전체 화면에 들어간 경우, 대신 아래의 CSS를 적용하여 버튼 배경을 흐릿한 빨강으로 바꿉니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="mS8K6yxTCE+DV+306sJg5FdLNeBTUSyyTQ+Hv1k3ypQ=" data-language="css"><span class="token selector">#fs-toggle:fullscreen</span> <span class="token punctuation">{</span>
+  <span class="token property">background-color</span><span class="token punctuation">:</span> #faa<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div>
+</div></section><h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://fullscreen.spec.whatwg.org/#:fullscreen-pseudo-class">Fullscreen API Standard <br><small># :fullscreen-pseudo-class</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="https://developer.mozilla.org/ko/docs/Web/API/Fullscreen_API">Fullscreen API</a></li> <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Fullscreen_API/Guide" class="only-in-en-us">Fullscreen API 안내서 <small>(en-US)</small></a></li> <li><a href=":not"><code>:not</code></a></li> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/::backdrop"><code>::backdrop</code> <small>(en-US)</small></a></li> <li>DOM API: <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/Element/requestFullscreen"><code>Element.requestFullscreen()</code> <small>(en-US)</small></a>, <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/Document/exitFullscreen"><code>Document.exitFullscreen()</code> <small>(en-US)</small></a>, <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/Document/fullscreenElement"><code>Document.fullscreenElement</code> <small>(en-US)</small></a>
+</li> <li>
+<a href="https://developer.mozilla.org/ko/docs/Web/HTML/Element/iframe#attr-allowfullscreen"><code>allowfullscreen</code></a> 특성</li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/CSS/:fullscreen" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/CSS/:fullscreen</a>
+  </p>
+</div>

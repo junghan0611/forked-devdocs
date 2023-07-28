@@ -1,0 +1,72 @@
+<header><h1>Window: beforeunload 이벤트</h1></header><div class="section-content">
+<p><code>beforeunload</code> 이벤트는 window, 문서(document) 및 해당 리소스가 언로드(unload) 되려고 할 때 시작됩니다. 문서는 계속 보이고 있으며 이벤트는 이 시점에서도 취소할 수 있습니다.</p> <p>이 이벤트를 사용하면 웹 페이지에서 사용자에게 실제로 페이지를 떠날 것인지 묻는 확인 대화 상자를 표시할 수 있습니다. 사용자가 확인 버튼을 누를 경우 브라우저는 새 페이지로 이동하고 그렇지 않으면 탐색을 취소하고 현재 페이지에 머무릅니다.</p> <p>명세에 따라 확인 대화 상자를 표시하려면 이벤트 핸들러가 이벤트에서 <a href="../event/preventdefault"><code>preventDefault()</code></a>를 호출해야 합니다.</p> <p>HTML 명세에는 이 이벤트 동안 <a href="alert"><code>window.alert()</code></a>, <a href="confirm"><code>window.confirm()</code></a>, 및 <a href="prompt"><code>window.prompt()</code></a> 메서드에 대한 호출이 무시될 수 있다고 명시되어 있습니다. 자세한 내용은 <a href="https://html.spec.whatwg.org/multipage/timers-and-user-prompts.html#user-prompts" target="_blank">HTML 명세</a>을 참고하세요.</p>
+</div>
+<h2 id="구문">구문</h2>
+<div class="section-content">
+<p><a href="../eventtarget/addeventlistener"><code>addEventListener()</code></a>와 같은 메서드에서 이벤트 이름을 사용하거나 이벤트 핸들러 속성을 설정합니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="vjlTTmcA29SeDwM2DLkeHmgH7x7nA7f3Q6SMelAeO0k=" data-language="js"><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">"beforeunload"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">event</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function-variable function">onbeforeunload</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">event</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+</pre>
+</div>
+</div>
+<h2 id="이벤트_타입">이벤트 타입</h2>
+<div class="section-content"><p><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/BeforeUnloadEvent"><code>BeforeUnloadEvent</code> <small>(en-US)</small></a> 이벤트는 <a href="../event"><code>Event</code></a>에서 상속됩니다.</p></div>
+<h2 id="이벤트_처리기_별칭alias">이벤트 처리기 별칭(alias)</h2>
+<div class="section-content">
+<p><code>Window</code> 인터페이스 뿐만 아니라 이벤트 핸들러 속성 <code>onbeforeunload</code>도 사용할 수 있습니다.</p> <ul> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLBodyElement"><code>HTMLBodyElement</code> <small>(en-US)</small></a></li> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLFrameSetElement"><code>HTMLFrameSetElement</code> <small>(en-US)</small></a></li> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/SVGSVGElement"><code>SVGSVGElement</code> <small>(en-US)</small></a></li> </ul>
+</div>
+<h2 id="보안">보안</h2>
+<div class="section-content"><p><a href="https://developer.mozilla.org/ko/docs/Web/Security/User_activation">임시 사용자 활성화</a>가 필요합니다. beforeunload 이벤트가 동작하기 위해선 사용자가 페이지 또는 UI 요소와 상호 작용해야 합니다.</p></div>
+<h2 id="사용_일람">사용 일람</h2>
+<div class="section-content">
+<p><code>beforeunload</code> 이벤트는 <a href="unload_event"><code>unload</code></a> 이벤트와 동일한 문제가 있습니다.</p> <p>특히 모바일에서 <code>beforeunload</code> 이벤트는 안정적으로 실행되지 않습니다. 예를 들면, 다음의 시나리오에서는 <code>beforeunload</code> 이벤트가 전혀 발생하지 않습니다.</p> <ol> <li>모바일 사용자가 페이지를 방문합니다.</li> <li>그런 다음 사용자가 다른 앱으로 전환합니다.</li> <li>나중에 사용자는 앱 관리자에서 브라우저를 닫습니다.</li> </ol> <p><code>beforeunload</code> 이벤트는 <a href="https://web.dev/bfcache/" target="_blank">back/forward cache</a> (bfcache)와 호환되지 않습니다. 이 이벤트를 사용하는 많은 페이지가 이벤트 후에 페이지가 더 이상 존재하지 않을 것이라고 가정하기 때문입니다. 이를 방지하기 위해 브라우저는 <code>beforeunload</code> 수신기(listener)가 있는 경우 bfcache에 페이지를 배치하지 않으며 이는 성능에 좋지 않습니다.</p> <p>그러나 <code>unload</code> 이벤트와 달리 <code>beforeunload</code> 이벤트에는 합법적인 사용 사례가 있습니다. 사용자가 페이지에서 데이터를 입력후 저장하지 않고 이탈(unload) 할때 데이터가 손실되는 경우의 시나리오입니다.</p> <p>개발자는 성능에 미치는 영향을 최소화하기 위해 이 시나리오에서 실제로 저장되지 않는 변경 사항이 있을 때만 <code>beforeunload</code>를 수신하는 것이 좋습니다. 이에 대한 예는 아래의 예제 섹션을 참조하세요.</p> <p><code>beforeunload</code> 이벤트와 관련된 문제에 대한 더 많은 정보는 <a href="https://developer.chrome.com/blog/page-lifecycle-api/" target="_blank">페이지 라이프사이클 API</a> 가이드를 참고하세요.</p>
+</div>
+<h2 id="예제">예제</h2>
+<div class="section-content">
+<p>이 예제에서 페이지는 <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/text" class="only-in-en-us"><code>input</code> 텍스트 <small>(en-US)</small></a>에 대한 변경 사항을 수신합니다. 만약 요소의 값이 포함되어 있으면 <code>beforeunload</code>에 대한 수신기(listener)를 추가합니다. 만약 요소가 비어있으면 수신기를 제거합니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="jKUG5i29Ie8337HRxpVgpX/u5MKs5q8rc4oZ5Xf3rtk=" data-language="js"><span class="token keyword">const</span> <span class="token function-variable function">beforeUnloadListener</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">event</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  event<span class="token punctuation">.</span><span class="token function">preventDefault</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">return</span> <span class="token punctuation">(</span>event<span class="token punctuation">.</span>returnValue <span class="token operator">=</span> <span class="token string">""</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> nameInput <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">querySelector</span><span class="token punctuation">(</span><span class="token string">"#name"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+nameInput<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">"input"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">event</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>event<span class="token punctuation">.</span>target<span class="token punctuation">.</span>value <span class="token operator">!==</span> <span class="token string">""</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">"beforeunload"</span><span class="token punctuation">,</span> beforeUnloadListener<span class="token punctuation">,</span> <span class="token punctuation">{</span> <span class="token literal-property property">capture</span><span class="token operator">:</span> <span class="token boolean">true</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+    <span class="token function">removeEventListener</span><span class="token punctuation">(</span><span class="token string">"beforeunload"</span><span class="token punctuation">,</span> beforeUnloadListener<span class="token punctuation">,</span> <span class="token punctuation">{</span>
+      <span class="token literal-property property">capture</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div>
+</div>
+<h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody>
+<tr><td><a href="https://html.spec.whatwg.org/multipage/indices.html#event-beforeunload">HTML Standard <br><small># event-beforeunload</small></a></td></tr>
+<tr><td><a href="https://html.spec.whatwg.org/multipage/webappapis.html#handler-window-onbeforeunload">HTML Standard <br><small># handler-window-onbeforeunload</small></a></td></tr>
+</tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<div class="section-content"><p><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/Window/beforeunload_event"><code>WindowEventHandlers.onbeforeunload</code> <small>(en-US)</small></a>에서 각각의 브라우저가 beforeunload를 어떻게 처리하는지 자세히 알아보세요.</p></div>
+<h2 id="호환성_참고_사항">호환성 참고 사항</h2>
+<div class="section-content">
+<p> HTML 명세에는 개발자가 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/Event/returnValue"><code>Event.returnValue</code> <small>(en-US)</small></a>를 사용하여 사용자에게 메시지를 표시하는 대신 <a href="../event/preventdefault"><code>Event.preventDefault()</code></a> 메서드를 사용해야 한다고 명시되어 있습니다. 그러나 아직 모든 브라우저에서 지원하고 있지는 않습니다. </p> <p> 이 이벤트가 <code>null</code> 또는 <code>undefined</code> 이외의 값을 반환(또는 <code>returnValue</code> 속성을 설정)하면 페이지 언로드를 확인하라는 메시지가 사용자에게 표시됩니다. 오래된 브라우저에서는 이벤트의 반환 값이 표시됩니다. Firefox 44, Chrome 51, Opera 38, 및 Safari 9.1 이후로 반환된 문자열 대신 웹 페이지에서 제어할 수 없는 문자열이 표시됩니다. 예를들면 아래와 같습니다. </p> <ul> <li>Firefox는 "This page is asking you to confirm that you want to leave - data you have entered may not be saved."라는 문자열을 표시합니다(<a href="https://bugzil.la/588292" target="_blank">Firefox 버그 588292</a>를 확인하세요).</li> <li>Chrome은 "Do you want to leave the site? Changes you made may not be saved."라는 문자열을 표시합니다(<a href="https://chromestatus.com/feature/5349061406228480" target="_blank">Chrome 플랫폼 상태</a>를 확인하세요).</li> </ul> <p> 일부 브라우저에서 <a href="alert"><code>window.alert()</code></a>, <a href="confirm"><code>window.confirm()</code></a>, 및 <a href="prompt"><code>window.prompt()</code></a> 호출은 beforeunload 이벤트가 진행되는 동안 무시될 수 있습니다. 자세한 내용은 <a href="https://html.spec.whatwg.org/multipage/webappapis.html#user-prompts" target="_blank">HTML 명세</a>를 확인하세요. </p> <p> 또한 다양한 브라우저는 이벤트 결과를 무시하고 사용자에게 확인을 전혀 요청하지 않습니다. 이러한 경우 문서는 항상 자동으로 언로드 됩니다. Firefox는 이 동작을 활성화 하기 위해 <em>about:config</em> 에 <code>dom.disable_beforeunload</code>라는 스위치가 있습니다. Chrome 60부터는 프레임이나 페이지가 로드된 이후 사용자가 제스처를 수행하지 않은 경우 확인을 <a href="https://chromestatus.com/feature/5082396709879808" target="_blank">건너뜁니다</a>. 페이지에서 F5를 누르는 것은 사용자 상호작용으로 간주되는 반면 새로고침 화살표를 마우스로 클릭하거나 Chrome DevTools에 포커스가 있는 상태에서 F5를 누르는 것은 사용자 상호작용으로 간주되지 않습니다 (Chrome 81 기준입니다). </p>
+</div>
+<h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li>관련 이벤트: <a href="domcontentloaded_event"><code>DOMContentLoaded</code></a>, <a href="../document/readystatechange_event"><code>readystatechange</code></a>, <a href="load_event"><code>load</code></a>, <a href="unload_event"><code>unload</code></a>
+</li> <li><a href="https://html.spec.whatwg.org/#prompt-to-unload-a-document" target="_blank">Unloading Documents — Prompt to unload a document</a></li> <li><a href="https://developers.google.com/web/updates/2016/04/chrome-51-deprecations?hl=en#remove_custom_messages_in_onbeforeunload_dialogs" target="_blank">Remove Custom Messages in onbeforeload Dialogs after Chrome 51</a></li> <li>
+<a href="https://www.igvita.com/2015/11/20/dont-lose-user-and-app-state-use-page-visibility/" target="_blank">Don't lose user and app state, use Page Visibility</a>는 <code>beforeunload</code>/<code>unload</code>가 아닌 <code>visibilitychange</code>를 사용해야 하는 이유를 자세히 설명합니다.</li> <li>
+<a href="https://developer.chrome.com/blog/page-lifecycle-api/#developer-recommendations-for-each-state" target="_blank">Page Lifecycle API</a>는 웹 애플리케이션에서 페이지 수명 주기 동작을 처리하는 모범 사례 지침을 제공합니다.</li> <li>
+<a href="https://github.com/GoogleChromeLabs/page-lifecycle" target="_blank">PageLifecycle.js</a>는 페이지 생명 주기 동작의 브라우저간 불일치를 처리하는 JavaScript 라이브러리입니다.</li> <li>
+<a href="https://web.dev/bfcache/" target="_blank">Back/forward cache</a>는 back/forward 캐시가 무엇이며 다양한 페이지 수명 주기 이벤트에 미치는 영향을 설명합니다.</li> </ul></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/Window/beforeunload_event" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/Window/beforeunload_event</a>
+  </p>
+</div>

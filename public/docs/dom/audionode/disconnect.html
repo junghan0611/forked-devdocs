@@ -1,0 +1,63 @@
+<header><h1>AudioNode.disconnect()</h1></header><div class="section-content"><p><a href="../audionode"><code>AudioNode</code></a> 인터페이스의 <code>disconnect()</code> 메서드는 하나 이상의 노드를 메서드가 호출된 노드로부터 연결 해제할 수 있게 합니다.</p></div>
+<h2 id="구문">구문</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="m/u7+oVQnqD01fs+19HApdKkncW46Fdji1janqWjRVk=" data-language="js">AudioNode<span class="token punctuation">.</span><span class="token function">disconnect</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+AudioNode<span class="token punctuation">.</span><span class="token function">disconnect</span><span class="token punctuation">(</span>output<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+AudioNode<span class="token punctuation">.</span><span class="token function">disconnect</span><span class="token punctuation">(</span>destination<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+AudioNode<span class="token punctuation">.</span><span class="token function">disconnect</span><span class="token punctuation">(</span>destination<span class="token punctuation">,</span> output<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+AudioNode<span class="token punctuation">.</span><span class="token function">disconnect</span><span class="token punctuation">(</span>destination<span class="token punctuation">,</span> output<span class="token punctuation">,</span> input<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div></div>
+<h3 id="반환_값">반환 값</h3>
+<div class="section-content"><a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/undefined"><code>undefined</code></a></div>
+<h3 id="매개변수">매개변수</h3>
+<div class="section-content">
+<p><code>disconnect()</code> 메서드의 몇 가지 버전이 있는데, 각 버전은 매개변수의 다른 조합을 받아 어떤 노드를 어디에서 연결을 끊을지 제어합니다. 만약 매개변수가 제공되지 않았다면, 나가는 모든 연결들이 연결 해제됩니다.</p> <dl> <dt id="destination">
+<code>destination</code> <span class="badge inline optional">Optional</span>
+</dt> <dd> <p>연결을 끊을 노드 혹은 노드들을 명시하는 <a href="../audionode"><code>AudioNode</code></a> 또는 <a href="../audioparam"><code>AudioParam</code></a>. 만약 이 값이 <code>AudioNode</code> 라면, 하나의 노드가 연결 해제되고, 만약 선택적인 다른 매개변수가 있다면 (<code>output</code> 그리고/또는 <code>input</code>), 어떤 입력 그리고/또는 출력이 연결 해제되어야 하는지를 추가적으로 제한합니다. 만약 이 값이 <code>AudioParam</code> 이라면, 이 <code>AudioParam</code> 으로 향하는 연결이 제거되고, 이 계산된 파라미터에 대한 노드의 기여는 한 번 변화가 발생하고 나면 계속 0이 됩니다.</p> </dd> <dt id="output">
+<code>output</code> <span class="badge inline optional">Optional</span>
+</dt> <dd> <p>현재 <code>AudioNode</code> 로부터 어떤 출력이 연결 해제될지를 기술하는 인덱스. 인덱스 숫자는 출력 채널의 수에 따라 정의됩니다 (<a href="../web_audio_api/basic_concepts_behind_web_audio_api#audio_channels">오디오 채널</a>을 참고해 보세요).</p> </dd> <dt id="input">
+<code>input</code> <span class="badge inline optional">Optional</span>
+</dt> <dd> <p>명시된 목적지 <code>AudioNode</code>로 가는 어떤 입력이 연결 해제될지를 기술하는 인덱스. 인덱스 숫자는 입력 채널의 수에 따라 정의됩니다 (<a href="../web_audio_api/basic_concepts_behind_web_audio_api#audio_channels">오디오 채널</a>을 참고해 보세요).</p> </dd> </dl>
+</div>
+<h3 id="예외">예외</h3>
+<div class="section-content"><dl> <dt id="indexsizeerror">
+<code>IndexSizeError</code> <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/DOMException"><code>DOMException</code> <small>(en-US)</small></a>
+</dt> <dd> <p>만약 <code>input</code> 혹은 <code>output</code> 으로 명시된 값이 유효하지 않다면 발생되며, 존재하지 않거나 허용되는 범위 밖에 있는 노드를 나타냅니다.</p> </dd> <dt id="invalidaccesserror">
+<code>InvalidAccessError</code> <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/DOMException"><code>DOMException</code> <small>(en-US)</small></a>
+</dt> <dd> <p><code>disconnect()</code> 가 호출된 노드가 명시된 <code>destination</code> 노드에 연결되어있지 않다면 발생됩니다.</p> </dd> </dl></div>
+<h2 id="예제">예제</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="LCOTCprnIPVvR1JEzvXhZ2qqM2nC6am9/zrqJIchlCY=" data-language="js"><span class="token keyword">var</span> AudioContext <span class="token operator">=</span> window<span class="token punctuation">.</span>AudioContext <span class="token operator">||</span> window<span class="token punctuation">.</span>webkitAudioContext<span class="token punctuation">;</span>
+
+<span class="token keyword">var</span> audioCtx <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">AudioContext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">var</span> oscillator <span class="token operator">=</span> audioCtx<span class="token punctuation">.</span><span class="token function">createOscillator</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> gainNode <span class="token operator">=</span> audioCtx<span class="token punctuation">.</span><span class="token function">createGain</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+oscillator<span class="token punctuation">.</span><span class="token function">connect</span><span class="token punctuation">(</span>gainNode<span class="token punctuation">)</span><span class="token punctuation">;</span>
+gainNode<span class="token punctuation">.</span><span class="token function">connect</span><span class="token punctuation">(</span>audioCtx<span class="token punctuation">.</span>destination<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+gainNode<span class="token punctuation">.</span><span class="token function">disconnect</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div></div>
+<h2 id="명세서">명세서</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://webaudio.github.io/web-audio-api/#dom-audionode-disconnect">Web Audio API <br><small># dom-audionode-disconnect</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="../web_audio_api/using_web_audio_api">Web Audio API 사용하기</a></li> </ul></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/AudioNode/disconnect" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/AudioNode/disconnect</a>
+  </p>
+</div>

@@ -1,0 +1,61 @@
+<header><h1>String.prototype.at()</h1></header><div class="section-content"><p><code>at()</code> 메서드는 정수 값을 받아서 지정된 오프셋에 있는 단일 UTF-16 코드 단위로 구성된 새 <a href="../string"><code>String</code></a>을 반환합니다. 이 방법은 양의 정수와 음의 정수를 허용합니다. 음의 정수는 문자열의 마지막부터 셉니다.</p></div>
+<section aria-labelledby="시도해보기"><h2 id="시도해보기">시도해보기</h2>
+<div class="section-content"><iframe class="interactive is-js-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/js/string-at.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe></div></section><section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="4HEhB6k9yIq9eChrIRw2EpGaGSd5UJ9XLpYpO9VnWVM=" data-language="js"><span class="token function">at</span><span class="token punctuation">(</span>index<span class="token punctuation">)</span>
+</pre>
+</div></div></section><section aria-labelledby="매개변수"><h3 id="매개변수">매개변수</h3>
+<div class="section-content"><dl> <dt id="index"><code>index</code></dt> <dd> <p>문자열에서 반환할 문자의 인덱스(위치)입니다. 인덱스로 음수를 전달할 때 문자열의 끝에서 상대적인 색인을 지원합니다. 즉, 음수가 사용되면 반환할 문자는 문자열의 끝에서 역으로 계산하여 찾습니다.</p> </dd> </dl></div></section><section aria-labelledby="반환_값"><h3 id="반환_값">반환 값</h3>
+<div class="section-content"><p>지정된 위치에 있는 단일 UTF-16 코드 단위로 구성된 새 <a href="../string"><code>String</code></a>. 만약 주어진 인덱스를 찾을 수 없는 경우 <a href="../undefined"><code>undefined</code></a>을 반환합니다.</p></div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+</section><section aria-labelledby="문자열의_마지막_문자_반환"><h3 id="문자열의_마지막_문자_반환">문자열의 마지막 문자 반환</h3>
+<div class="section-content">
+<p>다음 예제는 주어진 문자열에서 마지막 문자를 반환하는 함수를 제공합니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="OxdXeqG4vPqKBQwttT1w3NuFUtFCW0gBGw4EUcA2Lro=" data-language="js"><span class="token comment">// 주어진 문자열에서 마지막 문자를 반환하는 함수</span>
+<span class="token keyword">function</span> <span class="token function">returnLast</span><span class="token punctuation">(</span><span class="token parameter">arr</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> arr<span class="token punctuation">.</span><span class="token function">at</span><span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">let</span> invoiceRef <span class="token operator">=</span> <span class="token string">"myinvoice01"</span><span class="token punctuation">;</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token function">returnLast</span><span class="token punctuation">(</span>invoiceRef<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// '1'</span>
+
+invoiceRef <span class="token operator">=</span> <span class="token string">"myinvoice02"</span><span class="token punctuation">;</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token function">returnLast</span><span class="token punctuation">(</span>invoiceRef<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// '2'</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="메서드_비교하기"><h3 id="메서드_비교하기">메서드 비교하기</h3>
+<div class="section-content">
+<p>여기서 <a href="../string"><code>String</code></a>의 끝에서 두 번째 문자를 선택하는 다양한 방법을 비교하겠습니다. 아래의 모든 방법이 유효하며, 싱대적으로 <code>at()</code>의 간결함과 가독성이 돋보입니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="qVmjI5jJFS1dFokMMZG7+l37TyOjcNLb3EsGEWuNBbY=" data-language="js"><span class="token keyword">const</span> myString <span class="token operator">=</span> <span class="token string">"Every green bus drives fast."</span><span class="token punctuation">;</span>
+
+<span class="token comment">// length 속성과 charAt() 메서드 사용하기</span>
+<span class="token keyword">const</span> lengthWay <span class="token operator">=</span> myString<span class="token punctuation">.</span><span class="token function">charAt</span><span class="token punctuation">(</span>myString<span class="token punctuation">.</span>length <span class="token operator">-</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>lengthWay<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 't'</span>
+
+<span class="token comment">// slice() 메서드 사용하기</span>
+<span class="token keyword">const</span> sliceWay <span class="token operator">=</span> myString<span class="token punctuation">.</span><span class="token function">slice</span><span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>sliceWay<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 't'</span>
+
+<span class="token comment">// at() 메서드 사용하기</span>
+<span class="token keyword">const</span> atWay <span class="token operator">=</span> myString<span class="token punctuation">.</span><span class="token function">at</span><span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>atWay<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 't'</span>
+</pre>
+</div>
+</div></section><h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://tc39.es/ecma262/multipage/text-processing.html#sec-string.prototype.at">ECMAScript Language Specification <br><small># sec-string.prototype.at</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="https://github.com/zloirock/core-js#ecmascript-string-and-regexp" target="_blank">Polyfill of <code>String.prototype.at</code> in <code>core-js</code></a></li> <li>
+<a href="https://github.com/tc39/proposal-relative-indexing-method#polyfill" target="_blank">A polyfill for the at() method</a>.</li> <li><a href="indexof"><code>String.prototype.indexOf()</code></a></li> <li><a href="lastindexof"><code>String.prototype.lastIndexOf()</code></a></li> <li><a href="charcodeat"><code>String.prototype.charCodeAt()</code></a></li> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/codePointAt"><code>String.prototype.codePointAt()</code> <small>(en-US)</small></a></li> <li><a href="split"><code>String.prototype.split()</code></a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/String/at" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/String/at</a>
+  </p>
+</div>

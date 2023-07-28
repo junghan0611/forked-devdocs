@@ -1,0 +1,97 @@
+<h1>CSP: script-src</h1>
+<header><h1>CSP: script-src</h1></header><div class="section-content">
+<p>HTTP <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy" class="only-in-en-us"><code>Content-Security-Policy</code> <small>(en-US)</small></a> (CSP) <code>script-src</code> 는 자바스크립트트에 대한 검증된 출처를 지정합니다. 여기에는 <a href="https://developer.mozilla.org/ko/docs/Web/HTML/Element/script"><code>&lt;script&gt;</code></a> 요소에서 직접 호출한 URL뿐만 아니라, 인라인 스크립트 이벤트 핸들러(<code>onclick</code>) 및 스크립트를 실행할 수 있는 <a href="https://developer.mozilla.org/ko/docs/Web/XSLT">XSLT stylesheets</a> 가 포함됩니다.</p> <figure class="table-container"><div class="_table"><table class="properties"> <tbody> <tr> <th scope="row">CSP version</th> <td>1</td> </tr> <tr> <th scope="row">Directive type</th> <td><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Glossary/Fetch_directive">Fetch directive <small>(en-US)</small></a></td> </tr> <tr> <th scope="row">
+<a href="default-src"><code>default-src</code></a> fallback</th> <td> Yes. If this directive is absent, the user agent will look for the <code>default-src</code> directive. </td> </tr> </tbody> </table></div></figure>
+</div>
+<section aria-labelledby="syntax"><h2 id="syntax">Syntax</h2>
+<div class="section-content">
+<p>하나 이상의 출처가 <code>script-src</code> 정책에 의해서 허용될 수 있습니다:</p> <pre class="notranslate">Content-Security-Policy: script-src &lt;source&gt;;
+Content-Security-Policy: script-src &lt;source&gt; &lt;source&gt;;
+</pre>
+</div></section><section aria-labelledby="sources"><h3 id="sources">Sources</h3>
+<div class="section-content">
+<p><code>&lt;source&gt;</code> can be any one of the values listed in <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/Sources" class="only-in-en-us">CSP Source Values <small>(en-US)</small></a>.</p> <p>Note that this same set of values can be used in all <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Glossary/Fetch_directive">fetch directives <small>(en-US)</small></a> (and a <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/Sources" class="only-in-en-us">number of other directives <small>(en-US)</small></a>).</p>
+</div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+</section><section aria-labelledby="violation_case"><h3 id="violation_case">Violation case</h3>
+<div class="section-content">
+<p>주어진 CSP 헤더:</p> <div class="code-example">
+<p class="example-header"><span class="language-name">bash</span></p>
+<pre data-signature="0RuGLzdwrR4dauMjZ1Hlgazq2hq7I3cxa4v9weFEQ6M=" data-language="bash">Content-Security-Policy: script-src https://example.com/
+</pre>
+</div> <p>아래 스크립트가 차단되어서 로드 또는 실행되지 않습니다:</p> <div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="rUBMSBMFtODBBESYhff32WGC1kaNrnBpiKuJx3968qg=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>https://not-example.com/js/library.js<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div> <p>인라인 스크립트도 실행되지 않습니다:</p> <div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="szuLXypeZ5H6vKdBYQNgAefWxuzeflFor1eWoHgkc6g=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>btn<span class="token punctuation">"</span></span> <span class="token special-attr"><span class="token attr-name">onclick</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token value javascript language-javascript"><span class="token function">doSomething</span><span class="token punctuation">(</span><span class="token punctuation">)</span></span><span class="token punctuation">"</span></span></span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div> <p><a href="https://developer.mozilla.org/ko/docs/Web/API/EventTarget/addEventListener"><code>addEventListener</code></a>를 호출하는 것으로 대체해야 합니다.:</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="XJzRQiIISrhHuFupShtykKkuCWMpWK7xEYadCpdcYiM=" data-language="js">document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">"btn"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">'click'</span><span class="token punctuation">,</span> doSomething<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="안전하지_않은_인라인_스크립트"><h3 id="안전하지_않은_인라인_스크립트">안전하지 않은 인라인 스크립트</h3>
+<div class="section-content">
+<div class="notecard note" id="sect1"> <p><strong>참고:</strong> 인라인 스타일 및 인라인 스크립트를 허용하지 않는 것이 CSP가 제공하는 가장 큰 보안 이점 중 하나 입니다. 그러나, 인라인 스크립트 및 스타일을 사용해야만 한다면 몇가지 방법을 제공합니다.</p> </div> <p>인라인 스크립트 및 인라인 이벤트 핸들러를 허용하려면, <code>'unsafe-inline'</code>, 인라인 태그에 정의한 값과 동일한 nonce-source 또는 hash-source를 지정할 수 있습니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">bash</span></p>
+<pre data-signature="C/untDWfk3vZqnjAWAKyKB7bsy2EywzGZ/CCOHyWH+U=" data-language="bash">Content-Security-Policy: script-src <span class="token string">'unsafe-inline'</span><span class="token punctuation">;</span>
+</pre>
+</div> <p>위의 CSP는 <a href="https://developer.mozilla.org/ko/docs/Web/HTML/Element/script"><code>&lt;script&gt;</code></a> 태그를 허용합니다</p> <div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="KLNbT4QuWFCbtI2mejsYgUlryGpYXr8xQkRFiUw5sWM=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">&gt;</span></span><span class="token script"><span class="token language-javascript">
+  <span class="token keyword">var</span> inline <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div> <p>nonce-source를 사용하면 특정 인라인 스크립트 태그만 허용 할 수 있습니다:</p> <div class="code-example">
+<p class="example-header"><span class="language-name">bash</span></p>
+<pre data-signature="flu8U0OsTr/sdD8BDJ0xcFwdgJ4cGHfmiKxyqYAje5g=" data-language="bash">Content-Security-Policy: script-src <span class="token string">'nonce-2726c7f26c'</span>
+</pre>
+</div> <p><a href="https://developer.mozilla.org/ko/docs/Web/HTML/Element/script"><code>&lt;script&gt;</code></a> 태그에 동일한 nonce를 설정해야 합니다 :</p> <div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="rHyAkGNyTjFhG/G3F4unoU4ffJxZl8eXeTYC1Bha9OY=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">nonce</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>2726c7f26c<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token script"><span class="token language-javascript">
+  <span class="token keyword">var</span> inline <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div> <p>또는, 인라인 스크립트에서 해시를 설정할 수 도 있습니다. CSP는 sha256, sha384 and sha512를 지원합니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">bash</span></p>
+<pre data-signature="K17sHXjAFlqbbg+JyBgvxuMWy/o+Mkc1J/ng/UXlVcQ=" data-language="bash">Content-Security-Policy: script-src <span class="token string">'sha256-B2yPHKaXnvFWtRChIbabYmUBFZdVfKKXHbWtWidDVF8='</span>
+</pre>
+</div> <p>해시를 생성할 때에는 <a href="https://developer.mozilla.org/ko/docs/Web/HTML/Element/script"><code>&lt;script&gt;</code></a> 태그를 포함하지 말고, 대소문자, 태그의 앞뒤 공백이 포함되어야 하는 것을 유의해주십시요.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="MV+tZ7NHisnWSxdz2AQJtYafo1FPrLQuixOwWdAJ5wA=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">&gt;</span></span><span class="token script"><span class="token language-javascript"><span class="token keyword">var</span> inline <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div>
+</div></section><section aria-labelledby="안전하지_않은_eval_표현식"><h3 id="안전하지_않은_eval_표현식">안전하지 않은 eval 표현식</h3>
+<div class="section-content">
+<p><code>'unsafe-eval'</code> 출처 표현식은 문자열에서 코드를 생성하는 여러 스크립트 실행 메소드를 제어합니다. 만약<code>'unsafe-eval'</code> 이 <code>script-src</code> 에 정의되어 있지 않으면, 아래믜 명령어는 차단되며 아무런 효과가 일어나지 않습니다.</p> <ul> <li><a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/eval"><code>eval()</code></a></li> <li><a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Function"><code>Function()</code></a></li> <li> 아래와 같이 문자열 리터럴을 전달할 때 : <code>window.setTimeout("alert(\"Hello World!\");", 500);</code> <ul> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/setTimeout"><code>window.setTimeout</code> <small>(en-US)</small></a></li> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/setInterval"><code>window.setInterval</code> <small>(en-US)</small></a></li> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/Window/setImmediate"><code>window.setImmediate</code> <small>(en-US)</small></a></li> </ul> </li> <li>
+<a class="page-not-created"><code>window.execScript</code></a> <abbr class="icon icon-nonstandard" title="비표준. 사용하기전에 다른 브라우저에서도 사용 가능한지 확인 해주세요."> <span class="visually-hidden">비표준</span> </abbr> (IE &lt; 11 only)</li> </ul>
+</div></section><section aria-labelledby="strict-dynamic"><h3 id="strict-dynamic"><code>strict-dynamic</code></h3>
+<div class="section-content">
+<p>The <code>'strict-dynamic</code>' source expression specifies that the trust explicitly given to a script present in the markup, by accompanying it with a nonce or a hash, shall be propagated to all the scripts loaded by that root script. At the same time, any whitelist or source expressions such as <code>'self'</code> or <code>'unsafe-inline'</code> will be ignored. For example, a policy such as <code>script-src 'strict-dynamic' 'nonce-R4nd0m' https://whitelisted.com/</code> would allow loading of a root script with <code>&lt;script nonce="R4nd0m" src="https://example.com/loader.js"&gt;</code> and propogate that trust to any script loaded by <code>loader.js</code>, but disallow loading scripts from <code>https://whitelisted.com/</code> unless accompanied by a nonce or loaded from a trusted script.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">bash</span></p>
+<pre data-signature="yTX9nD1wUmfFi+TTezMrW9XK03FlyYpaQuneVjuiH+I=" data-language="bash">script-src <span class="token string">'strict-dynamic'</span> <span class="token string">'nonce-someNonce'</span>
+</pre>
+</div> <p><em>Or</em></p> <div class="code-example">
+<p class="example-header"><span class="language-name">bash</span></p>
+<pre data-signature="cT/iqW3wSxG3wiM/+31S50S+PXoACygfX3M/+oU2RqQ=" data-language="bash">script-src <span class="token string">'strict-dynamic'</span> <span class="token string">'sha256-base64EncodedHash'</span>
+</pre>
+</div> <p> It is possible to deploy <code>strict-dynamic</code> in a backwards compatible way, without requiring user-agent sniffing. The policy: </p> <div class="code-example">
+<p class="example-header"><span class="language-name">bash</span></p>
+<pre data-signature="8T3sTOPTuUaK9O5JDEiO5gcDCshNIDZ7L7Xn4fwKZd8=" data-language="bash">script-src <span class="token string">'unsafe-inline'</span> https: <span class="token string">'nonce-abcdefg'</span> <span class="token string">'strict-dynamic'</span>
+</pre>
+</div> <p>will act like<code>'unsafe-inline' https:</code> in browsers that support CSP1, <code>https: 'nonce-abcdefg'</code> in browsers that support CSP2, and <code>'nonce-abcdefg' 'strict-dynamic'</code> in browsers that support CSP3.</p>
+</div></section><h2 id="명세서">명세서</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://w3c.github.io/webappsec-csp/#directive-script-src">Content Security Policy Level 3 <br><small># directive-script-src</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="see_also"><h2 id="see_also">See also</h2>
+<div class="section-content"><ul> <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy" class="only-in-en-us"><code>Content-Security-Policy</code> <small>(en-US)</small></a></li> <li><a href="https://developer.mozilla.org/ko/docs/Web/HTML/Element/script"><code>&lt;script&gt;</code></a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/HTTP/Headers/Content-Security-Policy/script-src" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/HTTP/Headers/Content-Security-Policy/script-src</a>
+  </p>
+</div>

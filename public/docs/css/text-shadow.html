@@ -1,0 +1,110 @@
+<header><h1>text-shadow</h1></header><div class="section-content"><p><code>text-shadow</code> <a href="https://developer.mozilla.org/ko/docs/Web/CSS">CSS</a> 속성은 텍스트에 그림자(shadow)를 추가합니다. 텍스트와 그 장식에 적용 할 쉼표로 구분 된 그림자 목록을 허용합니다. 각 그림자는 요소, 흐림 반경 및 색상의 X 및 Y 오프셋 조합으로 설명됩니다.</p></div>
+<section aria-labelledby="시도해보기"><h2 id="시도해보기">시도해보기</h2>
+<div class="section-content"><iframe class="interactive is-default-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/css/text-shadow.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe></div></section><section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content">
+<div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="utMxOg92CE4hr4Goj0lYd6OiB9pcIEUtvKqCpAWVmhc=" data-language="css"><span class="token comment">/* offset-x | offset-y | blur-radius | color */</span>
+<span class="token property">text-shadow</span><span class="token punctuation">:</span> 1px 1px 2px black<span class="token punctuation">;</span>
+
+<span class="token comment">/* color | offset-x | offset-y | blur-radius */</span>
+<span class="token property">text-shadow</span><span class="token punctuation">:</span> #fc0 1px 0 10px<span class="token punctuation">;</span>
+
+<span class="token comment">/* offset-x | offset-y | color */</span>
+<span class="token property">text-shadow</span><span class="token punctuation">:</span> 5px 5px #558abb<span class="token punctuation">;</span>
+
+<span class="token comment">/* color | offset-x | offset-y */</span>
+<span class="token property">text-shadow</span><span class="token punctuation">:</span> white 2px 5px<span class="token punctuation">;</span>
+
+<span class="token comment">/* offset-x | offset-y
+/* Use defaults for color and blur-radius */</span>
+<span class="token property">text-shadow</span><span class="token punctuation">:</span> 5px 10px<span class="token punctuation">;</span>
+
+<span class="token comment">/* Global values */</span>
+<span class="token property">text-shadow</span><span class="token punctuation">:</span> inherit<span class="token punctuation">;</span>
+<span class="token property">text-shadow</span><span class="token punctuation">:</span> initial<span class="token punctuation">;</span>
+<span class="token property">text-shadow</span><span class="token punctuation">:</span> revert<span class="token punctuation">;</span>
+<span class="token property">text-shadow</span><span class="token punctuation">:</span> revert-layer<span class="token punctuation">;</span>
+<span class="token property">text-shadow</span><span class="token punctuation">:</span> unset<span class="token punctuation">;</span>
+</pre>
+</div> <p>This property is specified as a comma-separated list of shadows.</p> <p>Each shadow is specified as two or three <code>&lt;length&gt;</code> values, followed optionally by a <code>&lt;color&gt;</code> value. The first two <code>&lt;length&gt;</code> values are the <code>&lt;offset-x&gt;</code> and <code>&lt;offset-y&gt;</code> values. The third, optional, <code>&lt;length&gt;</code> value is the <code>&lt;blur-radius&gt;</code>. The<code>&lt;color&gt;</code> value is the shadow's color.</p> <p>When more than one shadow is given, shadows are applied front-to-back, with the first-specified shadow on top.</p> <p>This property applies to both <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/::first-line"><code>::first-line</code> <small>(en-US)</small></a> and <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/::first-letter"><code>::first-letter</code> <small>(en-US)</small></a> <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-elements">pseudo-elements</a>.</p>
+</div></section><section aria-labelledby="values"><h3 id="values">Values</h3>
+<div class="section-content"><dl> <dt id="color"><a href="color_value"><code>&lt;color&gt;</code></a></dt> <dd> <p>Optional. The color of the shadow. It can be specified either before or after the offset values. If unspecified, the color's value is left up to the user agent, so when consistency across browsers is desired you should define it explicitly.</p> </dd> <dt id="offset-x_offset-y"><code>&lt;offset-x&gt; &lt;offset-y&gt;</code></dt> <dd> <p>Required. These <a href="length"><code>&lt;length&gt;</code></a> values specify the shadow's distance from the text. <code>&lt;offset-x&gt;</code> specifies the horizontal distance; a negative value places the shadow to the left of the text. <code>&lt;offset-y&gt;</code> specifies the vertical distance; a negative value places the shadow above the text. If both values are <code>0</code>, the shadow is placed directly behind the text, although it may be partly visible due to the effect of <code>&lt;blur-radius&gt;</code>.</p> </dd> <dt id="blur-radius"><code>&lt;blur-radius&gt;</code></dt> <dd> <p>Optional. This is a <a href="length"><code>&lt;length&gt;</code></a> value. The higher the value, the bigger the blur; the shadow becomes wider and lighter. If not specified, it defaults to <code>0</code>.</p> </dd> </dl></div></section><section aria-labelledby="formal_definition"><h2 id="formal_definition">Formal definition</h2>
+<div class="section-content"><figure class="table-container"><div class="_table"><table class="properties"><tbody>
+<tr>
+<th scope="row"><a href="initial_value">초기값</a></th>
+<td><code>none</code></td>
+</tr>
+<tr>
+<th scope="row">적용대상</th>
+<td>all elements. It also applies to <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/::first-letter" class="only-in-en-us"><code>::first-letter</code> <small>(en-US)</small></a> and <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/::first-line" class="only-in-en-us"><code>::first-line</code> <small>(en-US)</small></a>.</td>
+</tr>
+<tr>
+<th scope="row"><a href="inheritance">상속</a></th>
+<td>yes</td>
+</tr>
+<tr>
+<th scope="row"><a href="computed_value">계산 값</a></th>
+<td>a color plus three absolute lengths</td>
+</tr>
+<tr>
+<th scope="row">Animation type</th>
+<td>a <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/box-shadow#interpolation">shadow list</a>
+</td>
+</tr>
+</tbody></table></div></figure></div></section><section aria-labelledby="formal_syntax"><h2 id="formal_syntax">Formal syntax</h2>
+<div class="section-content"><pre class="notranslate"><span class="token property" id="text-shadow">text-shadow = </span><br>  <span class="token keyword">none</span>                            <a href="value_definition_syntax#single_bar">|</a><br>  <a href="value_definition_syntax#brackets">[</a> <a href="color_value"><span class="token property">&lt;color&gt;</span></a><a href="value_definition_syntax#question_mark">?</a> <a href="value_definition_syntax#double_ampersand">&amp;&amp;</a> <a href="length"><span class="token property">&lt;length&gt;</span></a><a href="value_definition_syntax#curly_braces">{2,3}</a> <a href="value_definition_syntax#brackets">]</a><a href="value_definition_syntax#hash_mark">#</a>  <br><br></pre></div></section><section aria-labelledby="examples"><h2 id="examples">Examples</h2>
+</section><section aria-labelledby="simple_shadow"><h3 id="simple_shadow">Simple shadow</h3>
+<div class="section-content">
+<div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="QSMHWwqbC8xjjugeuQIEe5suJMiNCuPJeXUDvScDvq0=" data-language="css"><span class="token selector">.red-text-shadow</span> <span class="token punctuation">{</span>
+  <span class="token property">text-shadow</span><span class="token punctuation">:</span> red 0 -2px<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div> <div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="wwzMgQL/ghh27NCDF0i+hWTjrFqAMzobXa9IH6xgjFQ=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>red-text-shadow<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Sed ut perspiciatis unde omnis iste
+    natus error sit voluptatem accusantium doloremque laudantium,
+    totam rem aperiam, eaque ipsa quae ab illo inventore.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div>
+<div class="code-example" id="sect1">
+
+<iframe class="sample-code-frame" title="Simple shadow sample" id="frame_simple_shadow" width="660px" height="90px" src="https://live.mdnplay.dev/ko/docs/Web/CSS/text-shadow/runner.html?id=simple_shadow" loading="lazy"></iframe>
+</div>
+</div></section><section aria-labelledby="multiple_shadows"><h3 id="multiple_shadows">Multiple shadows</h3>
+<div class="section-content">
+<div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="0H50znQi9sIdxdsJxDzlzhlF5RLVNiEvFA4nxTbNMPs=" data-language="css"><span class="token selector">.white-text-with-blue-shadow</span> <span class="token punctuation">{</span>
+  <span class="token property">text-shadow</span><span class="token punctuation">:</span> 1px 1px 2px black<span class="token punctuation">,</span> 0 0 1em blue<span class="token punctuation">,</span> 0 0 0.2em blue<span class="token punctuation">;</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> white<span class="token punctuation">;</span>
+  <span class="token property">font</span><span class="token punctuation">:</span> 1.5em Georgia<span class="token punctuation">,</span> serif<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div> <div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="J+3E3F3sz4i9ttCXYC6sWSrlGQUw51wNfzjyy3t1awA=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>white-text-with-blue-shadow<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Sed ut perspiciatis unde omnis iste
+    natus error sit voluptatem accusantium doloremque laudantium,
+    totam rem aperiam, eaque ipsa quae ab illo inventore.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div>
+<div class="code-example" id="sect2">
+
+<iframe class="sample-code-frame" title="Multiple shadows sample" id="frame_multiple_shadows" width="660px" height="170px" src="https://live.mdnplay.dev/ko/docs/Web/CSS/text-shadow/runner.html?id=multiple_shadows" loading="lazy"></iframe>
+</div>
+</div></section><h2 id="명세서">명세서</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://drafts.csswg.org/css-text-decor/#text-shadow-property">CSS Text Decoration Module Level 3 <br><small># text-shadow-property</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="see_also"><h2 id="see_also">See also</h2>
+<div class="section-content"><ul> <li><a href="box-shadow"><code>box-shadow</code></a></li> <li>The <a href="color_value"><code>&lt;color&gt;</code></a> data type (for specifying the shadow color)</li> <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_colors/Applying_color">Applying color to HTML elements using CSS</a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/CSS/text-shadow" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/CSS/text-shadow</a>
+  </p>
+</div>

@@ -1,0 +1,39 @@
+<header><h1>FormData.delete()</h1></header><div class="section-content">
+<p><a href="../formdata"><code>FormData</code></a> 인터페이스의 <code>delete()</code> 메서드는 <code>FormData</code> 객체에서 key와 그 값에 해당하는 것을 지웁니다.</p> <div class="notecard note" id="sect1"> <p><strong>참고:</strong> 이 메서드는 <a href="../web_workers_api">Web Worker</a>에서 사용할 수 있습니다.</p> </div>
+</div>
+<h2 id="syntax">Syntax</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="uEuoHD3hne1xqS+NU72joNPcgM56LoGqlNO2BdkwyCk=" data-language="js">formData<span class="token punctuation">.</span><span class="token function">delete</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div></div>
+<h3 id="parameters">Parameters</h3>
+<div class="section-content"><dl> <dt id="name"><code>name</code></dt> <dd> <p>삭제할 key의 이름 입니다.</p> </dd> </dl></div>
+<h3 id="returns">Returns</h3>
+<div class="section-content"><p>Void.</p></div>
+<h2 id="example">Example</h2>
+<div class="section-content">
+<p>다음 코드를 따라 빈 <code>FormData</code> 객체를 만들고, form의 key/value 쌍을 미리 채웁니다:</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="A7ILmj05G6itMSM8BS4G6dUgu5uSxfbpTGXKPm0gTio=" data-language="js"><span class="token keyword">var</span> formData <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">FormData</span><span class="token punctuation">(</span>myForm<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div> <p><code>delete()</code>를 사용하여 키와 값을 삭제할 수 있습니다:</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="GN+/xFuXxuwiP3ui2YL7/MLEusrHJ2fbwjuV+P28LCc=" data-language="js">formData<span class="token punctuation">.</span><span class="token function">delete</span><span class="token punctuation">(</span><span class="token string">'username'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div>
+</div>
+<h2 id="명세서">명세서</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://xhr.spec.whatwg.org/#dom-formdata-delete">XMLHttpRequest Standard <br><small># dom-formdata-delete</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<h2 id="see_also">See also</h2>
+<div class="section-content"><ul> <li><a href="../xmlhttprequest"><code>XMLHTTPRequest</code></a></li> <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/Using_XMLHttpRequest" class="only-in-en-us">Using XMLHttpRequest <small>(en-US)</small></a></li> <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/FormData/Using_FormData_Objects" class="only-in-en-us">Using FormData objects <small>(en-US)</small></a></li> <li><a href="https://developer.mozilla.org/ko/docs/Web/HTML/Element/form"><code>&lt;form&gt;</code></a></li> </ul></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/FormData/delete" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/FormData/delete</a>
+  </p>
+</div>

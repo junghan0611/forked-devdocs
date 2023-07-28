@@ -1,0 +1,118 @@
+<header><h1>background-color</h1></header><div class="section-content"><p><a href="https://developer.mozilla.org/en-US/CSS">CSS</a> <code>background-color</code> 속성은 요소의 배경 색을 지정합니다.</p></div>
+<section aria-labelledby="시도해보기"><h2 id="시도해보기">시도해보기</h2>
+<div class="section-content"><iframe class="interactive is-default-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/css/background-color.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe></div></section><section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content">
+<div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="gNQwaM5QMSlCcAXenS1vwBJNyjzuR3us8SKZRjBiX8w=" data-language="css"><span class="token comment">/* 키워드 값 */</span>
+<span class="token property">background-color</span><span class="token punctuation">:</span> red<span class="token punctuation">;</span>
+<span class="token property">background-color</span><span class="token punctuation">:</span> indigo<span class="token punctuation">;</span>
+
+<span class="token comment">/* 16진수 값 */</span>
+<span class="token property">background-color</span><span class="token punctuation">:</span> #bbff00<span class="token punctuation">;</span>    <span class="token comment">/* 완전 불투명 */</span>
+<span class="token property">background-color</span><span class="token punctuation">:</span> #bf0<span class="token punctuation">;</span>       <span class="token comment">/* 완전 불투명 단축 */</span>
+<span class="token property">background-color</span><span class="token punctuation">:</span> #11ffee00<span class="token punctuation">;</span>  <span class="token comment">/* 완전 투명 */</span>
+<span class="token property">background-color</span><span class="token punctuation">:</span> #1fe0<span class="token punctuation">;</span>      <span class="token comment">/* 완전 투명 단축 */</span>
+<span class="token property">background-color</span><span class="token punctuation">:</span> #11ffeeff<span class="token punctuation">;</span>  <span class="token comment">/* 완전 불투명 */</span>
+<span class="token property">background-color</span><span class="token punctuation">:</span> #1fef<span class="token punctuation">;</span>      <span class="token comment">/* 완전 불투명 단축 */</span>
+
+<span class="token comment">/* RGB 값 */</span>
+<span class="token property">background-color</span><span class="token punctuation">:</span> <span class="token function">rgb</span><span class="token punctuation">(</span>255<span class="token punctuation">,</span> 255<span class="token punctuation">,</span> 128<span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token comment">/* 완전 불투명 */</span>
+<span class="token property">background-color</span><span class="token punctuation">:</span> <span class="token function">rgba</span><span class="token punctuation">(</span>117<span class="token punctuation">,</span> 190<span class="token punctuation">,</span> 218<span class="token punctuation">,</span> 0.5<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">/* 50% 불투명도 */</span>
+
+<span class="token comment">/* HSL 값 */</span>
+<span class="token property">background-color</span><span class="token punctuation">:</span> <span class="token function">hsl</span><span class="token punctuation">(</span>50<span class="token punctuation">,</span> 33%<span class="token punctuation">,</span> 25%<span class="token punctuation">)</span><span class="token punctuation">;</span>         <span class="token comment">/* 완전 불투명 */</span>
+<span class="token property">background-color</span><span class="token punctuation">:</span> <span class="token function">hsla</span><span class="token punctuation">(</span>50<span class="token punctuation">,</span> 33%<span class="token punctuation">,</span> 25%<span class="token punctuation">,</span> 0.75<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">/* 75% 불투명도 */</span>
+
+<span class="token comment">/* 특별 키워드 값 */</span>
+<span class="token property">background-color</span><span class="token punctuation">:</span> currentcolor<span class="token punctuation">;</span>
+<span class="token property">background-color</span><span class="token punctuation">:</span> transparent<span class="token punctuation">;</span>
+
+<span class="token comment">/* 전역 값 */</span>
+<span class="token property">background-color</span><span class="token punctuation">:</span> inherit<span class="token punctuation">;</span>
+<span class="token property">background-color</span><span class="token punctuation">:</span> initial<span class="token punctuation">;</span>
+<span class="token property">background-color</span><span class="token punctuation">:</span> unset<span class="token punctuation">;</span>
+</pre>
+</div> <p><code>background-color</code> 속성은 하나의 <a href="color_value"><code>&lt;color&gt;</code></a> 값을 사용해 지정합니다.</p>
+</div></section><section aria-labelledby="값"><h3 id="값">값</h3>
+<div class="section-content"><dl> <dt id="color"><a href="color"><code>color</code></a></dt> <dd> <p>요소의 배경으로 사용할 단일 색상입니다. <a href="background-image"><code>background-image</code></a> 뒤에 렌더링 되므로, 이미지가 투명한 부분을 가지고 있으면 그 곳을 통해 볼 수 있습니다.</p> </dd> </dl></div></section><section aria-labelledby="접근성_고려사항"><h2 id="접근성_고려사항">접근성 고려사항</h2>
+<div class="section-content">
+<p>낮은 시력을 가진 사용자도 페이지의 콘텐츠를 읽을 수 있도록 글자 색과 배경색의 대비를 높게 유지하는 것이 중요합니다.</p> <p>색상 대비율은 배경색과 투명도를 적용한 글자 색의 밝기를 비교해서 얻어낼 수 있습니다. 현재 <a href="https://www.w3.org/WAI/standards-guidelines/wcag/" target="_blank">웹 콘텐츠 접근성 가이드라인</a>(WCAG)을 만족하려면, 텍스트 콘텐츠는 4.5:1, 제목 등 큰 텍스트는 3:1의 대비율이 필요합니다. 큰 텍스트란 18.66px 이상의 <a href="font-weight">굵은</a> 글씨 혹은 24px 이상의 텍스트로 정의하고 있습니다.</p> <ul> <li><a href="https://webaim.org/resources/contrastchecker/" target="_blank">WebAIM: Color Contrast Checker</a></li> <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/Understanding_WCAG/Perceivable" class="only-in-en-us">MDN Understanding WCAG, Guideline 1.4 explanations <small>(en-US)</small></a></li> <li><a href="https://www.w3.org/TR/UNDERSTANDING-WCAG20/visual-audio-contrast-contrast.html" target="_blank">Understanding Success Criterion 1.4.3 | W3C Understanding WCAG 2.0</a></li> </ul>
+</div></section><section aria-labelledby="형식_정의"><h2 id="형식_정의">형식 정의</h2>
+<div class="section-content"><figure class="table-container"><div class="_table"><table class="properties"><tbody>
+<tr>
+<th scope="row"><a href="initial_value">초기값</a></th>
+<td><code>transparent</code></td>
+</tr>
+<tr>
+<th scope="row">적용대상</th>
+<td>all elements. It also applies to <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/::first-letter" class="only-in-en-us"><code>::first-letter</code> <small>(en-US)</small></a> and <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/::first-line" class="only-in-en-us"><code>::first-line</code> <small>(en-US)</small></a>.</td>
+</tr>
+<tr>
+<th scope="row"><a href="inheritance">상속</a></th>
+<td>no</td>
+</tr>
+<tr>
+<th scope="row"><a href="computed_value">계산 값</a></th>
+<td>computed color</td>
+</tr>
+<tr>
+<th scope="row">Animation type</th>
+<td>a <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#interpolation">color</a>
+</td>
+</tr>
+</tbody></table></div></figure></div></section><section aria-labelledby="형식_구문"><h2 id="형식_구문">형식 구문</h2>
+<div class="section-content"><pre class="notranslate"><span class="token property" id="background-color">background-color = </span><br>  <a href="color_value"><span class="token property">&lt;color&gt;</span></a>  <br><br></pre></div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+</section><section aria-labelledby="html"><h3 id="html">HTML</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="pprW+MZd7QYnqUC7AKir8AKalNuUzCdJDr0fMPuBsGI=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>exampleone<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+ Lorem ipsum dolor sit amet, consectetuer
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>exampletwo<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+  Lorem ipsum dolor sit amet, consectetuer
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>examplethree<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+  Lorem ipsum dolor sit amet, consectetuer
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div></div></section><section aria-labelledby="css"><h3 id="css">CSS</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="DCN7DoRNOu9BeRz1dZSyolgXppNhtgrRMycvMTwG6+Q=" data-language="css"><span class="token selector">.exampleone</span> <span class="token punctuation">{</span>
+  <span class="token property">background-color</span><span class="token punctuation">:</span> teal<span class="token punctuation">;</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> white<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">.exampletwo</span> <span class="token punctuation">{</span>
+  <span class="token property">background-color</span><span class="token punctuation">:</span> <span class="token function">rgb</span><span class="token punctuation">(</span>153<span class="token punctuation">,</span>102<span class="token punctuation">,</span>153<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> <span class="token function">rgb</span><span class="token punctuation">(</span>255<span class="token punctuation">,</span>255<span class="token punctuation">,</span>204<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">.examplethree</span> <span class="token punctuation">{</span>
+  <span class="token property">background-color</span><span class="token punctuation">:</span> #777799<span class="token punctuation">;</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> #FFFFFF<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div></div></section><section aria-labelledby="결과"><h3 id="결과">결과</h3>
+<div class="section-content"><div class="code-example" id="sect1">
+
+<iframe class="sample-code-frame" title="예제 sample" id="frame_예제" width="200" height="150" src="https://live.mdnplay.dev/ko/docs/Web/CSS/background-color/runner.html?id=%EC%98%88%EC%A0%9C" loading="lazy"></iframe>
+</div></div></section><h2 id="명세서">명세서</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://drafts.csswg.org/css-backgrounds/#background-color">CSS Backgrounds and Borders Module Level 3 <br><small># background-color</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="더_보기"><h2 id="더_보기">더 보기</h2>
+<div class="section-content"><ul> <li><a href="css_backgrounds_and_borders/using_multiple_backgrounds">한 번에 여러 배경 사용하기</a></li> <li>
+<a href="color_value"><code>&lt;color&gt;</code></a> 자료형</li> <li>색상 관련 다른 속성: <a href="color"><code>color</code></a>, <a href="border-color"><code>border-color</code></a>, <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/outline-color"><code>outline-color</code> <small>(en-US)</small></a>, <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/text-decoration-color"><code>text-decoration-color</code> <small>(en-US)</small></a>, <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/text-emphasis-color"><code>text-emphasis-color</code> <small>(en-US)</small></a>, <a href="text-shadow"><code>text-shadow</code></a>, <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/caret-color"><code>caret-color</code> <small>(en-US)</small></a>, and <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/column-rule-color"><code>column-rule-color</code> <small>(en-US)</small></a>
+</li> <li><a href="css_colors/applying_color">CSS로 HTML 요소에 색입히기</a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/CSS/background-color" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/CSS/background-color</a>
+  </p>
+</div>

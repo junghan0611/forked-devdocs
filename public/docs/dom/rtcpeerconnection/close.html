@@ -1,0 +1,45 @@
+<header><h1>RTCPeerConnection.close()</h1></header><div class="section-content">
+<div class="notecard experimental" id="sect1"><p><strong>Experimental:</strong> <strong>This is an <a href="https://developer.mozilla.org/en-US/docs/MDN/Writing_guidelines/Experimental_deprecated_obsolete#experimental">experimental technology</a></strong><br>Check the <a href="#browser_compatibility">Browser compatibility table</a> carefully before using this in production.</p></div> <p><code>RTCPeerConnection.close()</code> 메소드로 피어 연결을 종료합니다.</p>
+</div>
+<h2 id="syntax">Syntax</h2>
+<div class="section-content">
+<div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="T45Xf9CyIXunKTieIkUlBg0k/bSzs97G+WmIMGT8nMw=" data-language="js">RTCPeerConnection<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div> <p><em>이 메소드는 입력 패러미터가 없으며, 반환 값도 없습니다.</em></p> <p>이 메소드를 호출하게되면, 모든 진행 중인 ICE 프로세싱 및 활성화된 스트림을 종료하고, <code>RTCPeerConnection</code>의 ICE 에이전트를 종료합니다. 이 방법으로 ICE 에이전트에 의해 사용되는 리소스들 (TURN 허가 포함) 을 해제시킵니다. 모든 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/RTCRtpSender"><code>RTCRtpSender</code> <small>(en-US)</small></a> 객체들은 이 메소드가 반환되면 정지됩니다. (아직 종료 중인 과정에 있을 수도 있습니다만, 사실상 정지됩니다.)</p> <p>이 메소드가 반환되면, <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/RTCPeerConnection/signalingState"><code>RTCPeerConnection.signalingState</code> <small>(en-US)</small></a>에 의해 반환된 signaling 상태가 <code>closed</code>로 됩니다.</p> <p>같은 원격 유저와의 새로운 연결 생성을 시도하기전에 이전에 존재하던 <a href="../rtcpeerconnection"><code>RTCPeerConnection</code></a>의 모든 참조 값들을 <code>delete</code>하십시오. 삭제되지 않은 참조 값들이 브라우저에서 오류를 초래 할 수 있습니다.</p>
+</div>
+<h2 id="예시">예시</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="WFy2OO0WWMOvLWX/KIxsn3i/7lytIVW9oqIufU0iu/k=" data-language="js"><span class="token keyword">var</span> pc <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">RTCPeerConnection</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> dc <span class="token operator">=</span> pc<span class="token punctuation">.</span><span class="token function">createDataChannel</span><span class="token punctuation">(</span><span class="token string">"my channel"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+dc<span class="token punctuation">.</span><span class="token function-variable function">onmessage</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">event</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"received: "</span> <span class="token operator">+</span> event<span class="token punctuation">.</span>data<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  pc<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 첫 메세지를 받으면, 연결을 종료</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+dc<span class="token punctuation">.</span><span class="token function-variable function">onopen</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"datachannel open"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+dc<span class="token punctuation">.</span><span class="token function-variable function">onclose</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"datachannel close"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</pre>
+</div></div>
+<h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://w3c.github.io/webrtc-pc/#dom-rtcpeerconnection-close">WebRTC: Real-Time Communication in Browsers <br><small># dom-rtcpeerconnection-close</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<h2 id="참조">참조</h2>
+<div class="section-content"><ul> <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/WebRTC_API" class="only-in-en-us">WebRTC <small>(en-US)</small></a></li> <li><a href="../rtcpeerconnection"><code>RTCPeerConnection</code></a></li> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/RTCPeerConnection/signalingState"><code>RTCPeerConnection.signalingState</code> <small>(en-US)</small></a></li> </ul></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/RTCPeerConnection/close" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/RTCPeerConnection/close</a>
+  </p>
+</div>

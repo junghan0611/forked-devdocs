@@ -1,0 +1,44 @@
+<header><h1>Map.prototype.set()</h1></header><div class="section-content"><p><code>set()</code> 메서드는 <code>Map</code> 객체에서 주어진 키와 값을 추가하거나 업데이트합니다.</p></div>
+<section aria-labelledby="시도해보기"><h2 id="시도해보기">시도해보기</h2>
+<div class="section-content"><iframe class="interactive is-js-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/js/map-prototype-set.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe></div></section><section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="twvO0gwKZBFetxc4o2WImLGnzDBos4yDXkSUJWnCbPk=" data-language="js"><span class="token function">set</span><span class="token punctuation">(</span>key<span class="token punctuation">,</span> value<span class="token punctuation">)</span>
+</pre>
+</div></div></section><section aria-labelledby="매개변수"><h3 id="매개변수">매개변수</h3>
+<div class="section-content"><dl> <dt id="key"><code>key</code></dt> <dd> <p><code>Map</code> 객체에 추가되는 요소의 키. 이 키는 모든 종류의 <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Data_structures">JavaScript 타입</a>(모든 <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Data_structures#primitive_values">원시형</a> 혹은 모든 <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Data_structures#objects">Javascript 객체</a>)이 될 수 있습니다.</p> </dd> <dt id="value"><code>value</code></dt> <dd> <p><code>Map</code> 객체에 추가되는 요소의 값. 이 값은 모든 종류의 <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Data_structures">JavaScript 타입</a>(모든 종류의 <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Data_structures#primitive_values">원시형</a> 혹은 모든 종류의 <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Data_structures#objects">Javascript 객체</a>)이 될 수 있습니다.</p> </dd> </dl></div></section><section aria-labelledby="반환_값"><h3 id="반환_값">반환 값</h3>
+<div class="section-content"><p><code>Map</code> 객체.</p></div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+</section><section aria-labelledby="set_사용하기"><h3 id="set_사용하기">set() 사용하기</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="SI6zPUkUyHXHCNJeeUvITYBLcfrIC6d7Bs3vdt1t82o=" data-language="js"><span class="token keyword">const</span> myMap <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Map</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// map에 새로운 요소를 추가합니다</span>
+myMap<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span><span class="token string">"bar"</span><span class="token punctuation">,</span> <span class="token string">"foo"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+myMap<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token string">"foobar"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// map에 요소를 업데이트 합니다</span>
+myMap<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span><span class="token string">"bar"</span><span class="token punctuation">,</span> <span class="token string">"baz"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div></div></section><section aria-labelledby="연속으로_set_사용"><h3 id="연속으로_set_사용">연속으로 set() 사용</h3>
+<div class="section-content">
+<p><code>set()</code>메서드는 같은 <code>Map</code> 객체를 반환하기 때문에 아래와 같이 연속으로 호출할 수 있습니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="QMJiuvj8VrLNKTHgT/EJxbLvtIOOqu3ZncWmg4WBRfA=" data-language="js"><span class="token comment">// Add new elements to the map with chaining.</span>
+myMap<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span><span class="token string">"bar"</span><span class="token punctuation">,</span> <span class="token string">"foo"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token string">"foobar"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token string">"baz"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div>
+</div></section><h2 id="명세서">명세서</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://tc39.es/ecma262/multipage/keyed-collections.html#sec-map.prototype.set">ECMAScript Language Specification <br><small># sec-map.prototype.set</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="../map"><code>Map</code></a></li> <li><a href="get"><code>Map.prototype.get()</code></a></li> <li><a href="has"><code>Map.prototype.has()</code></a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Map/set" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Map/set</a>
+  </p>
+</div>

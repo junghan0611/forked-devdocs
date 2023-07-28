@@ -1,0 +1,37 @@
+<header><h1>Symbol.split</h1></header><div class="section-content">
+<p><code>Symbol.split</code> 정적 데이터 속성은 <a href="../symbol#%EC%9E%98_%EC%95%8C%EB%A0%A4%EC%A7%84_%EC%8B%AC%EB%B3%BC">잘 알려진 심볼</a> <code>@@split</code>을 나타냅니다. <a href="../string/split"><code>String.prototype.split()</code></a> 메서드는 현재 객체와 일치하는 인덱스에서 문자열을 분할하는 메서드의 첫 번째 인수에서 이 심볼을 찾습니다.</p> <p>보다 상세한 내용은 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp/@@split" class="only-in-en-us"><code>RegExp.prototype[@@split]()</code> <small>(en-US)</small></a> 및 <a href="../string/split"><code>String.prototype.split()</code></a>를 참조하시기 바랍니다.</p>
+</div>
+<section aria-labelledby="시도해보기"><h2 id="시도해보기">시도해보기</h2>
+<div class="section-content"><iframe class="interactive is-js-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/js/symbol-split.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe></div></section><section aria-labelledby="값"><h2 id="값">값</h2>
+<div class="section-content">
+<p>잘 알려진 심볼 <code>@@split</code>.</p>
+<figure class="table-container"><div class="_table"><table class="standard-table"> <thead> <tr> <th class="header" colspan="2">Property attributes of <code>Symbol.split</code>
+</th> </tr> </thead> <tbody> <tr> <td>Writable</td> <td>불가능</td> </tr> <tr> <td>Enumerable</td> <td>불가능</td> </tr> <tr> <td>Configurable</td> <td>불가능</td> </tr> </tbody> </table></div></figure>
+</div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+</section><section aria-labelledby="사용자_정의_역분할"><h3 id="사용자_정의_역분할">사용자 정의 역분할</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="nHHGrkh/Bjpccc1mBpz7wMSajNxV7AkSdOt4puPj9J4=" data-language="js"><span class="token keyword">class</span> <span class="token class-name">ReverseSplit</span> <span class="token punctuation">{</span>
+  <span class="token punctuation">[</span>Symbol<span class="token punctuation">.</span>split<span class="token punctuation">]</span><span class="token punctuation">(</span><span class="token parameter">string</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> array <span class="token operator">=</span> string<span class="token punctuation">.</span><span class="token function">split</span><span class="token punctuation">(</span><span class="token string">" "</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> array<span class="token punctuation">.</span><span class="token function">reverse</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"Another one bites the dust"</span><span class="token punctuation">.</span><span class="token function">split</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">ReverseSplit</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// [ "dust", "the", "bites", "one", "Another" ]</span>
+</pre>
+</div></div></section><h2 id="명세서">명세서</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://tc39.es/ecma262/multipage/fundamental-objects.html#sec-symbol.split">ECMAScript Language Specification <br><small># sec-symbol.split</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="https://github.com/zloirock/core-js#ecmascript-symbol" target="_blank">Polyfill of <code>Symbol.split</code> in <code>core-js</code></a></li> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol/match"><code>Symbol.match</code> <small>(en-US)</small></a></li> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol/matchAll"><code>Symbol.matchAll</code> <small>(en-US)</small></a></li> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol/replace"><code>Symbol.replace</code> <small>(en-US)</small></a></li> <li><a href="search"><code>Symbol.search</code></a></li> <li><a href="../string/split"><code>String.prototype.split()</code></a></li> <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp/@@split" class="only-in-en-us"><code>RegExp.prototype[@@split]()</code> <small>(en-US)</small></a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Symbol/split" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Symbol/split</a>
+  </p>
+</div>

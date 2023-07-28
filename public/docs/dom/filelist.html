@@ -1,0 +1,76 @@
+<header><h1>FileList</h1></header><div class="section-content">
+<p><code>FileList</code> 유형의 객체는 HTML <a href="https://developer.mozilla.org/ko/docs/Web/HTML/Element/input"><code>&lt;input&gt;</code></a> 요소의 <code>files</code> 속성이나 <a href="html_drag_and_drop_api">Drag and Drop API</a>의 <a href="datatransfer"><code>DataTransfer</code></a>에서 가져올 수 있으며, <code>&lt;input type="file"&gt;</code> 요소로 선택했거나 웹 콘텐츠 위에 끌어다 놓은 파일 목록에 대한 접근을 제공합니다.</p> <p>모든 <code>&lt;input&gt;</code> 요소 노드에는 <code>FileList</code>를 반환하는 <code>files</code> 특성이 있어서 파일의 목록에 접근할 수 있습니다. 예를 들어, 다음과 같은 HTML 코드를 가정하면,</p> <div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="gUI91heH1CMovZC+0Y3jmKKHcdqq/61NnaioOUR+hsk=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>fileItem<span class="token punctuation">"</span></span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>file<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div> <p>아래 코드로 노드의 파일 리스트에서 첫 번째 항목을 <a href="file"><code>File</code></a> 객체로 가져올 수 있습니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="85uKOcT1a+J9zVue6irbYLR/nTMmSijZmIZmQbMWuvY=" data-language="js"><span class="token keyword">const</span> file <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">'fileItem'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>files<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+</pre>
+</div>
+</div>
+<h2 id="속성">속성</h2>
+<div class="section-content"><dl> <dt id="length_en-us">
+<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/FileList/length"><code>length</code> <small>(en-US)</small></a><span class="badge inline readonly">읽기 전용</span>
+</dt> <dd> <p>리스트가 포함한 파일의 수를 나타내는 읽기 전용 값입니다.</p> </dd> </dl></div>
+<h2 id="메서드">메서드</h2>
+<div class="section-content"><dl> <dt id="item_en-us">
+<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/FileList/item"><code>item()</code> <small>(en-US)</small></a><span class="badge inline readonly">읽기 전용</span>
+</dt> <dd> <p>파일 리스트에서 지정한 인덱스에 위치한 파일을 나타내는 <a href="file"><code>File</code></a> 객체를 반환합니다.</p> </dd> </dl></div>
+<h2 id="예제">예제</h2>
+
+<h3 id="파일_이름_기록하기">파일 이름 기록하기</h3>
+<div class="section-content">
+<p>이 예제에서는 사용자가 선택한 파일들의 이름을 기록합니다.</p> <h4 id="html">HTML</h4> <div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="JxpirfltT5dmMh7hL6mex6gNYvWVZBAck3EUa7l8L98=" data-language="html"><span class="token comment">&lt;!--'multiple'을 지정해서 여러 파일의 선택을 허용--&gt;</span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>myfiles<span class="token punctuation">"</span></span> <span class="token attr-name">multiple</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>file<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>output<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div> <h4 id="css">CSS</h4> <div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="QyTk5oNlon3YBtGiGLb+sYDWI5v40P30kh3Sz3F5q9E=" data-language="css"><span class="token selector">.output</span> <span class="token punctuation">{</span>
+  <span class="token property">overflow</span><span class="token punctuation">:</span> scroll<span class="token punctuation">;</span>
+  <span class="token property">margin</span><span class="token punctuation">:</span> 1rem 0<span class="token punctuation">;</span>
+  <span class="token property">height</span><span class="token punctuation">:</span> 200px<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div> <h4 id="javascript">JavaScript</h4> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="ONNiRuqMLTvcS+pb/O/MSg6siYgFCGH0IzkuNM68eAk=" data-language="js"><span class="token keyword">const</span> output <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">querySelector</span><span class="token punctuation">(</span><span class="token string">'.output'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> myFiles <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">querySelector</span><span class="token punctuation">(</span><span class="token string">"#myfiles"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">function</span> <span class="token function">logFilenames</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+  <span class="token keyword">const</span> fileInput <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">querySelector</span><span class="token punctuation">(</span><span class="token string">"#myfiles"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">const</span> files <span class="token operator">=</span> fileInput<span class="token punctuation">.</span>files<span class="token punctuation">;</span>
+  <span class="token keyword">const</span> fileListLength <span class="token operator">=</span> files<span class="token punctuation">.</span>length<span class="token punctuation">;</span>
+  <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> fileListLength<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    output<span class="token punctuation">.</span>innerText <span class="token operator">=</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>output<span class="token punctuation">.</span>innerText<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">\n</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>files<span class="token punctuation">.</span><span class="token function">item</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">.</span>name<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+myFiles<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">"change"</span><span class="token punctuation">,</span> logFilenames<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div> <h4 id="결과">결과</h4>
+<div class="code-example" id="sect1">
+
+<iframe class="sample-code-frame" title="파일 이름 기록하기 sample" id="frame_파일_이름_기록하기" src="https://live.mdnplay.dev/ko/docs/Web/API/FileList/runner.html?id=%ED%8C%8C%EC%9D%BC_%EC%9D%B4%EB%A6%84_%EA%B8%B0%EB%A1%9D%ED%95%98%EA%B8%B0" loading="lazy"></iframe>
+</div>
+</div>
+<h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody>
+<tr><td><a href="https://w3c.github.io/FileAPI/#filelist-section">File API <br><small># filelist-section</small></a></td></tr>
+<tr><td><a href="https://html.spec.whatwg.org/multipage/input.html#dom-input-files-dev">HTML Standard <br><small># dom-input-files-dev</small></a></td></tr>
+</tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="file_api/using_files_from_web_applications">웹 애플리케이션에서 파일 사용하기</a></li> <li><a href="file"><code>File</code></a></li> <li><a href="filereader"><code>FileReader</code></a></li> </ul></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/FileList" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/FileList</a>
+  </p>
+</div>

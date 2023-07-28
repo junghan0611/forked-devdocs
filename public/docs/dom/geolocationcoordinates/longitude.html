@@ -1,0 +1,66 @@
+<header><h1>GeolocationCoordinates: longitude 속성</h1></header><div class="section-content">
+<div class="notecard secure" id="sect1"><p><strong>Secure context:</strong> This feature is available only in <a href="https://developer.mozilla.org/ko/docs/Web/Security/Secure_Contexts">secure contexts</a> (HTTPS), in some or all <a href="#browser_compatibility">supporting browsers</a>.</p></div> <p><a href="../geolocationcoordinates"><code>GeolocationCoordinates</code></a> 인터페이스의 읽기 전용 <code>longitude</code> 속성은 위치의 경도를 십진수 도(°, DD)로 나타낸 숫자입니다. <code>GeolocationCoordinates</code> 객체는 측정 시간을 나타내는 밀리초 <a href="https://developer.mozilla.org/en-US/docs/Glossary/Unix_time" class="only-in-en-us">Unix 시간 <small>(en-US)</small></a>의 타임스탬프와 함께 <a href="../geolocationposition"><code>GeolocationPosition</code></a> 인터페이스를 구성하며, <code>GeolocationPosition</code>은 Geolocation API에서 지리적 위치를 반환하는 함수들의 반환 타입입니다.</p>
+</div>
+<h2 id="값">값</h2>
+<div class="section-content">
+<p><code>longitude</code>의 값은 <code>Coordinates</code> 객체가 나타내는 지구상 위치의 경도를 십진수 도(°, DD)로 나타낸 숫자입니다. 이 값은 World Geodetic System 1984 명세 (WGS 84)가 정의합니다.</p> <div class="notecard note" id="sect2"> <p><strong>참고:</strong> 0°의 본초 자오선은 대부분의 사람들이 알고 있는 <a href="https://ko.wikipedia.org/wiki/%EA%B7%B8%EB%A6%AC%EB%8B%88%EC%B9%98_%EC%9E%90%EC%98%A4%EC%84%A0" target="_blank">그리니치 자오선</a>과 정확히 일치하지는 않습니다. 0°는 <a href="https://en.wikipedia.org/wiki/IERS_Reference_Meridian" target="_blank">IERS 기준 자오선</a>으로, 그리니치 자오선에서 5.3 <a href="https://en.wikipedia.org/wiki/Arcseconds" target="_blank">아크초</a>(102미터) 동쪽에 위치합니다. 이 표준은 <a href="https://ko.wikipedia.org/wiki/GPS" target="_blank">GPS</a>가 사용하는 것과 같습니다.</p> </div>
+</div>
+<h2 id="예제">예제</h2>
+<div class="section-content"><p>다음의 간단한 예제에서는 사용자의 위치를 가져와서 그 좌표를 출력합니다.</p></div>
+<h3 id="javascript">JavaScript</h3>
+<div class="section-content">
+<p>아래 JavaScript 코드는 사용자가 버튼을 클릭하면 위치 정보를 가져와서 출력하는 이벤트 수신기를 생성합니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="w1moVmi91JmqHuGi7mfxV4ilWIRf+rbFqK9RoQuUVT0=" data-language="js"><span class="token keyword">let</span> button <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">"get-location"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">let</span> latText <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">"latitude"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">let</span> longText <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">"longitude"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+button<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">"click"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  navigator<span class="token punctuation">.</span>geolocation<span class="token punctuation">.</span><span class="token function">getCurrentPosition</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">position</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    <span class="token keyword">let</span> lat <span class="token operator">=</span> position<span class="token punctuation">.</span>coords<span class="token punctuation">.</span>latitude<span class="token punctuation">;</span>
+    <span class="token keyword">let</span> long <span class="token operator">=</span> position<span class="token punctuation">.</span>coords<span class="token punctuation">.</span>longitude<span class="token punctuation">;</span>
+
+    latText<span class="token punctuation">.</span>innerText <span class="token operator">=</span> lat<span class="token punctuation">.</span><span class="token function">toFixed</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    longText<span class="token punctuation">.</span>innerText <span class="token operator">=</span> long<span class="token punctuation">.</span><span class="token function">toFixed</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div> <p>버튼과 위도/경도를 각각 표시할 두 요소에 대한 참조를 쉽게 하기 위해 변수를 설정한 후, <a href="https://developer.mozilla.org/ko/docs/Web/HTML/Element/button"><code>&lt;button&gt;</code></a>의 <a href="../eventtarget/addeventlistener"><code>addEventListener()</code></a>를 호출해서 이벤트 수신기는 부착하는 모습입니다. 사용자가 이 버튼을 클릭하면 위치 정보를 가져오고 출력할 것입니다.</p> <p><a href="../element/click_event"><code>click</code></a> 이벤트를 수신하면, 우리 코드는 <a href="../geolocation/getcurrentposition"><code>getCurrentPosition()</code></a>을 호출해 장치의 현재 위치를 요청합니다. 이 요청은 비동기 작업이므로 요청 완료 시 호출될 콜백을 제공하고, 이 콜백은 알아낸 위치를 나타내는 <a href="../geolocationposition"><code>GeolocationPosition</code></a> 객체를 입력받습니다.</p> <p>이 <code>GeolocationPosition</code> 객체에서 사용자의 위도와 경도를 각각 <a href="latitude"><code>position.coords.latitude</code></a>와 <code>position.coords.longitude</code>로 가져옵니다. 두 값을 소숫점 아래 두 자리까지의 값으로 변환한 후, <a href="https://developer.mozilla.org/ko/docs/Web/HTML/Element/span"><code>&lt;span&gt;</code></a> 요소들이 두 값을 각각 표시하도록 갱신합니다.</p>
+</div>
+<h3 id="html">HTML</h3>
+<div class="section-content">
+<p>결과를 출력하기 위한 HTML은 다음과 같습니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="rF3+3yFm42IFEhXrb7KuFRFPJywXwDBXhj8pEJCE2MQ=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>
+  당신의 위치는 위도 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>latitude<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>0.00<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">&gt;</span></span>°,
+  경도 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>longitude<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>0.00<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">&gt;</span></span>° 입니다.
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>get-location<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>내 위치 찾기<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div>
+</div>
+<h3 id="결과">결과</h3>
+<div class="section-content">
+<p>여기서 예제를 시험해 보세요.</p>
+<div class="code-example" id="sect3">
+
+<iframe class="sample-code-frame" title="예제 sample" id="frame_예제" width="600" height="120" src="https://live.mdnplay.dev/ko/docs/Web/API/GeolocationCoordinates/longitude/runner.html?id=%EC%98%88%EC%A0%9C" loading="lazy"></iframe>
+</div>
+</div>
+<h2 id="명세서">명세서</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://w3c.github.io/geolocation-api/#latitude-longitude-and-accuracy-attributes">Geolocation API <br><small># latitude-longitude-and-accuracy-attributes</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="../geolocation_api/using_the_geolocation_api">Geolocation API 사용하기</a></li> <li>이 속성이 속한 <a href="../geolocationcoordinates"><code>GeolocationCoordinates</code></a>
+</li> <li>
+<a href="../geolocation/getcurrentposition"><code>Geolocation.getCurrentPosition()</code></a>과 <a href="../geolocation/watchposition"><code>watchPosition()</code></a>이 가져오는 위치정보를 나타내는 최상위 인터페이스, <a href="../geolocationposition"><code>GeolocationPosition</code></a>
+</li> </ul></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/GeolocationCoordinates/longitude" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/GeolocationCoordinates/longitude</a>
+  </p>
+</div>

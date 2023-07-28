@@ -1,0 +1,73 @@
+<header><h1>AudioWorkletProcessor()</h1></header><div class="section-content"><p><code>AudioWorkletProcessor()</code> 생성자는 <a href="../audioworkletnode"><code>AudioWorkletNode</code></a>의 근본적인 오디오 프로세싱 메커니즘을 나타내는 새로운 <a href="../audioworkletprocessor"><code>AudioWorkletProcessor</code></a> 객체를 생성합니다.</p></div>
+<h2 id="구문">구문</h2>
+<div class="section-content">
+<div class="notecard note" id="sect1"> <p> <strong>참고:</strong> <code>AudioWorkletProcessor</code> 와 이것으로부터 파생된 클래스들은 사용자에 의해 제공된 코드로부터 직접적으로 초기화될 수 없습니다. 대신, 이것들은 오직 연관된 <a href="../audioworkletnode"><code>AudioWorkletNode</code></a>들의 생성에 의해서만 내부적으로 생성됩니다. </p> </div> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="xPbKFwX8jCdlzRDNS7Ah43OsBmf8/VWmIhID75FQcWk=" data-language="js"><span class="token keyword">new</span> <span class="token class-name">AudioWorkletProcessor</span><span class="token punctuation">(</span>options<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div>
+</div>
+<h3 id="매개변수">매개변수</h3>
+<div class="section-content"><dl> <dt id="options"><code>options</code></dt> <dd> <p><a href="../audioworkletnode/audioworkletnode"><code>AudioWorkletNode constructor</code></a>에 <em>options</em> 매개변수로서 전달되고 <a href="../web_workers_api/structured_clone_algorithm">structured clone algorithm</a>에 통과되는 객체. 사용 가능한 속성들은 다음과 같습니다:</p> <dl> <dt id="numberofinputs">
+<code>numberOfInputs</code> <span class="badge inline optional">Optional</span>
+</dt> <dd> <p><a href="../audionode/numberofinputs"><code>numberOfInputs</code></a> 속성을 초기화할 값. 기본 값은 1입니다.</p> </dd> <dt id="numberofoutputs">
+<code>numberOfOutputs</code> <span class="badge inline optional">Optional</span>
+</dt> <dd> <p><a href="../audionode/numberofoutputs"><code>numberOfOutputs</code></a> 속성을 초기화할 값. 기본 값은 1입니다.</p> </dd> <dt id="outputchannelcount">
+<code>outputChannelCount</code> <span class="badge inline optional">Optional</span>
+</dt> <dd> <p>각 출력에 대한 채널의 수를 정의하는 <strong>배열</strong>. 예를 들자면, <em>outputChannelCount: [n, m]</em> 은 첫번째 출력의 채널의 수를 <em>n</em> 으로, 두번째 출력을 <em>m</em> 으로 명시합니다. 배열의 길이는 반드시 <code>numberOfOutputs</code> 와 일치해야 합니다.</p> </dd> <dt id="parameterdata">
+<code>parameterData</code> <span class="badge inline optional">Optional</span>
+</dt> <dd> <p><code>key</code> 가 사용자 정의 파라미터의 이름이고 <code>value</code> 가 이것의 초기 값인 채로, (이 노드의 <a href="../audioworkletnode/parameters"><code>parameters</code></a> 속성에 있는) 이 노드의 사용자 정의 <a href="../audioparam"><code>AudioParam</code></a>의 초기 값들을 포함하는 객체.</p> </dd> <dt id="processoroptions">
+<code>processorOptions</code> <span class="badge inline optional">Optional</span>
+</dt> <dd> <p>근본적인 <a href="../audioworkletprocessor"><code>AudioWorkletProcessor</code></a>의 사용자 정의 초기화에 사용될 수 있는 모든 추가적인 데이터</p> </dd> </dl> <p>처음 두 개의 속성에 대해 기본 값이 있어서, <a href="../audioworkletnode/audioworkletnode"><code>AudioWorkletNode constructor</code></a>에 전달되는 <em>options</em> 객체가 없을지라도, 노드에 의해 <code>AudioWorkletProcessor</code> 생성자에 전달된 <em>options</em> 객체는 존재할 것이고 최소한 <code>numberOfInputs</code> 과 <code>numberOfOutputs</code> 을 가질 것이라는 데 주목하세요.</p> </dd> </dl></div>
+<h3 id="반환_값">반환 값</h3>
+<div class="section-content"><p>새롭게 생성된 <a href="../audioworkletprocessor"><code>AudioWorkletProcessor</code></a> 인스턴스.</p></div>
+<h2 id="예제">예제</h2>
+<div class="section-content">
+<p>이 예제에서 우리는 <a href="../audioworkletnode/audioworkletnode"><code>AudioWorkletNode constructor</code></a>에 사용자 정의 옵션들을 전달하고 어떻게 그것들의 <a href="../web_workers_api/structured_clone_algorithm">structured clone</a>이 우리의 <code>AudioWorkletProcessor</code> 생성자에 전달되는지 관찰합니다.</p> <p>우선, 우리는 사용자 정의 <a href="../audioworkletprocessor"><code>AudioWorkletProcessor</code></a>를 정의하고 등록할 필요가 있습니다. 이 작업은 별도의 파일에서 이루어져야 한다는 것에 주의하세요.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="3fORdorclXRtn7WPsGGb3z8ZrkwZ0dG0Go2u7B378oc=" data-language="js"><span class="token comment">// test-processor.js</span>
+<span class="token keyword">class</span> <span class="token class-name">TestProcessor</span> <span class="token keyword">extends</span> <span class="token class-name">AudioWorkletProcessor</span> <span class="token punctuation">{</span>
+  <span class="token function">constructor</span> <span class="token punctuation">(</span><span class="token parameter">options</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">super</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>options<span class="token punctuation">.</span>numberOfInputs<span class="token punctuation">)</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>options<span class="token punctuation">.</span>processorOptions<span class="token punctuation">.</span>someUsefulVariable<span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+  <span class="token function">process</span> <span class="token punctuation">(</span><span class="token parameter">inputs<span class="token punctuation">,</span> outputs<span class="token punctuation">,</span> parameters</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token boolean">true</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token function">registerProcessor</span><span class="token punctuation">(</span><span class="token string">'test-processor'</span><span class="token punctuation">,</span> TestProcessor<span class="token punctuation">)</span>
+</pre>
+</div> <p>다음으로, 메인 스크립트 파일에서 우리는 프로세서를 로드하고, <code>AudioWorkletNode</code> 에 프로세서의 이름과 <em>options</em> 객체를 전달하며 <code>AudioWorkletNode</code> 의 인스턴스를 생성합니다.</p> <p><em>options</em> 객체에서 우리는 <code>someUsefulVariable</code> 키 아래에서 <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Map"><code>Map</code></a> 인스턴스와 함께 <code>processorOptions</code> 를 전달합니다. 우리는 <code>numberOfInputs</code> 을 전달하지 않았고 어떻게 이것이 기본 값을 얻게 되는지 관찰해 봅시다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="wLrPfTGKzB7dg1Es7Mm+y51il1VrbGQpCv9Eiou3t20=" data-language="js"><span class="token keyword">const</span> audioContext <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">AudioContext</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">await</span> audioContext<span class="token punctuation">.</span>audioWorklet<span class="token punctuation">.</span><span class="token function">addModule</span><span class="token punctuation">(</span><span class="token string">'test-processor.js'</span><span class="token punctuation">)</span>
+<span class="token keyword">const</span> testNode <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">AudioWorkletNode</span><span class="token punctuation">(</span>audioContext<span class="token punctuation">,</span> <span class="token string">'test-processor'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+  <span class="token literal-property property">processorOptions</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token literal-property property">someUsefulVariable</span><span class="token operator">:</span> <span class="token keyword">new</span> <span class="token class-name">Map</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token string">'one'</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token string">'two'</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</pre>
+</div> <p>콘솔 출력은 다음과 같을 것입니다:</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="YsKnlqH208azPs84gsbADH5qCWRb+M/6ADFSLMeR5oI=" data-language="js"><span class="token operator">&gt;</span> <span class="token number">1</span> <span class="token comment">// AudioWorkletNode options.numberOfInputs가 기본 값으로 설정됨</span>
+<span class="token operator">&gt;</span> <span class="token function">Map</span><span class="token punctuation">(</span><span class="token parameter"><span class="token number">2</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token number">1</span> <span class="token operator">=&gt;</span> <span class="token string">"one"</span><span class="token punctuation">,</span> <span class="token number">2</span> <span class="token operator">=&gt;</span> <span class="token string">"two"</span><span class="token punctuation">}</span> <span class="token comment">// someUsefulVariable 아래의 복제된 map</span>
+</pre>
+</div>
+</div>
+<h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://webaudio.github.io/web-audio-api/#dom-audioworkletprocessor-audioworkletprocessor">Web Audio API <br><small># dom-audioworkletprocessor-audioworkletprocessor</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li>
+<a href="../audioworkletnode"><code>AudioWorkletNode</code></a> 인터페이스</li> </ul></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/AudioWorkletProcessor/AudioWorkletProcessor" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/AudioWorkletProcessor/AudioWorkletProcessor</a>
+  </p>
+</div>

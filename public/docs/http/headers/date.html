@@ -1,0 +1,23 @@
+<h1>Date</h1>
+<header><h1>Date</h1></header><div class="section-content">
+<p><code>Date</code> 일반 HTTP 헤더는 메시지가 만들어진 날짜와 시간을 포함합니다.</p> <figure class="table-container"><div class="_table"><table class="properties"> <tbody> <tr> <th scope="row">Header type</th> <td><a href="https://developer.mozilla.org/ko/docs/Glossary/General_header">General header</a></td> </tr> <tr> <th scope="row"><a href="https://developer.mozilla.org/ko/docs/Glossary/Forbidden_header_name">Forbidden header name</a></th> <td>yes</td> </tr> </tbody> </table></div></figure>
+</div>
+<section aria-labelledby="문법"><h2 id="문법">문법</h2>
+<div class="section-content"><pre class="notranslate">Date: &lt;day-name&gt;, &lt;day&gt; &lt;month&gt; &lt;year&gt; &lt;hour&gt;:&lt;minute&gt;:&lt;second&gt; GMT
+</pre></div></section><section aria-labelledby="디렉티브"><h2 id="디렉티브">디렉티브</h2>
+<div class="section-content"><dl> <dt id="day-name">&lt;day-name&gt;</dt> <dd> <p>"Mon", "Tue", "Wed", "Thu", "Fri", "Sat", 혹은 "Sun" 중 하나 (대소문자 구분).</p> </dd> <dt id="day">&lt;day&gt;</dt> <dd> <p>2자리의 일자 번호, 예를 들어 "04" 혹은 "23".</p> </dd> <dt id="month">&lt;month&gt;</dt> <dd> <p>"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" 중 하나 (대소문자 구분).</p> </dd> <dt id="year">&lt;year&gt;</dt> <dd> <p>4자리의 연도 번호, 예를 들어, "1990" 혹은 "2016".</p> </dd> <dt id="hour">&lt;hour&gt;</dt> <dd> <p>2자리의 시간 번호, 예를 들어, "09" 혹은 "23".</p> </dd> <dt id="minute">&lt;minute&gt;</dt> <dd> <p>2자리의 분 번호, 예를 들어, "04" 혹은 "59".</p> </dd> <dt id="second">&lt;second&gt;</dt> <dd> <p>2자리의 초 번호, 예를 들어, "04" 혹은 "59".</p> </dd> <dt id="gmt">GMT</dt> <dd> <p>Greenwich 표준시. HTTP에서 날짜는 항상 지역 시간이 아닌 GMT로 표현됩니다.</p> </dd> </dl></div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+<div class="section-content"><pre class="notranslate">Date: Wed, 21 Oct 2015 07:28:00 GMT
+</pre></div></section><h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://www.rfc-editor.org/rfc/rfc9110#field.date">HTTP Semantics <br><small># field.date</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="함께_참고할_내용"><h2 id="함께_참고할_내용">함께 참고할 내용</h2>
+<div class="section-content"><ul> <li><a href="age"><code>Age</code></a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/HTTP/Headers/Date" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/HTTP/Headers/Date</a>
+  </p>
+</div>

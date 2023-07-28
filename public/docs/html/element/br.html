@@ -1,0 +1,50 @@
+<header><h1>&lt;br&gt;: 줄바꿈 요소</h1></header><div class="section-content"><p><code>&lt;br&gt;</code>는 텍스트 안에 줄바꿈(캐리지 리턴)을 생성합니다. 주소나 시조 등 줄의 구분이 중요한 내용을 작성할 때 유용합니다.</p></div>
+<h2 id="시도해보기">시도해보기</h2>
+<div class="section-content">
+<iframe class="interactive is-tabbed-standard-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/tabbed/br.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe>  <p>위 예제에서 확인할 수 있듯, <code>&lt;br&gt;</code> 요소는 텍스트를 끊고 싶은 지점에 삽입해야 합니다. <code>&lt;br&gt;</code> 이후의 텍스트는 텍스트 블록의 다음 줄에서 다시 시작합니다.</p> <div class="notecard note" id="sect1"> <p><strong>참고:</strong> 문단 사이에 여백을 두기 위한 용도로 <code>&lt;br&gt;</code>을 사용하지 마세요. 대신 <a href="p"><code>&lt;p&gt;</code></a> 요소로 감싼 후 <a href="https://developer.mozilla.org/ko/docs/Web/CSS">CSS</a>의 <a href="https://developer.mozilla.org/ko/docs/Web/CSS/margin"><code>margin</code></a> 속성으로 여백의 크기를 조절하세요.</p> </div>
+</div>
+<h2 id="특성">특성</h2>
+<div class="section-content"><p>이 요소는 <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes" class="only-in-en-us">전역 특성 <small>(en-US)</small></a>만 포함합니다.</p></div>
+<h2 id="css_스타일링">CSS 스타일링</h2>
+<div class="section-content">
+<p><code>&lt;br&gt;</code> 요소는 텍스트 블록에서 줄을 바꾼다는 하나의 명확한 목적만 가지고 있습니다. 따라서 크기도, 외형도 없으므로 스타일을 적용할 것도 거의 없습니다.</p> <p><code>&lt;br&gt;</code> 요소에 <a href="https://developer.mozilla.org/ko/docs/Web/CSS/margin"><code>margin</code></a>을 적용하면 줄 간격을 늘릴 수 있겠지만 좋은 방법은 아닙니다. 이런 목적을 위해 만들어진 CSS <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/line-height"><code>line-height</code> <small>(en-US)</small></a> 속성을 사용하세요.</p>
+</div>
+<h2 id="예제">예제</h2>
+<div class="section-content">
+<div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="NbjWlMGH1rNoI1+Y6/IucMnsdIu637z8T8yavA0yMCg=" data-language="html">Mozilla Foundation<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>br</span><span class="token punctuation">&gt;</span></span>
+1981 Landings Drive<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>br</span><span class="token punctuation">&gt;</span></span>
+Building K<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>br</span><span class="token punctuation">&gt;</span></span>
+Mountain View, CA 94043-0801<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>br</span><span class="token punctuation">&gt;</span></span>
+USA
+</pre>
+</div> <p>결과는 다음과 같습니다.</p>
+<div class="code-example" id="sect2">
+
+<iframe class="sample-code-frame" title="예제 sample" id="frame_예제" width="100%" height="90" src="https://live.mdnplay.dev/ko/docs/Web/HTML/Element/br/runner.html?id=%EC%98%88%EC%A0%9C" loading="lazy"></iframe>
+</div>
+</div>
+<h2 id="접근성_고려사항">접근성 고려사항</h2>
+<div class="section-content">
+<p>문단 구분을 <code>&lt;br&gt;</code>로 하는건 나쁜 사례일 뿐만 아니라 스크린 리더를 사용해 탐색하는 사용자에게도 문제가 됩니다. 스크린 리더가 요소의 존재는 알려주겠지만, <code>&lt;br&gt;</code>에는 아무런 내용도 없기 때문입니다. 따라서 사용자는 내용이 어딨는지 몰라 혼란을 느낄 수 있습니다.</p> <p><a href="p"><code>&lt;p&gt;</code></a> 요소와 함께 CSS <a href="https://developer.mozilla.org/ko/docs/Web/CSS/margin"><code>margin</code></a> 속성 등을 조합해 간격을 조절하세요.</p>
+</div>
+<h2 id="기술_요약">기술 요약</h2>
+<div class="section-content"><figure class="table-container"><div class="_table"><table class="properties"> <tbody> <tr> <th scope="row"><a href="../content_categories">콘텐츠 카테고리</a></th> <td> <a href="../content_categories#%ed%94%8c%eb%a1%9c%ec%9a%b0_%ec%bd%98%ed%85%90%ec%b8%a0">플로우 콘텐츠</a>, <a href="../content_categories#%ea%b5%ac%eb%ac%b8_%ec%bd%98%ed%85%90%ec%b8%a0">구문 콘텐츠</a>. </td> </tr> <tr> <th scope="row">가능한 콘텐츠</th> <td>없음. <a href="https://developer.mozilla.org/ko/docs/Glossary/Void_element">빈 요소</a>입니다.</td> </tr> <tr> <th scope="row">태그 생략</th> <td>여는 태그는 필수입니다. 닫는 태그는 존재해선 안됩니다.</td> </tr> <tr> <th scope="row">가능한 부모 요소</th> <td>
+<a href="../content_categories#%ea%b5%ac%eb%ac%b8_%ec%bd%98%ed%85%90%ec%b8%a0">구문 콘텐츠</a>를 허용하는 모든 요소.</td> </tr> <tr> <th scope="row">암시적 ARIA 역할</th> <td><a href="https://www.w3.org/TR/html-aria/#dfn-no-corresponding-role" target="_blank">대응하는 역할 없음</a></td> </tr> <tr> <th scope="row">가능한 ARIA 역할</th> <td>모두</td> </tr> <tr> <th scope="row">DOM 인터페이스</th> <td><a href="https://developer.mozilla.org/ko/docs/Web/API/HTMLBRElement"><code>HTMLBRElement</code></a></td> </tr> </tbody> </table></div></figure></div>
+<h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-br-element">HTML Standard <br><small># the-br-element</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li>
+<a href="address"><code>&lt;address&gt;</code></a> 요소</li> <li>
+<a href="p"><code>&lt;p&gt;</code></a> 요소</li> </ul></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/HTML/Element/br" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/HTML/Element/br</a>
+  </p>
+</div>

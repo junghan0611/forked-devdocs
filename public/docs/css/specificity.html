@@ -1,0 +1,212 @@
+<header><h1>명시도</h1></header><div class="section-content"><p><strong>명시도</strong>란 브라우저가 어느 요소와 가장 연관된 속성을 찾는 수단으로, 이렇게 찾은 속성이 해당 요소에 적용됩니다. 명시도는 여러 종류의 <a href="reference#selectors">CSS 선택자</a>로 구성된 일치 규칙에 기반합니다.</p></div>
+<section aria-labelledby="어떻게_계산되는가"><h2 id="어떻게_계산되는가">어떻게 계산되는가?</h2>
+<div class="section-content">
+<p>명시도는 주어진 CSS 선언에 적용되는 가중치(weight)로, 일치하는 선택자 내 각 <a href="#selector-type">선택자 유형</a>의 수에 의해 결정됩니다. 여러 선언이 명시도가 같은 경우, CSS에서 맨 끝에 오는 선언이 요소에 적용됩니다. 명시도는 같은 요소가 여러 선언의 대상이 되는 경우에만 적용합니다. CSS 규칙에 따라 <a href="#directly-targeted-elements">직접 대상 요소</a>는 요소가 부모로부터 상속받는 규칙보다 항상 우선합니다.</p> <div class="notecard note" id="sect1"> <p><strong>참고:</strong> <strong>주의:</strong> 문서 트리 내 <a href="#tree-proximity-ignorance">요소의 근접도(proximity, 가까움)</a>는 명시도에 영향이 없습니다.</p> </div>
+</div></section><section aria-labelledby="선택자_유형"><h3 id="선택자_유형">선택자 유형</h3>
+<div class="section-content">
+<p>아래 선택자는 유형별로 명시도를 증가시킵니다.</p> <ol> <li>
+<a href="type_selectors">유형 선택자</a>(<code>h1</code> 등) 및 의사 요소(<code>:before</code> 등).</li> <li>
+<a href="class_selectors">클래스 선택자</a>(<code>.example</code> 등), 속성 선택자(<code>[type="radio"]</code> 등), 의사 클래스(<code>:hover</code> 등).</li> <li>
+<a href="id_selectors">ID 선택자</a>(<code>#example</code> 등).</li> </ol> <p>전역 선택자(<a href="universal_selectors"><code>*</code></a>), 조합자(<a href="adjacent_sibling_combinator"><code>+</code></a>, <a href="child_combinator"><code>&gt;</code></a>, <a href="general_sibling_combinator"><code>~</code></a>, <a href="descendant_combinator">" "</a>, <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/Column_combinator"><code>||</code> <small>(en-US)</small></a>) 및 부정 의사 클래스(<code>:not()</code>)는 명시도에 영향을 주지 않습니다. (<code>:not()</code> <em>내부에</em> 선언한 선택자는 영향을 끼칩니다)</p> <p><a href="https://specifishity.com" target="_blank">https://specifishity.com</a>에서 자세한 정보를 확인할 수 있습니다.</p> <p>요소에 추가한 인라인 스타일(<code>style="font-weight: bold"</code>처럼)은 항상 외부 스타일시트의 모든 스타일을 덮어쓰므로 가장 높은 명시도를 갖는 것으로 생각할 수 있습니다.</p>
+</div></section><section aria-labelledby="!important_예외"><h3 id="!important_예외">
+<code>!important</code> 예외</h3>
+<div class="section-content">
+<p><code>!important</code> 규칙이 스타일 선언에 사용된 경우, 이 선언은 다른 선언보다 우선합니다. 엄밀히 말해 <code>!important</code> 자체는 명시도와 아무 관련이 없지만, 명시도에 직접 영향을 미칩니다. 그러나 <code>!important</code> 사용은 <strong>나쁜 습관</strong>이고 스타일시트 내 자연스러운 <a href="cascade">종속</a>을 깨뜨려 디버깅을 더 어렵게 만들기에 피해야 합니다. <code>!important</code> 규칙으로 충돌하는 두 선언이 같은 요소에 적용된 경우, 더 큰 명시도를 갖는 선언이 적용됩니다.</p> <p><strong>몇몇 경험 법칙들:</strong></p> <ul> <li>
+<strong>항상</strong> !important를 고려하기도 전에 명시도를 활용할 방법을 찾아보세요.</li> <li>외부 CSS(Bootstrap 또는 Normalize.css 같은 외부 라이브러리에서)를 재정의하는 페이지 전용 CSS에<strong>만</strong> <code>!important</code>를 쓰세요.</li> <li>플러그인/매시업을 작성할 때 <code>!important</code>는 <strong>절대</strong> 쓰지 마세요.</li> <li>사이트 전반 CSS에는 <code>!important</code>를 <strong>절대</strong> 쓰지 마세요.</li> </ul> <p><code>!important</code></p> <ol> <li>CSS 종속cascading을 더 잘 활용하세요.</li> <li>더 명시된(명확한) 규칙을 쓰세요. 선택 중인 요소 앞에 하나 이상의 요소를 나타냄으로써 규칙은 더 명확해지고 더 높은 우선 순위를 얻습니다: <div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="kBRjb6JuVvU+CBMf8SMRvZ33U0gxca/Szslfi1Fyqv4=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>test<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span><span class="token punctuation">&gt;</span></span>Text<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div> <div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="TLcGPARdnB6YD4/9T7OrPA7y9bt8cRus7LjN+mMah/Q=" data-language="css"><span class="token selector">div#test span</span> <span class="token punctuation">{</span> <span class="token property">color</span><span class="token punctuation">:</span> green<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+<span class="token selector">div span</span> <span class="token punctuation">{</span> <span class="token property">color</span><span class="token punctuation">:</span> blue<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+<span class="token selector">span</span> <span class="token punctuation">{</span> <span class="token property">color</span><span class="token punctuation">:</span> red<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+</pre>
+</div>순서와 무관하게 첫 번째 규칙이 가장 명확하므로 텍스트는 녹색이 됩니다. (또한, 역시 순서와 무관하게 파란색 규칙이 빨간색 규칙보다 우선합니다.) </li> <li>(2)의 말도 안 되는 특별한 경우로, 더 이상 명시할 요소가 없는 경우 간단한 선택자를 여러 번 써서 명시도를 높일 수 있습니다. <div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="QxcsyD6nJG7x224ucnY6E6S9nQNzqfSDgX5ucRIQTJY=" data-language="css"><span class="token selector">#myId#myId span</span> <span class="token punctuation">{</span> <span class="token property">color</span><span class="token punctuation">:</span> yellow<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+<span class="token selector">.myClass.myClass span</span> <span class="token punctuation">{</span> <span class="token property">color</span><span class="token punctuation">:</span> orange<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+</pre>
+</div> </li> </ol> <h4 id="!important를_사용하는_때">
+<code>!important</code>를 사용하는 때</h4> <h5 id="a_인라인_스타일을_재정의할_때">A) 인라인 스타일을 재정의할 때</h5> <p>사이트 전체의 시각적 요소를 설정하는 전역 CSS 파일은 각 요소에 직접 정의된 인라인 스타일에 덮어쓰일 수 있습니다. 인라인 스타일과 <code>!important</code> 모두 매우 나쁜 습관으로 취급되지만, 가끔씩은 <code>!important</code>로 인라인 스타일을 덮어써야 할 때가 있습니다.</p> <p>이때는 전역 CSS 파일의 몇몇 스타일을 <code>!important</code>로 설정해서 요소에 직접 작성한 인라인 스타일을 덮어쓸 수 있습니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="evBGEG6BQC9kk40iXrPkjrMQLOTE35q4+mQSWY0FH5M=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>foo<span class="token punctuation">"</span></span> <span class="token special-attr"><span class="token attr-name">style</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token value css language-css"><span class="token property">color</span><span class="token punctuation">:</span> red<span class="token punctuation">;</span></span><span class="token punctuation">"</span></span></span><span class="token punctuation">&gt;</span></span>나는 무슨 색일까?<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div> <div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="v2BPsQRsn8fe2TNOgoRmb6d2ll9Qor8t1PweQaY16vM=" data-language="css"><span class="token selector">.foo[style*="color: red"]</span> <span class="token punctuation">{</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> firebrick <span class="token important">!important</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div> <p>여러 자바스크립트 프레임워크와 라이브러리에서 인라인 스타일을 추가합니다. 이런 인라인 스타일을 덮어쓸 때 매우 구체적인 선택자와 함께 <code>!important</code>를 사용할 수 있습니다.</p> <h5 id="b_명시도가_높은_규칙을_재정의할_때">B) 명시도가 높은 규칙을 재정의할 때</h5> <div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="sgzkYt9+aLfA4JAFMb41d9+U41+yS6WhBWgQsiYy94I=" data-language="css"><span class="token selector">#someElement p</span> <span class="token punctuation">{</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> blue<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">p.awesome</span> <span class="token punctuation">{</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> red<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div> <p>어떻게 하면 <code>awesome</code> 문단이 <code>#someElement</code> 안에 있더라도 항상 빨갛게 만들 수 있을까요? <code>!important</code>를 사용하지 않으면 위쪽 규칙의 명시도가 높으므로 아래쪽 규칙보다 우선합니다.</p> <h4 id="!important를_덮어쓰는_방법">
+<code>!important</code>를 덮어쓰는 방법</h4> <p>A) 태그, ID나 클래스를 추가함으로써 명시도가 더 높은 !important한 CSS 규칙을 만듭니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="nzagk3SFsEQQ66GDbPezlQg0nQKUTkyvgz4X2bOfP/U=" data-language="css"><span class="token selector">table td</span>    <span class="token punctuation">{</span> <span class="token property">height</span><span class="token punctuation">:</span> 50px <span class="token important">!important</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+<span class="token selector">.myTable td</span> <span class="token punctuation">{</span> <span class="token property">height</span><span class="token punctuation">:</span> 50px <span class="token important">!important</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+<span class="token selector">#myTable td</span> <span class="token punctuation">{</span> <span class="token property">height</span><span class="token punctuation">:</span> 50px <span class="token important">!important</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+</pre>
+</div> <p>B) 혹은 기존의 선택자 아래에 똑같은 선택자를 하나 더 만듭니다(명시도가 같으면 나중에 정의된 규칙이 우선하므로).</p> <div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="DNdxZrvLHx+zSuz4Q2SGwGSCjfRGMgmQLiAtCCrSDFY=" data-language="css"><span class="token selector">td</span> <span class="token punctuation">{</span> <span class="token property">height</span><span class="token punctuation">:</span> 50px <span class="token important">!important</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+</pre>
+</div> <p>C) 아니면 기존 규칙을 수정해서 아예 <code>!important</code>를 사용하지 않게 만드는 것이 더 좋은 방법입니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="5J4JurczMXFOGwG9YEGSdP/1red1w/rAJGbXuVY/4ew=" data-language="css"><span class="token selector">[id="someElement"] p</span> <span class="token punctuation">{</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> blue<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">p.awesome</span> <span class="token punctuation">{</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> red<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div> <p>ID를 ID 선택자 대신 속성 선택자로 선택하면 클래스 1개와 같은 명시도가 됩니다. 두 선택자의 명시도가 같아졌으므로 나중에 오는 규칙이 우선합니다.</p> <h4 id="아래에서_자세한_정보를_확인하세요">아래에서 자세한 정보를 확인하세요:</h4> <ul> <li><a href="https://stackoverflow.com/questions/3706819/what-are-the-implications-of-using-important-in-css" target="_blank">https://stackoverflow.com/questions/3706819/what-are-the-implications-of-using-important-in-css</a></li> <li><a href="https://stackoverflow.com/questions/9245353/what-does-important-in-css-mean" target="_blank">https://stackoverflow.com/questions/9245353/what-does-important-in-css-mean</a></li> <li><a href="https://stackoverflow.com/questions/5701149/when-to-use-important-property-in-css" target="_blank">https://stackoverflow.com/questions/5701149/when-to-use-important-property-in-css</a></li> <li><a href="https://stackoverflow.com/questions/11178673/how-to-override-important" target="_blank">https://stackoverflow.com/questions/11178673/how-to-override-important</a></li> <li><a href="https://stackoverflow.com/questions/2042497/when-to-use-important-to-save-the-day-when-working-with-css" target="_blank">https://stackoverflow.com/questions/2042497/when-to-use-important-to-save-the-day-when-working-with-css</a></li> </ul>
+</div></section><section aria-labelledby="is_및_not_예외"><h3 id="is_및_not_예외">
+<code>:is()</code> 및 <code>:not()</code> 예외</h3>
+<div class="section-content">
+<p>모두 일치 의사 클래스 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:is"><code>:is()</code> <small>(en-US)</small></a> <abbr class="icon icon-experimental" title="Experimental. 예상되는 동작은 향후 변경될 수 있습니다."> <span class="visually-hidden">Experimental</span> </abbr> 및 부정 의사 클래스 <a href=":not"><code>:not()</code></a>은 명시도 계산에서 의사 클래스로 취급되지 <em>않습니다</em>. 그러나 이들 의사 클래스 안에 명시된 선택자는 <a href="#selector-type">선택자 유형</a>의 수를 결정할 때 일반 선택자로 셉니다.</p> <p>다음 CSS 조각과 HTML은...</p> <div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="vv0wce5QBKwkDEBTg1mteZm9vFLUijDl6sVTSoEzxac=" data-language="css"><span class="token selector">div.outer p</span> <span class="token punctuation">{</span>
+  <span class="token property">color</span><span class="token punctuation">:</span>orange<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token selector">div:not(.outer) p</span> <span class="token punctuation">{</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> lime<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div> <div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="+m+Xs2UHGSiZKCln2B2k2FVGOFKzM2nTLwykx+V9bsM=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>outer<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>This is in the outer div.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>inner<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>This text is in the inner div.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div> <p>...다음과 같이 화면에 표시됩니다.</p>
+<div class="code-example" id="sect2">
+
+<iframe class="sample-code-frame" title="is 및 not 예외 sample" id="frame_is_및_not_예외" width="600" height="100" src="https://live.mdnplay.dev/ko/docs/Web/CSS/Specificity/runner.html?id=is_%EB%B0%8F_not_%EC%98%88%EC%99%B8" loading="lazy"></iframe>
+</div>
+</div></section><section aria-labelledby="where_예외_experimental"><h3 id="where_예외_experimental">
+<code>:where()</code> 예외 <abbr class="icon icon-experimental" title="Experimental. 예상되는 동작은 향후 변경될 수 있습니다."> <span class="visually-hidden">Experimental</span> </abbr>
+</h3>
+<div class="section-content">
+<div class="notecard experimental" id="sect3"><p><strong>Experimental:</strong> <strong>This is an <a href="https://developer.mozilla.org/en-US/docs/MDN/Writing_guidelines/Experimental_deprecated_obsolete#experimental">experimental technology</a></strong><br>Check the <a href="#browser_compatibility">Browser compatibility table</a> carefully before using this in production.</p></div> <p>명시도 조정 가상 클래스 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:where"><code>:where()</code> <small>(en-US)</small></a> <abbr class="icon icon-experimental" title="Experimental. 예상되는 동작은 향후 변경될 수 있습니다."> <span class="visually-hidden">Experimental</span> </abbr>의 명시도는 항상 0입니다.</p> <p>다음 CSS 조각과 HTML은...</p> <div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="wSf9cMOXs58tSg47p3ojFttvRp/DOFaj7bnwCHaGQu0=" data-language="css"><span class="token selector">div:where(.outer) p</span> <span class="token punctuation">{</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> orange<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">div p</span> <span class="token punctuation">{</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> blueviolet<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div>   <div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="+m+Xs2UHGSiZKCln2B2k2FVGOFKzM2nTLwykx+V9bsM=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>outer<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>This is in the outer div.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>inner<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>This text is in the inner div.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div> <p>...다음과 같이 화면에 표시됩니다.</p>
+<div class="code-example" id="sect4">
+
+<iframe class="sample-code-frame" title=":where() 예외 
+    Experimental
+" id="frame_the_where_exception" width="600" height="100" src="https://live.mdnplay.dev/ko/docs/Web/CSS/Specificity/runner.html?id=the_where_exception" loading="lazy"></iframe>
+</div>
+</div></section><section aria-labelledby="형태_기반_명시도"><h3 id="형태_기반_명시도">형태 기반 명시도</h3>
+<div class="section-content">
+<p>명시도는 선택자의 형태(form)를 기반으로 합니다. 아래에서 선택자 <code>*[id="foo"]</code>는 그 자체로는 ID를 선택하지만 선택자의 명시도를 계산할 때는 속성 선택자로 취급됩니다.</p> <p>다음 스타일 선언과 마크업은...</p> <div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="/KnpSr604Wp9JnOZ1FQi3TUMbG2EHNPp9fHWIpy6lFs=" data-language="css"><span class="token selector">*#foo</span> <span class="token punctuation">{</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> green<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token selector">*[id="foo"]</span> <span class="token punctuation">{</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> purple<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div> <div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="v65xXvEkrypomCJqNmshNyw2Pp/izySAryJEaRoqD9A=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>foo<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>I am a sample text.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div> <p>...다음과 같이 표시됩니다.</p>
+<div class="code-example" id="sect5">
+
+<iframe class="sample-code-frame" title="형태 기반 명시도 sample" id="frame_형태_기반_명시도" width="600" height="100" src="https://live.mdnplay.dev/ko/docs/Web/CSS/Specificity/runner.html?id=%ED%98%95%ED%83%9C_%EA%B8%B0%EB%B0%98_%EB%AA%85%EC%8B%9C%EB%8F%84" loading="lazy"></iframe>
+</div> <p>같은 요소와 일치하지만 ID 선택자는 더 높은 명시도를 갖기 때문입니다.</p>
+</div></section><section aria-labelledby="트리_근접도_무시"><h3 id="트리_근접도_무시">트리 근접도 무시</h3>
+<div class="section-content">
+<p>요소와 주어진 선택자로 참조된 다른 요소와의 근접도(proximity)는 명시도에 영향을 주지 않습니다.</p> <p>다음 스타일 선언과 HTML은...</p> <div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="A9jEALcBi9cpWWbX+zkG2J52j7ixJz/bcg+C6tvK3IA=" data-language="css"><span class="token selector">body h1</span> <span class="token punctuation">{</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> green<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token selector">html h1</span> <span class="token punctuation">{</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> purple<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div> <div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="49n6+TPzTg/KAzUMIsd7tnsumP738wgkySN2N70dQWE=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span><span class="token punctuation">&gt;</span></span>Here is a title!<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h1</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div> <p>...아래와 같이 렌더링됩니다.</p>
+<div class="code-example" id="sect6">
+
+<iframe class="sample-code-frame" title="트리 근접도 무시 sample" id="frame_트리_근접도_무시" width="600" height="100" src="https://live.mdnplay.dev/ko/docs/Web/CSS/Specificity/runner.html?id=%ED%8A%B8%EB%A6%AC_%EA%B7%BC%EC%A0%91%EB%8F%84_%EB%AC%B4%EC%8B%9C" loading="lazy"></iframe>
+</div> <p>두 선언은 <a href="#selector-type">선택자 유형</a> 갯수가 같지만 <code>html h1</code> 선택자가 나중에 선언되었기 때문입니다.</p>
+</div></section><section aria-labelledby="직접_일치_요소와_상속된_스타일"><h3 id="직접_일치_요소와_상속된_스타일">직접 일치 요소와 상속된 스타일</h3>
+<div class="section-content">
+<p>특정한 요소와 직접적으로 일치하는 스타일은 상속된 규칙의 명시도와 무관하게 항상 상속된 스타일보다 우선합니다.</p> <p>다음 CSS와 HTML은...</p> <div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="u0m1UkCWJgin+dUryiFguiASOUXwhOtX+iQPGfK0/DM=" data-language="css"><span class="token selector">#parent</span> <span class="token punctuation">{</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> green<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token selector">h1</span> <span class="token punctuation">{</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> purple<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div> <div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="rb7VUJvebOcTifMjJ8Gr2yKwkckGhQ4RB6Ngh3WRcqs=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>parent<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span><span class="token punctuation">&gt;</span></span>Here is a title!<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h1</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div> <p>...역시 아래와 같이 렌더링됩니다.</p>
+<div class="code-example" id="sect7">
+
+<iframe class="sample-code-frame" title="직접 일치 요소와 상속된 스타일 sample" id="frame_직접_일치_요소와_상속된_스타일" width="600" height="100" src="https://live.mdnplay.dev/ko/docs/Web/CSS/Specificity/runner.html?id=%EC%A7%81%EC%A0%91_%EC%9D%BC%EC%B9%98_%EC%9A%94%EC%86%8C%EC%99%80_%EC%83%81%EC%86%8D%EB%90%9C_%EC%8A%A4%ED%83%80%EC%9D%BC" loading="lazy"></iframe>
+</div> <p><code>h1</code> 선택자는 특정한 요소와 직접 일치하지만 초록색 선택자는 그렇지 않고 부모로부터 상속되기 때문입니다.</p>
+</div></section><h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://drafts.csswg.org/selectors/#specificity-rules">Selectors Level 4 <br><small># specificity-rules</small></a></td></tr></tbody>
+</table></div>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li>명시도 계산기: CSS 규칙을 테스트하고 이해할 수 있는 대화형 웹사이트 - <a href="https://specificity.keegan.st/" target="_blank">https://specificity.keegan.st/</a>
+</li> <li>CSS3 선택자 명시도 - <a href="https://www.w3.org/TR/selectors/#specificity" target="_blank">http://www.w3.org/TR/selectors/#specificity</a>
+</li> <li>CSS 주요 개념 <ul> <li><a href="syntax">CSS 문법</a></li> <li><a href="at-rule">@규칙</a></li> <li><a href="comments">주석</a></li> <li><a href="specificity" aria-current="page">명시도</a></li> <li><a href="inheritance">상속</a></li> <li><a href="css_box_model/introduction_to_the_css_box_model">박스 모델</a></li> <li><a href="layout_mode">레이아웃 모드</a></li> <li><a href="visual_formatting_model">시각적 서식 모델</a></li> <li><a href="css_box_model/mastering_margin_collapsing">마진 중첩</a></li> <li>값 <ul> <li><a href="initial_value">초깃값</a></li> <li><a href="computed_value">계산값</a></li> <li><a href="resolved_value">결정값</a></li> <li><a href="specified_value">지정값</a></li> <li><a href="used_value">사용값</a></li> <li><a href="actual_value">실제값</a></li> </ul> </li> <li><a href="value_definition_syntax">값 정의 구문</a></li> <li><a href="shorthand_properties">단축 속성</a></li> <li><a href="replaced_element">대체 요소</a></li> </ul> </li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/CSS/Specificity" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/CSS/Specificity</a>
+  </p>
+</div>

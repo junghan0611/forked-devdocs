@@ -1,0 +1,24 @@
+<header><h1>Fetch API</h1></header><div class="section-content">
+<p>Fetch API는 네트워크 통신을 포함한 리소스 취득을 위한 인터페이스를 제공하며, <a href="xmlhttprequest"><code>XMLHttpRequest</code></a>보다 강력하고 유연한 대체제입니다.</p>
+<div class="notecard note" id="sect1"> <p><strong>참고:</strong> 이 기능은 <a href="web_workers_api">Web Worker</a>에서 사용할 수 있습니다</p> </div>
+</div>
+<h2 id="개념과_사용법">개념과 사용법</h2>
+<div class="section-content">
+<p>Fetch API는 <a href="request"><code>Request</code></a>와 <a href="response"><code>Response</code></a> 객체, 그리고 기타 네트워크 요청에 관련된 것들을 사용하고, CORS와 HTTP Origin 헤더 행동 등 관련한 개념도 포함하고 있습니다.</p> <p>요청을 생성하고 리소스를 취득하려면 <a href="fetch"><code>fetch</code></a> 메서드를 사용하세요. <code>fetch()</code>는 <a href="window"><code>Window</code></a>와 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/WorkerGlobalScope"><code>Worker</code> <small>(en-US)</small></a> 컨텍스트 양쪽에서 모두 사용할 수 있는 전역 메서드입니다. 그러므로 리소스를 취득할 상황이 생기는 거의 모든 컨텍스트에서 사용할 수 있습니다.</p> <p><code>fetch()</code> 메서드는 하나의 필수 매개변수로 가져오려는 리소스 경로를 받습니다. 반환 값은 해당 요청에 대한 <a href="response"><code>Response</code></a>로 이행하는 <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Promise"><code>Promise</code></a>인데, 서버가 헤더를 포함한 응답을 하는 순간 이행합니다. 이는 <strong>서버가 HTTP 오류 응답 코드로 응답해도 이행한다는 뜻</strong>입니다. 선택 사항으로, 두 번째 매개변수에 <code>init</code> 옵션 객체를 제공할 수 있습니다(<a href="request"><code>Request</code></a> 를 참고하세요).</p> <p><a href="response"><code>Response</code></a>를 가져온 후에는 본문 콘텐츠의 유형과 처리 방법을 정의할 수 있는 다양한 메서드를 사용할 수 있습니다.</p> <p><a href="request/request"><code>Request()</code></a>와 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/Response/Response"><code>Response()</code> <small>(en-US)</small></a> 생성자를 직접 호출해서 요청과 응답을 생성할 수 있지만, 이런 사용법은 흔치 않습니다. 보통 이 두 객체는 다른 API(예를 들어, 서비스 워커의 <a href="fetchevent/respondwith"><code>FetchEvent.respondWith()</code></a>)에 의해 생성됩니다.</p> <p>Fetch API가 제공하는 기능의 자세한 정보는 <a href="fetch_api/using_fetch">Fetch 사용하기</a>에서, 개념 학습은 <a href="fetch_api/basic_concepts">Fetch 기본 개념</a>에서 확인하세요.</p>
+</div>
+<h2 id="fetch_인터페이스">Fetch 인터페이스</h2>
+<div class="section-content"><dl> <dt id="fetch"><a href="fetch"><code>fetch()</code></a></dt> <dd> <p>리소스를 취득하기 위한 <code>fetch()</code> 메서드입니다.</p> </dd> <dt id="headers_en-us"><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/Headers"><code>Headers</code> <small>(en-US)</small></a></dt> <dd> <p>요청/응답 헤더를 나타냅니다. 헤더를 질의하고 그 결과에 따라 다양한 동작을 취하기 위해 사용할 수 있습니다.</p> </dd> <dt id="request"><a href="request"><code>Request</code></a></dt> <dd> <p>리소스 요청을 나타냅니다.</p> </dd> <dt id="response"><a href="response"><code>Response</code></a></dt> <dd> <p>요청에 대한 응답을 나타냅니다.</p> </dd> </dl></div>
+<h2 id="명세서">명세서</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://fetch.spec.whatwg.org/#fetch-method">Fetch Standard <br><small># fetch-method</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<h2 id="관련정보">관련정보</h2>
+<div class="section-content"><ul> <li><a href="fetch_api/using_fetch">Fetch 사용하기</a></li> <li><a href="service_worker_api">Service Worker API</a></li> <li><a href="https://developer.mozilla.org/ko/docs/Web/HTTP/CORS">HTTP 접근 제어 (CORS)</a></li> <li><a href="https://developer.mozilla.org/ko/docs/Web/HTTP">HTTP</a></li> <li><a href="https://github.com/github/fetch" target="_blank">Fetch 폴리필</a></li> <li><a href="fetch_api/basic_concepts">Fetch 기본 개념</a></li> </ul></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/Fetch_API" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/Fetch_API</a>
+  </p>
+</div>

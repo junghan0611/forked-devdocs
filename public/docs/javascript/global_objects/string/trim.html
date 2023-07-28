@@ -1,0 +1,36 @@
+<header><h1>String.prototype.trim()</h1></header><div class="section-content">
+<p><code>trim()</code> 메서드는 문자열 양 끝의 공백을 제거하고 원본 문자열을 수정하지 않고 새로운 문자열을 반환합니다. 여기서 말하는 공백이란 모든 공백문자(space, tab, NBSP 등)와 모든 개행문자(LF, CR 등)를 의미합니다.</p> <p>한쪽 끝의 공백만 제거한 새로운 문자열을 반환하려면 <a href="trimstart"><code>trimStart()</code></a> 또는 <a href="trimend"><code>trimEnd()</code></a>를 사용하세요.</p>
+</div>
+<section aria-labelledby="시도해보기"><h2 id="시도해보기">시도해보기</h2>
+<div class="section-content"><iframe class="interactive is-js-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/js/string-trim.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe></div></section><section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="AGKZFbN4tzTi19+eT97aEqFz/PDe/CqFD9VMhzuVaCM=" data-language="js"><span class="token function">trim</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+</pre>
+</div></div></section><section aria-labelledby="반환_값"><h3 id="반환_값">반환 값</h3>
+<div class="section-content">
+<p>시작과 끝에서 공백이 제거된 <code>str</code>을 나타내는 새로운 문자열입니다. 공백은 <a href="../../lexical_grammar#white_space">white space</a> 문자와 <a href="../../lexical_grammar#line_terminators">line terminators</a>로 정의됩니다.</p> <p>한쪽 끝의 공백만 제거한 문자열을 반환하시려면 <a href="trimstart"><code>trimStart()</code></a> 또는 <a href="trimend"><code>trimEnd()</code></a> 메서드를 사용하세요.</p>
+</div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+</section><section aria-labelledby="trim_사용"><h3 id="trim_사용">
+<code>trim()</code> 사용</h3>
+<div class="section-content">
+<p>아래 예제는 <code>str</code> 양 끝의 공백을 제거합니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="RYocwYlCdC0NP/hIjH7JheMb/HxWaIbo7j6l2lH0Lu8=" data-language="js"><span class="token keyword">var</span> str <span class="token operator">=</span> <span class="token string">'   foo  '</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>str<span class="token punctuation">.</span><span class="token function">trim</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 'foo'</span>
+</pre>
+</div>
+</div></section><h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://tc39.es/ecma262/multipage/text-processing.html#sec-string.prototype.trim">ECMAScript Language Specification <br><small># sec-string.prototype.trim</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="trimstart"><code>String.prototype.trimStart()</code></a></li> <li><a href="trimend"><code>String.prototype.trimEnd()</code></a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/String/trim" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/String/trim</a>
+  </p>
+</div>

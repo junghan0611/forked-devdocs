@@ -1,0 +1,65 @@
+<header><h1>WebGLShader</h1></header><div class="section-content">
+
+<strong>WebGLShader</strong> 는 <a href="webgl_api">WebGL API</a> 의 일부이며 정점 혹은 프래그먼트 셰이더가 될 수 있다. <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/WebGLProgram"><code>WebGLProgram</code> <small>(en-US)</small></a> 는 두 타입의 셰이더 모두를 요구한다.
+</div>
+<h2 id="설명">설명</h2>
+<div class="section-content">
+<p><strong>WebGLShader</strong> 를 생성하려면 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/WebGLRenderingContext/createShader"><code>WebGLRenderingContext.createShader</code> <small>(en-US)</small></a>를 사용한다. 그러고 나서는 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/WebGLRenderingContext/shaderSource"><code>WebGLRenderingContext.shaderSource()</code> <small>(en-US)</small></a>를 사용해서 GLSL 소스 코드를 연결한다. 마지막으로<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/WebGLRenderingContext/compileShader"><code>WebGLRenderingContext.compileShader()</code> <small>(en-US)</small></a>를 호출하고 셰이더를 컴파일한다. 이 시점에서 <strong>WebGLShader</strong> 는 여전히 사용할 수 있는 형식은 아니고<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/WebGLProgram"><code>WebGLProgram</code> <small>(en-US)</small></a>에 부착되어야 한다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="0SAFboBgLQAoDPGiaSIw6sRBuCY3yvDrlMr7E8zzyD8=" data-language="js"><span class="token keyword">function</span> <span class="token function">createShader</span> <span class="token punctuation">(</span><span class="token parameter">gl<span class="token punctuation">,</span> sourceCode<span class="token punctuation">,</span> type</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">// 셰이더 타입 gl.VERTEX_SHADER 또는 gl.FRAGMENT_SHADER 중 하나를 컴파일한다.</span>
+  <span class="token keyword">var</span> shader <span class="token operator">=</span> gl<span class="token punctuation">.</span><span class="token function">createShader</span><span class="token punctuation">(</span> type <span class="token punctuation">)</span><span class="token punctuation">;</span>
+  gl<span class="token punctuation">.</span><span class="token function">shaderSource</span><span class="token punctuation">(</span> shader<span class="token punctuation">,</span> sourceCode <span class="token punctuation">)</span><span class="token punctuation">;</span>
+  gl<span class="token punctuation">.</span><span class="token function">compileShader</span><span class="token punctuation">(</span> shader <span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">if</span> <span class="token punctuation">(</span> <span class="token operator">!</span>gl<span class="token punctuation">.</span><span class="token function">getShaderParameter</span><span class="token punctuation">(</span>shader<span class="token punctuation">,</span> gl<span class="token punctuation">.</span><span class="token constant">COMPILE_STATUS</span><span class="token punctuation">)</span> <span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">var</span> info <span class="token operator">=</span> gl<span class="token punctuation">.</span><span class="token function">getShaderInfoLog</span><span class="token punctuation">(</span> shader <span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">throw</span> <span class="token string">"Could not compile WebGL program. \n\n"</span> <span class="token operator">+</span> info<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</pre>
+</div> <p>셰이더 부착에 관한 정보는 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/WebGLProgram"><code>WebGLProgram</code> <small>(en-US)</small></a> 를 참고한다.</p>
+</div>
+<h2 id="예시들">예시들</h2>
+
+<h3 id="정점_셰이더_생성하기">정점 셰이더 생성하기</h3>
+<div class="section-content">
+<p>셰이더 소스 코드 문자열들을 작성하고 접근하는 많은 다른 방법들이 있다는 점에 주목하라. 여기의 예는 오직 설명을 목적으로 한다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="65V5R2ItvCdQs0BkN9DBui6/f7twbZVLPC0A7coZrlU=" data-language="js"><span class="token keyword">var</span> vertexShaderSource <span class="token operator">=</span>
+  <span class="token string">"attribute vec4 position;\n"</span>
+  <span class="token string">"void main() {\n"</span><span class="token operator">+</span>
+  <span class="token string">"  gl_Position = position;\n"</span><span class="token operator">+</span>
+  <span class="token string">"}\n"</span><span class="token punctuation">;</span>
+
+<span class="token comment">// 위 예시로부터 createShader 함수를 사용한다.</span>
+<span class="token keyword">var</span> vertexShader <span class="token operator">=</span> <span class="token function">createShader</span><span class="token punctuation">(</span>gl<span class="token punctuation">,</span> vertexShaderSource<span class="token punctuation">,</span> gl<span class="token punctuation">.</span><span class="token constant">VERTEX_SHADER</span><span class="token punctuation">)</span>
+</pre>
+</div>
+</div>
+<h3 id="프래그먼트_셰이더_생성하기">프래그먼트 셰이더 생성하기</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="Ex1bKuQ8dVbZV2xyVTNqqWy6cqILhgx0dKdb4jRJTU0=" data-language="js"><span class="token keyword">var</span> fragmentShaderSource <span class="token operator">=</span>
+  <span class="token string">"void main() {\n"</span><span class="token operator">+</span>
+  <span class="token string">"  gl_FragColor = vec4(1.0, 1.0, 1.0, 1.0);\n"</span><span class="token operator">+</span>
+  <span class="token string">"}\n"</span><span class="token punctuation">;</span>
+
+<span class="token comment">// 위 예시로부터 createShader 함수를 사용한다.</span>
+<span class="token keyword">var</span> fragmentShader <span class="token operator">=</span> <span class="token function">createShader</span><span class="token punctuation">(</span>gl<span class="token punctuation">,</span> fragmentShaderSource<span class="token punctuation">,</span> gl<span class="token punctuation">.</span><span class="token constant">FRAGMENT_SHADER</span><span class="token punctuation">)</span>
+</pre>
+</div></div>
+<h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://registry.khronos.org/webgl/specs/latest/1.0/#5.8">WebGL Specification <br><small># 5.8</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<h2 id="see_also">See also</h2>
+<div class="section-content"><ul> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/WebGLProgram"><code>WebGLProgram</code> <small>(en-US)</small></a></li> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/WebGLRenderingContext/attachShader"><code>WebGLRenderingContext.attachShader()</code> <small>(en-US)</small></a></li> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/WebGLRenderingContext/bindAttribLocation"><code>WebGLRenderingContext.bindAttribLocation()</code> <small>(en-US)</small></a></li> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/WebGLRenderingContext/compileShader"><code>WebGLRenderingContext.compileShader()</code> <small>(en-US)</small></a></li> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/WebGLRenderingContext/createProgram"><code>WebGLRenderingContext.createProgram()</code> <small>(en-US)</small></a></li> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/WebGLRenderingContext/createShader"><code>WebGLRenderingContext.createShader()</code> <small>(en-US)</small></a></li> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/WebGLRenderingContext/deleteProgram"><code>WebGLRenderingContext.deleteProgram()</code> <small>(en-US)</small></a></li> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/WebGLRenderingContext/deleteShader"><code>WebGLRenderingContext.deleteShader()</code> <small>(en-US)</small></a></li> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/WebGLRenderingContext/detachShader"><code>WebGLRenderingContext.detachShader()</code> <small>(en-US)</small></a></li> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/WebGLRenderingContext/getAttachedShaders"><code>WebGLRenderingContext.getAttachedShaders()</code> <small>(en-US)</small></a></li> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/WebGLRenderingContext/getProgramParameter"><code>WebGLRenderingContext.getProgramParameter()</code> <small>(en-US)</small></a></li> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/WebGLRenderingContext/getProgramInfoLog"><code>WebGLRenderingContext.getProgramInfoLog()</code> <small>(en-US)</small></a></li> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/WebGLRenderingContext/getShaderParameter"><code>WebGLRenderingContext.getShaderParameter()</code> <small>(en-US)</small></a></li> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/WebGLRenderingContext/getShaderPrecisionFormat"><code>WebGLRenderingContext.getShaderPrecisionFormat()</code> <small>(en-US)</small></a></li> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/WebGLRenderingContext/getShaderInfoLog"><code>WebGLRenderingContext.getShaderInfoLog()</code> <small>(en-US)</small></a></li> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/WebGLRenderingContext/getShaderSource"><code>WebGLRenderingContext.getShaderSource()</code> <small>(en-US)</small></a></li> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/WebGLRenderingContext/isProgram"><code>WebGLRenderingContext.isProgram()</code> <small>(en-US)</small></a></li> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/WebGLRenderingContext/isShader"><code>WebGLRenderingContext.isShader()</code> <small>(en-US)</small></a></li> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/WebGLRenderingContext/linkProgram"><code>WebGLRenderingContext.linkProgram()</code> <small>(en-US)</small></a></li> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/WebGLRenderingContext/shaderSource"><code>WebGLRenderingContext.shaderSource()</code> <small>(en-US)</small></a></li> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/WebGLRenderingContext/useProgram"><code>WebGLRenderingContext.useProgram()</code> <small>(en-US)</small></a></li> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/WebGLRenderingContext/validateProgram"><code>WebGLRenderingContext.validateProgram()</code> <small>(en-US)</small></a></li> </ul></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/WebGLShader" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/WebGLShader</a>
+  </p>
+</div>

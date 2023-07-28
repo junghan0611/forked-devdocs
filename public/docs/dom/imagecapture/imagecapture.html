@@ -1,0 +1,37 @@
+<header><h1>ImageCapture() 생성자</h1></header><div class="section-content"><p><code>ImageCapture()</code> 생성자는 새로운 <a href="../imagecapture"><code>ImageCapture</code></a> 객체를 생성합니다.</p></div>
+<h2 id="구문">구문</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="cK/6FJhssFJDwuejaXspVH80/t4NDqFhw8eMzTpnR84=" data-language="js"><span class="token keyword">const</span> imageCapture <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ImageCapture</span><span class="token punctuation">(</span>videoTrack<span class="token punctuation">)</span>
+</pre>
+</div></div>
+<h3 id="매개변수">매개변수</h3>
+<div class="section-content"><dl> <dt id="videotrack"><code>videoTrack</code></dt> <dd> <p>이미지를 가져올 때 사용할 <a href="../mediastreamtrack"><code>MediaStreamTrack</code></a>. 화상전화 스트림, 재생 중인 영화, 웹캠 스트림 등 모든 출처를 사용할 수 있습니다.</p> </dd> </dl></div>
+<h3 id="반환_값">반환 값</h3>
+<div class="section-content"><p>지정한 비디오 트랙에서 정지 프레임을 캡처할 수 있는 <code>ImageCapture</code> 객체.</p></div>
+<h2 id="예제">예제</h2>
+<div class="section-content">
+<p>다음 예제는 <a href="../mediadevices/getusermedia"><code>MediaDevices.getUserMedia()</code></a>을 사용해, <code>ImageCapture()</code> 생성자에 필요한 <a href="../mediastreamtrack"><code>MediaStreamTrack</code></a>을 가져오는 법을 보입니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="m4q8usPrwr3iSo2+7cFp1zIj5V0mCpdZgnlrAd+0QNU=" data-language="js"> navigator<span class="token punctuation">.</span>mediaDevices<span class="token punctuation">.</span><span class="token function">getUserMedia</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token literal-property property">video</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token parameter">mediaStream</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    document<span class="token punctuation">.</span><span class="token function">querySelector</span><span class="token punctuation">(</span><span class="token string">'video'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>srcObject <span class="token operator">=</span> mediaStream
+    <span class="token keyword">const</span> track <span class="token operator">=</span> mediaStream<span class="token punctuation">.</span><span class="token function">getVideoTracks</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    imageCapture <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ImageCapture</span><span class="token punctuation">(</span>track<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token punctuation">.</span><span class="token function">catch</span><span class="token punctuation">(</span><span class="token parameter">error</span> <span class="token operator">=&gt;</span> console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>error<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div>
+</div>
+<h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://w3c.github.io/mediacapture-image/#dom-imagecapture-imagecapture">MediaStream Image Capture <br><small># dom-imagecapture-imagecapture</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/ImageCapture/ImageCapture" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/ImageCapture/ImageCapture</a>
+  </p>
+</div>

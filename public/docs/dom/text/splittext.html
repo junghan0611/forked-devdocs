@@ -1,0 +1,50 @@
+<header><h1>Text.splitText()</h1></header><div class="section-content">
+<p><code>Text.splitText()</code> 메소드는 <a href="../text"><code>Text</code></a> 노드를 지정된 오프셋에서 두 노드로 분리합니다. 두 노드는 sibling으로써 트리에 유지됩니다.</p> <p>분리한 이후, 현재 노드는 지정된 오프셋 지점까지의 모든 컨텐츠를 포함하며, 새롭게 생성된 같은 타입의 노드는 남아있는 텍스트를 포함합니다. 새롭게 생성된 노드는 호출자에게 반환됩니다. 기존 노드가 부모를 갖고 있다면, 새 노드는 기존 노드의 다음 sibling으로 삽입됩니다. 기존 노드의 길이와 오프셋이 동일하다면, 새롭게 생성된 노드는 데이터를 갖지 않습니다.</p> <p>분리된 텍스트 노드는 <a href="../node/normalize"><code>Node.normalize()</code></a> 메소드를 사용해 이어붙혀질 수 있습니다.</p> <p>지정된 오프셋이 음수이거나 노드의 텍스트의 16 비트 단위의 수보다 크면 <code>INDEX_SIZE_ERR</code> 값을 갖는 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/DOMException"><code>DOMException</code> <small>(en-US)</small></a> 을 throw됩니다. <code>NO_MODIFICATION_ALLOWED_ERR</code> 값을 갖는 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/DOMException"><code>DOMException</code> <small>(en-US)</small></a> 은 노드가 읽기 전용일 때 throw됩니다.</p>
+</div>
+<h2 id="문법">문법</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="FZLkBw+RSpWCeMgAcBLkQPmhuyW+bSltgv4EmJIQWbY=" data-language="js">replacementNode <span class="token operator">=</span> textnode<span class="token punctuation">.</span><span class="token function">splitText</span><span class="token punctuation">(</span>offset<span class="token punctuation">)</span>
+</pre>
+</div></div>
+<h2 id="예제">예제</h2>
+<div class="section-content">
+<p>이 예제에서 <a href="https://developer.mozilla.org/ko/docs/Web/HTML/Element/p"><code>&lt;p&gt;</code></a> 텍스트 노드는 두 텍스트 노드로 분리되며 그 사이에 <a href="https://developer.mozilla.org/ko/docs/Web/HTML/Element/span"><code>&lt;span&gt;</code></a> 이 삽입됩니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="K+TdsaWFFXDO9+xetH3+OzSwwKke1n+UMrogrw6dRBc=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>p<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>foobar<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>text/javascript<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token script"><span class="token language-javascript">
+    <span class="token keyword">var</span> p <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">'p'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">var</span> textnode <span class="token operator">=</span> p<span class="token punctuation">.</span>firstChild<span class="token punctuation">;</span>
+
+    <span class="token comment">// foo 와 bar 사이를 분리</span>
+    <span class="token keyword">var</span> replacementNode <span class="token operator">=</span> textnode<span class="token punctuation">.</span><span class="token function">splitText</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// ' span contents ' 를 포함하는 span을 생성</span>
+    <span class="token keyword">var</span> span <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">createElement</span><span class="token punctuation">(</span><span class="token string">'span'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    span<span class="token punctuation">.</span><span class="token function">appendChild</span><span class="token punctuation">(</span>document<span class="token punctuation">.</span><span class="token function">createTextNode</span><span class="token punctuation">(</span><span class="token string">' span contents '</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// 'bar' 앞에 span을 추가</span>
+    p<span class="token punctuation">.</span><span class="token function">insertBefore</span><span class="token punctuation">(</span>span<span class="token punctuation">,</span> replacementNode<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// 결과: &lt;p id="p"&gt;foo&lt;span&gt; span contents &lt;/span&gt;bar&lt;/p&gt;</span>
+  </span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div>
+</div>
+<h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="#">DOM Standard <br><small># ref-for-dom-text-splittext①</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<h2 id="함께_보기">함께 보기</h2>
+<div class="section-content"><ul> <li>이 메소드가 속한 <a href="../text"><code>Text</code></a> 인터페이스.</li> <li>반대되는 메소드: <a href="../node/normalize"><code>Node.normalize</code></a>.</li> </ul></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/Text/splitText" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/Text/splitText</a>
+  </p>
+</div>

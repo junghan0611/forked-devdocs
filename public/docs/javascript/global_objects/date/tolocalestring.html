@@ -1,0 +1,136 @@
+<header><h1>Date.prototype.toLocaleString()</h1></header><div class="section-content"><p><code>toLocaleString()</code> 메소드는 날짜를 언어별로 구분하여 나타내는 문자열을 반환합니다. <a href="../intl/datetimeformat"><code>Intl.DateTimeFormat</code> API</a> 를 지원하는 구현에서 이 메소드는 단순히 <code>Intl.DateTimeFormat</code>를 호출합니다.</p></div>
+<section aria-labelledby="시도해보기"><h2 id="시도해보기">시도해보기</h2>
+<div class="section-content"><iframe class="interactive is-js-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/js/date-tolocalestring.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe></div></section><section aria-labelledby="문법"><h2 id="문법">문법</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="a8w/P3t1lx3Ecdba/Neo69wnMKTjHsTlPboLxpoH6JY=" data-language="js"><span class="token function">toLocaleString</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token function">toLocaleString</span><span class="token punctuation">(</span>locales<span class="token punctuation">)</span>
+<span class="token function">toLocaleString</span><span class="token punctuation">(</span>locales<span class="token punctuation">,</span> options<span class="token punctuation">)</span>
+</pre>
+</div></div></section><section aria-labelledby="매개변수"><h3 id="매개변수">매개변수</h3>
+<div class="section-content">
+<p><code>locales</code>, <code>options</code> 인수는 함수의 동작을 사용자 정의하고 응용 프로그램에서 형식 규칙을 사용할 언어를 지정할 수 있도록 합니다.</p> <p><a href="../intl/datetimeformat"><code>Intl.DateTimeFormat</code> API</a>를 지원하는 구현에서, 이 파라미터들은 정확하게 <a href="../intl/datetimeformat/datetimeformat"><code>Intl.DateTimeFormat()</code></a> 생성자 파라미터와 일치합니다. <code>Intl.DateTimeFormat</code> 를 지원하지 않는 구현은 두 매개변수를 무시하도록 요청되어, 사용된 로케일과 반환된 문자열 형식이 완전히 구현에 종속됩니다.</p> <dl> <dt id="locales">
+<code>locales</code> <span class="badge inline optional">Optional</span>
+</dt> <dd> <p>BCP 47 언어 태그 문자열 또는 이러한 문자열의 배열입니다. <code>Intl.DateTimeFormat()</code> 생성자의 매개변수 <a href="../intl/datetimeformat/datetimeformat#locales"><code>locales</code></a>와 일치합니다.</p> <p><code>Intl.DateTimeFormat</code> 을 지원하지 않는 구현에서는 이 매개변수는 무시되고, 보통 호스트 로케일이 사용됩니다.</p> </dd> <dt id="options">
+<code>options</code> <span class="badge inline optional">Optional</span>
+</dt> <dd> <p>출력 형식을 조정하는 객체입니다. <code>Intl.DateTimeFormat()</code> 생성자 매개변수 <a href="../intl/datetimeformat/datetimeformat#options"><code>options</code></a> 와 일치합니다. 만약 <code>weekday</code>, <code>year</code>, <code>month</code>, <code>day</code>, <code>dayPeriod</code>, <code>hour</code>, <code>minute</code>, <code>second</code>, 그리고 <code>fractionalSecondDigits</code> 가 전부 undefined이면, <code>year</code>, <code>month</code>, <code>day</code>, <code>hour</code>, <code>minute</code>, <code>second</code> 가<code>"numeric"</code> 으로 설정됩니다.</p> <p><code>Intl.DateTimeFormat</code> 를 지원하지 않는 구현에서 이 매개변수는 무시됩니다.</p> </dd> </dl> <p>이 매개변수에 대한 자세한 설명과 사용법을 알고싶으면 다음을 참조하십시오. <a href="../intl/datetimeformat/datetimeformat"><code>Intl.DateTimeFormat()</code> constructor</a></p>
+</div></section><section aria-labelledby="반환_값"><h3 id="반환_값">반환 값</h3>
+<div class="section-content">
+<p>언어별 표현 형식을 따른 날짜 문자열</p> <p><code>Intl.DateTimeFormat</code>를 지원하는 구현에서 안에서 <code>new Intl.DateTimeFormat(locales, options).format(date)</code> 와 동일합니다.</p>
+</div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+</section><section aria-labelledby="tolocalestring_사용"><h3 id="tolocalestring_사용">toLocaleString() 사용</h3>
+<div class="section-content">
+<p>로케일을 지정하지않고 기본으로 사용하는 경우, 기본 로케일과 옵션으로 포맷된 문자열이 반환됩니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="G88q3tHwLErjUF+BW2R9RThf9POwL0kHvoBiRUu9LPI=" data-language="js"><span class="token keyword">const</span> date <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span>Date<span class="token punctuation">.</span><span class="token constant">UTC</span><span class="token punctuation">(</span><span class="token number">2012</span><span class="token punctuation">,</span> <span class="token number">11</span><span class="token punctuation">,</span> <span class="token number">12</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// 인수가 없는 toLocaleString() 은 구현, 기본 로케일, 기본 타임존에 따라 달라집니다</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>date<span class="token punctuation">.</span><span class="token function">toLocaleString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// → "12/11/2012, 7:00:00 PM" en-Us 로케일 및 America/Los_Angeles 타임존에서 실행했을 때</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="로케일_및_옵션_인수에_대한_지원_확인"><h3 id="로케일_및_옵션_인수에_대한_지원_확인">로케일 및 옵션 인수에 대한 지원 확인</h3>
+<div class="section-content">
+<p>아직 <code>locales</code>, <code>options</code> 인수는 일부 브라우저에서 지원하지 않습니다. 구현에서 해당 인수를 지원하는지 확인하려면 잘못된 언어 태그가 <a href="../rangeerror"><code>RangeError</code></a> 예외로 거부되는 요구사항을 사용할 수 있습니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="4RP/Wqvsz2y2mpNzRGMRTWOX6VWpR550LjTkfhFVSHk=" data-language="js"><span class="token keyword">function</span> <span class="token function">toLocaleStringSupportsLocales</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">try</span> <span class="token punctuation">{</span>
+    <span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toLocaleString</span><span class="token punctuation">(</span><span class="token string">"i"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span>e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> e<span class="token punctuation">.</span>name <span class="token operator">===</span> <span class="token string">"RangeError"</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="locales_사용"><h3 id="locales_사용">locales 사용</h3>
+<div class="section-content">
+<p>이 예는 지역화된 날짜 및 시간 형식의 일부 변형을 보여줍니다. 당신의 어플리케이션의 사용자 인터페이스가 사용하는 언어(그리고 일부 대체 언어)의 형식을 얻기 위해서, 반드시 <code>locales</code> 인수를 사용하여 해당 언어를 지정해야합니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="FnfGK5wFVV43RpUgLkxxZODyIWAZumAX+lh6forMCtM=" data-language="js"><span class="token keyword">const</span> date <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span>Date<span class="token punctuation">.</span><span class="token constant">UTC</span><span class="token punctuation">(</span><span class="token number">2012</span><span class="token punctuation">,</span> <span class="token number">11</span><span class="token punctuation">,</span> <span class="token number">20</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// 아래의 형식은 로케일의 로컬 타임존을 가정한다</span>
+<span class="token comment">// America/Los_Angeles for the US</span>
+
+<span class="token comment">// 미국 영어는 달-일-년 순서와 AM/PM이 있는 12시간을 사용합니다</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>date<span class="token punctuation">.</span><span class="token function">toLocaleString</span><span class="token punctuation">(</span><span class="token string">"en-US"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// → "12/19/2012, 7:00:00 PM"</span>
+
+<span class="token comment">// 영국 영어는 일-달-년 순서와 AM/PM이 없는 24시간을 사용합니다</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>date<span class="token punctuation">.</span><span class="token function">toLocaleString</span><span class="token punctuation">(</span><span class="token string">"en-GB"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// → "20/12/2012 03:00:00"</span>
+
+<span class="token comment">// 한국어는 년-월-일 순서와 AM/PM이 있는 12시간을 사용합니다</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>date<span class="token punctuation">.</span><span class="token function">toLocaleString</span><span class="token punctuation">(</span><span class="token string">"ko-KR"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// → "2012. 12. 20. 오후 12:00:00"</span>
+
+<span class="token comment">// 아랍어를 사용하는 대부분의 아랍국가는 동부 아라비안 숫자를 사용합니다</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>date<span class="token punctuation">.</span><span class="token function">toLocaleString</span><span class="token punctuation">(</span><span class="token string">"ar-EG"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// → "٢٠‏/١٢‏/٢٠١٢ ٥:٠٠:٠٠ ص"</span>
+
+<span class="token comment">// 일본어의 경우, 어플리케이션이 일본 달력을 사용하고 싶을 수 있습니다</span>
+<span class="token comment">// 2012년의 경우 Heisei 24년 이었습니다</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>date<span class="token punctuation">.</span><span class="token function">toLocaleString</span><span class="token punctuation">(</span><span class="token string">"ja-JP-u-ca-japanese"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// → "24/12/20 12:00:00"</span>
+
+<span class="token comment">// 발리어와 같이 지원되지 않을 수 있는 언어를 요청할 때, 대체 언어를 포함합니다. (이 경우에는 인도네시아어)</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>date<span class="token punctuation">.</span><span class="token function">toLocaleString</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">"ban"</span><span class="token punctuation">,</span> <span class="token string">"id"</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// → "20/12/2012 11.00.00"</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="options_사용"><h3 id="options_사용">options 사용</h3>
+<div class="section-content">
+<p><code>toLocaleString()</code> 가 제공하는 결과는 <code>options</code> 인수를 사용하여 사용자 정의할 수 있습니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="ricgZzsLGZc9X+uXweO85bbfGApK9lP9jIMaHB8p5f0=" data-language="js"><span class="token keyword">const</span> date <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span>Date<span class="token punctuation">.</span><span class="token constant">UTC</span><span class="token punctuation">(</span><span class="token number">2012</span><span class="token punctuation">,</span> <span class="token number">11</span><span class="token punctuation">,</span> <span class="token number">20</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// Request a weekday along with a long date</span>
+<span class="token keyword">const</span> options <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token literal-property property">weekday</span><span class="token operator">:</span> <span class="token string">"long"</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">year</span><span class="token operator">:</span> <span class="token string">"numeric"</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">month</span><span class="token operator">:</span> <span class="token string">"long"</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">day</span><span class="token operator">:</span> <span class="token string">"numeric"</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>date<span class="token punctuation">.</span><span class="token function">toLocaleString</span><span class="token punctuation">(</span><span class="token string">"de-DE"</span><span class="token punctuation">,</span> options<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// → "Donnerstag, 20. Dezember 2012"</span>
+
+<span class="token comment">// 어플리케이션은 UTC를 사용할 수 있고 그것을 보이게 할 수 있습니다.</span>
+options<span class="token punctuation">.</span>timeZone <span class="token operator">=</span> <span class="token string">"UTC"</span><span class="token punctuation">;</span>
+options<span class="token punctuation">.</span>timeZoneName <span class="token operator">=</span> <span class="token string">"short"</span><span class="token punctuation">;</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>date<span class="token punctuation">.</span><span class="token function">toLocaleString</span><span class="token punctuation">(</span><span class="token string">"en-US"</span><span class="token punctuation">,</span> options<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// → "Thursday, December 20, 2012, GMT"</span>
+
+<span class="token comment">// en-US도 24시간 사용이 가능합니다</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>date<span class="token punctuation">.</span><span class="token function">toLocaleString</span><span class="token punctuation">(</span><span class="token string">"en-US"</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> <span class="token literal-property property">hour12</span><span class="token operator">:</span> <span class="token boolean">false</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// → "12/19/2012, 19:00:00"</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="포맷된_날짜_값을_정적_값과_비교하지_않기"><h3 id="포맷된_날짜_값을_정적_값과_비교하지_않기">포맷된 날짜 값을 정적 값과 비교하지 않기</h3>
+<div class="section-content">
+<p>대부분의 경우, <code>toLocaleString()</code> 가 반환하는 형식은 일관됩니다. 하지만 이것은 미래에 달라질 수 있고, 모든 언어에 대해 보장되지 않습니다; 출력 변형은 설계에 따라 허용되며 사양에 따라 허용됩니다.</p> <p>특히 IE 및 Edge 브라우저는 다른 텍스트와 연결될때 출력 텍스트가 자연스럽게 연결되도록, 양방향 제어 문자를 삽입합니다.</p> <p>이러한 이유로, 당신은 정적 값과 <code>toLocaleString()</code> 의 결과 값을 비교할 수 있다고 기대할 수 없습니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="qtTvFg5R4D4sX7anBZmm3lsKiCUvEf9m4s0oFRGsEXc=" data-language="js"><span class="token string">"1/1/2019, 01:00:00"</span> <span class="token operator">===</span>
+  <span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token string">"2019-01-01T01:00:00Z"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toLocaleString</span><span class="token punctuation">(</span><span class="token string">"en-US"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// Firefox나 다른 기타 브라우저에서 true 입니다</span>
+<span class="token comment">// IE나 Edge에서 false 입니다</span>
+</pre>
+</div> <blockquote> <p> <strong>Note:</strong> See also this <a href="https://stackoverflow.com/questions/25574963/ies-tolocalestring-has-strange-characters-in-results" target="_blank">StackOverflow thread</a> for more details and examples. </p> </blockquote>
+</div></section><h2 id="명세서">명세서</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody>
+<tr><td><a href="https://tc39.es/ecma262/multipage/numbers-and-dates.html#sec-date.prototype.tolocalestring">ECMAScript Language Specification <br><small># sec-date.prototype.tolocalestring</small></a></td></tr>
+<tr><td><a href="https://tc39.es/ecma402/#sup-date.prototype.tolocalestring">ECMAScript Internationalization API Specification <br><small># sup-date.prototype.tolocalestring</small></a></td></tr>
+</tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="see_also"><h2 id="see_also">See also</h2>
+<div class="section-content"><ul> <li><a href="../intl/datetimeformat"><code>Intl.DateTimeFormat</code></a></li> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleDateString"><code>Date.prototype.toLocaleDateString()</code> <small>(en-US)</small></a></li> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleTimeString"><code>Date.prototype.toLocaleTimeString()</code> <small>(en-US)</small></a></li> <li><a href="tostring"><code>Date.prototype.toString()</code></a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleString" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleString</a>
+  </p>
+</div>

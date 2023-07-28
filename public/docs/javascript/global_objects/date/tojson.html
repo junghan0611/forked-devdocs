@@ -1,0 +1,33 @@
+<header><h1>Date.prototype.toJSON()</h1></header><div class="section-content"><p><code>toJSON()</code> 메서드는 <a href="../date"><code>Date</code></a> 객체의 문자열 표현을 반환합니다.</p></div>
+<section aria-labelledby="시도해보기"><h2 id="시도해보기">시도해보기</h2>
+<div class="section-content"><iframe class="interactive is-js-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/js/date-tojson.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe></div></section><section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="HrIyy2BAGVEQgw3X/2AmV+lTtOjRHpELMRKWtgx/0wU=" data-language="js">    dateObj<span class="token punctuation">.</span><span class="token function">toJSON</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+</pre>
+</div></div></section><section aria-labelledby="반환_값"><h3 id="반환_값">반환 값</h3>
+<div class="section-content"><p>주어진 날짜의 문자열 표현.</p></div></section><section aria-labelledby="설명"><h2 id="설명">설명</h2>
+<div class="section-content"><p><a href="../date"><code>Date</code></a> 인스턴스는 시간의 특정 지점을 가리킵니다. <code>toJSON()</code>을 호출하면 <a href="toisostring"><code>toISOString()</code></a> 사용해 그 인스턴스가 가리키는 시간의 문자열 표현을 반환합니다. <code>toJSON()</code>은 <code>Date</code> 값을 <a href="https://developer.mozilla.org/ko/docs/Glossary/JSON">JSON</a>으로 직렬화할 때 유용하게 사용할 수 있도록 만들어졌습니다.</p></div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+</section><section aria-labelledby="tojson_사용하기"><h3 id="tojson_사용하기">
+<code>toJSON()</code> 사용하기</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="6tHPfC3RcIN0ORGmQE5h47udWX+23fmeyHvasEOjXI8=" data-language="js"><span class="token keyword">const</span> jsonDate <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toJSON</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> backToDate <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span>jsonDate<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>jsonDate<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//2015-10-26T07:46:36.611Z</span>
+</pre>
+</div></div></section><h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://tc39.es/ecma262/multipage/numbers-and-dates.html#sec-date.prototype.tojson">ECMAScript Language Specification <br><small># sec-date.prototype.tojson</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleDateString"><code>Date.prototype.toLocaleDateString()</code> <small>(en-US)</small></a></li> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toTimeString"><code>Date.prototype.toTimeString()</code> <small>(en-US)</small></a></li> <li><a href="toutcstring"><code>Date.prototype.toUTCString()</code></a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Date/toJSON" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Date/toJSON</a>
+  </p>
+</div>

@@ -1,0 +1,66 @@
+<header><h1>Document: visibilitychange 이벤트</h1></header><div class="section-content">
+<p><code>visibilitychange</code> 이벤트는 브라우저 탭의 콘텐츠가 보여지거나 숨겨질 때 문서에서 발생합니다.</p> <p>이 이벤트는 취소할 수 없습니다.</p>
+</div>
+<h2 id="구문">구문</h2>
+<div class="section-content">
+<p>이벤트 이름을 <a href="../eventtarget/addeventlistener"><code>addEventListener()</code></a> 등의 메서드에 제공하거나, 이벤트 처리기 속성을 사용하세요.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="DgrRLCjnoQ4OZEFrWe07FYbctmdpIqIS4LBflvnOvZk=" data-language="js"><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">"visibilitychange"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">event</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token function-variable function">onvisibilitychange</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">event</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+</pre>
+</div>
+</div>
+<h2 id="이벤트_유형">이벤트 유형</h2>
+<div class="section-content"><p>일반 <a href="../event"><code>Event</code></a>.</p></div>
+<h2 id="사용_일람">사용 일람</h2>
+<div class="section-content">
+<p>이 이벤트 자체로는 문서의 새로운 노출 상태를 알아낼 수 없습니다. 문서의 <a href="visibilitystate"><code>visibilityState</code></a> 속성을 사용하세요.</p> <p>사용자가 새로운 페이지로 이동하거나, 탭을 바꾸거나, 탭을 닫거나, 브라우저를 닫거나 최소화하거나, 모바일 기기에서는 다른 앱으로 전환하는 경우에는 <code>visibilityState</code>가 <code>hidden</code>으로 바뀌고 이 이벤트가 발생합니다. <code>hidden</code>으로의 전환은 페이지에서 안정적으로 관측할 수 있는 마지막 이벤트므로 개발자는 이 시점을 사용자 세션의 마지막으로 취급하여 (<a href="../navigator/sendbeacon">분석 정보 전송</a> 등) 마무리 작업을 실행해야 합니다.</p> <p><code>hidden</code> 전환은 페이지의 UI 갱신을 중단하고, 사용자가 백그라운드에서는 원하지 않을 작업들을 중지할 때로도 적합한 시점입니다.</p>
+</div>
+<h2 id="예제">예제</h2>
+
+<h2 id="hidden_전환_시_음악_일시중지하기">hidden 전환 시 음악 일시중지하기</h2>
+<div class="section-content">
+<p>이 예제는 문서가 보이게 되면 음악 트랙을 재생하고, 문서를 더 볼 수 없으면 일시중지합니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="hTjVZT5iudcyuHShoJc7+rdnsrvp0jGTSFdwWB2YYHg=" data-language="js">document<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">"visibilitychange"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>document<span class="token punctuation">.</span>visibilityState <span class="token operator">===</span> <span class="token string">"visible"</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    backgroundMusic<span class="token punctuation">.</span><span class="token function">play</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+    backgroundMusic<span class="token punctuation">.</span><span class="token function">pause</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div>
+</div>
+<h2 id="hidden_전환_시_세션_종료_분석_정보_전송하기">hidden 전환 시 세션 종료 분석 정보 전송하기</h2>
+<div class="section-content">
+<p>이 예제는 <code>hidden</code>으로의 전환을 사용자 세션의 마지막으로 취급하여, <a href="../navigator/sendbeacon"><code>Navigator.sendBeacon()</code></a> API를 사용해 적절한 분석 정보를 전송합니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="2/3yIlEFKWdX5BnDPDK/0JqMAuVqaKIFdKDxE1DIH1U=" data-language="js">document<span class="token punctuation">.</span><span class="token function-variable function">onvisibilitychange</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>document<span class="token punctuation">.</span>visibilityState <span class="token operator">===</span> <span class="token string">"hidden"</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    navigator<span class="token punctuation">.</span><span class="token function">sendBeacon</span><span class="token punctuation">(</span><span class="token string">"/log"</span><span class="token punctuation">,</span> analyticsData<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</pre>
+</div>
+</div>
+<h2 id="명세서">명세서</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody>
+<tr><td><a href="https://html.spec.whatwg.org/multipage/indices.html#event-visibilitychange">HTML Standard <br><small># event-visibilitychange</small></a></td></tr>
+<tr><td><a href="https://html.spec.whatwg.org/multipage/webappapis.html#handler-onvisibilitychange">HTML Standard <br><small># handler-onvisibilitychange</small></a></td></tr>
+</tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="../page_visibility_api">Page Visibility API</a></li> <li><a href="visibilitystate"><code>Document.visibilityState</code></a></li> <li>
+<a href="https://www.igvita.com/2015/11/20/dont-lose-user-and-app-state-use-page-visibility/" target="_blank">Don't lose user and app state, use Page Visibility</a>에서는 왜 <code>beforeunload</code>/<code>unload</code> 대신 <code>visibilitychange</code>를 사용해야 하는지 자세히 설명합니다.</li> <li>
+<a href="https://developer.chrome.com/blog/page-lifecycle-api/#developer-recommendations-for-each-state" target="_blank">Page Lifecycle API</a>에서는 웹 애플리케이션에서 페이지의 수명 주기 동작을 처리하는 최선의 방법들을 제시합니다.</li> </ul></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/Document/visibilitychange_event" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/Document/visibilitychange_event</a>
+  </p>
+</div>

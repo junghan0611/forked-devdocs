@@ -1,0 +1,44 @@
+<header><h1>AudioNode.channelInterpretation</h1></header><div class="section-content">
+<p><a href="../audionode"><code>AudioNode</code></a> 인터페이스의 <code>channelInterpretation</code> 프로퍼티는 입력/출력 채널의 수가 다를 때 입력 채널이 출력 채널에 매핑되는 방법을 기술하는 열거형 값을 나타냅니다. 예를 들어, 이 설정은 모노 입력이 어떻게 스테레오 또는 5.1 채널 출력으로 업믹스될 것인지를 정의하거나, 어떻게 쿼드 채널 입력이 스테레오 또는 모노 출력으로 다운믹스될 것인지를 정의합니다.</p> <p>이 프로퍼티에는 두 가지 옵션이 있습니다. <code>speakers</code> 와 <code>discrete</code> 입니다. 이 옵션들은 <a href="../web_audio_api/basic_concepts_behind_web_audio_api#up-mixing_and_down-mixing">Web Audio API의 기본 개념 &gt; 업믹싱과 다운믹싱</a>에 기록되어 있습니다.</p>
+</div>
+<h2 id="구문">구문</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="VjeX8Vf2HMyuY5Sq2rCrMSlGwnUCwFETdU3rLryVclQ=" data-language="js"><span class="token keyword">var</span> oscillator <span class="token operator">=</span> audioCtx<span class="token punctuation">.</span><span class="token function">createOscillator</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+oscillator<span class="token punctuation">.</span>channelInterpretation <span class="token operator">=</span> <span class="token string">'discrete'</span><span class="token punctuation">;</span>
+</pre>
+</div></div>
+<h3 id="값">값</h3>
+<div class="section-content">
+<p>이 값들은 <a href="../web_audio_api/basic_concepts_behind_web_audio_api#up-mixing_and_down-mixing">Web Audio API의 기본 개념 &gt; 업믹싱과 다운믹싱</a>에 기록되어 있습니다.</p> <p>요약하자면,</p> <dl> <dt id="speakers"><code>speakers</code></dt> <dd> <p>일반적인 스피커 입력과 출력 설정 (모노, 스테레오, quad, 5.1) 의 조합에 대한 "표준" 매핑의 집합을 사용합니다. 예를 들어, 이 설정으로 모노 채널 입력은 스테레오 출력의 양 채널 모두에 출력될 것입니다.</p> </dd> <dt id="discrete"><code>discrete</code></dt> <dd> <p>입력 채널은 출력 채널에 순서대로 매핑됩니다. 만약 출력하는 더 많은 입력이 있다면, 추가적인 입력은 탈락됩니다. 만약 입력이 더 적다면 사용되지 않는 출력은 소리나지 않습니다.</p> </dd> </dl>
+</div>
+<h2 id="예제">예제</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="YLhXZFuOfZ2iiPGkjPDPvpPzD1CCzUn4Ku2tBEhrQUE=" data-language="js"><span class="token keyword">var</span> AudioContext <span class="token operator">=</span> window<span class="token punctuation">.</span>AudioContext <span class="token operator">||</span> window<span class="token punctuation">.</span>webkitAudioContext<span class="token punctuation">;</span>
+
+<span class="token keyword">var</span> audioCtx <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">AudioContext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">var</span> oscillator <span class="token operator">=</span> audioCtx<span class="token punctuation">.</span><span class="token function">createOscillator</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> gainNode <span class="token operator">=</span> audioCtx<span class="token punctuation">.</span><span class="token function">createGain</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+oscillator<span class="token punctuation">.</span><span class="token function">connect</span><span class="token punctuation">(</span>gainNode<span class="token punctuation">)</span><span class="token punctuation">;</span>
+gainNode<span class="token punctuation">.</span><span class="token function">connect</span><span class="token punctuation">(</span>audioCtx<span class="token punctuation">.</span>destination<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+oscillator<span class="token punctuation">.</span>channelInterpretation <span class="token operator">=</span> <span class="token string">'discrete'</span><span class="token punctuation">;</span>
+</pre>
+</div></div>
+<h2 id="명세서">명세서</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://webaudio.github.io/web-audio-api/#dom-audionode-channelinterpretation">Web Audio API <br><small># dom-audionode-channelinterpretation</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="../web_audio_api/using_web_audio_api">Web Audio API 사용하기</a></li> </ul></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/AudioNode/channelInterpretation" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/AudioNode/channelInterpretation</a>
+  </p>
+</div>

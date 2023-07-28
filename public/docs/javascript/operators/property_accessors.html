@@ -1,0 +1,95 @@
+<header><h1>속성 접근자</h1></header><div class="section-content"><p><strong>속성 접근자</strong>는 점 또는 괄호 표기법으로 객체의 속성에 접근할 수 있도록 해줍니다.</p></div>
+<section aria-labelledby="시도해보기"><h2 id="시도해보기">시도해보기</h2>
+<div class="section-content"><iframe class="interactive is-js-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/js/expressions-propertyaccessors.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe></div></section><section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="9MPRcP/S6i7szWhGndvhHGqdcrzTBg8HGZ2uQxK+8E0=" data-language="js">    object<span class="token punctuation">.</span>property
+    object<span class="token punctuation">[</span><span class="token string">'property'</span><span class="token punctuation">]</span>
+</pre>
+</div></div></section><section aria-labelledby="설명"><h2 id="설명">설명</h2>
+<div class="section-content">
+<p>객체는 속성의 이름을 키로 사용하는 연관 배열(다른 이름으로는 맵, 딕셔너리, 해시, 룩업 테이블)로 생각할 수 있습니다. 보통 객체의 속성을 메서드와 구별해서 말하곤 하지만, 서로의 차이는 관례에 불과합니다. 메서드는 호출할 수 있는 속성일 뿐으로, 속성의 값이 <a href="../global_objects/function"><code>Function</code></a>을 가리키는 참조라면 그 속성을 메서드라고 합니다.</p> <p>속성에 접근하는 법은 점 표기법과 괄호 표기법 두 가지가 있습니다.</p>
+</div></section><section aria-labelledby="점_표기법"><h3 id="점_표기법">점 표기법</h3>
+<div class="section-content">
+<div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="WHU2hUBvN1ng1P7QbrIlhLrJ3FsNYOesbVhvuFFXm3w=" data-language="js">get <span class="token operator">=</span> object<span class="token punctuation">.</span>property<span class="token punctuation">;</span>
+object<span class="token punctuation">.</span>property <span class="token operator">=</span> set<span class="token punctuation">;</span>
+</pre>
+</div> <p>이 코드에서, <code>property</code>는 유효한 JavaScript <a href="https://developer.mozilla.org/ko/docs/Glossary/Identifier">식별자</a>여야합니다. 따라서 <code>object.$1</code>은 유효하지만 <code>object.1</code>은 아닙니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="qiQjJQG3hLwIiac+r1q6lr698Ezl70h7aT6V2FeQLx8=" data-language="js">document<span class="token punctuation">.</span><span class="token function">createElement</span><span class="token punctuation">(</span><span class="token string">'pre'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div> <p>여기서는 "createElement"라는 이름을 가진 메서드를 <code>document</code>에서 찾아 호출하고 있습니다.</p> <p>소숫점 없는 숫자 리터럴의 메서드를 호출하고 싶으면, 메서드의 접근자 앞에 공백을 한 칸 추가해 점이 소숫점으로 인식되지 않도록 해야 합니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="WIc3IiW0JT+6j7/MSjRuDJwvvilEkmLzBbx3IpuFYO4=" data-language="js">    <span class="token number">77</span> <span class="token punctuation">.</span><span class="token function">toExponential</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// or</span>
+    <span class="token number">77</span>
+    <span class="token punctuation">.</span><span class="token function">toExponential</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// or</span>
+    <span class="token punctuation">(</span><span class="token number">77</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toExponential</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// or</span>
+    <span class="token number">77.</span><span class="token punctuation">.</span><span class="token function">toExponential</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// or</span>
+    <span class="token number">77.0</span><span class="token punctuation">.</span><span class="token function">toExponential</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// because 77. === 77.0, no ambiguity</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="괄호_표기법"><h3 id="괄호_표기법">괄호 표기법</h3>
+<div class="section-content">
+<div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="j8AypIQlC/AwtGCHZ6ktd0s5sgK4IeYEyl+uSAOWLhc=" data-language="js">get <span class="token operator">=</span> object<span class="token punctuation">[</span>property_name<span class="token punctuation">]</span><span class="token punctuation">;</span>
+object<span class="token punctuation">[</span>property_name<span class="token punctuation">]</span> <span class="token operator">=</span> set<span class="token punctuation">;</span>
+</pre>
+</div> <p>괄호 표기법에서는 <code>property_name</code> 으로 문자열이나 <a href="../global_objects/symbol"><code>Symbol</code></a>을 사용할 수 있습니다. 문자열은 유효한 식별자가 아니어도 괜찮습니다. "<code>1foo</code>", "<code>!bar!</code>", 심지어 " "(공백)도 가능합니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="csCR2v4z8dRtMHSIn9q3IEwKTaM1IGNu+sONE+XbMTQ=" data-language="js">document<span class="token punctuation">[</span><span class="token string">'createElement'</span><span class="token punctuation">]</span><span class="token punctuation">(</span><span class="token string">'pre'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div> <p>이 코드는 점 표기법의 예시와 동일합니다.</p> <p>괄호 앞에 공백이 올 수도 있습니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="Ydrrb0bV9TQKrBbKu2ov9nA55V/0b+P3QzL5/7dtP2c=" data-language="js">    document <span class="token punctuation">[</span><span class="token string">'createElement'</span><span class="token punctuation">]</span><span class="token punctuation">(</span><span class="token string">'pre'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="속성_이름"><h3 id="속성_이름">속성 이름</h3>
+<div class="section-content">
+<p>속성의 이름은 문자열이나 <a href="../global_objects/symbol"><code>Symbol</code></a>입니다. 숫자 등의 다른 자료형은 문자열로 변환됩니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="F83k9NRjHBRf7A2nvGybJV4xlyUG4m4lTDQOoHRdEUI=" data-language="js"><span class="token keyword">var</span> object <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+object<span class="token punctuation">[</span><span class="token string">'1'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">'value'</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>object<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div> <p>위 코드의 <code>1</code>은 <code>'1'</code>로 변환되므로, 출력 결과는 "value"입니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="p3S5p4+JoQ5LwbnQHHVNXSKfvr3hpOT7rgeGt0RS1FA=" data-language="js"><span class="token keyword">var</span> foo <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token literal-property property">unique_prop</span><span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">}</span><span class="token punctuation">,</span> bar <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token literal-property property">unique_prop</span><span class="token operator">:</span> <span class="token number">2</span><span class="token punctuation">}</span><span class="token punctuation">,</span> object <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+object<span class="token punctuation">[</span>foo<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">'value'</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>object<span class="token punctuation">[</span>bar<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div> <p>위의 코드 역시 <code>foo</code>와 <code>bar</code>가 같은 문자열(<a href="https://developer.mozilla.org/ko/docs/SpiderMonkey" class="page-not-created">SpiderMonkey</a> JavaScript 엔진에서는 문자열 "<code>['object Object']</code>")로 변환되므로, 출력 결과는 동일하게 "value"입니다.</p>
+</div></section><section aria-labelledby="메서드_바인딩"><h3 id="메서드_바인딩">메서드 바인딩</h3>
+<div class="section-content"><p>메서드는 해당 메서드의 객체에 바인딩되지 않습니다. 특히 <code>this</code>는 메서드 내에 고정되지 않으므로 <code>this</code>가 항상 현재 메서드를 포함하는 객체를 참조하는건 아닙니다. 대신, <code>this</code>는 함수 호출 방식에 따라 "전달"됩니다. <a href="this#bind_%EB%A9%94%EC%84%9C%EB%93%9C">메서드 바인딩</a>을 참고하세요.</p></div></section><section aria-labelledby="eval_주의사항"><h3 id="eval_주의사항">
+<code>eval()</code> 주의사항</h3>
+<div class="section-content">
+<p>JavaScript 초심자로써는 괄호 표기법을 사용할 수 있는 장소에 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/eval"><code>eval()</code> <small>(en-US)</small></a>을 남용하기 쉽습니다. 간혹 스크립트에서 다음과 같은 구문을 찾아볼 수 있습니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="Ra6gTI2lUt+S3Mt1U9BB5lw3XwhXwV6jf3I3xPgj9gg=" data-language="js">x <span class="token operator">=</span> <span class="token function">eval</span><span class="token punctuation">(</span><span class="token string">'document.forms.form_name.elements.'</span> <span class="token operator">+</span> strFormControl <span class="token operator">+</span> <span class="token string">'.value'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div> <p><code>eval()</code>은 느리고, 가능하다면 최대한 피해야 합니다. 또한, <code>strFormControl</code>은 유효한 식별자여야 하지만, 폼 컨트롤의 ID나 이름은 식별자가 아닐 수도 있습니다. 따라서 괄호 표기법을 대신 사용하는 것이 좋습니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="RG4yzMXt9LLLZuL5mGnKSGMKBPZKfs9PlxIlvR4Pcx4=" data-language="js">x <span class="token operator">=</span> document<span class="token punctuation">.</span>forms<span class="token punctuation">[</span><span class="token string">"form_name"</span><span class="token punctuation">]</span><span class="token punctuation">.</span>elements<span class="token punctuation">[</span>strFormControl<span class="token punctuation">]</span><span class="token punctuation">.</span>value<span class="token punctuation">;</span>
+</pre>
+</div>
+</div></section><h2 id="명세서">명세서</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://tc39.es/ecma262/multipage/ecmascript-language-expressions.html#sec-property-accessors">ECMAScript Language Specification <br><small># sec-property-accessors</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="../global_objects/object"><code>Object</code></a></li> <li><a href="../global_objects/object/defineproperty"><code>Object.defineProperty()</code></a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Operators/Property_accessors" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Operators/Property_accessors</a>
+  </p>
+</div>

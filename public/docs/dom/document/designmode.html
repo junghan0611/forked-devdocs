@@ -1,0 +1,32 @@
+<header><h1>Document.designMode</h1></header><div class="section-content"><p><code>document.designMode</code>는 전체 document의 편집 가능 여부를 제어합니다. 유효한 값은 <code>"on"</code> 과 <code>"off"</code> 입니다. 명세에 따르면, 이 속성은 기본적으로 <code>"off"</code>로 설정되어 있습니다. Firefox는 이 표준 명세를 따릅니다. Chrome과 IE의 초기 버전들에서는 <code>"inherit"</code> 로 설정되어 있습니다. IE6-10 브라우저에서는, 값이 대문자로 표기됩니다.</p></div>
+<h2 id="syntax">Syntax</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="5clAkk3q61z0aDn1NmgmjI5GKa3NCWyhpf5UDKzpLTQ=" data-language="js"><span class="token keyword">var</span> mode <span class="token operator">=</span> document<span class="token punctuation">.</span>designMode<span class="token punctuation">;</span>
+document<span class="token punctuation">.</span>designMode <span class="token operator">=</span> <span class="token string">"on"</span><span class="token punctuation">;</span>
+document<span class="token punctuation">.</span>designMode <span class="token operator">=</span> <span class="token string">"off"</span><span class="token punctuation">;</span>
+</pre>
+</div></div>
+<h2 id="example">Example</h2>
+<div class="section-content">
+<p><a href="https://developer.mozilla.org/ko/docs/Web/HTML/Element/iframe"><code>&lt;iframe&gt;</code></a>의 document를 편집 가능하게 설정합니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="kFTEUr9FMLT4Z7Y8fqhO/QfMVBp8V8uMmCwpIHY7p+U=" data-language="js">iframeNode<span class="token punctuation">.</span>contentDocument<span class="token punctuation">.</span>designMode <span class="token operator">=</span> <span class="token string">"on"</span><span class="token punctuation">;</span>
+</pre>
+</div>
+</div>
+<h2 id="명세서">명세서</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://html.spec.whatwg.org/multipage/interaction.html#dom-document-designmode-dev">HTML Standard <br><small># dom-document-designmode-dev</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<h2 id="see_also">See also</h2>
+<div class="section-content"><ul> <li><a href="https://developer.mozilla.org/ko/docs/Rich-Text_Editing_in_Mozilla" class="page-not-created">Rich-Text Editing in Mozilla</a></li> <li><a href="../htmlelement/contenteditable"><code>HTMLElement.contentEditable</code></a></li> <li>
+<a href="https://msdn.microsoft.com/en-us/library/ms533720(v=vs.85).aspx" target="_blank">designMode property</a> on MSDN</li> </ul></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/Document/designMode" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/Document/designMode</a>
+  </p>
+</div>

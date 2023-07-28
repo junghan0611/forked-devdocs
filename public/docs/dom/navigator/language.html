@@ -1,0 +1,33 @@
+<header><h1>Navigator.language</h1></header><div class="section-content"><p><code>Navigator.language</code> 읽기 전용 속성은 사용자의 선호 언어(일반적으로 브라우저 UI의 언어)를 나타내는 문자열을 반환합니다.</p></div>
+<h2 id="구문">구문</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="c1CXVC4cbWBck9NyIhm/eWCz4k9zGeqzuzSmd42gImY=" data-language="js"><span class="token keyword">const</span> lang <span class="token operator">=</span> navigator<span class="token punctuation">.</span>language
+</pre>
+</div></div>
+<h3 id="값">값</h3>
+<div class="section-content">
+<p><a href="https://datatracker.ietf.org/doc/html/rfc5646" target="_blank">RFC 5646: Tags for Identifying Languages(BCP 47)</a>가 정의한 언어 태그의 <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/String"><code>DOMString</code></a>입니다. 유효한 값은 "en", "en-US", "ko", "ko-KR" 등입니다.</p> <p>iOS Safari 버전 10.2 이전에서는 "en-us", "ko-kr"처럼 국가 코드를 소문자로 반환합니다.</p>
+</div>
+<h2 id="예제">예제</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="RzuKFtbIm3kBrjhExcEt80LnAY0lAauG7Td5ns21tH4=" data-language="js"><span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex"><span class="token anchor function">^</span>en<span class="token anchor function">\b</span></span><span class="token regex-delimiter">/</span></span><span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span>navigator<span class="token punctuation">.</span>language<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token function">doLangSelect</span><span class="token punctuation">(</span>window<span class="token punctuation">.</span>navigator<span class="token punctuation">.</span>language<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div></div>
+<h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://html.spec.whatwg.org/multipage/system-state.html#dom-navigator-language-dev">HTML Standard <br><small># dom-navigator-language-dev</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/Navigator/languages"><code>navigator.languages</code> <small>(en-US)</small></a></li> <li><a href="../navigator"><code>navigator</code></a></li> </ul></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/Navigator/language" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/Navigator/language</a>
+  </p>
+</div>

@@ -1,0 +1,81 @@
+<header><h1>RTCPeerConnection.addIceCandidate()</h1></header><div class="section-content">
+<p><a href="../rtcpeerconnection"><code>RTCPeerConnection</code></a>을 사용하는 웹이나 앱이 신규 ICE candidate를 signaling 채널을 통해 원격 유저로부터 수신하게되면, **<code>RTCPeerConnection.addIceCandidate()</code>**를 호출해서 브라우저의 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Glossary/ICE">ICE <small>(en-US)</small></a> 에이전트에게 새로 수신한 candidate를 전달합니다. 이 메소드는 <code>RTCPeerConnection</code>의 원격 설명 (remote description)에 연결의 원격쪽 상태를 설명해주는 신규 원격 candidate를 추가합니다.</p> <p><code>addIceCandidate()</code> 호출시 <code>candidate</code> 매개변수가 존재하지 않거나 값이 <code>null</code>인 경우에, 추가된 ICE candidate는 "candidate 종료"를 알려줍니다. 지정한 객체의<a href="../rtcicecandidate/candidate"><code>candidate</code></a> 값이 존재하지 않거나, 빈 문자열 (<code>""</code>)인 경우에도 원격 candidate들이 모두 전달되었음을 알려줍니다.</p> <p>"candidate 종료" 알림은 a-line 값의 <code>end-of-candidates</code>를 가진 candidate와 함께 원격 유저에 송신됩니다.</p> <p>네고시에이션 중에 앱이 위의 방법처럼 ICE 에이전트에 전달할 다수의 candidate를 수신 받을 수 있고, 이는 가능한 연결 방법들의 리스트를 만들 수 있도록 도와줍니다. 자세한 내용은 <a href="https://developer.mozilla.org/en-US/docs/Web/API/WebRTC_API/Connectivity" class="only-in-en-us">WebRTC connectivity <small>(en-US)</small></a>와 <a href="../webrtc_api/signaling_and_video_calling">Signaling and video calling</a>를 참고하십시오.</p>
+</div>
+<h2 id="syntax">Syntax</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="0grLpsI1SqRgquGccESqr57u2ZoZ5aL/ySPuNqrpAow=" data-language="js">aPromise <span class="token operator">=</span> pc<span class="token punctuation">.</span><span class="token function">addIceCandidate</span><span class="token punctuation">(</span>candidate<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token function">addIceCandidate</span><span class="token punctuation">(</span>candidate<span class="token punctuation">,</span> successCallback<span class="token punctuation">,</span> failureCallback<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div></div>
+<h3 id="매개변수">매개변수</h3>
+<div class="section-content"><dl> <dt id="candidate">
+<code>candidate</code> <span class="badge inline optional">Optional</span>
+</dt> <dd> <p><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/RTCIceCandidate/RTCIceCandidate"><code>RTCIceCandidateInit</code> <small>(en-US)</small></a> 딕셔너리 혹은 <a href="../rtcicecandidate"><code>RTCIceCandidate</code></a> 객체에 해당하는 객체입니다. 이 객체의 내용은 signaling 채널을 통해 수신 받은 메세지로 구성되어야합니다. 메세지는 이미 로컬 ICE 에이전트에 전달 될 준비가 된 새로 수신받은 ICE candidate를 설명합니다.<code>candidate</code> 객체가 지정되어있지 않거나, <code>null</code> 이라면, "candidate 종료" 신호가 <code>end-of-candidates</code> a-line을 사용해서 원격 유저에게 전달됩니다. a-line의 형식은 아래와 같습니다: a=end-of-candidates</p> </dd> </dl></div>
+<h3 id="더_이상_사용되지_않는_변수_deprecated">더 이상 사용되지 않는 변수 (Deprecated)</h3>
+<div class="section-content">
+<p>이전 버전의 문서에서는 이 함수를 콜백 기반으로 사용하도록 되어있습니다. 콜백 기반 함수는 이제 더 이상 사용되지 않으며, 사용하지 않는 것을 권장합니다. 이미 사용 중이라면, <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Promise"><code>Promise</code></a> 버전인 <code>addIceCandidate()</code>를 사용하도록 코드를 업데이트 하십시오. 이전 버전의 코드를 업데이트 하는 것을 쉽게 하기 위해 고안된 <code>addIceCandidate()</code>의 특정 변수에 대해 아래에서 설명합니다.</p> <dl> <dt id="successcallback">
+<code>successCallback</code> <abbr class="icon icon-deprecated" title="지원이 중단되었습니다. 새로운 웹사이트에서 사용하지 마세요."> <span class="visually-hidden">지원이 중단되었습니다</span> </abbr>
+</dt> <dd> <p>ICE candidate가 성공적으로 추가되었을 때에 호출되는 함수입니다. 이 함수는 입력 변수가 없으며, 아무런 값도 반환하지 않도록 되어있습니다.</p> </dd> <dt id="failurecallback">
+<code>failureCallback</code> <abbr class="icon icon-deprecated" title="지원이 중단되었습니다. 새로운 웹사이트에서 사용하지 마세요."> <span class="visually-hidden">지원이 중단되었습니다</span> </abbr>
+</dt> <dd> <p>ICE candidate 추가 시도가 실패하면 호출되는 함수입니다. 실패에 대한 이유를 설명하는 객체인 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/DOMException"><code>DOMException</code> <small>(en-US)</small></a>을 입력 변수로 받습니다.</p> </dd> </dl>
+</div>
+<h3 id="반환_값">반환 값</h3>
+<div class="section-content"><p><a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Promise"><code>Promise</code></a>는 candidate가 ICE 에이전트에 의해 원격 유저의 설명 (description)에 성공적으로 추가되면 fulfilled 됩니다. 프로미스는 입력 변수가 없습니다.</p></div>
+<h3 id="예외_처리">예외 처리</h3>
+<div class="section-content">
+<p>ICE candidate 추가 시도 중 에러가 발생하면, 이 메소드에서 반환되는 <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Promise"><code>Promise</code></a>는 거절됩니다. 그리고 거절 핸들러로 전달되는 지정된 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/DOMException"><code>DOMException</code> <small>(en-US)</small></a> 객체안에 존재하는 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/DOMException/name"><code>name</code> <small>(en-US)</small></a> 속성으로 아래의 에러 중 하나를 반환하게 됩니다.</p> <dl> <dt id="typeerror"><code>TypeError</code></dt> <dd> <p>명시한 candidate의 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/RTCIceCandidate/sdpMid"><code>sdpMid</code> <small>(en-US)</small></a> 및<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/RTCIceCandidate/sdpMLineIndex"><code>sdpMLineIndex</code> <small>(en-US)</small></a>가 모두 <code>null</code> 입니다.</p> </dd> <dt id="invalidstateerror"><code>InvalidStateError</code></dt> <dd> <p>현재 <code>RTCPeerConnection</code>은 어떠한 원격 유저와도 연결이 되어있지 않습니다. <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/RTCPeerConnection/remoteDescription"><code>remoteDescription</code> <small>(en-US)</small></a> 값이 <code>null</code>입니다.</p> </dd> <dt id="operationerror"><code>OperationError</code></dt> <dd> <p>이 에러는 여러가지 이유 때문에 발생합니다:* 지정된 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/RTCIceCandidate/sdpMid"><code>sdpMid</code> <small>(en-US)</small></a> 값이 non-<code>null</code>이고, <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/RTCPeerConnection/remoteDescription"><code>remoteDescription</code> <small>(en-US)</small></a>안에 존재하는 어떠한 미디어 description의 미디어 ID와도 일치하지 않음</p> <ul> <li>지정된 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/RTCIceCandidate/sdpMLineIndex"><code>sdpMLineIndex</code> <small>(en-US)</small></a>의 값이 원격 설명 (description)에 포함된 미디어의 숫자와 같거나 큼</li> <li>지정된 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/RTCIceCandidate/usernameFragment"><code>ufrag</code> <small>(en-US)</small></a>가 어떠한 원격 설명 (description) 안의 <code>ufrag</code> 필드와 일치하지 않음</li> <li>
+<a href="../rtcicecandidate"><code>candidate</code></a> 문자열에 존재하는 하나 혹은 여러개의 값들이 올바르지 않거나, 파싱 될 수 없음</li> <li>어떠한 이유에서던 candidate를 추가하려는 시도가 실패</li> </ul> </dd> </dl>
+</div>
+<h2 id="예시">예시</h2>
+<div class="section-content">
+<p>아래의 코드는 임의의 signaling 채널을 통해 어떻게 ICE candidate를 알리는지를 보여줍니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="9SnYxl4qAn3l1m7aOGz4b+PVFPOLJf+zu9OVGVni4OY=" data-language="js"><span class="token comment">// 본 예제는 다른 유저가 아래와 같은 signaling 채널을 사용한다고 가정합니다:</span>
+<span class="token comment">//</span>
+<span class="token comment">// pc.onicecandidate = event =&gt; {</span>
+<span class="token comment">//   if (event.candidate) {</span>
+<span class="token comment">//     signalingChannel.send(JSON.stringify({ice: event.candidate})); // "ice" is arbitrary</span>
+<span class="token comment">//   } else {</span>
+<span class="token comment">//     // All ICE candidates have been sent</span>
+<span class="token comment">//   }</span>
+<span class="token comment">// }</span>
+
+signalingChannel<span class="token punctuation">.</span><span class="token function-variable function">onmessage</span> <span class="token operator">=</span> <span class="token parameter">receivedString</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> message <span class="token operator">=</span> <span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span>receivedString<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>message<span class="token punctuation">.</span>ice<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// A typical value of ice here might look something like this:</span>
+    <span class="token comment">//</span>
+    <span class="token comment">// {candidate: "candidate:0 1 UDP 2122154243 192.168.1.9 53421 typ host", sdpMid: "0", ...}</span>
+    <span class="token comment">//</span>
+    <span class="token comment">// Pass the whole thing to addIceCandidate:</span>
+
+    pc<span class="token punctuation">.</span><span class="token function">addIceCandidate</span><span class="token punctuation">(</span>message<span class="token punctuation">.</span>ice<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">catch</span><span class="token punctuation">(</span><span class="token parameter">e</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"Failure during addIceCandidate(): "</span> <span class="token operator">+</span> e<span class="token punctuation">.</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+    <span class="token comment">// handle other things you might be signaling, like sdp</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</pre>
+</div> <p>원격 유저에 의해 이러한 방식으로 신호를 전달한 마지막 candiate는 "candidate 종료"를 나타내는 특수한 candidate가 됩니다. "candidate 종료"를 수동으로 설정하려면 다음과 같이 하면 됩니다:</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="N9v7MCRuPpY7O1+Tx78ihrDTRMYq9geapo/oBQ7vZjI=" data-language="js">pc<span class="token punctuation">.</span><span class="token function">addIceCandidate</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token literal-property property">candidate</span><span class="token operator">:</span><span class="token string">''</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div> <p>하지만, 대부분의 경우 <a href="../rtcpeerconnection"><code>RTCPeerConnection</code></a>가 적절한 이벤트를 보내서 처리해주기 때문에 이를 수동으로 확인해야 할 필요는 없습니다.</p>
+</div>
+<h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://w3c.github.io/webrtc-pc/#dom-peerconnection-addicecandidate">WebRTC: Real-Time Communication in Browsers <br><small># dom-peerconnection-addicecandidate</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<h2 id="참조">참조</h2>
+<div class="section-content"><ul> <li><a href="../webrtc_api">WebRTC API</a></li> <li><a href="../webrtc_api/signaling_and_video_calling">Signaling and video calling</a></li> <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/WebRTC_API/Protocols" class="only-in-en-us">WebRTC architecture overview <small>(en-US)</small></a></li> <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/WebRTC_API/Connectivity" class="only-in-en-us">WebRTC connectivity <small>(en-US)</small></a></li> <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/WebRTC_API/Session_lifetime" class="only-in-en-us">Lifetime of a WebRTC session <small>(en-US)</small></a></li> </ul></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/RTCPeerConnection/addIceCandidate" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/RTCPeerConnection/addIceCandidate</a>
+  </p>
+</div>

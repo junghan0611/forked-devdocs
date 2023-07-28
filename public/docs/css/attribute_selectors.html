@@ -1,0 +1,174 @@
+<header><h1>특성 선택자</h1></header><div class="section-content">
+<p><a href="https://developer.mozilla.org/ko/docs/Web/CSS">CSS</a> <strong>특성 선택자</strong>는 주어진 특성의 존재 여부나 그 값에 따라 요소를 선택합니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="lfD7kdRxaGtKxOSiBs5TaTKIkH/W27eiA8MaUZgesJU=" data-language="css"><span class="token comment">/* &lt;a&gt; elements with a title attribute */</span>
+<span class="token selector">a[title]</span> <span class="token punctuation">{</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> purple<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">/* &lt;a&gt; elements with an href matching "https://example.org" */</span>
+<span class="token selector">a[href="https://example.org"]</span> <span class="token punctuation">{</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> green<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">/* &lt;a&gt; elements with an href containing "example" */</span>
+<span class="token selector">a[href*="example"]</span> <span class="token punctuation">{</span>
+  <span class="token property">font-size</span><span class="token punctuation">:</span> 2em<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">/* &lt;a&gt; elements with an href ending ".org" */</span>
+<span class="token selector">a[href$=".org"]</span> <span class="token punctuation">{</span>
+  <span class="token property">font-style</span><span class="token punctuation">:</span> italic<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">/* &lt;a&gt; elements whose class attribute contains the word "logo" */</span>
+<span class="token selector">a[class~="logo"]</span> <span class="token punctuation">{</span>
+  <span class="token property">padding</span><span class="token punctuation">:</span> 2px<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div>
+</div>
+<section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content"><dl> <dt id="attr"><code>[attr]</code></dt> <dd> <p><code>attr</code>이라는 이름의 특성을 가진 요소를 선택합니다.</p> </dd> <dt id="attrvalue"><code>[attr=value]</code></dt> <dd> <p><code>attr</code>이라는 이름의 특성값이 정확히 <code>value</code>인 요소를 선택합니다.</p> </dd> <dt id="attrvalue_2"><code>[attr~=value]</code></dt> <dd> <p><code>attr</code>이라는 이름의 특성값이 정확히 <code>value</code>인 요소를 선택합니다. <code>attr</code> 특성은 공백으로 구분한 여러 개의 값을 가지고 있을 수 있습니다.</p> </dd> <dt id="attrvalue_3"><code>[attr|=value]</code></dt> <dd> <p><code>attr</code>이라는 특성값을 가지고 있으며, 그 특성값이 정확히 <code>value</code>이거나 <code>value</code>로 시작하면서 <code>-</code>(U+002D) 문자가 곧바로 뒤에 따라 붙으면 이 요소를 선택합니다. 보통 언어 서브코드(<code>en-US</code>, <code>ko-KR</code> 등)가 일치하는지 확인할 때 사용합니다.</p> </dd> <dt id="attrvalue_4"><code>[attr^=value]</code></dt> <dd> <p><code>attr</code>이라는 특성값을 가지고 있으며, 접두사로 <code>value</code>가 값에 포함되어 있으면 이 요소를 선택합니다.</p> </dd> <dt id="attrvalue_5"><code>[attr$=value]</code></dt> <dd> <p><code>attr</code>이라는 특성값을 가지고 있으며, 접미사로 <code>value</code>가 값에 포함되어 있으면 이 요소를 선택합니다.</p> </dd> <dt id="attrvalue_6"><code>[attr*=value]</code></dt> <dd> <p><code>attr</code>이라는 특성값을 가지고 있으며, 값 안에 <code>value</code>라는 문자열이 적어도 하나 이상 존재한다면 이 요소를 선택합니다.</p> </dd> <dt id="attr_operator_value_i"><code>[attr operator value i]</code></dt> <dd> <p>괄호를 닫기 전에 <code>i</code> 혹은 <code>I</code>를 붙여주면 값의 대소문자를 구분하지 않습니다. (ASCII 범위 내에 존재하는 문자에 한해서 적용됩니다)</p> </dd> <dt id="attr_operator_value_s">
+<code>[attr operator value s]</code> <abbr class="icon icon-experimental" title="Experimental. 예상되는 동작은 향후 변경될 수 있습니다."> <span class="visually-hidden">Experimental</span> </abbr>
+</dt> <dd> <p>괄호를 닫기 전에 <code>s</code> 혹은 <code>S</code>를 붙여주면 값의 대소문자를 구분합니다. (ASCII 범위 내에 존재하는 문자에 한해서 적용됩니다)</p> </dd> </dl></div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+</section><section aria-labelledby="링크"><h3 id="링크">링크</h3>
+<div class="section-content">
+<h4 id="css">CSS</h4> <div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="lF87bKH9QQdqZEi/uqoCBrEzmL/QPA2/QR+msBU66yI=" data-language="css"><span class="token selector">a</span> <span class="token punctuation">{</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> blue<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">/* Internal links, beginning with "#" */</span>
+<span class="token selector">a[href^="#"]</span> <span class="token punctuation">{</span>
+  <span class="token property">background-color</span><span class="token punctuation">:</span> gold<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">/* Links with "example" anywhere in the URL */</span>
+<span class="token selector">a[href*="example"]</span> <span class="token punctuation">{</span>
+  <span class="token property">background-color</span><span class="token punctuation">:</span> silver<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">/* Links with "insensitive" anywhere in the URL,
+   regardless of capitalization */</span>
+<span class="token selector">a[href*="insensitive" i]</span> <span class="token punctuation">{</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> cyan<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">/* Links with "cAsE" anywhere in the URL,
+with matching capitalization */</span>
+<span class="token selector">a[href*="cAsE" s]</span> <span class="token punctuation">{</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> pink<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">/* Links that end in ".org" */</span>
+<span class="token selector">a[href$=".org"]</span> <span class="token punctuation">{</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> red<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div> <h4 id="html">HTML</h4> <div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="gE711XC0szufztxSDTDbGWMvgnJrQnyXnX6UFOJ7SGU=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ul</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>#internal<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Internal link<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>http://example.com<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Example link<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>#InSensitive<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Insensitive internal link<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>http://example.org<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Example org link<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>ul</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div> <h4 id="결과">결과</h4>
+<div class="code-example" id="sect1">
+
+<iframe class="sample-code-frame" title="링크 sample" id="frame_링크" src="https://live.mdnplay.dev/ko/docs/Web/CSS/Attribute_selectors/runner.html?id=%EB%A7%81%ED%81%AC" loading="lazy"></iframe>
+</div>
+</div></section><section aria-labelledby="언어"><h3 id="언어">언어</h3>
+<div class="section-content">
+<h4 id="css_2">CSS</h4> <div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="5A1RXgIjun6swN1mtKzjIQ/EdeqKmTov7tNCXxkZADk=" data-language="css"><span class="token comment">/* All divs with a `lang` attribute are bold. */</span>
+<span class="token selector">div[lang]</span> <span class="token punctuation">{</span>
+  <span class="token property">font-weight</span><span class="token punctuation">:</span> bold<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">/* All divs in US English are blue. */</span>
+<span class="token selector">div[lang~="en-us"]</span> <span class="token punctuation">{</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> blue<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">/* All divs in Portuguese are green. */</span>
+<span class="token selector">div[lang="pt"]</span> <span class="token punctuation">{</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> green<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">/* All divs in Chinese are red, whether
+   simplified (zh-CN) or traditional (zh-TW). */</span>
+<span class="token selector">div[lang|="zh"]</span> <span class="token punctuation">{</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> red<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">/* All divs with a Traditional Chinese
+   `data-lang` are purple. */</span>
+<span class="token comment">/* Note: You could also use hyphenated attributes
+   without double quotes */</span>
+<span class="token selector">div[data-lang="zh-TW"]</span> <span class="token punctuation">{</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> purple<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div> <h4 id="html_2">HTML</h4> <div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="GMbZYV7pdgHoaQZ3CyJSYGrobOj0sLt+glYwgxP/uY0=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">lang</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>en-us en-gb en-au en-nz<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Hello World!<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">lang</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>pt<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Olá Mundo!<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">lang</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>zh-CN<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>世界您好！<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">lang</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>zh-TW<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>世界您好！<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">data-lang</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>zh-TW<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>世界您好！<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div> <h4 id="결과_2">결과</h4>
+<div class="code-example" id="sect2">
+
+<iframe class="sample-code-frame" title="언어 sample" id="frame_언어" src="https://live.mdnplay.dev/ko/docs/Web/CSS/Attribute_selectors/runner.html?id=%EC%96%B8%EC%96%B4" loading="lazy"></iframe>
+</div>
+</div></section><section aria-labelledby="html_정렬_목록"><h3 id="html_정렬_목록">HTML 정렬 목록</h3>
+<div class="section-content">
+<p><a href="https://developer.mozilla.org/ko/docs/Web/HTML/Element/input#attr-type"><code>type</code></a> 특성은 주로 <a href="https://developer.mozilla.org/ko/docs/Web/HTML/Element/input"><code>&lt;input&gt;</code></a> 요소에 사용하므로, HTML 명세는 type의 대소문자를 구분하지 않고 선택하도록 요구하고 있습니다. 그러므로 <a href="https://developer.mozilla.org/ko/docs/Web/HTML/Element/ol"><code>&lt;ol&gt;</code></a>의 <a href="https://developer.mozilla.org/ko/docs/Web/HTML/Element/ol#attr-type"><code>type</code></a>을 특성 선택자로 선택할 땐 <a href="#case-sensitive">대소문자 구분</a> 수정자를 지정하지 않으면 동작하지 않습니다.</p> <h4 id="css_3">CSS</h4> <div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="J5PNo/44t3ddHxKhczO0uOyCqpBakwKwynB5YXrnXSk=" data-language="css"><span class="token comment">/* List types require the case sensitive flag due to a quirk in how HTML treats the type attribute. */</span>
+<span class="token selector">ol[type="a"]</span> <span class="token punctuation">{</span>
+  <span class="token property">list-style-type</span><span class="token punctuation">:</span> lower-alpha<span class="token punctuation">;</span>
+  <span class="token property">background</span><span class="token punctuation">:</span> red<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">ol[type="a" s]</span> <span class="token punctuation">{</span>
+  <span class="token property">list-style-type</span><span class="token punctuation">:</span> lower-alpha<span class="token punctuation">;</span>
+  <span class="token property">background</span><span class="token punctuation">:</span> lime<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">ol[type="A" s]</span> <span class="token punctuation">{</span>
+  <span class="token property">list-style-type</span><span class="token punctuation">:</span> upper-alpha<span class="token punctuation">;</span>
+  <span class="token property">background</span><span class="token punctuation">:</span> lime<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div> <h4 id="html_3">HTML</h4> <div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="SoCkInjkUjLgCBFP1D5LEqY1frlnIrT18lHSFy5RuzA=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ol</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>A<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">&gt;</span></span>Example list<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>ol</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div> <h4 id="결과_3">결과</h4>
+<div class="code-example" id="sect3">
+
+<iframe class="sample-code-frame" title="HTML 정렬 목록 sample" id="frame_html_정렬_목록" src="https://live.mdnplay.dev/ko/docs/Web/CSS/Attribute_selectors/runner.html?id=html_%EC%A0%95%EB%A0%AC_%EB%AA%A9%EB%A1%9D" loading="lazy"></iframe>
+</div>
+</div></section><h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://drafts.csswg.org/selectors/#attribute-selectors">Selectors Level 4 <br><small># attribute-selectors</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li>CSS <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/attr"><code>attr()</code> <small>(en-US)</small></a> 함수</li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/CSS/Attribute_selectors" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/CSS/Attribute_selectors</a>
+  </p>
+</div>

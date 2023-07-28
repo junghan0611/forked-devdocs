@@ -1,0 +1,54 @@
+<header><h1>Math.pow()</h1></header><div class="section-content">
+**<code>Math.pow()</code>**함수는<code>base^exponent</code>처럼 <code>base</code> 에 <code>exponent</code>를 제곱한 값을 반환합니다.</div>
+<section aria-labelledby="시도해보기"><h2 id="시도해보기">시도해보기</h2>
+<div class="section-content">
+<iframe class="interactive is-js-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/js/math-pow.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe> 
+</div></section><section aria-labelledby="문법"><h2 id="문법">문법</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="VLRAvAnLUhOAEpoWHhM3bgiGzewgRbqDDaWZfuLXD70=" data-language="js">Math<span class="token punctuation">.</span><span class="token function">pow</span><span class="token punctuation">(</span>base<span class="token punctuation">,</span> exponent<span class="token punctuation">)</span>
+</pre>
+</div></div></section><section aria-labelledby="매개변수"><h3 id="매개변수">매개변수</h3>
+<div class="section-content"><dl> <dt id="base"><code>base</code></dt> <dd> <p>밑 값.</p> </dd> <dt id="exponent"><code>exponent</code></dt> <dd> <p> <code>밑</code> 을 제곱하기 위해 사용하는 지수. </p> </dd> </dl></div></section><section aria-labelledby="반환_값"><h3 id="반환_값">반환 값</h3>
+<div class="section-content"><p>주어진 밑 값을 주어진 지수 값으로 거듭제곱한 숫자 값.</p></div></section><section aria-labelledby="설명"><h2 id="설명">설명</h2>
+<div class="section-content">
+<p> **<code>Math.pow()</code>**함수는 <code>base</code>의 <code>exponent</code> 곱, 즉 <code>base^exponent</code>를 반환합니다. <code>base</code>와 <code>exponent</code>는 10진수입니다. </p> <p> <code>pow()</code>는 <code>Math</code>의 정적 메서드이므로 <code>Math</code>객체를 생성하여 그 메서드로 사용하지 말고, 항상 <code>Math.pow()</code>로 사용하십시오. (<code>Math</code>에는 생성자가 없습니다). 만약 밑(base) 값이 음수이고 지수(exponent)가 정수가 아닌 경우 결과는 NaN입니다. </p>
+</div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+</section><section aria-labelledby="math.pow사용하기"><h3 id="math.pow사용하기">Math.pow()사용하기</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="gpDoB+g00ekY7OrL3RNErT6W4S2zTLNVdV9cmipxOto=" data-language="js"><span class="token comment">// 간단한 예</span>
+Math<span class="token punctuation">.</span><span class="token function">pow</span><span class="token punctuation">(</span><span class="token number">7</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token comment">// 49</span>
+Math<span class="token punctuation">.</span><span class="token function">pow</span><span class="token punctuation">(</span><span class="token number">7</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token comment">// 343</span>
+Math<span class="token punctuation">.</span><span class="token function">pow</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment">// 1024</span>
+<span class="token comment">// 분수 지수</span>
+Math<span class="token punctuation">.</span><span class="token function">pow</span><span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">0.5</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// 2 (4의 제곱근)</span>
+Math<span class="token punctuation">.</span><span class="token function">pow</span><span class="token punctuation">(</span><span class="token number">8</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token operator">/</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// 2 (8의 세제곱근)</span>
+Math<span class="token punctuation">.</span><span class="token function">pow</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">0.5</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// 1.4142135623730951 (2의 제곱근)</span>
+Math<span class="token punctuation">.</span><span class="token function">pow</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token operator">/</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// 1.2599210498948732 (2의 세제곱근)</span>
+<span class="token comment">// 양의 지수</span>
+Math<span class="token punctuation">.</span><span class="token function">pow</span><span class="token punctuation">(</span><span class="token number">7</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment">// 0.02040816326530612 (1/49)</span>
+Math<span class="token punctuation">.</span><span class="token function">pow</span><span class="token punctuation">(</span><span class="token number">8</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token operator">/</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 0.5</span>
+<span class="token comment">// 양의 밑</span>
+Math<span class="token punctuation">.</span><span class="token function">pow</span><span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">7</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment">// 49 (제곱의 결과값은 양수입니다.)</span>
+Math<span class="token punctuation">.</span><span class="token function">pow</span><span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">7</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment">// -343 (세제곱은 음수가 될 수 있습니다.)</span>
+Math<span class="token punctuation">.</span><span class="token function">pow</span><span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">7</span><span class="token punctuation">,</span> <span class="token number">0.5</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// NaN (음수는 실제 제곱근을 가지지 않습니다.)</span>
+<span class="token comment">// "짝수"와 "홀수" 근이 서로 가깝게 놓여 있고</span>
+<span class="token comment">// 부동소수점 정밀도의 한계로 인해,</span>
+<span class="token comment">// 밑이 음수이며 지수가 분수라면 언제나 NaN을 반환합니다.</span>
+Math<span class="token punctuation">.</span><span class="token function">pow</span><span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">7</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token operator">/</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// NaN</span>
+</pre>
+</div></div></section><h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://tc39.es/ecma262/multipage/numbers-and-dates.html#sec-math.pow">ECMAScript Language Specification <br><small># sec-math.pow</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="cbrt"><code>Math.cbrt()</code></a></li> <li><a href="exp"><code>Math.exp()</code></a></li> <li><a href="log"><code>Math.log()</code></a></li> <li><a href="sqrt"><code>Math.sqrt()</code></a></li> <li><a href="../../operators/exponentiation">멱승연산</a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Math/pow" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Math/pow</a>
+  </p>
+</div>

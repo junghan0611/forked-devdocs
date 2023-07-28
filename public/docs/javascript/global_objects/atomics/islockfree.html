@@ -1,0 +1,36 @@
+<header><h1>Atomics.isLockFree()</h1></header><div class="section-content"><p> <code>Atomics.isLockFree()</code> 정적 메서드는 지정된 요소 바이트 크기를 가진 유형화 배열에 적용될 때 <code>Atomics</code> 메서드가 잠금을 사용할지 아니면 아토믹 하드웨어 연산을 사용할지 결정하는 데 사용됩니다. 주어진 크기가 정수 타입의 형식화 배열의 <a href="../typedarray/bytes_per_element">BYTES_PER_ELEMENT</a> 속성 중 하나가 아닌 경우 <code>false</code>를 반환합니다. </p></div>
+<section aria-labelledby="시도해보기"><h2 id="시도해보기">시도해보기</h2>
+<div class="section-content"><iframe class="interactive is-js-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/js/atomics-islockfree.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe></div></section><section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="vQH/w6U5MbHoDhaH/5rDiUIzzeOV/Xfp3ahBkkeMGw4=" data-language="js">Atomics<span class="token punctuation">.</span><span class="token function">isLockFree</span><span class="token punctuation">(</span>size<span class="token punctuation">)</span>
+</pre>
+</div></div></section><section aria-labelledby="매개변수"><h3 id="매개변수">매개변수</h3>
+<div class="section-content"><dl> <dt id="size"><code>size</code></dt> <dd> <p>검사할 바이트 크기</p> </dd> </dl></div></section><section aria-labelledby="반환_값"><h3 id="반환_값">반환 값</h3>
+<div class="section-content"><p>해당 연산이 락이 걸렸는지 여부를 가리키는 <code>true</code> 혹은 <code>false</code> 값</p></div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+</section><section aria-labelledby="islockfree_사용하기"><h3 id="islockfree_사용하기">isLockFree 사용하기</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="0P+Pl7saUr4+elSjNxJaVGJ/xJkHmEz8sSGc5DKfgxU=" data-language="js">Atomics<span class="token punctuation">.</span><span class="token function">isLockFree</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// true</span>
+Atomics<span class="token punctuation">.</span><span class="token function">isLockFree</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// true</span>
+Atomics<span class="token punctuation">.</span><span class="token function">isLockFree</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// false</span>
+Atomics<span class="token punctuation">.</span><span class="token function">isLockFree</span><span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// true</span>
+Atomics<span class="token punctuation">.</span><span class="token function">isLockFree</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// false</span>
+Atomics<span class="token punctuation">.</span><span class="token function">isLockFree</span><span class="token punctuation">(</span><span class="token number">6</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// false</span>
+Atomics<span class="token punctuation">.</span><span class="token function">isLockFree</span><span class="token punctuation">(</span><span class="token number">7</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// false</span>
+Atomics<span class="token punctuation">.</span><span class="token function">isLockFree</span><span class="token punctuation">(</span><span class="token number">8</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// true</span>
+</pre>
+</div></div></section><h2 id="명세서">명세서</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://tc39.es/ecma262/multipage/structured-data.html#sec-atomics.islockfree">ECMAScript Language Specification <br><small># sec-atomics.islockfree</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="../atomics"><code>Atomics</code></a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Atomics/isLockFree" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Atomics/isLockFree</a>
+  </p>
+</div>

@@ -1,0 +1,21 @@
+<h1>411 Length Required</h1>
+<header><h1>411 Length Required</h1></header><div class="section-content">
+<p> 하이퍼텍스트 전송 규약(HTTP) <code>411 Length Required</code> 클라이언트 오류 응답 코드는 서버가 정의된 <a href="../headers/content-length"><code>Content-Length</code></a> 헤더 없이 요청을 수락하지 않음을 나타냅니다. </p> <div class="notecard note" id="sect1"> <p> <strong>참고:</strong> 사양에 따라 데이터를 일련의 큰 덩어리(chunk) 단위로 데이터를 전송할 때 <code>Content-Length</code> 헤더가 생략되며, 각 청크의 시작 부분에서 현재 청크의 길이를 16진수 형식으로 추가해야 합니다. 자세한 내용은 <a href="../headers/transfer-encoding"><code>Transfer-Encoding</code></a>을 참조하십시요. </p> </div>
+</div>
+<section aria-labelledby="상태"><h2 id="상태">상태</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">http</span></p>
+<pre data-signature="H2z2tDNQs25oXr5fE3eZMQYU1kn5Gseg6gQ82TSEPIY=" data-language="http">411 Length Required
+</pre>
+</div></div></section><h2 id="정의">정의</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://httpwg.org/specs/rfc9110.html#status.411">Unknown specification <br><small># status.411</small></a></td></tr></tbody>
+</table></div>
+<section aria-labelledby="참고"><h2 id="참고">참고</h2>
+<div class="section-content"><ul> <li><a href="../headers/content-length"><code>Content-Length</code></a></li> <li><a href="../headers/transfer-encoding"><code>Transfer-Encoding</code></a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/HTTP/Status/411" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/HTTP/Status/411</a>
+  </p>
+</div>

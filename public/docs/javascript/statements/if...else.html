@@ -1,0 +1,106 @@
+<header><h1>if...else</h1></header><div class="section-content"><p><code>if</code>은 지정한 조건이 <a href="https://developer.mozilla.org/ko/docs/Glossary/Truthy">참</a>인 경우 명령문(statement)을 실행합니다. 조건이 <a href="https://developer.mozilla.org/ko/docs/Glossary/Falsy">거짓</a>인 경우 또 다른 명령문이 실행 될 수 있습니다.</p></div>
+<section aria-labelledby="시도해보기"><h2 id="시도해보기">시도해보기</h2>
+<div class="section-content"><iframe class="interactive is-js-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/js/statement-ifelse.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe></div></section><section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content">
+<div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="4MigSG9vOhwjcj+IuX94uOIY4Yn/ItmRY1hZQblFpXo=" data-language="js">    <span class="token keyword">if</span> <span class="token punctuation">(</span>condition<span class="token punctuation">)</span>
+       statement1
+    <span class="token punctuation">[</span><span class="token keyword">else</span>
+       statement2<span class="token punctuation">]</span>
+</pre>
+</div> <dl> <dt id="condition"><code>condition</code></dt> <dd> <p>참 또는 거짓으로 평가되는 <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Guide/Expressions_and_operators#%ed%91%9c%ed%98%84%ec%8b%9d">표현식</a>입니다.</p> </dd> <dt id="statement1"><code>statement1</code></dt> <dd> <p> 조건이 참으로 평가될 경우 실행되는 문입니다. 중첩된 if구문을 포함하여 어떤 구문이든 쓸 수 있습니다. 다중구문을 사용할 경우 ({ ... })<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/block">블럭</a> 구문 으로 그룹화 하고 실행하지 않으려면 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/Empty">빈</a> 구문을 사용합니다. </p> </dd> <dt id="statement2"><code>statement2</code></dt> <dd> <p>이 구문은 조건이 거짓일경우 다른 조항이 있을 때 실행되는 구문입니다. 블록 문과 if문의 중첩을 호함한 모든문이 될 수 있습니다.</p> </dd> </dl>
+</div></section><section aria-labelledby="설명"><h2 id="설명">설명</h2>
+<div class="section-content">
+<p> 다중의 if...else 문은 else if 절을 만들기 위해 중첩될 수 있다. 자바스크립트에서는 elseif (하나의 단어) 키워드가 존재하지 않는다. </p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="/R5yBaluno5IbkK4U+3hLCo0bNf+zJz+X+sVmAUdOhA=" data-language="js">    <span class="token keyword">if</span> <span class="token punctuation">(</span>조건<span class="token number">1</span><span class="token punctuation">)</span>
+       명령문<span class="token number">1</span>
+    <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>조건<span class="token number">2</span><span class="token punctuation">)</span>
+       명령문<span class="token number">2</span>
+    <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>조건<span class="token number">3</span><span class="token punctuation">)</span>
+       명령문<span class="token number">3</span>
+    <span class="token operator">...</span>
+    <span class="token keyword">else</span>
+       명령문<span class="token constant">N</span>
+</pre>
+</div> <p>아래 작업한 것을 보면, if문을 중첩 사용하면 들여쓰기된 것이 제대로 보여집니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="4k/HeEUTlgnvjJwD7ECPmm16jibMtoKG6ijVhdQMQOA=" data-language="js">    <span class="token keyword">if</span> <span class="token punctuation">(</span>조건<span class="token number">1</span><span class="token punctuation">)</span>
+       명령문<span class="token number">1</span>
+    <span class="token keyword">else</span>
+       <span class="token keyword">if</span> <span class="token punctuation">(</span>조건<span class="token number">2</span><span class="token punctuation">)</span>
+          명령문<span class="token number">2</span>
+       <span class="token keyword">else</span>
+          <span class="token keyword">if</span> <span class="token punctuation">(</span>조건<span class="token number">3</span><span class="token punctuation">)</span>
+    <span class="token operator">...</span>
+</pre>
+</div> <p> 하나의 절에서 여러개의 명령문들을 실행하려면, 그 명령문들을 그룹화하는 블록 명령문 ({ ... }) 블럭구문을 사용한다. 일반적으로, 블럭구문을 항상 사용하는 것은 좋은 연습입니다. 특히 중첩된 if 문과 관련되어 있는 코드안에서 사용하면 더욱 좋습니다. </p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="KR1tcA2+5Q58SQkoTKIGZLWtDUg+2JXhyArVheZ/QaI=" data-language="js">    <span class="token keyword">if</span> <span class="token punctuation">(</span>조건<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+       명령문들<span class="token number">1</span>
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+       명령문들<span class="token number">2</span>
+    <span class="token punctuation">}</span>
+</pre>
+</div> <p>원시 불리언 값인 true (참) 과 false (거짓) 을 불리언 객체의 truthiness (참으로 보이는 것) 과 falsiness (거짓으로 보이는 것)으로 혼동하면 안된다. false, undefined, null, 0, NaN, 또는 빈 스트링 ("") 이 아닌 모든 값, 그리고 false 값인 불리언 객체를 포함하는 모든 객체는 조건으로 사용될 때 <a href="https://developer.mozilla.org/ko/docs/Glossary/Truthy">truthy</a> 로 간주된다. 예:</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="/nQtteJLBZIvSrEyOJdITrwA9GCyJhCIymtKJIVGcfA=" data-language="js"><span class="token keyword">var</span> b <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Boolean</span><span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span>b<span class="token punctuation">)</span> <span class="token comment">// 이 조건은 참으로 보이는 것 (truthy) 이다.</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="예시"><h2 id="예시">예시</h2>
+</section><section aria-labelledby="if...else_사용하기"><h3 id="if...else_사용하기">
+<code>if...else</code> 사용하기</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="nf5Wkfm8muIGg97zhRjAhOQUzdCOh9E9RrJHMXBHtcg=" data-language="js"><span class="token keyword">if</span> <span class="token punctuation">(</span>cipher_char <span class="token operator">===</span> from_char<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+   result <span class="token operator">=</span> result <span class="token operator">+</span> to_char<span class="token punctuation">;</span>
+   x<span class="token operator">++</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+   result <span class="token operator">=</span> result <span class="token operator">+</span> clear_char<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div></div></section><section aria-labelledby="else_if_사용하기"><h3 id="else_if_사용하기">
+<code>else if</code> 사용하기</h3>
+<div class="section-content">
+<p>자바스크립트에는 elseif 구문이 없다. 그러나, else if 를 사용할 수 있다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="iUbTZhspAfL025RgJ1jet51SBpeuy6qazqNCbG4gl9Y=" data-language="js"><span class="token keyword">if</span> <span class="token punctuation">(</span>x <span class="token operator">&gt;</span> <span class="token number">5</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>x <span class="token operator">&gt;</span> <span class="token number">50</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+
+<span class="token punctuation">}</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="조건식의_값을_지정하기"><h3 id="조건식의_값을_지정하기">조건식의 값을 지정하기</h3>
+<div class="section-content">
+<p> 조건식을 단순하게 지정하는 것은 좋지 않습니다. 왜냐하면, 코드를 흘깃 보면 값을 지정한것을 평등한것으로 혼동할 수 있기 때문입니다. 예를들어, 다음코드를 사용하지 마세요: </p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="snHUihNgWcQyyRkSwThZvChoc+WTgoSv3Lh0yK1EcAk=" data-language="js"><span class="token keyword">if</span> <span class="token punctuation">(</span>x <span class="token operator">=</span> y<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+   <span class="token comment">/* do the right thing */</span>
+<span class="token punctuation">}</span>
+</pre>
+</div> <p>당신이 조건식에 값의 지정을 해야할 경우, 일반적인 관행은 그 할당된 것 주위에 추가 괄호를 넣어야 합니다. 예를들면:</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="vvHoMdPf8SpgMVX5V65WIfZuTuQGAaAL2Q1i8lfzAx0=" data-language="js"><span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>x <span class="token operator">=</span> y<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+   <span class="token comment">/* do the right thing */</span>
+<span class="token punctuation">}</span>
+</pre>
+</div>
+</div></section><h2 id="명세서">명세서</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://tc39.es/ecma262/multipage/ecmascript-language-statements-and-declarations.html#sec-if-statement">ECMAScript Language Specification <br><small># sec-if-statement</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="block"><code>block</code></a></li> <li><a href="switch"><code>switch</code></a></li> <li><a href="../operators/conditional_operator">삼항 조건 연산자</a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Statements/if...else" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Statements/if...else</a>
+  </p>
+</div>

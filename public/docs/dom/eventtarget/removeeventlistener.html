@@ -1,0 +1,93 @@
+<header><h1>EventTarget.removeEventListener()</h1></header><div class="section-content">
+<p><a href="../eventtarget"><code>EventTarget</code></a> 인터페이스의 <code>EventTarget.removeEventListener()</code> 메서드는 <a href="addeventlistener"><code>EventTarget.addEventListener()</code></a>로 이벤트 대상에 등록한 수신기를 제거합니다. 제거 대상 수신기의 식별은 이벤트 유형, 수신기 함수 참조, 그리고 식별에 관련된 다양한 옵션을 사용해 이뤄집니다. <a href="#%EC%A0%9C%EA%B1%B0%ED%95%A0_%EC%9D%B4%EB%B2%A4%ED%8A%B8_%EC%88%98%EC%8B%A0%EA%B8%B0%EC%9D%98_%EC%8B%9D%EB%B3%84">제거할 이벤트 수신기의 식별</a>을 참고하세요.</p> <p><code>removeEventListener()</code>를 호출할 때, <code>EventTarget</code>에 등록된 <a href="addeventlistener#%EC%9D%B4%EB%B2%A4%ED%8A%B8_%EC%88%98%EC%8B%A0%EA%B8%B0_%EC%BD%9C%EB%B0%B1">이벤트 수신기</a> 중 어느 것에도 일치하지 않는 매개변수를 사용하면 아무 효과도 나타나지 않습니다.</p> <p><a href="../eventtarget"><code>EventTarget</code></a>의 어느 수신기 중 하나가 이벤트를 처리하는 중에 다른 수신기를 제거할 경우, 제거된 <a href="addeventlistener#%EC%9D%B4%EB%B2%A4%ED%8A%B8_%EC%88%98%EC%8B%A0%EA%B8%B0_%EC%BD%9C%EB%B0%B1">이벤트 수신기</a>는 현재 이벤트에 대해 발동하지 않습니다. 그러나 다시 부착할 수는 있습니다.</p> <div class="notecard warning" id="sect1"> <p><strong>경고:</strong> 같은 수신기를 다른 캡처 플래그 값으로 두 번, 즉 한 번은 <code>capture</code> 플래그를 지정하고 한 번은 지정하지 않은 채 부착하는 경우 각각 따로따로 제거해야 합니다. 캡처 플래그를 지정한 수신기의 제거는 비 캡처 수신기에 영향을 주지 않고, 그 반대도 마찬가지입니다.</p> </div> <p><a href="addeventlistener"><code>addEventListener()</code></a>에 <a href="../abortsignal"><code>AbortSignal</code></a>을 지정한 후, 나중에 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/AbortSignal/abort_static"><code>abort()</code> <small>(en-US)</small></a>를 호출해서 수신기를 제거하는 방법도 있습니다.</p>
+</div>
+<h2 id="구문">구문</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="PMIBJpGzqgUbMO1szYTObzoLJ7Kxb9SF68stnUV7LWE=" data-language="js"><span class="token function">removeEventListener</span><span class="token punctuation">(</span>type<span class="token punctuation">,</span> listener<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">removeEventListener</span><span class="token punctuation">(</span>type<span class="token punctuation">,</span> listener<span class="token punctuation">,</span> options<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">removeEventListener</span><span class="token punctuation">(</span>type<span class="token punctuation">,</span> listener<span class="token punctuation">,</span> useCapture<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div></div>
+<h3 id="매개변수">매개변수</h3>
+<div class="section-content"><dl> <dt id="type"><code>type</code></dt> <dd> <p>이벤트 수신기를 제거할 이벤트 유형입니다.</p> </dd> <dt id="listener"><code>listener</code></dt> <dd> <p>이벤트 대상에서 제거할 수신기 <a href="addeventlistener"><code>EventListener</code></a> 함수입니다.</p> </dd> <dt id="options">
+<code>options</code> <span class="badge inline optional">Optional</span>
+</dt> <dd> <p>제거할 이벤트 수신기의 특징을 나타내는 옵션 객체입니다.</p> <p>가능한 옵션은 다음과 같습니다.</p> <ul> <li>
+<code>capture</code>: 제거할 <a href="addeventlistener"><code>EventListener</code></a>가 캡처링 수신기로 등록됐는지에 대한 여부를 나타내는 불리언 값입니다. 기본 값은 <code>false</code>입니다.</li> </ul> </dd> <dt id="usecapture">
+<code>useCapture</code> <span class="badge inline optional">Optional</span>
+</dt> <dd> <p>제거할 <a href="addeventlistener"><code>EventListener</code></a>가 캡처링 수신기로 등록됐는지에 대한 여부를 나타내는 불리언 값입니다. 기본 값은 <code>false</code>입니다.</p> </dd> </dl></div>
+<h3 id="반환_값">반환 값.</h3>
+<div class="section-content"><p>없음.</p></div>
+<h3 id="제거할_이벤트_수신기의_식별">제거할 이벤트 수신기의 식별</h3>
+<div class="section-content">
+<p><a href="addeventlistener"><code>addEventListener()</code></a>로 이벤트 수신기를 추가했다면, 수신기를 제거해야 할 때가 오기도 합니다. 당연히 추가할 때 지정한 것과 같은 <code>type</code> 및 <code>listener</code>를 <code>removeEventListener()</code>의 매개변수로 지정해야 하겠지만, <code>options</code>나 <code>useCapture</code> 매개변수는 어떻게 해야 할까요?</p> <p><code>addEventListener()</code>는 옵션이 다르다면 이벤트 유형 하나에 같은 수신기를 여러 번 부착합니다. 그러나 <code>removeEventListener()</code>가 고려하는 옵션은 <code>capture</code>/<code>useCapture</code> 플래그 단 하나입니다. 따라서 <code>capture</code>/<code>useCapture</code> 값은 일치해야 하지만, 나머지 옵션은 일치하지 않아도 됩니다.</p> <p>다음의 <code>addEventListener()</code> 호출을 예시로 보겠습니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="jqGHl0o89qoIzIhFpaE/KFDNt8KVrZyVmvvrWNzDD6I=" data-language="js">element<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">"mousedown"</span><span class="token punctuation">,</span> handleMouseDown<span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div> <p>이제 아래의 두 <code>removeEventListener()</code> 호출을 살펴보세요.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="bvfZXLMt7MRGqz6D16Fodny6ldwILpjtPrDc1yq+J1g=" data-language="js">element<span class="token punctuation">.</span><span class="token function">removeEventListener</span><span class="token punctuation">(</span><span class="token string">"mousedown"</span><span class="token punctuation">,</span> handleMouseDown<span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>     <span class="token comment">// 실패</span>
+element<span class="token punctuation">.</span><span class="token function">removeEventListener</span><span class="token punctuation">(</span><span class="token string">"mousedown"</span><span class="token punctuation">,</span> handleMouseDown<span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>      <span class="token comment">// 성공</span>
+</pre>
+</div> <p>첫 번째 호출은 <code>useCapture</code>가 일치하지 않았기 때문에 실패하고, 두 번째 호출은 일치하기 때문에 성공합니다.</p> <p>이제 다음 코드를 확인하세요.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="acNwyB4d7xKX127IW1/qwQSh/KkyQyAq2pSBbmBX7SY=" data-language="js">element<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">"mousedown"</span><span class="token punctuation">,</span> handleMouseDown<span class="token punctuation">,</span> <span class="token punctuation">{</span> <span class="token literal-property property">passive</span><span class="token operator">:</span> <span class="token boolean">true</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div> <p>위 코드에서는 <code>passive</code>를 <code>true</code>로 지정한 <code>option</code> 객체를 지정했습니다. 다른 옵션은 기본 값인 <code>false</code>가 됩니다.</p> <p>아래의 <code>removeEventListener()</code> 호출 각각을 살펴보세요. <code>capture</code>나 <code>useCapture</code>가 <code>true</code>인 호출은 실패하고, 나머지는 모두 성공합니다.</p> <p><code>removeEventListener()</code>에 영향을 주는 옵션은 <code>capture</code> 뿐입니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="1cA+f5nmeCPhKWmgQadaMicoJJ2C8rWeHJufCf3pyZQ=" data-language="js">element<span class="token punctuation">.</span><span class="token function">removeEventListener</span><span class="token punctuation">(</span><span class="token string">"mousedown"</span><span class="token punctuation">,</span> handleMouseDown<span class="token punctuation">,</span> <span class="token punctuation">{</span> <span class="token literal-property property">passive</span><span class="token operator">:</span> <span class="token boolean">true</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>     <span class="token comment">// 성공</span>
+element<span class="token punctuation">.</span><span class="token function">removeEventListener</span><span class="token punctuation">(</span><span class="token string">"mousedown"</span><span class="token punctuation">,</span> handleMouseDown<span class="token punctuation">,</span> <span class="token punctuation">{</span> <span class="token literal-property property">capture</span><span class="token operator">:</span> <span class="token boolean">false</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token comment">// 성공</span>
+element<span class="token punctuation">.</span><span class="token function">removeEventListener</span><span class="token punctuation">(</span><span class="token string">"mousedown"</span><span class="token punctuation">,</span> handleMouseDown<span class="token punctuation">,</span> <span class="token punctuation">{</span> <span class="token literal-property property">capture</span><span class="token operator">:</span> <span class="token boolean">true</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>     <span class="token comment">// 실패</span>
+element<span class="token punctuation">.</span><span class="token function">removeEventListener</span><span class="token punctuation">(</span><span class="token string">"mousedown"</span><span class="token punctuation">,</span> handleMouseDown<span class="token punctuation">,</span> <span class="token punctuation">{</span> <span class="token literal-property property">passive</span><span class="token operator">:</span> <span class="token boolean">false</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token comment">// 성공</span>
+element<span class="token punctuation">.</span><span class="token function">removeEventListener</span><span class="token punctuation">(</span><span class="token string">"mousedown"</span><span class="token punctuation">,</span> handleMouseDown<span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>                 <span class="token comment">// 성공</span>
+element<span class="token punctuation">.</span><span class="token function">removeEventListener</span><span class="token punctuation">(</span><span class="token string">"mousedown"</span><span class="token punctuation">,</span> handleMouseDown<span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>                  <span class="token comment">// 실패</span>
+</pre>
+</div> <p>다만 일부 브라우저 버전에서는 이 동작이 일관적이지 않으므로, 어쩔 수 없는 경우가 아니라면 <code>addEventListener()</code>에 지정한 옵션을 그대로 <code>removeEventListener()</code>에 제공하는 편이 낫습니다.</p>
+</div>
+<h2 id="예제">예제</h2>
+<div class="section-content">
+<p>이 예제는 <code>click</code> 이벤트 수신기를 제거하는 <code>mouseover</code> 이벤트 수신기를 보입니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="jc3nydw1p8AlSdtPwdEdOTCp8UU4guyg0rtDEoROc0A=" data-language="js"><span class="token keyword">const</span> body <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">querySelector</span><span class="token punctuation">(</span><span class="token string">'body'</span><span class="token punctuation">)</span>
+<span class="token keyword">const</span> clickTarget <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">'click-target'</span><span class="token punctuation">)</span>
+<span class="token keyword">const</span> mouseOverTarget <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">'mouse-over-target'</span><span class="token punctuation">)</span>
+
+<span class="token keyword">let</span> toggle <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+<span class="token keyword">function</span> <span class="token function">makeBackgroundYellow</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>toggle<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    body<span class="token punctuation">.</span>style<span class="token punctuation">.</span>backgroundColor <span class="token operator">=</span> <span class="token string">'white'</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+    body<span class="token punctuation">.</span>style<span class="token punctuation">.</span>backgroundColor <span class="token operator">=</span> <span class="token string">'yellow'</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  toggle <span class="token operator">=</span> <span class="token operator">!</span>toggle<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+clickTarget<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">'click'</span><span class="token punctuation">,</span>
+  makeBackgroundYellow<span class="token punctuation">,</span>
+  <span class="token boolean">false</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+mouseOverTarget<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">'mouseover'</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  clickTarget<span class="token punctuation">.</span><span class="token function">removeEventListener</span><span class="token punctuation">(</span><span class="token string">'click'</span><span class="token punctuation">,</span>
+    makeBackgroundYellow<span class="token punctuation">,</span>
+    <span class="token boolean">false</span>
+  <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div>
+</div>
+<h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="#">DOM Standard <br><small># ref-for-dom-eventtarget-removeeventlistener②</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="addeventlistener"><code>EventTarget.addEventListener()</code></a></li> </ul></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/EventTarget/removeEventListener" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/EventTarget/removeEventListener</a>
+  </p>
+</div>

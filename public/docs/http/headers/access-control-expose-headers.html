@@ -1,0 +1,45 @@
+<h1>Access-Control-Expose-Headers</h1>
+<header><h1>Access-Control-Expose-Headers</h1></header><div class="section-content">
+<p><code>Access-Control-Expose-Headers</code> 헤더를 통해 서버는 교차-출처 요청 (cross-origin request)에 대한 응답으로 브라우저에서 실행 중인 스크립트가 사용할 수 있는 응답 헤더를 지정할 수 있습니다.</p> <p>기본적으로 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Glossary/CORS-safelisted_response_header">CORS 안전 목록 응답 헤더 <small>(en-US)</small></a>만 노출됩니다. 클라이언트가 다른 헤더에 접근할 수 있도록 하려면 서버는 <code>Access-Control-Expose-Headers</code> 헤더를 사용하여 헤더를 나열해야 합니다.</p> <figure class="table-container"><div class="_table"><table class="properties"> <tbody> <tr> <th scope="row">헤더 타입</th> <td><a href="https://developer.mozilla.org/ko/docs/Glossary/Response_header">응답 헤더</a></td> </tr> <tr> <th scope="row"><a href="https://developer.mozilla.org/ko/docs/Glossary/Forbidden_header_name">금지된 헤더 이름</a></th> <td>no</td> </tr> </tbody> </table></div></figure>
+</div>
+<section aria-labelledby="문법"><h2 id="문법">문법</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">http</span></p>
+<pre data-signature="NUmWmgN4oAmK+uSNnVK2ma0jokCyuO2dJfOE+HxzpnE=" data-language="http"><span class="token header"><span class="token header-name keyword">Access-Control-Expose-Headers</span><span class="token punctuation">:</span> <span class="token header-value">[&lt;header-name&gt;[, &lt;header-name&gt;]*]</span></span>
+<span class="token header"><span class="token header-name keyword">Access-Control-Expose-Headers</span><span class="token punctuation">:</span> <span class="token header-value">*</span></span>
+</pre>
+</div></div></section><section aria-labelledby="지침"><h2 id="지침">지침</h2>
+<div class="section-content"><dl> <dt id="header-name"><code>&lt;header-name&gt;</code></dt> <dd> <p>클라이언트가 응답에서 접근할 수 있는 헤더 이름 목록이며, 0개 이상의 콤마로 구분됩니다. <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Glossary/CORS-safelisted_response_header">CORS 안전 목록 응답 헤더 <small>(en-US)</small></a>에 추가 됩니다.</p> </dd> <dt id="sect1">
+<code>*</code> (와일드카드)</dt> <dd> <p><code>*</code>는 자격 증명이 없는 요청 (<a href="../cookies">HTTP 쿠키</a>나 HTTP 인증 정보가 없는 요청)에 대한 특별한 와일드카드 값으로 취급됩니다. 자격 증명이 있는 요청에서는 특별한 의미 없이 문자 그대로 헤더 이름 <code>*</code>로 취급됩니다.</p> </dd> </dl></div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+<div class="section-content">
+<p><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Glossary/CORS-safelisted_response_header">CORS 안전 목록 응답 헤더 <small>(en-US)</small></a>는 다음과 같습니다. <a href="cache-control"><code>Cache-Control</code></a>, <a href="content-language"><code>Content-Language</code></a>, <a href="content-length"><code>Content-Length</code></a>, <a href="content-type"><code>Content-Type</code></a>, <a href="expires"><code>Expires</code></a>, <a href="last-modified"><code>Last-Modified</code></a>, <a href="pragma"><code>Pragma</code></a>.</p> <p><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Glossary/CORS-safelisted_response_header">CORS 안전 목록 응답 헤더 <small>(en-US)</small></a>에 없는 응답 헤더를 노출하려면 다음과 같이 지정할 수 있습니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">http</span></p>
+<pre data-signature="g5Wjv5Zcj2uL4LJnlb10hja6DiQHSSUl6jTVsbt4gHM=" data-language="http"><span class="token header"><span class="token header-name keyword">Access-Control-Expose-Headers</span><span class="token punctuation">:</span> <span class="token header-value">Content-Encoding</span></span>
+</pre>
+</div> <p><code>Kuma-Revision</code>과 같은 사용자 지정 헤더를 추가로 표시하려면 여러 헤더를 콤마로 구분하여 지정할 수 있습니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">http</span></p>
+<pre data-signature="uP31MzsQPzhRlPNFbzfs47BhjJRJ9WchqYYi5wTi86g=" data-language="http"><span class="token header"><span class="token header-name keyword">Access-Control-Expose-Headers</span><span class="token punctuation">:</span> <span class="token header-value">Content-Encoding, Kuma-Revision</span></span>
+</pre>
+</div> <p>자격 증명이 없는 요청의 경우 서버는 와일드카드 값을 사용하여 응답하기도 합니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">http</span></p>
+<pre data-signature="qV9MJ+f+sjLlS1WKsSNhrsChr/4TR5X5TmR2s+IxwGA=" data-language="http"><span class="token header"><span class="token header-name keyword">Access-Control-Expose-Headers</span><span class="token punctuation">:</span> <span class="token header-value">*</span></span>
+</pre>
+</div> <p>하지만, <a href="authorization"><code>Authorization</code></a> 헤더는 와일드카드로 지정할 수 없기 때문에 명시적으로 지정해야 합니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">http</span></p>
+<pre data-signature="4jwlesL0AdVo9HBrVh3cg2HnhlH/EiVQrDlQ7zA64FY=" data-language="http"><span class="token header"><span class="token header-name keyword">Access-Control-Expose-Headers</span><span class="token punctuation">:</span> <span class="token header-value">*, Authorization</span></span>
+</pre>
+</div>
+</div></section><h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://fetch.spec.whatwg.org/#http-access-control-expose-headers">Fetch Standard <br><small># http-access-control-expose-headers</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="access-control-allow-headers"><code>Access-Control-Allow-Headers</code></a></li> <li><a href="access-control-allow-origin"><code>Access-Control-Allow-Origin</code></a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/HTTP/Headers/Access-Control-Expose-Headers" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/HTTP/Headers/Access-Control-Expose-Headers</a>
+  </p>
+</div>

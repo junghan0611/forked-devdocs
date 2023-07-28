@@ -1,0 +1,42 @@
+<header><h1>Number.prototype.toExponential()</h1></header><div class="section-content"><p><code>toExponential()</code> 메서드는 숫자를 지수 표기법으로 표기해 반환합니다.</p></div>
+<section aria-labelledby="시도해보기"><h2 id="시도해보기">시도해보기</h2>
+<div class="section-content"><iframe class="interactive is-js-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/js/number-toexponential.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe></div></section><section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="hCJOxv+cHpHOjVNDmg/yYFg316ovOXKKdVI96v8McOA=" data-language="js">    numObj<span class="token punctuation">.</span><span class="token function">toExponential</span><span class="token punctuation">(</span><span class="token punctuation">[</span>fractionDigits<span class="token punctuation">]</span><span class="token punctuation">)</span>
+</pre>
+</div></div></section><section aria-labelledby="매개변수"><h3 id="매개변수">매개변수</h3>
+<div class="section-content"><dl> <dt id="fractiondigits">
+<code>fractionDigits</code> <span class="badge inline optional">Optional</span>
+</dt> <dd> <p>소수점 이하로 표현할 자릿수입니다. 기본값은 주어진 값을 나타내는데 필요한 자릿수입니다.</p> </dd> </dl></div></section><section aria-labelledby="반환_값"><h3 id="반환_값">반환 값</h3>
+<div class="section-content"><p>주어진 <a href="../number"><code>Number</code></a> 값을 숫자 한자리와 소수점, 소수점 이하 <code>fractionDigits</code> 자릿수만큼 반올림하여 지수 표기법으로 나타낸 문자열을 반환합니다.</p></div></section><section aria-labelledby="예외"><h3 id="예외">예외</h3>
+<div class="section-content"><dl> <dt id="rangeerror"><a href="../rangeerror"><code>RangeError</code></a></dt> <dd> <p><code>fractionDigits</code>가 너무 작거나 너무 크면 <a href="../rangeerror"><code>RangeError</code></a> 에러가 발생합니다. <code>fractionDigits</code>가 0에서 20 사이의 값이면 <a href="../rangeerror"><code>RangeError</code></a> 에러는 발생하지 않습니다. 구현에 따라 더 크거나 작은 값도 사용 할 수 있습니다.</p> </dd> <dt id="typeerror"><a href="../typeerror"><code>TypeError</code></a></dt> <dd> <p><a href="../number"><code>Number</code></a>가 아닌 객체가 이 메서드를 실행시키면 <a href="../rangeerror"><code>RangeError</code></a> 에러가 발생합니다.</p> </dd> </dl></div></section><section aria-labelledby="설명"><h2 id="설명">설명</h2>
+<div class="section-content">
+<p><code>fractionDigits</code> 매개변수를 생략하면, 기본적으로 주어진 값을 특정하기 위해 필요한 자릿수만큼이 소수점 이하 자릿수가 됩니다.</p> <p>지수나 소수점이 없는 숫자 리터럴에 <code>toExponential()</code> 메서드를 사용하려면, 점 앞에 공백을 두어 점이 소수점으로 해석되는 것을 막도록 합니다.</p> <p>주어진 값의 자릿수가 <code>fractionDigits</code> 매개변수보다 크다면, 주어진 값은 <code>fractionDigits</code>에 가까운 자릿수로 반올림되어 표현됩니다. <a href="tofixed"><code>toFixed()</code></a> 메서드의 반올림에 관한 설명이 <code>toExponential()</code> 메서드에도 마찬가지로 적용됩니다.</p>
+</div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+</section><section aria-labelledby="toexponential_사용하기"><h3 id="toexponential_사용하기">
+<code>toExponential</code> 사용하기</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="IF3z479C38hZvd0GTsUZ0+C3WvFdrVuJwkiEjY7ovzY=" data-language="js"><span class="token keyword">var</span> numObj <span class="token operator">=</span> <span class="token number">77.1234</span><span class="token punctuation">;</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>numObj<span class="token punctuation">.</span><span class="token function">toExponential</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// logs 7.71234e+1</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>numObj<span class="token punctuation">.</span><span class="token function">toExponential</span><span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// logs 7.7123e+1</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>numObj<span class="token punctuation">.</span><span class="token function">toExponential</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// logs 7.71e+1</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token number">77.1234</span><span class="token punctuation">.</span><span class="token function">toExponential</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// logs 7.71234e+1</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token number">77</span> <span class="token punctuation">.</span><span class="token function">toExponential</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>     <span class="token comment">// logs 7.7e+1</span>
+</pre>
+</div></div></section><h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://tc39.es/ecma262/multipage/numbers-and-dates.html#sec-number.prototype.toexponential">ECMAScript Language Specification <br><small># sec-number.prototype.toexponential</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="tofixed"><code>Number.prototype.toFixed()</code></a></li> <li><a href="toprecision"><code>Number.prototype.toPrecision()</code></a></li> <li><a href="tostring"><code>Number.prototype.toString()</code></a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Number/toExponential" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Number/toExponential</a>
+  </p>
+</div>

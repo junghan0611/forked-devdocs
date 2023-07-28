@@ -1,0 +1,63 @@
+<header><h1>animation-direction</h1></header><div class="section-content">
+<p><code>animation-direction</code> <a href="https://developer.mozilla.org/ko/docs/Web/CSS">CSS</a> 속성은 애니메이션이 앞으로, 뒤로 또는 앞뒤로 번갈아 재생되어야하는지 여부를 지정합니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="wQ1+b+Np1JLiHh9oXh/XjTgivcU0v0EyKQAJG96N7h0=" data-language="css"><span class="token comment">/* Single animation */</span>
+<span class="token property">animation-direction</span><span class="token punctuation">:</span> normal<span class="token punctuation">;</span>
+<span class="token property">animation-direction</span><span class="token punctuation">:</span> reverse<span class="token punctuation">;</span>
+<span class="token property">animation-direction</span><span class="token punctuation">:</span> alternate<span class="token punctuation">;</span>
+<span class="token property">animation-direction</span><span class="token punctuation">:</span> alternate-reverse<span class="token punctuation">;</span>
+
+<span class="token comment">/* Multiple animations */</span>
+<span class="token property">animation-direction</span><span class="token punctuation">:</span> normal<span class="token punctuation">,</span> reverse<span class="token punctuation">;</span>
+<span class="token property">animation-direction</span><span class="token punctuation">:</span> alternate<span class="token punctuation">,</span> reverse<span class="token punctuation">,</span> normal<span class="token punctuation">;</span>
+
+<span class="token comment">/* Global values */</span>
+<span class="token property">animation-direction</span><span class="token punctuation">:</span> inherit<span class="token punctuation">;</span>
+<span class="token property">animation-direction</span><span class="token punctuation">:</span> initial<span class="token punctuation">;</span>
+<span class="token property">animation-direction</span><span class="token punctuation">:</span> unset<span class="token punctuation">;</span>
+</pre>
+</div> <p>축약 속성 <a href="animation"><code>animation</code></a>을 사용하여 모든 애니메이션 속성을 한꺼번에 설정하는 것이 편리합니다.</p>
+<figure class="table-container"><div class="_table"><table class="properties"><tbody>
+<tr>
+<th scope="row"><a href="initial_value">초기값</a></th>
+<td><code>normal</code></td>
+</tr>
+<tr>
+<th scope="row">적용대상</th>
+<td>all elements, <a href="::before"><code>::before</code></a> and <a href="::after"><code>::after</code></a> <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-elements">pseudo-elements</a>
+</td>
+</tr>
+<tr>
+<th scope="row"><a href="inheritance">상속</a></th>
+<td>no</td>
+</tr>
+<tr>
+<th scope="row"><a href="computed_value">계산 값</a></th>
+<td>as specified</td>
+</tr>
+<tr>
+<th scope="row">Animation type</th>
+<td>Not animatable</td>
+</tr>
+</tbody></table></div></figure>
+</div>
+<section aria-labelledby="문법syntax"><h2 id="문법syntax">문법(Syntax)</h2>
+</section><section aria-labelledby="값values"><h3 id="값values">값(Values)</h3>
+<div class="section-content">
+<dl> <dt id="normal"><code>normal</code></dt> <dd> <p>애니메이션은 매 사이클마다 정방향으로 재생됩니다. 즉, 순환 할 때마다 애니메이션이 시작 상태로 재설정되고 다시 시작됩니다. 이것은 기본값입니다.</p> </dd> <dt id="reverse"><code>reverse</code></dt> <dd> <p>애니메이션은 매 사이클마다 역방향으로 재생됩니다. 즉, 순환 할 때마다 애니메이션이 종료 상태로 재설정되고 다시 시작됩니다. 애니메이션 단계가 거꾸로 수행되고 타이밍 기능 또한 반대로됩니다. 예를 들어, ease-in 타이밍 기능은 ease-out형태로 변경됩니다.</p> </dd> <dt id="alternate"><code>alternate</code></dt> <dd> <p>애니메이션은 매 사이클마다 각 주기의 방향을 뒤집으며, 첫 번째 반복은 정방향으로 진행됩니다. 사이클이 짝수인지 홀수인지를 결정하는 카운트가 하나에서 시작됩니다.</p> </dd> <dt id="alternate-reverse"><code>alternate-reverse</code></dt> <dd> <p>애니메이션은 매 사이클마다 각 주기의 방향을 뒤집으며, 첫 번째 반복은 역방향으로 진행됩니다. 사이클이 짝수인지 홀수인지를 결정하는 카운트가 하나에서 시작됩니다.</p> </dd> </dl> <div class="notecard note" id="sect1"> <p><strong>참고:</strong> animation- * 속성에 여러 개의 쉼표로 구분 된 값을 지정하면 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/animation-name"><code>animation-name</code> <small>(en-US)</small></a> 속성에 지정된 애니메이션에 할당되는 값의 수에 따라 다른 방식으로 지정됩니다. 자세한 내용은 <a href="css_animations/using_css_animations#setting_multiple_animation_property_values">여러 애니메이션 속성 값 설정</a>을 참조하십시오.</p> </div>
+</div></section><section aria-labelledby="formal_syntax"><h3 id="formal_syntax">Formal syntax</h3>
+<div class="section-content"><pre class="notranslate"><span class="token property" id="animation-direction">animation-direction = </span><br>  <span class="token property">&lt;single-animation-direction&gt;</span><a href="value_definition_syntax#hash_mark">#</a>  <br><br><span class="token property" id="&lt;single-animation-direction&gt;">&lt;single-animation-direction&gt; = </span><br>  <span class="token keyword">normal</span>             <a href="value_definition_syntax#single_bar">|</a><br>  <span class="token keyword">reverse</span>            <a href="value_definition_syntax#single_bar">|</a><br>  <span class="token keyword">alternate</span>          <a href="value_definition_syntax#single_bar">|</a><br>  <span class="token keyword">alternate-reverse</span>  <br><br></pre></div></section><section aria-labelledby="예제examples"><h2 id="예제examples">예제(Examples)</h2>
+<div class="section-content"><p><a href="css_animations/using_css_animations">CSS animations</a>를 보십시오.</p></div></section><h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://drafts.csswg.org/css-animations/#animation-direction">CSS Animations Level 1 <br><small># animation-direction</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성browser_compatibility">브라우저 호환성(Browser compatibility)</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기see_also"><h2 id="같이_보기see_also">같이 보기(See also)</h2>
+<div class="section-content"><ul> <li><a href="css_animations/using_css_animations">Using CSS animations</a></li> <li>JavaScript <a href="https://developer.mozilla.org/ko/docs/Web/API/AnimationEvent"><code>AnimationEvent</code></a> API</li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/CSS/animation-direction" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/CSS/animation-direction</a>
+  </p>
+</div>

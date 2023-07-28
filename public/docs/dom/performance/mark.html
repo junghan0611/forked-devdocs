@@ -1,0 +1,57 @@
+<header><h1>performance.mark()</h1></header><div class="section-content">
+<p><code>mark()</code> 메소드는 브라우저의 <em>performance entry buffer</em>에 주어진 이름으로 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/DOMHighResTimeStamp"><code>timestamp</code> <small>(en-US)</small></a>를 생성합니다. timestamp가 정의된 응용프로그램은 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/Performance"><code>Performance</code> <small>(en-US)</small></a> 인터페이스의 <code>getEntries*()</code> 메소드들을 통해 불러올 수 있습니다. (<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/Performance/getEntries"><code>getEntries()</code> <small>(en-US)</small></a>, <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/Performance/getEntriesByName"><code>getEntriesByName()</code> <small>(en-US)</small></a>, <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/Performance/getEntriesByType"><code>getEntriesByType()</code> <small>(en-US)</small></a>).</p>
+<div class="notecard note" id="sect1"> <p><strong>참고:</strong> 이 기능은 <a href="../web_workers_api">Web Worker</a>에서 사용할 수 있습니다</p> </div> <p><code>mark</code>의 <a href="../performanceentry"><code>performance entry</code></a>는 다음 속성값을 갖습니다:</p> <ul> <li>
+<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/PerformanceEntry/entryType"><code>entryType</code> <small>(en-US)</small></a> - "<code>mark</code>"로 설정됩니다.</li> <li>
+<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/PerformanceEntry/name"><code>name</code> <small>(en-US)</small></a> - mark가 생성될 때 주어진 "<code>name</code>"으로 설정됩니다.</li> <li>
+<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/PerformanceEntry/startTime"><code>startTime</code> <small>(en-US)</small></a> - <code>mark()</code>가 호출되었을 때의 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/DOMHighResTimeStamp"><code>timestamp</code> <small>(en-US)</small></a>가 설정됩니다.</li> <li>
+<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/PerformanceEntry/duration"><code>duration</code> <small>(en-US)</small></a> - "<code>0</code>"으로 설정됩니다. (<em>duration</em>이 없는 mark).</li> </ul> <p>만약 메서드에 주어진 <code>name</code>이 이미 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/PerformanceTiming"><code>PerformanceTiming</code> <small>(en-US)</small></a> 인터페이스 상에 존재한다면 <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/SyntaxError"><code>SyntaxError</code></a>를 throw 합니다.</p>
+</div>
+<h2 id="syntax">Syntax</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="E0UDfIpzZVxjmSGE0CNP3sQNgkX82BvJNWa1xjfZ4yo=" data-language="js">performance<span class="token punctuation">.</span><span class="token function">mark</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div></div>
+<h3 id="arguments">Arguments</h3>
+<div class="section-content"><dl> <dt id="name">name</dt> <dd> <p>mark의 이름을 나타내는 <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/String"><code>DOMString</code></a>.</p> </dd> </dl></div>
+<h3 id="return_value">Return value</h3>
+<div class="section-content"><p>void</p></div>
+<h2 id="example">Example</h2>
+<div class="section-content">
+<p>다음 예시는 mark()를 사용하여 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/PerformanceMark"><code>PerformanceMark</code> <small>(en-US)</small></a>를 생성하고 불러오는 방법을 보여줍니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="wl7CNv0TYmBDqqDt/oq/Fdi5s0w0wmPQlqKUlu5BEXE=" data-language="js"><span class="token comment">// Create a bunch of marks.</span>
+performance<span class="token punctuation">.</span><span class="token function">mark</span><span class="token punctuation">(</span><span class="token string">"squirrel"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+performance<span class="token punctuation">.</span><span class="token function">mark</span><span class="token punctuation">(</span><span class="token string">"squirrel"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+performance<span class="token punctuation">.</span><span class="token function">mark</span><span class="token punctuation">(</span><span class="token string">"monkey"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+performance<span class="token punctuation">.</span><span class="token function">mark</span><span class="token punctuation">(</span><span class="token string">"monkey"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+performance<span class="token punctuation">.</span><span class="token function">mark</span><span class="token punctuation">(</span><span class="token string">"dog"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+performance<span class="token punctuation">.</span><span class="token function">mark</span><span class="token punctuation">(</span><span class="token string">"dog"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// Get all of the PerformanceMark entries.</span>
+<span class="token keyword">const</span> allEntries <span class="token operator">=</span> performance<span class="token punctuation">.</span><span class="token function">getEntriesByType</span><span class="token punctuation">(</span><span class="token string">"mark"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>allEntries<span class="token punctuation">.</span>length<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// 6</span>
+
+<span class="token comment">// Get all of the "monkey" PerformanceMark entries.</span>
+<span class="token keyword">const</span> monkeyEntries <span class="token operator">=</span> performance<span class="token punctuation">.</span><span class="token function">getEntriesByName</span><span class="token punctuation">(</span><span class="token string">"monkey"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>monkeyEntries<span class="token punctuation">.</span>length<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// 2</span>
+
+<span class="token comment">// Clear out all of the marks.</span>
+performance<span class="token punctuation">.</span><span class="token function">clearMarks</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div>
+</div>
+<h2 id="명세서">명세서</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://w3c.github.io/user-timing/#dom-performance-mark">User Timing <br><small># dom-performance-mark</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/Performance/mark" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/Performance/mark</a>
+  </p>
+</div>

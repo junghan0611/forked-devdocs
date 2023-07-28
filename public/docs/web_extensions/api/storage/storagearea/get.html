@@ -1,0 +1,103 @@
+<header><h1>StorageArea.get()</h1></header><div class="section-content">
+<p>저장소에서 하나 이상의 항목을 가져온다.</p> <p>비동기 함수로 <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Promise"><code>Promise</code></a>를 돌려준다.</p>
+</div>
+<section aria-labelledby="문법"><h2 id="문법">문법</h2>
+<div class="section-content">
+<div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="3qm1z3zUaOLsjW/lBIQfp+ZqZj8Mim+h6d5FYYB5ZLo=" data-language="js">    <span class="token keyword">let</span> gettingItem <span class="token operator">=</span> browser<span class="token punctuation">.</span>storage<span class="token punctuation">.</span><span class="token operator">&lt;</span>storageType<span class="token operator">&gt;</span><span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>
+      keys    <span class="token comment">// null, string, object or array of strings</span>
+    <span class="token punctuation">)</span>
+</pre>
+</div> <p><code>&lt;storageType&gt;</code>는 읽기 가능한 저장소 중의 하나다 — <a href="../sync"><code>sync</code></a>, <a href="../local"><code>local</code></a>, 또는 <a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/storage/managed" class="only-in-en-us"><code>managed</code> <small>(en-US)</small></a>.</p>
+</div></section><section aria-labelledby="매개변수"><h3 id="매개변수">매개변수</h3>
+<div class="section-content"><dl> <dt id="keys"><code>keys</code></dt> <dd> <p>저장소에서 가져올 항목을 지정하는 키 (문자열) 또는 키들 (문자열의 배열 또는 기본값이 주어진 객체). 빈 문자열, 객체, 또는 배열이 주어지면 빈 객체가 반환된다. null이나 undefined가 주어지면 전체 항목이 반환된다.</p> </dd> </dl></div></section><section aria-labelledby="반환값"><h3 id="반환값">반환값</h3>
+<div class="section-content">
+<p>반환된 <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Promise"><code>Promise</code></a>는 저장소에서 찾은 모든 항목을 담은 객체를 인수로 완료를 수행한다. 실패하면 에러 문장으로 거부가 수행된다. managed 저장소가 설정되어 있지 않으면 <code>undefined</code>가 반환된다.</p> <div class="notecard warning" id="sect1"> <p><strong>경고:</strong> When used within a content script in Firefox versions prior to 52, the Promise returned by <code>browser.storage.local.get()</code> is fulfilled with an Array containing one Object. The Object in the Array contains the <code>keys</code> found in the storage area, as described above. The Promise is correctly fulfilled with an Object when used in the background context (background scripts, popups, options pages, etc.). When this API is used as <code>chrome.storage.local.get()</code>, it correctly passes an Object to the callback function.</p> </div>
+</div></section><h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="예제"><h2 id="예제">예제</h2>
+<div class="section-content">
+<p>두 항목을 담고 있는 저장소를 가정한다:</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="4hPdCAyvldJpegf/NjwNE13i26zgASv08bgXco68CWo=" data-language="js"><span class="token comment">// storage contains two items,</span>
+<span class="token comment">// "kitten" and "monster"</span>
+browser<span class="token punctuation">.</span>storage<span class="token punctuation">.</span>local<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  <span class="token literal-property property">kitten</span><span class="token operator">:</span>  <span class="token punctuation">{</span><span class="token literal-property property">name</span><span class="token operator">:</span><span class="token string">"Mog"</span><span class="token punctuation">,</span> <span class="token literal-property property">eats</span><span class="token operator">:</span><span class="token string">"mice"</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">monster</span><span class="token operator">:</span> <span class="token punctuation">{</span><span class="token literal-property property">name</span><span class="token operator">:</span><span class="token string">"Kraken"</span><span class="token punctuation">,</span> <span class="token literal-property property">eats</span><span class="token operator">:</span><span class="token string">"people"</span><span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div> <p>promise에 대한 성공과 실패 핸들러를 정의한다:</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="1gmpZoMcSeOvWR6Ayqh8vXljYCP3dZjbeVsH6hwVlnM=" data-language="js"><span class="token keyword">function</span> <span class="token function">onGot</span><span class="token punctuation">(</span><span class="token parameter">item</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>item<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">function</span> <span class="token function">onError</span><span class="token punctuation">(</span><span class="token parameter">error</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">Error: </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>error<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div> <p><code>keys</code> 인수없이 전체를 구한다:</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="I2FwkEuJT5QxWvJeITSBXM4tNBdGfJY4BzCH8VKcvfM=" data-language="js"><span class="token keyword">let</span> gettingItem <span class="token operator">=</span> browser<span class="token punctuation">.</span>storage<span class="token punctuation">.</span>local<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+gettingItem<span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span>onGot<span class="token punctuation">,</span> onError<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// -&gt; Object { kitten: Object, monster: Object }</span>
+</pre>
+</div> <p>빈 인수는 빈 객체를 반환한다:</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="3n3arhIVAnJOhWXhpv7evrrFzMfQ+k5mul7utgRJkQg=" data-language="js"><span class="token comment">// with an empty array, retrieve nothing</span>
+<span class="token keyword">let</span> gettingItem <span class="token operator">=</span> browser<span class="token punctuation">.</span>storage<span class="token punctuation">.</span>local<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+gettingItem<span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span>onGot<span class="token punctuation">,</span> onError<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// -&gt; Object { }</span>
+</pre>
+</div> <p>이름을 인수로 하면 일치하는 항목을 담은 객체를 반환한다:</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="DKpzmlVJakCqaknqq5r+Bry+0K7zbClItutaJHE23Sw=" data-language="js"><span class="token keyword">let</span> gettingItem <span class="token operator">=</span> browser<span class="token punctuation">.</span>storage<span class="token punctuation">.</span>local<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">"kitten"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+gettingItem<span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span>onGot<span class="token punctuation">,</span> onError<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// -&gt; Object { kitten: Object }</span>
+</pre>
+</div> <p>이름들을 인수로 하면 전체 일치 항목을 모두 담은 객체를 반환한다:</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="kNOqFle0m9s9lzF6L02x+wPBdt9Rm1xQBSRjdwasevg=" data-language="js"><span class="token keyword">let</span> gettingItem <span class="token operator">=</span> browser<span class="token punctuation">.</span>storage<span class="token punctuation">.</span>local<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">"kitten"</span><span class="token punctuation">,</span> <span class="token string">"monster"</span><span class="token punctuation">,</span> <span class="token string">"grapefruit"</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+gettingItem<span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span>onGot<span class="token punctuation">,</span> onError<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// -&gt; Object { kitten: Object, monster: Object }</span>
+</pre>
+</div> <p>객체를 인수로 하면 주어진 객체의 키들을 이름으로 항목을 찾아서 돌려준다:</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="VAHESOZgZ2wuKnn7TwrLmrxnzVHIIQXyjMWgID4X6Yo=" data-language="js"><span class="token keyword">let</span> gettingItem <span class="token operator">=</span> browser<span class="token punctuation">.</span>storage<span class="token punctuation">.</span>local<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  <span class="token literal-property property">kitten</span><span class="token operator">:</span> <span class="token string">"no kitten"</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">monster</span><span class="token operator">:</span> <span class="token string">"no monster"</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">grapefruit</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">"Grape Fruit"</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">eats</span><span class="token operator">:</span> <span class="token string">"Water"</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// -&gt; Object { kitten: Object, monster: Object, grapefruit: Object }</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="크롬_예제"><h3 id="크롬_예제">크롬 예제</h3>
+<div class="section-content">
+<p>크롬에서는 <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Promise"><code>Promise</code></a>가 아니라 콜백 형태로 해야 한다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="XKupSad3CvGFk3CMUb2AvChN6Ft6MmiTHrjumNqa6eA=" data-language="js">chrome<span class="token punctuation">.</span>storage<span class="token punctuation">.</span>local<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">"kitten"</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">items</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>items<span class="token punctuation">.</span>kitten<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// -&gt; {name:"Mog", eats:"mice"}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div> <p>또는 화살표 함수로 할 수 있다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="RIwfo4tBBKP3rUiWCli5GIh5KlrSVMY+/rVFLtTrKxw=" data-language="js">chrome<span class="token punctuation">.</span>storage<span class="token punctuation">.</span>local<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">"kitten"</span><span class="token punctuation">,</span> <span class="token parameter">items</span><span class="token operator">=&gt;</span><span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>items<span class="token punctuation">.</span>kitten<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// -&gt; {name:"Mog", eats:"mice"}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div> <div class="notecard note" id="sect3"> <p><strong>참고:</strong> <strong>Acknowledgements</strong>This API is based on Chromium's <a href="https://developer.chrome.com/extensions/storage" target="_blank"><code>chrome.storage</code></a> API. This documentation is derived from <a href="https://chromium.googlesource.com/chromium/src/+/master/extensions/common/api/storage.json" target="_blank"><code>storage.json</code></a> in the Chromium code.Microsoft Edge compatibility data is supplied by Microsoft Corporation and is included here under the Creative Commons Attribution 3.0 United States License.</p> </div>
+</div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Mozilla/Add-ons/WebExtensions/API/storage/StorageArea/get" class="_attribution-link">https://developer.mozilla.org/ko/docs/Mozilla/Add-ons/WebExtensions/API/storage/StorageArea/get</a>
+  </p>
+</div>

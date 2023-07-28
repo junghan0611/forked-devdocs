@@ -1,0 +1,45 @@
+<header><h1>Math.imul()</h1></header><div class="section-content"><p><code>Math.imul()</code> 함수는 C 언어와 같은 양식으로 2개 파라메터의 32-bit 곱셈 결과를 리턴합니다.</p></div>
+<section aria-labelledby="문법"><h2 id="문법">문법</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="OYiIfjdcosM0glxx0R7/aBK593NZfnVYDE97rIDlu1w=" data-language="js">    Math<span class="token punctuation">.</span><span class="token function">imul</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span>
+</pre>
+</div></div></section><section aria-labelledby="파라메터"><h3 id="파라메터">파라메터</h3>
+<div class="section-content"><dl> <dt id="a"><code>a</code></dt> <dd> <p>첫 번째 숫자.</p> </dd> <dt id="b"><code>b</code></dt> <dd> <p>두 번째 숫자.</p> </dd> </dl></div></section><section aria-labelledby="설명"><h2 id="설명">설명</h2>
+<div class="section-content"><p><code>Math.imul()</code> 를 쓰면 C 언어와 같은 양식의 빠른 32-bit 정수 곱셈이 가능합니다. 이 기능은 <a href="http://en.wikipedia.org/wiki/Emscripten" target="_blank">Emscripten</a> 같은 프로젝트에 유용합니다. <code>imul()</code> 이 <code>Math</code> 객체의 정적 메소드이기 때문에, <code>Math 객체를 직접 만들어서 사용하지 않고 (Math 는 생성자가 아닙니다), Math.imul()</code> 같은 형태로 사용합니다.</p></div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+</section><section aria-labelledby="math.imul_사용법"><h3 id="math.imul_사용법"><code>Math.imul() 사용법</code></h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="4vr5qCM9OW8pRJgmzuRolspkb/E4mW8MDxuTOZKPQ9U=" data-language="js">Math<span class="token punctuation">.</span><span class="token function">imul</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">;</span>          <span class="token comment">// 8</span>
+Math<span class="token punctuation">.</span><span class="token function">imul</span><span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">8</span><span class="token punctuation">)</span><span class="token punctuation">;</span>         <span class="token comment">// -8</span>
+Math<span class="token punctuation">.</span><span class="token function">imul</span><span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token comment">// 4</span>
+Math<span class="token punctuation">.</span><span class="token function">imul</span><span class="token punctuation">(</span><span class="token number">0xffffffff</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// -5</span>
+Math<span class="token punctuation">.</span><span class="token function">imul</span><span class="token punctuation">(</span><span class="token number">0xfffffffe</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// -10</span>
+</pre>
+</div></div></section><section aria-labelledby="polyfill"><h2 id="polyfill">Polyfill</h2>
+<div class="section-content">
+<p>다음과 같은 함수로 Math.imul() 을 흉내낼 수 있습니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="QNO2Q0Rr73kD8TV0ZLOVq8AJVZPuf8C55SovaFXy/wM=" data-language="js">Math<span class="token punctuation">.</span>imul <span class="token operator">=</span> Math<span class="token punctuation">.</span>imul <span class="token operator">||</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">a<span class="token punctuation">,</span> b</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">var</span> ah <span class="token operator">=</span> <span class="token punctuation">(</span>a <span class="token operator">&gt;&gt;&gt;</span> <span class="token number">16</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span> <span class="token number">0xffff</span><span class="token punctuation">;</span>
+  <span class="token keyword">var</span> al <span class="token operator">=</span> a <span class="token operator">&amp;</span> <span class="token number">0xffff</span><span class="token punctuation">;</span>
+  <span class="token keyword">var</span> bh <span class="token operator">=</span> <span class="token punctuation">(</span>b <span class="token operator">&gt;&gt;&gt;</span> <span class="token number">16</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span> <span class="token number">0xffff</span><span class="token punctuation">;</span>
+  <span class="token keyword">var</span> bl <span class="token operator">=</span> b <span class="token operator">&amp;</span> <span class="token number">0xffff</span><span class="token punctuation">;</span>
+  <span class="token comment">// the shift by 0 fixes the sign on the high part</span>
+  <span class="token comment">// the final |0 converts the unsigned value into a signed value</span>
+  <span class="token keyword">return</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>al <span class="token operator">*</span> bl<span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">(</span>ah <span class="token operator">*</span> bl <span class="token operator">+</span> al <span class="token operator">*</span> bh<span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> <span class="token number">16</span><span class="token punctuation">)</span> <span class="token operator">&gt;&gt;&gt;</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token operator">|</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</pre>
+</div>
+</div></section><h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://tc39.es/ecma262/multipage/numbers-and-dates.html#sec-math.imul">ECMAScript Language Specification <br><small># sec-math.imul</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Math/imul" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Math/imul</a>
+  </p>
+</div>

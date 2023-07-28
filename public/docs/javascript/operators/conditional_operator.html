@@ -1,0 +1,65 @@
+<header><h1>조건 (삼항) 연산자</h1></header><div class="section-content"><p><strong>조건 (삼항) 연산자</strong>는 JavaScript에서 세 개의 피연산자를 받는 유일한 연산자입니다. 앞에서부터 조건문, 물음표(<code>?</code>), 조건문이 참(<a href="https://developer.mozilla.org/ko/docs/Glossary/Truthy">truthy</a>)일 경우 실행할 표현식, 콜론(<code>:</code>), 조건문이 거짓(<a href="https://developer.mozilla.org/ko/docs/Glossary/Falsy">falsy</a>)일 경우 실행할 표현식이 배치됩니다. 해당 연산자는 <a href="../statements/if...else"><code>if...else</code></a>문의 대체재로 빈번히 사용됩니다.</p></div>
+<section aria-labelledby="시도해보기"><h2 id="시도해보기">시도해보기</h2>
+<div class="section-content"><iframe class="interactive is-js-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/js/expressions-conditionaloperators.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe></div></section><section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="oGcYOPxjrf0F4lGkuyMjbp8up6Zi9t9VSayzfAyE9Y0=" data-language="js">    condition <span class="token operator">?</span> exprIfTrue <span class="token operator">:</span> exprIfFalse
+</pre>
+</div></div></section><section aria-labelledby="매개변수"><h3 id="매개변수">매개변수</h3>
+<div class="section-content"><dl> <dt id="condition"><code>condition</code></dt> <dd> <p>조건문으로 사용되는 표현식</p> </dd> <dt id="expriftrue"><code>exprIfTrue</code></dt> <dd> <p><code>condition</code>이 <a href="https://developer.mozilla.org/ko/docs/Glossary/Truthy">truthy</a>한 값으로 평가될 경우 실행되는 표현식 (<code>true</code>와 같거나, <code>true</code>로 치환될 수 있는 값)</p> </dd> <dt id="expriffalse"><code>exprIfFalse</code></dt> <dd> <p><code>condition</code>이 <a href="https://developer.mozilla.org/ko/docs/Glossary/Falsy">falsy</a>한 값으로 평가될 경우 실행되는 표현식 (<code>false</code>와 같거나, <code>false</code>로 치환될 수 있는 값)</p> </dd> </dl></div></section><section aria-labelledby="설명"><h2 id="설명">설명</h2>
+<div class="section-content"><p><code>false</code> 이외의 falsy한 표현식에는 <code>null</code>, <code>NaN</code>, <code>0</code>, 비어있는 문자열 (<code>""</code>), 그리고 <code>undefined</code>가 있습니다. <code>condition</code>이 이 중 하나일 경우 조건 연산자의 결괏값은 <code>exprIfFalse</code> 표현식을 실행한 결괏값입니다.</p></div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+</section><section aria-labelledby="간단한_예제"><h3 id="간단한_예제">간단한 예제</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="GjqUuZvumRo//VJPyWLV6WyuFolt55psK5Yg9Zk2EkQ=" data-language="js"><span class="token keyword">var</span> age <span class="token operator">=</span> <span class="token number">26</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> beverage <span class="token operator">=</span> <span class="token punctuation">(</span>age <span class="token operator">&gt;=</span> <span class="token number">21</span><span class="token punctuation">)</span> <span class="token operator">?</span> <span class="token string">"Beer"</span> <span class="token operator">:</span> <span class="token string">"Juice"</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>beverage<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// "Beer"</span>
+</pre>
+</div></div></section><section aria-labelledby="null_값_처리하기"><h3 id="null_값_처리하기">null 값 처리하기</h3>
+<div class="section-content">
+<p><code>null</code>일 수 있는 값을 처리할 때 흔히 사용됩니다:</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="geREC8XpRRA+1r009eSnemWEnU2Re0CaJaVQZUvL8rM=" data-language="js"><span class="token keyword">let</span> <span class="token function-variable function">greeting</span> <span class="token operator">=</span> <span class="token parameter">person</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token keyword">let</span> name <span class="token operator">=</span> person <span class="token operator">?</span> person<span class="token punctuation">.</span>name <span class="token operator">:</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">stranger</span><span class="token template-punctuation string">`</span></span>
+  <span class="token keyword">return</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">Howdy, </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>name<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span>
+<span class="token punctuation">}</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token function">greeting</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">Alice</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// "Howdy, Alice"</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token function">greeting</span><span class="token punctuation">(</span><span class="token keyword">null</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>             <span class="token comment">// "Howdy, stranger"</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="연결된_조건문_처리하기"><h3 id="연결된_조건문_처리하기">연결된 조건문 처리하기</h3>
+<div class="section-content">
+<p>조건 연산자는 아래와 같이 연결해 사용할 수 있습니다. 이는 연결된 <code>if … else if … else if … else</code>와 유사합니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="5EDed3vSL0E8K6MGsPjWND8IaGdVtSeKJOMLDUDZQzs=" data-language="js"><span class="token keyword">function</span> <span class="token function">example</span><span class="token punctuation">(</span><span class="token parameter">…</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> condition1 <span class="token operator">?</span> value1
+         <span class="token operator">:</span> condition2 <span class="token operator">?</span> value2
+         <span class="token operator">:</span> condition3 <span class="token operator">?</span> value3
+         <span class="token operator">:</span> value4<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div> <p>위 코드는 아래의 연결된 <code>if … else</code>와 동등합니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="ZjSbNPPn+/TTVpekim1KPCcFG94iC6I8//Rt2IYYO+4=" data-language="js"><span class="token keyword">function</span> <span class="token function">example</span><span class="token punctuation">(</span><span class="token parameter">…</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>condition1<span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> value1<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+    <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>condition2<span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> value2<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+    <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>condition3<span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> value3<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+    <span class="token keyword">else</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> value4<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</pre>
+</div>
+</div></section><h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://tc39.es/ecma262/multipage/ecmascript-language-expressions.html#sec-conditional-operator">ECMAScript Language Specification <br><small># sec-conditional-operator</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="../statements/if...else">if statement</a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Operators/Conditional_operator" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Operators/Conditional_operator</a>
+  </p>
+</div>

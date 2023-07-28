@@ -1,0 +1,84 @@
+<header><h1>letter-spacing</h1></header><div class="section-content"><p><code>letter-spacing</code> <a href="https://developer.mozilla.org/ko/docs/Web/CSS">CSS</a> 속성은 글자 사이의 간격을 조절합니다.</p></div>
+<section aria-labelledby="시도해보기"><h2 id="시도해보기">시도해보기</h2>
+<div class="section-content"><iframe class="interactive is-default-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/css/letter-spacing.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe></div></section><section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="iFlS5b7khSgU89qx0YC2pUE6Nn6R0VZXVaIVFa3b7XE=" data-language="css"><span class="token comment">/* 키워드 값 */</span>
+<span class="token property">letter-spacing</span><span class="token punctuation">:</span> normal<span class="token punctuation">;</span>
+
+<span class="token comment">/* &lt;length&gt; 값 */</span>
+<span class="token property">letter-spacing</span><span class="token punctuation">:</span> 0.3em<span class="token punctuation">;</span>
+<span class="token property">letter-spacing</span><span class="token punctuation">:</span> 3px<span class="token punctuation">;</span>
+<span class="token property">letter-spacing</span><span class="token punctuation">:</span> .3px<span class="token punctuation">;</span>
+
+<span class="token comment">/* 전역 값 */</span>
+<span class="token property">letter-spacing</span><span class="token punctuation">:</span> inherit<span class="token punctuation">;</span>
+<span class="token property">letter-spacing</span><span class="token punctuation">:</span> initial<span class="token punctuation">;</span>
+<span class="token property">letter-spacing</span><span class="token punctuation">:</span> unset<span class="token punctuation">;</span>
+</pre>
+</div></div></section><section aria-labelledby="값"><h3 id="값">값</h3>
+<div class="section-content"><dl> <dt id="normal"><code>normal</code></dt> <dd> <p>현재 글꼴의 기본 간격. <code>0</code>과 달리, <code>auto</code>는 <a href="https://developer.mozilla.org/ko/docs/Glossary/User_agent">사용자 에이전트</a>가 양쪽 정렬을 위해 간격을 임의로 조절할 수 있습니다.</p> </dd> <dt id="length"><a href="length"><code>&lt;length&gt;</code></a></dt> <dd> <p>기본 간격에 <strong>추가</strong>할 글자간 간격. 음수 값을 지정할 수 있지만 구현에 따라 한계가 있을 수 있습니다. 사용자 에이전트가 간격을 줄이거나 늘리지 않습니다.</p> </dd> </dl></div></section><section aria-labelledby="형식_구문"><h3 id="형식_구문">형식 구문</h3>
+<div class="section-content"><pre class="notranslate"><span class="token property" id="letter-spacing">letter-spacing = </span><br>  <span class="token keyword">normal</span>    <a href="value_definition_syntax#single_bar">|</a><br>  <a href="length"><span class="token property">&lt;length&gt;</span></a>  <br><br></pre></div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+</section><section aria-labelledby="html"><h3 id="html">HTML</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="UMeUWRtPznATRpt+q8NPJuxhyzEh0b/ZK+jq1/c6HKY=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>normal<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>글자 간격<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>em-wide<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>글자 간격<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>em-wider<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>글자 간격<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>em-tight<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>글자 간격<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>px-wide<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>글자 간격<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div></div></section><section aria-labelledby="css"><h3 id="css">CSS</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="sZr775yVninU2PJyv2iVpTsXHrEYnRbOD2BPhl8A364=" data-language="css"><span class="token selector">.normal</span>   <span class="token punctuation">{</span> <span class="token property">letter-spacing</span><span class="token punctuation">:</span> normal<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+<span class="token selector">.em-wide</span>  <span class="token punctuation">{</span> <span class="token property">letter-spacing</span><span class="token punctuation">:</span> 0.4em<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+<span class="token selector">.em-wider</span> <span class="token punctuation">{</span> <span class="token property">letter-spacing</span><span class="token punctuation">:</span> 1em<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+<span class="token selector">.em-tight</span> <span class="token punctuation">{</span> <span class="token property">letter-spacing</span><span class="token punctuation">:</span> -0.05em<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+<span class="token selector">.px-wide</span>  <span class="token punctuation">{</span> <span class="token property">letter-spacing</span><span class="token punctuation">:</span> 6px<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+</pre>
+</div></div></section><section aria-labelledby="결과"><h3 id="결과">결과</h3>
+<div class="section-content"><div class="code-example" id="sect1">
+
+<iframe class="sample-code-frame" title="예제 sample" id="frame_예제" width="440" height="185" src="https://live.mdnplay.dev/ko/docs/Web/CSS/letter-spacing/runner.html?id=%EC%98%88%EC%A0%9C" loading="lazy"></iframe>
+</div></div></section><section aria-labelledby="접근성_고려사항"><h2 id="접근성_고려사항">접근성 고려사항</h2>
+<div class="section-content">
+<p><code>letter-spacing</code> 값의 절댓값이 너무 크면 스타일을 적용한 글을 읽기 힘들어집니다. 지나치게 큰 값으로는 글자 간격이 지나치게 넓어져 단어를 이루지 못하고 따로 따로 보입니다. 반대로 지나친 음숫값은 글자가 서로 겹쳐 알아볼 수 없습니다.</p> <p>글꼴마다 문자의 너비가 다르므로 읽기에 용이한 간격은 상황에 따라 다릅니다. 모든 글꼴에 적합한 하나의 값은 존재하지 않습니다.</p> <ul> <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/Understanding_WCAG/Perceivable" class="only-in-en-us">MDN Understanding WCAG, Guideline 1.4 explanations <small>(en-US)</small></a></li> <li><a href="https://www.w3.org/TR/UNDERSTANDING-WCAG20/visual-audio-contrast-visual-presentation.html" target="_blank">Understanding Success Criterion 1.4.8 | W3C Understanding WCAG 2.0</a></li> </ul>
+</div></section><h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://drafts.csswg.org/css-text/#letter-spacing-property">CSS Text Module Level 3 <br><small># letter-spacing-property</small></a></td></tr></tbody>
+</table></div>
+<div class="section-content"><figure class="table-container"><div class="_table"><table class="properties"><tbody>
+<tr>
+<th scope="row"><a href="initial_value">초기값</a></th>
+<td><code>normal</code></td>
+</tr>
+<tr>
+<th scope="row">적용대상</th>
+<td>all elements. It also applies to <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/::first-letter" class="only-in-en-us"><code>::first-letter</code> <small>(en-US)</small></a> and <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/::first-line" class="only-in-en-us"><code>::first-line</code> <small>(en-US)</small></a>.</td>
+</tr>
+<tr>
+<th scope="row"><a href="inheritance">상속</a></th>
+<td>yes</td>
+</tr>
+<tr>
+<th scope="row"><a href="computed_value">계산 값</a></th>
+<td>an optimum value consisting of either an absolute length or the keyword <code>normal</code>
+</td>
+</tr>
+<tr>
+<th scope="row">Animation type</th>
+<td>a <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/length#interpolation">length</a>
+</td>
+</tr>
+</tbody></table></div></figure></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/font-kerning"><code>font-kerning</code> <small>(en-US)</small></a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/CSS/letter-spacing" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/CSS/letter-spacing</a>
+  </p>
+</div>

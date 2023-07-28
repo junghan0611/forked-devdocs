@@ -1,0 +1,72 @@
+<header><h1>Object.isSealed()</h1></header><div class="section-content"><p><code>Object.isSealed()</code> 메서드는 객체가 봉인됐는지 판별합니다.</p></div>
+<section aria-labelledby="시도해보기"><h2 id="시도해보기">시도해보기</h2>
+<div class="section-content"><iframe class="interactive is-js-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/js/object-issealed.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe></div></section><section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="EUd87VPoE8u8AyMQxzV/e7/D0aeotbHMpaiCE65kZEQ=" data-language="js">Object<span class="token punctuation">.</span><span class="token function">isSealed</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span>
+</pre>
+</div></div></section><section aria-labelledby="매개변수"><h3 id="매개변수">매개변수</h3>
+<div class="section-content"><dl> <dt id="obj"><code>obj</code></dt> <dd> <p>판별할 객체.</p> </dd> </dl></div></section><section aria-labelledby="반환_값"><h3 id="반환_값">반환 값</h3>
+<div class="section-content"><p>객체의 봉인 여부를 나타내는 <a href="../boolean"><code>Boolean</code></a>.</p></div></section><section aria-labelledby="설명"><h2 id="설명">설명</h2>
+<div class="section-content"><p>객체가 봉인된 경우 <code>true</code>를 반환하고, 그렇지 않으면 <code>false</code>. 객체는 <a href="isextensible">확장 불가</a>이고 모든 속성이 설정 불가이며 따라서 삭제할 수 없(지만 반드시 쓰기 불가일 필요는 없)는 경우 봉인됩니다.</p></div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="5lmJ4YrplItnUM7LDZnkbYTP+tGr7cdDic5Gzi/4cMM=" data-language="js"><span class="token comment">// 객체는 기본으로 봉인되지 않습니다.</span>
+<span class="token keyword">var</span> empty <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+Object<span class="token punctuation">.</span><span class="token function">isSealed</span><span class="token punctuation">(</span>empty<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// === false</span>
+
+<span class="token comment">// 빈 객체를 확장 불가하게 한 경우, 빈 채로 봉인됩니다.</span>
+Object<span class="token punctuation">.</span><span class="token function">preventExtensions</span><span class="token punctuation">(</span>empty<span class="token punctuation">)</span><span class="token punctuation">;</span>
+Object<span class="token punctuation">.</span><span class="token function">isSealed</span><span class="token punctuation">(</span>empty<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// === true</span>
+
+<span class="token comment">// 비어 있지 않은 객체는 다릅니다, 그 속성이 모두 설정 불가가 아닌 한.</span>
+<span class="token keyword">var</span> hasProp <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token literal-property property">fee</span><span class="token operator">:</span> <span class="token string">'fie foe fum'</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
+Object<span class="token punctuation">.</span><span class="token function">preventExtensions</span><span class="token punctuation">(</span>hasProp<span class="token punctuation">)</span><span class="token punctuation">;</span>
+Object<span class="token punctuation">.</span><span class="token function">isSealed</span><span class="token punctuation">(</span>hasProp<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// === false</span>
+
+<span class="token comment">// 그러나 모두 설정 불가하게 하면 객체는 봉인됩니다.</span>
+Object<span class="token punctuation">.</span><span class="token function">defineProperty</span><span class="token punctuation">(</span>hasProp<span class="token punctuation">,</span> <span class="token string">'fee'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> <span class="token literal-property property">configurable</span><span class="token operator">:</span> <span class="token boolean">false</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+Object<span class="token punctuation">.</span><span class="token function">isSealed</span><span class="token punctuation">(</span>hasProp<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// === true</span>
+
+<span class="token comment">// 객체를 봉인하는 가장 쉬운 방법은 물론 Object.seal 입니다.</span>
+<span class="token keyword">var</span> sealed <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+Object<span class="token punctuation">.</span><span class="token function">seal</span><span class="token punctuation">(</span>sealed<span class="token punctuation">)</span><span class="token punctuation">;</span>
+Object<span class="token punctuation">.</span><span class="token function">isSealed</span><span class="token punctuation">(</span>sealed<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// === true</span>
+
+<span class="token comment">// 봉인된 객체는 정의에 의해 확장 불가입니다.</span>
+Object<span class="token punctuation">.</span><span class="token function">isExtensible</span><span class="token punctuation">(</span>sealed<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// === false</span>
+
+<span class="token comment">// 봉인된 객체는 동결될 수 있지만 꼭 그럴 필요는 없습니다.</span>
+Object<span class="token punctuation">.</span><span class="token function">isFrozen</span><span class="token punctuation">(</span>sealed<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// === true (모든 속성도 쓰기 불가)</span>
+
+<span class="token keyword">var</span> s2 <span class="token operator">=</span> Object<span class="token punctuation">.</span><span class="token function">seal</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token literal-property property">p</span><span class="token operator">:</span> <span class="token number">3</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+Object<span class="token punctuation">.</span><span class="token function">isFrozen</span><span class="token punctuation">(</span>s2<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// === false ('p'는 여전히 쓰기 가능)</span>
+
+<span class="token keyword">var</span> s3 <span class="token operator">=</span> Object<span class="token punctuation">.</span><span class="token function">seal</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token keyword">get</span> <span class="token function">p</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span> <span class="token punctuation">}</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+Object<span class="token punctuation">.</span><span class="token function">isFrozen</span><span class="token punctuation">(</span>s3<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// === true (설정 가능성만이 접근자 속성에게 중요함)</span>
+</pre>
+</div></div></section><section aria-labelledby="주의"><h2 id="주의">주의</h2>
+<div class="section-content">
+<p>ES5에서, 이 메서드의 인수가 비객체(원시형)인 경우, 그러면 <a href="../typeerror"><code>TypeError</code></a>가 발생합니다. ES6에서, 비객체 인수는 마치 봉인된 보통 객체였던 것처럼 취급됩니다, 그저 <code>true</code>를 반환하는.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="QH2tiCSNtmVhARlTwg74a4319QjlbHyc+Ppac7TRJ6E=" data-language="js">Object<span class="token punctuation">.</span><span class="token function">isSealed</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// TypeError: 1은 객체가 아닙니다 (ES5 코드)</span>
+
+Object<span class="token punctuation">.</span><span class="token function">isSealed</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// true                          (ES6 코드)</span>
+</pre>
+</div>
+</div></section><h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://tc39.es/ecma262/multipage/fundamental-objects.html#sec-object.issealed">ECMAScript Language Specification <br><small># sec-object.issealed</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="seal"><code>Object.seal()</code></a></li> <li><a href="preventextensions"><code>Object.preventExtensions()</code></a></li> <li><a href="isextensible"><code>Object.isExtensible()</code></a></li> <li><a href="freeze"><code>Object.freeze()</code></a></li> <li><a href="isfrozen"><code>Object.isFrozen()</code></a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Object/isSealed" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Object/isSealed</a>
+  </p>
+</div>

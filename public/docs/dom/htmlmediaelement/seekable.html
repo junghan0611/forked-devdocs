@@ -1,0 +1,32 @@
+<header><h1>HTMLMediaElement.seekable</h1></header><div class="section-content"><p><a href="../htmlmediaelement"><code>HTMLMediaElement</code></a> 객체의 <code>seekable</code> 읽기 전용 속성은 사용자 에이전트가 <code>seekable</code> 속성에 접근할 때 찾을 수 있는 미디어 리소스의 범위를 나타내는 새로운 정적 <a href="https://developer.mozilla.org/en-US/docs/Web/API/TimeRanges" class="only-in-en-us">정규화된 <code>TimeRanges</code> 객체 <small>(en-US)</small></a>를 반환합니다.</p></div>
+<h2 id="값">값</h2>
+<div class="section-content"><p><code>seekable</code> 속성에 접근할 때 사용자 에이전트가 찾을 수 있는 미디어 리소스의 범위를 나타내는 새로운 정적 <a href="https://developer.mozilla.org/en-US/docs/Web/API/TimeRanges" class="only-in-en-us">정규화된 TimeRanges 객체 <small>(en-US)</small></a>입니다.</p></div>
+<h2 id="예제">예제</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="yf4/etQqoOnk/MoL1NzmCrA8/Bkrr18t/tB9Ttz5/Hs=" data-language="js"><span class="token keyword">const</span> video <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">querySelector</span><span class="token punctuation">(</span><span class="token string">"video"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> timeRangesObject <span class="token operator">=</span> video<span class="token punctuation">.</span>seekable<span class="token punctuation">;</span>
+<span class="token keyword">const</span> timeRanges <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token comment">// 객체를 살펴보고 배열을 출력합니다</span>
+<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> count <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> count <span class="token operator">&lt;</span> timeRangesObject<span class="token punctuation">.</span>length<span class="token punctuation">;</span> count<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  timeRanges<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token punctuation">[</span>timeRangesObject<span class="token punctuation">.</span><span class="token function">start</span><span class="token punctuation">(</span>count<span class="token punctuation">)</span><span class="token punctuation">,</span> timeRangesObject<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span>count<span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div></div>
+<h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody>
+<tr><td><a href="https://html.spec.whatwg.org/multipage/media.html#dom-media-seekable-dev">HTML Standard <br><small># dom-media-seekable-dev</small></a></td></tr>
+<tr><td><a href="https://w3c.github.io/media-source/#htmlmediaelement-extensions">Media Source Extensions™ <br><small># htmlmediaelement-extensions</small></a></td></tr>
+</tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li>seekable을 정의하는 인터페이스는 <a href="../htmlmediaelement"><code>HTMLMediaElement</code></a>입니다.</li> <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Media_Source_Extensions_API" class="only-in-en-us">미디어 소스 확장 API <small>(en-US)</small></a></li> <li><a href="https://developer.mozilla.org/en-US/docs/Web/Guide/Audio_and_video_delivery/buffering_seeking_time_ranges" class="only-in-en-us">미디어 버퍼링, 검색 및 시간 범위 <small>(en-US)</small></a></li> </ul></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/HTMLMediaElement/seekable" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/HTMLMediaElement/seekable</a>
+  </p>
+</div>

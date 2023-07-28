@@ -5,10 +5,10 @@ module Docs
 
     # release = '2023-04-24'
     self.name = 'JavaScript'
-    self.base_url = 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference'
+    self.base_url = 'https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference'
     self.links = {
-      home: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript',
-      code: 'https://github.com/mdn/content/tree/main/files/en-us/web/javascript'
+      home: 'https://developer.mozilla.org/ko/docs/Web/JavaScript',
+      code: 'https://github.com/mdn/translated-content/tree/main/files/ko/web/javascript'
     }
 
     html_filters.push 'javascript/clean_html', 'javascript/entries'
@@ -33,10 +33,10 @@ module Docs
     }
 
     options[:fix_urls] = ->(url) do
-      url.sub! 'https://developer.mozilla.org/en-US/docs/JavaScript/Reference',  Javascript.base_url
-      url.sub! 'https://developer.mozilla.org/en/JavaScript/Reference',          Javascript.base_url
-      url.sub! 'https://developer.mozilla.org/en/Core_JavaScript_1.5_Reference', Javascript.base_url
-      url.sub! 'https://developer.mozilla.org/En/Core_JavaScript_1.5_Reference', Javascript.base_url
+      url.sub! 'https://developer.mozilla.org/ko-KR/docs/JavaScript/Reference',  Javascript.base_url
+      url.sub! 'https://developer.mozilla.org/ko/JavaScript/Reference',          Javascript.base_url
+      # url.sub! 'https://developer.mozilla.org/en/Core_JavaScript_1.5_Reference', Javascript.base_url
+      # url.sub! 'https://developer.mozilla.org/Ko/Core_JavaScript_1.5_Reference', Javascript.base_url
       url.sub! '/Operators/Special/', '/Operators/'
       url.sub! 'Destructing_assignment', 'Destructuring_assignment'
       url.sub! '/Functions_and_function_scope', '/Functions'

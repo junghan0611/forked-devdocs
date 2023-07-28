@@ -1,0 +1,90 @@
+<header><h1>OffscreenCanvas</h1></header><div class="section-content">
+<div class="notecard experimental" id="sect1"><p><strong>Experimental:</strong> <strong>This is an <a href="https://developer.mozilla.org/en-US/docs/MDN/Writing_guidelines/Experimental_deprecated_obsolete#experimental">experimental technology</a></strong><br>Check the <a href="#browser_compatibility">Browser compatibility table</a> carefully before using this in production.</p></div> <p><code>OffscreenCanvas</code> 는 화면 밖에서 렌더링되는 캔버스 인터페이스입니다. window 객체와 <a href="web_workers_api">worker</a> 객체 모두 지원합니다.</p>
+</div>
+<h2 id="생성자">생성자</h2>
+<div class="section-content"><dl> <dt id="offscreencanvas"><a href="offscreencanvas/offscreencanvas"><code>OffscreenCanvas()</code></a></dt> <dd> <p><code>OffscreenCanvas</code> 생성자. 새 <code>OffscreenCanvas</code> 객체를 생성합니다.</p> </dd> </dl></div>
+<h2 id="프로퍼티">프로퍼티</h2>
+<div class="section-content"><dl> <dt id="offscreencanvas.height"><a href="offscreencanvas/height"><code>OffscreenCanvas.height</code></a></dt> <dd> <p>캔버스의 높이</p> </dd> <dt id="offscreencanvas.width"><a href="offscreencanvas/width"><code>OffscreenCanvas.width</code></a></dt> <dd> <p>캔버스의 너비</p> </dd> </dl></div>
+<h2 id="메소드">메소드</h2>
+<div class="section-content"><dl> <dt id="offscreencanvas.getcontext"><a href="offscreencanvas/getcontext"><code>OffscreenCanvas.getContext()</code></a></dt> <dd> <p>렌더링된 캔버스 컨텍스트 객체를 반환합니다.</p> </dd> <dt id="offscreencanvas.converttoblob_en-us"><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/OffscreenCanvas/convertToBlob"><code>OffscreenCanvas.convertToBlob()</code> <small>(en-US)</small></a></dt> <dd> <p>캔버스에 들어있는 이미지에 대한 <a href="blob"><code>Blob</code></a> 객체를 생성합니다.</p> </dd> <dt id="offscreencanvas.transfertoimagebitmap_en-us"><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/OffscreenCanvas/transferToImageBitmap"><code>OffscreenCanvas.transferToImageBitmap()</code> <small>(en-US)</small></a></dt> <dd> <p><code>OffscreenCanvas</code>에 렌더링된 이미지중에서 가장 최근에 렌더링된 이미지를 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/ImageBitmap"><code>ImageBitmap</code> <small>(en-US)</small></a> 객체로 생성합니다.</p> </dd> </dl></div>
+<h2 id="예시">예시</h2>
+
+<h3 id="offscreencanvas_에서_만들어진_프레임을_동기적으로_화면에_보여주는_방법">
+<code>OffscreenCanvas</code> 에서 만들어진 프레임을 동기적으로 화면에 보여주는 방법</h3>
+<div class="section-content">
+<p><code>OffscreenCanvas</code> API를 사용하는 방법은 <code>OffscreenCanvas</code>에 속한 <a class="page-not-created"><code>RenderingContext</code></a>를 이용해 새로운 프레임 객체를 생성하는 것입니다. 새 프레임이 컨텍스트에 렌더링이 되고나면, 가장 최근에 렌더링 된 이미지를 저장하는 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/OffscreenCanvas/transferToImageBitmap"><code>transferToImageBitmap()</code> <small>(en-US)</small></a> 메소드를 호출할 수 있습니다. 이 메소드는 다른 수 많은 Web API에서 사용되고 있는 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/ImageBitmap"><code>ImageBitmap</code> <small>(en-US)</small></a> 객체를 리턴합니다.</p> <p><code>ImageBitmap</code>을 화면에 표시하려면, 현재 (화면에 보여지고 있는) 캔버스 요소의 <code>canvas.getContext("bitmaprenderer")</code> 메소드를 호출했을 때 생성되는 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/ImageBitmapRenderingContext"><code>ImageBitmapRenderingContext</code> <small>(en-US)</small></a> 객체를 사용하면 됩니다. 이 컨텍스트는 캔버스의 내용을 주어진 <code>ImageBitmap</code>으로 전환하는 기능을 제공합니다. <code>OffscreenCanvas</code>에서 이전에 렌더링이 되어서 등록된 <code>ImageBitmap</code>을 이용한 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/ImageBitmapRenderingContext/transferFromImageBitmap"><code>ImageBitmapRenderingContext.transferFromImageBitmap()</code> <small>(en-US)</small></a>을 호출하면 <code>ImageBitmap</code>이 캔버스에 표시되고 소유권 역시 캔버스로 넘어갑니다. 단일 <code>OffscreenCanvas</code>는 프레임들을 임의의 다른 <code>ImageBitmapRenderingContext</code> 객체로 전달합니다.</p> <p>아래에 두 개의 <a href="https://developer.mozilla.org/ko/docs/Web/HTML/Element/canvas"><code>&lt;canvas&gt;</code></a> 요소가 있습니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="5WkKdDCOk7Du9L+GrAzkVH5nTfZYi6XdGhRbtGjGg28=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>canvas</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>one<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>canvas</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>canvas</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>two<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>canvas</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div> <p>다음의 코드는 위에서 설명한 것처럼 <code>OffscreenCanvas</code>를 이용해 렌더링합니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="hoiPkQBbOhNVv5N6I5j5Cw8EzvHsp3PaTfqsuVd1gIE=" data-language="js"><span class="token keyword">var</span> one <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">"one"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getContext</span><span class="token punctuation">(</span><span class="token string">"bitmaprenderer"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> two <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">"two"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getContext</span><span class="token punctuation">(</span><span class="token string">"bitmaprenderer"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">var</span> offscreen <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">OffscreenCanvas</span><span class="token punctuation">(</span><span class="token number">256</span><span class="token punctuation">,</span> <span class="token number">256</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> gl <span class="token operator">=</span> offscreen<span class="token punctuation">.</span><span class="token function">getContext</span><span class="token punctuation">(</span><span class="token string">'webgl'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// ... gl 컨텍스트를 이용해 첫 번째 캔버스에 무언가를 그립니다 ...</span>
+
+<span class="token comment">// 첫 번째 캔버스에 렌더링을 수행합니다.</span>
+<span class="token keyword">var</span> bitmapOne <span class="token operator">=</span> offscreen<span class="token punctuation">.</span><span class="token function">transferToImageBitmap</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+one<span class="token punctuation">.</span><span class="token function">transferFromImageBitmap</span><span class="token punctuation">(</span>bitmapOne<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// ... gl 컨텍스트를 이용해 두 번째 캔버스에 무언가를 그립니다 ...</span>
+
+<span class="token comment">// 두 번째 캔버스에 렌더링을 수행합니다.</span>
+<span class="token keyword">var</span> bitmapTwo <span class="token operator">=</span> offscreen<span class="token punctuation">.</span><span class="token function">transferToImageBitmap</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+two<span class="token punctuation">.</span><span class="token function">transferFromImageBitmap</span><span class="token punctuation">(</span>bitmapTwo<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div>
+</div>
+<h3 id="offscreencanvas_에서_만들어진_프레임을_비동기적으로_화면에_보여주는_방법">
+<code>OffscreenCanvas</code> 에서 만들어진 프레임을 비동기적으로 화면에 보여주는 방법</h3>
+<div class="section-content">
+<p><code>OffscreenCanvas</code> API를 이용하는 또 다른 방법은 <a href="web_workers_api">worker</a> 또는 메인 스레드위에서 <a href="https://developer.mozilla.org/ko/docs/Web/HTML/Element/canvas"><code>&lt;canvas&gt;</code></a> 요소의 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLCanvasElement/transferControlToOffscreen"><code>transferControlToOffscreen()</code> <small>(en-US)</small></a>를 호출하는 것입니다. 여기서 메인 스레드는 <code>OffscreenCanvas</code> 객체를 반환하는 <a href="htmlcanvaselement"><code>HTMLCanvasElement</code></a> 객체를 가지고 있습니다. <a href="offscreencanvas/getcontext"><code>getContext()</code></a>를 호출하면 <code>OffscreenCanvas</code>에서 <code>RenderingContext</code>를 얻을 수 있습니다.</p> <p>main.js (메인 스레드 코드):</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="3zZId08WuO5/lXOS4GULazF3HO860BcWAtxI3xXZriI=" data-language="js"><span class="token keyword">var</span> htmlCanvas <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">"canvas"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> offscreen <span class="token operator">=</span> htmlCanvas<span class="token punctuation">.</span><span class="token function">transferControlToOffscreen</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">var</span> worker <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Worker</span><span class="token punctuation">(</span><span class="token string">"offscreencanvas.js"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+worker<span class="token punctuation">.</span><span class="token function">postMessage</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token literal-property property">canvas</span><span class="token operator">:</span> offscreen<span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">[</span>offscreen<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div> <p>offscreencanvas.js (worker 코드):</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="UeEmWAhtb6O7vTqL5yqXdgCcKvztx4LQ7uiObUWPb2Y=" data-language="js"><span class="token function-variable function">onmessage</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">evt</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">var</span> canvas <span class="token operator">=</span> evt<span class="token punctuation">.</span>data<span class="token punctuation">.</span>canvas<span class="token punctuation">;</span>
+  <span class="token keyword">var</span> gl <span class="token operator">=</span> canvas<span class="token punctuation">.</span><span class="token function">getContext</span><span class="token punctuation">(</span><span class="token string">"webgl"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token comment">// ... gl 컨텍스트를 이용해 무언가를 그립니다 ...</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</pre>
+</div> <p>worker 내에서 requestAnimationFrame 또한 사용할 수 있습니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="AZlYsJ3SB/XkIXlh1irpKmmz+yBW6yvDs07xZaYyJ80=" data-language="js"><span class="token function-variable function">onmessage</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">evt</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> canvas <span class="token operator">=</span> evt<span class="token punctuation">.</span>data<span class="token punctuation">.</span>canvas<span class="token punctuation">;</span>
+  <span class="token keyword">const</span> gl <span class="token operator">=</span> canvas<span class="token punctuation">.</span><span class="token function">getContext</span><span class="token punctuation">(</span><span class="token string">"webgl"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">function</span> <span class="token function">render</span><span class="token punctuation">(</span><span class="token parameter">time</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// ... gl 컨텍스트를 이용해 무언가를 그립니다 ...</span>
+    <span class="token function">requestAnimationFrame</span><span class="token punctuation">(</span>render<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token function">requestAnimationFrame</span><span class="token punctuation">(</span>render<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</pre>
+</div>
+</div>
+<h2 id="상세">상세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://html.spec.whatwg.org/multipage/canvas.html#the-offscreencanvas-interface">HTML Standard <br><small># the-offscreencanvas-interface</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<h2 id="더_보기">더 보기</h2>
+<div class="section-content"><ul> <li><a href="https://hacks.mozilla.org/2016/01/webgl-off-the-main-thread/" target="_blank">WebGL Off the Main Thread – Mozilla Hacks</a></li> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D"><code>CanvasRenderingContext2D</code> <small>(en-US)</small></a></li> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/ImageBitmap"><code>ImageBitmap</code> <small>(en-US)</small></a></li> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/ImageBitmapRenderingContext"><code>ImageBitmapRenderingContext</code> <small>(en-US)</small></a></li> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLCanvasElement/transferControlToOffscreen"><code>HTMLCanvasElement.transferControlToOffscreen()</code> <small>(en-US)</small></a></li> <li><a class="page-not-created"><code>WebGLRenderingContext.commit()</code></a></li> </ul></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/OffscreenCanvas" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/OffscreenCanvas</a>
+  </p>
+</div>

@@ -1,0 +1,69 @@
+<header><h1>SharedWorker</h1></header><div class="section-content">
+<p><code>SharedWorker</code> 인터페이스는 윈도우 창이나 iframe, 워커등의 다른 브라우징 컨텍스트에서도 접근이 가능한 특정 종류의 워커를 의미합니다. 기존의 다른 종류의 워커들과 다른 전역 스코프를 갖는 인터페이스를 구현합니다. <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/SharedWorkerGlobalScope"><code>SharedWorkerGlobalScope</code> <small>(en-US)</small></a>.</p> <div class="notecard note" id="sect1"> <p><strong>참고:</strong> <strong>참고 :</strong> SharedWorker 가 몇개의 다른 브라우징 컨텍스트에서 접근이 가능하면, 그 브라우징 컨텍스트들은 모두 정확히 같은 오리진을 공유해야 합니다. (같은 프로토콜, 호스트, 포트 등)</p> </div>
+</div>
+<h2 id="생성자">생성자</h2>
+<div class="section-content"><dl> <dt id="sharedworker_en-us"><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/SharedWorker/SharedWorker"><code>SharedWorker()</code> <small>(en-US)</small></a></dt> <dd> <p>특정 URL에서 스크립트를 실행하는 shared web worker를 생성합니다.</p> </dd> </dl></div>
+<h2 id="속성">속성</h2>
+<div class="section-content">
+<p><em><a href="eventtarget"><code>EventTarget</code></a></em> 의 속성들을 상속 받습니다. 그리고 <em><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/Worker"><code>AbstractWorker</code> <small>(en-US)</small></a></em> 의 속성들을 구현할 수 있습니다.</p> <dl> <dt id="abstractworker.onerror_en-us"><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/Worker/error_event"><code>AbstractWorker.onerror</code> <small>(en-US)</small></a></dt> <dd> <p>워커에서 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/ErrorEvent"><code>ErrorEvent</code> <small>(en-US)</small></a> 타입의 에러가 발생했을 때 호출되는는 <a href="eventtarget/addeventlistener"><code>EventListener</code></a></p> </dd> <dt id="sharedworker.port_en-us">
+<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/SharedWorker/port"><code>SharedWorker.port</code> <small>(en-US)</small></a> <span class="badge inline readonly">읽기 전용</span>
+</dt> <dd> <p>shared worker를 제어하거나 통신하기 위해 사용되는 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/MessagePort"><code>MessagePort</code> <small>(en-US)</small></a> 객체를 반환</p> </dd> </dl>
+</div>
+<h2 id="메서드">메서드</h2>
+<div class="section-content"><p><em><a href="eventtarget"><code>EventTarget</code></a></em> 의 속성들을 상속 받습니다. 그리고 <em><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/Worker"><code>AbstractWorker</code> <small>(en-US)</small></a></em> 의 속성들을 구현할 수 있습니다.</p></div>
+<h2 id="예제">예제</h2>
+<div class="section-content">
+<p><a href="https://github.com/mdn/simple-shared-worker" target="_blank">Basic shared worker example</a> (<a href="https://mdn.github.io/simple-shared-worker/" target="_blank">run shared worker</a>) 를 보시면 2개의 HTML 페이지가 있습니다. 각각 간단한 계산을 위해 자바스크립트를 사용합니다. 각기 다른 스크립트가 계산을 위해 같은 워커 파일을 사용합니다 — 두 개 페이지가 모두 다른 윈도우창에서 실행되더라도 같은 워커에 접근할 수 있습니다.</p> <p>아래 코드 스니펫은 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/SharedWorker/SharedWorker"><code>SharedWorker()</code> <small>(en-US)</small></a> 생성자를 이용해 <code>SharedWorker</code> 객체를 생성합니다. 두 스크립트 모두 아래를 포함합니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="aUH0k9muLC173fqdBSTH/Q3nj5CZJaZl2t297bkolfs=" data-language="js"><span class="token keyword">var</span> myWorker <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">SharedWorker</span><span class="token punctuation">(</span><span class="token string">"worker.js"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div> <p>두 스크립트는 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/SharedWorker/port"><code>SharedWorker.port</code> <small>(en-US)</small></a> 속성으로 생성한 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/MessagePort"><code>MessagePort</code> <small>(en-US)</small></a> 객체를 통해 워커에 접근할 수 있습니다. <code>addEventListener</code> 를 이용하여 <code>onmessage</code> 가 추가되면, port는 <code>start()</code> 메서드를 이용하여 수동으로 시작할 수 있습니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="M54TkY/tIXYieHaVr0LACS7PYZ4tawjl0Qck0OGCL3M=" data-language="js">myWorker<span class="token punctuation">.</span>port<span class="token punctuation">.</span><span class="token function">start</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div> <p>포트가 시작되면, 양 스크립트는 워커에 메시지를 보내고 <code>port.postMessage()</code>와 <code>port.onmessage</code> 를 각각 이용하여 메시지를 처리합니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="kKDN6rM1w3RHxvltV7PMVnmW5tQEpFWWqDAT7ZGvscU=" data-language="js">first<span class="token punctuation">.</span><span class="token function-variable function">onchange</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    myWorker<span class="token punctuation">.</span>port<span class="token punctuation">.</span><span class="token function">postMessage</span><span class="token punctuation">(</span><span class="token punctuation">[</span>first<span class="token punctuation">.</span>value<span class="token punctuation">,</span>second<span class="token punctuation">.</span>value<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'Message posted to worker'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  second<span class="token punctuation">.</span><span class="token function-variable function">onchange</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    myWorker<span class="token punctuation">.</span>port<span class="token punctuation">.</span><span class="token function">postMessage</span><span class="token punctuation">(</span><span class="token punctuation">[</span>first<span class="token punctuation">.</span>value<span class="token punctuation">,</span>second<span class="token punctuation">.</span>value<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'Message posted to worker'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  myWorker<span class="token punctuation">.</span>port<span class="token punctuation">.</span><span class="token function-variable function">onmessage</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">e</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    result1<span class="token punctuation">.</span>textContent <span class="token operator">=</span> e<span class="token punctuation">.</span>data<span class="token punctuation">;</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'Message received from worker'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+</pre>
+</div> <p>워커에서 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/SharedWorkerGlobalScope/connect_event"><code>SharedWorkerGlobalScope.onconnect</code> <small>(en-US)</small></a> 핸들러를 이용하여 위에 언급된 포트에 접속할 수 있습니다. 워커에 연관되어 있는 포트는 <code><a href="https://developer.mozilla.org/ko/docs/Web/Reference/Events/connect" class="page-not-created">connect</a></code> 이벤트 포트 속성에 접근할 수 있습니다 — 그리고나서 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/MessagePort"><code>MessagePort</code> <small>(en-US)</small></a> <code>start()</code> 메서드로 포트를 시작하고, onmessage 핸들러로 메인쓰레드에서 받은 메시지를 처리합니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="475NQhI3N6L1QEEI1xYzZwtzJFUb9SjVIKMYiibl6Hg=" data-language="js"><span class="token function-variable function">onconnect</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">e</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">var</span> port <span class="token operator">=</span> e<span class="token punctuation">.</span>ports<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+    port<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">'message'</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">e</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">var</span> workerResult <span class="token operator">=</span> <span class="token string">'Result: '</span> <span class="token operator">+</span> <span class="token punctuation">(</span>e<span class="token punctuation">.</span>data<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">*</span> e<span class="token punctuation">.</span>data<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      port<span class="token punctuation">.</span><span class="token function">postMessage</span><span class="token punctuation">(</span>workerResult<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    port<span class="token punctuation">.</span><span class="token function">start</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Required when using addEventListener. Otherwise called implicitly by onmessage setter.</span>
+<span class="token punctuation">}</span>
+</pre>
+</div>
+</div>
+<h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://html.spec.whatwg.org/multipage/workers.html#shared-workers-and-the-sharedworker-interface">HTML Standard <br><small># shared-workers-and-the-sharedworker-interface</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="worker"><code>Worker</code></a></li> <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Using_web_workers" class="only-in-en-us">Using web workers <small>(en-US)</small></a></li> </ul></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/SharedWorker" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/SharedWorker</a>
+  </p>
+</div>

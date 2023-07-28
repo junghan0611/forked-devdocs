@@ -1,0 +1,30 @@
+<header><h1>왼쪽 시프트 할당 연산자 (&lt;&lt;=)</h1></header><div class="section-content"><p><code>&lt;&lt;=</code> 연산자는 지정된 비트 수 만큼 왼쪽으로 비트를 이동시키고 그 결과를 변수에 반영합니다.</p></div>
+<section aria-labelledby="시도해보기"><h2 id="시도해보기">시도해보기</h2>
+<div class="section-content"><iframe class="interactive is-shorter-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/js/expressions-left-shift-assignment.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe></div></section><section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="KHyCFjnVt+QFrrzNw0Yr6oxNpF/kzSWojIHklHUX2O0=" data-language="js">x <span class="token operator">&lt;&lt;=</span> y <span class="token comment">// x = x &lt;&lt; y</span>
+</pre>
+</div></div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+</section><section aria-labelledby="왼쪽_시프트_할당하기"><h3 id="왼쪽_시프트_할당하기">왼쪽 시프트 할당하기</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="jELu1VSBbiOAFAFKTYTBgsIlBZlrlmLnTnkNkjZboHo=" data-language="js"><span class="token keyword">let</span> a <span class="token operator">=</span> <span class="token number">5</span><span class="token punctuation">;</span>
+<span class="token comment">// 00000000000000000000000000000101</span>
+a <span class="token operator">&lt;&lt;=</span> <span class="token number">2</span><span class="token punctuation">;</span> <span class="token comment">// 20</span>
+<span class="token comment">// 00000000000000000000000000010100</span>
+</pre>
+</div></div></section><h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://tc39.es/ecma262/multipage/ecmascript-language-expressions.html#sec-assignment-operators">ECMAScript Language Specification <br><small># sec-assignment-operators</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Guide/Expressions_and_operators#%ed%95%a0%eb%8b%b9_%ec%97%b0%ec%82%b0%ec%9e%90">JavaScript 가이드에서 할당 연산자</a></li> <li><a href="left_shift">왼쪽 시프트 연산자</a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Operators/Left_shift_assignment" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Operators/Left_shift_assignment</a>
+  </p>
+</div>

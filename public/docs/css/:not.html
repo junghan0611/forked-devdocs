@@ -1,0 +1,36 @@
+<header><h1>:not()</h1></header><div class="section-content">
+<p>부정(<strong>negation</strong>) <a href="pseudo-classes">CSS 가상 클래스</a> <code>:not(X)</code>는 인수로 간단한 선택자(selector) <em>X</em>를 취하는 기능 표기법입니다. 인수로 표시되지 않은 요소와 일치합니다. <em>X</em>는 다른 부정 선택자를 포함해서는 안 됩니다.</p> <div class="notecard note" id="sect1"> <p><strong>참고:</strong> <strong>주의:</strong>- 쓸모없는 선택자는 이 가상 클래스를 사용하여 작성될 수 있습니다. 예를 들어, <code>:not(*)</code>은 임의 요소가 아닌 모든 요소와 일치합니다. 그래서 규칙이 결코 적용되지 않습니다.</p> <ul> <li>다른 규칙을 다시 작성할 수 있습니다. 가령 <code>foo:not(bar)</code>는 간단한 <code>foo</code>와 같은 요소와 일치합니다. 그럼에도 불구하고 첫 요소의 <a href="specificity">명시도</a>가 더 높습니다.</li> <li>
+<code>:not(foo){}</code>는 <strong><a href="https://developer.mozilla.org/ko/docs/Web/HTML/Element/html"><code>&lt;html&gt;</code></a> 및 <a href="https://developer.mozilla.org/ko/docs/Web/HTML/Element/body"><code>&lt;body&gt;</code></a> 포함</strong> 뭐든지 <code>foo</code>가 아닌 것과 일치합니다.</li> <li>이 선택자는 한 요소에만 적용됩니다. 따라서 모든 조상(ancestor)을 제외하는 데 사용할 수 없습니다. 예를 들어, <code>body :not(table) a</code>는 <a href="https://developer.mozilla.org/ko/docs/Web/HTML/Element/tr"><code>&lt;tr&gt;</code></a> 요소가 선택자의 <code>:not()</code> 부분과 일치하기 때문에, 여전히 표 내부 링크에 적용됩니다.</li> </ul> </div>
+</div>
+<section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content"><pre class="notranslate">:not(selector) { style properties }
+</pre></div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+<div class="section-content">
+<div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="NkMSb8SlrZM6xSPOwWMj/zeanSIjFh+OnP+DPAEKO5o=" data-language="css"><span class="token selector">p:not(.classy)</span> <span class="token punctuation">{</span> <span class="token property">color</span><span class="token punctuation">:</span> red<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+<span class="token selector">body :not(p)</span> <span class="token punctuation">{</span> <span class="token property">color</span><span class="token punctuation">:</span> green<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+</pre>
+</div> <p>위의 CSS 및 아래 HTML이 주어진다면...</p> <div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="pnXT+9ziIzP0y2Gdu8+oIfCNZ7QnkXcCH+m4jJc1YlU=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>Some text.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>classy<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Some other text.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span><span class="token punctuation">&gt;</span></span>One more text<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div> <p>이 같은 출력을 얻습니다:</p>
+<div class="code-example" id="sect2">
+
+<iframe class="sample-code-frame" title="예제" id="frame_examples" src="https://live-samples.mdn.mozilla.net/ko/docs/Web/CSS/:not/_sample_.examples.html?id=examples&amp;url=%2Fko%2Fdocs%2FWeb%2FCSS%2F:not" loading="lazy"></iframe>
+</div>
+</div></section><h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://drafts.csswg.org/selectors/#negation">Selectors Level 4 <br><small># negation</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/CSS/:not" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/CSS/:not</a>
+  </p>
+</div>

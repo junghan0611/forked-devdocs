@@ -1,0 +1,65 @@
+<header><h1>Document.createElement()</h1></header><div class="section-content"><p>HTML 문서에서, <code>Document.createElement()</code> 메서드는 지정한 <code>tagName</code>의 HTML 요소를 만들어 반환합니다. <code>tagName</code>을 인식할 수 없으면 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLUnknownElement"><code>HTMLUnknownElement</code> <small>(en-US)</small></a>를 대신 반환합니다.</p></div>
+<h2 id="구문">구문</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="cVJJ5BFBCe0sUpjisrqa+TLZmeIWf9n64hag/Q2ST+c=" data-language="js"><span class="token keyword">let</span> element <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">createElement</span><span class="token punctuation">(</span>tagName<span class="token punctuation">[</span><span class="token punctuation">,</span> options<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div></div>
+<h3 id="매개변수">매개변수</h3>
+<div class="section-content"><dl> <dt id="tagname"><code>tagName</code></dt> <dd> <p>생성할 요소의 유형을 가리키는 문자열.</p> </dd> <dt id="options">
+<code>options</code> <span class="badge inline optional">Optional</span>
+</dt> <dd> <p><code>is</code> 속성 하나를 가진 <code>ElementCreationOptions</code> 객체. 속성의 값은 <code>customElements.define()</code>을 사용해 정의한 사용자 정의 요소입니다.</p> </dd> </dl></div>
+<h3 id="반환_값">반환 값</h3>
+<div class="section-content"><p>새로운 <a href="../element"><code>Element</code></a>.</p></div>
+<h2 id="예제">예제</h2>
+<div class="section-content">
+<p>아래 예제는 새로운 <code>&lt;div&gt;</code> 엘리먼트를 생성한 후, ID가 "div1" 인 요소 이전에 추가합니다.</p> <h4 id="html">HTML</h4> <div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="5A6JIiX+O32OP41BO+avR62req0KxdAaamGu1G6CSOQ=" data-language="html"><span class="token doctype"><span class="token punctuation">&lt;!</span><span class="token doctype-tag">DOCTYPE</span> <span class="token name">html</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>title</span><span class="token punctuation">&gt;</span></span>||Working with elements||<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>title</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>div1<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>위의 텍스트는 동적으로 추가했습니다.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div> <h4 id="javascript">JavaScript</h4> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="4lnx36bF4vt6ztDXG/daekmBvEJ1OOhLQqN/7Ilntvg=" data-language="js">document<span class="token punctuation">.</span>body<span class="token punctuation">.</span>onload <span class="token operator">=</span> addElement<span class="token punctuation">;</span>
+
+<span class="token keyword">function</span> <span class="token function">addElement</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">// create a new div element</span>
+  <span class="token keyword">var</span> newDiv <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">createElement</span><span class="token punctuation">(</span><span class="token string">"div"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token comment">// and give it some content</span>
+  <span class="token keyword">var</span> newContent <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">createTextNode</span><span class="token punctuation">(</span><span class="token string">"환영합니다!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token comment">// add the text node to the newly created div</span>
+  newDiv<span class="token punctuation">.</span><span class="token function">appendChild</span><span class="token punctuation">(</span>newContent<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token comment">// add the newly created element and its content into the DOM</span>
+  <span class="token keyword">var</span> currentDiv <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">"div1"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  document<span class="token punctuation">.</span>body<span class="token punctuation">.</span><span class="token function">insertBefore</span><span class="token punctuation">(</span>newDiv<span class="token punctuation">,</span> currentDiv<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div>
+<div class="code-example" id="sect1">
+
+<iframe class="sample-code-frame" title="예제 sample" id="frame_예제" width="500" height="60" src="https://live.mdnplay.dev/ko/docs/Web/API/Document/createElement/runner.html?id=%EC%98%88%EC%A0%9C" loading="lazy"></iframe>
+</div>
+</div>
+<h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="#">DOM Standard <br><small># ref-for-dom-document-createelement①</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/Node/removeChild"><code>Node.removeChild()</code> <small>(en-US)</small></a></li> <li><a href="../node/replacechild"><code>Node.replaceChild()</code></a></li> <li><a href="../node/appendchild"><code>Node.appendChild()</code></a></li> <li><a href="../node/insertbefore"><code>Node.insertBefore()</code></a></li> <li><a href="../node/haschildnodes"><code>Node.hasChildNodes()</code></a></li> <li>
+<a href="createelementns"><code>document.createElementNS()</code></a> — to explicitly specify the namespace URI for the element.</li> </ul></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/Document/createElement" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/Document/createElement</a>
+  </p>
+</div>

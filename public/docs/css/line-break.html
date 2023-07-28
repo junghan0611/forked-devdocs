@@ -1,0 +1,81 @@
+<header><h1>line-break</h1></header><div class="section-content">
+<p><a href="https://developer.mozilla.org/ko/docs/Web/CSS">CSS</a> <code>line-break</code> 속성은 한중일(CJK) 3개국어의 텍스트 줄을 어디서 바꿀지 지정합니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="XtHMf2g0fR+/jBWl47tGITJmO3/yiToREjh0vrhh178=" data-language="css"><span class="token comment">/* 키워드 값 */</span>
+<span class="token property">line-break</span><span class="token punctuation">:</span> auto<span class="token punctuation">;</span>
+<span class="token property">line-break</span><span class="token punctuation">:</span> loose<span class="token punctuation">;</span>
+<span class="token property">line-break</span><span class="token punctuation">:</span> normal<span class="token punctuation">;</span>
+<span class="token property">line-break</span><span class="token punctuation">:</span> strict<span class="token punctuation">;</span>
+<span class="token property">line-break</span><span class="token punctuation">:</span> anywhere<span class="token punctuation">;</span>
+
+<span class="token comment">/* 전역 값 */</span>
+<span class="token property">line-break</span><span class="token punctuation">:</span> inherit<span class="token punctuation">;</span>
+<span class="token property">line-break</span><span class="token punctuation">:</span> initial<span class="token punctuation">;</span>
+<span class="token property">line-break</span><span class="token punctuation">:</span> unset<span class="token punctuation">;</span>
+</pre>
+</div>
+</div>
+<section aria-labelledby="구문"><h2 id="구문">구문</h2>
+</section><section aria-labelledby="값"><h3 id="값">값</h3>
+<div class="section-content"><dl> <dt id="auto"><code>auto</code></dt> <dd> <p>기본 줄 바꿈 규칙을 사용합니다.</p> </dd> <dt id="loose"><code>loose</code></dt> <dd> <p>가장 자유로운 줄 바꿈 규칙을 사용합니다. 보통 신문 등 짧은 줄에서 사용합니다.</p> </dd> <dt id="normal"><code>normal</code></dt> <dd> <p>가장 흔한 줄 바꿈 규칙을 사용합니다.</p> </dd> <dt id="strict"><code>strict</code></dt> <dd> <p>가장 엄격한 줄 바꿈 규칙을 사용합니다.</p> </dd> <dt id="anywhere"><code>anywhere</code></dt> <dd> <p>모든 타이포그래피 글자 단위 주위에서 줄을 바꿀 수 있습니다. 줄 바꿈 위치는 모든 문장 부호, 공백, 단어 중간을 포함하며 GL, WJ, ZWJ 문자 클래스가 나타내는 줄 바꿈 제한 및 <a href="word-break"><code>word-break</code></a>가 요구하는 규칙 모두 무시할 수 있습니다. 붙임표는 사용하지 않습니다.</p> </dd> </dl></div></section><section aria-labelledby="형식_정의"><h2 id="형식_정의">형식 정의</h2>
+<div class="section-content"><figure class="table-container"><div class="_table"><table class="properties"><tbody>
+<tr>
+<th scope="row"><a href="initial_value">초기값</a></th>
+<td><code>auto</code></td>
+</tr>
+<tr>
+<th scope="row">적용대상</th>
+<td>all elements</td>
+</tr>
+<tr>
+<th scope="row"><a href="inheritance">상속</a></th>
+<td>yes</td>
+</tr>
+<tr>
+<th scope="row"><a href="computed_value">계산 값</a></th>
+<td>as specified</td>
+</tr>
+<tr>
+<th scope="row">Animation type</th>
+<td>discrete</td>
+</tr>
+</tbody></table></div></figure></div></section><section aria-labelledby="형식_구문"><h2 id="형식_구문">형식 구문</h2>
+<div class="section-content"><pre class="notranslate"><span class="token property" id="line-break">line-break = </span><br>  <span class="token keyword">auto</span>      <a href="value_definition_syntax#single_bar">|</a><br>  <span class="token keyword">loose</span>     <a href="value_definition_syntax#single_bar">|</a><br>  <span class="token keyword">normal</span>    <a href="value_definition_syntax#single_bar">|</a><br>  <span class="token keyword">strict</span>    <a href="value_definition_syntax#single_bar">|</a><br>  <span class="token keyword">anywhere</span>  <br><br></pre></div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+</section><section aria-labelledby="줄_바꿈_지정하기"><h3 id="줄_바꿈_지정하기">줄 바꿈 지정하기</h3>
+<div class="section-content">
+<p>줄 바꿈이 "々", "ぁ", "。"의 주위에서 어떻게 발생하는지 살펴보세요.</p> <h4 id="html">HTML</h4> <div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="xEwBtbPNSsTrHZeTpbABFLiVxThaG5uaoW9Hz6v3rz8=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">lang</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>ja<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>wrapbox auto<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>auto:<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>br</span><span class="token punctuation">&gt;</span></span>そこは湖のほとりで木々が輝いていた。<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>br</span><span class="token punctuation">&gt;</span></span>その景色に、美しいなぁと思わずつぶやいた。<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>wrapbox loose<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>loose:<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>br</span><span class="token punctuation">&gt;</span></span>そこは湖のほとりで木々が輝いていた。<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>br</span><span class="token punctuation">&gt;</span></span>その景色に、美しいなぁと思わずつぶやいた。<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>wrapbox normal<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>normal:<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>br</span><span class="token punctuation">&gt;</span></span>そこは湖のほとりで木々が輝いていた。<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>br</span><span class="token punctuation">&gt;</span></span>その景色に、美しいなぁと思わずつぶやいた。<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>wrapbox strict<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>strict:<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>br</span><span class="token punctuation">&gt;</span></span>そこは湖のほとりで木々が輝いていた。<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>br</span><span class="token punctuation">&gt;</span></span>その景色に、美しいなぁと思わずつぶやいた。<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>wrapbox anywhere<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>anywhere:<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>br</span><span class="token punctuation">&gt;</span></span>そこは湖のほとりで木々が輝いていた。<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>br</span><span class="token punctuation">&gt;</span></span>その景色に、美しいなぁと思わずつぶやいた。<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div> <h4 id="css">CSS</h4> <div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="+nO2Mhs1rG3SEkcbuzQJeChm3kiHff7D61IMjKPbMg8=" data-language="css"><span class="token selector">.wrapbox</span> <span class="token punctuation">{</span> <span class="token property">width</span><span class="token punctuation">:</span> 10em<span class="token punctuation">;</span> <span class="token property">margin</span><span class="token punctuation">:</span> 0.5em<span class="token punctuation">;</span> <span class="token property">white-space</span><span class="token punctuation">:</span> normal<span class="token punctuation">;</span> <span class="token property">vertical-align</span><span class="token punctuation">:</span> top<span class="token punctuation">;</span> <span class="token property">display</span><span class="token punctuation">:</span> inline-block<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+<span class="token selector">.auto</span> <span class="token punctuation">{</span> <span class="token property">line-break</span><span class="token punctuation">:</span> auto<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+<span class="token selector">.loose</span> <span class="token punctuation">{</span> <span class="token property">line-break</span><span class="token punctuation">:</span> loose<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+<span class="token selector">.normal</span> <span class="token punctuation">{</span> <span class="token property">line-break</span><span class="token punctuation">:</span> normal<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+<span class="token selector">.strict</span> <span class="token punctuation">{</span> <span class="token property">line-break</span><span class="token punctuation">:</span> strict<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+<span class="token selector">.anywhere</span> <span class="token punctuation">{</span> <span class="token property">line-break</span><span class="token punctuation">:</span> anywhere<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+</pre>
+</div> <h4 id="결과">결과</h4>
+<div class="code-example" id="sect1">
+
+<iframe class="sample-code-frame" title="줄 바꿈 지정하기 sample" id="frame_줄_바꿈_지정하기" width="200" height="400" src="https://live.mdnplay.dev/ko/docs/Web/CSS/line-break/runner.html?id=%EC%A4%84_%EB%B0%94%EA%BF%88_%EC%A7%80%EC%A0%95%ED%95%98%EA%B8%B0" loading="lazy"></iframe>
+</div>
+</div></section><h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://drafts.csswg.org/css-text/#line-break-property">CSS Text Module Level 3 <br><small># line-break-property</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/CSS/line-break" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/CSS/line-break</a>
+  </p>
+</div>

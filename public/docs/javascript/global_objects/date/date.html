@@ -1,0 +1,57 @@
+<header><h1>Date() 생성자</h1></header><div class="section-content"><p> <code>Date</code> 생성자는 시간의 특정 지점을 나타내는 <code>Date</code> 객체를 플랫폼에 종속되지 않는 형태로 생성합니다. <code>Date</code> 객체는 1970년 1월 1일 UTC(국제표준시) 자정으로부터 지난 시간을 밀리초로 나타내는 UNIX 타임스탬프를 담습니다. </p></div>
+<section aria-labelledby="시도해보기"><h2 id="시도해보기">시도해보기</h2>
+<div class="section-content"><iframe class="interactive is-js-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/js/date-constructor.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe></div></section><section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content">
+<div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="O0eUlXjckPpcaCB8S/gMTHLbMvqoIxiIdH2IUnJS4qs=" data-language="js"><span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span>
+<span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span>dateString<span class="token punctuation">)</span>
+
+<span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span>year<span class="token punctuation">,</span> monthIndex<span class="token punctuation">)</span>
+<span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span>year<span class="token punctuation">,</span> monthIndex<span class="token punctuation">,</span> day<span class="token punctuation">)</span>
+<span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span>year<span class="token punctuation">,</span> monthIndex<span class="token punctuation">,</span> day<span class="token punctuation">,</span> hours<span class="token punctuation">)</span>
+<span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span>year<span class="token punctuation">,</span> monthIndex<span class="token punctuation">,</span> day<span class="token punctuation">,</span> hours<span class="token punctuation">,</span> minutes<span class="token punctuation">)</span>
+<span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span>year<span class="token punctuation">,</span> monthIndex<span class="token punctuation">,</span> day<span class="token punctuation">,</span> hours<span class="token punctuation">,</span> minutes<span class="token punctuation">,</span> seconds<span class="token punctuation">)</span>
+<span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span>year<span class="token punctuation">,</span> monthIndex<span class="token punctuation">,</span> day<span class="token punctuation">,</span> hours<span class="token punctuation">,</span> minutes<span class="token punctuation">,</span> seconds<span class="token punctuation">,</span> milliseconds<span class="token punctuation">)</span>
+</pre>
+</div> <div class="notecard note" id="sect1"> <p> <strong>참고:</strong> 새로운 <code>Date&lt;</code> 객체를 생성하는 방법은 <a href="../../operators/new"><code>new</code></a> 연산자를 사용하는 것이 유일합니다. <code>now = Date()&lt;</code>처럼 <code>Date&lt;</code>를 직접 호출하면 새로운 <code>Date&lt;</code> 객체가 아니라 문자열을 반환합니다. </p> </div>
+</div></section><section aria-labelledby="매개변수"><h3 id="매개변수">매개변수</h3>
+<div class="section-content">
+<p><code>Date()</code> 생성자는 네 가지 형태로 사용할 수 있습니다.</p> <h4 id="매개변수_없음">매개변수 없음</h4> <p>매개변수를 제공하지 않으면, 생성 순간의 날짜와 시간을 나타내는 <code>Date</code> 객체를 생성합니다.</p> <h4 id="unix_타임스탬프_값">UNIX 타임스탬프 값</h4> <dl> <dt id="value"><code>value</code></dt> <dd> <p> <a href="https://pubs.opengroup.org/onlinepubs/9699919799/basedefs/V1_chap04.html#tag_04_16" target="_blank">UNIX 타임스탬프</a>, 즉 1970년 1월 1일 00:00:00 UTC(UNIX 시간)부터의 시간을 밀리초 단위로 표현하되 윤초는 무시한 정수 값입니다. 대부분의 UNIX 타임스탬프 함수는 초 단위까지만 정확함을 유의하세요. </p> </dd> </dl> <h4 id="타임스탬프_문자열">타임스탬프 문자열</h4> <dl> <dt id="datestring"><code>dateString</code></dt> <dd> <p> <a href="parse"><code>Date.parse()</code></a> 메서드가 인식할 수 있는 형태로 나타낸 날짜 문자열입니다. <a href="https://datatracker.ietf.org/doc/html/rfc2822#page-14" target="_blank">IETF 호환 RFC 2822 타임스탬프</a>와, <a href="https://www.ecma-international.org/ecma-262/11.0/#sec-date.parse" target="_blank">ISO8601의 특정 버전</a>을 인식할 수 있습니다. </p> <div class="notecard note" id="sect2"> <p> <strong>참고:</strong> <code>Date</code> 생성자(및 동일한 동작의 <code>Date.parse()</code>)를 사용한 날짜 파싱은 동작이 일관적이지 못하고 브라우저끼리 차이가 존재하므로 사용하지 않는 것이 좋습니다. </p> <ul> <li> <a href="https://datatracker.ietf.org/doc/html/rfc2822" target="_blank">RFC 2822</a> 형식 문자열은 관례적으로만 지원하는 것 뿐입니다. </li> <li> ISO 8601 형식 문자열은 시간 정보 없는 문자열(<code>"1970-01-01"</code> 등)을 현지 시간이 아닌 UTC 기준으로 처리하는 점에서 표준과 다릅니다. </li> </ul> </div> </dd> </dl> <h4 id="개별_날짜_및_시간_구성_요소">개별 날짜 및 시간 구성 요소</h4> <p> 최소한 연도와 월이 주어졌을 때, <code>Date()</code>의 이 형태는 <code>Date</code> 객체를 생성할 때 모든 구성 요소(연, 월, 일, 시, 분, 초, 밀리초)를 모두 매개변수에서 가져옵니다. 누락한 요소에는 가장 낮은 값(<code>day</code>는 1, 나머지는 0)을 사용합니다. 모든 매개변수 값은 UTC가 아닌 현지 시간으로 취급합니다. </p> <dl> <dt id="year"><code>year</code></dt> <dd> <p> 연도를 나타내는 정수 값입니다.<code>0</code>부터 <code>99</code>까지는 <code>1900</code>부터 <code>1999</code>로 처리합니다. 다른 모든 값은 그대로 사용합니다. <a href="../date#two_digit_years_map_to_1900_%E2%80%93_1999">예제</a>를 참고하세요. </p> </dd> <dt id="monthindex"><code>monthIndex</code></dt> <dd> <p> 월을 나타내는 정수 값입니다. 1월을 나타내는 <code>0</code>부터 12월을 나타내는 <code>11</code>까지 사용할 수 있습니다. </p> </dd> <dt id="day">
+<code>day</code> <span class="badge inline optional">Optional</span>
+</dt> <dd> <p>일을 나타내는 정수 값입니다. 기본값은 <code>1</code>입니다.</p> </dd> <dt id="hours">
+<code>hours</code> <span class="badge inline optional">Optional</span>
+</dt> <dd> <p> 시를 나타내는 정수 값입니다. 기본 값은 자정을 나타내는 <code>0</code>입니다. </p> </dd> <dt id="minutes">
+<code>minutes</code> <span class="badge inline optional">Optional</span>
+</dt> <dd> <p> 분을 나타내는 정수 값입니다. 기본 값은 정각을 나타내는 <code>0</code>입니다. </p> </dd> <dt id="seconds">
+<code>seconds</code> <span class="badge inline optional">Optional</span>
+</dt> <dd> <p> 초를 나타내는 정수 값입니다. 기본 값은 <code>0</code>초입니다. </p> </dd> <dt id="milliseconds">
+<code>milliseconds</code> <span class="badge inline optional">Optional</span>
+</dt> <dd> <p> 밀리초를 나타내는 정수 값입니다. 기본 값은 <code>0</code>밀리초입니다. </p> </dd> </dl>
+</div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+</section><section aria-labelledby="date_객체를_만드는_여러가지_방법"><h3 id="date_객체를_만드는_여러가지_방법">Date 객체를 만드는 여러가지 방법</h3>
+<div class="section-content">
+<p>아래 예제는 JavaScript 날짜를 생성하는 몇 가지 방법을 보입니다.</p> <div class="notecard note" id="sect3"> <p> <strong>참고:</strong> <code>Date</code> 생성자(및 동일한 동작의 <code>Date.parse()</code>)를 사용한 날짜 파싱은 동작이 일관적이지 못하고 브라우저끼리 차이가 존재하므로 사용하지 않는 것이 좋습니다. </p> </div> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="2UyVaQhJF3CRa/8YSAmSwqB9IxO12kUQ6rOEmDEdWVk=" data-language="js"><span class="token keyword">let</span> today <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">let</span> birthday <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token string">'December 17, 1995 03:24:00'</span><span class="token punctuation">)</span>
+<span class="token keyword">let</span> birthday <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token string">'1995-12-17T03:24:00'</span><span class="token punctuation">)</span>
+<span class="token keyword">let</span> birthday <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token number">1995</span><span class="token punctuation">,</span> <span class="token number">11</span><span class="token punctuation">,</span> <span class="token number">17</span><span class="token punctuation">)</span>            <span class="token comment">// 월은 0부터 시작</span>
+<span class="token keyword">let</span> birthday <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token number">1995</span><span class="token punctuation">,</span> <span class="token number">11</span><span class="token punctuation">,</span> <span class="token number">17</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">24</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span>
+</pre>
+</div>
+</div></section><h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://tc39.es/ecma262/multipage/numbers-and-dates.html#sec-date-constructor">ECMAScript Language Specification <br><small># sec-date-constructor</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="../date"><code>Date</code></a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Date/Date" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Date/Date</a>
+  </p>
+</div>

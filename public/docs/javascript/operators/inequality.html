@@ -1,0 +1,74 @@
+<header><h1>부등 연산자(!=)</h1></header><div class="section-content"><p>부등 연산자(!=)는 두 피연산자가 같지 않은지 확인하여 불리언 결과를 반환합니다. 엄격한 부등 연산자와는 달리 다른 유형의 피연산자를 암묵적으로 변환하고 비교합니다.</p></div>
+<section aria-labelledby="시도해보기"><h2 id="시도해보기">시도해보기</h2>
+<div class="section-content"><iframe class="interactive is-js-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/js/expressions-inequality.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe></div></section><section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="cN2Rrpj2/nIr3NvvFOnGb0CbrzA2HcekTKTi1LDGGiA=" data-language="js">x <span class="token operator">!=</span> y
+</pre>
+</div></div></section><section aria-labelledby="설명"><h2 id="설명">설명</h2>
+<div class="section-content">
+<p>부등식 연산자는 피연산자가 같지 않은지 여부를 확인합니다. <a href="equality">동등 연산자</a>의 부정이므로 다음 두 줄은 항상 같은 결과를 제공합니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="nKKPhCNPHknsjB22jyaXarNSKYzAXWsRgO9afdg1tJg=" data-language="js">x <span class="token operator">!=</span> y
+
+<span class="token operator">!</span><span class="token punctuation">(</span>x <span class="token operator">==</span> y<span class="token punctuation">)</span>
+</pre>
+</div> <p>비교 알고리즘에 대한 자세한 내용은 <a href="equality">동등 연산자</a> 페이지를 참조하십시오.</p> <p>동등 연산자와 마찬가지로 부등 연산자도 다른 유형의 피연산자를 변환하여 비교합니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="KOIakerAGKVYfxpXOvuKnwC3wxUGa+e+iNfX+qc/R2c=" data-language="js"><span class="token number">3</span> <span class="token operator">!=</span> <span class="token string">"3"</span><span class="token punctuation">;</span> <span class="token comment">// false</span>
+</pre>
+</div> <p>이를 방지하고 다른 유형이 다른 것으로 간주되게 하려면 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Strict_inequality" class="only-in-en-us">엄격한 불일치 연산자 <small>(en-US)</small></a>를 사용해야 합니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="GhjessSHN1S5SvaOX4Q5UZ6+dRiIBga5uVObJeUCdGQ=" data-language="js"><span class="token number">3</span> <span class="token operator">!==</span> <span class="token string">"3"</span><span class="token punctuation">;</span> <span class="token comment">// true</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+</section><section aria-labelledby="타입_변환이_없는_비교"><h3 id="타입_변환이_없는_비교">타입 변환이 없는 비교</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="M4/2gkQTZydvqxdCJlrv75YtHZ9BTuffsC4pCmdqxWg=" data-language="js"><span class="token number">1</span> <span class="token operator">!=</span> <span class="token number">2</span><span class="token punctuation">;</span>              <span class="token comment">// true</span>
+<span class="token string">"hello"</span> <span class="token operator">!=</span> <span class="token string">"hola"</span><span class="token punctuation">;</span>   <span class="token comment">// true</span>
+
+<span class="token number">1</span> <span class="token operator">!=</span> <span class="token number">1</span><span class="token punctuation">;</span>              <span class="token comment">// false</span>
+<span class="token string">"hello"</span> <span class="token operator">!=</span> <span class="token string">"hello"</span><span class="token punctuation">;</span>  <span class="token comment">// false</span>
+</pre>
+</div></div></section><section aria-labelledby="타입_변환이_있는_비교"><h3 id="타입_변환이_있는_비교">타입 변환이 있는 비교</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="7tRcTGS2flqFltxneRBGXqT3BoCvsDxOdF46rGLK6Fg=" data-language="js"><span class="token string">"1"</span> <span class="token operator">!=</span>  <span class="token number">1</span><span class="token punctuation">;</span>            <span class="token comment">// false</span>
+<span class="token number">1</span> <span class="token operator">!=</span> <span class="token string">"1"</span><span class="token punctuation">;</span>             <span class="token comment">// false</span>
+<span class="token number">0</span> <span class="token operator">!=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>           <span class="token comment">// false</span>
+<span class="token number">0</span> <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>            <span class="token comment">// true</span>
+<span class="token number">0</span> <span class="token operator">!=</span> <span class="token keyword">undefined</span><span class="token punctuation">;</span>       <span class="token comment">// true</span>
+<span class="token number">0</span> <span class="token operator">!=</span> <span class="token operator">!</span><span class="token operator">!</span><span class="token keyword">null</span><span class="token punctuation">;</span>          <span class="token comment">// false, look at Logical NOT operator</span>
+<span class="token number">0</span> <span class="token operator">!=</span> <span class="token operator">!</span><span class="token operator">!</span><span class="token keyword">undefined</span><span class="token punctuation">;</span>     <span class="token comment">// false, look at Logical NOT operator</span>
+<span class="token keyword">null</span> <span class="token operator">!=</span> <span class="token keyword">undefined</span><span class="token punctuation">;</span>    <span class="token comment">// false</span>
+
+<span class="token keyword">const</span> number1 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Number</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> number2 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Number</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+number1 <span class="token operator">!=</span> <span class="token number">3</span><span class="token punctuation">;</span>         <span class="token comment">// false</span>
+number1 <span class="token operator">!=</span> number2<span class="token punctuation">;</span>   <span class="token comment">// true</span>
+</pre>
+</div></div></section><section aria-labelledby="객체의_비교"><h3 id="객체의_비교">객체의 비교</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="pzhlk7zKnkcJAyBKwmdYeVOdmAn7vvqvsvGGdOSRD3w=" data-language="js"><span class="token keyword">const</span> object1 <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string-property property">"key"</span><span class="token operator">:</span> <span class="token string">"value"</span><span class="token punctuation">}</span>
+<span class="token keyword">const</span> object2 <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string-property property">"key"</span><span class="token operator">:</span> <span class="token string">"value"</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+object1 <span class="token operator">!=</span> object2 <span class="token comment">// true</span>
+object2 <span class="token operator">!=</span> object2 <span class="token comment">// false</span>
+</pre>
+</div></div></section><h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://tc39.es/ecma262/multipage/ecmascript-language-expressions.html#sec-equality-operators">ECMAScript Language Specification <br><small># sec-equality-operators</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="관련_문서"><h2 id="관련_문서">관련 문서</h2>
+<div class="section-content"><ul> <li><a href="equality">Equality operator</a></li> <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Strict_equality" class="only-in-en-us">Strict equality operator <small>(en-US)</small></a></li> <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Strict_inequality" class="only-in-en-us">Strict inequality operator <small>(en-US)</small></a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Operators/Inequality" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Operators/Inequality</a>
+  </p>
+</div>

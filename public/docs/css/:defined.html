@@ -1,0 +1,81 @@
+<header><h1>:defined</h1></header><div class="section-content">
+<p><a href="https://developer.mozilla.org/ko/docs/Web/CSS">CSS</a> <code>:defined</code> <a href="pseudo-classes">의사 클래스</a>는 정의된 요소를 선택합니다. 정의된 요소란 브라우저에 내장된 표준 요소와, 성공적으로 정의(<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/CustomElementRegistry/define"><code>CustomElementRegistry.define()</code> <small>(en-US)</small></a> 메서드 등)한 사용자 지정 요소를 의미합니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="KnK2F5YkWZR/IXjSk6pMR+4ieoMrMlizg1hKP6mXKhQ=" data-language="css"><span class="token comment">/* Selects any defined element */</span>
+<span class="token selector">:defined</span> <span class="token punctuation">{</span>
+  <span class="token property">font-style</span><span class="token punctuation">:</span> italic<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">/* Selects any instance of a specific custom element */</span>
+<span class="token selector">simple-custom:defined</span> <span class="token punctuation">{</span>
+  <span class="token property">display</span><span class="token punctuation">:</span> block<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div>
+</div>
+<section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content">Error: could not find syntax for this item</div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+</section><section aria-labelledby="정의되기_전까지_요소_숨기기"><h3 id="정의되기_전까지_요소_숨기기">정의되기 전까지 요소 숨기기</h3>
+<div class="section-content">
+<p>다음 코드는 저희의 <a href="https://github.com/mdn/web-components-examples/tree/master/defined-pseudo-class" target="_blank">defined-pseudo-class</a> 데모에서 발췌한 것입니다. (<a href="https://mdn.github.io/web-components-examples/defined-pseudo-class/" target="_blank">동작 모습 보기</a>)</p> <p>이 데모에서는 아주 간단한 사용자 지정 요소를 정의합니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="s1YIYdkLbD9MK839gXniwcscAVIIZUauu8MykZxUEMw=" data-language="js">customElements<span class="token punctuation">.</span><span class="token function">define</span><span class="token punctuation">(</span><span class="token string">'simple-custom'</span><span class="token punctuation">,</span>
+  <span class="token keyword">class</span> <span class="token class-name">extends</span> HTMLElement <span class="token punctuation">{</span>
+    <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">super</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+      <span class="token keyword">let</span> divElem <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">createElement</span><span class="token punctuation">(</span><span class="token string">'div'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      divElem<span class="token punctuation">.</span>textContent <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">getAttribute</span><span class="token punctuation">(</span><span class="token string">'text'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+      <span class="token keyword">let</span> shadowRoot <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">attachShadow</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token literal-property property">mode</span><span class="token operator">:</span> <span class="token string">'open'</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
+        <span class="token punctuation">.</span><span class="token function">appendChild</span><span class="token punctuation">(</span>divElem<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</pre>
+</div> <p>그 후, 위의 요소를 표준 <code>&lt;p&gt;</code>와 함께 문서에 넣습니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="1Y3pOHnzZYiTrbPQuwPRcBIlTJnBjMcrGBJwqkwsd2w=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>simple-custom</span> <span class="token attr-name">text</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Custom element example text<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>simple-custom</span><span class="token punctuation">&gt;</span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>Standard paragraph example text<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div> <p>CSS에는 다음의 스타일을 작성합니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="n/lDr3EnELK9b7TYyH9TN5GGMVmE8+FVMtQAdt7d+AU=" data-language="css"><span class="token selector">// Give the two elements distinctive backgrounds
+p</span> <span class="token punctuation">{</span>
+  <span class="token property">background</span><span class="token punctuation">:</span> yellow<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">simple-custom</span> <span class="token punctuation">{</span>
+  <span class="token property">background</span><span class="token punctuation">:</span> cyan<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">// Both the custom and the built-in element are given italic text
+:defined</span> <span class="token punctuation">{</span>
+  <span class="token property">font-style</span><span class="token punctuation">:</span> italic<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div> <p>그리고 아래의 두 규칙을 통해, 정의되지 않은 사용자 지정 요소는 숨기고, 정의가 성공적으로 된 경우에는 블록 레벨 요소로 표시합니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="1JX026CNqTM0R5U5buNjkkwWMSIUiRbW8TLSJw6Ln1E=" data-language="css"><span class="token selector">simple-custom:not(:defined)</span> <span class="token punctuation">{</span>
+  <span class="token property">display</span><span class="token punctuation">:</span> none<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">simple-custom:defined</span> <span class="token punctuation">{</span>
+  <span class="token property">display</span><span class="token punctuation">:</span> block<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div> <p>위의 데모는 페이지에 불러올 때 꽤 시간이 걸릴 수 있는 복잡한 사용자 지정 요소 스타일링에 유용하게 쓸 수 있습니다. 로딩이 아직 진행 중일 때, 스타일을 입히지 않은는 못생긴 요소가 페이지에 노출되는 것을 막을 수 있으니까요.</p>
+</div></section><h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://html.spec.whatwg.org/multipage/semantics-other.html#selector-defined">HTML Standard <br><small># selector-defined</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="https://developer.mozilla.org/ko/docs/Web/API/Web_components">웹 컴포넌트</a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/CSS/:defined" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/CSS/:defined</a>
+  </p>
+</div>

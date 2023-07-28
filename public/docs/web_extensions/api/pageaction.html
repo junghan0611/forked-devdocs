@@ -1,0 +1,49 @@
+<header><h1>pageAction</h1></header><div class="section-content">
+<p><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/user_interface/Page_actions" class="only-in-en-us">페이지 액션 <small>(en-US)</small></a>은 브라우저의 주소창에 있는 아이콘이다.</p> <p> <img src="https://developer.mozilla.org/ko/docs/Mozilla/Add-ons/WebExtensions/API/pageAction/page-action.png" alt="" width="1900" height="586" loading="lazy"> </p> <p>아이콘 클릭에 대한 대응은 리스너를 등록하고 클릭 이벤트를 기다리는 것이나, <a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/user_interface/Popups" class="only-in-en-us">팝업창 <small>(en-US)</small></a>이 열리게 하는 것일 수 있다.</p> <p>팝업창은 보통의 웹페이지처럼 HTML, CSS, 그리고 자바스크립트로 내용과 동작을 작성할 수 있다. 팝업창에서 실행되는 자바스크립트는 백그라운드 스크립트와 마찬가지로 모든 확장앱 API를 사용할 수 있다.</p> <p><a href="../manifest.json">manifest.json</a>의 <a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/manifest.json/page_action">page_action 키</a>에 페이지 액션의 대부분의 속성들을 정의할 수 있지만, 이것들은 확정되는 것이라 이후에 바꿀 수 없다. 하지만 이 API는 그것들을 프로그램적으로 재정의하는 것도 가능하다. 그러나 API는 <a href="../manifest.json">manifest.json</a>에 <a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/manifest.json/page_action">page_action</a> 키가 있어야만 사용할 수 있게 되므로 설사 모든 것을 프로그램적으로 할 계획이더라도 <a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/manifest.json/page_action">page_action 키</a>는 있어야 한다.</p> <p>페이지 액션은 특정 페이지에만 적절한 동작들을 위한 것이다(이럴테면 "현재 탭을 북마크하기" 같은). 그렇지 않고, 브라우저가 전반적으로 관련되는 동작이라면(가령은 "모든 북마크 보기" 라면) 브라우저 액션을 대신 사용하라.</p>
+</div>
+<section aria-labelledby="자료형"><h2 id="자료형">자료형</h2>
+<div class="section-content"><dl> <dt id="pageaction.imagedatatype"><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/pageAction/ImageDataType" class="only-in-en-us"><code>pageAction.ImageDataType</code> <small>(en-US)</small></a></dt> <dd> <p>이미지에 대한 픽셀 자료.</p> </dd> </dl></div></section><section aria-labelledby="함수"><h2 id="함수">함수</h2>
+<div class="section-content"><dl> <dt id="pageaction.show"><a href="pageaction/show"><code>pageAction.show()</code></a></dt> <dd> <p>지정한 탭에 페이지 액션을 보인다.</p> </dd> <dt id="pageaction.hide"><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/pageAction/hide" class="only-in-en-us"><code>pageAction.hide()</code> <small>(en-US)</small></a></dt> <dd> <p>지정한 탭의 페이지 액션을 숨긴다.</p> </dd> <dt id="pageaction.isshown"><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/pageAction/isShown" class="only-in-en-us"><code>pageAction.isShown()</code> <small>(en-US)</small></a></dt> <dd> <p>페이지 액션이 보이는지 아닌지 검사한다.</p> </dd> <dt id="pageaction.settitle"><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/pageAction/setTitle" class="only-in-en-us"><code>pageAction.setTitle()</code> <small>(en-US)</small></a></dt> <dd> <p>페이지 액션의 제목을 설정한다. 이것은 페이지 액션위에 툴팁으로 표시된다.</p> </dd> <dt id="pageaction.gettitle"><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/pageAction/getTitle" class="only-in-en-us"><code>pageAction.getTitle()</code> <small>(en-US)</small></a></dt> <dd> <p>페이지 액션의 제목을 얻는다.</p> </dd> <dt id="pageaction.seticon"><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/pageAction/setIcon" class="only-in-en-us"><code>pageAction.setIcon()</code> <small>(en-US)</small></a></dt> <dd> <p>페이지 액션의 아이콘을 설정한다.</p> </dd> <dt id="pageaction.setpopup"><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/pageAction/setPopup" class="only-in-en-us"><code>pageAction.setPopup()</code> <small>(en-US)</small></a></dt> <dd> <p>페이지 액션의 팝업 URL을 설정한다.</p> </dd> <dt id="pageaction.getpopup"><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/pageAction/getPopup" class="only-in-en-us"><code>pageAction.getPopup()</code> <small>(en-US)</small></a></dt> <dd> <p>페이지 액션의 팝업 URL을 얻는다.</p> </dd> <dt id="pageaction.openpopup"><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/pageAction/openPopup" class="only-in-en-us"><code>pageAction.openPopup()</code> <small>(en-US)</small></a></dt> <dd> <p>페이지 액션의 팝업을 연다.</p> </dd> </dl></div></section><section aria-labelledby="이벤트"><h2 id="이벤트">이벤트</h2>
+<div class="section-content"><dl> <dt id="pageaction.onclicked"><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/pageAction/onClicked" class="only-in-en-us"><code>pageAction.onClicked</code> <small>(en-US)</small></a></dt> <dd> <p>페이지 액션의 아이콘이 클릭되면 발생한다. 페이지 액션이 팝업이 설정되어 있으면 발생하지 않는다.</p> </dd> </dl></div></section><h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="example_extensions"><h2 id="example_extensions">Example extensions</h2>
+<div class="section-content">
+<ul>
+<li><a href="https://github.com/mdn/webextensions-examples/tree/master/apply-css" target="_blank">apply-css</a></li>
+<li><a href="https://github.com/mdn/webextensions-examples/tree/master/chill-out" target="_blank">chill-out</a></li>
+<li><a href="https://github.com/mdn/webextensions-examples/tree/master/history-deleter" target="_blank">history-deleter</a></li>
+<li><a href="https://github.com/mdn/webextensions-examples/tree/master/menu-remove-element" target="_blank">menu-remove-element</a></li>
+</ul> <div class="notecard note" id="sect2"> <p><strong>참고:</strong> <strong>Acknowledgements</strong>This API is based on Chromium's <a href="https://developer.chrome.com/extensions/pageAction" target="_blank"><code>chrome.pageAction</code></a> API. This documentation is derived from <a href="https://chromium.googlesource.com/chromium/src/+/master/chrome/common/extensions/api/page_action.json" target="_blank"><code>page_action.json</code></a> in the Chromium code.Microsoft Edge compatibility data is supplied by Microsoft Corporation and is included here under the Creative Commons Attribution 3.0 United States License.</p> </div> <pre class="notranslate">// Copyright 2015 The Chromium Authors. All rights reserved.
+//
+// Redistribution and use in source and binary forms, with or without
+// modification, are permitted provided that the following conditions are
+// met:
+//
+//    * Redistributions of source code must retain the above copyright
+// notice, this list of conditions and the following disclaimer.
+//    * Redistributions in binary form must reproduce the above
+// copyright notice, this list of conditions and the following disclaimer
+// in the documentation and/or other materials provided with the
+// distribution.
+//    * Neither the name of Google Inc. nor the names of its
+// contributors may be used to endorse or promote products derived from
+// this software without specific prior written permission.
+//
+// THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+// "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+// LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+// A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+// OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+// SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+// LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+// DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+// THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+// (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+// OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+</pre>
+</div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Mozilla/Add-ons/WebExtensions/API/pageAction" class="_attribution-link">https://developer.mozilla.org/ko/docs/Mozilla/Add-ons/WebExtensions/API/pageAction</a>
+  </p>
+</div>

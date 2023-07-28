@@ -1,0 +1,99 @@
+<header><h1>isolation</h1></header><div class="section-content"><p><code>isolation</code> <a href="https://developer.mozilla.org/ko/docs/Web/CSS">CSS</a> 속성은 요소가 새로운 <a href="https://developer.mozilla.org/ko/docs/Glossary/Stacking_context">쌓임 맥락</a>을 생성해야 하는지 지정합니다.</p></div>
+<section aria-labelledby="시도해보기"><h2 id="시도해보기">시도해보기</h2>
+<div class="section-content">
+<iframe class="interactive is-default-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/css/isolation.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe> <p><a href="mix-blend-mode"><code>mix-blend-mode</code></a>와 함께 사용했을 때 특히 유용합니다.</p>
+</div></section><section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content">
+<div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="wAFHJU/UomLbIJu+HFsWKnHXYH7p6lPUg0MQBun6yfw=" data-language="css"><span class="token comment">/* 키워드 값 */</span>
+<span class="token property">isolation</span><span class="token punctuation">:</span> auto<span class="token punctuation">;</span>
+<span class="token property">isolation</span><span class="token punctuation">:</span> isolate<span class="token punctuation">;</span>
+
+<span class="token comment">/* 전역 값 */</span>
+<span class="token property">isolation</span><span class="token punctuation">:</span> inherit<span class="token punctuation">;</span>
+<span class="token property">isolation</span><span class="token punctuation">:</span> initial<span class="token punctuation">;</span>
+<span class="token property">isolation</span><span class="token punctuation">:</span> unset<span class="token punctuation">;</span>
+</pre>
+</div> <p><code>isolation</code> 속성은 다음 키워드 값 중 하나를 사용해 지정합니다.</p>
+</div></section><section aria-labelledby="값"><h3 id="값">값</h3>
+<div class="section-content"><dl> <dt id="auto"><code>auto</code></dt> <dd> <p>요소에 적용한 속성 중 새로운 쌓임 맥락을 요구하는 속성이 있을 때만 쌓임 맥락을 생성합니다.</p> </dd> <dt id="isolate"><code>isolate</code></dt> <dd> <p>항상 새로운 쌓임 맥락을 생성합니다.</p> </dd> </dl></div></section><section aria-labelledby="형식_구문"><h3 id="형식_구문">형식 구문</h3>
+<div class="section-content"><pre class="notranslate"><span class="token property" id="isolation">isolation = </span><br>  <span class="token property">&lt;isolation-mode&gt;</span>  <br><br><span class="token property" id="&lt;isolation-mode&gt;">&lt;isolation-mode&gt; = </span><br>  <span class="token keyword">auto</span>     <a href="value_definition_syntax#single_bar">|</a><br>  <span class="token keyword">isolate</span>  <br><br></pre></div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+<div class="section-content">
+<div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="GZdBPMaeHMcsMytU/Mm+tslIIGLBdNmNdeJLTVZfNUQ=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>b<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>a<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>d<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>a c<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>auto<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>e<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>a c<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>isolate<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div> <div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="iRiWHXMVB2y28AtDVFtIYvP97wD3GZWKuJ51dWHIWdE=" data-language="css"><span class="token selector">.a</span> <span class="token punctuation">{</span>
+  <span class="token property">background-color</span><span class="token punctuation">:</span> <span class="token function">rgb</span><span class="token punctuation">(</span>0<span class="token punctuation">,</span>255<span class="token punctuation">,</span>0<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token selector">#b</span> <span class="token punctuation">{</span>
+  <span class="token property">width</span><span class="token punctuation">:</span> 200px<span class="token punctuation">;</span>
+  <span class="token property">height</span><span class="token punctuation">:</span> 210px<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token selector">.c</span> <span class="token punctuation">{</span>
+  <span class="token property">width</span><span class="token punctuation">:</span> 100px<span class="token punctuation">;</span>
+  <span class="token property">height</span><span class="token punctuation">:</span> 100px<span class="token punctuation">;</span>
+  <span class="token property">border</span><span class="token punctuation">:</span> 1px solid black<span class="token punctuation">;</span>
+  <span class="token property">padding</span><span class="token punctuation">:</span> 2px<span class="token punctuation">;</span>
+  <span class="token property">mix-blend-mode</span><span class="token punctuation">:</span> difference<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token selector">#d</span> <span class="token punctuation">{</span>
+  <span class="token property">isolation</span><span class="token punctuation">:</span> auto<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token selector">#e</span> <span class="token punctuation">{</span>
+  <span class="token property">isolation</span><span class="token punctuation">:</span> isolate<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div>
+<div class="code-example" id="sect1">
+
+<iframe class="sample-code-frame" title="예제 sample" id="frame_예제" width="230" height="230" src="https://live.mdnplay.dev/ko/docs/Web/CSS/isolation/runner.html?id=%EC%98%88%EC%A0%9C" loading="lazy"></iframe>
+</div>
+</div></section><h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://drafts.fxtf.org/compositing/#isolation">Compositing and Blending Level 2 <br><small># isolation</small></a></td></tr></tbody>
+</table></div>
+<div class="section-content"><figure class="table-container"><div class="_table"><table class="properties"><tbody>
+<tr>
+<th scope="row"><a href="initial_value">초기값</a></th>
+<td><code>auto</code></td>
+</tr>
+<tr>
+<th scope="row">적용대상</th>
+<td>All elements. In SVG, it applies to container elements, graphics elements, and graphics referencing elements.</td>
+</tr>
+<tr>
+<th scope="row"><a href="inheritance">상속</a></th>
+<td>no</td>
+</tr>
+<tr>
+<th scope="row"><a href="computed_value">계산 값</a></th>
+<td>as specified</td>
+</tr>
+<tr>
+<th scope="row">Animation type</th>
+<td>Not animatable</td>
+</tr>
+</tbody></table></div></figure></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="blend-mode"><code>&lt;blend-mode&gt;</code></a></li> <li>
+<a href="mix-blend-mode"><code>mix-blend-mode</code></a>, <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/background-blend-mode"><code>background-blend-mode</code> <small>(en-US)</small></a>
+</li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/CSS/isolation" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/CSS/isolation</a>
+  </p>
+</div>

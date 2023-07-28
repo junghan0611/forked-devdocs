@@ -1,0 +1,48 @@
+<header><h1>Math.log2()</h1></header><div class="section-content">
+<p><code>Math.log2()</code> 함수는 숫자를 log2(숫자)로 반환합니다.</p> <p> <math display="block"> <semantics> <mrow> <mo>∀</mo> <mi>x</mi> <mo>&gt;</mo> <mn>0</mn> <mo>,</mo> <mstyle mathvariant="monospace"> <mrow> <mo lspace="0em" rspace="thinmathspace">Math.log2</mo> <mo stretchy="false">(</mo> <mi>x</mi> <mo stretchy="false">)</mo> </mrow> </mstyle> <mo>=</mo> <msub> <mo lspace="0em" rspace="0em">log</mo> <mn>2</mn> </msub> <mo stretchy="false">(</mo> <mi>x</mi> <mo stretchy="false">)</mo> <mo>=</mo> <mtext>the unique</mtext> <mspace width="thickmathspace"></mspace> <mi>y</mi> <mspace width="thickmathspace"></mspace> <mtext>such that</mtext> <mspace width="thickmathspace"></mspace> <msup> <mn>2</mn> <mi>y</mi> </msup> <mo>=</mo> <mi>x</mi> </mrow> <annotation encoding="TeX"> \forall x &gt; 0, \mathtt{\operatorname{Math.log2}(x)} = \log_2(x) = \text{the unique} ; y ; \text{such that} ; 2^y = x </annotation> </semantics> </math> </p>
+</div>
+<section aria-labelledby="시도해보기"><h2 id="시도해보기">시도해보기</h2>
+<div class="section-content"><iframe class="interactive is-js-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/js/math-log2.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe></div></section><section aria-labelledby="문법"><h2 id="문법">문법</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="fbaAsxv7+/fkcTwV4E4I8ImazeOxp8+FotTCDuFXXmY=" data-language="js">    Math<span class="token punctuation">.</span><span class="token function">log2</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span>
+</pre>
+</div></div></section><section aria-labelledby="매개변수"><h3 id="매개변수">매개변수</h3>
+<div class="section-content"><dl> <dt id="x"><code>x</code></dt> <dd> <p>숫자.</p> </dd> </dl></div></section><section aria-labelledby="반환_값"><h3 id="반환_값">반환 값</h3>
+<div class="section-content"><p> 주어진 숫자를 진수로, 2를 밑으로 하는 로그 계산 결과입니다. 만약 숫자가 음수라면 <a href="../nan"><code>NaN</code></a>를 반환합니다. </p></div></section><section aria-labelledby="설명"><h2 id="설명">설명</h2>
+<div class="section-content">
+<p> 만약 <code>x</code> 의 값이 0보다 작다면(음수) 값은 항상 <a href="../nan"><code>NaN</code></a>로 반환합니다. </p> <p> <code>log2()</code>는 <code>Math</code>의 정적 메서드이므로 만든 <code>Math</code> 객체의 메서드가 아니라 항상 <code>Math.log2()</code>함수를 사용해야합니다. (<code>Math</code>는 생성자가 없습니다.) </p> <p>이 함수는 Math.log(x) / Math.log(2)와 같습니다.</p> <p>따라서 <code>log2(e)</code>는 <a href="log2e"><code>Math.LOG2E</code></a>와 같습니다.</p> <p>그리고 위 함수는 1 / <a href="ln2"><code>Math.LN2</code></a>과 같습니다.</p>
+</div></section><section aria-labelledby="폴리_필"><h2 id="폴리_필">폴리 필</h2>
+<div class="section-content">
+<p> 폴리 필은 <code>Math.log2</code>함수를 모방합니다. 일부 입력(예: 1 &lt;&lt; 29)에 대해 부정확한 값을 반환할 수 있습니다. 만약 비트마스크로 작업할 경우 <a href="round"><code>Math.round()</code></a> 로 감싸주어야 합니다. </p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="gvQODM63yif7+0J+6IZ5WPFhOIKBFKo8OPD9GUuehLQ=" data-language="js"><span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>Math<span class="token punctuation">.</span>log2<span class="token punctuation">)</span> Math<span class="token punctuation">.</span><span class="token function-variable function">log2</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">x</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> Math<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span> <span class="token operator">*</span> Math<span class="token punctuation">.</span><span class="token constant">LOG2E</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+</section><section aria-labelledby="math.log2"><h3 id="math.log2"><code>Math.log2()</code></h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="TTmbNcDNp7Rnslb/ylIPUD41C0UvS8teo0OhXDhcung=" data-language="js">Math<span class="token punctuation">.</span><span class="token function">log2</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token comment">// 1.584962500721156</span>
+Math<span class="token punctuation">.</span><span class="token function">log2</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token comment">// 1</span>
+Math<span class="token punctuation">.</span><span class="token function">log2</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token comment">// 0</span>
+Math<span class="token punctuation">.</span><span class="token function">log2</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token comment">// -Infinity</span>
+Math<span class="token punctuation">.</span><span class="token function">log2</span><span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment">// NaN</span>
+Math<span class="token punctuation">.</span><span class="token function">log2</span><span class="token punctuation">(</span><span class="token number">1024</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 10</span>
+</pre>
+</div></div></section><h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://tc39.es/ecma262/multipage/numbers-and-dates.html#sec-math.log2">ECMAScript Language Specification <br><small># sec-math.log2</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li> <code>Math.log2</code>의 폴리 필은 <a href="https://github.com/zloirock/core-js#ecmascript-math" target="_blank"><code>core-js</code></a>에 존재합니다. </li> <li><a href="exp"><code>Math.exp()</code></a></li> <li><a href="log"><code>Math.log()</code></a></li> <li><a href="log10"><code>Math.log10()</code></a></li> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/log1p"><code>Math.log1p()</code> <small>(en-US)</small></a></li> <li><a href="pow"><code>Math.pow()</code></a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Math/log2" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Math/log2</a>
+  </p>
+</div>

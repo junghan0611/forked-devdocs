@@ -1,0 +1,32 @@
+<header><h1>TypedArray.prototype.byteLength</h1></header><div class="section-content"><p><code>byteLength</code> 접근자 속성은 형식화 배열의 길이(바이트)를 나타냅니다.</p></div>
+<section aria-labelledby="시도해보기"><h2 id="시도해보기">시도해보기</h2>
+<div class="section-content"><iframe class="interactive is-shorter-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/js/typedarray-bytelength.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe></div></section><section aria-labelledby="설명"><h2 id="설명">설명</h2>
+<div class="section-content"><p><code>byteLength</code> 속성은 접근자 설정 함수가 <code>undefined</code>인 접근자 속성으로 이 속성은 읽을 수만 있습니다. 값은 <em>TypedArray</em>가 생성될 때 설정되며 변경할 수 없습니다. <em>TypedArray</em>가 <code>byteOffset</code> 또는 <code>length</code>를 지정하지 않으면 참조된 <code>ArrayBuffer</code>의 <code>length</code>가 반환됩니다. <em>TypedArray</em>는 <a href="#">TypedArray 객체</a> 중 하나입니다.</p></div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+</section><section aria-labelledby="bytelength_속성_사용하기"><h3 id="bytelength_속성_사용하기">byteLength 속성 사용하기</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="njRmKFnSgBTLvCfd9Ap5X1cJJpAal7zXDgL2FrUuG7A=" data-language="js"><span class="token keyword">const</span> buffer <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayBuffer</span><span class="token punctuation">(</span><span class="token number">8</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> uint8 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Uint8Array</span><span class="token punctuation">(</span>buffer<span class="token punctuation">)</span><span class="token punctuation">;</span>
+uint8<span class="token punctuation">.</span>byteLength<span class="token punctuation">;</span> <span class="token comment">// 8 (buffer의 byteLength와 일치)</span>
+
+<span class="token keyword">const</span> uint8newLength <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Uint8Array</span><span class="token punctuation">(</span>buffer<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+uint8newLength<span class="token punctuation">.</span>byteLength<span class="token punctuation">;</span> <span class="token comment">// 5 (Uint8Array를 만들 때 지정된 대로)</span>
+
+<span class="token keyword">const</span> uint8offSet <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Uint8Array</span><span class="token punctuation">(</span>buffer<span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+uint8offSet<span class="token punctuation">.</span>byteLength<span class="token punctuation">;</span> <span class="token comment">// 6 (생성된 Uint8Array의 오프셋으로 인해)</span>
+</pre>
+</div></div></section><h2 id="명세서">명세서</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="#">ECMAScript Language Specification <br><small># sec-get-%typedarray%.prototype.bytelength</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Guide/Typed_arrays">JavaScript 형식화 배열</a></li> <li><a href="../typedarray"><code>TypedArray</code></a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/TypedArray/byteLength" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/TypedArray/byteLength</a>
+  </p>
+</div>

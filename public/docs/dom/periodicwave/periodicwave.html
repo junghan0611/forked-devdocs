@@ -1,0 +1,49 @@
+<header><h1>PeriodicWave()</h1></header><div class="section-content"><p><a href="../web_audio_api">Web Audio API</a>의 <code>PeriodicWave()</code> 생성자는 새로운 <a href="../periodicwave"><code>PeriodicWave</code></a> 객체 인스턴스를 생성합니다.</p></div>
+<h2 id="구문">구문</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="VB2YCFOwSF+UXKWkqn+pxoQHh0ZVeAL0Xx7rIJq7s/4=" data-language="js"><span class="token keyword">var</span> myWave <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">PeriodicWave</span><span class="token punctuation">(</span>context<span class="token punctuation">,</span> options<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div></div>
+<h3 id="매개변수">매개변수</h3>
+<div class="section-content">
+<p><em><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/AudioNode"><code>AudioNodeOptions</code> <small>(en-US)</small></a> dictionary로부터 매개변수를 상속받습니다</em>.</p> <dl> <dt id="context"><code>context</code></dt> <dd> <p>여러분이 노드가 관련되기를 바라는 오디오 컨텍스트를 나타내는 <a href="../baseaudiocontext"><code>BaseAudioContext</code></a></p> </dd> <dt id="options">
+<code>options</code> <span class="badge inline optional">Optional</span>
+</dt> <dd> <p> 여러분이 <code>PeriodicWave</code>가 가지기를 바라는 속성들을 정의하는 <a href="https://webaudio.github.io/web-audio-api/#idl-def-PeriodicWaveOptions" target="_blank"><code>PeriodicWaveOptions</code></a> dictionary 객체 (이것은 또한 <a href="https://webaudio.github.io/web-audio-api/#idl-def-PeriodicWaveConstraints" target="_blank">PeriodicWaveConstraints</a> dictionary에 정의된 옵션들도 상속받습니다.):* <code>real</code>: 여러분이 파동을 형성하기 위해 사용하기를 원하는 코사인 항을 포함하는 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Float32Array"><code>Float32Array</code> <small>(en-US)</small></a> (<a href="../baseaudiocontext/createperiodicwave"><code>BaseAudioContext.createPeriodicWave</code></a>의 <code>real</code> 매개변수와 동일) </p> <ul> <li>
+<code>imag</code>: 여러분이 파동을 형성하기 위해 사용하기를 원하는 사인 항을 포함하는 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Float32Array"><code>Float32Array</code> <small>(en-US)</small></a> (<a href="../baseaudiocontext/createperiodicwave"><code>BaseAudioContext.createPeriodicWave</code></a>의 <code>imag</code> 매개변수와 동일)</li> </ul> </dd> </dl>
+</div>
+<h3 id="반환_값">반환 값</h3>
+<div class="section-content"><p>새로운 <a href="../periodicwave"><code>PeriodicWave</code></a> 객체 인스턴스.</p></div>
+<h2 id="예제">예제</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="rsxBzzh3iFlBOj/GTGL4csGDcXc9/3yBCvUyVVoCzfM=" data-language="js"><span class="token keyword">var</span> real <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Float32Array</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> imag <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Float32Array</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> ac <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">AudioContext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+real<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+imag<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+real<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+imag<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+
+<span class="token keyword">var</span> options <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token literal-property property">real</span> <span class="token operator">:</span> real<span class="token punctuation">,</span>
+  <span class="token literal-property property">imag</span> <span class="token operator">:</span> imag<span class="token punctuation">,</span>
+  <span class="token literal-property property">disableNormalization</span> <span class="token operator">:</span> <span class="token boolean">false</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">var</span> wave <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">PeriodicWave</span><span class="token punctuation">(</span>ac<span class="token punctuation">,</span> options<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div></div>
+<h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://webaudio.github.io/web-audio-api/#dom-periodicwave-periodicwave">Web Audio API <br><small># dom-periodicwave-periodicwave</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/PeriodicWave/PeriodicWave" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/PeriodicWave/PeriodicWave</a>
+  </p>
+</div>

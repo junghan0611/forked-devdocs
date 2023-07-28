@@ -1,0 +1,61 @@
+<header><h1>:first</h1></header><div class="section-content">
+<p><a href="https://developer.mozilla.org/ko/docs/Web/CSS">CSS</a> <code>:first</code> <a href="pseudo-classes">의사 클래스</a>는 <a href="@page"><code>@page</code></a> <a href="at-rule">@-규칙</a>과 함께 사용되며, 출력 시의 첫 페이지를 나타냅니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="dC+GNe9hdfvpkbN6F7z41iDwejzmIQNc+6pZe+Lsqxc=" data-language="css"><span class="token comment">/* Selects the first page when printing */</span>
+<span class="token atrule"><span class="token rule">@page</span> <span class="token punctuation">:</span>first</span> <span class="token punctuation">{</span>
+  <span class="token property">margin-left</span><span class="token punctuation">:</span> 50%<span class="token punctuation">;</span>
+  <span class="token property">margin-top</span><span class="token punctuation">:</span> 50%<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div> <div class="notecard note" id="sect1"> <p><strong>참고:</strong> first 의사 클래스 안에서는 CSS 속성의 사용이 제한됩니다. 바깥 여백, <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/orphans"><code>orphans</code> <small>(en-US)</small></a>, <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/widows"><code>widows</code> <small>(en-US)</small></a>와 페이지 넘김만 바꿀 수 있으며, 여백 지정 시 <a href="length#%EC%A0%88%EB%8C%80%EA%B8%B8%EC%9D%B4_%EB%8B%A8%EC%9C%84">절대길이 단위</a>만 사용할 수 있습니다. 다른 모든 속성은 무시합니다.</p> </div>
+</div>
+<section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content">Error: could not find syntax for this item</div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+</section><section aria-labelledby="html"><h3 id="html">HTML</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="rw0kKEfp8GP5Z09OdaBSV5Ci1+XzLeL23dvKOpnsAyU=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>First Page.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>Second Page.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span><span class="token punctuation">&gt;</span></span>출력!<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div></div></section><section aria-labelledby="css"><h3 id="css">CSS</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="FkYdp98rsNLfDRq72mg8ilNVmF8i0ZOdHjs52KGSzoQ=" data-language="css"><span class="token atrule"><span class="token rule">@page</span> <span class="token punctuation">:</span>first</span> <span class="token punctuation">{</span>
+  <span class="token property">margin-left</span><span class="token punctuation">:</span> 50%<span class="token punctuation">;</span>
+  <span class="token property">margin-top</span><span class="token punctuation">:</span> 50%<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">p</span> <span class="token punctuation">{</span>
+  <span class="token property">page-break-after</span><span class="token punctuation">:</span> always<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div></div></section><section aria-labelledby="javascript"><h3 id="javascript">JavaScript</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="9Js28aDl/Ofwyg6fmPJg2bvOiJcSQohfR+cEak3b1I0=" data-language="js">document<span class="token punctuation">.</span><span class="token function">querySelector</span><span class="token punctuation">(</span><span class="token string">"button"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">'click'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  window<span class="token punctuation">.</span><span class="token function">print</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div></div></section><section aria-labelledby="결과"><h3 id="결과">결과</h3>
+<div class="section-content">
+<p>"출력!" 버튼을 눌러 페이지 출력 화면을 확인해보세요. 첫 번째 페이지의 콘텐츠는 중앙 어딘가에 위치하고, 두 번째 페이지의 콘텐츠는 기본 위치에 존재해야 합니다.</p>
+<div class="code-example" id="sect2">
+
+<iframe class="sample-code-frame" title="예제 sample" id="frame_예제" width="80%" height="150px" src="https://live.mdnplay.dev/ko/docs/Web/CSS/:first/runner.html?id=%EC%98%88%EC%A0%9C" loading="lazy"></iframe>
+</div>
+</div></section><h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://drafts.csswg.org/css-page/#left-right-first">CSS Paged Media Module Level 3 <br><small># left-right-first</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="@page"><code>@page</code></a></li> <li>페이지 관련 다른 의사 클래스: <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:left"><code>:left</code> <small>(en-US)</small></a>, <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:right"><code>:right</code> <small>(en-US)</small></a>
+</li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/CSS/:first" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/CSS/:first</a>
+  </p>
+</div>

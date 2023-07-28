@@ -1,0 +1,26 @@
+<header><h1>console.time()</h1></header><div class="section-content">
+<p><code>console.time()</code> 메서드는 타이머를 시작해 작업이 얼마나 걸리는지 추적할 수 있습니다. 각 타이머에게 고유한 이름을 줄 수 있고, 한 페이지에 최대 10,000개의 타이머를 설정할 수 있습니다. 같은 이름으로 <a href="timeend"><code>console.timeEnd()</code></a>를 호출할 때, 브라우저가 밀리초 단위로 경과한 시간을 출력합니다.</p> <p>자세한 내용과 예제는 <a href="../console"><code>console</code></a> 문서의 <a href="../console#%ED%83%80%EC%9D%B4%EB%A8%B8">타이머</a>를 참고하세요.</p>
+<div class="notecard note" id="sect1"> <p><strong>참고:</strong> 이 기능은 <a href="../web_workers_api">Web Worker</a>에서 사용할 수 있습니다</p> </div>
+</div>
+<h2 id="구문">구문</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="YYUBb45iywiuRJf9owVdbjsWPuTuAOjZGtcnfmS98Z0=" data-language="js">console<span class="token punctuation">.</span><span class="token function">time</span><span class="token punctuation">(</span>label<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div></div>
+<h2 id="매개변수">매개변수</h2>
+<div class="section-content"><dl> <dt id="label"><code>label</code></dt> <dd> <p>새 타이머에게 설정할 이름. 타이머를 식별합니다. 같은 이름으로 <a href="timeend"><code>console.timeEnd()</code></a>를 호출하면 타이머가 중단되고 콘솔에 시간을 출력합니다.</p> </dd> </dl></div>
+<h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://console.spec.whatwg.org/#time">Console Standard <br><small># time</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="timeend"><code>console.timeEnd()</code></a></li> <li><a href="timelog"><code>console.timeLog()</code></a></li> </ul></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/console/time" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/console/time</a>
+  </p>
+</div>

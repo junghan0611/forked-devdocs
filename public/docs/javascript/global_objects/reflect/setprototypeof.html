@@ -1,0 +1,43 @@
+<header><h1>Reflect.setPrototypeOf()</h1></header><div class="section-content"><p><code>Reflect.setPrototypeOf()</code> 정적 메서드는 주어진 객체의 프로토타입(내부 <code>[[Prototype]]</code> 속성)을 다른 객체나 <a href="../../operators/null"><code>null</code></a>로 바꿉니다. 반환 값을 제외하면 <a href="../object/setprototypeof"><code>Object.setPrototypeOf()</code></a> 메서드와 같습니다.</p></div>
+<section aria-labelledby="시도해보기"><h2 id="시도해보기">시도해보기</h2>
+<div class="section-content"><iframe class="interactive is-js-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/js/reflect-setprototypeof.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe></div></section><section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="400SCz45xZixLK/dD/BoMKCKRqpkV9M/vuNlVEuCy8U=" data-language="js">Reflect<span class="token punctuation">.</span><span class="token function">setPrototypeOf</span><span class="token punctuation">(</span>target<span class="token punctuation">,</span> prototype<span class="token punctuation">)</span>
+</pre>
+</div></div></section><section aria-labelledby="매개변수"><h3 id="매개변수">매개변수</h3>
+<div class="section-content"><dl> <dt id="target"><code>target</code></dt> <dd> <p>프로토타입을 지정할 대상 객체.</p> </dd> <dt id="prototype"><code>prototype</code></dt> <dd> <p>대상 객체의 새로운 프로토타입. (객체 또는 <a href="../../operators/null"><code>null</code></a></p> </dd> </dl></div></section><section aria-labelledby="반환_값"><h3 id="반환_값">반환 값</h3>
+<div class="section-content"><p>프로토타입 설정 성공 여부를 나타내는 <a href="../boolean"><code>Boolean</code></a>.</p></div></section><section aria-labelledby="예외"><h3 id="예외">예외</h3>
+<div class="section-content"><p><code>target</code>이 <a href="../object"><code>Object</code></a>가 아니거나, <code>prototype</code>이 객체도 <a href="../../operators/null"><code>null</code></a>도 아니면 <a href="../typeerror"><code>TypeError</code></a>.</p></div></section><section aria-labelledby="설명"><h2 id="설명">설명</h2>
+<div class="section-content"><p><code>Reflect.setPrototypeOf()</code> 메서드는 주어진 객체의 프로토타입(즉, 내부 <code>[[Prototype]]</code> 속성)을 변경합니다.</p></div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+</section><section aria-labelledby="reflect.setprototypeof_사용하기"><h3 id="reflect.setprototypeof_사용하기">
+<code>Reflect.setPrototypeOf()</code> 사용하기</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="AGf6xDOoNPbbDoCMTYGs1fBlT86fB3jPgewNqCdDAx4=" data-language="js">Reflect<span class="token punctuation">.</span><span class="token function">setPrototypeOf</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token class-name">Object</span><span class="token punctuation">.</span>prototype<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// true</span>
+
+<span class="token comment">// It can change an object's [[Prototype]] to null.</span>
+Reflect<span class="token punctuation">.</span><span class="token function">setPrototypeOf</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token keyword">null</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// true</span>
+
+<span class="token comment">// Returns false if target is not extensible.</span>
+Reflect<span class="token punctuation">.</span><span class="token function">setPrototypeOf</span><span class="token punctuation">(</span>Object<span class="token punctuation">.</span><span class="token function">freeze</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token keyword">null</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// false</span>
+
+<span class="token comment">// Returns false if it cause a prototype chain cycle.</span>
+<span class="token keyword">const</span> target <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> proto <span class="token operator">=</span> Object<span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span>target<span class="token punctuation">)</span><span class="token punctuation">;</span>
+Reflect<span class="token punctuation">.</span><span class="token function">setPrototypeOf</span><span class="token punctuation">(</span>target<span class="token punctuation">,</span> proto<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// false</span>
+</pre>
+</div></div></section><h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://tc39.es/ecma262/multipage/reflection.html#sec-reflect.setprototypeof">ECMAScript Language Specification <br><small># sec-reflect.setprototypeof</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="../reflect"><code>Reflect</code></a></li> <li><a href="../object/setprototypeof"><code>Object.setPrototypeOf()</code></a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Reflect/setPrototypeOf" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Reflect/setPrototypeOf</a>
+  </p>
+</div>

@@ -1,0 +1,118 @@
+<header><h1>&lt;figure&gt;</h1></header><div class="section-content"><p><code>&lt;figure&gt;</code>는 독립적인 콘텐츠를 표현합니다. <a href="figcaption"><code>&lt;figcaption&gt;</code></a> 요소를 사용해 설명을 붙일 수 있습니다. 피규어, 설명, 콘텐츠는 하나의 단위로 참조됩니다.</p></div>
+<h2 id="시도해보기">시도해보기</h2>
+<div class="section-content">
+<iframe class="interactive is-tabbed-shorter-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/tabbed/figure.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe> <p>The source for this interactive example is stored in a GitHub repository. If you'd like to contribute to the interactive examples project, please clone <a href="https://github.com/mdn/interactive-examples" target="_blank">https://github.com/mdn/interactive-examples</a> and send us a pull request.</p> <figure class="table-container"><div class="_table"><table class="properties"> <tbody> <tr> <th scope="row"><a href="../content_categories">콘텐츠 카테고리</a></th> <td>
+<a href="../content_categories#%ed%94%8c%eb%a1%9c%ec%9a%b0_%ec%bd%98%ed%85%90%ec%b8%a0">플로우 콘텐츠</a>, 구획 루트, 뚜렷한 콘텐츠.</td> </tr> <tr> <th scope="row">가능한 콘텐츠</th> <td> <p> <a href="figcaption"><code>&lt;figcaption&gt;</code></a>과 뒤따르는 <a href="../content_categories#%ed%94%8c%eb%a1%9c%ec%9a%b0_%ec%bd%98%ed%85%90%ec%b8%a0">플로우 콘텐</a>츠.<br>혹은 플로우 콘텐츠를 뒤따르는 <code>&lt;figcaption&gt;</code>.<br>혹은 플로우 콘텐츠. </p> </td> </tr> <tr> <th scope="row">태그 생략</th> <td>불가능, 시작과 끝에 태그를 추가하는것은 필수입니다.</td> </tr> <tr> <th scope="row">가능한 부모 요소</th> <td>
+<a href="../content_categories#%ed%94%8c%eb%a1%9c%ec%9a%b0_%ec%bd%98%ed%85%90%ec%b8%a0">플로우 콘텐츠</a>를 허용하는 모든 요소.</td> </tr> <tr> <th scope="row">가능한 ARIA 역할</th> <td>
+<a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/group_role" class="only-in-en-us"><code>group</code> <small>(en-US)</small></a>, <a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/presentation_role" class="only-in-en-us"><code>presentation</code> <small>(en-US)</small></a>
+</td> </tr> <tr> <th scope="row">DOM 인터페이스</th> <td><a href="https://developer.mozilla.org/ko/docs/Web/API/HTMLElement"><code>HTMLElement</code></a></td> </tr> </tbody> </table></div></figure>
+</div>
+<h2 id="특성">특성</h2>
+<div class="section-content"><p>이 요소는 <a href="../global_attributes">전역 특성</a>만 포함합니다.</p></div>
+<h2 id="사용_일람">사용 일람</h2>
+<div class="section-content"><ul> <li>보통 <code>&lt;figure&gt;</code>는 주 문서 플로우가 참조하지만, 다른 부분이나 부록으로 이동해도 문제 없는 이미지, 삽화, 도표, 코드 조각 등을 맡습니다.</li> <li>
+<code>&lt;figure&gt;</code>는 구획 루트이므로 <code>&lt;figure&gt;</code> 요소의 콘텐츠는 문서의 주 개요에서 제외됩니다.</li> <li>안에 (처음이나 마지막 자식으로) <a href="figcaption"><code>&lt;figcaption&gt;</code></a>을 넣어서 설명을 덧붙일 수 있습니다. 제일 처음 <code>&lt;figcaption&gt;</code>을 설명으로 사용합니다.</li> </ul></div>
+<h2 id="예제">예제</h2>
+
+<h3 id="이미지">이미지</h3>
+<div class="section-content">
+<div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="PKhzkqTqZiydHBnpLs+MdWVct7cuwo8H/yVEFPLp9f8=" data-language="html"><span class="token comment">&lt;!-- Just an image --&gt;</span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>figure</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span>
+  <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>https://developer.mozilla.org/static/img/favicon144.png<span class="token punctuation">"</span></span>
+  <span class="token attr-name">alt</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>A robotic monster over the letters MDN.<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>figure</span><span class="token punctuation">&gt;</span></span>
+
+<span class="token comment">&lt;!-- Image with a caption --&gt;</span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>figure</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span>
+  <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>https://developer.mozilla.org/static/img/favicon144.png<span class="token punctuation">"</span></span>
+  <span class="token attr-name">alt</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>A robotic monster over the letters MDN.<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>figcaption</span><span class="token punctuation">&gt;</span></span>MDN Logo<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>figcaption</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>figure</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div>
+<div class="code-example" id="sect1">
+
+<iframe class="sample-code-frame" title="이미지 sample" id="frame_이미지" width="100%" height="250" src="https://live.mdnplay.dev/ko/docs/Web/HTML/Element/figure/runner.html?id=%EC%9D%B4%EB%AF%B8%EC%A7%80" loading="lazy"></iframe>
+</div>
+</div>
+<h3 id="코드_조각">코드 조각</h3>
+<div class="section-content">
+<div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="qMUV8K5y6mLiaprziulOY+H5UwMDdND+44AVRx/ARSo=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>figure</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>figcaption</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>code</span><span class="token punctuation">&gt;</span></span>navigator<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>code</span><span class="token punctuation">&gt;</span></span>를 이용하여 브라우저 정보 얻기<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>figcaption</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>pre</span><span class="token punctuation">&gt;</span></span>
+function NavigatorExample() {
+  var txt;
+  txt = "Browser CodeName: " + navigator.appCodeName;
+  txt+= "Browser Name: " + navigator.appName;
+  txt+= "Browser Version: " + navigator.appVersion ;
+  txt+= "Cookies Enabled: " + navigator.cookieEnabled;
+  txt+= "Platform: " + navigator.platform;
+  txt+= "User-agent header: " + navigator.userAgent;
+}
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>pre</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>figure</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div>
+<div class="code-example" id="sect2">
+
+<iframe class="sample-code-frame" title="코드 조각 sample" id="frame_코드_조각" width="100%" height="250" src="https://live.mdnplay.dev/ko/docs/Web/HTML/Element/figure/runner.html?id=%EC%BD%94%EB%93%9C_%EC%A1%B0%EA%B0%81" loading="lazy"></iframe>
+</div>
+</div>
+<h3 id="인용문">인용문</h3>
+<div class="section-content">
+<div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="FCsh2Ka76SH6wZTHf8OWzQLibxZ4Q/lwBY5X1eypl3k=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>figure</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>figcaption</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>cite</span><span class="token punctuation">&gt;</span></span>Edsger Dijkstra:<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>cite</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>figcaption</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>blockquote</span><span class="token punctuation">&gt;</span></span>If debugging is the process of removing software bugs,
+  then programming must be the process of putting them in.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>blockquote</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>figure</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div>
+<div class="code-example" id="sect3">
+
+<iframe class="sample-code-frame" title="인용문 sample" id="frame_인용문" src="https://live.mdnplay.dev/ko/docs/Web/HTML/Element/figure/runner.html?id=%EC%9D%B8%EC%9A%A9%EB%AC%B8" loading="lazy"></iframe>
+</div>
+</div>
+<h3 id="시">시</h3>
+<div class="section-content">
+<div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="UnX6LNvgF0mK6l5PWzpXDivc23WN2i7ovlnnvko0ETI=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>figure</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token special-attr"><span class="token attr-name">style</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token value css language-css"><span class="token property">white-space</span><span class="token punctuation">:</span>pre</span><span class="token punctuation">"</span></span></span><span class="token punctuation">&gt;</span></span>
+Bid me discourse, I will enchant thine ear,
+  Or like a fairy trip upon the green,
+Or, like a nymph, with long dishevell'd hair,
+  Dance on the sands, and yet no footing seen:
+Love is a spirit all compact of fire,
+  Not gross to sink, but light, and will aspire.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>figcaption</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>cite</span><span class="token punctuation">&gt;</span></span>Venus and Adonis<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>cite</span><span class="token punctuation">&gt;</span></span>,
+    by William Shakespeare<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>figcaption</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>figure</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div>
+<div class="code-example" id="sect4">
+
+<iframe class="sample-code-frame" title="시 sample" id="frame_시" width="100%" height="250" src="https://live.mdnplay.dev/ko/docs/Web/HTML/Element/figure/runner.html?id=%EC%8B%9C" loading="lazy"></iframe>
+</div>
+</div>
+<h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-figure-element">HTML Standard <br><small># the-figure-element</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="figcaption"><code>&lt;figcaption&gt;</code></a></li> </ul></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/HTML/Element/figure" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/HTML/Element/figure</a>
+  </p>
+</div>

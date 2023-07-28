@@ -1,0 +1,44 @@
+<header><h1>&lt;i&gt;</h1></header><div class="section-content"><p><code>&lt;i&gt;</code>는 텍스트에서 어떤 이유로 주위와 구분해야 하는 부분을 나타냅니다. 기술 용어, 외국어 구절, 등장인물의 생각 등을 예시로 들 수 있습니다. 보통 기울임꼴로 표시합니다.</p></div>
+<h2 id="시도해보기">시도해보기</h2>
+<div class="section-content">
+<iframe class="interactive is-tabbed-shorter-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/tabbed/i.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe> <figure class="table-container"><div class="_table"><table class="properties"> <tbody> <tr> <th scope="row"><a href="../content_categories">콘텐츠 카테고리</a></th> <td> <a href="../content_categories#%ed%94%8c%eb%a1%9c%ec%9a%b0_%ec%bd%98%ed%85%90%ec%b8%a0">플로우 콘텐츠</a>, <a href="../content_categories#%ea%b5%ac%eb%ac%b8_%ec%bd%98%ed%85%90%ec%b8%a0">구문 콘텐츠</a>, 뚜렷한 콘텐츠. </td> </tr> <tr> <th scope="row">가능한 콘텐츠</th> <td>
+<a href="../content_categories#%ea%b5%ac%eb%ac%b8_%ec%bd%98%ed%85%90%ec%b8%a0">구문 콘텐츠</a>.</td> </tr> <tr> <th scope="row">태그 생략</th> <td>불가능, 시작과 끝에 태그를 추가하는것은 필수입니다.</td> </tr> <tr> <th scope="row">가능한 부모 요소</th> <td>
+<a href="../content_categories#%ea%b5%ac%eb%ac%b8_%ec%bd%98%ed%85%90%ec%b8%a0">구문 콘텐츠</a>를 허용하는 모든 요소.</td> </tr> <tr> <th scope="row">가능한 ARIA 역할</th> <td>모두</td> </tr> <tr> <th scope="row">DOM 인터페이스</th> <td><a href="https://developer.mozilla.org/ko/docs/Web/API/HTMLElement"><code>HTMLElement</code></a></td> </tr> </tbody> </table></div></figure>
+</div>
+<h2 id="특성">특성</h2>
+<div class="section-content"><p>이 요소는 <a href="../global_attributes">전역 특성</a>만 포함합니다.</p></div>
+<h2 id="사용_일람">사용 일람</h2>
+<div class="section-content"><ul> <li>일반 산문과 다른 문체를 가진 텍스트에 <code>&lt;i&gt;</code> 요소를 사용하세요. 주위 텍스트와 다른 의미를 가진 텍스트에 적용하면 됩니다.</li> <li>초기 HTML 명세의 <code>&lt;i&gt;</code> 요소는, <a href="b"><code>&lt;b&gt;</code></a> 요소가 굵은 글씨 적용에 그쳤던 것과 마찬가지로, 글자를 기울이기만 하는 단순한 시각적 요소였습니다. 그러나 지금은 글자 외형에 그치지 않고 특정한 의미를 지니는 요소이므로 시각적인 강조에 그치지 않습니다. 보통, 브라우저가 여전히 <code>&lt;i&gt;</code> 요소의 글자를 기울이겠지만, 명세에 따르면 꼭 그렇게 표시할 필요는 없습니다.</li> <li>
+<code>&lt;i&gt;</code> 요소가 글자를 기울이기는 하지만, 기울임꼴을 적용하기 위한 용도로 사용해서는 안됩니다. CSS <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/font-style"><code>font-style</code> <small>(en-US)</small></a> 속성을 사용하세요.</li> <li>강조하려는 텍스트가 다른 요소에 더 적합하지 않은지 고려하세요. <ul> <li>
+<a href="em"><code>&lt;em&gt;</code></a> 요소는 강세를 나타냅니다.</li> <li>
+<a href="strong"><code>&lt;strong&gt;</code></a> 요소는 보다 강한 강조를 나타냅니다.</li> <li>
+<a href="mark"><code>&lt;mark&gt;</code></a> 요소는 관련성을 나타냅니다.</li> <li>
+<a href="cite"><code>&lt;cite&gt;</code></a> 요소는 책, 공연, 음악 등 저작물의 이름을 나타냅니다.</li> <li>
+<a href="dfn"><code>&lt;dfn&gt;</code></a> 요소는 정의 대상인 용어를 나타냅니다.</li> </ul> </li> </ul></div>
+<h2 id="예제">예제</h2>
+<div class="section-content">
+<p>다음 예제는 외국어를 강조하기 위해 <code>&lt;i&gt;</code> 요소를 사용합니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="6HoTlqbk1SO32o6Jj5tQBkrGl6fmTiNOqjps/kBGpzU=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>라틴어 문구 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>i</span><span class="token punctuation">&gt;</span></span>Veni, vidi, vici<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>i</span><span class="token punctuation">&gt;</span></span>는 음악과 예술, 문학에 자주 등장합니다.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div>
+</div>
+<h3 id="결과">결과</h3>
+<div class="section-content"><div class="code-example" id="sect1">
+
+<iframe class="sample-code-frame" title="예제 sample" id="frame_예제" src="https://live.mdnplay.dev/ko/docs/Web/HTML/Element/i/runner.html?id=%EC%98%88%EC%A0%9C" loading="lazy"></iframe>
+</div></div>
+<h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-i-element">HTML Standard <br><small># the-i-element</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="em"><code>&lt;em&gt;</code></a></li> </ul></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/HTML/Element/i" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/HTML/Element/i</a>
+  </p>
+</div>

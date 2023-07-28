@@ -1,0 +1,69 @@
+<header><h1>더하기 (+)</h1></header><div class="section-content"><p>더하기 연산자(<code>+</code>)는 숫자 피연산자의 합을 구하거나, 문자열을 서로 연결합니다.</p></div>
+<section aria-labelledby="시도해보기"><h2 id="시도해보기">시도해보기</h2>
+<div class="section-content"><iframe class="interactive is-js-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/js/expressions-addition.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe></div></section><section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="3BhX/1Q7sszHDl8VoK7KA/hfZtDck0tMzDWSFPUllSc=" data-language="js">x <span class="token operator">+</span> y
+</pre>
+</div></div></section><section aria-labelledby="설명"><h2 id="설명">설명</h2>
+<div class="section-content">
+<p><code>+</code> 연산자는 숫자 덧셈과 문자열 연결 두 가지 작업을 수행합니다. 계산 시에 먼저 <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Data_structures#primitive_coercion">두 개의 피연산자를 원시 타입으로 변환합니다</a>. 그 후에, 두 피연산자의 타입을 확인합니다.</p> <ul> <li>만약 한쪽의 피연산자가 문자열인 경우, 나머지 한쪽의 피연산자도 <a href="../global_objects/string#string_coercion">문자열로 변환</a>시킨 뒤 연결합니다.</li> <li>만약 두 피연산자가 모두 <a href="../global_objects/bigint">BigInt</a>인 경우, BigInt 덧셈을 수행합니다. 만약 한쪽의 피연산자가 BigInt이지만 나머지 한쪽의 피연산자가 BigInt가 아닌 경우, <a href="../global_objects/typeerror"><code>TypeError</code></a>가 발생합니다.</li> <li>그 외의 경우, 두 피연산자를 모두 <a href="../global_objects/number#number_coercion">숫자로 변환시키고</a>, 숫자 덧셈이 수행됩니다.</li> </ul> <p>종종 <a href="../template_literals">템플릿 리터럴</a>이나 <a href="../global_objects/string/concat"><code>String.prototype.concat()</code></a>이 문자열 연결과 동일하다고 생각하지만, 그렇지 않습니다. 더하기 연산자는 먼저 <a href="../global_objects/object/valueof"><code>valueOf()</code></a>를 호출하여 표현식을 원시 타입으로 변환합니다. 반면에, 템플릿 리터럴과 <code>concat()</code>은 먼저 <a href="../global_objects/object/tostring"><code>toString()</code></a>을 호출합니다. 만약 표현식에 <a href="../global_objects/symbol/toprimitive"><code>@@toPrimitive</code></a> 메서드가 있는 경우, 문자열 연결은 <code>"default"</code>를 힌트로 사용하고, 템플릿 리터럴은 <code>"string"</code>을 사용합니다. 이 차이는 문자열과 원시 표현이 다른 객체에 중요합니다. 예를 들어 <code>valueOf()</code> 메서드가 에러를 내는 <a href="https://github.com/tc39/proposal-temporal" target="_blank">Temporal</a> 같은 객체가 있습니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="yRha6VnEAZvrDLODZvNYR0HOgT2pLMAgCA1ZZGMQl3c=" data-language="js"><span class="token keyword">const</span> t <span class="token operator">=</span> Temporal<span class="token punctuation">.</span>Now<span class="token punctuation">.</span><span class="token function">instant</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token string">""</span> <span class="token operator">+</span> t<span class="token punctuation">;</span> <span class="token comment">// Throws TypeError</span>
+<span class="token template-string"><span class="token template-punctuation string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>t<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">;</span> <span class="token comment">// '2022-07-31T04:48:56.113918308Z'</span>
+<span class="token string">""</span><span class="token punctuation">.</span><span class="token function">concat</span><span class="token punctuation">(</span>t<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// '2022-07-31T04:48:56.113918308Z'</span>
+</pre>
+</div> <p><a href="../global_objects/string#string_coercion">문자열 변환</a>을 위해 <code>"" + x</code>를 사용하는 것은 좋지 않습니다.</p>
+</div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+</section><section aria-labelledby="number_덧셈"><h3 id="number_덧셈">Number 덧셈</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="BWg7Sruz29c8l2R+iCnAGy4izVEAP4U4ZGr9GSzP7nw=" data-language="js"><span class="token comment">// Number + Number -&gt; 덧셈</span>
+<span class="token number">1</span> <span class="token operator">+</span> <span class="token number">2</span> <span class="token comment">// 3</span>
+
+<span class="token comment">// Boolean + Number -&gt; 덧셈</span>
+<span class="token boolean">true</span> <span class="token operator">+</span> <span class="token number">1</span> <span class="token comment">// 2</span>
+
+<span class="token comment">// Boolean + Boolean -&gt; 덧셈</span>
+<span class="token boolean">false</span> <span class="token operator">+</span> <span class="token boolean">false</span> <span class="token comment">// 0</span>
+</pre>
+</div></div></section><section aria-labelledby="bigint_덧셈"><h2 id="bigint_덧셈">BigInt 덧셈</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="EHSALcCEBtFr/THscjKgH6iVSpw2AsX1VW7VO1YbKhQ=" data-language="js"><span class="token comment">// BigInt + BigInt -&gt; 덧셈</span>
+<span class="token number">1n</span> <span class="token operator">+</span> <span class="token number">2n</span><span class="token punctuation">;</span> <span class="token comment">// 3n</span>
+
+<span class="token comment">// BigInt + Number -&gt; TypeError 발생</span>
+<span class="token number">1n</span> <span class="token operator">+</span> <span class="token number">2</span><span class="token punctuation">;</span> <span class="token comment">// TypeError: Cannot mix BigInt and other types, use explicit conversions</span>
+
+<span class="token comment">// BigInt와  non-BigInt를 더하기 위해선, 피연산자 중 하나를 변환하십시오.</span>
+<span class="token number">1n</span> <span class="token operator">+</span> <span class="token function">BigInt</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 3n</span>
+<span class="token function">Number</span><span class="token punctuation">(</span><span class="token number">1n</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">2</span><span class="token punctuation">;</span> <span class="token comment">// 3</span>
+</pre>
+</div></div></section><section aria-labelledby="문자열_연결"><h3 id="문자열_연결">문자열 연결</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="lnw+dEaw1sWQMnmmvXLb/XCKIEI4wYW0TTShh8d/PSY=" data-language="js"><span class="token comment">// String + String -&gt; 연결</span>
+<span class="token string">'foo'</span> <span class="token operator">+</span> <span class="token string">'bar'</span> <span class="token comment">// "foobar"</span>
+
+<span class="token comment">// Number + String -&gt; 연결</span>
+<span class="token number">5</span> <span class="token operator">+</span> <span class="token string">'foo'</span> <span class="token comment">// "5foo"</span>
+
+<span class="token comment">// String + Boolean -&gt; 연결</span>
+<span class="token string">'foo'</span> <span class="token operator">+</span> <span class="token boolean">false</span> <span class="token comment">// "foofalse"</span>
+</pre>
+</div></div></section><h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://tc39.es/ecma262/multipage/ecmascript-language-expressions.html#sec-addition-operator-plus">ECMAScript Language Specification <br><small># sec-addition-operator-plus</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="subtraction">빼기 연산자</a></li> <li><a href="division">나누기 연산자</a></li> <li><a href="multiplication">곱하기 연산자</a></li> <li><a href="remainder">나머지 연산자</a></li> <li><a href="exponentiation">거듭제곱 연산자</a></li> <li><a href="increment">증가 연산자</a></li> <li><a href="decrement">감소 연산자</a></li> <li><a href="unary_negation">단항 부정 연산자</a></li> <li><a href="unary_plus">단항 플러스 연산자</a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Operators/Addition" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Operators/Addition</a>
+  </p>
+</div>

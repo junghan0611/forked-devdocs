@@ -1,0 +1,103 @@
+<header><h1>Request</h1></header><div class="section-content">
+<p><a href="fetch_api">Fetch API</a>의 <code>Request</code> 인터페이스는 리소스 요청을 나타냅니다.</p> <p>새로운 <code>Request</code> 객체는 <a href="request/request"><code>Request()</code></a> 생성자로도 생성할 수 있지만, 보통은 서비스 워커의 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/FetchEvent/request"><code>FetchEvent.request</code> <small>(en-US)</small></a>처럼 다른 API 작업의 결과로서 만나게 됩니다.</p>
+</div>
+<h2 id="생성자">생성자</h2>
+<div class="section-content"><dl> <dt id="request"><a href="request/request"><code>Request()</code></a></dt> <dd> <p>새로운 <code>Request</code> 객체를 생성합니다.</p> </dd> </dl></div>
+<h2 id="인스턴스_속성">인스턴스 속성</h2>
+<div class="section-content"><dl> <dt id="request.body_en-us">
+<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/Request/body"><code>Request.body</code> <small>(en-US)</small></a> <span class="badge inline readonly">읽기 전용</span>
+</dt> <dd> <p>본문 내용의 <a href="readablestream"><code>ReadableStream</code></a>입니다.</p> </dd> <dt id="request.bodyused_en-us">
+<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/Request/bodyUsed"><code>Request.bodyUsed</code> <small>(en-US)</small></a> <span class="badge inline readonly">읽기 전용</span>
+</dt> <dd> <p>요청의 본문이 사용됐는지 아닌지 나타내는 <code>true</code> 또는 <code>false</code>입니다.</p> </dd> <dt id="request.cache_en-us">
+<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/Request/cache"><code>Request.cache</code> <small>(en-US)</small></a> <span class="badge inline readonly">읽기 전용</span>
+</dt> <dd> <p>요청의 캐시 모드(<code>default</code>, <code>reload</code>, <code>no-cache</code> 등)입니다.</p> </dd> <dt id="request.credentials">
+<a href="request/credentials"><code>Request.credentials</code></a> <span class="badge inline readonly">읽기 전용</span>
+</dt> <dd> <p>요청의 자격 증명(<code>omit</code>, <code>same-origin</code>, <code>include</code> 등)입니다. 기본 값은 <code>same-origin</code>입니다.</p> </dd> <dt id="request.destination_en-us">
+<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/Request/destination"><code>Request.destination</code> <small>(en-US)</small></a> <span class="badge inline readonly">읽기 전용</span>
+</dt> <dd> <p>요청의 목적지를 묘사하는 문자열을 반환합니다. 요청한 콘텐츠의 유형을 나타내는 문자열입니다.</p> </dd> <dt id="request.headers_en-us">
+<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/Request/headers"><code>Request.headers</code> <small>(en-US)</small></a> <span class="badge inline readonly">읽기 전용</span>
+</dt> <dd> <p>요청에 연관된 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/Headers"><code>Headers</code> <small>(en-US)</small></a> 객체입니다.</p> </dd> <dt id="request.integrity_en-us">
+<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/Request/integrity"><code>Request.integrity</code> <small>(en-US)</small></a> <span class="badge inline readonly">읽기 전용</span>
+</dt> <dd> <p>요청의 <a href="https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity" class="only-in-en-us">하위 리소스 무결성 <small>(en-US)</small></a> 값(예시: <code>sha256-BpfBw7ivV8q2jLiT13fxDYAe2tJllusRSZ273h2nFSE=</code>)입니다.</p> </dd> <dt id="request.method_en-us">
+<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/Request/method"><code>Request.method</code> <small>(en-US)</small></a> <span class="badge inline readonly">읽기 전용</span>
+</dt> <dd> <p>요청의 메서드(<code>GET</code>, <code>POST</code> 등)입니다.</p> </dd> <dt id="request.mode_en-us">
+<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/Request/mode"><code>Request.mode</code> <small>(en-US)</small></a> <span class="badge inline readonly">읽기 전용</span>
+</dt> <dd> <p>요청의 모드(<code>cors</code>, <code>no-cors</code>, <code>same-origin</code>, <code>navigate</code> 등)입니다.</p> </dd> <dt id="request.redirect_en-us">
+<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/Request/redirect"><code>Request.redirect</code> <small>(en-US)</small></a> <span class="badge inline readonly">읽기 전용</span>
+</dt> <dd> <p>리다이렉트 처리 방법입니다. <code>follow</code>, <code>error</code>, <code>manual</code> 중 하나입니다.</p> </dd> <dt id="request.referrer_en-us">
+<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/Request/referrer"><code>Request.referrer</code> <small>(en-US)</small></a> <span class="badge inline readonly">읽기 전용</span>
+</dt> <dd> <p>요청의 리퍼러(예시: <code>client</code>)입니다.</p> </dd> <dt id="request.referrerpolicy_en-us">
+<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/Request/referrerPolicy"><code>Request.referrerPolicy</code> <small>(en-US)</small></a> <span class="badge inline readonly">읽기 전용</span>
+</dt> <dd> <p>요청의 리퍼러 정책(<code>no-referrer</code> 등)입니다.</p> </dd> <dt id="request.signal_en-us">
+<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/Request/signal"><code>Request.signal</code> <small>(en-US)</small></a> <span class="badge inline readonly">읽기 전용</span>
+</dt> <dd> <p>요청에 연관된 <a href="abortsignal"><code>AbortSignal</code></a>을 반환합니다.</p> </dd> <dt id="request.url_en-us">
+<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/Request/url"><code>Request.url</code> <small>(en-US)</small></a> <span class="badge inline readonly">읽기 전용</span>
+</dt> <dd> <p>요청 URL입니다.</p> </dd> </dl></div>
+<h2 id="인스턴스_메서드">인스턴스 메서드</h2>
+<div class="section-content">
+<dl> <dt id="request.arraybuffer_en-us"><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/Request/arrayBuffer"><code>Request.arrayBuffer()</code> <small>(en-US)</small></a></dt> <dd> <p>요청 본문의 <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer"><code>ArrayBuffer</code></a> 표현으로 이행하는 프로미스를 반환합니다.</p> </dd> <dt id="request.blob_en-us"><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/Request/blob"><code>Request.blob()</code> <small>(en-US)</small></a></dt> <dd> <p>요청 본문의 <a href="blob"><code>Blob</code></a> 표현으로 이행하는 프로미스를 반환합니다.</p> </dd> <dt id="request.clone_en-us"><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/Request/clone"><code>Request.clone()</code> <small>(en-US)</small></a></dt> <dd> <p><code>Request</code> 객체의 복사본을 생성합니다.</p> </dd> <dt id="request.formdata_en-us"><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/Request/formData"><code>Request.formData()</code> <small>(en-US)</small></a></dt> <dd> <p>요청 본문의 <a href="formdata"><code>FormData</code></a> 표현으로 이행하는 프로미스를 반환합니다.</p> </dd> <dt id="request.json_en-us"><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/Request/json"><code>Request.json()</code> <small>(en-US)</small></a></dt> <dd> <p>요청 본문을 <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/JSON"><code>JSON</code></a>으로 파싱한 결과로 이행하는 프로미스를 반환합니다.</p> </dd> <dt id="request.text_en-us"><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/Request/text"><code>Request.text()</code> <small>(en-US)</small></a></dt> <dd> <p>요청 본문의 text 표현으로 이행하는 프로미스를 반환합니다.</p> </dd> </dl> <div class="notecard note" id="sect1"> <p><strong>참고:</strong> 요청 본문 함수는 오직 한 번만 실행할 수 있습니다. 이후의 호출은 빈 문자열 혹은 빈 <code>ArrayBuffer</code>로 이행할 것입니다.</p> </div>
+</div>
+<h2 id="예제">예제</h2>
+<div class="section-content">
+<p>다음 코드 조각에서는 <code>Request()</code> 생성자로 스크립트와 같은 디렉토리에 위치하는 이미지 파일에 대한 새로운 요청을 생성하고, 해당 요청의 몇몇 속성을 반환합니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="FRko05dDDw5/T/Fsmbh03qriw9/wBBNUYJUEQ7NQciI=" data-language="js"><span class="token keyword">const</span> request <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Request</span><span class="token punctuation">(</span><span class="token string">"https://www.mozilla.org/favicon.ico"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> url <span class="token operator">=</span> request<span class="token punctuation">.</span>url<span class="token punctuation">;</span>
+<span class="token keyword">const</span> method <span class="token operator">=</span> request<span class="token punctuation">.</span>method<span class="token punctuation">;</span>
+<span class="token keyword">const</span> credentials <span class="token operator">=</span> request<span class="token punctuation">.</span>credentials<span class="token punctuation">;</span>
+</pre>
+</div> <p>그 다음엔 <a href="fetch"><code>fetch()</code></a> 호출의 매개변수에 이 <code>Request</code> 객체를 제공하여 이미지를 취득할 수 있습니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="Wbyq2EzAid7cTxp+YrWSBMBZxAyXE57B0njwNXwIBTE=" data-language="js"><span class="token function">fetch</span><span class="token punctuation">(</span>request<span class="token punctuation">)</span>
+  <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">response</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> response<span class="token punctuation">.</span><span class="token function">blob</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+  <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">blob</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    image<span class="token punctuation">.</span>src <span class="token operator">=</span> <span class="token constant">URL</span><span class="token punctuation">.</span><span class="token function">createObjectURL</span><span class="token punctuation">(</span>blob<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div> <p>다음 코드 조각에서는 <code>Request()</code> 생성자를 호출할 때, 본문을 바라는 API에 대한 요청을 위해 일부 설정과 본문 데이터를 제공합니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="IjOcdDx67jz95lDu3bvc6kTe6wuNXgiHLAsAtYDUFAQ=" data-language="js"><span class="token keyword">const</span> request <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Request</span><span class="token punctuation">(</span><span class="token string">"https://example.com"</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+  <span class="token literal-property property">method</span><span class="token operator">:</span> <span class="token string">"POST"</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">body</span><span class="token operator">:</span> <span class="token string">'{"foo": "bar"}'</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> url <span class="token operator">=</span> request<span class="token punctuation">.</span>url<span class="token punctuation">;</span>
+<span class="token keyword">const</span> method <span class="token operator">=</span> request<span class="token punctuation">.</span>method<span class="token punctuation">;</span>
+<span class="token keyword">const</span> credentials <span class="token operator">=</span> request<span class="token punctuation">.</span>credentials<span class="token punctuation">;</span>
+<span class="token keyword">const</span> bodyUsed <span class="token operator">=</span> request<span class="token punctuation">.</span>bodyUsed<span class="token punctuation">;</span>
+</pre>
+</div> <div class="notecard note" id="sect2"> <p><strong>참고:</strong> 본문은 하나의 <a href="blob"><code>Blob</code></a>, <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer"><code>ArrayBuffer</code></a>, <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/TypedArray"><code>TypedArray</code></a>, <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/DataView"><code>DataView</code></a>, <a href="formdata"><code>FormData</code></a>, <a href="urlsearchparams"><code>URLSearchParams</code></a>, <a href="readablestream"><code>ReadableStream</code></a>, <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/String"><code>String</code></a> 객체, 문자열 리터럴 등만 가능하므로 JSON 객체를 본문으로 보내려면 먼저 문자열화해야 합니다.</p> </div> <p>그 다음엔 <a href="fetch"><code>fetch()</code></a> 호출의 매개변수에 이 <code>Request</code> 객체를 제공하여 응답을 받을 수 있습니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="AMdjAielVePejc4gETF9qQva+VseKRF/93LK/GEN7H0=" data-language="js"><span class="token function">fetch</span><span class="token punctuation">(</span>request<span class="token punctuation">)</span>
+  <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">response</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>response<span class="token punctuation">.</span>status <span class="token operator">===</span> <span class="token number">200</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">return</span> response<span class="token punctuation">.</span><span class="token function">json</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+      <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">Error</span><span class="token punctuation">(</span><span class="token string">"API 서버에서 뭔가 잘못됐습니다!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">response</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">debug</span><span class="token punctuation">(</span>response<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// …</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token punctuation">.</span><span class="token function">catch</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">error</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span>error<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div>
+</div>
+<h2 id="명세서">명세서</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://fetch.spec.whatwg.org/#request-class">Fetch Standard <br><small># request-class</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="service_worker_api">Service Worker API</a></li> <li><a href="https://developer.mozilla.org/ko/docs/Web/HTTP/CORS">HTTP 접근 제어 (CORS)</a></li> <li><a href="https://developer.mozilla.org/ko/docs/Web/HTTP">HTTP</a></li> </ul></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/Request" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/Request</a>
+  </p>
+</div>

@@ -1,0 +1,121 @@
+<header><h1>String.prototype.substring()</h1></header><div class="section-content"><p><code>substring()</code> 메소드는 string 객체의 시작 인덱스로 부터 종료 인덱스 전 까지 문자열의 부분 문자열을 반환합니다.</p></div>
+<section aria-labelledby="시도해보기"><h2 id="시도해보기">시도해보기</h2>
+<div class="section-content"><iframe class="interactive is-js-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/js/string-substring.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe></div></section><section aria-labelledby="사용방법"><h2 id="사용방법">사용방법</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="tkIzc/VTd8H61+XIz2ilDIAa+oMBuGRmNXoUGVQA66k=" data-language="js">str<span class="token punctuation">.</span><span class="token function">substring</span><span class="token punctuation">(</span>indexStart<span class="token punctuation">[</span><span class="token punctuation">,</span> indexEnd<span class="token punctuation">]</span><span class="token punctuation">)</span>
+</pre>
+</div></div></section><section aria-labelledby="인자값"><h3 id="인자값">인자값</h3>
+<div class="section-content"><dl> <dt id="indexstart"><code>indexStart</code></dt> <dd> <p>반환문자열의 시작 인덱스</p> </dd> <dt id="indexend"><code>indexEnd</code></dt> <dd> <p>옵션. 반환문자열의 마지막 인덱스 (포함하지 않음.)</p> </dd> </dl></div></section><section aria-labelledby="반환값"><h3 id="반환값">반환값</h3>
+<div class="section-content"><p>기존문자열의 부분 문자열을 반환합니다.</p></div></section><section aria-labelledby="description"><h2 id="description">Description</h2>
+<div class="section-content">
+<p><code>substring()</code> 메서드는 <code>indexStart</code> 부터 문자를 추출하지만 <code>indexEnd</code> 가 포함되지 않아도 괜찮습니다. 특징은 아래와 같습니다.</p> <ul> <li>만약 <code>indexEnd</code> 가 생략된 경우, <code>substring()</code> 문자열의 끝까지 모든 문자를 추출합니다.</li> <li>만약 <code>indexStart</code> 가 <code>indexEnd</code>와 같을 경우, <code>substring()</code> 빈 문자열을 반환합니다.</li> <li>만약 <code>indexStart</code> 가 <code>indexEnd</code>보다 큰 경우, <code>substring()</code> 메서드는 마치 두 개의 인자를 바꾼 듯 작동하게 됩니다. 아래 예제를 보세요.</li> </ul> <p>0보다 작은 인자 값을 가지는 경우에는 0으로, <code>stringName.length</code> 보다 큰 인자 값을 가지는 경우, <code>stringName.length</code> 로 처리됩니다. <a href="../nan"><code>NaN</code></a> 값은 0으로 처리됩니다.</p>
+</div></section><section aria-labelledby="examples"><h2 id="examples">Examples</h2>
+</section><section aria-labelledby="using_substring"><h3 id="using_substring">Using <code>substring()</code>
+</h3>
+<div class="section-content">
+<p>The following example uses <code>substring()</code> to display characters from the string <code>'Mozilla'</code>:</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="v81jJPBShpQFQ2Z+yib/THhvtqM7R0XdSYsPKqxRVJA=" data-language="js"><span class="token keyword">var</span> anyString <span class="token operator">=</span> <span class="token string">'Mozilla'</span><span class="token punctuation">;</span>
+
+<span class="token comment">// Displays 'M'</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>anyString<span class="token punctuation">.</span><span class="token function">substring</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>anyString<span class="token punctuation">.</span><span class="token function">substring</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// Displays 'Mozill'</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>anyString<span class="token punctuation">.</span><span class="token function">substring</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// Displays 'lla'</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>anyString<span class="token punctuation">.</span><span class="token function">substring</span><span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>anyString<span class="token punctuation">.</span><span class="token function">substring</span><span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>anyString<span class="token punctuation">.</span><span class="token function">substring</span><span class="token punctuation">(</span><span class="token number">7</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// Displays 'Mozilla'</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>anyString<span class="token punctuation">.</span><span class="token function">substring</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>anyString<span class="token punctuation">.</span><span class="token function">substring</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="using_substring_with_length_property"><h3 id="using_substring_with_length_property">Using <code>substring()</code> with <code>length</code> property</h3>
+<div class="section-content">
+<p>The following example uses the <code>substring()</code> method and <a href="length"><code>length</code></a> property to extract the last characters of a particular string. This method may be easier to remember, given that you don't need to know the starting and ending indices as you would in the above examples.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="U26R7DTE0WnOoZFxd7jPTfDBOCbUZtQj6keotdGSRHo=" data-language="js"><span class="token comment">// Displays 'illa' the last 4 characters</span>
+<span class="token keyword">var</span> anyString <span class="token operator">=</span> <span class="token string">'Mozilla'</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> anyString4 <span class="token operator">=</span> anyString<span class="token punctuation">.</span><span class="token function">substring</span><span class="token punctuation">(</span>anyString<span class="token punctuation">.</span>length <span class="token operator">-</span> <span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>anyString4<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// Displays 'zilla' the last 5 characters</span>
+<span class="token keyword">var</span> anyString <span class="token operator">=</span> <span class="token string">'Mozilla'</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> anyString5 <span class="token operator">=</span> anyString<span class="token punctuation">.</span><span class="token function">substring</span><span class="token punctuation">(</span>anyString<span class="token punctuation">.</span>length <span class="token operator">-</span> <span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>anyString5<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="the_difference_between_substring_and_substr"><h3 id="the_difference_between_substring_and_substr">The difference between <code>substring()</code> and <code>substr()</code>
+</h3>
+<div class="section-content">
+<p>There's a subtle difference between the <code>substring()</code> and <a href="substr"><code>substr()</code></a> methods, so you should be careful not to get them confused.</p> <p>The arguments of <code>substring()</code> represent the starting and ending indexes, while the arguments of <code>substr()</code> represent the starting index and the number of characters to include in the returned string.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="eXFgtZmsD5WqT3bTsX2V/D5f0slbHcMyBPXaSM1rMcA=" data-language="js"><span class="token keyword">var</span> text <span class="token operator">=</span> <span class="token string">'Mozilla'</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>text<span class="token punctuation">.</span><span class="token function">substring</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// =&gt; "zil"</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>text<span class="token punctuation">.</span><span class="token function">substr</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token comment">// =&gt; "zil"</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="differences_between_substring_and_slice"><h3 id="differences_between_substring_and_slice">Differences between <code>substring()</code> and <code>slice()</code>
+</h3>
+<div class="section-content">
+<p>The <code>substring()</code> and <a href="slice"><code>slice()</code></a> methods are almost identical, but there are a couple of subtle differences between the two, especially in the way negative arguments are dealt with.</p> <p>The <code>substring()</code> method swaps its two arguments if <code>indexStart</code> is greater than <code>indexEnd</code>, meaning that a string is still returned. The <a href="slice"><code>slice()</code></a> method returns an empty string if this is the case.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="LmyrD5FNDZnuyHP6EW287reZCPNu+yQddXACL7Ym13o=" data-language="js"><span class="token keyword">var</span> text <span class="token operator">=</span> <span class="token string">'Mozilla'</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>text<span class="token punctuation">.</span><span class="token function">substring</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// =&gt; "zil"</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>text<span class="token punctuation">.</span><span class="token function">slice</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>     <span class="token comment">// =&gt; ""</span>
+</pre>
+</div> <p>If either or both of the arguments are negative or <code>NaN</code>, the <code>substring()</code> method treats them as if they were <code>0</code>.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="0K2wGK5o5NUEcXAbd+/NisJ1a+Mzm3az7rE4FD789vc=" data-language="js">console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>text<span class="token punctuation">.</span><span class="token function">substring</span><span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// =&gt; "Mo"</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>text<span class="token punctuation">.</span><span class="token function">substring</span><span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">5</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// =&gt; ""</span>
+</pre>
+</div> <p><code>slice()</code> also treats <code>NaN</code> arguments as <code>0</code>, but when it is given negative values it counts backwards from the end of the string to find the indexes.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="5Y3iIKoENIKP4+UUkRTzOvEQqWXUtFW7+GcwrRHPoE4=" data-language="js">console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>text<span class="token punctuation">.</span><span class="token function">slice</span><span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// =&gt; ""</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>text<span class="token punctuation">.</span><span class="token function">slice</span><span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">5</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// =&gt; "zil"</span>
+</pre>
+</div> <p>See the <a href="slice"><code>slice()</code></a> page for more examples with negative numbers.</p>
+</div></section><section aria-labelledby="replacing_a_substring_within_a_string"><h3 id="replacing_a_substring_within_a_string">Replacing a substring within a string</h3>
+<div class="section-content">
+<p>The following example replaces a substring within a string. It will replace both individual characters and substrings. The function call at the end of the example changes the string <code>Brave New World</code> to <code>Brave New Web</code>.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="6W6NkoCK3xw3jhPBupfwP8dXTWY3HGJH0aqHsP+HWtw=" data-language="js"><span class="token comment">// Replaces oldS with newS in the string fullS</span>
+<span class="token keyword">function</span> <span class="token function">replaceString</span><span class="token punctuation">(</span><span class="token parameter">oldS<span class="token punctuation">,</span> newS<span class="token punctuation">,</span> fullS</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">var</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> fullS<span class="token punctuation">.</span>length<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>fullS<span class="token punctuation">.</span><span class="token function">substring</span><span class="token punctuation">(</span>i<span class="token punctuation">,</span> i <span class="token operator">+</span> oldS<span class="token punctuation">.</span>length<span class="token punctuation">)</span> <span class="token operator">==</span> oldS<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      fullS <span class="token operator">=</span> fullS<span class="token punctuation">.</span><span class="token function">substring</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> i<span class="token punctuation">)</span> <span class="token operator">+</span> newS <span class="token operator">+</span> fullS<span class="token punctuation">.</span><span class="token function">substring</span><span class="token punctuation">(</span>i <span class="token operator">+</span> oldS<span class="token punctuation">.</span>length<span class="token punctuation">,</span> fullS<span class="token punctuation">.</span>length<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword">return</span> fullS<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token function">replaceString</span><span class="token punctuation">(</span><span class="token string">'World'</span><span class="token punctuation">,</span> <span class="token string">'Web'</span><span class="token punctuation">,</span> <span class="token string">'Brave New World'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div> <p>Note that this can result in an infinite loop if <code>oldS</code> is itself a substring of <code>newS</code> — for example, if you attempted to replace 'World' with 'OtherWorld' here. A better method for replacing strings is as follows:</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="n8tXC1NiOHkdk1Qtg1+SkjzgWac+7/YMUWQbVVv2m88=" data-language="js"><span class="token keyword">function</span> <span class="token function">replaceString</span><span class="token punctuation">(</span><span class="token parameter">oldS<span class="token punctuation">,</span> newS<span class="token punctuation">,</span> fullS</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> fullS<span class="token punctuation">.</span><span class="token function">split</span><span class="token punctuation">(</span>oldS<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span>newS<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div> <p>The code above serves as an example for substring operations. If you need to replace substrings, most of the time you will want to use <a href="replace"><code>String.prototype.replace()</code></a>.</p>
+</div></section><h2 id="명세서">명세서</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://tc39.es/ecma262/multipage/text-processing.html#sec-string.prototype.substring">ECMAScript Language Specification <br><small># sec-string.prototype.substring</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="see_also"><h2 id="see_also">See also</h2>
+<div class="section-content"><ul> <li>
+<a href="substr"><code>String.prototype.substr()</code></a> <abbr class="icon icon-deprecated" title="지원이 중단되었습니다. 새로운 웹사이트에서 사용하지 마세요."> <span class="visually-hidden">지원이 중단되었습니다</span> </abbr>
+</li> <li><a href="slice"><code>String.prototype.slice()</code></a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/String/substring" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/String/substring</a>
+  </p>
+</div>

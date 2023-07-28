@@ -5,10 +5,10 @@ module Docs
 
     # release = '2023-04-24'
     self.name = 'SVG'
-    self.base_url = 'https://developer.mozilla.org/en-US/docs/Web/SVG'
+    self.base_url = 'https://developer.mozilla.org/ko/docs/Web/SVG'
     self.links = {
-      home: 'https://developer.mozilla.org/en-US/docs/Web/SVG',
-      code: 'https://github.com/mdn/content/tree/main/files/en-us/web/svg'
+      home: 'https://developer.mozilla.org/ko/docs/Web/SVG',
+      code: 'https://github.com/mdn/translated-content/tree/main/files/ko/web/svg'
     }
 
     html_filters.push 'svg/clean_html', 'svg/entries'
@@ -26,9 +26,9 @@ module Docs
     end
 
     options[:fix_urls] = ->(url) do
-      url.sub! 'https://developer.mozilla.org/en-US/Web/SVG', Svg.base_url
-      url.sub! 'https://developer.mozilla.org/en-US/docs/SVG', Svg.base_url
-      url.sub! 'https://developer.mozilla.org/en/SVG', Svg.base_url
+      url.sub! 'https://developer.mozilla.org/ko-KR/Web/SVG', Svg.base_url
+      url.sub! 'https://developer.mozilla.org/ko/docs/SVG', Svg.base_url
+      url.sub! 'https://developer.mozilla.org/ko/SVG', Svg.base_url
       url
     end
   end

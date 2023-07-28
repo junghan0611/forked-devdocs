@@ -1,0 +1,96 @@
+<header><h1>background-clip</h1></header><div class="section-content"><p><a href="https://developer.mozilla.org/ko/docs/Web/CSS">CSS</a> <code>background-clip</code> 속성은 요소의 배경이 테두리, 안쪽 여백, 콘텐츠 상자 중 어디까지 차지할 지 지정합니다.</p></div>
+<section aria-labelledby="시도해보기"><h2 id="시도해보기">시도해보기</h2>
+<div class="section-content">
+<iframe class="interactive is-default-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/css/background-clip.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe>  <p>요소가 <a href="background-image"><code>background-image</code></a> 또는 <a href="background-color"><code>background-color</code></a>를 가지지 않으면, <code>background-clip</code>은 (<a href="border-style"><code>border-style</code></a> 또는 <a href="border-image"><code>border-image</code></a> 등으로 인해) 테두리에 투명하거나 반투명한 부분이 존재하는 경우에만 시각적 차이가 발생합니다. 그렇지 않은 경우 테두리가 차이점을 가립니다.</p>
+</div></section><section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="vwbcpK52di/kn/UhEIjnBuMrsUbH/w7kB0Tyg5qRnOQ=" data-language="css"><span class="token comment">/* 키워드 값 */</span>
+<span class="token property">background-clip</span><span class="token punctuation">:</span> border-box<span class="token punctuation">;</span>
+<span class="token property">background-clip</span><span class="token punctuation">:</span> padding-box<span class="token punctuation">;</span>
+<span class="token property">background-clip</span><span class="token punctuation">:</span> content-box<span class="token punctuation">;</span>
+<span class="token property">background-clip</span><span class="token punctuation">:</span> text<span class="token punctuation">;</span>
+
+<span class="token comment">/* 전역 값 */</span>
+<span class="token property">background-clip</span><span class="token punctuation">:</span> inherit<span class="token punctuation">;</span>
+<span class="token property">background-clip</span><span class="token punctuation">:</span> initial<span class="token punctuation">;</span>
+<span class="token property">background-clip</span><span class="token punctuation">:</span> unset<span class="token punctuation">;</span>
+</pre>
+</div></div></section><section aria-labelledby="값"><h3 id="값">값</h3>
+<div class="section-content"><dl> <dt id="border-box"><code>border-box</code></dt> <dd> <p>배경이 테두리의 바깥 경계까지 차지합니다. (Z축 순서 상 테두리 아래 위치)</p> </dd> <dt id="padding-box"><code>padding-box</code></dt> <dd> <p>배경이 안쪽 여백의 바깥 경계까지 차지합니다. 테두리 밑에는 배경을 그리지 않습니다.</p> </dd> <dt id="content-box"><code>content-box</code></dt> <dd> <p>배경을 콘텐츠 상자에 맞춰 그립니다.</p> </dd> <dt id="text">
+<code>text</code> <abbr class="icon icon-experimental" title="Experimental. 예상되는 동작은 향후 변경될 수 있습니다."> <span class="visually-hidden">Experimental</span> </abbr>
+</dt> <dd> <p>배경을 전경 텍스트 위에만 그립니다.</p> </dd> </dl></div></section><section aria-labelledby="형식_정의"><h2 id="형식_정의">형식 정의</h2>
+<div class="section-content"><figure class="table-container"><div class="_table"><table class="properties"><tbody>
+<tr>
+<th scope="row"><a href="initial_value">초기값</a></th>
+<td><code>border-box</code></td>
+</tr>
+<tr>
+<th scope="row">적용대상</th>
+<td>all elements. It also applies to <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/::first-letter" class="only-in-en-us"><code>::first-letter</code> <small>(en-US)</small></a> and <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/::first-line" class="only-in-en-us"><code>::first-line</code> <small>(en-US)</small></a>.</td>
+</tr>
+<tr>
+<th scope="row"><a href="inheritance">상속</a></th>
+<td>no</td>
+</tr>
+<tr>
+<th scope="row"><a href="computed_value">계산 값</a></th>
+<td>as specified</td>
+</tr>
+<tr>
+<th scope="row">Animation type</th>
+<td>a repeatable list of </td>
+</tr>
+</tbody></table></div></figure></div></section><section aria-labelledby="형식_구문"><h2 id="형식_구문">형식 구문</h2>
+<div class="section-content"><pre class="notranslate"><span class="token property" id="background-clip">background-clip = </span><br>  <span class="token property">&lt;box&gt;</span><a href="value_definition_syntax#hash_mark">#</a>  <br><br><span class="token property" id="&lt;box&gt;">&lt;box&gt; = </span><br>  <span class="token keyword">border-box</span>   <a href="value_definition_syntax#single_bar">|</a><br>  <span class="token keyword">padding-box</span>  <a href="value_definition_syntax#single_bar">|</a><br>  <span class="token keyword">content-box</span>  <br><br></pre></div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+</section><section aria-labelledby="html"><h3 id="html">HTML</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="acrA/nMpJhHuHjtjga3zls/4pFKJSbP+E8tYU6LT6hk=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>border-box<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>The background extends behind the border.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>padding-box<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>The background extends to the inside edge of the border.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>content-box<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>The background extends only to the edge of the content box.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>text<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>The background is clipped to the foreground text.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div></div></section><section aria-labelledby="css"><h3 id="css">CSS</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="DrqnZ+XZMioqj8Ag/CAsj+4HFLvmW2nU9uvpURdvy2M=" data-language="css"><span class="token selector">p</span> <span class="token punctuation">{</span>
+  <span class="token property">border</span><span class="token punctuation">:</span> .8em darkviolet<span class="token punctuation">;</span>
+  <span class="token property">border-style</span><span class="token punctuation">:</span> dotted double<span class="token punctuation">;</span>
+  <span class="token property">margin</span><span class="token punctuation">:</span> 1em 0<span class="token punctuation">;</span>
+  <span class="token property">padding</span><span class="token punctuation">:</span> 1.4em<span class="token punctuation">;</span>
+  <span class="token property">background</span><span class="token punctuation">:</span> <span class="token function">linear-gradient</span><span class="token punctuation">(</span>60deg<span class="token punctuation">,</span> red<span class="token punctuation">,</span> yellow<span class="token punctuation">,</span> red<span class="token punctuation">,</span> yellow<span class="token punctuation">,</span> red<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token property">font</span><span class="token punctuation">:</span> 900 1.2em sans-serif<span class="token punctuation">;</span>
+  <span class="token property">text-decoration</span><span class="token punctuation">:</span> underline<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">.border-box</span> <span class="token punctuation">{</span> <span class="token property">background-clip</span><span class="token punctuation">:</span> border-box<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+<span class="token selector">.padding-box</span> <span class="token punctuation">{</span> <span class="token property">background-clip</span><span class="token punctuation">:</span> padding-box<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+<span class="token selector">.content-box</span> <span class="token punctuation">{</span> <span class="token property">background-clip</span><span class="token punctuation">:</span> content-box<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+
+<span class="token selector">.text</span> <span class="token punctuation">{</span>
+  <span class="token property">background-clip</span><span class="token punctuation">:</span> text<span class="token punctuation">;</span>
+  <span class="token property">-webkit-background-clip</span><span class="token punctuation">:</span> text<span class="token punctuation">;</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> <span class="token function">rgba</span><span class="token punctuation">(</span>0<span class="token punctuation">,</span>0<span class="token punctuation">,</span>0<span class="token punctuation">,</span>.2<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div></div></section><section aria-labelledby="결과"><h3 id="결과">결과</h3>
+<div class="section-content"><div class="code-example" id="sect2">
+
+<iframe class="sample-code-frame" title="예제 sample" id="frame_예제" width="600" height="580" src="https://live.mdnplay.dev/ko/docs/Web/CSS/background-clip/runner.html?id=%EC%98%88%EC%A0%9C" loading="lazy"></iframe>
+</div></div></section><h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://drafts.csswg.org/css-backgrounds/#background-clip">CSS Backgrounds and Borders Module Level 3 <br><small># background-clip</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li>
+<a href="clip-path"><code>clip-path</code></a> 속성은 배경 뿐 아니라 하나의 <strong>요소 전체</strong>에서 표시할 부분을 지정하는 클리핑 영역을 생성합니다.</li> <li>배경 속성: <a href="background"><code>background</code></a>, <a href="background-color"><code>background-color</code></a>, <a href="background-image"><code>background-image</code></a>, <a href="background-origin"><code>background-origin</code></a>
+</li> <li><a href="css_box_model/introduction_to_the_css_box_model">CSS 기본 박스 모델 입문</a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/CSS/background-clip" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/CSS/background-clip</a>
+  </p>
+</div>

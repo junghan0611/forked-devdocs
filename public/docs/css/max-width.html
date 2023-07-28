@@ -1,0 +1,140 @@
+<header><h1>max-width</h1></header><div class="section-content"><p><code>max-width</code> <a href="https://developer.mozilla.org/ko/docs/Web/CSS">CSS</a> 속성은 요소의 최대 너비를 설정합니다. <code>max-width</code>는 <a href="width"><code>width</code></a> 속성의 <a href="used_value">사용값</a>이 자신의 값보다 커지는걸 방지합니다.</p></div>
+<section aria-labelledby="시도해보기"><h2 id="시도해보기">시도해보기</h2>
+<div class="section-content">
+<iframe class="interactive is-default-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/css/max-width.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe> <p><code>max-width</code>가 <a href="width"><code>width</code></a>를 재설정하고, <a href="min-height"><code>min-height</code></a>가 <code>max-width</code>를 재설정합니다.</p>
+</div></section><section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="396ThQVYBCDG9P/IC6No15hLNATZV9MQx5/5VurEoao=" data-language="css"><span class="token comment">/* &lt;length&gt; 값 */</span>
+<span class="token property">max-width</span><span class="token punctuation">:</span> 3.5em<span class="token punctuation">;</span>
+
+<span class="token comment">/* &lt;percentage&gt; 값 */</span>
+<span class="token property">max-width</span><span class="token punctuation">:</span> 75%<span class="token punctuation">;</span>
+
+<span class="token comment">/* 키워드 값 */</span>
+<span class="token property">max-width</span><span class="token punctuation">:</span> none<span class="token punctuation">;</span>
+<span class="token property">max-width</span><span class="token punctuation">:</span> max-content<span class="token punctuation">;</span>
+<span class="token property">max-width</span><span class="token punctuation">:</span> min-content<span class="token punctuation">;</span>
+<span class="token property">max-width</span><span class="token punctuation">:</span> fit-content<span class="token punctuation">;</span>
+<span class="token property">max-width</span><span class="token punctuation">:</span> fill-available<span class="token punctuation">;</span>
+
+<span class="token comment">/* 전역 값 */</span>
+<span class="token property">max-width</span><span class="token punctuation">:</span> inherit<span class="token punctuation">;</span>
+<span class="token property">max-width</span><span class="token punctuation">:</span> initial<span class="token punctuation">;</span>
+<span class="token property">max-width</span><span class="token punctuation">:</span> unset<span class="token punctuation">;</span>
+</pre>
+</div></div></section><section aria-labelledby="값"><h3 id="값">값</h3>
+<div class="section-content">
+<ul> <li>
+<a href="length"><code>&lt;length&gt;</code></a> <ul> <li>: 고정 길이로 나타낸 최대 너비.</li> </ul> </li> <li>
+<a href="percentage"><code>&lt;percentage&gt;</code></a> <ul> <li>
+<a href="containing_block">: 컨테이닝 블록</a> 너비에 대한 백분율로 나타낸 최대 너비.</li> </ul> </li> </ul> <h4 id="키워드_값">키워드 값</h4> <dl> <dt id="none"><code>none</code></dt> <dd> <p>최대 너비를 정하지 않음.</p> </dd> <dt id="max-content">
+<code>max-content</code> <abbr class="icon icon-experimental" title="Experimental. 예상되는 동작은 향후 변경될 수 있습니다."> <span class="visually-hidden">Experimental</span> </abbr>
+</dt> <dd> <p>본질적인 선호 높이.</p> </dd> <dt id="min-content">
+<code>min-content</code> <abbr class="icon icon-experimental" title="Experimental. 예상되는 동작은 향후 변경될 수 있습니다."> <span class="visually-hidden">Experimental</span> </abbr>
+</dt> <dd> <p>본질적인 최소 높이.</p> </dd> <dt id="fill-available">
+<code>fill-available</code> <abbr class="icon icon-experimental" title="Experimental. 예상되는 동작은 향후 변경될 수 있습니다."> <span class="visually-hidden">Experimental</span> </abbr>
+</dt> <dd> <p>컨테이닝 블록의 높이에서 가로축 안쪽 및 바깥 여백과 테두리의 공간을 제외한 높이. (일부 브라우저는 매우 오래 된 이름인 <code>available</code>로 구현함을 참고하세요.)</p> </dd> <dt id="fit-content">
+<code>fit-content</code> <abbr class="icon icon-experimental" title="Experimental. 예상되는 동작은 향후 변경될 수 있습니다."> <span class="visually-hidden">Experimental</span> </abbr>
+</dt> <dd> <p><code>max-content</code>와 동일.</p> </dd> </dl>
+</div></section><section aria-labelledby="형식_구문"><h3 id="형식_구문">형식 구문</h3>
+<div class="section-content"><pre class="notranslate"><span class="token property" id="max-width">max-width = </span><br>  <span class="token keyword">none</span>                                      <a href="value_definition_syntax#single_bar">|</a><br>  <a href="length-percentage"><span class="token property">&lt;length-percentage [0,∞]&gt;</span></a>                 <a href="value_definition_syntax#single_bar">|</a><br>  <span class="token keyword">min-content</span>                               <a href="value_definition_syntax#single_bar">|</a><br>  <span class="token keyword">max-content</span>                               <a href="value_definition_syntax#single_bar">|</a><br>  <span class="token function">fit-content(</span> <a href="length-percentage"><span class="token property">&lt;length-percentage [0,∞]&gt;</span></a> <span class="token function">)</span>  <br><br><span class="token property" id="&lt;length-percentage&gt;">&lt;length-percentage&gt; = </span><br>  <a href="length"><span class="token property">&lt;length&gt;</span></a>      <a href="value_definition_syntax#single_bar">|</a><br>  <a href="percentage"><span class="token property">&lt;percentage&gt;</span></a>  <br><br></pre></div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+<div class="section-content">
+<p>다음 예제에서, 자식(<code>child</code>) 요소의 너비는 150픽셀과 부모(<code>parent</code>) 요소의 너비 중 더 작은 값이 됩니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="+omTRIJBvtv8zoxbUZAaGY4fTdDILrA1n34ivRtvfXw=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>parent<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>child<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+    Fusce pulvinar vestibulum eros, sed luctus ex lobortis quis.
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div> <div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="JSAqzTJyaJKfV8fIMUFUfVaDyLkIHH3ma7RCITSnCMY=" data-language="css"><span class="token selector">#parent</span> <span class="token punctuation">{</span>
+  <span class="token property">background</span><span class="token punctuation">:</span> lightblue<span class="token punctuation">;</span>
+  <span class="token property">width</span><span class="token punctuation">:</span> 300px<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">#child</span> <span class="token punctuation">{</span>
+  <span class="token property">background</span><span class="token punctuation">:</span> gold<span class="token punctuation">;</span>
+  <span class="token property">width</span><span class="token punctuation">:</span> 100%<span class="token punctuation">;</span>
+  <span class="token property">max-width</span><span class="token punctuation">:</span> 150px<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div>
+<div class="code-example" id="sect1">
+
+<iframe class="sample-code-frame" title="예제" id="frame_basic-max-width-demo" width="350" height="100" src="https://live.mdnplay.dev/ko/docs/Web/CSS/max-width/runner.html?id=basic-max-width-demo" loading="lazy"></iframe>
+</div> <p><code>fit-content</code> 값을 사용하여 해당 요소의 내용이 필요로 하는 너비만 차지하도록 설정할 수 있습니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="3CufXIbWtO66QXiqNPOi4WtTzcGO6zk5MfREJlMJfm4=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>parent<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>child<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+        Child Text
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div> <div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="SQEvUQH6VCwmVNlNR75R61Jn604GSCz5FkGb25wcK8I=" data-language="css"><span class="token selector">#parent</span> <span class="token punctuation">{</span>
+  <span class="token property">background</span><span class="token punctuation">:</span> lightblue<span class="token punctuation">;</span>
+  <span class="token property">width</span><span class="token punctuation">:</span> 300px<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">#child</span>  <span class="token punctuation">{</span>
+  <span class="token property">background</span><span class="token punctuation">:</span> gold<span class="token punctuation">;</span>
+  <span class="token property">width</span><span class="token punctuation">:</span> 100%<span class="token punctuation">;</span>
+  <span class="token property">max-width</span><span class="token punctuation">:</span> -moz-fit-content<span class="token punctuation">;</span>
+  <span class="token property">max-width</span><span class="token punctuation">:</span> -webkit-fit-content<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div>
+<div class="code-example" id="sect2">
+
+<iframe class="sample-code-frame" title="예제" id="frame_fit-content-demo" width="400" height="100" src="https://live.mdnplay.dev/ko/docs/Web/CSS/max-width/runner.html?id=fit-content-demo" loading="lazy"></iframe>
+</div>
+</div></section><section aria-labelledby="접근성_고려사항"><h2 id="접근성_고려사항">접근성 고려사항</h2>
+<div class="section-content">
+<p>페이지의 확대 또는 글씨 크기를 키운 후에도 <code>max-width</code>를 설정한 요소의 내용이 잘리거나, 다른 요소를 가리지 않도록 주의하세요.</p> <ul> <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/Understanding_WCAG/Perceivable" class="only-in-en-us">MDN Understanding WCAG, Guideline 1.4 explanations <small>(en-US)</small></a></li> <li><a href="https://www.w3.org/TR/UNDERSTANDING-WCAG20/visual-audio-contrast-scale.html" target="_blank">Understanding Success Criterion 1.4.4 | W3C Understanding WCAG 2.0</a></li> </ul>
+</div></section><h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://drafts.csswg.org/css-sizing-4/#width-height-keywords">CSS Box Sizing Module Level 4 <br><small># width-height-keywords</small></a></td></tr></tbody>
+</table></div>
+<div class="section-content"><figure class="table-container"><div class="_table"><table class="properties"><tbody>
+<tr>
+<th scope="row"><a href="initial_value">초기값</a></th>
+<td><code>none</code></td>
+</tr>
+<tr>
+<th scope="row">적용대상</th>
+<td>all elements but non-replaced inline elements, table rows, and row groups</td>
+</tr>
+<tr>
+<th scope="row"><a href="inheritance">상속</a></th>
+<td>no</td>
+</tr>
+<tr>
+<th scope="row">Percentages</th>
+<td>refer to the width of the containing block</td>
+</tr>
+<tr>
+<th scope="row"><a href="computed_value">계산 값</a></th>
+<td>the percentage as specified or the absolute length or <code>none</code>
+</td>
+</tr>
+<tr>
+<th scope="row">Animation type</th>
+<td>a <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/length#interpolation">length</a>, <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/percentage#interpolation">percentage</a> or calc();</td>
+</tr>
+</tbody></table></div></figure></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="css_box_model/introduction_to_the_css_box_model">박스 모델 입문</a></li> <li>
+<a href="box-sizing"><code>box-sizing</code></a>, <a href="width"><code>width</code></a>, <a href="min-width"><code>min-width</code></a>
+</li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/CSS/max-width" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/CSS/max-width</a>
+  </p>
+</div>

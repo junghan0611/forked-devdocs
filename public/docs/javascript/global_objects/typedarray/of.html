@@ -1,0 +1,37 @@
+<header><h1>TypedArray.of()</h1></header><div class="section-content">
+<p><code><strong><em>TypedArray</em>.of()</strong></code></p> <p>는 가변적으로 인수를 전달 할수 있는 새로운 형식화 배열(<a href="../typedarray#typedarray_objects">typed array</a>)를 만들어내는 메소드입니다.</p> <p>이 메소드는 <a href="../array/of"><code>Array.of()</code></a>와 거의 같습니다.</p>
+</div>
+<section aria-labelledby="문법"><h2 id="문법">문법</h2>
+<div class="section-content">
+<pre class="notranslate">TypedArray.of(element0[, element1[, ...[, elementN]]])
+</pre> <p>where TypedArray is one of:</p> <ul> <li>Int8Array</li> <li>Uint8Array</li> <li>Uint8ClampedArray</li> <li>Int16Array</li> <li>Uint16Array</li> <li>Int32Array</li> <li>Uint32Array</li> <li>Float32Array</li> <li>Float64Array</li> </ul>
+</div></section><section aria-labelledby="매개변수"><h3 id="매개변수">매개변수</h3>
+<div class="section-content"><dl> <dt id="elementn"><code>elementN</code></dt> <dd> <p>형식화 된 배열을 만들 요소입니다.</p> </dd> </dl></div></section><section aria-labelledby="반환_값"><h3 id="반환_값">반환 값</h3>
+<div class="section-content"><p>생성된 <a href="../typedarray"><code>TypedArray</code></a> 인스턴스</p></div></section><section aria-labelledby="설명"><h2 id="설명">설명</h2>
+<div class="section-content">
+<p><a href="../array/of"><code>Array.of()</code></a>와 <code>TypedArray.of()</code> 사이의 약간의 차이점은 다음과 같습니다.</p> <ul> <li>
+<code>TypedArray.of</code>에 전달된 값이 생성자가 아닌 경우 <code>TypedArray.of</code>는 <a href="../typeerror"><code>TypeError</code></a>를 발생시킵니다. <code>Array.of</code>는 기본적으로 새로운 <a href="../array"><code>Array</code></a>를 생성합니다.</li> <li>
+<code>TypedArray.of</code> uses <code>[[Put]]</code> where <code>Array.of</code> uses <code>[[DefineProperty]]</code>. Hence, when working with <a href="../proxy"><code>Proxy</code></a> objects, it calls <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy/Proxy/set"><code>handler.set</code> <small>(en-US)</small></a> to create new elements rather than <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy/Proxy/defineProperty"><code>handler.defineProperty</code> <small>(en-US)</small></a>.</li> <li>
+<code>TypedArray.of</code>는 <code>Array.of</code>가 <code>[[DefineProperty]]</code>를 사용하는 것처럼 <code>[[Put]]</code>을 사용합니다. 따라서 <a href="../proxy"><code>Proxy</code></a> 객체로 작업 할 때 새로운 요소를 생성하기 위해 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy/Proxy/set"><code>handler.set</code> <small>(en-US)</small></a>대신 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy/Proxy/defineProperty"><code>handler.defineProperty</code> <small>(en-US)</small></a>를 호출합니다.</li> </ul>
+</div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="QWCZuJCdOpy3gbgmchQiVcPAhn8WiBxvBOQOYbZ3HnA=" data-language="js">Uint8Array<span class="token punctuation">.</span><span class="token function">of</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>            <span class="token comment">// Uint8Array [ 1 ]</span>
+Int8Array<span class="token punctuation">.</span><span class="token function">of</span><span class="token punctuation">(</span><span class="token string">'1'</span><span class="token punctuation">,</span> <span class="token string">'2'</span><span class="token punctuation">,</span> <span class="token string">'3'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Int8Array [ 1, 2, 3 ]</span>
+Float32Array<span class="token punctuation">.</span><span class="token function">of</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token comment">// Float32Array [ 1, 2, 3 ]</span>
+Int16Array<span class="token punctuation">.</span><span class="token function">of</span><span class="token punctuation">(</span><span class="token keyword">undefined</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token comment">// IntArray [ 0 ]</span>
+</pre>
+</div></div></section><h2 id="명세서">명세서</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="#">ECMAScript Language Specification <br><small># sec-%typedarray%.of</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="see_also"><h2 id="see_also">See also</h2>
+<div class="section-content"><ul> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray/from"><code>TypedArray.from()</code> <small>(en-US)</small></a></li> <li><a href="../array/of"><code>Array.of()</code></a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/TypedArray/of" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/TypedArray/of</a>
+  </p>
+</div>

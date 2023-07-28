@@ -1,0 +1,32 @@
+<header><h1>HTMLMediaElement.currentTime</h1></header><div class="section-content">
+<p> <a href="../htmlmediaelement"><code>HTMLMediaElement</code></a> 인터페이스의 <code>currentTime</code> 속성은 현재 재생 시간을 초 단위로 지정합니다. </p> <p><code>currentTime</code>의 값을 변경하면 미디어를 새로운 시간으로 찾습니다.</p>
+</div>
+<h2 id="값">값</h2>
+<div class="section-content">
+<p>현재 재생 시간을 초 단위로 나타내는 배정밀도 부동 소수점 값입니다.</p> <p> 미디어가 아직 재생되지 않은 경우 <code>currentTime</code> 값은 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/play"><code>play()</code> <small>(en-US)</small></a> 메서드가 호출된 후 재생이 시작되는 미디어 내의 시간 위치를 나타냅니다. </p> <p> <code>currentTime</code>을 새 값으로 설정하면 미디어를 사용할 수 있는 경우 지정된 시간으로 미디어를 찾습니다. </p> <p> 라이브로 스트리밍되는 미디어와 같이 지속 시간(duration)이 없는 미디어의 경우 브라우저가 미디어 버퍼에서 만료된 미디어의 일부를 가져오지 못할 수 있습니다. 또한 타임라인이 0초에서 시작하지 않는 미디어는 해당 타임라인의 가장 빠른 시간 이전으로 검색할 수 없습니다. </p> <p> 미디어의 길이(초)는 <a href="duration"><code>duration</code></a> 속성을 사용하여 결정할 수 있습니다. </p>
+</div>
+<h2 id="예제">예제</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="EQMYNSHbgKNzQgwXi9/7plNlhEP7B29U7SErrKd7AU0=" data-language="js"><span class="token keyword">const</span> video <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">createElement</span><span class="token punctuation">(</span><span class="token string">"video"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>video<span class="token punctuation">.</span>currentTime<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div></div>
+<h2 id="사용_일람">사용 일람</h2>
+
+<h3 id="시간_정밀도_감소">시간 정밀도 감소</h3>
+<div class="section-content"><p> 타이밍 공격 및 <a href="https://developer.mozilla.org/en-US/docs/Glossary/Fingerprinting" class="only-in-en-us">핑거프린팅 <small>(en-US)</small></a>으로부터 보호하기 위해 브라우저는 <code>currentTime</code>에서 반환된 값을 반올림하거나 조정할 수 있습니다. </p></div>
+<h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://html.spec.whatwg.org/multipage/media.html#dom-media-currenttime-dev">HTML Standard <br><small># dom-media-currenttime-dev</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li>currentTime을 정의하는 인터페이스는 <a href="../htmlmediaelement"><code>HTMLMediaElement</code></a>입니다</li> <li>시간을 설정하는 또 다른 방법은 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/fastSeek"><code>HTMLMediaElement.fastSeek()</code> <small>(en-US)</small></a>를 참고하세요</li> <li>미디어 재생 시간(초)는 <a href="duration"><code>HTMLMediaElement.duration</code></a>를 참고하세요</li> </ul></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/HTMLMediaElement/currentTime" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/HTMLMediaElement/currentTime</a>
+  </p>
+</div>

@@ -1,0 +1,86 @@
+<header><h1>await</h1></header><div class="section-content">
+
+<code>await</code>연산자는 <a href="../global_objects/promise"><code>Promise</code></a>를 기다리기 위해 사용됩니다. 연산자는 <a href="../statements/async_function"><code>async function</code></a> 내부에서만 사용할 수 있습니다.
+</div>
+<section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content">
+<div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="E3t8OHuV6KZ+Gzga9IfWLE1I3VeXGsJMDTMao6T9bYg=" data-language="js">    <span class="token punctuation">[</span>rv<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">await</span> expression<span class="token punctuation">;</span>
+</pre>
+</div> <dl> <dt id="expression"><code>expression</code></dt> <dd> <p><a href="../global_objects/promise"><code>Promise</code></a> 혹은 기다릴 어떤 값입니다.</p> </dd> <dt id="rv"><code>rv</code></dt> <dd> <p><a href="../global_objects/promise"><code>Promise</code></a>에 의해 만족되는 값이 반환됩니다. <a href="../global_objects/promise"><code>Promise</code></a>가 아닌 경우에는 그 값 자체가 반환됩니다.</p> </dd> </dl>
+</div></section><section aria-labelledby="설명"><h2 id="설명">설명</h2>
+<div class="section-content">
+<p><code>await</code> 문은 <code>Promise</code>가 fulfill되거나 <code>reject</code> 될 때까지 <code>async</code> 함수의 실행을 일시 정지하고, <code>Promise</code>가 fulfill되면 <code>async</code> 함수를 일시 정지한 부분부터 실행합니다. 이때 <code>await</code> 문의 반환값은 <code>Promise</code> 에서 fulfill된 값이 됩니다.</p> <p>만약 <code>Promise</code>가 <code>reject</code>되면, <code>await</code> 문은 <code>reject</code>된 값을 <code>throw</code>합니다.</p> <p><code>await</code> 연산자 다음에 나오는 문의 값이 <code>Promise</code>가 아니면 해당 값을 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/resolve">resolved Promise</a>로 변환시킵니다.</p> <p>An <code>await</code> can split execution flow, allowing the caller of the <code>await</code>'s function to resume execution before the deferred continuation of the <code>await</code>'s function. After the <code>await</code> defers the continuation of its function, if this is the first <code>await</code> executed by the function, immediate execution also continues by returning to the function's caller a pending <code>Promise</code> for the completion of the <code>await</code>'s function and resuming execution of that caller.</p>
+</div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+<div class="section-content">
+<p>만약 <code>Promise</code>가 <code>await</code>에 넘겨지면, <code>await</code>은 <code>Promise</code>가 fulfill되기를 기다렸다가, 해당 값을 리턴합니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="rqizUuaE/kFuo4+U4CJ0Ee2TetDfBIWUchNAwrd02AE=" data-language="js"><span class="token keyword">function</span> <span class="token function">resolveAfter2Seconds</span><span class="token punctuation">(</span><span class="token parameter">x</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Promise</span><span class="token punctuation">(</span><span class="token parameter">resolve</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    <span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+      <span class="token function">resolve</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token number">2000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">async</span> <span class="token keyword">function</span> <span class="token function">f1</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">var</span> x <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token function">resolveAfter2Seconds</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 10</span>
+<span class="token punctuation">}</span>
+
+<span class="token function">f1</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div> <p><a href="../global_objects/promise/then"><code>Thenable objects</code></a> will be fulfilled just the same.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="bkQXT2FKKpWvYwnBDlELCosWHvAPxOyKNGfhfMAruwc=" data-language="js">    <span class="token keyword">async</span> <span class="token keyword">function</span> <span class="token function">f2</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">const</span> thenable <span class="token operator">=</span> <span class="token punctuation">{</span>
+        <span class="token function-variable function">then</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">resolve<span class="token punctuation">,</span> _reject</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+          <span class="token function">resolve</span><span class="token punctuation">(</span><span class="token string">'resolved!'</span><span class="token punctuation">)</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span><span class="token punctuation">;</span>
+      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">await</span> thenable<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// resolved!</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token function">f2</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div> <p>만약 값이 <code>Promise</code>가 아니라면, 해당 값은 <code>resolve</code>된 <code>Promise</code>로 변환되며 이를 기다립니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="0/+8aMA1l0gwLNfLRLf9FeKjP6JBxgzwv3aCodGHOd8=" data-language="js"><span class="token keyword">async</span> <span class="token keyword">function</span> <span class="token function">f2</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">var</span> y <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token number">20</span><span class="token punctuation">;</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>y<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 20</span>
+<span class="token punctuation">}</span>
+<span class="token function">f2</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div> <p>만약 <code>Promise</code>가 <code>reject</code>되면, <code>reject</code>된 값이 <code>throw</code>됩니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="nFQfSEB0mLjfy3wwAqca+sX+5+IleE3AqRKNglp3jIM=" data-language="js"><span class="token keyword">async</span> <span class="token keyword">function</span> <span class="token function">f3</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">try</span> <span class="token punctuation">{</span>
+    <span class="token keyword">var</span> z <span class="token operator">=</span> <span class="token keyword">await</span> Promise<span class="token punctuation">.</span><span class="token function">reject</span><span class="token punctuation">(</span><span class="token number">30</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span> <span class="token keyword">catch</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 30</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token function">f3</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div> <p>try블럭 없이 rejected <code>Promise</code>다루기</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="s6DwH5bV8RiygBQJnYkgUP2SWEntyqD38mJDFLVgWTg=" data-language="js">    <span class="token keyword">var</span> response <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token function">promisedFunction</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">catch</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">err</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span> console<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// response will be undefined if the promise is rejected</span>
+</pre>
+</div>
+</div></section><h2 id="명세서">명세서</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://tc39.es/ecma262/multipage/ecmascript-language-functions-and-classes.html#sec-async-function-definitions">ECMAScript Language Specification <br><small># sec-async-function-definitions</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="see_also"><h2 id="see_also">See also</h2>
+<div class="section-content"><ul> <li><a href="../statements/async_function"><code>async function</code></a></li> <li><a href="async_function"><code>async function expression</code></a></li> <li>
+<a href="../global_objects/asyncfunction"><code>AsyncFunction</code></a> object</li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Operators/await" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Operators/await</a>
+  </p>
+</div>

@@ -1,0 +1,101 @@
+<header><h1>Element: insertAdjacentHTML() 메서드</h1></header><div class="section-content"><p><a href="../element"><code>Element</code></a> 인터페이스의 <code>insertAdjacentHTML()</code> 메서드는 지정된 텍스트를 HTML 혹은 XML로 파싱하고 결과 노드들을 지정된 위치의 DOM 트리에 삽입합니다.</p></div>
+<h2 id="구문">구문</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="oZfk8ZoE8EwhRx3xB8PkU1M6wxSdY3UQIorSzu0KvBc=" data-language="js"><span class="token function">insertAdjacentHTML</span><span class="token punctuation">(</span>position<span class="token punctuation">,</span> text<span class="token punctuation">)</span>
+</pre>
+</div></div>
+<h3 id="매개변수">매개변수</h3>
+<div class="section-content"><dl> <dt id="position"><code>position</code></dt> <dd> <p>요소와 상대적인 위치를 나타내는 문자열입니다. 다음 문자열 중 하나여야 합니다.</p> <dl> <dt id="beforebegin"><code>"beforebegin"</code></dt> <dd> <p>요소 이전에 위치합니다. 오직 요소가 DOM 트리에 있고 부모 요소를 가지고 있을 때만 유효합니다.</p> </dd> <dt id="afterbegin"><code>"afterbegin"</code></dt> <dd> <p>요소 바로 안에서 처음 자식 이전에 위치합니다.</p> </dd> <dt id="beforeend"><code>"beforeend"</code></dt> <dd> <p>요소 바로 안에서 마지막 자식 이후에 위치합니다.</p> </dd> <dt id="afterend"><code>"afterend"</code></dt> <dd> <p>요소 이후에 위치합니다. 오직 요소가 DOM 트리에 있고 부모 요소를 가지고 있을 때만 유효합니다.</p> </dd> </dl> </dd> <dt id="text"><code>text</code></dt> <dd> <p>HTML 혹은 XML로 파싱되고 트리에 삽입되는 문자열입니다.</p> </dd> </dl></div>
+<h3 id="반환_값">반환 값</h3>
+<div class="section-content"><p>없음 (<a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/undefined"><code>undefined</code></a>).</p></div>
+<h3 id="예외">예외</h3>
+<div class="section-content">
+<p>이 메서드는 다음 타입 중 하나의 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/DOMException"><code>DOMException</code> <small>(en-US)</small></a>를 발생시킬 수 있습니다.</p> <dl> <dt id="nomodificationallowederror">
+<code>NoModificationAllowedError</code> <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/DOMException"><code>DOMException</code> <small>(en-US)</small></a>
+</dt> <dd> <p><code>position</code>이 <code>"beforebegin"</code> 혹은 <code>"afterend"</code>이고 요소가 부모를 가지고 있지 않거나 부모가 <code>Document</code> 객체인 경우 에러를 던집니다.</p> </dd> <dt id="syntaxerror">
+<code>SyntaxError</code> <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/DOMException"><code>DOMException</code> <small>(en-US)</small></a>
+</dt> <dd> <p><code>position</code>이 나열된 네 개의 값 중 하나가 아닌 경우 에러를 던집니다.</p> </dd> </dl>
+</div>
+<h2 id="설명">설명</h2>
+<div class="section-content">
+<p><code>insertAdjacentHTML()</code> 메서드는 사용되고 있는 요소를 다시 파싱하지 않아서 해당 요소 내의 기존 요소들을 손상시키지 않습니다. 이는 추가적인 직렬화 단계를 피하므로 직접적인 <a href="innerhtml"><code>innerHTML</code></a> 조작보다 훨씬 빠릅니다.</p> <p>다음과 같이 삽입된 콘텐츠의 가능한 위치를 시각화할 수 있습니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="MGaO8gfrCnKTuKVNyd9dEQ6++c+tf7P0q0enkcog2cc=" data-language="html"><span class="token comment">&lt;!-- beforebegin --&gt;</span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>
+  <span class="token comment">&lt;!-- afterbegin --&gt;</span>
+  foo
+  <span class="token comment">&lt;!-- beforeend --&gt;</span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+<span class="token comment">&lt;!-- afterend --&gt;</span>
+</pre>
+</div>
+</div>
+<h3 id="보안_고려_사항">보안 고려 사항</h3>
+<div class="section-content">
+<p><code>insertAdjacentHTML()</code>을 사용하여 페이지에 HTML을 삽입할 때, 이스케이프 문자열이 아닌 사용자 입력을 사용하지 않도록 조심해야 합니다.</p> <p>일반 텍스트를 삽입할 때 <code>insertAdjacentHTML()</code>을 사용해서는 안됩니다. 대신, <a href="../node/textcontent"><code>Node.textContent</code></a> 속성 혹은 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/Element/insertAdjacentText"><code>Element.insertAdjacentText()</code> <small>(en-US)</small></a> 메서드를 사용합니다. 이는 전달된 콘텐츠를 HTML로 해석하지 않습니다. 대신 원시 텍스트로 삽입합니다.</p>
+</div>
+<h2 id="예시">예시</h2>
+
+<h3 id="html_삽입">HTML 삽입</h3>
+<div class="section-content">
+<h4 id="html">HTML</h4> <div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="67lgnX335+Zev+b9UHNAH6YH7mjbodOkquxk39Dwf/w=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>select</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>position<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>option</span><span class="token punctuation">&gt;</span></span>beforebegin<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>option</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>option</span><span class="token punctuation">&gt;</span></span>afterbegin<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>option</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>option</span><span class="token punctuation">&gt;</span></span>beforeend<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>option</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>option</span><span class="token punctuation">&gt;</span></span>afterend<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>option</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>select</span><span class="token punctuation">&gt;</span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>insert<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Insert HTML<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>reset<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Reset<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">&gt;</span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>
+  Some text, with a <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>code</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>subject<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>code-formatted element<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>code</span><span class="token punctuation">&gt;</span></span> inside it.
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div> <h4 id="css">CSS</h4> <div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="ulXLpZ45c4nalssNRkIVc01YJWbYyzBdVuDJkUfdv7I=" data-language="css"><span class="token selector">code</span> <span class="token punctuation">{</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> red<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div> <h4 id="javascript">JavaScript</h4> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="FK1kCakxqHbg12A/RAEKSDT5/dDxusCiAMEj/rLO3yE=" data-language="js"><span class="token keyword">const</span> insert <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">querySelector</span><span class="token punctuation">(</span><span class="token string">"#insert"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+insert<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">"click"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> subject <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">querySelector</span><span class="token punctuation">(</span><span class="token string">"#subject"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">const</span> positionSelect <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">querySelector</span><span class="token punctuation">(</span><span class="token string">"#position"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  subject<span class="token punctuation">.</span><span class="token function">insertAdjacentHTML</span><span class="token punctuation">(</span>
+    positionSelect<span class="token punctuation">.</span>value<span class="token punctuation">,</span>
+    <span class="token string">"&lt;strong&gt;inserted text&lt;/strong&gt;"</span>
+  <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> reset <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">querySelector</span><span class="token punctuation">(</span><span class="token string">"#reset"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+reset<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">"click"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  document<span class="token punctuation">.</span>location<span class="token punctuation">.</span><span class="token function">reload</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div> <h4 id="결과">결과</h4>
+<div class="code-example" id="sect1">
+
+<iframe class="sample-code-frame" title="HTML 삽입" id="frame_examples" width="100" height="100" src="https://live.mdnplay.dev/ko/docs/Web/API/Element/insertAdjacentHTML/runner.html?id=examples" loading="lazy"></iframe>
+</div>
+</div>
+<h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://w3c.github.io/DOM-Parsing/#dom-element-insertadjacenthtml">DOM Parsing and Serialization <br><small># dom-element-insertadjacenthtml</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/Element/insertAdjacentElement"><code>Element.insertAdjacentElement()</code> <small>(en-US)</small></a></li> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/Element/insertAdjacentText"><code>Element.insertAdjacentText()</code> <small>(en-US)</small></a></li> <li>
+<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/XMLSerializer"><code>XMLSerializer</code> <small>(en-US)</small></a>: DOM 트리를 XML 문자열로 직렬화</li> <li>
+<a href="https://hacks.mozilla.org/2011/11/insertadjacenthtml-enables-faster-html-snippet-injection/" target="_blank">hacks.mozilla.org guest post</a> 경우에 따라 insertAdjacentHTML가 더 빠를 수 있다는 것을 벤치마크를 포함해 보여주는 Henri Sivonen 게시물.</li> </ul></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/Element/insertAdjacentHTML" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/Element/insertAdjacentHTML</a>
+  </p>
+</div>

@@ -1,0 +1,98 @@
+<header><h1>border-spacing</h1></header><div class="section-content"><p><a href="https://developer.mozilla.org/ko/docs/Web/CSS">CSS</a> <code>border-spacing</code> 속성은 인접한 표 칸의 테두리 간격을 지정합니다. <a href="border-collapse"><code>border-collapse</code></a>가 <code>separate</code>여야 적용됩니다.</p></div>
+<section aria-labelledby="시도해보기"><h2 id="시도해보기">시도해보기</h2>
+<div class="section-content">
+<iframe class="interactive is-default-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/css/border-spacing.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe> <p><code>border-spacing</code> 값은 표 전체의 테두리에도 적용되므로, 표 테두리와 첫 번째 및 마지막 행/열에 속하는 칸 사이 거리는 (가로/세로) <code>border-spacing</code> 값과 표에 적용한 (상/우/하/좌) <a href="padding"><code>padding</code></a> 값의 합이 됩니다.</p> <div class="notecard note" id="sect1"> <p><strong>참고:</strong> <code>border-spacing</code> 속성은 <a href="https://developer.mozilla.org/ko/docs/Web/HTML/Element/table"><code>&lt;table&gt;</code></a>에서 이제 사용하지 않는 <code>cellspacing</code> 특성에 대응하지만, 추가로 두 번째 값을 지정해 가로와 세로 값을 각각 설정할 수 있다는 차이점이 있습니다.</p> </div>
+</div></section><section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content">
+<pre class="notranslate">/* &lt;length&gt; */
+border-spacing: 2px;
+
+/* 가로 &lt;length&gt; | 세로 &lt;length&gt; */
+border-spacing: 1cm 2em;
+
+/* 전역 값 */
+border-spacing: inherit;
+border-spacing: initial;
+border-spacing: unset;
+</pre> <p><code>border-spacing</code> 값은 하나 또는 두 개의 값을 사용해 지정합니다.</p> <ul> <li>
+<strong>한 개</strong>의 <code>&lt;length&gt;</code> 값을 지정하면 칸 사이의 가로와 세로 두 간격 모두 설정합니다.</li> <li>두 개의 <code>&lt;length&gt;</code> 값을 지정하면, 첫 번째 값은 칸 사이의 가로 간격(각 열의 간격), 두 번째 값은 칸 사이의 세로 간격(각 행의 간격)을 설정합니다.</li> </ul>
+</div></section><section aria-labelledby="값"><h3 id="값">값</h3>
+<div class="section-content"><dl> <dt id="length"><a href="length"><code>&lt;length&gt;</code></a></dt> <dd> <p>간격의 크기로 지정할 길이입니다.</p> </dd> </dl></div></section><section aria-labelledby="형식_정의"><h2 id="형식_정의">형식 정의</h2>
+<div class="section-content"><figure class="table-container"><div class="_table"><table class="properties"><tbody>
+<tr>
+<th scope="row"><a href="initial_value">초기값</a></th>
+<td><code>0</code></td>
+</tr>
+<tr>
+<th scope="row">적용대상</th>
+<td>
+<code>table</code> and <code>inline-table</code> elements</td>
+</tr>
+<tr>
+<th scope="row"><a href="inheritance">상속</a></th>
+<td>yes</td>
+</tr>
+<tr>
+<th scope="row"><a href="computed_value">계산 값</a></th>
+<td>two absolute lengths</td>
+</tr>
+<tr>
+<th scope="row">Animation type</th>
+<td>discrete</td>
+</tr>
+</tbody></table></div></figure></div></section><section aria-labelledby="형식_구문"><h2 id="형식_구문">형식 구문</h2>
+<div class="section-content"><pre class="notranslate"><span class="token property" id="border-spacing">border-spacing = </span><br>  <a href="length"><span class="token property">&lt;length&gt;</span></a><a href="value_definition_syntax#curly_braces">{1,2}</a>  <br><br></pre></div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+</section><section aria-labelledby="칸_간격과_안쪽_여백"><h3 id="칸_간격과_안쪽_여백">칸 간격과 안쪽 여백</h3>
+<div class="section-content">
+<p>다음 예제는 칸 사이에 세로 간격 <code>0.5em</code>과 가로 간격 <code>1em</code>을 배치합니다. 표의 테두리를 따라가면서, <code>padding</code> 값이 <code>border-spacing</code>과 어떻게 작용하는지 살펴보세요.</p> <h4 id="html">HTML</h4> <div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="77zbsQFSpn76e1N/3KsiOsX8+8XXYQzG02k67Hu5JVE=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>table</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>tr</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>td</span><span class="token punctuation">&gt;</span></span>1<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>td</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>td</span><span class="token punctuation">&gt;</span></span>2<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>td</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>td</span><span class="token punctuation">&gt;</span></span>3<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>td</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>tr</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>tr</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>td</span><span class="token punctuation">&gt;</span></span>4<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>td</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>td</span><span class="token punctuation">&gt;</span></span>5<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>td</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>td</span><span class="token punctuation">&gt;</span></span>6<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>td</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>tr</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>tr</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>td</span><span class="token punctuation">&gt;</span></span>7<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>td</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>td</span><span class="token punctuation">&gt;</span></span>8<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>td</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>td</span><span class="token punctuation">&gt;</span></span>9<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>td</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>tr</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>table</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div> <h4 id="css">CSS</h4> <div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="pUZLD6jBgfXBZnqDWFvaKdzkG6DJp+xUEvvyrxrxZm8=" data-language="css"><span class="token selector">table</span> <span class="token punctuation">{</span>
+  <span class="token property">border-spacing</span><span class="token punctuation">:</span> 1em 0.5em<span class="token punctuation">;</span>
+  <span class="token property">padding</span><span class="token punctuation">:</span> 0 2em 1em 0<span class="token punctuation">;</span>
+  <span class="token property">border</span><span class="token punctuation">:</span> 1px solid orange<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">td</span> <span class="token punctuation">{</span>
+  <span class="token property">width</span><span class="token punctuation">:</span> 1.5em<span class="token punctuation">;</span>
+  <span class="token property">height</span><span class="token punctuation">:</span> 1.5em<span class="token punctuation">;</span>
+  <span class="token property">background</span><span class="token punctuation">:</span> #d2d2d2<span class="token punctuation">;</span>
+  <span class="token property">text-align</span><span class="token punctuation">:</span> center<span class="token punctuation">;</span>
+  <span class="token property">vertical-align</span><span class="token punctuation">:</span> middle<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div> <h4 id="결과">결과</h4>
+<div class="code-example" id="sect2">
+
+<iframe class="sample-code-frame" title="예제 sample" id="frame_예제" width="400" height="200" src="https://live.mdnplay.dev/ko/docs/Web/CSS/border-spacing/runner.html?id=%EC%98%88%EC%A0%9C" loading="lazy"></iframe>
+</div>
+</div></section><h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://drafts.csswg.org/css2/#separated-borders">Cascading Style Sheets Level 2 Revision 2 (CSS 2.2) Specification <br><small># separated-borders</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li>
+<a href="border-collapse"><code>border-collapse</code></a>, <a href="border-style"><code>border-style</code></a>
+</li> <li>
+<code>border-spacing</code> 속성은 <a href="https://developer.mozilla.org/ko/docs/Web/HTML/Element/table"><code>&lt;table&gt;</code></a> HTML 요소의 외관을 수정합니다.</li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/CSS/border-spacing" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/CSS/border-spacing</a>
+  </p>
+</div>

@@ -1,0 +1,298 @@
+<header><h1>animation</h1></header><div class="section-content"><p><code>animation</code> <a href="shorthand_properties">단축</a> <a href="https://developer.mozilla.org/ko/docs/Web/CSS">CSS</a> 속성은 스타일 사이에 에니메이션을 적용합니다. <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/animation-name"><code>animation-name</code> <small>(en-US)</small></a>, <a href="animation-duration"><code>animation-duration</code></a>, <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/animation-timing-function"><code>animation-timing-function</code> <small>(en-US)</small></a>, <a href="animation-delay"><code>animation-delay</code></a>, <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/animation-iteration-count"><code>animation-iteration-count</code> <small>(en-US)</small></a>, <a href="animation-direction"><code>animation-direction</code></a>, <a href="animation-fill-mode"><code>animation-fill-mode</code></a>, 그리고 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/animation-play-state"><code>animation-play-state</code> <small>(en-US)</small></a>의 단축형입니다.</p></div>
+<section aria-labelledby="시도해보기"><h2 id="시도해보기">시도해보기</h2>
+<div class="section-content"><iframe class="interactive is-default-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/css/animation.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe></div></section><section aria-labelledby="구성_속성"><h2 id="구성_속성">구성 속성</h2>
+<div class="section-content">
+<p>이 속성은 다음 CSS 속성의 단축형입니다.</p> <ul> <li><a href="animation-delay"><code>animation-delay</code></a></li> <li><a href="animation-direction"><code>animation-direction</code></a></li> <li><a href="animation-duration"><code>animation-duration</code></a></li> <li><a href="animation-fill-mode"><code>animation-fill-mode</code></a></li> <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/animation-iteration-count" class="only-in-en-us"><code>animation-iteration-count</code> <small>(en-US)</small></a></li> <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/animation-name" class="only-in-en-us"><code>animation-name</code> <small>(en-US)</small></a></li> <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/animation-play-state" class="only-in-en-us"><code>animation-play-state</code> <small>(en-US)</small></a></li> <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/animation-timing-function" class="only-in-en-us"><code>animation-timing-function</code> <small>(en-US)</small></a></li> </ul>
+</div></section><section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content">
+<div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="UARz22y8Pto0vVI5yw55I21cc0Uff3SXrQI4oqGp/0s=" data-language="css"><span class="token comment">/* @keyframes duration | easing-function | delay |
+iteration-count | direction | fill-mode | play-state | name */</span>
+<span class="token property">animation</span><span class="token punctuation">:</span> 3s ease-in 1s 2 reverse both paused slidein<span class="token punctuation">;</span>
+
+<span class="token comment">/* @keyframes duration | easing-function | delay | name */</span>
+<span class="token property">animation</span><span class="token punctuation">:</span> 3s linear 1s slidein<span class="token punctuation">;</span>
+
+<span class="token comment">/* 애니메이션 두 개 */</span>
+<span class="token property">animation</span><span class="token punctuation">:</span> 3s linear slidein<span class="token punctuation">,</span> 3s ease-out 5s slideout<span class="token punctuation">;</span>
+</pre>
+</div> <p><code>animation</code> 속성은 쉼표로 구분된 하나 이상의 단일 애니메이션으로 지정됩니다.</p> <p>각각의 애니메이션은 다음과 같이 지정됩니다.</p> <ul> <li>
+<a href="time"><code>&lt;time&gt;</code></a> 값이 0개, 1개 또는 2개 존재</li> <li>다음 값이 0개 또는 1개 존재 <ul> <li><a href="animation#single-easing-function" aria-current="page"><code>&lt;single-easing-function&gt;</code></a></li> <li><a href="animation#single-animation-iteration-count" aria-current="page"><code>&lt;single-animation-iteration-count&gt;</code></a></li> <li><a href="animation#single-animation-direction" aria-current="page"><code>&lt;single-animation-direction&gt;</code></a></li> <li><a href="animation#single-animation-fill-mode" aria-current="page"><code>&lt;single-animation-fill-mode&gt;</code></a></li> <li><a href="animation#single-animation-play-state" aria-current="page"><code>&lt;single-animation-play-state&gt;</code></a></li> </ul> </li> <li>애니메이션의 선택적인 이름. <code>none</code>, <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/custom-ident"><code>&lt;custom-ident&gt;</code> <small>(en-US)</small></a>, 또는 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/string"><code>&lt;string&gt;</code> <small>(en-US)</small></a>일 수 있음.</li> </ul> <div class="notecard note" id="sect1"> <p><strong>참고:</strong> 현재 구현은 재설정 전용이므로 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/animation-timeline"><code>animation-timeline</code> <small>(en-US)</small></a>, <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/animation-range-start"><code>animation-range-start</code> <small>(en-US)</small></a>, 그리고 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/animation-range-end"><code>animation-range-end</code> <small>(en-US)</small></a>가 현재 이 목록에 포함되어 있지 않습니다. 즉, <code>animation</code>을 포함하면 이전에 선언된 <code>animation-timeline</code> 값이 <code>auto</code>로 재설정되고, 이전에 선언된 <code>animation-range-start</code>와 <code>animation-range-end</code> 값은 <code>normal</code>로 재설정되지만, 이러한 속성은 <code>animation</code>을 통해 설정할 수 없습니다. <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_scroll-driven_animations" class="only-in-en-us">CSS 스크롤 기반 애니메이션 <small>(en-US)</small></a>을 만들 때 적용하려면 애니메이션 단축을 선언한 후 이러한 속성을 선언해야 합니다.</p> </div>
+</div></section><section aria-labelledby="값"><h3 id="값">값</h3>
+<div class="section-content"><dl> <dt id="single-easing-function"><code>&lt;single-easing-function&gt;</code></dt> <dd> <p>전환 유형을 결정합니다. 값은 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/easing-function"><code>&lt;easing-function&gt;</code> <small>(en-US)</small></a>에서 사용할 수 있는 값 중 하나여야 합니다.</p> </dd> <dt id="single-animation-iteration-count"><code>&lt;single-animation-iteration-count&gt;</code></dt> <dd> <p>애니메이션이 재생되는 횟수입니다. 값은 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/animation-iteration-count"><code>animation-iteration-count</code> <small>(en-US)</small></a>에서 사용 가능한 값 중 하나여야 합니다.</p> </dd> <dt id="single-animation-direction"><code>&lt;single-animation-direction&gt;</code></dt> <dd> <p>애니메이션이 재생되는 방향입니다. 값은 <a href="animation-direction"><code>animation-direction</code></a>에서 사용 가능한 값 중 하나여야 합니다.</p> </dd> <dt id="single-animation-fill-mode"><code>&lt;single-animation-fill-mode&gt;</code></dt> <dd> <p>실행 전후에 애니메이션 대상에 스타일을 적용시키는 방법을 결정합니다. 값은 <a href="animation-fill-mode"><code>animation-fill-mode</code></a>에서 사용 가능한 값 중 하나여야 합니다..</p> </dd> <dt id="single-animation-play-state"><code>&lt;single-animation-play-state&gt;</code></dt> <dd> <p>애니메이션의 재생 여부를 결정합니다. 값은 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/animation-play-state"><code>animation-play-state</code> <small>(en-US)</small></a>에서 사용 가능한 값 중 하나여야 합니다.</p> </dd> </dl></div></section><section aria-labelledby="설명"><h2 id="설명">설명</h2>
+<div class="section-content">
+<p>각 애니메이션 정의 내에서 시간 값의 순서는 중요합니다. <a href="time"><code>&lt;time&gt;</code></a>으로 파싱할 수 있는 첫 번째 값은 <a href="animation-duration"><code>animation-duration</code></a>에 할당되고, 두 번째 값은 <a href="animation-delay"><code>animation-delay</code></a>에 할당됩니다.</p> <p>각 애니메이션 정의에서 다른 값의 순서는 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/animation-name"><code>animation-name</code> <small>(en-US)</small></a> 값을 다른 값과 구별하는 데에도 중요합니다. <code>animation</code> 단축 값이 <code>animation-name</code> 이외의 <code>animation</code> 속성 값으로 파싱할 수 있는 경우, 이 값은 <code>animation-name</code>이 아닌 그 속성에 먼저 적용됩니다. 이러한 이유로 <code>animation</code> 단축을 사용할 때 <code>animation-name</code> 값을 값 목록의 마지막 값으로 지정하는 것이 좋습니다. 이는 쉼표로 구분된 여러 개의 애니메이션 단축을 지정하는 경우에도 마찬가지입니다.</p> <p>애니메이션을 적용하려면 애니메이션 이름을 반드시 설정해야 하지만, <code>animation</code> 축약의 모든 값은 선택 사항이며, 각 <code>animation</code> 구성 요소의 초기 값이 기본값입니다. <code>animation-name</code>의 초기 값은 <code>none</code>입니다. 즉, <code>animation</code> 단축 속성에 <code>animation-name</code> 값이 선언되지 않으면 속성에 적용할 애니메이션이 없는 것입니다.</p> <p><code>animation</code> 단축 속성에서 <code>animation-duration</code> 값이 생략되면 이 속성의 값은 기본적으로 <code>0s</code>로 설정됩니다. 이 경우 애니메이션은 계속 발생하지만( <a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/animationstart_event" class="only-in-en-us"><code>animationStart</code> <small>(en-US)</small></a>와 <a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/animationend_event" class="only-in-en-us"><code>animationEnd</code> <small>(en-US)</small></a> 이벤트는 발생함) 애니메이션이 표시되진 않습니다.</p>
+</div></section><section aria-labelledby="접근성_문제"><h2 id="접근성_문제">접근성 문제</h2>
+<div class="section-content">
+<p>깜박이는 애니메이션은 주의력 결핍 과잉 행동 장애(ADHD)와 같은 인지 문제가 있는 사람들에게 문제가 될 수 있습니다. 또한 특정 종류의 움직임은 전정 장애, 간질, 편두통 그리고 암소시성 민감증을 유발할 수 있습니다.</p> <p>축소된 애니메이션 경험에 선호도를 표현한 사용자를 위한 우대 경험을 만들기 위해 애니메이션을 일시 중지하거나 비활성화하는 메커니즘을 제공하고 <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion" class="only-in-en-us">움직임 감소 미디어 쿼리 <small>(en-US)</small></a>를 사용하는 것을 고려하십시오.</p> <ul> <li><a href="https://alistapart.com/article/designing-safer-web-animation-for-motion-sensitivity/" target="_blank">움직임 민감성을 위한 더 안전한 웹 애니메이션 설계 · A List Apart 기사</a></li> <li><a href="https://css-tricks.com/introduction-reduced-motion-media-query/" target="_blank">움직임 감소 미디어 쿼리 소개 | CSS-Tricks</a></li> <li><a href="https://webkit.org/blog/7551/responsive-design-for-motion/" target="_blank">반응형 움직임 디자인 | WebKit</a></li> <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/Understanding_WCAG/Operable#guideline_2.2_%e2%80%94_enough_time_provide_users_enough_time_to_read_and_use_content">MDN WCAG 이해하기, 가이드라인 2.2 설명</a></li> <li><a href="https://www.w3.org/TR/UNDERSTANDING-WCAG20/time-limits-pause.html" target="_blank">Success Criterion 2.2.2 이해하기 | W3C Understanding WCAG 2.0</a></li> </ul>
+</div></section><section aria-labelledby="형식_정의"><h2 id="형식_정의">형식 정의</h2>
+<div class="section-content"><figure class="table-container"><div class="_table"><table class="properties"><tbody>
+<tr>
+<th scope="row"><a href="initial_value">초기값</a></th>
+<td>as each of the properties of the shorthand:<br><ul>
+<li>
+<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/animation-name" class="only-in-en-us"><code>animation-name</code> <small>(en-US)</small></a>: <code>none</code>
+</li>
+<li>
+<a href="animation-duration"><code>animation-duration</code></a>: <code>0s</code>
+</li>
+<li>
+<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/animation-timing-function" class="only-in-en-us"><code>animation-timing-function</code> <small>(en-US)</small></a>: <code>ease</code>
+</li>
+<li>
+<a href="animation-delay"><code>animation-delay</code></a>: <code>0s</code>
+</li>
+<li>
+<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/animation-iteration-count" class="only-in-en-us"><code>animation-iteration-count</code> <small>(en-US)</small></a>: <code>1</code>
+</li>
+<li>
+<a href="animation-direction"><code>animation-direction</code></a>: <code>normal</code>
+</li>
+<li>
+<a href="animation-fill-mode"><code>animation-fill-mode</code></a>: <code>none</code>
+</li>
+<li>
+<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/animation-play-state" class="only-in-en-us"><code>animation-play-state</code> <small>(en-US)</small></a>: <code>running</code>
+</li>
+<li>
+<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/animation-timeline" class="only-in-en-us"><code>animation-timeline</code> <small>(en-US)</small></a>: <code>auto</code>
+</li>
+</ul>
+</td>
+</tr>
+<tr>
+<th scope="row">적용대상</th>
+<td>all elements, <a href="::before"><code>::before</code></a> and <a href="::after"><code>::after</code></a> <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-elements">pseudo-elements</a>
+</td>
+</tr>
+<tr>
+<th scope="row"><a href="inheritance">상속</a></th>
+<td>no</td>
+</tr>
+<tr>
+<th scope="row"><a href="computed_value">계산 값</a></th>
+<td>as each of the properties of the shorthand:<br><ul>
+<li>
+<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/animation-name" class="only-in-en-us"><code>animation-name</code> <small>(en-US)</small></a>: as specified</li>
+<li>
+<a href="animation-duration"><code>animation-duration</code></a>: as specified</li>
+<li>
+<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/animation-timing-function" class="only-in-en-us"><code>animation-timing-function</code> <small>(en-US)</small></a>: as specified</li>
+<li>
+<a href="animation-delay"><code>animation-delay</code></a>: as specified</li>
+<li>
+<a href="animation-direction"><code>animation-direction</code></a>: as specified</li>
+<li>
+<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/animation-iteration-count" class="only-in-en-us"><code>animation-iteration-count</code> <small>(en-US)</small></a>: as specified</li>
+<li>
+<a href="animation-fill-mode"><code>animation-fill-mode</code></a>: as specified</li>
+<li>
+<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/animation-play-state" class="only-in-en-us"><code>animation-play-state</code> <small>(en-US)</small></a>: as specified</li>
+<li>
+<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/animation-timeline" class="only-in-en-us"><code>animation-timeline</code> <small>(en-US)</small></a>: a list, each item either a case-sensitive CSS identifier or the keywords <code>none</code>, <code>auto</code>
+</li>
+</ul>
+</td>
+</tr>
+<tr>
+<th scope="row">Animation type</th>
+<td>Not animatable</td>
+</tr>
+</tbody></table></div></figure></div></section><section aria-labelledby="형식_구문"><h2 id="형식_구문">형식 구문</h2>
+<div class="section-content"><pre class="notranslate"><span class="token property" id="animation">animation = </span><br>  <span class="token property">&lt;single-animation&gt;</span><a href="value_definition_syntax#hash_mark">#</a>  <br><br><span class="token property" id="&lt;single-animation&gt;">&lt;single-animation&gt; = </span><br>  <a href="time"><span class="token property">&lt;time&gt;</span></a>                              <a href="value_definition_syntax#double_bar">||</a><br>  <span class="token property">&lt;easing-function&gt;</span>                   <a href="value_definition_syntax#double_bar">||</a><br>  <a href="time"><span class="token property">&lt;time&gt;</span></a>                              <a href="value_definition_syntax#double_bar">||</a><br>  <span class="token property">&lt;single-animation-iteration-count&gt;</span>  <a href="value_definition_syntax#double_bar">||</a><br>  <span class="token property">&lt;single-animation-direction&gt;</span>        <a href="value_definition_syntax#double_bar">||</a><br>  <span class="token property">&lt;single-animation-fill-mode&gt;</span>        <a href="value_definition_syntax#double_bar">||</a><br>  <span class="token property">&lt;single-animation-play-state&gt;</span>       <a href="value_definition_syntax#double_bar">||</a><br>  <a href="value_definition_syntax#brackets">[</a> <span class="token keyword">none</span> <a href="value_definition_syntax#single_bar">|</a> <span class="token property">&lt;keyframes-name&gt;</span> <a href="value_definition_syntax#brackets">]</a>         <br><br><span class="token property" id="&lt;easing-function&gt;">&lt;easing-function&gt; = </span><br>  <span class="token keyword">linear</span>                          <a href="value_definition_syntax#single_bar">|</a><br>  <span class="token property">&lt;linear-easing-function&gt;</span>        <a href="value_definition_syntax#single_bar">|</a><br>  <span class="token property">&lt;cubic-bezier-easing-function&gt;</span>  <a href="value_definition_syntax#single_bar">|</a><br>  <span class="token property">&lt;step-easing-function&gt;</span>          <br><br><span class="token property" id="&lt;single-animation-iteration-count&gt;">&lt;single-animation-iteration-count&gt; = </span><br>  <span class="token keyword">infinite</span>        <a href="value_definition_syntax#single_bar">|</a><br>  <a href="number"><span class="token property">&lt;number [0,∞]&gt;</span></a>  <br><br><span class="token property" id="&lt;single-animation-direction&gt;">&lt;single-animation-direction&gt; = </span><br>  <span class="token keyword">normal</span>             <a href="value_definition_syntax#single_bar">|</a><br>  <span class="token keyword">reverse</span>            <a href="value_definition_syntax#single_bar">|</a><br>  <span class="token keyword">alternate</span>          <a href="value_definition_syntax#single_bar">|</a><br>  <span class="token keyword">alternate-reverse</span>  <br><br><span class="token property" id="&lt;single-animation-fill-mode&gt;">&lt;single-animation-fill-mode&gt; = </span><br>  <span class="token keyword">none</span>       <a href="value_definition_syntax#single_bar">|</a><br>  <span class="token keyword">forwards</span>   <a href="value_definition_syntax#single_bar">|</a><br>  <span class="token keyword">backwards</span>  <a href="value_definition_syntax#single_bar">|</a><br>  <span class="token keyword">both</span>       <br><br><span class="token property" id="&lt;single-animation-play-state&gt;">&lt;single-animation-play-state&gt; = </span><br>  <span class="token keyword">running</span>  <a href="value_definition_syntax#single_bar">|</a><br>  <span class="token keyword">paused</span>   <br><br><span class="token property" id="&lt;keyframes-name&gt;">&lt;keyframes-name&gt; = </span><br>  <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/custom-ident" class="only-in-en-us"><span class="token property">&lt;custom-ident&gt;</span> <small>(en-US)</small></a>  <a href="value_definition_syntax#single_bar">|</a><br>  <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/string" class="only-in-en-us"><span class="token property">&lt;string&gt;</span> <small>(en-US)</small></a>        <br><br><span class="token property" id="&lt;linear-easing-function&gt;">&lt;linear-easing-function&gt; = </span><br>  <span class="token function">linear(</span> <span class="token property">&lt;linear-stop-list&gt;</span> <span class="token function">)</span>  <br><br><span class="token property" id="&lt;cubic-bezier-easing-function&gt;">&lt;cubic-bezier-easing-function&gt; = </span><br>  <span class="token keyword">ease</span>                                                <a href="value_definition_syntax#single_bar">|</a><br>  <span class="token keyword">ease-in</span>                                             <a href="value_definition_syntax#single_bar">|</a><br>  <span class="token keyword">ease-out</span>                                            <a href="value_definition_syntax#single_bar">|</a><br>  <span class="token keyword">ease-in-out</span>                                         <a href="value_definition_syntax#single_bar">|</a><br>  <span class="token function">cubic-bezier(</span> <a href="number"><span class="token property">&lt;number [0,1]&gt;</span></a> , <a href="number"><span class="token property">&lt;number&gt;</span></a> , <a href="number"><span class="token property">&lt;number [0,1]&gt;</span></a> , <a href="number"><span class="token property">&lt;number&gt;</span></a> <span class="token function">)</span>  <br><br><span class="token property" id="&lt;step-easing-function&gt;">&lt;step-easing-function&gt; = </span><br>  <span class="token keyword">step-start</span>                                <a href="value_definition_syntax#single_bar">|</a><br>  <span class="token keyword">step-end</span>                                  <a href="value_definition_syntax#single_bar">|</a><br>  <span class="token function">steps(</span> <a href="integer"><span class="token property">&lt;integer&gt;</span></a> <a href="value_definition_syntax#brackets">[</a>, <span class="token property">&lt;step-position&gt;</span> <a href="value_definition_syntax#brackets">]</a><a href="value_definition_syntax#question_mark">?</a> <span class="token function">)</span>  <br><br><span class="token property" id="&lt;linear-stop-list&gt;">&lt;linear-stop-list&gt; = </span><br>  <a href="value_definition_syntax#brackets">[</a> <span class="token property">&lt;linear-stop&gt;</span> <a href="value_definition_syntax#brackets">]</a><a href="value_definition_syntax#hash_mark">#</a>  <br><br><span class="token property" id="&lt;step-position&gt;">&lt;step-position&gt; = </span><br>  <span class="token keyword">jump-start</span>  <a href="value_definition_syntax#single_bar">|</a><br>  <span class="token keyword">jump-end</span>    <a href="value_definition_syntax#single_bar">|</a><br>  <span class="token keyword">jump-none</span>   <a href="value_definition_syntax#single_bar">|</a><br>  <span class="token keyword">jump-both</span>   <a href="value_definition_syntax#single_bar">|</a><br>  <span class="token keyword">start</span>       <a href="value_definition_syntax#single_bar">|</a><br>  <span class="token keyword">end</span>         <br><br><span class="token property" id="&lt;linear-stop&gt;">&lt;linear-stop&gt; = </span><br>  <a href="number"><span class="token property">&lt;number&gt;</span></a>               <a href="value_definition_syntax#double_ampersand">&amp;&amp;</a><br>  <span class="token property">&lt;linear-stop-length&gt;</span><a href="value_definition_syntax#question_mark">?</a>  <br><br><span class="token property" id="&lt;linear-stop-length&gt;">&lt;linear-stop-length&gt; = </span><br>  <a href="percentage"><span class="token property">&lt;percentage&gt;</span></a><a href="value_definition_syntax#curly_braces">{1,2}</a>  <br><br></pre></div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+<div class="section-content"><div class="notecard note" id="sect2"> <p><strong>참고:</strong> <a href="css_box_model">CSS 박스 모델</a> 속성에 애니메이션을 적용하는 것은 권장되지 않습니다. 어떤 박스 모델 속성을 애니메이션하는 것은 본질적으로 CPU를 많이 사용합니다. 대신 <a href="transform">transform</a> 속성에 애니메이션을 적용하는 것을 고려하십시오.</p> </div></div></section><section aria-labelledby="해_뜨기"><h3 id="해_뜨기">해 뜨기</h3>
+<div class="section-content">
+<p> 여기서 우리는 하늘색 하늘을 가로지르는 노란 태양 애니메이션을 만들어봅니다. 태양이 뷰포트 중앙으로 올라간 다음 시야에서 사라집니다. </p> <div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="+ZZGdBzbwc7SJ6QI+AjDL9b2Dg73XImFnI2quI9QsOw=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>sun<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div> <div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="s5Nf+2TYzLeY1uD9pnQ/CLNXJ2JtCm7gIHfm0qaD7/w=" data-language="css"><span class="token selector">:root</span> <span class="token punctuation">{</span>
+  <span class="token property">overflow</span><span class="token punctuation">:</span> hidden<span class="token punctuation">;</span> <span class="token comment">/* 수평선 아래 태양의 일부를 숨깁니다. */</span>
+  <span class="token property">background-color</span><span class="token punctuation">:</span> lightblue<span class="token punctuation">;</span>
+  <span class="token property">display</span><span class="token punctuation">:</span> flex<span class="token punctuation">;</span>
+  <span class="token property">justify-content</span><span class="token punctuation">:</span> center<span class="token punctuation">;</span> <span class="token comment">/* 태양을 배경 중앙에 배치합니다. */</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">.sun</span> <span class="token punctuation">{</span>
+  <span class="token property">background-color</span><span class="token punctuation">:</span> yellow<span class="token punctuation">;</span>
+  <span class="token property">border-radius</span><span class="token punctuation">:</span> 50%<span class="token punctuation">;</span> <span class="token comment">/* 둥근 배경을 만듭니다. */</span>
+  <span class="token property">height</span><span class="token punctuation">:</span> 100vh<span class="token punctuation">;</span> <span class="token comment">/* 태양을 뷰포트의 크기로 만듭니다. */</span>
+  <span class="token property">aspect-ratio</span><span class="token punctuation">:</span> 1 / 1<span class="token punctuation">;</span>
+  <span class="token property">animation</span><span class="token punctuation">:</span> 4s linear 0s infinite alternate sun-rise<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token atrule"><span class="token rule">@keyframes</span> sun-rise</span> <span class="token punctuation">{</span>
+  <span class="token selector">from</span> <span class="token punctuation">{</span>
+    <span class="token comment">/* 태양을 뷰포트 너머로 밀어냅니다. */</span>
+    <span class="token property">transform</span><span class="token punctuation">:</span> <span class="token function">translateY</span><span class="token punctuation">(</span>110vh<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token selector">to</span> <span class="token punctuation">{</span>
+    <span class="token comment">/* 태양을 기본 위치로 되돌립니다. */</span>
+    <span class="token property">transform</span><span class="token punctuation">:</span> <span class="token function">translateY</span><span class="token punctuation">(</span>0<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</pre>
+</div>
+<div class="code-example" id="sect3">
+
+<iframe class="sample-code-frame" title="해 뜨기" id="frame_sun_rise" src="https://live.mdnplay.dev/ko/docs/Web/CSS/animation/runner.html?id=sun_rise" loading="lazy"></iframe>
+</div>
+</div></section><section aria-labelledby="여러_속성_애니메이션"><h3 id="여러_속성_애니메이션">여러 속성 애니메이션</h3>
+<div class="section-content">
+<p>이전 예제의 태양 애니메이션에 추가하여, 태양이 뜨고 질 때 태양의 색상을 변경하는 두 번째 애니메이션을 추가합니다. 태양은 수평선 아래에 있을 때 진한 빨간색으로 시작하여 상단에 도달하면 밝은 주황색으로 바뀝니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="+ZZGdBzbwc7SJ6QI+AjDL9b2Dg73XImFnI2quI9QsOw=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>sun<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div> <div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="b/CmPOp5OQDYiTYnAkdBNwZAsZoBoh9hQmEjXt5MrMc=" data-language="css"><span class="token selector">:root</span> <span class="token punctuation">{</span>
+  <span class="token property">overflow</span><span class="token punctuation">:</span> hidden<span class="token punctuation">;</span>
+  <span class="token property">background-color</span><span class="token punctuation">:</span> lightblue<span class="token punctuation">;</span>
+  <span class="token property">display</span><span class="token punctuation">:</span> flex<span class="token punctuation">;</span>
+  <span class="token property">justify-content</span><span class="token punctuation">:</span> center<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">.sun</span> <span class="token punctuation">{</span>
+  <span class="token property">background-color</span><span class="token punctuation">:</span> yellow<span class="token punctuation">;</span>
+  <span class="token property">border-radius</span><span class="token punctuation">:</span> 50%<span class="token punctuation">;</span>
+  <span class="token property">height</span><span class="token punctuation">:</span> 100vh<span class="token punctuation">;</span>
+  <span class="token property">aspect-ratio</span><span class="token punctuation">:</span> 1 / 1<span class="token punctuation">;</span>
+  <span class="token property">animation</span><span class="token punctuation">:</span> 4s linear 0s infinite alternate animating-multiple-properties<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">/* 단일 애니메이션에서 여러 속성을 애니메이션할 수 있습니다. */</span>
+<span class="token atrule"><span class="token rule">@keyframes</span> animating-multiple-properties</span> <span class="token punctuation">{</span>
+  <span class="token selector">from</span> <span class="token punctuation">{</span>
+    <span class="token property">transform</span><span class="token punctuation">:</span> <span class="token function">translateY</span><span class="token punctuation">(</span>110vh<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token property">background-color</span><span class="token punctuation">:</span> red<span class="token punctuation">;</span>
+    <span class="token property">filter</span><span class="token punctuation">:</span> <span class="token function">brightness</span><span class="token punctuation">(</span>75%<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token selector">to</span> <span class="token punctuation">{</span>
+    <span class="token property">transform</span><span class="token punctuation">:</span> <span class="token function">translateY</span><span class="token punctuation">(</span>0<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token property">background-color</span><span class="token punctuation">:</span> orange<span class="token punctuation">;</span>
+    <span class="token comment">/* 설정되지 않은 속성, 즉 'filter'는 기본값으로 되돌아갑니다. */</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</pre>
+</div>
+<div class="code-example" id="sect4">
+
+<iframe class="sample-code-frame" title="여러 속성 애니메이션" id="frame_animating_multiple_properties" src="https://live.mdnplay.dev/ko/docs/Web/CSS/animation/runner.html?id=animating_multiple_properties" loading="lazy"></iframe>
+</div>
+</div></section><section aria-labelledby="여러_애니메이션_적용하기"><h3 id="여러_애니메이션_적용하기">여러 애니메이션 적용하기</h3>
+<div class="section-content">
+<p> 여기 하늘색 배경에 뜨고 지는 태양이 있습니다. 태양은 점점 무지개 색으로 변합니다. 태양의 위치와 색상의 타이밍은 독립적입니다. </p> <div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="+ZZGdBzbwc7SJ6QI+AjDL9b2Dg73XImFnI2quI9QsOw=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>sun<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div> <div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="FeIhYrPzDT5FGN9nB4koyZsXp3UxNA/ZKrTjBK1Oa50=" data-language="css"><span class="token selector">:root</span> <span class="token punctuation">{</span>
+  <span class="token property">overflow</span><span class="token punctuation">:</span> hidden<span class="token punctuation">;</span>
+  <span class="token property">background-color</span><span class="token punctuation">:</span> lightblue<span class="token punctuation">;</span>
+  <span class="token property">display</span><span class="token punctuation">:</span> flex<span class="token punctuation">;</span>
+  <span class="token property">justify-content</span><span class="token punctuation">:</span> center<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">.sun</span> <span class="token punctuation">{</span>
+  <span class="token property">background-color</span><span class="token punctuation">:</span> yellow<span class="token punctuation">;</span>
+  <span class="token property">border-radius</span><span class="token punctuation">:</span> 50%<span class="token punctuation">;</span>
+  <span class="token property">height</span><span class="token punctuation">:</span> 100vh<span class="token punctuation">;</span>
+  <span class="token property">aspect-ratio</span><span class="token punctuation">:</span> 1 / 1<span class="token punctuation">;</span>
+  <span class="token comment">/* 여러 애니메이션은 쉼표로 구분되고, 각 애니메이션의 매개변수는 독립적으로 설정됩니다. */</span>
+  <span class="token property">animation</span><span class="token punctuation">:</span> 4s linear 0s infinite alternate rise<span class="token punctuation">,</span> 24s linear 0s infinite
+      psychedelic<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token atrule"><span class="token rule">@keyframes</span> rise</span> <span class="token punctuation">{</span>
+  <span class="token selector">from</span> <span class="token punctuation">{</span>
+    <span class="token property">transform</span><span class="token punctuation">:</span> <span class="token function">translateY</span><span class="token punctuation">(</span>110vh<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token selector">to</span> <span class="token punctuation">{</span>
+    <span class="token property">transform</span><span class="token punctuation">:</span> <span class="token function">translateY</span><span class="token punctuation">(</span>0<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token atrule"><span class="token rule">@keyframes</span> psychedelic</span> <span class="token punctuation">{</span>
+  <span class="token selector">from</span> <span class="token punctuation">{</span>
+    <span class="token property">filter</span><span class="token punctuation">:</span> <span class="token function">hue-rotate</span><span class="token punctuation">(</span>0deg<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token selector">to</span> <span class="token punctuation">{</span>
+    <span class="token property">filter</span><span class="token punctuation">:</span> <span class="token function">hue-rotate</span><span class="token punctuation">(</span>360deg<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</pre>
+</div>
+<div class="code-example" id="sect5">
+
+<iframe class="sample-code-frame" title="여러 애니메이션 적용하기" id="frame_applying_multiple_animations" src="https://live.mdnplay.dev/ko/docs/Web/CSS/animation/runner.html?id=applying_multiple_animations" loading="lazy"></iframe>
+</div>
+</div></section><section aria-labelledby="여러_애니메이션_캐스케이딩"><h3 id="여러_애니메이션_캐스케이딩">여러 애니메이션 캐스케이딩</h3>
+<div class="section-content">
+<p>여기 밝은 파란색 배경에 노란색 태양이 있습니다. 태양은 뷰포트의 왼쪽과 오른쪽 사이에서 튕깁니다. rise 애니메이션이 정의됐더라도 태양은 뷰포트에 남아 있습니다. 상승 애니메이션의 transform 속성은 bounce 애니메이션으로 '덮어써지게' 됩니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="+ZZGdBzbwc7SJ6QI+AjDL9b2Dg73XImFnI2quI9QsOw=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>sun<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div> <div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="4IqxDqzxZRXZNZkHEgaR1wVkQM9I9Sd7kHR1WtmYO9s=" data-language="css"><span class="token selector">:root</span> <span class="token punctuation">{</span>
+  <span class="token property">overflow</span><span class="token punctuation">:</span> hidden<span class="token punctuation">;</span>
+  <span class="token property">background-color</span><span class="token punctuation">:</span> lightblue<span class="token punctuation">;</span>
+  <span class="token property">display</span><span class="token punctuation">:</span> flex<span class="token punctuation">;</span>
+  <span class="token property">justify-content</span><span class="token punctuation">:</span> center<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">.sun</span> <span class="token punctuation">{</span>
+  <span class="token property">background-color</span><span class="token punctuation">:</span> yellow<span class="token punctuation">;</span>
+  <span class="token property">border-radius</span><span class="token punctuation">:</span> 50%<span class="token punctuation">;</span>
+  <span class="token property">height</span><span class="token punctuation">:</span> 100vh<span class="token punctuation">;</span>
+  <span class="token property">aspect-ratio</span><span class="token punctuation">:</span> 1 / 1<span class="token punctuation">;</span>
+  <span class="token comment">/*
+    캐스케이딩으로 나중에 선언된 애니메이션은
+    이전에 선언된 애니메이션 속성을 재정의합니다.
+  */</span>
+  <span class="token comment">/* bounce는 rise가 설정한 transform을 '덮어쓰므로' 태양은 수평으로만 움직입니다. */</span>
+  <span class="token property">animation</span><span class="token punctuation">:</span> 4s linear 0s infinite alternate rise<span class="token punctuation">,</span> 4s linear 0s infinite
+      alternate bounce<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token atrule"><span class="token rule">@keyframes</span> rise</span> <span class="token punctuation">{</span>
+  <span class="token selector">from</span> <span class="token punctuation">{</span>
+    <span class="token property">transform</span><span class="token punctuation">:</span> <span class="token function">translateY</span><span class="token punctuation">(</span>110vh<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token selector">to</span> <span class="token punctuation">{</span>
+    <span class="token property">transform</span><span class="token punctuation">:</span> <span class="token function">translateY</span><span class="token punctuation">(</span>0<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token atrule"><span class="token rule">@keyframes</span> bounce</span> <span class="token punctuation">{</span>
+  <span class="token selector">from</span> <span class="token punctuation">{</span>
+    <span class="token property">transform</span><span class="token punctuation">:</span> <span class="token function">translateX</span><span class="token punctuation">(</span>-50vw<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token selector">to</span> <span class="token punctuation">{</span>
+    <span class="token property">transform</span><span class="token punctuation">:</span> <span class="token function">translateX</span><span class="token punctuation">(</span>50vw<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</pre>
+</div>
+<div class="code-example" id="sect6">
+
+<iframe class="sample-code-frame" title="여러 애니메이션 캐스케이딩" id="frame_cascading_multiple_animations" src="https://live.mdnplay.dev/ko/docs/Web/CSS/animation/runner.html?id=cascading_multiple_animations" loading="lazy"></iframe>
+</div> <p>추가 예제는 <a href="css_animations/using_css_animations#examples">CSS 애니메이션 사용하기</a>를 참조하세요.</p>
+</div></section><h2 id="명세서">명세서</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://drafts.csswg.org/css-animations/#animation">CSS Animations Level 1 <br><small># animation</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="css_animations/using_css_animations">CSS 애니매이션 사용하기</a></li> <li>JavaScript <a href="https://developer.mozilla.org/ko/docs/Web/API/AnimationEvent"><code>AnimationEvent</code></a> API</li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/CSS/animation" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/CSS/animation</a>
+  </p>
+</div>

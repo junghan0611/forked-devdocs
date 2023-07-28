@@ -1,0 +1,21 @@
+<header><h1>HTMLElement.offsetParent</h1></header><div class="section-content"><p> <code>HTMLElement.offsetParent</code> 읽기전용 프라퍼티는 가장 가까운 (포함 계층에서 가장 가까운) 위치가 정해진 포함하는 엘리먼트 객체에 대한 참조를 반환한다. <code>offsetParent</code>는 엘리먼트의 위치가 정해지지 않으면 가장 가까운 테이블 또는 테이블 셀, 루트 엘리먼트 (표준 준수 모드에서는 <code>html</code>; quirks 렌더링 모드에서는 <code>body</code>) 를 반환한다. 엘리먼트의 <code>style.display</code>가 "none"으로 설정되면 null을 반환한다. <code>offsetParent</code>는 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/offsetTop"><code>offsetTop</code> <small>(en-US)</small></a>과 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/offsetLeft"><code>offsetLeft</code> <small>(en-US)</small></a>가 그것의 패딩 모서리에 상대적이기 때문에 유용하다. </p></div>
+<h2 id="문법">문법</h2>
+<div class="section-content">
+<div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="Xzz2xeHS6uYRM/iNsn5zTO8qpS5R1HTKVwl9PBl0fXs=" data-language="js">parentObj <span class="token operator">=</span> element<span class="token punctuation">.</span>offsetParent<span class="token punctuation">;</span>
+</pre>
+</div> <ul> <li>_parentObj는 현재 엘리먼트가 그 안에서 offset된 엘리먼트의 객체 참조이다. _is an object reference to the element in which the current element is offset.</li> </ul>
+</div>
+<h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://drafts.csswg.org/cssom-view/#dom-htmlelement-offsetparent">CSSOM View Module <br><small># dom-htmlelement-offsetparent</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/HTMLElement/offsetParent" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/HTMLElement/offsetParent</a>
+  </p>
+</div>

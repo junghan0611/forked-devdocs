@@ -1,0 +1,54 @@
+<header><h1>AudioParam</h1></header><div class="section-content">
+<p>Web Audio API의 <code>AudioParam</code> 인터페이스는 오디오에 관련된 파라미터를 나타내는데, 보통 (<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/GainNode/gain"><code>GainNode.gain</code> <small>(en-US)</small></a>과 같은) <a href="audionode"><code>AudioNode</code></a>의 파라미터입니다.</p> <p><code>AudioParam</code> 은 특정한 값이나 값의 변화로 설정될 수 있고, 특정한 시간에 그리고 특정한 패턴을 따라 일어나도록 예정될 수 있습니다.</p> <p>각 <code>AudioParam</code> 은 이벤트의 리스트를 가지고 있고, 이는 초기적으로는 비어 있습니다. 이 이벤트의 리스트는 값이 언제 그리고 어떻게 변화할지를 정의합니다. 이 리스트가 비어있지 않을 때, <code>AudioParam.value</code> 특성을 사용한 변화는 무시됩니다. 이 이벤트의 리스트는 우리가 임의적인 타임라인 기반의 자동화 커브를 사용해 아주 정밀한 시간에 일어나야만 하는 변화들을 예정할 수 있게 합니다. 사용되는 이 시간은 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/BaseAudioContext/currentTime"><code>AudioContext.currentTime</code> <small>(en-US)</small></a>에 정의된 것입니다.</p>
+</div>
+<h2 id="audioparam_유형">AudioParam 유형</h2>
+<div class="section-content"><p>두 종류의 <code>AudioParam</code> 이 있는데, 그것은 <em>a-rate</em> 와 <em>k-rate</em> 파라미터입니다. 각 <a href="audionode"><code>AudioNode</code></a>는 명세에서 이것의 파라미터들 중 어떤 것이 <em>a-rate</em> 이고 어떤 것이 <em>k-rate</em> 인지 정의합니다.</p></div>
+<h3 id="a-rate">a-rate</h3>
+<div class="section-content"><p><em>a-rate</em> <code>AudioParam</code> 은 오디오 신호의 각 <a href="web_audio_api/basic_concepts_behind_web_audio_api#audio_buffers.3a_frames.2c_samples_and_channels">샘플 프레임</a>에 대해 현재의 오디오 파라미터 값을 취합니다.</p></div>
+<h3 id="k-rate">k-rate</h3>
+<div class="section-content"><p><em>k-rate</em> <code>AudioParam</code> 은 처리되는 전체 블럭에 대해 같은 초기 오디오 파라미터 값을 사용합니다. 즉, 128 샘플 프레임입니다. 다른 말로 하자면, 오디오가 노드에 의해 처리되는 동안 같은 값이 오디오에 있는 모든 프레임에 적용됩니다.</p></div>
+<h2 id="속성">속성</h2>
+<div class="section-content"><dl> <dt id="audioparam.defaultvalue">
+<a href="audioparam/defaultvalue"><code>AudioParam.defaultValue</code></a> <span class="badge inline readonly">읽기 전용</span>
+</dt> <dd> <p><code>AudioParam</code> 을 생성하는 특정한 <a href="audionode"><code>AudioNode</code></a>에 의해 정의되는 특성의 초기 값을 나타냅니다.</p> </dd> <dt id="audioparam.maxvalue">
+<a href="audioparam/maxvalue"><code>AudioParam.maxValue</code></a> <span class="badge inline readonly">읽기 전용</span>
+</dt> <dd> <p>파라미터의 명목상의 (효과적인) 범위에 대한 최대로 가능한 값을 나타냅니다.</p> </dd> <dt id="audioparam.minvalue">
+<a href="audioparam/minvalue"><code>AudioParam.minValue</code></a> <span class="badge inline readonly">읽기 전용</span>
+</dt> <dd> <p>파라미터의 명목상의 (효과적인) 범위에 대한 최소로 가능한 값을 나타냅니다.</p> </dd> <dt id="audioparam.value"><a href="audioparam/value"><code>AudioParam.value</code></a></dt> <dd> <p>현재 시간에 대한 파라미터의 현재 값을 나타냅니다. 초기적으로는 <a href="audioparam/defaultvalue"><code>defaultValue</code></a>의 값으로 설정됩니다.</p> </dd> </dl></div>
+<h2 id="메서드">메서드</h2>
+<div class="section-content"><dl> <dt id="audioparam.setvalueattime"><a href="audioparam/setvalueattime"><code>AudioParam.setValueAtTime()</code></a></dt> <dd> <p>정밀한 시간에서 <code>AudioParam</code> 의 값에 즉각적인 변화를 예정합니다. 이 시간은 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/BaseAudioContext/currentTime"><code>AudioContext.currentTime</code> <small>(en-US)</small></a>과 비교하여 측정됩니다. 새로운 값은 <code>value</code> 매개변수에 의해 주어집니다.</p> </dd> <dt id="audioparam.linearramptovalueattime"><a href="audioparam/linearramptovalueattime"><code>AudioParam.linearRampToValueAtTime()</code></a></dt> <dd> <p><code>AudioParam</code> 의 값에 점진적인 선형적 변화를 예정합니다. 이 변화는 <em>previous</em> 이벤트에 명시된 시간에 시작하고, <code>value</code> 매개변수에 주어진 새로운 값까지 선형적인 경사(ramp)를 따라 변경된 후, <code>endTime</code> 매개변수에 주어진 시간에서 새로운 값에 도달합니다.</p> </dd> <dt id="audioparam.exponentialramptovalueattime"><a href="audioparam/exponentialramptovalueattime"><code>AudioParam.exponentialRampToValueAtTime()</code></a></dt> <dd> <p><code>AudioParam</code> 의 값에 점진적인 지수적 변화를 예정합니다. 이 변화는 <em>previous</em> 이벤트에 명시된 시간에 시작하고, <code>value</code> 매개변수에 주어진 새로운 값까지 지수적인 경사를 따라 변경된 후, <code>endTime</code> 매개변수에 주어진 시간에서 새로운 값에 도달합니다.</p> </dd> <dt id="audioparam.settargetattime"><a href="audioparam/settargetattime"><code>AudioParam.setTargetAtTime()</code></a></dt> <dd> <p><code>AudioParam</code> 의 값에 변화의 시작을 예정합니다. 이 변화는 <code>startTime</code> 에 명시된 시간에 시작해 <code>target</code> 매개변수에 주어진 값을 향해 지수적으로 움직입니다. 이 지수적인 감소(decay) 비율은 <code>timeConstant</code> 매개변수에 의해 정의되는데, 이 값은 초 단위로 측정된 시간입니다.</p> </dd> <dt id="audioparam.setvaluecurveattime"><a href="audioparam/setvaluecurveattime"><code>AudioParam.setValueCurveAtTime()</code></a></dt> <dd> <p><code>AudioParam</code> 의 값들이 주어진 구간에 맞도록 조정된 부동점 숫자들의 배열을 따르게 예정합니다. 수의 구간은 주어진 시작 시간에 시작하고, 주어진 지속 시간에 걸쳐 이어집니다.</p> </dd> <dt id="audioparam.cancelscheduledvalues"><a href="audioparam/cancelscheduledvalues"><code>AudioParam.cancelScheduledValues()</code></a></dt> <dd> <p><code>AudioParam</code> 에 예정된 모든 미래의 변화들을 취소합니다.</p> </dd> <dt id="audioparam.cancelandholdattime"><a href="audioparam/cancelandholdattime"><code>AudioParam.cancelAndHoldAtTime()</code></a></dt> <dd> <p><code>AudioParam</code> 에 예정된 모든 미래의 변화들을 취소하나 다른 메서드를 사용해 추가적인 변화가 만들어질 때까지 주어진 시간에서 값을 유지합니다.</p> </dd> </dl></div>
+<h2 id="예제">예제</h2>
+<div class="section-content">
+<p>첫째는 기본적인 예제인데 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/GainNode"><code>GainNode</code> <small>(en-US)</small></a>가 <code>gain</code> 값을 설정하는 것을 보여줍니다. <code>gain</code> 은 a-rate AudoParam의 예시인데, 왜냐하면 이 값은 잠재적으로 오디오의 각각의 샘플 프레임에 대해 다르게 설정될 수 있기 때문입니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="j9rKurG6D6dTxh1bwtIUFEVPwg6+D9t9IVtg7gd4Ah0=" data-language="js"><span class="token keyword">var</span> AudioContext <span class="token operator">=</span> window<span class="token punctuation">.</span>AudioContext <span class="token operator">||</span> window<span class="token punctuation">.</span>webkitAudioContext<span class="token punctuation">;</span>
+<span class="token keyword">var</span> audioCtx <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">AudioContext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">var</span> gainNode <span class="token operator">=</span> audioCtx<span class="token punctuation">.</span><span class="token function">createGain</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+gainNode<span class="token punctuation">.</span>gain<span class="token punctuation">.</span>value <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+</pre>
+</div> <p>다음 예제는 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/DynamicsCompressorNode"><code>DynamicsCompressorNode</code> <small>(en-US)</small></a>가 몇 개의 파라미터 값들을 조작하는 것을 보여줍니다. 이 값들은 k-rate AudioParam의 예시인데, 왜냐하면 이것들은 한번에 전체 오디오 블럭에 대해 설정되기 때문입니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="mvb8OOn1tkZicMfTB+daUIhrxp9m9HudXW39AT2BhA8=" data-language="js"><span class="token keyword">var</span> compressor <span class="token operator">=</span> audioCtx<span class="token punctuation">.</span><span class="token function">createDynamicsCompressor</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+compressor<span class="token punctuation">.</span>threshold<span class="token punctuation">.</span><span class="token function">setValueAtTime</span><span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">50</span><span class="token punctuation">,</span> audioCtx<span class="token punctuation">.</span>currentTime<span class="token punctuation">)</span><span class="token punctuation">;</span>
+compressor<span class="token punctuation">.</span>knee<span class="token punctuation">.</span><span class="token function">setValueAtTime</span><span class="token punctuation">(</span><span class="token number">40</span><span class="token punctuation">,</span> audioCtx<span class="token punctuation">.</span>currentTime<span class="token punctuation">)</span><span class="token punctuation">;</span>
+compressor<span class="token punctuation">.</span>ratio<span class="token punctuation">.</span><span class="token function">setValueAtTime</span><span class="token punctuation">(</span><span class="token number">12</span><span class="token punctuation">,</span> audioCtx<span class="token punctuation">.</span>currentTime<span class="token punctuation">)</span><span class="token punctuation">;</span>
+compressor<span class="token punctuation">.</span>attack<span class="token punctuation">.</span><span class="token function">setValueAtTime</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> audioCtx<span class="token punctuation">.</span>currentTime<span class="token punctuation">)</span><span class="token punctuation">;</span>
+compressor<span class="token punctuation">.</span>release<span class="token punctuation">.</span><span class="token function">setValueAtTime</span><span class="token punctuation">(</span><span class="token number">0.25</span><span class="token punctuation">,</span> audioCtx<span class="token punctuation">.</span>currentTime<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div>
+</div>
+<h2 id="명세서">명세서</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://webaudio.github.io/web-audio-api/#AudioParam">Web Audio API <br><small># AudioParam</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="web_audio_api/using_web_audio_api">Web Audio API 사용하기</a></li> </ul></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/AudioParam" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/AudioParam</a>
+  </p>
+</div>

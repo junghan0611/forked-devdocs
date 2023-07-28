@@ -1,0 +1,59 @@
+<header><h1>class 식</h1></header><div class="section-content"><p><strong>class 표현식</strong>은 ECMAScript 2015 (ES6)에서 클래스를 정의하는 한 방법입니다. <a href="function">function 식</a>과 비슷하게, class 식은 기명(named) 또는 익명(unnamed)일 수 있습니다. 기명인 경우, 클래스명은 클래스 본체(body)에서만 지역(local)입니다. JavaScript 클래스는 프로토타입(원형) 기반 상속을 사용합니다.</p></div>
+<section aria-labelledby="시도해보기"><h2 id="시도해보기">시도해보기</h2>
+<div class="section-content"><iframe class="interactive is-js-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/js/expressions-classexpression.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe></div></section><section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="ddmnVmhnCpUFhdBGjUHvy7geu+Ay72VW7vPuUwLyFFs=" data-language="js">    <span class="token keyword">var</span> MyClass <span class="token operator">=</span> <span class="token keyword">class</span> <span class="token punctuation">[</span>className<span class="token punctuation">]</span> <span class="token punctuation">[</span><span class="token keyword">extends</span><span class="token punctuation">]</span> <span class="token punctuation">{</span>
+      <span class="token comment">// class body</span>
+    <span class="token punctuation">}</span><span class="token punctuation">;</span>
+</pre>
+</div></div></section><section aria-labelledby="설명"><h2 id="설명">설명</h2>
+<div class="section-content">
+<p>class 식은 <a href="../statements/class">class 문</a>과 구문이 비슷합니다. 그러나, class 식의 경우 클래스명("binding identifier")을 생략할 수 있는데 class 문으로는 할 수 없습니다.</p> <p>class 문과 같이, class 식의 본체는 <a href="../strict_mode">엄격 모드</a>에서 실행됩니다.</p>
+</div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+</section><section aria-labelledby="간단한_class_식"><h3 id="간단한_class_식">간단한 class 식</h3>
+<div class="section-content">
+<p>이게 바로 변수 "Foo"를 사용하여 참조할 수 있는 간단한 익명 class 식입니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="2siyAQiTDZYRAxtar2zDFGqWESwFEo6ucMyp0D3BFTY=" data-language="js"><span class="token keyword">var</span> Foo <span class="token operator">=</span> <span class="token keyword">class</span> <span class="token punctuation">{</span>
+  <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+  <span class="token function">bar</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token string">"Hello World!"</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">var</span> instance <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+instance<span class="token punctuation">.</span><span class="token function">bar</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// "Hello World!"</span>
+Foo<span class="token punctuation">.</span>name<span class="token punctuation">;</span> <span class="token comment">// ""</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="named_class_식"><h3 id="named_class_식">Named class 식</h3>
+<div class="section-content">
+<p>당신이 클래스 몸통 내에서 현재 클래스를 참조하고 싶다면, 유명 class 식을 만들 수 있습니다. 이 이름은 오직 class 식 자체 범위에서만 볼 수 있습니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="0tWZP1WW272sk4lVpc5mPsC/6CLU+vURnOOwOlWk9y4=" data-language="js"><span class="token keyword">var</span> Foo <span class="token operator">=</span> <span class="token keyword">class</span> <span class="token class-name">NamedFoo</span> <span class="token punctuation">{</span>
+  <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+  <span class="token function">whoIsThere</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> NamedFoo<span class="token punctuation">.</span>name<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">var</span> bar <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+bar<span class="token punctuation">.</span><span class="token function">whoIsThere</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// "NamedFoo"</span>
+NamedFoo<span class="token punctuation">.</span>name<span class="token punctuation">;</span> <span class="token comment">// ReferenceError: NamedFoo가 정의되지 않음</span>
+Foo<span class="token punctuation">.</span>name<span class="token punctuation">;</span> <span class="token comment">// "NamedFoo"</span>
+</pre>
+</div>
+</div></section><h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://tc39.es/ecma262/multipage/ecmascript-language-functions-and-classes.html#sec-class-definitions">ECMAScript Language Specification <br><small># sec-class-definitions</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="function"><code>function</code> 식</a></li> <li><a href="../statements/class"><code>class</code> 문</a></li> <li><a href="../classes">Classes</a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Operators/class" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Operators/class</a>
+  </p>
+</div>

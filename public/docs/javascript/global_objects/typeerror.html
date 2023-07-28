@@ -1,0 +1,58 @@
+<header><h1>TypeError</h1></header><div class="section-content">
+<p><code>TypeError</code> 객체는 일반적으로 값이 기대하던 자료형이 아니라서 연산을 할 수 없을 때 발생하는 오류를 나타냅니다.</p> <p>다음과 같은 경우 <code>TypeError</code>가 발생할 수 있습니다.</p> <ul> <li>함수에 전달된 피연산자 또는 인수가 해당 연산자나 함수가 예상하는 타입과 호환되지 않을 경우</li> <li>변경할 수 없는 값을 수정하려고 할 경우</li> <li>부적절한 방법으로 값을 사용하려고 할 경우</li> </ul> <p> <code>TypeError</code>는 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Glossary/Serializable_object">직렬화 가능한 객체 <small>(en-US)</small></a>이기 때문에, <a href="https://developer.mozilla.org/ko/docs/Web/API/structuredClone"><code>structuredClone()</code></a>로 복제하거나 <a href="https://developer.mozilla.org/ko/docs/Web/API/Worker/postMessage"><code>postMessage()</code></a>를 사용하여 <a href="https://developer.mozilla.org/ko/docs/Web/API/Worker">Workers</a> 간에 복사할 수 있습니다. </p>
+</div>
+<section aria-labelledby="생성자"><h2 id="생성자">생성자</h2>
+<div class="section-content"><dl> <dt id="typeerror"><a href="typeerror/typeerror"><code>TypeError()</code></a></dt> <dd> <p>새로운 <code>TypeError</code> 객체를 생성합니다.</p> </dd> </dl></div></section><section aria-labelledby="인스턴스_속성"><h2 id="인스턴스_속성">인스턴스 속성</h2>
+<div class="section-content"><dl> <dt id="typeerror.prototype.message"><a href="error/message"><code>TypeError.prototype.message</code></a></dt> <dd> <p>오류 메시지. <a href="error"><code>Error</code></a>로부터 상속되었습니다.</p> </dd> <dt id="typeerror.prototype.name"><a href="error/name"><code>TypeError.prototype.name</code></a></dt> <dd> <p>오류 이름. <a href="error"><code>Error</code></a>로부터 상속되었습니다.</p> </dd> <dt id="typeerror.prototype.cause"><a href="error/cause"><code>TypeError.prototype.cause</code></a></dt> <dd> <p>오류 원인. <a href="error"><code>Error</code></a>로부터 상속되었습니다.</p> </dd> <dt id="typeerror.prototype.filename">
+<a href="error/filename"><code>TypeError.prototype.fileName</code></a> <abbr class="icon icon-nonstandard" title="비표준. 사용하기전에 다른 브라우저에서도 사용 가능한지 확인 해주세요."> <span class="visually-hidden">비표준</span> </abbr>
+</dt> <dd> <p>오류가 발생한 파일 경로. <a href="error"><code>Error</code></a>로부터 상속되었습니다.</p> </dd> <dt id="typeerror.prototype.linenumber">
+<a href="error/linenumber"><code>TypeError.prototype.lineNumber</code></a> <abbr class="icon icon-nonstandard" title="비표준. 사용하기전에 다른 브라우저에서도 사용 가능한지 확인 해주세요."> <span class="visually-hidden">비표준</span> </abbr>
+</dt> <dd> <p>오류가 발생한 곳의 줄 위치. <a href="error"><code>Error</code></a>로부터 상속되었습니다.</p> </dd> <dt id="typeerror.prototype.columnnumber">
+<a href="error/columnnumber"><code>TypeError.prototype.columnNumber</code></a> <abbr class="icon icon-nonstandard" title="비표준. 사용하기전에 다른 브라우저에서도 사용 가능한지 확인 해주세요."> <span class="visually-hidden">비표준</span> </abbr>
+</dt> <dd> <p>오류가 발생한 곳의 열 위치. <a href="error"><code>Error</code></a>로부터 상속되었습니다.</p> </dd> <dt id="typeerror.prototype.stack_en-us"><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error/stack"><code>TypeError.prototype.stack</code> <small>(en-US)</small></a></dt> <dd> <p>스택 추적. <a href="error"><code>Error</code></a>로부터 상속되었습니다.</p> </dd> </dl></div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+</section><section aria-labelledby="typeerror_오류를_잡아내기"><h3 id="typeerror_오류를_잡아내기">
+<code>TypeError</code> 오류를 잡아내기</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="O+v6xoCG0tp1CLjk4IvHPE5HqiqVK1WTzAsezPp51Xc=" data-language="js"><span class="token keyword">try</span> <span class="token punctuation">{</span>
+  <span class="token keyword">null</span><span class="token punctuation">.</span><span class="token function">f</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span>e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>e <span class="token keyword">instanceof</span> <span class="token class-name">TypeError</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// true</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>e<span class="token punctuation">.</span>message<span class="token punctuation">)</span><span class="token punctuation">;</span>              <span class="token comment">// "null has no properties"</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>e<span class="token punctuation">.</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span>                 <span class="token comment">// "TypeError"</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>e<span class="token punctuation">.</span>fileName<span class="token punctuation">)</span><span class="token punctuation">;</span>             <span class="token comment">// "Scratchpad/1"</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>e<span class="token punctuation">.</span>lineNumber<span class="token punctuation">)</span><span class="token punctuation">;</span>           <span class="token comment">// 2</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>e<span class="token punctuation">.</span>columnNumber<span class="token punctuation">)</span><span class="token punctuation">;</span>         <span class="token comment">// 2</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>e<span class="token punctuation">.</span>stack<span class="token punctuation">)</span><span class="token punctuation">;</span>                <span class="token comment">// "@Scratchpad/2:2:3\n"</span>
+<span class="token punctuation">}</span>
+</pre>
+</div></div></section><section aria-labelledby="typeerror_오류를_생성하기"><h3 id="typeerror_오류를_생성하기">
+<code>TypeError</code> 오류를 생성하기</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="4Jc3ITZdy0aBESW6veV12CQ8x53amjODmQq2SsxO8FY=" data-language="js"><span class="token keyword">try</span> <span class="token punctuation">{</span>
+  <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">TypeError</span><span class="token punctuation">(</span><span class="token string">'Hello'</span><span class="token punctuation">,</span> <span class="token string">"someFile.js"</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span>e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>e <span class="token keyword">instanceof</span> <span class="token class-name">TypeError</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// true</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>e<span class="token punctuation">.</span>message<span class="token punctuation">)</span><span class="token punctuation">;</span>              <span class="token comment">// "Hello"</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>e<span class="token punctuation">.</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span>                 <span class="token comment">// "TypeError"</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>e<span class="token punctuation">.</span>fileName<span class="token punctuation">)</span><span class="token punctuation">;</span>             <span class="token comment">// "someFile.js"</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>e<span class="token punctuation">.</span>lineNumber<span class="token punctuation">)</span><span class="token punctuation">;</span>           <span class="token comment">// 10</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>e<span class="token punctuation">.</span>columnNumber<span class="token punctuation">)</span><span class="token punctuation">;</span>         <span class="token comment">// 0</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>e<span class="token punctuation">.</span>stack<span class="token punctuation">)</span><span class="token punctuation">;</span>                <span class="token comment">// "@Scratchpad/2:2:9\n"</span>
+<span class="token punctuation">}</span>
+</pre>
+</div></div></section><h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://tc39.es/ecma262/multipage/fundamental-objects.html#sec-native-error-types-used-in-this-standard-typeerror">ECMAScript Language Specification <br><small># sec-native-error-types-used-in-this-standard-typeerror</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="error"><code>Error</code></a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/TypeError" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/TypeError</a>
+  </p>
+</div>

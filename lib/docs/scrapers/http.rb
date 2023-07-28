@@ -5,12 +5,12 @@ module Docs
     # release = '2022-11-17'
     self.name = 'HTTP'
     self.base_urls = [
-      'https://developer.mozilla.org/en-US/docs/Web/HTTP',
+      'https://developer.mozilla.org/ko/docs/Web/HTTP',
       'https://datatracker.ietf.org/doc/html/',
     ]
     self.links = {
-      home: 'https://developer.mozilla.org/en-US/docs/Web/HTTP',
-      code: 'https://github.com/mdn/content/tree/main/files/en-us/web/http'
+      home: 'https://developer.mozilla.org/ko/docs/Web/HTTP',
+      code: 'https://github.com/mdn/translated-content/tree/main/files/ko/web/http'
     }
 
     options[:attribution] = <<-HTML
@@ -45,7 +45,7 @@ module Docs
     end
 
     def initial_urls
-      %w(https://developer.mozilla.org/en-US/docs/Web/HTTP
+      %w(https://developer.mozilla.org/ko/docs/Web/HTTP
          https://datatracker.ietf.org/doc/html/rfc4918
          https://datatracker.ietf.org/doc/html/rfc9110
          https://datatracker.ietf.org/doc/html/rfc9111

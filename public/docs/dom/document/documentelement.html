@@ -1,0 +1,34 @@
+<header><h1>Document.documentElement</h1></header><div class="section-content"><p><code>Document.documentElement</code> 읽기 전용 속성은 <a href="../document">문서</a>의 루트 요소를 나타내는 <a href="../element"><code>Element</code></a>를 반환합니다. HTML 문서를 예로 들면 <a href="https://developer.mozilla.org/ko/docs/Web/HTML/Element/html"><code>&lt;html&gt;</code></a> 요소를 반환합니다.</p></div>
+<h2 id="구문">구문</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="BKLnh6bbOqi/SYaVN9sdfqklV3cQdt3rFqIvGGOYPAI=" data-language="js"><span class="token keyword">const</span> element <span class="token operator">=</span> document<span class="token punctuation">.</span>documentElement
+</pre>
+</div></div>
+<h2 id="예제">예제</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="9c025qI18Xaua+NwTBCNvV8zP+gtoIO3UMa49QrRqac=" data-language="js"><span class="token keyword">const</span> rootElement <span class="token operator">=</span> document<span class="token punctuation">.</span>documentElement<span class="token punctuation">;</span>
+<span class="token keyword">const</span> firstTier <span class="token operator">=</span> rootElement<span class="token punctuation">.</span>childNodes<span class="token punctuation">;</span>
+<span class="token comment">// firstTier is a NodeList of the direct children of the root element</span>
+<span class="token comment">// such as &lt;head&gt; and &lt;body&gt;</span>
+
+<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">const</span> child <span class="token keyword">of</span> firstTier<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+   <span class="token comment">// do something with each direct child of the root element</span>
+<span class="token punctuation">}</span>
+</pre>
+</div></div>
+<h2 id="참고">참고</h2>
+<div class="section-content"><p>모든 비어있지 않은 HTML 문서의 <code>documentElement</code>는 항상 <a href="https://developer.mozilla.org/ko/docs/Web/HTML/Element/html"><code>&lt;html&gt;</code></a> 요소를 가리킵니다. 모든 비어있지 않은 XML 문서의 <code>documentElement</code>는 종류불문하고 해당 문서의 루트 요소를 가리킵니다.</p></div>
+<h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="#">DOM Standard <br><small># ref-for-dom-document-documentelement①</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/Document/documentElement" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/Document/documentElement</a>
+  </p>
+</div>

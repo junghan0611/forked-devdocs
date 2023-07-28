@@ -1,0 +1,118 @@
+<header><h1>arguments 객체</h1></header><div class="section-content">
+<p><code>arguments</code> 객체는 함수에 전달된 인수에 해당하는 <code>Array</code> 형태의 객체입니다.</p> <div class="notecard note" id="sect1"> <p><strong>참고:</strong> ES6 호환 코드를 작성 중이라면 되도록 <a href="rest_parameters">나머지 매개변수</a> 구문을 사용해야 합니다.</p> </div> <div class="notecard note" id="sect2"> <p><strong>참고:</strong> "<code>Array</code> 형태"란 <code>arguments</code>가 <a href="../global_objects/array/length"><code>length</code></a> 속성과 더불어 0부터 인덱스 된 다른 속성을 가지고 있지만, <a href="../global_objects/array"><code>Array</code></a>의 <a href="../global_objects/array/foreach"><code>forEach</code></a>, <a href="../global_objects/array/map"><code>map</code></a>과 같은 내장 메서드를 가지고 있지 않다는 뜻입니다.</p> </div>
+</div>
+<section aria-labelledby="시도해보기"><h2 id="시도해보기">시도해보기</h2>
+<div class="section-content"><iframe class="interactive is-js-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/js/functions-arguments.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe></div></section><section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content"><pre class="notranslate">    arguments
+</pre></div></section><section aria-labelledby="설명"><h2 id="설명">설명</h2>
+<div class="section-content">
+<p><code>arguments</code> 객체는 모든 함수 내에서 이용 가능한 지역 변수입니다. <code>arguments</code> 객체를 사용하여 함수 내에서 모든 인수를 참조할 수 있으며, 호출할 때 제공한 인수 각각에 대한 항목을 갖고 있습니다. 항목의 인덱스는 0부터 시작합니다.</p> <p>예를 들어, 함수가 세 개의 인수를 받은 경우 다음과 같이 접근할 수 있습니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="4P2xb4buPxNsxaldeSdU+VeScJynlKQZKGYaX8RKAhE=" data-language="js">arguments<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
+arguments<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span>
+arguments<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span>
+</pre>
+</div> <p>각 인수를 설정하거나 재할당할 수도 있습니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="TZwxcoufw27GJHBazmN/yLWcS4hcII+7Vro9f24MQKQ=" data-language="js">arguments<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">'new value'</span><span class="token punctuation">;</span>
+</pre>
+</div> <p><code>arguments</code> 객체는 <a href="../global_objects/array"><code>Array</code></a>가 아닙니다. <code>Array</code>와 비슷하지만, <a href="../global_objects/array/length"><code>length</code></a> 빼고는 <a href="../global_objects/array/pop"><code>pop()</code></a>과 같은 어떤 <code>Array</code> 속성도 없습니다. 그러나 실제 <code>Array</code>로 변환할 수 있습니다:</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="f+r3QfB1/J/ckFeMA6cwsjsXqtBkPjdi5g2e14/OFTU=" data-language="js"><span class="token keyword">var</span> args <span class="token operator">=</span> <span class="token class-name">Array</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function">slice</span><span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span>arguments<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> args <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">slice</span><span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span>arguments<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div> <p><code>arguments</code>를 실제 <code>Array</code>로 변환하기 위해 ES2015의 <a href="../global_objects/array/from"><code>Array.from()</code></a> 메서드 또는 <a href="../operators/spread_syntax">전개 연산자</a>를 사용할 수도 있습니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="QwoZ+cqCLO7tlMxCFK2E85DAhY2ivMXku/U2ZhwOIR4=" data-language="js"><span class="token keyword">var</span> args <span class="token operator">=</span> Array<span class="token punctuation">.</span><span class="token function">from</span><span class="token punctuation">(</span>arguments<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> args <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token operator">...</span>arguments<span class="token punctuation">]</span><span class="token punctuation">;</span>
+</pre>
+</div> <p>당신이 형식상 받기로 선언된 것보다 많은 인수로 함수를 호출하는 경우 <code>arguments</code> 객체를 사용할 수 있습니다. 이 기법은 가변 인수가 전달될 수 있는 함수에 유용합니다. 함수에 전달된 인수의 수를 결정하기 위해 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/arguments/length" class="only-in-en-us"><code>arguments.length</code> <small>(en-US)</small></a>를 쓰세요, 그 뒤에 <code>arguments</code> 객체를 사용하여 각 인수를 처리하세요. 함수 <a href="https://developer.mozilla.org/ko/docs/Glossary/Signature/Function">signature</a>에 매개변수의 수를 결정하기 위해서는, <a href="../global_objects/function/length"><code>Function.length</code></a> 속성을 쓰세요.</p>
+</div></section><section aria-labelledby="속성"><h2 id="속성">속성</h2>
+<div class="section-content"><dl> <dt id="arguments.callee"><a href="arguments/callee"><code>arguments.callee</code></a></dt> <dd> <p>현재 실행 중인 함수를 가리킵니다.</p> </dd> <dt id="arguments.caller">
+<a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Functions/arguments/caller" class="page-not-created"><code>arguments.caller</code></a> <abbr class="icon icon-deprecated" title="지원이 중단되었습니다. 새로운 웹사이트에서 사용하지 마세요."> <span class="visually-hidden">지원이 중단되었습니다</span> </abbr>
+</dt> <dd> <p>현재 실행 중인 함수를 호출한 함수를 가리킵니다.</p> </dd> <dt id="arguments.length"><a href="arguments/length"><code>arguments.length</code></a></dt> <dd> <p>함수에 전달된 인수의 수를 가리킵니다.</p> </dd> <dt id="argumentsiterator"><a href="arguments/@@iterator"><code>arguments[@@iterator]</code></a></dt> <dd> <p>arguments의 각 인덱스 값을 포함하는 새로운 Array Iterator 객체를 반환합니다.</p> </dd> </dl></div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+</section><section aria-labelledby="여러_문자열을_연결하는_함수_정의하기"><h3 id="여러_문자열을_연결하는_함수_정의하기">여러 문자열을 연결하는 함수 정의하기</h3>
+<div class="section-content">
+<p>이 예는 여러 문자열을 연결하는 함수를 정의합니다. 함수의 유일한 형식 인수는 연결할 항목을 구분하는 문자를 지정하는 문자열입니다. 함수는 다음과 같이 정의됩니다:</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="eL6m1eU8hy2TWZny47QbyvSpwa69sGHAzLN4t+fLQ9g=" data-language="js"><span class="token keyword">function</span> <span class="token function">myConcat</span><span class="token punctuation">(</span><span class="token parameter">separator</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">var</span> args <span class="token operator">=</span> <span class="token class-name">Array</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function">slice</span><span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span>arguments<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">return</span> args<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span>separator<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div> <p>이 함수에 인수를 얼마든지 전달할 수 있으며 리스트 내 항목처럼 각 인수를 사용하여 리스트를 만듭니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="bbRoh1dmSFvAEb6zlqvj4PuKY0UrIasTNRwbxRo/iQ8=" data-language="js"><span class="token comment">// "red, orange, blue" 반환</span>
+<span class="token function">myConcat</span><span class="token punctuation">(</span><span class="token string">", "</span><span class="token punctuation">,</span> <span class="token string">"red"</span><span class="token punctuation">,</span> <span class="token string">"orange"</span><span class="token punctuation">,</span> <span class="token string">"blue"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// "elephant; giraffe; lion; cheetah" 반환</span>
+<span class="token function">myConcat</span><span class="token punctuation">(</span><span class="token string">"; "</span><span class="token punctuation">,</span> <span class="token string">"elephant"</span><span class="token punctuation">,</span> <span class="token string">"giraffe"</span><span class="token punctuation">,</span> <span class="token string">"lion"</span><span class="token punctuation">,</span> <span class="token string">"cheetah"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// "sage. basil. oregano. pepper. parsley" 반환</span>
+<span class="token function">myConcat</span><span class="token punctuation">(</span><span class="token string">". "</span><span class="token punctuation">,</span> <span class="token string">"sage"</span><span class="token punctuation">,</span> <span class="token string">"basil"</span><span class="token punctuation">,</span> <span class="token string">"oregano"</span><span class="token punctuation">,</span> <span class="token string">"pepper"</span><span class="token punctuation">,</span> <span class="token string">"parsley"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="html_리스트를_만드는_함수_정의하기"><h3 id="html_리스트를_만드는_함수_정의하기">HTML 리스트를 만드는 함수 정의하기</h3>
+<div class="section-content">
+<p>이 예는 리스트 HTML을 포함하는 문자열을 만드는 함수를 정의합니다. 함수의 유일한 형식 인수는 리스트가 정렬되지 않은(bulluet(글 머리 기호)가 붙는) 경우 "<code>u</code>" 또는 정렬된(번호가 매겨진) 경우 "<code>o</code>"인 문자열입니다. 함수는 다음과 같이 정의됩니다:</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="mbAcmbDch2wHv9ayaA2OXTqAxm8sumgS6yNIUfyvUi4=" data-language="js"><span class="token keyword">function</span> <span class="token function">list</span><span class="token punctuation">(</span><span class="token parameter">type</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">var</span> result <span class="token operator">=</span> <span class="token string">"&lt;"</span> <span class="token operator">+</span> type <span class="token operator">+</span> <span class="token string">"l&gt;&lt;li&gt;"</span><span class="token punctuation">;</span>
+  <span class="token keyword">var</span> args <span class="token operator">=</span> <span class="token class-name">Array</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function">slice</span><span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span>arguments<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  result <span class="token operator">+=</span> args<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span><span class="token string">"&lt;/li&gt;&lt;li&gt;"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  result <span class="token operator">+=</span> <span class="token string">"&lt;/li&gt;&lt;/"</span> <span class="token operator">+</span> type <span class="token operator">+</span> <span class="token string">"l&gt;"</span><span class="token punctuation">;</span> <span class="token comment">// end list</span>
+
+  <span class="token keyword">return</span> result<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div> <p>이 함수에 인수를 얼마든지 전달할 수 있고, 표시된 유형의 리스트에 항목으로 각 인수를 추가합니다. 예를 들면:</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="jm7IGIldPN7i3ZiydvuypWmEE/L/JJfcD6ipIu46IoM=" data-language="js"><span class="token keyword">var</span> listHTML <span class="token operator">=</span> <span class="token function">list</span><span class="token punctuation">(</span><span class="token string">"u"</span><span class="token punctuation">,</span> <span class="token string">"One"</span><span class="token punctuation">,</span> <span class="token string">"Two"</span><span class="token punctuation">,</span> <span class="token string">"Three"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">/* listHTML은:
+
+"&lt;ul&gt;&lt;li&gt;One&lt;/li&gt;&lt;li&gt;Two&lt;/li&gt;&lt;li&gt;Three&lt;/li&gt;&lt;/ul&gt;"
+
+*/</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="나머지_기본_및_비구조화된_매개변수"><h3 id="나머지_기본_및_비구조화된_매개변수">나머지, 기본 및 비구조화된 매개변수</h3>
+<div class="section-content">
+<p><code>arguments</code> 객체는 <a href="rest_parameters">나머지 매개변수</a>, <a href="default_parameters">기본 매개변수</a> 또는 <a href="../operators/destructuring_assignment">비구조화된 매개변수</a>와 함께 사용될 수 있습니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="c9CaFXZaBSJE1CNPAHi6SN6trRuSVDMoKS7r7/Yf994=" data-language="js"><span class="token keyword">function</span> <span class="token function">foo</span><span class="token punctuation">(</span><span class="token parameter"><span class="token operator">...</span>args</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> arguments<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token function">foo</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// { "0": 1, "1": 2, "2": 3 }</span>
+</pre>
+</div> <p>그러나, 비엄격 함수에서는 <code>arguments</code>는 함수가 어떤 <a href="rest_parameters">나머지 매개변수</a>, <a href="default_parameters">기본 매개변수</a> 또는 <a href="../operators/destructuring_assignment">비구조화된 매개변수</a>든 포함하지 <strong>않는</strong> 경우에만 제공됩니다. 예를 들어, 기본 매개변수를 사용하는 다음 함수에서는, 100 대신에 <code>10</code>이 반환됩니다:</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="QrciTDXtC7hQmb6kcRxXL5qCdOrzkXxvITH2fL5nWH0=" data-language="js"><span class="token keyword">function</span> <span class="token function">bar</span><span class="token punctuation">(</span><span class="token parameter">a<span class="token operator">=</span><span class="token number">1</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  arguments<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">100</span><span class="token punctuation">;</span>
+  <span class="token keyword">return</span> a<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token function">bar</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 10</span>
+</pre>
+</div> <p>이 예에서, 어떤 <a href="rest_parameters">나머지 매개변수</a>, <a href="default_parameters">기본 매개변수</a> 또는 <a href="../operators/destructuring_assignment">비구조화된 매개변수</a>가 없는 경우에는, 100이 반환됩니다:</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="LpF1HQXIb0ef1RFdBWkZUApSrutgdimG007TfZr5NTY=" data-language="js"><span class="token keyword">function</span> <span class="token function">zoo</span><span class="token punctuation">(</span><span class="token parameter">a</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  arguments<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">100</span><span class="token punctuation">;</span>
+  <span class="token keyword">return</span> a<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token function">zoo</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 100</span>
+</pre>
+</div>
+</div></section><h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://tc39.es/ecma262/multipage/ordinary-and-exotic-objects-behaviours.html#sec-arguments-exotic-objects">ECMAScript Language Specification <br><small># sec-arguments-exotic-objects</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="../global_objects/function"><code>Function</code></a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Functions/arguments" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Functions/arguments</a>
+  </p>
+</div>

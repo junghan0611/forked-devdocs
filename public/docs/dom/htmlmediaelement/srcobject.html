@@ -1,0 +1,98 @@
+<header><h1>HTMLMediaElement.srcObject</h1></header><div class="section-content">
+<p> <a href="../htmlmediaelement"><code>HTMLMediaElement</code></a> 인터페이스의 <code>srcObject</code> 속성은 <a href="../htmlmediaelement"><code>HTMLMediaElement</code></a>와 관련된 미디어 소스 역할을 하는 객체를 설정하거나 반환합니다. </p> <p> srcObject 객체는 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/MediaStream"><code>MediaStream</code> <small>(en-US)</small></a>, a <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/MediaSource"><code>MediaSource</code> <small>(en-US)</small></a>, a <a href="../blob"><code>Blob</code></a> 또는 <a href="../file"><code>File</code></a>(<code>Blob</code>을 상속)일 수 있습니다. </p> <div class="notecard note" id="sect1"> <p><strong>참고:</strong> 2020년 3월 현재 Safari만이 <code>srcObject</code>를 완벽하게 지원합니다. 즉, <code>MediaSource</code>, <code>MediaStream</code>, <code>Blob</code>, 그리고 <code>File</code> 객체를 값으로 사용합니다. 다른 브라우저는 <code>MediaStream</code> 객체를 지원합니다. 다른 브라우저들이 지원할 때까지 <a href="../url/createobjecturl_static"><code>URL.createObjectURL()</code></a>을 사용하여 URL을 생성하고 이를 <a href="src"><code>HTMLMediaElement.src</code></a>에 할당하는 것을 고려하세요(예제는 아래에 있습니다). 또한 버전 108부터 Chromium은 해당 객체의 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/MediaSourceHandle"><code>MediaSourceHandle</code> <small>(en-US)</small></a> 인스턴스(워커에서 전송됨)를 <code>srcObject</code>에 할당하여 전용 워커 <code>MediaSource</code> 객체 연결을 지원합니다.</p> </div>
+</div>
+<h2 id="값">값</h2>
+<div class="section-content"><p> <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/MediaStream"><code>MediaStream</code> <small>(en-US)</small></a>, <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/MediaSource"><code>MediaSource</code> <small>(en-US)</small></a>, <a href="../blob"><code>Blob</code></a> 또는 <a href="../file"><code>File</code></a> 객체(실제로 지원되는 내용은 호환성 표를 참고하세요). </p></div>
+<h2 id="사용_일람">사용 일람</h2>
+<div class="section-content"><p> 이전 버전의 미디어 소스 명세는 <a href="../url/createobjecturl_static"><code>createObjectURL()</code></a>을 사용하여 객체 URL을 만든 다음 <a href="src"><code>src</code></a>를 해당 URL로 설정합니다. 이제 <code>srcObject</code>를 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/MediaStream"><code>MediaStream</code> <small>(en-US)</small></a>으로 직접 설정할 수 있습니다. </p></div>
+<h2 id="예제">예제</h2>
+
+<h3 id="기본_예제">기본 예제</h3>
+<div class="section-content">
+<p> 이 예제에서 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/MediaStream"><code>MediaStream</code> <small>(en-US)</small></a>은 새로 생성된 <a href="https://developer.mozilla.org/ko/docs/Web/HTML/Element/video"><code>&lt;video&gt;</code></a> 요소에 할당됩니다. </p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="3ejikpak6MXCNb6KQRt27DVnhLsIDnVWxIpjtCX04Fk=" data-language="js"><span class="token keyword">const</span> mediaStream <span class="token operator">=</span> <span class="token keyword">await</span> navigator<span class="token punctuation">.</span>mediaDevices<span class="token punctuation">.</span><span class="token function">getUserMedia</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token literal-property property">video</span><span class="token operator">:</span> <span class="token boolean">true</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> video <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">createElement</span><span class="token punctuation">(</span><span class="token string">"video"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+video<span class="token punctuation">.</span>srcObject <span class="token operator">=</span> mediaStream<span class="token punctuation">;</span>
+</pre>
+</div> <p> 이 예제에서 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/MediaSource"><code>MediaSource</code> <small>(en-US)</small></a>는 새로 생성된 <a href="https://developer.mozilla.org/ko/docs/Web/HTML/Element/video"><code>&lt;video&gt;</code></a> 요소에 할당됩니다. </p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="Mjf41b+fnn46hkquXACyLNSEK2J7l2STyebkX+n/aR4=" data-language="js"><span class="token keyword">const</span> mediaSource <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">MediaSource</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> video <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">createElement</span><span class="token punctuation">(</span><span class="token string">"video"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+video<span class="token punctuation">.</span>srcObject <span class="token operator">=</span> mediaSource<span class="token punctuation">;</span>
+</pre>
+</div>
+</div>
+<h3 id="src_속성에_대한_폴백_지원">src 속성에 대한 폴백 지원</h3>
+<div class="section-content">
+<p> 아래 예제는 <code>srcObject</code>가 지원되지 않는 경우 객체 URL을 만들고 이를 <code>src</code>에 할당해야 하는 이전 브라우저 버전을 지원합니다. </p> <p> 먼저 카메라의 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/MediaStream"><code>MediaStream</code> <small>(en-US)</small></a>이 새로 생성된 <a href="https://developer.mozilla.org/ko/docs/Web/HTML/Element/video"><code>&lt;video&gt;</code></a> 요소에 할당되고 이전 브라우저에 대한 폴백이 있습니다. </p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="bM8O9/ILyuffFWYm8tCOeRnwNeHcD/H5ATcex/GTd1Q=" data-language="js"><span class="token keyword">const</span> mediaStream <span class="token operator">=</span> <span class="token keyword">await</span> navigator<span class="token punctuation">.</span>mediaDevices<span class="token punctuation">.</span><span class="token function">getUserMedia</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token literal-property property">video</span><span class="token operator">:</span> <span class="token boolean">true</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> video <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">createElement</span><span class="token punctuation">(</span><span class="token string">"video"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token string">"srcObject"</span> <span class="token keyword">in</span> video<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  video<span class="token punctuation">.</span>srcObject <span class="token operator">=</span> mediaStream<span class="token punctuation">;</span>
+<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+  <span class="token comment">// 사라질 예정이므로 새 브라우저에서는 사용하지 마세요.</span>
+  video<span class="token punctuation">.</span>src <span class="token operator">=</span> <span class="token constant">URL</span><span class="token punctuation">.</span><span class="token function">createObjectURL</span><span class="token punctuation">(</span>mediaStream<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div> <p> 둘째, 새로운 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/MediaSource"><code>MediaSource</code> <small>(en-US)</small></a>가 새로 생성된 <a href="https://developer.mozilla.org/ko/docs/Web/HTML/Element/video"><code>&lt;video&gt;</code></a> 요소에 할당되며 이전 브라우저 및 아직 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/MediaSource"><code>MediaSource</code> <small>(en-US)</small></a>의 직접 할당을 지원하지 않는 브라우저에 대한 폴백이 있습니다. </p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="09aayybWq2NZdlad+rluRwfA0yher3Dm1GzTWoLyuRk=" data-language="js"><span class="token keyword">const</span> mediaSource <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">MediaSource</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> video <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">createElement</span><span class="token punctuation">(</span><span class="token string">"video"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// 이전 브라우저는 srcObject가 없을수 있습니다.</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token string">"srcObject"</span> <span class="token keyword">in</span> video<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">try</span> <span class="token punctuation">{</span>
+    video<span class="token punctuation">.</span>srcObject <span class="token operator">=</span> mediaSource<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span>err<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>err<span class="token punctuation">.</span>name <span class="token operator">!==</span> <span class="token string">"TypeError"</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">throw</span> err<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token comment">// 만약 srcObject가 있더라도 MediaStream만 지원하는 경우가 있을 수 있습니다.</span>
+    video<span class="token punctuation">.</span>src <span class="token operator">=</span> <span class="token constant">URL</span><span class="token punctuation">.</span><span class="token function">createObjectURL</span><span class="token punctuation">(</span>mediaSource<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+  video<span class="token punctuation">.</span>src <span class="token operator">=</span> <span class="token constant">URL</span><span class="token punctuation">.</span><span class="token function">createObjectURL</span><span class="token punctuation">(</span>mediaSource<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div>
+</div>
+<h3 id="워커에서_mediasource를_구성하고_재생을_위해_메인_스레드main_thread에_전달하기">워커에서 <code>MediaSource</code>를 구성하고 재생을 위해 메인 스레드(main thread)에 전달하기</h3>
+<div class="section-content">
+<p><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/MediaSource/handle"><code>MediaSource.handle</code> <small>(en-US)</small></a> 속성은 전용 워커 내에서 액세스 할 수 있으며 결과 값 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/MediaSourceHandle"><code>MediaSourceHandle</code> <small>(en-US)</small></a> 객체는 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/DedicatedWorkerGlobalScope/postMessage"><code>postMessage()</code> <small>(en-US)</small></a> 호출을 통해 워커를 생성한 스레드(이 경우 메인 스레드)로 전송됩니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="W5nL6XHylvJHnlyiEoXBpQIR+GRG18q9TZ15yz0sYYA=" data-language="js"><span class="token comment">// 내부 전용 워커</span>
+<span class="token keyword">let</span> mediaSource <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">MediaSource</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">let</span> handle <span class="token operator">=</span> mediaSource<span class="token punctuation">.</span>handle<span class="token punctuation">;</span>
+<span class="token comment">// 워커를 만든 컨텍스트로 핸들을 전송합니다</span>
+<span class="token function">postMessage</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token literal-property property">arg</span><span class="token operator">:</span> handle <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">[</span>handle<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+mediaSource<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">"sourceopen"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token comment">// SourceBuffers를 생성하고 가져온(fetched) 미디어로 채우기 전에</span>
+  <span class="token comment">// MediaSource에서 sourceopen을 기다리세요(await). MediaSource는</span>
+  <span class="token comment">// HTMLMediaElement에 연결되고 readyState가 "open"이 될 때까지</span>
+  <span class="token comment">// SourceBuffers 생성을 수락하지 않습니다.</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div> <p>메인 스레드에서 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/Worker/message_event"><code>message</code> <small>(en-US)</small></a> 이벤트 핸들러를 통해 핸들을 수신하고 <a href="srcobject" aria-current="page"><code>HTMLMediaElement.srcObject</code></a> 속성을 통해 <a href="https://developer.mozilla.org/ko/docs/Web/HTML/Element/video"><code>&lt;video&gt;</code></a>에 첨부하고 비디오를 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/play"><code>play</code> <small>(en-US)</small></a>합니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="LzCyLUIZpJcj/gwlBHP2wms+jcA6sfYnhizgc13pqHk=" data-language="js">worker<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">"message"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">msg</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token keyword">let</span> mediaSourceHandle <span class="token operator">=</span> msg<span class="token punctuation">.</span>data<span class="token punctuation">.</span>arg<span class="token punctuation">;</span>
+  video<span class="token punctuation">.</span>srcObject <span class="token operator">=</span> mediaSourceHandle<span class="token punctuation">;</span>
+  video<span class="token punctuation">.</span><span class="token function">play</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div> <div class="notecard note" id="sect2"> <p><strong>참고:</strong> <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/MediaSourceHandle"><code>MediaSourceHandle</code> <small>(en-US)</small></a>는 공유 워커 또는 서비스 워커를 통해 성공적으로 전송할 수 없습니다.</p> </div>
+</div>
+<h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://html.spec.whatwg.org/multipage/media.html#dom-media-srcobject-dev">HTML Standard <br><small># dom-media-srcobject-dev</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/HTMLMediaElement/srcObject" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/HTMLMediaElement/srcObject</a>
+  </p>
+</div>

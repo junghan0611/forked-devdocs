@@ -1,0 +1,36 @@
+<header><h1>inherit</h1></header><div class="section-content">
+<p>CSS <code>inherit</code> 키워드를 사용한 속성은 부모 요소로부터 해당 속성의 <a href="computed_value">계산값</a>을 받아 사용합니다. CSS <a href="all"><code>all</code></a> 단축 속성을 포함한 모든 속성에 사용할 수 있습니다.</p> <p>상속되는 속성(<a href="https://developer.mozilla.org/en-US/CSS/inheritance">inherited properties</a>)의 경우, 이는 기본 동작(behavior)을 강화하고 오직 다른 규칙을 재정의(override)해야 합니다. 상속되지 않는 속성(<a href="https://developer.mozilla.org/en-US/CSS/inheritance">non-inherited properties</a>)은, 이는 보통 비교적 거의 의미가 없는 동작을 지정하고 당신은 대신 <a href="initial"><code>initial</code></a> 혹은 <a href="all"><code>all</code></a> 속성에 <a href="unset"><code>unset</code></a> 사용을 고려할 지도 모릅니다.</p> <p>상속(Inheritance)은 심지어 부모 요소가 포함(containing) 블록이 아니더라도, 항상 문서 트리 내 부모 요소로부터입니다.</p>
+</div>
+<section aria-labelledby="예제"><h2 id="예제">예제</h2>
+<div class="section-content">
+<div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="kyf9tWFbDZS69aloAqL6im7gD3JL/wqkmW+XPWd4WM4=" data-language="css"> <span class="token comment">/* h2를 green으로 만듦 */</span>
+ <span class="token selector">h2</span> <span class="token punctuation">{</span> <span class="token property">color</span><span class="token punctuation">:</span> green<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+
+ <span class="token comment">/* 부모 요소의 color를 사용하도록 sidebar 내의 h2를 홀로 남김 */</span>
+ <span class="token selector">#sidebar h2</span> <span class="token punctuation">{</span> <span class="token property">color</span><span class="token punctuation">:</span> inherit<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+</pre>
+</div> <p>이 예제에서 sidebar 내부의 <code>h2</code> 요소는 다른 색일지도 모릅니다. 예를 들어, 그 중 하나는 규칙과 일치하는 div의 자식이라면</p> <div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="GxDlHhjJFC7Jl4LB9Ga0QmU2CMMs+0tc9UjN1xrFPYg=" data-language="css"> <span class="token selector">div#current</span> <span class="token punctuation">{</span> <span class="token property">color</span><span class="token punctuation">:</span> blue<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+</pre>
+</div> <p>파란색이 됩니다.</p>
+</div></section><h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://drafts.csswg.org/css-cascade/#inherit">CSS Cascading and Inheritance Level 4 <br><small># inherit</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="inheritance">상속</a></li> <li>
+<a href="initial"><code>initial</code></a>을 사용해 속성의 초깃값을 사용하세요.</li> <li>
+<a href="unset"><code>unset</code></a>을 사용해 속성의 상속값 또는 초깃값을 사용하세요.</li> <li>
+<a href="revert"><code>revert</code></a>를 사용해 사용자 에이전트가 지정한 값(또는 사용자가 수정한 값)으로 속성을 되돌리세요.</li> <li>
+<a href="all"><code>all</code></a> 속성을 사용하면 요소의 모든 속성을 한꺼번에 <code>initial</code>, <code>inherit</code>, <code>revert</code>, <code>unset</code>할 수 있습니다.</li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/CSS/inherit" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/CSS/inherit</a>
+  </p>
+</div>

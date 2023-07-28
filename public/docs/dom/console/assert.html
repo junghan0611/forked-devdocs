@@ -1,0 +1,50 @@
+<header><h1>console.assert()</h1></header><div class="section-content">
+<p><code>console.assert()</code> 메서드는 주어진 가정이 거짓인 경우 콘솔에 오류 메시지를 출력합니다. 참인 경우, 아무것도 하지 않습니다.</p>
+<div class="notecard note" id="sect1"> <p><strong>참고:</strong> 이 기능은 <a href="../web_workers_api">Web Worker</a>에서 사용할 수 있습니다</p> </div>
+</div>
+<h2 id="구문">구문</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="cgXkJZLNBjLQMdl9zfTjxBZO/Jih35wlicTqq46/YhA=" data-language="js">console<span class="token punctuation">.</span><span class="token function">assert</span><span class="token punctuation">(</span>assertion<span class="token punctuation">,</span> obj1 <span class="token punctuation">[</span><span class="token punctuation">,</span> obj2<span class="token punctuation">,</span> <span class="token operator">...</span><span class="token punctuation">,</span> objN<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">assert</span><span class="token punctuation">(</span>assertion<span class="token punctuation">,</span> msg <span class="token punctuation">[</span><span class="token punctuation">,</span> subst1<span class="token punctuation">,</span> <span class="token operator">...</span><span class="token punctuation">,</span> substN<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// C-like message formatting</span>
+</pre>
+</div></div>
+<h3 id="매개변수">매개변수</h3>
+<div class="section-content"><dl> <dt id="assertion"><code>assertion</code></dt> <dd> <p>아무 불리언 표현식. 거짓인 경우, 메시지를 콘솔에 출력합니다.</p> </dd> <dt id="obj1">
+<code>obj1</code> ... <code>objN</code>
+</dt> <dd> <p>출력에 사용할 JavaScript 객체. 각각의 문자열 표현은 입력한 순서대로 함께 출력됩니다.</p> </dd> <dt id="msg"><code>msg</code></dt> <dd> <p>0개 이상의 치환 문자열을 포함하는 JavaScript 문자열.</p> </dd> <dt id="subst1">
+<code>subst1</code> ... <code>substN</code>
+</dt> <dd> <p><code>msg</code> 매개변수의 치환 문자열에 대입할 JavaScript 객체. 이 매개변수를 사용하면 출력 형식을 추가로 제어할 수 있습니다.</p> </dd> </dl></div>
+<h2 id="예제">예제</h2>
+<div class="section-content">
+<p>다음 예제는 객체와 가정을 함께 사용하는 법을 보입니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="Q5ED9ARJuVH831JpYvs955WZErjwUXniSacfa1LT12g=" data-language="js"><span class="token keyword">const</span> errorMsg <span class="token operator">=</span> <span class="token string">'the # is not even'</span><span class="token punctuation">;</span>
+<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> number <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span> number <span class="token operator">&lt;=</span> <span class="token number">5</span><span class="token punctuation">;</span> number <span class="token operator">+=</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'the # is '</span> <span class="token operator">+</span> number<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    console<span class="token punctuation">.</span><span class="token function">assert</span><span class="token punctuation">(</span>number <span class="token operator">%</span> <span class="token number">2</span> <span class="token operator">===</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token punctuation">{</span><span class="token literal-property property">number</span><span class="token operator">:</span> number<span class="token punctuation">,</span> <span class="token literal-property property">errorMsg</span><span class="token operator">:</span> errorMsg<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// or, using ES2015 object property shorthand:</span>
+    <span class="token comment">// console.assert(number % 2 === 0, {number, errorMsg});</span>
+<span class="token punctuation">}</span>
+<span class="token comment">// output:</span>
+<span class="token comment">// the # is 2</span>
+<span class="token comment">// the # is 3</span>
+<span class="token comment">// Assertion failed: {number: 3, errorMsg: "the # is not even"}</span>
+<span class="token comment">// the # is 4</span>
+<span class="token comment">// the # is 5</span>
+<span class="token comment">// Assertion failed: {number: 5, errorMsg: "the # is not even"}</span>
+</pre>
+</div> <p>자세한 내용은 <a href="../console"><code>console</code></a> 문서의 <a href="../console#%EC%BD%98%EC%86%94%EC%97%90_%ED%85%8D%EC%8A%A4%ED%8A%B8_%EC%B6%9C%EB%A0%A5%ED%95%98%EA%B8%B0">콘솔에 텍스트 출력하기</a>를 참고하세요.</p>
+</div>
+<h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://console.spec.whatwg.org/#assert">Console Standard <br><small># assert</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/console/assert" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/console/assert</a>
+  </p>
+</div>

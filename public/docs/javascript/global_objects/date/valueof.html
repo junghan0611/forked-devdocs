@@ -1,0 +1,33 @@
+<header><h1>Date.prototype.valueOf()</h1></header><div class="section-content"><p><code>valueOf()</code> 함수는 <a href="../date"><code>Date</code></a> 객체의 원시값을 반환합니다.</p></div>
+<section aria-labelledby="시도해보기"><h2 id="시도해보기">시도해보기</h2>
+<div class="section-content"><iframe class="interactive is-js-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/js/date-valueof.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe></div></section><section aria-labelledby="syntax"><h2 id="syntax">Syntax</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="+5ZwdeKrkUiGUsBSe1Jfd57yDt1aA8V9A0NsbDwxU0I=" data-language="js">    dateObj<span class="token punctuation">.</span><span class="token function">valueOf</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+</pre>
+</div></div></section><section aria-labelledby="return_value"><h3 id="return_value">Return value</h3>
+<div class="section-content"><p>반환되는 milliseconds 값은 1 January 1970 00:00:00 UTC 와 주어진 일시 사이의 값입니다.</p></div></section><section aria-labelledby="description"><h2 id="description">Description</h2>
+<div class="section-content">
+<p><code>valueOf()</code> 함수는 01 January, 1970 UTC 이후의 milliseconds 단위의 자연수 타입인 <a href="../date"><code>Date</code></a> 객체의 원시값을 반환합니다.</p> <p>이 함수는 <a href="gettime"><code>Date.prototype.getTime()</code></a> 함수와 동일한 결과값을 반환합니다.</p> <p>이 함수는 사용자 코드에 명시된 것이 아닌, JavaScript 자체에 포함되어 있습니다.</p>
+</div></section><section aria-labelledby="examples"><h2 id="examples">Examples</h2>
+</section><section aria-labelledby="using_valueof"><h3 id="using_valueof">Using <code>valueOf()</code>
+</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="pjoEuI1SnqWMcagd+4DY6vuJ0l/AhO6m9rtesLie3FI=" data-language="js"><span class="token keyword">var</span> x <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token number">56</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">,</span> <span class="token number">17</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> myVar <span class="token operator">=</span> x<span class="token punctuation">.</span><span class="token function">valueOf</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>      <span class="token comment">// myVar에 -424713600000를 할당합니다.</span>
+</pre>
+</div></div></section><h2 id="명세서">명세서</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://tc39.es/ecma262/multipage/numbers-and-dates.html#sec-date.prototype.valueof">ECMAScript Language Specification <br><small># sec-date.prototype.valueof</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="see_also"><h2 id="see_also">See also</h2>
+<div class="section-content"><ul> <li><a href="../object/valueof"><code>Object.prototype.valueOf()</code></a></li> <li><a href="gettime"><code>Date.prototype.getTime()</code></a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Date/valueOf" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Date/valueOf</a>
+  </p>
+</div>

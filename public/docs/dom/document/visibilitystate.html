@@ -1,0 +1,26 @@
+<header><h1>Document.visibilityState</h1></header><div class="section-content">
+<p><code>Document.visibilityState</code> 읽기 전용 property로, 이 element가 현재 표시된 컨텍스트를 나타내는 <a href="../document"><code>document</code></a>의 가시성을 반환합니다. document가 background 또는 보이지 않는 탭(다른 탭)에 있는지, 또는 pre-rendering을 위해 로드 된 것인지를 아는 것은 유용합니다. 가능한 값은 다음과 같습니다.</p> <ul> <li>
+<code>'visible'</code> : 페이지 내용은 적어도 부분적으로 보일 수 있습니다. 실제로 이는 페이지가 최소화 되지 않은 창(브라우저)에서의 선택된 탭 을 의미 합니다.</li> <li>
+<code>'hidden</code>' : 페이지 내용은 사용자에게 표시되지 않습니다. 실제로 이는 document가 background-tap(다른 탭)이거나, 최소화 된 창의 일부이거나, OS 화면 잠금이 활성 상태임을 의미합니다.</li> </ul> <p>이 property의 값이 변경되면 <a href="visibilitychange_event"><code>visibilitychange</code></a> 이벤트가 <a href="../document"><code>Document</code></a>로 전송됩니다.</p> <p>일반적으로 document pre-rendering 시에 일부 assets의 다운로드를 막을 수 있습니다(역:초기 로딩 속도 향상). document가 백그라운드에 있거나 최소화 된 상태에서 일부 작업을 중지 할 수 있습니다(역:대표적으로 interval). 브라우저를 참고하십시오.</p>
+</div>
+<h2 id="예제">예제</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="PLIdo3YobcNliGJJshHbjk5Vnl0Z+2tL3RVshZrUucY=" data-language="js">document<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">"visibilitychange"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>document<span class="token punctuation">.</span>visibilityState<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token comment">// 기타 동작...</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div></div>
+<h2 id="명세서">명세서</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://html.spec.whatwg.org/multipage/interaction.html#dom-document-visibilitystate">HTML Standard <br><small># dom-document-visibilitystate</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/Document/visibilityState" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/Document/visibilityState</a>
+  </p>
+</div>

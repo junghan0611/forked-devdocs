@@ -1,0 +1,79 @@
+<header><h1>&lt;samp&gt;: 출력 예시 요소</h1></header><div class="section-content"><p><code>&lt;samp&gt;</code>는 컴퓨터 프로그램 출력의 예시(혹은 인용문)를 나타냅니다. 보통 브라우저의 기본 고정폭 글씨체(보통 Courier, Lucida Console)를 사용해 렌더링합니다.</p></div>
+<h2 id="시도해보기">시도해보기</h2>
+<div class="section-content">
+<iframe class="interactive is-tabbed-shorter-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/tabbed/samp.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe>  <figure class="table-container"><div class="_table"><table class="properties"> <tbody> <tr> <th scope="row"><a href="../content_categories">콘텐츠 카테고리</a></th> <td> <a href="../content_categories#%ed%94%8c%eb%a1%9c%ec%9a%b0_%ec%bd%98%ed%85%90%ec%b8%a0">플로우 콘텐츠</a>, <a href="../content_categories#%ea%b5%ac%eb%ac%b8_%ec%bd%98%ed%85%90%ec%b8%a0">구문 콘텐츠</a>, 뚜렷한 콘텐츠. </td> </tr> <tr> <th scope="row">가능한 콘텐츠</th> <td>
+<a href="../content_categories#%ea%b5%ac%eb%ac%b8_%ec%bd%98%ed%85%90%ec%b8%a0">구문 콘텐츠</a>.</td> </tr> <tr> <th scope="row">태그 생략</th> <td>불가능, 시작과 끝에 태그를 추가하는것은 필수입니다.</td> </tr> <tr> <th scope="row">가능한 부모 요소</th> <td>
+<a href="../content_categories#%ea%b5%ac%eb%ac%b8_%ec%bd%98%ed%85%90%ec%b8%a0">구문 콘텐츠</a>를 허용하는 모든 요소.</td> </tr> <tr> <th scope="row">가능한 ARIA 역할</th> <td>모두</td> </tr> <tr> <th scope="row">DOM 인터페이스</th> <td><a href="https://developer.mozilla.org/ko/docs/Web/API/HTMLElement"><code>HTMLElement</code></a></td> </tr> </tbody> </table></div></figure>
+</div>
+<h2 id="특성">특성</h2>
+<div class="section-content"><p>이 요소는 <a href="../global_attributes">전역 특성</a>만 포함합니다.</p></div>
+<h2 id="사용_일람">사용 일람</h2>
+<div class="section-content">
+<p>브라우저가 <code>&lt;samp&gt;</code> 요소에 사용하는 기본 글씨체는 CSS를 사용해 바꿀 수 있습니다. 그러나 브라우저의 사용자 설정값이 모든 CSS보다 우선할 수도 있습니다.</p> <p>기본 글씨체를 덮어쓸 수 있는 CSS는 다음과 같은 형태입니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="Uxw6ThaSsf8ELJtNXLp/NodTL+pg+/PyYbpDm+BUX0s=" data-language="css"><span class="token selector">samp</span> <span class="token punctuation">{</span>
+  <span class="token property">font-family</span><span class="token punctuation">:</span> <span class="token string">"Courier"</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div> <div class="notecard note" id="sect1"> <p><strong>참고:</strong> 웹사이트나 앱의 JavaScript 코드 출력을 담을 컨테이너 요소가 필요하다면 <a href="output"><code>&lt;output&gt;</code></a> 요소를 사용해야 합니다.</p> </div>
+</div>
+<h2 id="예제">예제</h2>
+
+<h3 id="기본_예제">기본 예제</h3>
+<div class="section-content">
+<p>다음 간단한 예제는 문단이 프로그램 출력 예시를 포함하고 있습니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="EYflMEJPb9lViPoHoVLnV6iNCFudmcpCG2nu+dINiio=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>프로세스가 완료되면 유틸리티가 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>samp</span><span class="token punctuation">&gt;</span></span>Scan complete. Found <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>em</span><span class="token punctuation">&gt;</span></span>N<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>em</span><span class="token punctuation">&gt;</span></span> results.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>samp</span><span class="token punctuation">&gt;</span></span>
+를 출력합니다. 출력을 확인한 후 다음 단계로 진행하세요.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div> <p>결과는 다음과 같습니다.</p>
+<div class="code-example" id="sect2">
+
+<iframe class="sample-code-frame" title="기본 예제 sample" id="frame_기본_예제" width="650" height="100" src="https://live.mdnplay.dev/ko/docs/Web/HTML/Element/samp/runner.html?id=%EA%B8%B0%EB%B3%B8_%EC%98%88%EC%A0%9C" loading="lazy"></iframe>
+</div>
+</div>
+<h3 id="사용자_입력을_포함한_출력_예시">사용자 입력을 포함한 출력 예시</h3>
+<div class="section-content">
+<p><code>&lt;samp&gt;</code> 블록 안에 <a href="kbd"><code>&lt;kbd&gt;</code></a> 요소를 중첩해서 사용자가 입력하는 텍스트 예제를 나타낼 수 있습니다. 다음 예제 코드는 Linux 또는 macOS 콘솔 세션의 텍스트 복사본을 나타냅니다.</p> <h4 id="html">HTML</h4> <div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="7h9Kd8DXpiv0gW4ouR5I4lqxiLlAQhryp2oj5TmkcQI=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>pre</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>samp</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>prompt<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>mike@interwebz:~$<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">&gt;</span></span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>kbd</span><span class="token punctuation">&gt;</span></span>md5 -s "Hello world"<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>kbd</span><span class="token punctuation">&gt;</span></span>
+MD5 ("Hello world") = 3e25960a79dbc69b674cd4ec67a72c62
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>prompt<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>mike@interwebz:~$<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">&gt;</span></span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>cursor<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>█<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>samp</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>pre</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div> <p><a href="span"><code>&lt;span&gt;</code></a>을 사용해 셸 프롬프트, 콘솔 커서 등 예제 텍스트의 특정 부분에 다른 스타일을 적용했습니다. 또, <code>&lt;kbd&gt;</code>를 사용해 사용자가 입력한 텍스트를 나타내고 있습니다.</p> <h4 id="css">CSS</h4> <p>원하는 외형을 얻을 수 있는 CSS는 다음과 같습니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="FJYp9Hh/WyPQU8y6IFO1AgNTQsNF00LXnOuQB/rkqwg=" data-language="css"><span class="token selector">.prompt</span> <span class="token punctuation">{</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> #b00<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">samp &gt; kbd</span> <span class="token punctuation">{</span>
+  <span class="token property">font-weight</span><span class="token punctuation">:</span> bold<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">.cursor</span> <span class="token punctuation">{</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> #00b<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div> <p>프롬프트와 커서에 강렬하지 않은 색을 입히고, 예제 텍스트의 입력 부분을 굵게 하는 단순한 코드입니다.</p> <h4 id="결과">결과</h4>
+<div class="code-example" id="sect3">
+
+<iframe class="sample-code-frame" title="사용자 입력을 포함한 출력 예시 sample" id="frame_사용자_입력을_포함한_출력_예시" width="650" height="120" src="https://live.mdnplay.dev/ko/docs/Web/HTML/Element/samp/runner.html?id=%EC%82%AC%EC%9A%A9%EC%9E%90_%EC%9E%85%EB%A0%A5%EC%9D%84_%ED%8F%AC%ED%95%A8%ED%95%9C_%EC%B6%9C%EB%A0%A5_%EC%98%88%EC%8B%9C" loading="lazy"></iframe>
+</div>
+</div>
+<h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-samp-element">HTML Standard <br><small># the-samp-element</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li>관련 요소: <a href="kbd"><code>&lt;kbd&gt;</code></a>, <a href="code"><code>&lt;code&gt;</code></a>, <a href="pre"><code>&lt;pre&gt;</code></a>
+</li> <li>스크립트로 생성한 출력을 담는 <a href="output"><code>&lt;output&gt;</code></a> 요소</li> </ul></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/HTML/Element/samp" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/HTML/Element/samp</a>
+  </p>
+</div>

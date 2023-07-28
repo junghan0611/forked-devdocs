@@ -1,0 +1,38 @@
+<header><h1>Set.prototype.entries()</h1></header><div class="section-content"><p><code>entries()</code> 메소드는 <code>Set</code> 객체의 각각의 요소를 삽입순서대로 <code>[값, 값]</code>의 새로운 <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Guide/Iterators_and_generators">Iterator</a> 객체를 반환합니다. <code>Set</code>객체에는 <code>Map</code>객체의 <code>key</code>가 없습니다. 그러나, <code>Map</code> 객체의 API와 비슷하게 유지하기 위해, 각각의 "요소"는 "키"와 "값" 자리에 같은 값을 가지게 됩니다. 결과적으로 <code>[값, 값]</code> 형태의 배열이 반환되게 됩니다.</p></div>
+<section aria-labelledby="시도해보기"><h2 id="시도해보기">시도해보기</h2>
+<div class="section-content"><iframe class="interactive is-js-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/js/set-prototype-entries.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe></div></section><section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="tYH//m0rzQi7DsF1RFfcpMaGGfUEKNHHCRwCEdQQB/Y=" data-language="js"><span class="token function">entries</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div></div></section><section aria-labelledby="반환_값"><h3 id="반환_값">반환 값</h3>
+<div class="section-content"><p>주어진 <code>Set</code>의 요소를 삽입순서대로 <code>[값, 값]</code>의 형태로 포함한 배열의 새로운 <code>iterator</code> 객체를 반환합니다.</p></div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+</section><section aria-labelledby="entries_사용하기"><h3 id="entries_사용하기">
+<code>entries()</code> 사용하기</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="PHdMggILyjA2EjFxCpoStYMMYECVVljoAYxKEzuPZOs=" data-language="js"><span class="token keyword">var</span> mySet <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Set</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+mySet<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token string">'foobar'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+mySet<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+mySet<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token string">'baz'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">var</span> setIter <span class="token operator">=</span> mySet<span class="token punctuation">.</span><span class="token function">entries</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>setIter<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>value<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// ["foobar", "foobar"]</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>setIter<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>value<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// [1, 1]</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>setIter<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>value<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// ["baz", "baz"]</span>
+</pre>
+</div></div></section><h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://tc39.es/ecma262/multipage/keyed-collections.html#sec-set.prototype.entries">ECMAScript Language Specification <br><small># sec-set.prototype.entries</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="keys"><code>Set.prototype.keys()</code></a></li> <li><a href="values"><code>Set.prototype.values()</code></a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Set/entries" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Set/entries</a>
+  </p>
+</div>

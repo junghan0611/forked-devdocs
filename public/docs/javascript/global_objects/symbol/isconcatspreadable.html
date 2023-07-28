@@ -1,0 +1,63 @@
+<header><h1>Symbol.isConcatSpreadable</h1></header><div class="section-content"><p> <code>Symbol.isConcatSpreadable</code> 정적 데이터 속성은 <a href="../symbol#%EC%9E%98_%EC%95%8C%EB%A0%A4%EC%A7%84_%EC%8B%AC%EB%B3%BC">잘 알려진 심볼</a> <code>@@isConcatSpreadable</code>을 나타냅니다. <a href="../array/concat"><code>Array.prototype.concat()</code></a> 메서드는 연결된 각 객체에서 이 심볼을 찾아 유사 배열과 객체로 취급하고 해당 배열 요소로 평탄화해야 하는지 여부를 결정합니다. </p></div>
+<section aria-labelledby="시도해보기"><h2 id="시도해보기">시도해보기</h2>
+<div class="section-content"><iframe class="interactive is-js-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/js/symbol-isconcatspreadable.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe></div></section><section aria-labelledby="값"><h2 id="값">값</h2>
+<div class="section-content">
+<p>잘 알려진 심볼 <code>@@isConcatSpreadable</code>.</p>
+<figure class="table-container"><div class="_table"><table class="standard-table"> <thead> <tr> <th class="header" colspan="2">Property attributes of <code>Symbol.isConcatSpreadable</code>
+</th> </tr> </thead> <tbody> <tr> <td>Writable</td> <td>불가능</td> </tr> <tr> <td>Enumerable</td> <td>불가능</td> </tr> <tr> <td>Configurable</td> <td>불가능</td> </tr> </tbody> </table></div></figure>
+</div></section><section aria-labelledby="설명"><h2 id="설명">설명</h2>
+<div class="section-content">
+<p> <code>@@isConcatSpreadable</code> 심볼(<code>Symbol.isConcatSpreadable</code>)은 자체 또는 상속된 속성으로 정의할 수 있으며, 그 값은 불리언입니다. 아래와 같이 배열 및 배열 유사 객체에 대한 동작을 제어할 수 있습니다. </p> <ul> <li> 배열 객체의 경우 기본 동작은 요소를 펼치는(평평하게 하는) 것입니다. <code>Symbol.isConcatSpreadable</code>은 이러한 경우 평탄화를 피할 수 있습니다. </li> <li> 배열과 유사한 객체의 경우 기본 동작은 펼치거나 평평하게 하지 않는 것입니다. <code>Symbol.isConcatSpreadable</code>은 이러한 경우 평탄화를 강제할 수 있습니다. </li> </ul>
+</div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+</section><section aria-labelledby="배열"><h3 id="배열">배열</h3>
+<div class="section-content">
+<p>기본적으로 <a href="../array/concat"><code>Array.prototype.concat()</code></a>는 여러 배열을 하나의 결과로 펼칩니다(평평하게 만듭니다).</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="zBSu7Vmh6rIuXEJSpfEVAU1muctjbX/nzm6I49W1ayc=" data-language="js"><span class="token keyword">const</span> alpha <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">"a"</span><span class="token punctuation">,</span> <span class="token string">"b"</span><span class="token punctuation">,</span> <span class="token string">"c"</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> numeric <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> alphaNumeric <span class="token operator">=</span> alpha<span class="token punctuation">.</span><span class="token function">concat</span><span class="token punctuation">(</span>numeric<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>alphaNumeric<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 결과: ['a', 'b', 'c', 1, 2, 3]</span>
+</pre>
+</div> <p><code>Symbol.isConcatSpreadable</code>을 <code>false</code>로 설정하면 기본 동작을 비활성화할 수 있습니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="DjQoDRfq9WFI1HFMiPRb1DK0fKeMyldvAiCP7k9SZiY=" data-language="js"><span class="token keyword">const</span> alpha <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">"a"</span><span class="token punctuation">,</span> <span class="token string">"b"</span><span class="token punctuation">,</span> <span class="token string">"c"</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> numeric <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+numeric<span class="token punctuation">[</span>Symbol<span class="token punctuation">.</span>isConcatSpreadable<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> alphaNumeric <span class="token operator">=</span> alpha<span class="token punctuation">.</span><span class="token function">concat</span><span class="token punctuation">(</span>numeric<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>alphaNumeric<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Result: ['a', 'b', 'c', [1, 2, 3] ]</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="유사_배열_객체"><h3 id="유사_배열_객체">유사 배열 객체</h3>
+<div class="section-content">
+<p> 유사 배열 객체에서는 기본 동작이 평탄화시키지 않는 것입니다. 배열을 평탄화시키고 싶다면 <code>Symbol.isConcatSpreadable</code>을 <code>true</code>로 설정할 필요가 있습니다. </p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="QEyGT+rY9xAJKeBVTcRM2mf9GmR+6U1FogMz7A+nDfc=" data-language="js"><span class="token keyword">const</span> x <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> fakeArray <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token punctuation">[</span>Symbol<span class="token punctuation">.</span>isConcatSpreadable<span class="token punctuation">]</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">length</span><span class="token operator">:</span> <span class="token number">2</span><span class="token punctuation">,</span>
+  <span class="token number">0</span><span class="token operator">:</span> <span class="token string">"hello"</span><span class="token punctuation">,</span>
+  <span class="token number">1</span><span class="token operator">:</span> <span class="token string">"world"</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+x<span class="token punctuation">.</span><span class="token function">concat</span><span class="token punctuation">(</span>fakeArray<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// [1, 2, 3, "hello", "world"]</span>
+</pre>
+</div> <div class="notecard note" id="sect1"> <p> <strong>참고:</strong> <code>length</code> 속성은 추가할 객체 속성의 수를 제어하는 데 사용됩니다. 위의 예제에서 <code>length:2</code>는 2개의 속성이 추가되었다는 것을 가리킵니다. </p> </div>
+</div></section><h2 id="명세서">명세서</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://tc39.es/ecma262/multipage/fundamental-objects.html#sec-symbol.isconcatspreadable">ECMAScript Language Specification <br><small># sec-symbol.isconcatspreadable</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="https://github.com/zloirock/core-js#ecmascript-symbol" target="_blank">Polyfill of <code>Symbol.isConcatSpreadable</code> in <code>core-js</code></a></li> <li><a href="../array/concat"><code>Array.prototype.concat()</code></a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Symbol/isConcatSpreadable" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Symbol/isConcatSpreadable</a>
+  </p>
+</div>

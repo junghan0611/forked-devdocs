@@ -1,0 +1,16 @@
+<h1>Errors: CORSAllowOriginNotMatchingOrigin</h1>
+<header><h1>Reason: CORS header 'Access-Control-Allow-Origin' does not match 'xyz'</h1></header><section aria-labelledby="원인"><h2 id="원인">원인</h2>
+<div class="section-content"><pre data-language="plain">Reason: CORS header 'Access-Control-Allow-Origin' does not match 'xyz'
+</pre></div></section><section aria-labelledby="무엇이_문제인가요"><h2 id="무엇이_문제인가요">무엇이 문제인가요?</h2>
+<div class="section-content">
+<p>요청의 오리진이 헤더의 <a href="../../headers/access-control-allow-origin"><code>Access-Control-Allow-Origin</code></a>에서 허용하고 있는 오리진의 내용과 일치하지 않습니다. 이 오류는 두 개 이상의 <code>Access-Control-Allow-Origin</code> 헤더를 응답에 포함하였을 때도 발생할 수 있습니다.</p> <p>사용자의 제어 하에 작동하는 서비스에서 CORS 요청을 사용하는 경우, <code>Access-Control-Allow-Origin</code> 헤더에 사용자의 오리진이 포함되어 있는지 확인합니다. 또 하나의 헤더만이 응답에 포함되어 있는지, 응답에 하나의 오리진만 포함되어 있는지 확인합니다.</p> <p> 예제로 Apache에서는 서버 설정 시 아래의 명령어를 추가합니다. (서버 설정은 <code>&lt;Directory&gt;</code>, <code>&lt;Location&gt;</code>, <code>&lt;Files&gt;</code>, 또는 <code>&lt;VirtualHost&gt;</code> 섹션 내부에 존재합니다.) 설정은 일반적으로 <code>.conf</code> 파일(<code>httpd.conf</code>와 <code>apache.conf</code>가 일반적인 이름)이나 <code>.htaccess</code> 파일에서 찾을 수 있습니다. </p> <div class="notecard warning" id="sect1"> <p><strong>경고:</strong> HTTPS 또는 HTTP 프로토콜에서 반드시 origin 항목을 포함하여야 합니다.</p> </div> <pre class="notranslate">Header set Access-Control-Allow-Origin 'origin'
+</pre> <p>Ngix에서는 아래 명령어를 이용하여 헤더를 설정할 수 있습니다.</p> <pre class="notranslate">add_header 'Access-Control-Allow-Origin' 'origin'
+</pre>
+</div></section><section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="../errors">CORS 에러</a></li> <li>용어 사전: <a href="https://developer.mozilla.org/ko/docs/Glossary/CORS">CORS</a>
+</li> <li><a href="../../cors">CORS 소개</a></li> <li><a href="https://enable-cors.org/server.html" target="_blank">CORS 사용: 내 서버에 CORS를 추가하고 싶다면</a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/HTTP/CORS/Errors/CORSAllowOriginNotMatchingOrigin" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/HTTP/CORS/Errors/CORSAllowOriginNotMatchingOrigin</a>
+  </p>
+</div>

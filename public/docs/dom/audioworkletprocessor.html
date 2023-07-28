@@ -1,0 +1,67 @@
+<header><h1>AudioWorkletProcessor</h1></header><div class="section-content"><p><a href="web_audio_api">Web Audio API</a>의 <code>AudioWorkletProcessor</code> 인터페이스는 사용자 정의 <a href="audioworkletnode"><code>AudioWorkletNode</code></a> 뒤의 오디오 프로세싱 코드를 나타냅니다. 이것은 <a href="audioworkletglobalscope"><code>AudioWorkletGlobalScope</code></a> 안에 있으며 Web Audio 렌더링 스레드에서 실행됩니다. 결과적으로, 이것에 기반한 <a href="audioworkletnode"><code>AudioWorkletNode</code></a>가 메인 스레드에서 실행됩니다.</p></div>
+<h2 id="생성자">생성자</h2>
+<div class="section-content">
+<div class="notecard note" id="sect1"> <p><strong>참고:</strong> <code>AudioWorkletProcessor</code> 와 이것으로부터 파생된 클래스들은 사용자에 의해 제공된 코드로부터 직접적으로 초기화될 수 없습니다. 대신, 이것들은 오직 연관된 <a href="audioworkletnode"><code>AudioWorkletNode</code></a>들의 생성에 의해서만 내부적으로 생성됩니다. 파생된 클래스의 생성자는 options 객체와 함께 호출되므로, 여러분은 사용자 정의 초기화 절차를 수행할 수 있습니다 — 자세한 사항은 생성자 페이지를 참고하세요.</p> </div> <dl> <dt id="audioworkletprocessor"><a href="audioworkletprocessor/audioworkletprocessor"><code>AudioWorkletProcessor()</code></a></dt> <dd> <p><code>AudioWorkletProcessor</code> 객체의 새 인스턴스를 생성합니다.</p> </dd> </dl>
+</div>
+<h2 id="속성">속성</h2>
+<div class="section-content"><dl> <dt id="port">
+<a href="audioworkletprocessor/port"><code>port</code></a> <span class="badge inline readonly">읽기 전용</span>
+</dt> <dd> <p>프로세서와 프로세서가 속한 <a href="audioworkletnode"><code>AudioWorkletNode</code></a> 사이의 양방향 소통에 사용되는 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/MessagePort"><code>MessagePort</code> <small>(en-US)</small></a>를 반환합니다. 다른 쪽 끝은 이 노드의 <a href="audioworkletnode/port"><code>port</code></a> 속성 아래에서 사용 가능합니다.</p> </dd> </dl></div>
+<h2 id="메서드">메서드</h2>
+<div class="section-content"><p><em><code>AudioWorkletProcessor</code> 인터페이스는 이것이 소유하는 어떠한 메서드도 정의하지 않습니다. 그러나, 오디오 스트림을 처리하기 위해 호출되는 <a href="audioworkletprocessor/process"><code>process()</code></a> 메서드를 여러분은 반드시 제공해야만 합니다.</em></p></div>
+<h2 id="이벤트">이벤트</h2>
+<div class="section-content"><p><em><code>AudioWorkletProcessor</code> 인터페이스는 어떠한 이벤트에도 응답하지 않습니다.</em></p></div>
+<h2 id="사용_일람">사용 일람</h2>
+
+<h3 id="클래스_파생">클래스 파생</h3>
+<div class="section-content">
+<p>사용자 정의 오디오 프로세싱 코드를 정의하려면, 여러분은 <code>AudioWorkletProcessor</code> 인터페이스로부터 클래스를 파생시켜야 합니다. 비록 인터페이스에 정의되어 있지 않기는 하나, 파생 클래스는 반드시 <a href="audioworkletprocessor/process"><code>process</code></a> 메서드를 가지고 있어야만 합니다. 이 메서드는 128 샘플 프레임의 각 블럭마다 호출되고 입력과 출력 배열과 만약 정의되어 있다면 사용자 정의 <a href="audioparam"><code>AudioParam</code></a>들의 계산된 값들을 매개변수로 받습니다. 여러분은 입력과 오디오 파라미터 값들을 기본적으로는 무음을 가지는 출력 배열을 채우기 위해 사용할 수 있습니다.</p> <p>선택적으로, 만약 여러분이 사용자 정의 <a href="audioparam"><code>AudioParam</code></a>들을 여러분의 노드에서 원한다면, 여러분은 프로세서의 <em>static getter</em> 로서 <a href="audioworkletprocessor/parameterdescriptors"><code>parameterDescriptors</code></a> 속성을 제공할 수 있습니다. 반환되는 <a href="audioparamdescriptor"><code>AudioParamDescriptor</code></a> 기반 객체의 배열은 <code>AudioWorkletNode</code>의 초기화 동안 <a href="audioparam"><code>AudioParam</code></a>들을 생성하기 위해 내부적으로 사용됩니다 .</p> <p>결과로 나오는 <code>AudioParam</code> 들은 노드의 <a href="audioworkletnode/parameters"><code>parameters</code></a> 속성 안에 있으며 <a href="audioparam/linearramptovalueattime"><code>linearRampToValueAtTime</code></a>과 같은 표준 메서드를 사용해 자동화될 수 있습니다. 이것들의 계산된 값들은 여러분이 노드 출력을 이에 맞춰 조절할 수 있도록 프로세서의 <a href="audioworkletprocessor/process"><code>process()</code></a> 메서드 안으로 전달될 것입니다.</p>
+</div>
+<h3 id="오디오_프로세싱">오디오 프로세싱</h3>
+<div class="section-content">
+<p>사용자 정의 오디오 프로세싱 생성 메커니즘의 예제 알고리즘입니다.</p> <ol> <li>별도의 파일을 생성합니다.</li> <li>그 파일에서 <ol> <li>
+<code>AudioWorkletProcessor</code> 클래스를 확장하고 (<a href="#%ED%81%B4%EB%9E%98%EC%8A%A4_%ED%8C%8C%EC%83%9D">"클래스 파생" 섹션</a>을 참고하세요) 여러분만의 <a href="audioworkletprocessor/process"><code>process()</code></a> 메서드를 그 안에 제공하세요.</li> <li>
+<a href="audioworkletglobalscope/registerprocessor"><code>AudioWorkletGlobalScope.registerProcessor()</code></a> 메서드를 사용해 프로세서를 등록하세요.</li> </ol> </li> <li>오디오 컨텍스트의 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/BaseAudioContext/audioWorklet"><code>audioWorklet</code> <small>(en-US)</small></a> 속성에서 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/Worklet/addModule"><code>addModule()</code> <small>(en-US)</small></a> 메서드를 사용하여 파일을 로드하세요.</li> <li>이 프로세서에 기반하는 <a href="audioworkletnode"><code>AudioWorkletNode</code></a>를 생성하세요. 이 프로세서는 <code>AudioWorkletNode</code> 생성자에 의해 내부적으로 초기화될 것입니다.</li> <li>이 노드를 다른 노드들에 연결하세요.</li> </ol>
+</div>
+<h2 id="예제">예제</h2>
+<div class="section-content">
+<p>아래의 예제에서 우리는 백색소음을 출력하는 사용자 정의 <a href="audioworkletnode"><code>AudioWorkletNode</code></a>를 생성합니다.</p> <p>우선, 우리는 백색소음을 출력할 사용자 정의 <code>AudioWorkletProcessor</code> 를 정의하고, 등록할 필요가 있습니다. 이 작업은 별도의 파일에서 이루어져야 함에 주의하세요.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="TG+EyVgBJhzcO0mzR8mxYyfHG/JypEZbRiKGs4XEEhA=" data-language="js"><span class="token comment">// white-noise-processor.js</span>
+<span class="token keyword">class</span> <span class="token class-name">WhiteNoiseProcessor</span> <span class="token keyword">extends</span> <span class="token class-name">AudioWorkletProcessor</span> <span class="token punctuation">{</span>
+  <span class="token function">process</span> <span class="token punctuation">(</span><span class="token parameter">inputs<span class="token punctuation">,</span> outputs<span class="token punctuation">,</span> parameters</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> output <span class="token operator">=</span> outputs<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
+    output<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token parameter">channel</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+      <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> channel<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        channel<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> Math<span class="token punctuation">.</span><span class="token function">random</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token number">2</span> <span class="token operator">-</span> <span class="token number">1</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token keyword">return</span> <span class="token boolean">true</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token function">registerProcessor</span><span class="token punctuation">(</span><span class="token string">'white-noise-processor'</span><span class="token punctuation">,</span> WhiteNoiseProcessor<span class="token punctuation">)</span>
+</pre>
+</div> <p>다음으로, 메인 스크립트 파일에서 우리는 프로세서를 로드하고, 프로세서의 이름을 <a href="audioworkletnode"><code>AudioWorkletNode</code></a>에 전달하며 <a href="audioworkletnode"><code>AudioWorkletNode</code></a>의 인스턴스를 생성하고, 그리고 나서 이 노드를 오디오 그래프에 연결합니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="V7v5satrHh0rllM5vzAY+hfQd+aM64PBHAuITicjbfU=" data-language="js"><span class="token keyword">const</span> audioContext <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">AudioContext</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">await</span> audioContext<span class="token punctuation">.</span>audioWorklet<span class="token punctuation">.</span><span class="token function">addModule</span><span class="token punctuation">(</span><span class="token string">'white-noise-processor.js'</span><span class="token punctuation">)</span>
+<span class="token keyword">const</span> whiteNoiseNode <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">AudioWorkletNode</span><span class="token punctuation">(</span>audioContext<span class="token punctuation">,</span> <span class="token string">'white-noise-processor'</span><span class="token punctuation">)</span>
+whiteNoiseNode<span class="token punctuation">.</span><span class="token function">connect</span><span class="token punctuation">(</span>audioContext<span class="token punctuation">.</span>destination<span class="token punctuation">)</span>
+</pre>
+</div>
+</div>
+<h2 id="명세서">명세서</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://webaudio.github.io/web-audio-api/#AudioWorkletProcessor">Web Audio API <br><small># AudioWorkletProcessor</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="web_audio_api">Web Audio API</a></li> <li><a href="web_audio_api/using_web_audio_api">Web Audio API 사용하기</a></li> </ul></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/AudioWorkletProcessor" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/AudioWorkletProcessor</a>
+  </p>
+</div>

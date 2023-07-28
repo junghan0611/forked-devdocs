@@ -1,0 +1,191 @@
+<header><h1>String.prototype.charAt()</h1></header><div class="section-content"><p><strong>charAt()</strong> 함수는 문자열에서 특정 인덱스에 위치하는 유니코드 단일문자를 반환합니다.</p></div>
+<section aria-labelledby="시도해보기"><h2 id="시도해보기">시도해보기</h2>
+<div class="section-content"><iframe class="interactive is-js-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/js/string-charat.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe></div></section><section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="EQxRUGBB+mliwFYIHO9IhH+H+UCcNgUTIIhp+9g3fiA=" data-language="js">str<span class="token punctuation">.</span><span class="token function">charAt</span><span class="token punctuation">(</span>index<span class="token punctuation">)</span>
+</pre>
+</div></div></section><section aria-labelledby="매개변수"><h3 id="매개변수">매개변수</h3>
+<div class="section-content">
+<ul> <li>0과 문자열의 길이 - 1 사이의 정수값.</li> <li>인자를 생략하면 기본값으로 0를 설정되고 첫 문자를 반환한다.</li> </ul> <dl> <dt id="index"><code>index</code></dt> </dl>
+</div></section><section aria-labelledby="반환_값"><h3 id="반환_값">반환 값</h3>
+<div class="section-content"><ul> <li>지정된 인덱스에 해당하는 유니코드 단일문자를 반환한다.</li> <li>만약 인덱스가 문자열 길이보다 큰 경우 빈 문자열 (예) " " 을 반환한다.</li> </ul></div></section><section aria-labelledby="설명"><h2 id="설명">설명</h2>
+<div class="section-content">
+<p>문자열 내의 문자는 왼쪽에서 오른쪽으로 순번(인덱스)이 매겨집니다. 첫 번째 문자의 순번은 0, 그리고 <code>stringName</code> 이라는 이름을 가진 문자열의 마지막 문자 순번은 <code>stringName.length - 1</code> 입니다. <code>index</code>가 문자열 길이를 벗어나면 빈 문자열을 반환하게 됩니다.</p> <p><code>index</code>를 제공하지 않으면 기본값은 0입니다.</p>
+</div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+</section><section aria-labelledby="문자열_내의_다른_위치에_있는_문자들을_출력하기"><h3 id="문자열_내의_다른_위치에_있는_문자들을_출력하기">문자열 내의 다른 위치에 있는 문자들을 출력하기</h3>
+<div class="section-content">
+<p>아래 예제는 문자열 <code>"Brave new world"</code>의 다른 위치에 있는 문자들을 출력합니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="V9MkspRp7tNdeZzxOYZJbiDU+RzMQd/TN+qhAPYuZM4=" data-language="js"><span class="token keyword">var</span> anyString <span class="token operator">=</span> <span class="token string">'Brave new world'</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"The character at index 0   is '"</span> <span class="token operator">+</span> anyString<span class="token punctuation">.</span><span class="token function">charAt</span><span class="token punctuation">(</span><span class="token punctuation">)</span>   <span class="token operator">+</span> <span class="token string">"'"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// No index was provided, used 0 as default</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"The character at index 0   is '"</span> <span class="token operator">+</span> anyString<span class="token punctuation">.</span><span class="token function">charAt</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>   <span class="token operator">+</span> <span class="token string">"'"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"The character at index 1   is '"</span> <span class="token operator">+</span> anyString<span class="token punctuation">.</span><span class="token function">charAt</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>   <span class="token operator">+</span> <span class="token string">"'"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"The character at index 2   is '"</span> <span class="token operator">+</span> anyString<span class="token punctuation">.</span><span class="token function">charAt</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span>   <span class="token operator">+</span> <span class="token string">"'"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"The character at index 3   is '"</span> <span class="token operator">+</span> anyString<span class="token punctuation">.</span><span class="token function">charAt</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span>   <span class="token operator">+</span> <span class="token string">"'"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"The character at index 4   is '"</span> <span class="token operator">+</span> anyString<span class="token punctuation">.</span><span class="token function">charAt</span><span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">)</span>   <span class="token operator">+</span> <span class="token string">"'"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"The character at index 999 is '"</span> <span class="token operator">+</span> anyString<span class="token punctuation">.</span><span class="token function">charAt</span><span class="token punctuation">(</span><span class="token number">999</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">"'"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div> <p>프로그램의 실행 결과는 아래와 같습니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="k6108ctHc4lvSd7Wqj6KjX4A59j9rebLOQSQDTbEyx0=" data-language="js">The character at index <span class="token number">0</span>   is <span class="token string">'B'</span>
+The character at index <span class="token number">1</span>   is <span class="token string">'r'</span>
+The character at index <span class="token number">2</span>   is <span class="token string">'a'</span>
+The character at index <span class="token number">3</span>   is <span class="token string">'v'</span>
+The character at index <span class="token number">4</span>   is <span class="token string">'e'</span>
+The character at index <span class="token number">999</span> is <span class="token string">''</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="문자열_내의_모든_문자_얻기"><h3 id="문자열_내의_모든_문자_얻기">문자열 내의 모든 문자 얻기</h3>
+<div class="section-content">
+<p>아래 예제는 문자열 전체를 순회하며 각 문자가 완전한지 확인하는 프로그램입니다. 심지어 <a href="https://ko.wikipedia.org/wiki/%EC%9C%A0%EB%8B%88%EC%BD%94%EB%93%9C_%ED%8F%89%EB%A9%B4" target="_blank">기본 다국어 평면(Basic Multilingual Plane)</a>에 포함되지 않은 문자들이 포함되어 있다고 하더라도 잘 동작합니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="euT40Z6HhM+NMbQLALhv7FRhTsTQAVZ5oPrLdpOPqMQ=" data-language="js"><span class="token keyword">var</span> str <span class="token operator">=</span> <span class="token string">'A \uD87E\uDC04 Z'</span><span class="token punctuation">;</span> <span class="token comment">// 기본 다국어 평면에 포함되지 않는 문자를 사용합니다.</span>
+<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">var</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> chr<span class="token punctuation">;</span> i <span class="token operator">&lt;</span> str<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>chr <span class="token operator">=</span> <span class="token function">getWholeChar</span><span class="token punctuation">(</span>str<span class="token punctuation">,</span> i<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">===</span> <span class="token boolean">false</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">continue</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token comment">// Adapt this line at the top of each loop, passing in the whole string and</span>
+  <span class="token comment">// the current iteration and returning a variable to represent the</span>
+  <span class="token comment">// individual character</span>
+
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>chr<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">function</span> <span class="token function">getWholeChar</span><span class="token punctuation">(</span><span class="token parameter">str<span class="token punctuation">,</span> i</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">var</span> code <span class="token operator">=</span> str<span class="token punctuation">.</span><span class="token function">charCodeAt</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>Number<span class="token punctuation">.</span><span class="token function">isNaN</span><span class="token punctuation">(</span>code<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token string">''</span><span class="token punctuation">;</span> <span class="token comment">// Position not found</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>code <span class="token operator">&lt;</span> <span class="token number">0xD800</span> <span class="token operator">||</span> code <span class="token operator">&gt;</span> <span class="token number">0xDFFF</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> str<span class="token punctuation">.</span><span class="token function">charAt</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token comment">// High surrogate (could change last hex to 0xDB7F to treat high private</span>
+  <span class="token comment">// surrogates as single characters)</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token number">0xD800</span> <span class="token operator">&lt;=</span> code <span class="token operator">&amp;&amp;</span> code <span class="token operator">&lt;=</span> <span class="token number">0xDBFF</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>str<span class="token punctuation">.</span>length <span class="token operator">&lt;=</span> <span class="token punctuation">(</span>i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">throw</span> <span class="token string">'High surrogate without following low surrogate'</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">var</span> next <span class="token operator">=</span> str<span class="token punctuation">.</span><span class="token function">charCodeAt</span><span class="token punctuation">(</span>i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token number">0xDC00</span> <span class="token operator">&gt;</span> next <span class="token operator">||</span> next <span class="token operator">&gt;</span> <span class="token number">0xDFFF</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">throw</span> <span class="token string">'High surrogate without following low surrogate'</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+      <span class="token keyword">return</span> str<span class="token punctuation">.</span><span class="token function">charAt</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span> <span class="token operator">+</span> str<span class="token punctuation">.</span><span class="token function">charAt</span><span class="token punctuation">(</span>i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token comment">// Low surrogate (0xDC00 &lt;= code &amp;&amp; code &lt;= 0xDFFF)</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>i <span class="token operator">===</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">throw</span> <span class="token string">'Low surrogate without preceding high surrogate'</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword">var</span> prev <span class="token operator">=</span> str<span class="token punctuation">.</span><span class="token function">charCodeAt</span><span class="token punctuation">(</span>i <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token comment">// (could change last hex to 0xDB7F to treat high private</span>
+  <span class="token comment">// surrogates as single characters)</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token number">0xD800</span> <span class="token operator">&gt;</span> prev <span class="token operator">||</span> prev <span class="token operator">&gt;</span> <span class="token number">0xDBFF</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">throw</span> <span class="token string">'Low surrogate without preceding high surrogate'</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token comment">// We can pass over low surrogates now as the second component</span>
+  <span class="token comment">// in a pair which we have already processed</span>
+  <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div> <p><a href="../../operators/destructuring_assignment">비구조화 할당</a>을 허용하는 ECMAScript 2016 환경에서는 아래 예제 코드가 더 간결하고, 문자가 <a href="https://ko.wikipedia.org/wiki/UTF-16" target="_blank">서러게이트 페어</a>가 되는 것을 허용할 때는 증가해야 하는 변수를 자동적으로 증가하기에 위의 코드보다 다소 더 유연합니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="TMJffNmgIbvX7ZsoeJNHUJNIbtv9uuNVp2nuQtHYXIk=" data-language="js"><span class="token keyword">var</span> str <span class="token operator">=</span> <span class="token string">'A\uD87E\uDC04Z'</span><span class="token punctuation">;</span> <span class="token comment">// We could also use a non-BMP character directly</span>
+<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">var</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> chr<span class="token punctuation">;</span> i <span class="token operator">&lt;</span> str<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token punctuation">[</span>chr<span class="token punctuation">,</span> i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">getWholeCharAndI</span><span class="token punctuation">(</span>str<span class="token punctuation">,</span> i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token comment">// Adapt this line at the top of each loop, passing in the whole string and</span>
+  <span class="token comment">// the current iteration and returning an array with the individual character</span>
+  <span class="token comment">// and 'i' value (only changed if a surrogate pair)</span>
+
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>chr<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">function</span> <span class="token function">getWholeCharAndI</span><span class="token punctuation">(</span><span class="token parameter">str<span class="token punctuation">,</span> i</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">var</span> code <span class="token operator">=</span> str<span class="token punctuation">.</span><span class="token function">charCodeAt</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>Number<span class="token punctuation">.</span><span class="token function">isNaN</span><span class="token punctuation">(</span>code<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token string">''</span><span class="token punctuation">;</span> <span class="token comment">// Position not found</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>code <span class="token operator">&lt;</span> <span class="token number">0xD800</span> <span class="token operator">||</span> code <span class="token operator">&gt;</span> <span class="token number">0xDFFF</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token punctuation">[</span>str<span class="token punctuation">.</span><span class="token function">charAt</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">,</span> i<span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment">// Normal character, keeping 'i' the same</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token comment">// High surrogate (could change last hex to 0xDB7F to treat high private</span>
+  <span class="token comment">// surrogates as single characters)</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token number">0xD800</span> <span class="token operator">&lt;=</span> code <span class="token operator">&amp;&amp;</span> code <span class="token operator">&lt;=</span> <span class="token number">0xDBFF</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>str<span class="token punctuation">.</span>length <span class="token operator">&lt;=</span> <span class="token punctuation">(</span>i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">throw</span> <span class="token string">'High surrogate without following low surrogate'</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">var</span> next <span class="token operator">=</span> str<span class="token punctuation">.</span><span class="token function">charCodeAt</span><span class="token punctuation">(</span>i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token number">0xDC00</span> <span class="token operator">&gt;</span> next <span class="token operator">||</span> next <span class="token operator">&gt;</span> <span class="token number">0xDFFF</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">throw</span> <span class="token string">'High surrogate without following low surrogate'</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+      <span class="token keyword">return</span> <span class="token punctuation">[</span>str<span class="token punctuation">.</span><span class="token function">charAt</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span> <span class="token operator">+</span> str<span class="token punctuation">.</span><span class="token function">charAt</span><span class="token punctuation">(</span>i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">,</span> i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token comment">// Low surrogate (0xDC00 &lt;= code &amp;&amp; code &lt;= 0xDFFF)</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>i <span class="token operator">===</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">throw</span> <span class="token string">'Low surrogate without preceding high surrogate'</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword">var</span> prev <span class="token operator">=</span> str<span class="token punctuation">.</span><span class="token function">charCodeAt</span><span class="token punctuation">(</span>i <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token comment">// (could change last hex to 0xDB7F to treat high private surrogates</span>
+  <span class="token comment">// as single characters)</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token number">0xD800</span> <span class="token operator">&gt;</span> prev <span class="token operator">||</span> prev <span class="token operator">&gt;</span> <span class="token number">0xDBFF</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">throw</span> <span class="token string">'Low surrogate without preceding high surrogate'</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token comment">// Return the next character instead (and increment)</span>
+  <span class="token keyword">return</span> <span class="token punctuation">[</span>str<span class="token punctuation">.</span><span class="token function">charAt</span><span class="token punctuation">(</span>i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">,</span> i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="기본다국어평면basic-multilingual-plane이_아닌_문자들을_지원하도록_charat_수정하기"><h3 id="기본다국어평면basic-multilingual-plane이_아닌_문자들을_지원하도록_charat_수정하기">기본다국어평면(Basic-Multilingual-Plane)이 아닌 문자들을 지원하도록 <code>charAt()</code> 수정하기</h3>
+<div class="section-content">
+<p>어떠한 non-BMP 문자들이 나타났는지 호출자가 알 필요가 없기 때문에 non-BMP 문자들을 지원하도록 하는데는 앞의 예제들이 더 자주 사용되지만, 인덱스로 문자를 선택하는데 있어서 문자열 내에 서로게이트 페어들이 하나의 문자들로 처리되길 원한다면, 아래 예제 코드를 사용하면 됩니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="38g+Fs6VZLoeq2NlFGORHuEyx7l/mTAXVLL8Pl7vf/c=" data-language="js"><span class="token keyword">function</span> <span class="token function">fixedCharAt</span><span class="token punctuation">(</span><span class="token parameter">str<span class="token punctuation">,</span> idx</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">var</span> ret <span class="token operator">=</span> <span class="token string">''</span><span class="token punctuation">;</span>
+  str <span class="token operator">+=</span> <span class="token string">''</span><span class="token punctuation">;</span>
+  <span class="token keyword">var</span> end <span class="token operator">=</span> str<span class="token punctuation">.</span>length<span class="token punctuation">;</span>
+
+  <span class="token keyword">var</span> surrogatePairs <span class="token operator">=</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex"><span class="token char-class"><span class="token char-class-punctuation punctuation">[</span><span class="token range"><span class="token escape">\uD800</span><span class="token range-punctuation operator">-</span><span class="token escape">\uDBFF</span></span><span class="token char-class-punctuation punctuation">]</span></span><span class="token char-class"><span class="token char-class-punctuation punctuation">[</span><span class="token range"><span class="token escape">\uDC00</span><span class="token range-punctuation operator">-</span><span class="token escape">\uDFFF</span></span><span class="token char-class-punctuation punctuation">]</span></span></span><span class="token regex-delimiter">/</span><span class="token regex-flags">g</span></span><span class="token punctuation">;</span>
+  <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>surrogatePairs<span class="token punctuation">.</span><span class="token function">exec</span><span class="token punctuation">(</span>str<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">var</span> li <span class="token operator">=</span> surrogatePairs<span class="token punctuation">.</span>lastIndex<span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>li <span class="token operator">-</span> <span class="token number">2</span> <span class="token operator">&lt;</span> idx<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      idx<span class="token operator">++</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+      <span class="token keyword">break</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>idx <span class="token operator">&gt;=</span> end <span class="token operator">||</span> idx <span class="token operator">&lt;</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token string">''</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  ret <span class="token operator">+=</span> str<span class="token punctuation">.</span><span class="token function">charAt</span><span class="token punctuation">(</span>idx<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex"><span class="token char-class"><span class="token char-class-punctuation punctuation">[</span><span class="token range"><span class="token escape">\uD800</span><span class="token range-punctuation operator">-</span><span class="token escape">\uDBFF</span></span><span class="token char-class-punctuation punctuation">]</span></span></span><span class="token regex-delimiter">/</span></span><span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span>ret<span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex"><span class="token char-class"><span class="token char-class-punctuation punctuation">[</span><span class="token range"><span class="token escape">\uDC00</span><span class="token range-punctuation operator">-</span><span class="token escape">\uDFFF</span></span><span class="token char-class-punctuation punctuation">]</span></span></span><span class="token regex-delimiter">/</span></span><span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span>str<span class="token punctuation">.</span><span class="token function">charAt</span><span class="token punctuation">(</span>idx <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// Go one further, since one of the "characters" is part of a surrogate pair</span>
+    ret <span class="token operator">+=</span> str<span class="token punctuation">.</span><span class="token function">charAt</span><span class="token punctuation">(</span>idx <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword">return</span> ret<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div>
+</div></section><h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://tc39.es/ecma262/multipage/text-processing.html#sec-string.prototype.charat">ECMAScript Language Specification <br><small># sec-string.prototype.charat</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="관련문서"><h2 id="관련문서">관련문서</h2>
+<div class="section-content"><ul> <li><a href="indexof"><code>String.prototype.indexOf()</code></a></li> <li><a href="lastindexof"><code>String.prototype.lastIndexOf()</code></a></li> <li><a href="charcodeat"><code>String.prototype.charCodeAt()</code></a></li> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/codePointAt"><code>String.prototype.codePointAt()</code> <small>(en-US)</small></a></li> <li><a href="split"><code>String.prototype.split()</code></a></li> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/fromCodePoint"><code>String.fromCodePoint()</code> <small>(en-US)</small></a></li> <li><a href="https://mathiasbynens.be/notes/javascript-unicode" target="_blank">JavaScript has a Unicode problem – Mathias Bynens</a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/String/charAt" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/String/charAt</a>
+  </p>
+</div>

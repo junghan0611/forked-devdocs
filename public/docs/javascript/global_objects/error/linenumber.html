@@ -1,0 +1,32 @@
+<header><h1>Error.prototype.lineNumber</h1></header><div class="section-content">
+<div class="notecard nonstandard" id="sect1"><p><strong>비표준:</strong> 이 기능은 비표준이므로 실제 프로덕션에서 사용하지 마세요. 모든 사용자 환경에서 작동하지 않을 수 도 있으며, 미래에 호환성 문제가 생길 수 있습니다.</p></div> <p><code>lineNumber</code> 속성은 이 오류가 발생한 파일의 행 번호를 포함합니다.</p>
+</div>
+<section aria-labelledby="예제"><h2 id="예제">예제</h2>
+</section><section aria-labelledby="linenumber_사용하기"><h3 id="linenumber_사용하기">lineNumber 사용하기</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="Dy9AjCCKBda2vMRIEMHyFqY9bzYNHiLrFRa5EwLRN9Y=" data-language="js"><span class="token keyword">var</span> e <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Error</span><span class="token punctuation">(</span><span class="token string">'Could not parse input'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">throw</span> e<span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>e<span class="token punctuation">.</span>lineNumber<span class="token punctuation">)</span> <span class="token comment">// 2</span>
+</pre>
+</div></div></section><section aria-labelledby="오류_이벤트를_사용하는_또_다른_예제"><h3 id="오류_이벤트를_사용하는_또_다른_예제">오류 이벤트를 사용하는 또 다른 예제</h3>
+<div class="section-content">
+<div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="hkC34Ytu7BNefc3FiU+zOUXbfXm60Noek/R0H/QZh/Q=" data-language="js">window<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">'error'</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">e</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>e<span class="token punctuation">.</span>lineNumber<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 5</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> e <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Error</span><span class="token punctuation">(</span><span class="token string">'Could not parse input'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">throw</span> e<span class="token punctuation">;</span>
+</pre>
+</div> <p>이는 표준 기능이 아니며 광범위하게 지원되지 않습니다. 아래 브라우저 호환성 표를 참고하십시오.</p>
+</div></section><section aria-labelledby="명세"><h2 id="명세">명세</h2>
+<div class="section-content"><p>표준의 일부가 아닙니다.</p></div></section><h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error/stack"><code>Error.prototype.stack</code> <small>(en-US)</small></a></li> <li><a href="columnnumber"><code>Error.prototype.columnNumber</code></a></li> <li><a href="filename"><code>Error.prototype.fileName</code></a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Error/lineNumber" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Error/lineNumber</a>
+  </p>
+</div>

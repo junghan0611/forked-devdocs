@@ -1,0 +1,139 @@
+<header><h1>grid-area</h1></header><div class="section-content"><p><code>grid-area</code> 속성은 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/grid-row-start"><code>grid-row-start</code> <small>(en-US)</small></a>, <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/grid-column-start"><code>grid-column-start</code> <small>(en-US)</small></a>, <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/grid-row-end"><code>grid-row-end</code> <small>(en-US)</small></a> and <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/grid-column-end"><code>grid-column-end</code> <small>(en-US)</small></a> 값을 한번에 설정하는 <a href="shorthand_properties">shorthand</a> property 입니다. 해당 속성값은 grid item의 크기와 위치를 결정합니다., specifying a grid item’s size and location within the <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Glossary/Grid_Row">grid row <small>(en-US)</small></a> by contributing a line, a span, or nothing (automatic) to its grid placement, thereby specifying the edges of its <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Glossary/Grid_Areas">grid area <small>(en-US)</small></a>.</p></div>
+<section aria-labelledby="시도해보기"><h2 id="시도해보기">시도해보기</h2>
+<div class="section-content">
+<iframe class="interactive is-default-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/css/grid-area.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe> <p>If four <code>&lt;grid-line&gt;</code> values are specified, <code>grid-row-start</code> is set to the first value, <code>grid-column-start</code> is set to the second value, <code>grid-row-end</code> is set to the third value, and <code>grid-column-end</code> is set to the fourth value.</p> <p>When <code>grid-column-end</code> is omitted, if <code>grid-column-start</code> is a <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/custom-ident"><code>&lt;custom-ident&gt;</code> <small>(en-US)</small></a>, <code>grid-column-end</code> is set to that <code>&lt;custom-ident&gt;</code>; otherwise, it is set to <code>auto</code>.</p> <p>When <code>grid-row-end</code> is omitted, if <code>grid-row-start</code> is a <code>&lt;custom-ident&gt;</code>, <code>grid-row-end</code> is set to that <code>&lt;custom-ident&gt;</code>; otherwise, it is set to <code>auto</code>.</p> <p>When <code>grid-column-start</code> is omitted, if <code>grid-row-start</code> is a <code>&lt;custom-ident&gt;</code>, all four longhands are set to that value. Otherwise, it is set to <code>auto</code>.</p> <p>The grid-area property can also be set to a <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/custom-ident"><code>&lt;custom-ident&gt;</code> <small>(en-US)</small></a> which acts as a name for the area, which can then be placed using <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/grid-template-areas"><code>grid-template-areas</code> <small>(en-US)</small></a>.</p>
+</div></section><section aria-labelledby="syntax"><h2 id="syntax">Syntax</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="Uao9dSV5XFKunb50p9GA2cSBVbuLNvYTAIJbvcy+QWo=" data-language="css"><span class="token comment">/* Keyword values */</span>
+<span class="token property">grid-area</span><span class="token punctuation">:</span> auto<span class="token punctuation">;</span>
+<span class="token property">grid-area</span><span class="token punctuation">:</span> auto / auto<span class="token punctuation">;</span>
+<span class="token property">grid-area</span><span class="token punctuation">:</span> auto / auto / auto<span class="token punctuation">;</span>
+<span class="token property">grid-area</span><span class="token punctuation">:</span> auto / auto / auto / auto<span class="token punctuation">;</span>
+
+<span class="token comment">/* &lt;custom-ident&gt; values */</span>
+<span class="token property">grid-area</span><span class="token punctuation">:</span> some-grid-area<span class="token punctuation">;</span>
+<span class="token property">grid-area</span><span class="token punctuation">:</span> some-grid-area / another-grid-area<span class="token punctuation">;</span>
+
+<span class="token comment">/* &lt;integer&gt; &amp;&amp; &lt;custom-ident&gt;? values */</span>
+<span class="token property">grid-area</span><span class="token punctuation">:</span> some-grid-area 4<span class="token punctuation">;</span>
+<span class="token property">grid-area</span><span class="token punctuation">:</span> some-grid-area 4 / 2 another-grid-area<span class="token punctuation">;</span>
+
+<span class="token comment">/* span &amp;&amp; [ &lt;integer&gt; || &lt;custom-ident&gt; ] values */</span>
+<span class="token property">grid-area</span><span class="token punctuation">:</span> span 3<span class="token punctuation">;</span>
+<span class="token property">grid-area</span><span class="token punctuation">:</span> span 3 / span some-grid-area<span class="token punctuation">;</span>
+<span class="token property">grid-area</span><span class="token punctuation">:</span> 2 span / another-grid-area span<span class="token punctuation">;</span>
+
+<span class="token comment">/* Global values */</span>
+<span class="token property">grid-area</span><span class="token punctuation">:</span> inherit<span class="token punctuation">;</span>
+<span class="token property">grid-area</span><span class="token punctuation">:</span> initial<span class="token punctuation">;</span>
+<span class="token property">grid-area</span><span class="token punctuation">:</span> unset<span class="token punctuation">;</span>
+</pre>
+</div></div></section><section aria-labelledby="values"><h3 id="values">Values</h3>
+<div class="section-content"><dl> <dt id="auto"><code>auto</code></dt> <dd> <p>Is a keyword indicating that the property contributes nothing to the grid item’s placement, indicating auto-placement or a default span of <code>1</code>.</p> </dd> <dt id="custom-ident"><code>&lt;custom-ident&gt;</code></dt> <dd> <p>If there is a named line with the name '<code>&lt;custom-ident&gt;-start</code>'/'<code>&lt;custom-ident&gt;-end</code>', it contributes the first such line to the grid item’s placement.</p> <div class="notecard note" id="sect1"> <p><strong>참고:</strong> Named grid areas automatically generate implicit named lines of this form, so specifying <code>grid-area: foo;</code> will choose the start/end edge of that named grid area (unless another line named <code>foo-start</code>/<code>foo-end</code> was explicitly specified before it).</p> </div> <p>Otherwise, this is treated as if the integer <code>1</code> had been specified along with the <code>&lt;custom-ident&gt;</code>.</p> </dd> <dt id="integer_custom-ident"><code>&lt;integer&gt; &amp;&amp; &lt;custom-ident&gt;?</code></dt> <dd> <p>Contributes the n-th grid line to the grid item’s placement. If a negative integer is given, it instead counts in reverse, starting from the end edge of the explicit grid.</p> <p>If a name is given as a <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/custom-ident"><code>&lt;custom-ident&gt;</code> <small>(en-US)</small></a>, only lines with that name are counted. If not enough lines with that name exist, all implicit grid lines are assumed to have that name for the purpose of finding this position.</p> <p>An <a href="integer"><code>&lt;integer&gt;</code></a> value of <code>0</code> is invalid.</p> </dd> <dt id="span_integer_custom-ident_"><code>span &amp;&amp; [ &lt;integer&gt; || &lt;custom-ident&gt; ]</code></dt> <dd> <p>Contributes a grid span to the grid item’s placement such that the corresponding edge of the grid item’s grid area is <em>n</em> lines from the opposite edge.</p> <p>If a name is given as a <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/custom-ident"><code>&lt;custom-ident&gt;</code> <small>(en-US)</small></a>, only lines with that name are counted. If not enough lines with that name exist, all implicit grid lines on the side of the explicit grid corresponding to the search direction are assumed to have that name for the purpose of counting this span.</p> <p>If the <a href="integer"><code>&lt;integer&gt;</code></a> is omitted, it defaults to <code>1</code>. Negative integers or 0 are invalid.</p> </dd> </dl></div></section><section aria-labelledby="formal_syntax"><h3 id="formal_syntax">Formal syntax</h3>
+<div class="section-content"><pre class="notranslate"><span class="token property" id="grid-area">grid-area = </span><br>  <span class="token property">&lt;grid-line&gt;</span> <a href="value_definition_syntax#brackets">[</a> / <span class="token property">&lt;grid-line&gt;</span> <a href="value_definition_syntax#brackets">]</a><a href="value_definition_syntax#curly_braces">{0,3}</a>  <br><br><span class="token property" id="&lt;grid-line&gt;">&lt;grid-line&gt; = </span><br>  <span class="token keyword">auto</span>                                                <a href="value_definition_syntax#single_bar">|</a><br>  <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/custom-ident" class="only-in-en-us"><span class="token property">&lt;custom-ident&gt;</span> <small>(en-US)</small></a>                                      <a href="value_definition_syntax#single_bar">|</a><br>  <a href="value_definition_syntax#brackets">[</a> <a href="value_definition_syntax#brackets">[</a> <a href="integer"><span class="token property">&lt;integer [-∞,-1]&gt;</span></a> <a href="value_definition_syntax#single_bar">|</a> <a href="integer"><span class="token property">&lt;integer [1,∞]&gt;</span></a> <a href="value_definition_syntax#brackets">]</a> <a href="value_definition_syntax#double_ampersand">&amp;&amp;</a> <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/custom-ident" class="only-in-en-us"><span class="token property">&lt;custom-ident&gt;</span> <small>(en-US)</small></a><a href="value_definition_syntax#question_mark">?</a> <a href="value_definition_syntax#brackets">]</a>  <a href="value_definition_syntax#single_bar">|</a><br>  <a href="value_definition_syntax#brackets">[</a> <span class="token keyword">span</span> <a href="value_definition_syntax#double_ampersand">&amp;&amp;</a> <a href="value_definition_syntax#brackets">[</a> <a href="integer"><span class="token property">&lt;integer [1,∞]&gt;</span></a> <a href="value_definition_syntax#double_bar">||</a> <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/custom-ident" class="only-in-en-us"><span class="token property">&lt;custom-ident&gt;</span> <small>(en-US)</small></a> <a href="value_definition_syntax#brackets">]</a> <a href="value_definition_syntax#brackets">]</a>   <br><br></pre></div></section><section aria-labelledby="example"><h2 id="example">Example</h2>
+</section><section aria-labelledby="html_content"><h3 id="html_content">HTML content</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="6oSNAOm3symnncO4XFOwcNgz5XNcQDKUZEO020bY8ms=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>grid<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>item1<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>item2<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>item3<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div></div></section><section aria-labelledby="css_content"><h3 id="css_content">CSS content</h3>
+<div class="section-content">
+<div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="E1e1ewVyIOzlsfCDC5EDYH5L4TBkmlhcuYxDVe2J2BM=" data-language="css"><span class="token selector">#grid</span> <span class="token punctuation">{</span>
+  <span class="token property">display</span><span class="token punctuation">:</span> grid<span class="token punctuation">;</span>
+  <span class="token property">height</span><span class="token punctuation">:</span> 100px<span class="token punctuation">;</span>
+  <span class="token property">grid-template</span><span class="token punctuation">:</span> <span class="token function">repeat</span><span class="token punctuation">(</span>4<span class="token punctuation">,</span> 1fr<span class="token punctuation">)</span> / 50px 100px<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">#item1</span> <span class="token punctuation">{</span>
+  <span class="token property">background-color</span><span class="token punctuation">:</span> lime<span class="token punctuation">;</span>
+  <span class="token property">grid-area</span><span class="token punctuation">:</span> 2 / 2 / auto / span 3<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">#item2</span> <span class="token punctuation">{</span>
+  <span class="token property">background-color</span><span class="token punctuation">:</span> yellow<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">#item3</span> <span class="token punctuation">{</span>
+  <span class="token property">background-color</span><span class="token punctuation">:</span> blue<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div>
+<div class="code-example" id="sect2">
+
+<iframe class="sample-code-frame" title="Example sample" id="frame_example" width="100%" height="150px" src="https://live.mdnplay.dev/ko/docs/Web/CSS/grid-area/runner.html?id=example" loading="lazy"></iframe>
+</div>
+</div></section><h2 id="명세서">명세서</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://drafts.csswg.org/css-grid/#propdef-grid-area">CSS Grid Layout Module Level 2 <br><small># propdef-grid-area</small></a></td></tr></tbody>
+</table></div>
+<div class="section-content"><figure class="table-container"><div class="_table"><table class="properties"><tbody>
+<tr>
+<th scope="row"><a href="initial_value">초기값</a></th>
+<td>as each of the properties of the shorthand:<br><ul>
+<li>
+<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/grid-row-start" class="only-in-en-us"><code>grid-row-start</code> <small>(en-US)</small></a>: <code>auto</code>
+</li>
+<li>
+<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/grid-column-start" class="only-in-en-us"><code>grid-column-start</code> <small>(en-US)</small></a>: <code>auto</code>
+</li>
+<li>
+<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/grid-row-end" class="only-in-en-us"><code>grid-row-end</code> <small>(en-US)</small></a>: <code>auto</code>
+</li>
+<li>
+<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/grid-column-end" class="only-in-en-us"><code>grid-column-end</code> <small>(en-US)</small></a>: <code>auto</code>
+</li>
+</ul>
+</td>
+</tr>
+<tr>
+<th scope="row">적용대상</th>
+<td>grid items and absolutely-positioned boxes whose containing block is a grid container</td>
+</tr>
+<tr>
+<th scope="row"><a href="inheritance">상속</a></th>
+<td>no</td>
+</tr>
+<tr>
+<th scope="row"><a href="computed_value">계산 값</a></th>
+<td>as each of the properties of the shorthand:<br><ul>
+<li>
+<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/grid-row-start" class="only-in-en-us"><code>grid-row-start</code> <small>(en-US)</small></a>: as specified</li>
+<li>
+<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/grid-column-start" class="only-in-en-us"><code>grid-column-start</code> <small>(en-US)</small></a>: as specified</li>
+<li>
+<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/grid-row-end" class="only-in-en-us"><code>grid-row-end</code> <small>(en-US)</small></a>: as specified</li>
+<li>
+<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/grid-column-end" class="only-in-en-us"><code>grid-column-end</code> <small>(en-US)</small></a>: as specified</li>
+</ul>
+</td>
+</tr>
+<tr>
+<th scope="row">Animation type</th>
+<td>discrete</td>
+</tr>
+</tbody></table></div></figure></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="see_also"><h2 id="see_also">See also</h2>
+<div class="section-content">
+<ul> <li>Related CSS properties: <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/grid-row"><code>grid-row</code> <small>(en-US)</small></a>, <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/grid-row-start"><code>grid-row-start</code> <small>(en-US)</small></a>, <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/grid-row-end"><code>grid-row-end</code> <small>(en-US)</small></a>, <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/grid-column"><code>grid-column</code> <small>(en-US)</small></a>, <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/grid-column-start"><code>grid-column-start</code> <small>(en-US)</small></a>, <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/grid-column-end"><code>grid-column-end</code> <small>(en-US)</small></a>, <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/grid-template-areas"><code>grid-template-areas</code> <small>(en-US)</small></a>
+</li> <li>Grid Layout Guide: <em><a href="css_grid_layout/grid_template_areas">Grid template areas</a></em>
+</li> <li>Video tutorial: <em><a href="https://gridbyexample.com/video/grid-template-areas/" target="_blank">Grid Template Areas</a></em>
+</li> </ul> <ol> <li><a href="https://developer.mozilla.org/ko/docs/Web/CSS"><strong>CSS</strong></a></li> <li><a href="index"><strong>CSS Reference</strong></a></li> <li><a href="css_grid_layout">CSS Grid Layout</a></li> <li>
+<strong>Guides</strong> <ol> <li><a href="css_grid_layout/basic_concepts_of_grid_layout">Basics concepts of grid layout</a></li> <li><a href="css_grid_layout/relationship_of_grid_layout_with_other_layout_methods">Relationship to other layout methods</a></li> <li><a href="css_grid_layout/grid_layout_using_line-based_placement">Line-based placement</a></li> <li><a href="css_grid_layout/grid_template_areas">Grid template areas</a></li> <li><a href="css_grid_layout/grid_layout_using_named_grid_lines">Layout using named grid lines</a></li> <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_grid_layout/Auto-placement_in_grid_layout" class="only-in-en-us">Auto-placement in grid layout <small>(en-US)</small></a></li> <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_grid_layout/Box_alignment_in_grid_layout" class="only-in-en-us">Box alignment in grid layout <small>(en-US)</small></a></li> <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_grid_layout/Grids_logical_values_and_writing_modes" class="only-in-en-us">Grids, logical values and writing modes <small>(en-US)</small></a></li> <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_grid_layout/Grid_layout_and_accessibility" class="only-in-en-us">CSS Grid Layout and Accessibility <small>(en-US)</small></a></li> <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_grid_layout/Grid_layout_and_progressive_enhancement" class="only-in-en-us">CSS Grid Layout and Progressive Enhancement <small>(en-US)</small></a></li> <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_grid_layout/Realizing_common_layouts_using_grids" class="only-in-en-us">Realizing common layouts using grids <small>(en-US)</small></a></li> </ol> </li> <li>
+<strong>Properties</strong> <ol> <li><a href="grid">grid</a></li> <li><a href="grid-area" aria-current="page">grid-area</a></li> <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/grid-auto-columns" class="only-in-en-us">grid-auto-columns <small>(en-US)</small></a></li> <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/grid-auto-flow" class="only-in-en-us">grid-auto-flow <small>(en-US)</small></a></li> <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/grid-auto-rows" class="only-in-en-us">grid-auto-rows <small>(en-US)</small></a></li> <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/grid-column" class="only-in-en-us">grid-column <small>(en-US)</small></a></li> <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/grid-column-end" class="only-in-en-us">grid-column-end <small>(en-US)</small></a></li> <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/column-gap" class="only-in-en-us">grid-column-gap <small>(en-US)</small></a></li> <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/grid-column-start" class="only-in-en-us">grid-column-start <small>(en-US)</small></a></li> <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/gap" class="only-in-en-us">grid-gap <small>(en-US)</small></a></li> <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/grid-row" class="only-in-en-us">grid-row <small>(en-US)</small></a></li> <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/grid-row-end" class="only-in-en-us">grid-row-end <small>(en-US)</small></a></li> <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/row-gap" class="only-in-en-us">grid-row-gap <small>(en-US)</small></a></li> <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/grid-row-start" class="only-in-en-us">grid-row-start <small>(en-US)</small></a></li> <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/grid-template" class="only-in-en-us">grid-template <small>(en-US)</small></a></li> <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/grid-template-areas" class="only-in-en-us">grid-template-areas <small>(en-US)</small></a></li> <li><a href="grid-template-columns">grid-template-columns</a></li> <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/grid-template-rows" class="only-in-en-us">grid-template-rows <small>(en-US)</small></a></li> </ol> </li> <li>
+<strong>Glossary</strong> <ol> <li><a href="https://developer.mozilla.org/en-US/docs/Glossary/Grid_Lines" class="only-in-en-us">Grid lines <small>(en-US)</small></a></li> <li><a href="https://developer.mozilla.org/en-US/docs/Glossary/Grid_Tracks" class="only-in-en-us">Grid tracks <small>(en-US)</small></a></li> <li><a href="https://developer.mozilla.org/en-US/docs/Glossary/Grid_Cell" class="only-in-en-us">Grid cell <small>(en-US)</small></a></li> <li><a href="https://developer.mozilla.org/en-US/docs/Glossary/Grid_Areas" class="only-in-en-us">Grid areas <small>(en-US)</small></a></li> <li><a href="https://developer.mozilla.org/en-US/docs/Glossary/Gutters" class="only-in-en-us">Gutters <small>(en-US)</small></a></li> <li><a href="https://developer.mozilla.org/en-US/docs/Glossary/Grid_Row" class="only-in-en-us">Grid row <small>(en-US)</small></a></li> <li><a href="https://developer.mozilla.org/en-US/docs/Glossary/Grid_Column" class="only-in-en-us">Grid column <small>(en-US)</small></a></li> </ol> </li> </ol>
+</div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/CSS/grid-area" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/CSS/grid-area</a>
+  </p>
+</div>

@@ -1,0 +1,49 @@
+<header><h1>:link</h1></header><div class="section-content">
+<p><code>:link</code> <a href="https://developer.mozilla.org/ko/docs/Web/CSS">CSS</a> <a href="pseudo-classes">의사 클래스</a>는 아직 방문하지 않은 요소를 나타냅니다. <code>href</code> 속성을 가진 <a href="https://developer.mozilla.org/ko/docs/Web/HTML/Element/a"><code>&lt;a&gt;</code></a>, <a href="https://developer.mozilla.org/ko/docs/Web/HTML/Element/area"><code>&lt;area&gt;</code></a>, <a href="https://developer.mozilla.org/ko/docs/Web/HTML/Element/link"><code>&lt;link&gt;</code></a> 중 방문하지 않은 모든 요소를 선택합니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="Lt7o1+uVdqQG4aD9uJqoU6hdFUIYu4kqlYayianE5zY=" data-language="css"><span class="token comment">/* 아직 방문하지 않은 &lt;a&gt; 요소를 선택 */</span>
+<span class="token selector">a:link</span> <span class="token punctuation">{</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> red<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div> <p><code>:link</code> 의사 클래스로 정의한 스타일은 자신보다 뒤에 위치하고 동등한 명시성을 가진 다른 링크 의사 클래스(<a href=":active"><code>:active</code></a>, <a href=":hover"><code>:hover</code></a>, <a href=":visited"><code>:visited</code></a>)가 덮어씁니다. 링크를 적절히 디자인하려면 LVHA-순서(<code>:link</code> — <code>:visited</code> — <code>:hover</code> — <code>:active</code>)를 따라, <code>:active</code> 규칙을 다른 모든 링크 규칙들보다 앞에 배치하세요.</p> <div class="notecard note" id="sect1"> <p><strong>참고:</strong> 방문 여부에 상관하지 않고 요소를 선택하려면 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/:any-link"><code>:any-link</code> <small>(en-US)</small></a>를 사용하세요.</p> </div>
+</div>
+<section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content">Error: could not find syntax for this item</div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+<div class="section-content"><p>대부분의 브라우저는 방문한 링크에 기본값으로 특별한 <a href="color"><code>color</code></a> 값을 지정합니다. 따라서 다음 예제의 링크를 방문한 적이 없을 때만 글자 색이 적용된 모습을 볼 수 있고, 방문한 적이 있으면 브라우저 기록을 지워서 확인할 수 있습니다. 그러나 방문한 링크의 배경색은 보통 브라우저가 지정하지 않으므로 <a href="background-color"><code>background-color</code></a>는 계속 확인할 수 있습니다.</p></div></section><section aria-labelledby="html"><h3 id="html">HTML</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="+DROWoI+KtJeOgDnt1BH2/XJfKYL9oGf5PNwcmmOHyo=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>#ordinary-target<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>평범한 링크입니다.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>br</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>이 링크는 이미 방문했습니다.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>br</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span><span class="token punctuation">&gt;</span></span>플레이스홀더 링크 (스타일 적용 안됨)<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div></div></section><section aria-labelledby="css"><h3 id="css">CSS</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="2B4kL/sRWW9UZj8v5gYyFNSC/kTE9brdnoZdv93o+CY=" data-language="css"><span class="token selector">a:link</span> <span class="token punctuation">{</span>
+  <span class="token property">background-color</span><span class="token punctuation">:</span> gold<span class="token punctuation">;</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> green<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div></div></section><section aria-labelledby="결과"><h3 id="결과">결과</h3>
+<div class="section-content"><div class="code-example" id="sect2">
+
+<iframe class="sample-code-frame" title="예제 sample" id="frame_예제" src="https://live.mdnplay.dev/ko/docs/Web/CSS/:link/runner.html?id=%EC%98%88%EC%A0%9C" loading="lazy"></iframe>
+</div></div></section><h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody>
+<tr><td><a href="https://html.spec.whatwg.org/multipage/semantics-other.html#selector-link">HTML Standard <br><small># selector-link</small></a></td></tr>
+<tr><td><a href="https://drafts.csswg.org/selectors/#link">Selectors Level 4 <br><small># link</small></a></td></tr>
+</tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li>링크 관련 의사 클래스: <a href=":visited"><code>:visited</code></a>, <a href=":hover"><code>:hover</code></a>, <a href=":active"><code>:active</code></a>
+</li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/CSS/:link" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/CSS/:link</a>
+  </p>
+</div>

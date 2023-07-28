@@ -1,0 +1,145 @@
+<header><h1>resize</h1></header><div class="section-content">
+<p><code>resize</code> 이벤트는 document view의 크기가 변경될 때 발생합니다.</p> <p><code>window.onresize</code> 속성(어트리뷰트)을 사용하거나,<code>window.addEventListener('resize', ...)</code>를 사용하여, 이벤트 핸들러에 <code>resize</code> 이벤트를 등록할 수 있습니다.</p> <p>일부 브라우저의 이전 버전에서는 모든 HTML 요소(엘리먼트)에 <code>resize</code> 이벤트 핸들러를 등록 할 수 있었습니다. 여전히 <code>onresize</code> 속성을 사용하거나, <a href="../eventtarget/addeventlistener"><code>addEventListener()</code></a>를 사용하여 모든 요소에 핸들러를 설정할 수 있습니다. 그러나 <code>resize</code> 이벤트는 오직 <a href="../window"><code>window</code></a>객체(<a href="../document/defaultview"><code>document.defaultView</code></a>)에서만 발생합니다(전달합니다). <code>window</code> 객체에 등록된 핸들러만 이벤트를 수신합니다.</p> <p>모든 요소가 resize 변경을 알림받을 수 있도록 하는 새로운 제안(proposal 2017)이 있습니다. 드래프트문서를 읽으려면 <a href="https://wicg.github.io/ResizeObserver/" target="_blank">Resize Observer</a>를 참조하고, 진행중인 토론을 읽으려면 <a href="https://github.com/WICG/ResizeObserver/issues" target="_blank">Github issues</a> 문서를 참조하세요.</p>
+</div>
+<h2 id="general_info">General info</h2>
+<div class="section-content"><dl> <dt id="specifications">Specifications</dt> <dd> <p><a href="https://www.w3.org/TR/DOM-Level-3-Events/#event-type-resize" target="_blank">DOM L3</a>, <a href="https://www.w3.org/TR/cssom-view/#resizing-viewports" target="_blank">CSSOM View</a></p> </dd> <dt id="interface">Interface</dt> <dd> <p>UIEvent</p> </dd> <dt id="bubbles">Bubbles</dt> <dd> <p>No</p> </dd> <dt id="cancelable">Cancelable</dt> <dd> <p>No</p> </dd> <dt id="target">Target</dt> <dd> <p>defaultView (window)</p> </dd> <dt id="default_action">Default Action</dt> <dd> <p>None</p> </dd> </dl></div>
+<h2 id="properties">Properties</h2>
+<div class="section-content"><figure class="table-container"><div class="_table"><table> <thead> <tr> <th>Property</th> <th>Type</th> <th>Description</th> </tr> </thead> <tbody> <tr> <td>
+<code>target</code> <span class="badge inline readonly">읽기 전용</span>
+</td> <td><a href="../eventtarget"><code>EventTarget</code></a></td> <td>이벤트 타겟(DOM 트리의 최상위 타겟).</td> </tr> <tr> <td>
+<code>type</code> <span class="badge inline readonly">읽기 전용</span>
+</td> <td><a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/String"><code>DOMString</code></a></td> <td>이벤트의 타입.</td> </tr> <tr> <td>
+<code>bubbles</code> <span class="badge inline readonly">읽기 전용</span>
+</td> <td><a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Boolean"><code>Boolean</code></a></td> <td>이벤트가 정상적으로 버블이 발생하는지 여부.</td> </tr> <tr> <td>
+<code>cancelable</code> <span class="badge inline readonly">읽기 전용</span>
+</td> <td><a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Boolean"><code>Boolean</code></a></td> <td>이벤트 취소 가능 여부.</td> </tr> <tr> <td>
+<code>view</code> <span class="badge inline readonly">읽기 전용</span>
+</td> <td><a href="../windowproxy" class="page-not-created"><code>WindowProxy</code></a></td> <td>
+<a href="../document/defaultview"><code>document.defaultView</code></a> (문서의 <code>window</code>)</td> </tr> <tr> <td>
+<code>detail</code> <span class="badge inline readonly">읽기 전용</span>
+</td> <td>
+<code>long</code> (<code>float</code>)</td> <td>0.</td> </tr> </tbody> </table></div></figure></div>
+<h2 id="examples">Examples</h2>
+<div class="section-content">
+<p><code>resize</code> 이벤트는 빈번하게 발생될 수 있기 때문에, 이벤트 핸들러는 DOM 수정과 같은 계산이 많이 필요한 연산을 실행하지 않아야 합니다. 대신에 다음과 같이 <a href="https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame" class="only-in-en-us">requestAnimationFrame <small>(en-US)</small></a>, <a href="../settimeout">setTimeout</a>, <a href="../customevent">customEvent</a>* 등을 사용해 이벤트를 스로틀(throttle) 하는것이 좋습니다:</p> <p><strong>* 주의:</strong> IE11은 제대로 작동하려면 <a href="../customevent/customevent#polyfill">customEvent</a> 폴리필(polyfill)이 필요합니다.</p>
+</div>
+<h3 id="requestanimationframe_customevent">requestAnimationFrame + customEvent</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="ZyfcTTgH5kXKUPfweXchtiPvq92wVLtUxbjYHWN7g0w=" data-language="js"><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">var</span> <span class="token function-variable function">throttle</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">type<span class="token punctuation">,</span> name<span class="token punctuation">,</span> obj</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        obj <span class="token operator">=</span> obj <span class="token operator">||</span> window<span class="token punctuation">;</span>
+        <span class="token keyword">var</span> running <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+        <span class="token keyword">var</span> <span class="token function-variable function">func</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>running<span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token keyword">return</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+            running <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+             <span class="token function">requestAnimationFrame</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                obj<span class="token punctuation">.</span><span class="token function">dispatchEvent</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">CustomEvent</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                running <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">;</span>
+        obj<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span>type<span class="token punctuation">,</span> func<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+    <span class="token comment">/* init - you can init any event */</span>
+    <span class="token function">throttle</span><span class="token punctuation">(</span><span class="token string">"resize"</span><span class="token punctuation">,</span> <span class="token string">"optimizedResize"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// handle event</span>
+window<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">"optimizedResize"</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"Resource conscious resize callback!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div></div>
+<h3 id="requestanimationframe">requestAnimationFrame</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="0n5tE+0oBE1g1WdtDFCPqpytXk+F5ZDTD8YgraJr2AI=" data-language="js"><span class="token keyword">var</span> optimizedResize <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+    <span class="token keyword">var</span> callbacks <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+        running <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// fired on resize event</span>
+    <span class="token keyword">function</span> <span class="token function">resize</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>running<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            running <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>window<span class="token punctuation">.</span>requestAnimationFrame<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                window<span class="token punctuation">.</span><span class="token function">requestAnimationFrame</span><span class="token punctuation">(</span>runCallbacks<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+                <span class="token function">setTimeout</span><span class="token punctuation">(</span>runCallbacks<span class="token punctuation">,</span> <span class="token number">66</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+
+    <span class="token punctuation">}</span>
+
+    <span class="token comment">// run the actual callbacks</span>
+    <span class="token keyword">function</span> <span class="token function">runCallbacks</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+        callbacks<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">callback</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token function">callback</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        running <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment">// adds callback to loop</span>
+    <span class="token keyword">function</span> <span class="token function">addCallback</span><span class="token punctuation">(</span><span class="token parameter">callback</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>callback<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            callbacks<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>callback<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">return</span> <span class="token punctuation">{</span>
+        <span class="token comment">// public method to add additional callback</span>
+        <span class="token function-variable function">add</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">callback</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>callbacks<span class="token punctuation">.</span>length<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                window<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">'resize'</span><span class="token punctuation">,</span> resize<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            <span class="token function">addCallback</span><span class="token punctuation">(</span>callback<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// start process</span>
+optimizedResize<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'Resource conscious resize callback!'</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div></div>
+<h3 id="settimeout">setTimeout</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="8vkg1wBgCPPR8MTTok4e5ZGV5PZYYn+ukFl2z99rOKw=" data-language="js"><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+  window<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">"resize"</span><span class="token punctuation">,</span> resizeThrottler<span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">var</span> resizeTimeout<span class="token punctuation">;</span>
+  <span class="token keyword">function</span> <span class="token function">resizeThrottler</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// ignore resize events as long as an actualResizeHandler execution is in the queue</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span> <span class="token operator">!</span>resizeTimeout <span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      resizeTimeout <span class="token operator">=</span> <span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        resizeTimeout <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+        <span class="token function">actualResizeHandler</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+       <span class="token comment">// The actualResizeHandler will execute at a rate of 15fps</span>
+       <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token number">66</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token keyword">function</span> <span class="token function">actualResizeHandler</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// handle the resize event</span>
+    <span class="token operator">...</span>
+  <span class="token punctuation">}</span>
+
+<span class="token punctuation">}</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/Window/resize_event" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/Window/resize_event</a>
+  </p>
+</div>

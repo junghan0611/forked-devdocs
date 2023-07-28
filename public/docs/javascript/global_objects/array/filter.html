@@ -1,0 +1,161 @@
+<header><h1>Array.prototype.filter()</h1></header><div class="section-content"><p><code>filter()</code> 메서드는 주어진 함수의 테스트를 통과하는 모든 요소를 모아 새로운 배열로 반환합니다.</p></div>
+<section aria-labelledby="시도해보기"><h2 id="시도해보기">시도해보기</h2>
+<div class="section-content"><iframe class="interactive is-js-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/js/array-filter.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe></div></section><section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="KmCCqLUyJBzt9PBYZ0C9EeiQbzmrOTbd/BXvVnMz09o=" data-language="js">    arr<span class="token punctuation">.</span><span class="token function">filter</span><span class="token punctuation">(</span><span class="token function">callback</span><span class="token punctuation">(</span>element<span class="token punctuation">[</span><span class="token punctuation">,</span> index<span class="token punctuation">[</span><span class="token punctuation">,</span> array<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token punctuation">,</span> thisArg<span class="token punctuation">]</span><span class="token punctuation">)</span>
+</pre>
+</div></div></section><section aria-labelledby="매개변수"><h3 id="매개변수">매개변수</h3>
+<div class="section-content"><dl> <dt id="callback"><code>callback</code></dt> <dd> <p>각 요소를 시험할 함수. <code>true</code>를 반환하면 요소를 유지하고, <code>false</code>를 반환하면 버립니다.</p> <p>다음 세 가지 매개변수를 받습니다.</p> <dl> <dt id="element"><code>element</code></dt> <dd> <p>처리할 현재 요소.</p> </dd> <dt id="index">
+<code>index</code> <span class="badge inline optional">Optional</span>
+</dt> <dd> <p>처리할 현재 요소의 인덱스.</p> </dd> <dt id="array">
+<code>array</code> <span class="badge inline optional">Optional</span>
+</dt> <dd> <p><code>filter</code>를 호출한 배열.</p> </dd> </dl> </dd> <dt id="thisarg">
+<code>thisArg</code> <span class="badge inline optional">Optional</span>
+</dt> <dd> <p><code>callback</code>을 실행할 때 <code>this</code>로 사용하는 값.</p> </dd> </dl></div></section><section aria-labelledby="반환_값"><h3 id="반환_값">반환 값</h3>
+<div class="section-content"><p>테스트를 통과한 요소로 이루어진 새로운 배열. 어떤 요소도 테스트를 통과하지 못했으면 빈 배열을 반환합니다.</p></div></section><section aria-labelledby="설명"><h2 id="설명">설명</h2>
+<div class="section-content">
+<p><code>filter()</code>는 배열 내 각 요소에 대해 한 번 제공된 <code>callback</code> 함수를 호출해, <code>callback</code>이 <a href="https://developer.mozilla.org/ko/docs/Glossary/Truthy"><code>true</code>로 강제하는 값</a>을 반환하는 모든 값이 있는 새로운 배열을 생성합니다. <code>callback</code>은 할당된 값이 있는 배열의 인덱스에 대해서만 호출됩니다; 삭제됐거나 값이 할당된 적이 없는 인덱스에 대해서는 호출되지 않습니다. <code>callback</code> 테스트를 통과하지 못한 배열 요소는 그냥 건너뛰며 새로운 배열에 포함되지 않습니다.</p> <p><code>callback</code>은 다음 세 인수와 함께 호출됩니다:</p> <ol> <li>요소값</li> <li>요소 인덱스</li> <li>순회(traverse)되는 배열 객체</li> </ol> <p><code>thisArg</code> 매개변수가 <code>filter</code>에 제공된 경우, 호출될 때 그 값은 <code>callback</code>의 <code>this</code> 값으로 전달됩니다. 그 이외에, <code>undefined</code>값도 <code>callback</code>의 <code>this</code> 값으로 쓰기 위해 전달됩니다. 결국 <code>callback</code>에 의해 관찰될 수 있는 <code>this</code> 값은 <a href="../../operators/this"><code>this</code>를 결정하는 함수의 평소 규칙</a>에 따라 결정됩니다.</p> <p><code>filter()</code>는 호출되는 배열을 변화시키지(mutate) 않습니다.</p> <p><code>filter()</code>에 의해 처리되는 요소의 범위는 <code>callback</code>의 첫 호출 전에 설정됩니다. <code>filter()</code> 호출 시작 이후로 배열에 추가된 요소는 <code>callback</code>에 의해 방문되지 않습니다. 배열의 기존 요소가 변경 또는 삭제된 경우, <code>callback</code>에 전달된 그 값은 <code>filter()</code>가 그 요소를 방문한 시점에 값이 됩니다; 삭제된 요소는 반영되지 않습니다.</p>
+</div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+</section><section aria-labelledby="모든_작은_값_걸러내기"><h3 id="모든_작은_값_걸러내기">모든 작은 값 걸러내기</h3>
+<div class="section-content">
+<p>다음 예는 값이 10 이하인 모든 요소가 제거된 걸러진 배열을 만들기 위해 <code>filter()</code>를 사용합니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="jFg4N97UuFGbUWSwDK/it42FnlqZzU7GJPisdPrr4Dc=" data-language="js"><span class="token keyword">function</span> <span class="token function">isBigEnough</span><span class="token punctuation">(</span><span class="token parameter">value</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> value <span class="token operator">&gt;=</span> <span class="token number">10</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">var</span> filtered <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">12</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">8</span><span class="token punctuation">,</span> <span class="token number">130</span><span class="token punctuation">,</span> <span class="token number">44</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">filter</span><span class="token punctuation">(</span>isBigEnough<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// filtered 는 [12, 130, 44]</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="json에서_무효한_항목_거르기"><h3 id="json에서_무효한_항목_거르기">JSON에서 무효한 항목 거르기</h3>
+<div class="section-content">
+<p>다음 예는 0이 아닌, 숫자 <code>id</code>인 모든 요소의 걸러진 json을 만들기 위해 <code>filter()</code>를 사용합니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="3wnQVWZKOFO+Vz0DyAxDLKanuZdCRO7js/dBNWkQX7g=" data-language="js"><span class="token keyword">var</span> arr <span class="token operator">=</span> <span class="token punctuation">[</span>
+  <span class="token punctuation">{</span> <span class="token literal-property property">id</span><span class="token operator">:</span> <span class="token number">15</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">{</span> <span class="token literal-property property">id</span><span class="token operator">:</span> <span class="token operator">-</span><span class="token number">1</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">{</span> <span class="token literal-property property">id</span><span class="token operator">:</span> <span class="token number">0</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">{</span> <span class="token literal-property property">id</span><span class="token operator">:</span> <span class="token number">3</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">{</span> <span class="token literal-property property">id</span><span class="token operator">:</span> <span class="token number">12.2</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">{</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">{</span> <span class="token literal-property property">id</span><span class="token operator">:</span> <span class="token keyword">null</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">{</span> <span class="token literal-property property">id</span><span class="token operator">:</span> <span class="token number">NaN</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">{</span> <span class="token literal-property property">id</span><span class="token operator">:</span> <span class="token string">'undefined'</span> <span class="token punctuation">}</span>
+<span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+<span class="token keyword">var</span> invalidEntries <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+
+<span class="token keyword">function</span> <span class="token function">isNumber</span><span class="token punctuation">(</span><span class="token parameter">obj</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> obj <span class="token operator">!==</span> <span class="token keyword">undefined</span> <span class="token operator">&amp;&amp;</span> <span class="token keyword">typeof</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span> <span class="token operator">===</span> <span class="token string">'number'</span> <span class="token operator">&amp;&amp;</span> <span class="token operator">!</span><span class="token function">isNaN</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">function</span> <span class="token function">filterByID</span><span class="token punctuation">(</span><span class="token parameter">item</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">isNumber</span><span class="token punctuation">(</span>item<span class="token punctuation">.</span>id<span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> item<span class="token punctuation">.</span>id <span class="token operator">!==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  invalidEntries<span class="token operator">++</span><span class="token punctuation">;</span>
+  <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">var</span> arrByID <span class="token operator">=</span> arr<span class="token punctuation">.</span><span class="token function">filter</span><span class="token punctuation">(</span>filterByID<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'Filtered Array\n'</span><span class="token punctuation">,</span> arrByID<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// Filtered Array</span>
+<span class="token comment">// [{ id: 15 }, { id: -1 }, { id: 3 }, { id: 12.2 }]</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'Number of Invalid Entries = '</span><span class="token punctuation">,</span> invalidEntries<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// Number of Invalid Entries = 5</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="배열_내용_검색"><h3 id="배열_내용_검색">배열 내용 검색</h3>
+<div class="section-content">
+<p>다음 예는 배열 내용을 조건에 따라 검색하기 위해 <code>filter()</code> 를 사용합니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="nQBCxnDX+Z3P72zLiQOwXsUaM/2QddqxqKKpl9EEi8U=" data-language="js"><span class="token keyword">var</span> fruits <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'apple'</span><span class="token punctuation">,</span> <span class="token string">'banana'</span><span class="token punctuation">,</span> <span class="token string">'grapes'</span><span class="token punctuation">,</span> <span class="token string">'mango'</span><span class="token punctuation">,</span> <span class="token string">'orange'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+<span class="token comment">/**
+ * 검색 조건에 따른 배열 필터링(쿼리)
+ */</span>
+<span class="token keyword">function</span> <span class="token function">filterItems</span><span class="token punctuation">(</span><span class="token parameter">query</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> fruits<span class="token punctuation">.</span><span class="token function">filter</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">el</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">return</span> el<span class="token punctuation">.</span><span class="token function">toLowerCase</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">indexOf</span><span class="token punctuation">(</span>query<span class="token punctuation">.</span><span class="token function">toLowerCase</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">&gt;</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token function">filterItems</span><span class="token punctuation">(</span><span class="token string">'ap'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// ['apple', 'grapes']</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token function">filterItems</span><span class="token punctuation">(</span><span class="token string">'an'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// ['banana', 'mango', 'orange']</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="es2015로_구현"><h3 id="es2015로_구현">ES2015로 구현</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="ILyF5biHtevItUxdRmsp/oAPH+sFHM6cbmq/JdZfvos=" data-language="js"><span class="token keyword">const</span> fruits <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'apple'</span><span class="token punctuation">,</span> <span class="token string">'banana'</span><span class="token punctuation">,</span> <span class="token string">'grapes'</span><span class="token punctuation">,</span> <span class="token string">'mango'</span><span class="token punctuation">,</span> <span class="token string">'orange'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+<span class="token comment">/**
+ * 검색 조건에 따른 배열 필터링(쿼리)
+ */</span>
+<span class="token keyword">const</span> <span class="token function-variable function">filterItems</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">query</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> fruits<span class="token punctuation">.</span><span class="token function">filter</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">el</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span>
+    el<span class="token punctuation">.</span><span class="token function">toLowerCase</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">indexOf</span><span class="token punctuation">(</span>query<span class="token punctuation">.</span><span class="token function">toLowerCase</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">&gt;</span> <span class="token operator">-</span><span class="token number">1</span>
+  <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token function">filterItems</span><span class="token punctuation">(</span><span class="token string">'ap'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// ['apple', 'grapes']</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token function">filterItems</span><span class="token punctuation">(</span><span class="token string">'an'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// ['banana', 'mango', 'orange']</span>
+</pre>
+</div></div></section><section aria-labelledby="폴리필"><h2 id="폴리필">폴리필</h2>
+<div class="section-content">
+<p><code>filter</code>는 ECMA-262 표준 제5판에 추가됐습니다. 따라서 어떤 표준 구현체에서는 사용할 수 없을 수도 있습니다. 다른 모든 코드 이전에 아래 코드를 포함하면 지원하지 않는 환경에서도 <code>filter</code>를 사용할 수 있습니다. 아래 알고리즘은 <code>fn.call</code>의 계산 값이 원래의 <a href="../function/call"><code>Function.prototype.call()</code></a>과 같고, <a href="push"><code>Array.prototype.push()</code></a>가 변형되지 않은 경우 ECMA-262 제5판이 명시한 것과 동일합니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="X2wD+1PokaDyT+k9TkMdng46L+M9tlQE2ZLeb+CTYYg=" data-language="js"><span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token class-name">Array</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span>filter<span class="token punctuation">)</span><span class="token punctuation">{</span>
+  <span class="token class-name">Array</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function-variable function">filter</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">func<span class="token punctuation">,</span> thisArg</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token string">'use strict'</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span> <span class="token operator">!</span> <span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token keyword">typeof</span> func <span class="token operator">===</span> <span class="token string">'Function'</span> <span class="token operator">||</span> <span class="token keyword">typeof</span> func <span class="token operator">===</span> <span class="token string">'function'</span><span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> <span class="token keyword">this</span><span class="token punctuation">)</span> <span class="token punctuation">)</span>
+        <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">TypeError</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">var</span> len <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>length <span class="token operator">&gt;&gt;&gt;</span> <span class="token number">0</span><span class="token punctuation">,</span>
+        res <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Array</span><span class="token punctuation">(</span>len<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token comment">// preallocate array</span>
+        t <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">,</span> c <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> i <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>thisArg <span class="token operator">===</span> <span class="token keyword">undefined</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+      <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token operator">++</span>i <span class="token operator">!==</span> len<span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token comment">// checks to see if the key was set</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>i <span class="token keyword">in</span> <span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+          <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">func</span><span class="token punctuation">(</span>t<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> i<span class="token punctuation">,</span> t<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            res<span class="token punctuation">[</span>c<span class="token operator">++</span><span class="token punctuation">]</span> <span class="token operator">=</span> t<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+          <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">else</span><span class="token punctuation">{</span>
+      <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token operator">++</span>i <span class="token operator">!==</span> len<span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token comment">// checks to see if the key was set</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>i <span class="token keyword">in</span> <span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+          <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">func</span><span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span>thisArg<span class="token punctuation">,</span> t<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> i<span class="token punctuation">,</span> t<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            res<span class="token punctuation">[</span>c<span class="token operator">++</span><span class="token punctuation">]</span> <span class="token operator">=</span> t<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+          <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+    res<span class="token punctuation">.</span>length <span class="token operator">=</span> c<span class="token punctuation">;</span> <span class="token comment">// shrink down array to proper size</span>
+    <span class="token keyword">return</span> res<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div>
+</div></section><h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://tc39.es/ecma262/multipage/indexed-collections.html#sec-array.prototype.filter">ECMAScript Language Specification <br><small># sec-array.prototype.filter</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="foreach"><code>Array.prototype.forEach()</code></a></li> <li><a href="every"><code>Array.prototype.every()</code></a></li> <li><a href="some"><code>Array.prototype.some()</code></a></li> <li><a href="reduce"><code>Array.prototype.reduce()</code></a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/filter" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/filter</a>
+  </p>
+</div>

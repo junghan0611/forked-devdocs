@@ -1,0 +1,397 @@
+<header><h1>화살표 함수</h1></header><div class="section-content">
+<p>화살표 함수 표현(<strong>arrow function expression</strong>)은 <a href="../operators/function">전통적인 함수표현(function)</a>의 간편한 대안입니다. 하지만, 화살표 함수는 몇 가지 제한점이 있고 모든 상황에 사용할 수는 없습니다.</p> <ul> <li>
+<a href="../operators/this">this</a>, <a href="arguments">arguments</a>나 <a href="../operators/super">super</a>에 대한 자체 바인딩이 없고, <a href="https://developer.mozilla.org/ko/docs/Glossary/Method">methods</a>로 사용해서는 안됩니다.</li> <li>
+<a href="../operators/new.target">new.target</a>키워드가 없습니다.</li> <li>일반적으로 스코프를 지정할 때 사용하는 <a href="../global_objects/function/call">call</a>, <a href="../global_objects/function/apply">apply</a>, <a href="../global_objects/function/bind">bind</a> methods를 이용할 수 없습니다.</li> <li>생성자<a href="../classes/constructor">(Constructor)</a>로 사용할 수 없습니다.</li> <li>
+<a href="../operators/yield">yield</a>를 화살표 함수 내부에서 사용할 수 없습니다.</li> </ul>
+</div>
+<section aria-labelledby="시도해보기"><h2 id="시도해보기">시도해보기</h2>
+<div class="section-content"><iframe class="interactive is-js-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/js/functions-arrow.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe></div></section><section aria-labelledby="구문"><h2 id="구문">구문</h2>
+</section><section aria-labelledby="기본_구문"><h3 id="기본_구문">기본 구문</h3>
+<div class="section-content"><pre class="notranslate">    (param1, param2, …, paramN) =&gt; { statements }
+    (param1, param2, …, paramN) =&gt; expression
+    // 다음과 동일함:  =&gt; { return expression; }
+
+    // 매개변수가 하나뿐인 경우 괄호는 선택사항:
+    (singleParam) =&gt; { statements }
+    singleParam =&gt; { statements }
+
+    // 매개변수가 없는 함수는 괄호가 필요:
+    () =&gt; { statements }
+</pre></div></section><section aria-labelledby="고급_구문"><h3 id="고급_구문">고급 구문</h3>
+<div class="section-content">
+<pre class="notranslate">    // 객체 리터럴 표현을 반환하기 위해서는 함수 본문(body)을 괄호 속에 넣음:
+    params =&gt; ({foo: bar})
+
+    // 나머지 매개변수 및 기본 매개변수를 지원함
+    (param1, param2, ...rest) =&gt; { statements }
+    (param1 = defaultValue1, param2, …, paramN = defaultValueN) =&gt; { statements }
+
+    // 매개변수 목록 내 구조분해할당도 지원됨
+    var f = ([a, b] = [1, 2], {x: c} = {x: a + b}) =&gt; a + b + c;
+    f();  // 6
+</pre> <p>상세한 구문 예는 <a href="http://wiki.ecmascript.org/doku.php?id=harmony:arrow_function_syntax" target="_blank">여기</a>에서 볼 수 있습니다.</p>
+</div></section><section aria-labelledby="설명"><h2 id="설명">설명</h2>
+<div class="section-content">
+<p><a href="https://hacks.mozilla.org/2015/06/es6-in-depth-arrow-functions/" target="_blank">Hacks 블로그 "ES6 In Depth: Arrow functions" 포스트</a> 참조.</p> <p>화살표 함수 도입에 영향을 준 두 요소: 보다 짧아진 함수 및 <code>바인딩하지 않은 this.</code></p>
+</div></section><section aria-labelledby="짧은_함수"><h3 id="짧은_함수">짧은 함수</h3>
+<div class="section-content">
+<p>일부 함수 패턴에서는, 짧은 함수가 환영받습니다. 비교해 보세요:</p> <pre class="notranslate">    var elements = [
+      'Hydrogen',
+      'Helium',
+      'Lithium',
+      'Beryllium'
+    ];
+
+    // 이 문장은 배열을 반환함: [8, 6, 7, 9]
+    elements.map(function(element) {
+      return element.length;
+    });
+
+    // 위의 일반적인 함수 표현은 아래 화살표 함수로 쓸 수 있다.
+    elements.map((element) =&gt; {
+      return element.length;
+    }); // [8, 6, 7, 9]
+
+    // 파라미터가 하나만 있을 때는 주변 괄호를 생략할 수 있다.
+    elements.map(element =&gt; {
+      return element.length;
+    }); // [8, 6, 7, 9]
+
+    // 화살표 함수의 유일한 문장이 'return'일 때 'return'과
+    // 중괄호({})를 생략할 수 있다.
+    elements.map(element =&gt; element.length); // [8, 6, 7, 9]
+
+    // 이 경우 length 속성만 필요하므로 destructuring 매개변수를 사용할 수 있다.
+    // 'length'는 우리가 얻고자 하는 속성에 해당하는 반면,
+    // lengthFooBArX'는 변경 가능한 변수의 이름일 뿐이므로
+    // 원하는 유효한 변수명으로 변경할 수 있다.
+    elements.map(({ length: lengthFooBArX }) =&gt; lengthFooBArX); // [8, 6, 7, 9]
+
+    // destructuring 파라미터 할당도 아래와 같이 작성할 수 있습니다.
+    // 이 예에서 정의한 객체내의 'length'에 값을 지정하지 않은 점에 주목하세요. 대신, "length" 변수의
+    // 리터럴 이름은 우리가 해당 객체에서 꺼내오고 싶은 속성이름 자체로 사용됩니다.
+    elements.map(({ length }) =&gt; length); // [8, 6, 7, 9]
+</pre>
+</div></section><section aria-labelledby="바인딩_되지_않은_this"><h3 id="바인딩_되지_않은_this">바인딩 되지 않은 <code>this</code>
+</h3>
+<div class="section-content">
+<p>화살표 함수가 나오기 전까지는, 모든 새로운 함수는, 어떻게 그 함수가 호출되는지에 따라 자신의 <a href="../operators/this"><code>this</code></a> 값을 정의했습니다:</p> <ul> <li>이 함수가 생성자인 경우는 새로운 객체</li> <li>
+<a href="../strict_mode">엄격 모드</a> 함수 호출에서는 <code>undefined</code>
+</li> <li>함수가 "객체 메서드"로서 호출된 경우 문맥 객체</li> <li>등등</li> </ul> <p>이는 객체 지향 스타일로 프로그래밍할 때 별로 좋지않습니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="FIiWYLa6bjjIqMRbBjI3wCHGLuF71FDNMOxe89oz/5s=" data-language="js"><span class="token keyword">function</span> <span class="token function">Person</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">// Person() 생성자는 `this`를 자신의 인스턴스로 정의.</span>
+  <span class="token keyword">this</span><span class="token punctuation">.</span>age <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+
+  <span class="token function">setInterval</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token function">growUp</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 비엄격 모드에서, growUp() 함수는 `this`를</span>
+    <span class="token comment">// 전역 객체로 정의하고, 이는 Person() 생성자에</span>
+    <span class="token comment">// 정의된 `this`와 다름.</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>age<span class="token operator">++</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token number">1000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">var</span> p <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Person</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div> <p>ECMAScript 3/5 에서는, 이 문제를 <code>this</code> 값을 폐쇄될 수 있는 (비전역) 변수에 할당하여 해결했습니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="uOYa3A04ywt1FxLFOqnLwPwzR9JnTlkWlHthcQpAdhI=" data-language="js"><span class="token keyword">function</span> <span class="token function">Person</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">var</span> that <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">;</span>
+  that<span class="token punctuation">.</span>age <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+
+  <span class="token function">setInterval</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token function">growUp</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 콜백은  `that` 변수를 참조하고 이것은 값이 기대한 객체이다.</span>
+    that<span class="token punctuation">.</span>age<span class="token operator">++</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token number">1000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div> <p>이렇게 하는 대신에, <a href="../global_objects/function/bind">바인딩한 함수</a>는 적절한 <code>this</code> 값이 <code>growUp()</code> 함수에 전달될 수 있도록 생성될 수 있습니다.</p> <p>화살표 함수는 자신의 <code>this</code>가 없습니다. 대신 화살표 함수를 둘러싸는 렉시컬 범위(lexical scope)의 <code>this</code>가 사용됩니다; 화살표 함수는 일반 변수 조회 규칙(normal variable lookup rules)을 따릅니다. 때문에 현재 범위에서 존재하지 않는 <code>this</code>를 찾을 때, 화살표 함수는 바로 바깥 범위에서 <code>this</code>를 찾는것으로 검색을 끝내게 됩니다.</p> <p>따라서 다음 코드에서 <code>setInterval</code>에 전달 된 함수 내부의 <code>this</code>는 <code>setInterval</code>을 포함한 function의 <code>this</code>와 동일한 값을 갖습니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="KCNOek95BnguDExVvelb865l4h5TOnx4KFPPQtplvs4=" data-language="js"><span class="token keyword">function</span> <span class="token function">Person</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+  <span class="token keyword">this</span><span class="token punctuation">.</span>age <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+
+  <span class="token function">setInterval</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>age<span class="token operator">++</span><span class="token punctuation">;</span> <span class="token comment">// |this|는 Person 객체를 참조</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token number">1000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">var</span> p <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Person</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div> <h4 id="엄격_모드와의_관계">엄격 모드와의 관계</h4> <p><code>this</code>가 렉시컬(lexical, 정적)임을 감안하면, <code>this</code>에 관한 <a href="../strict_mode">엄격 모드</a> 규칙은 그냥 무시됩니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="uvUZ+RBObOUt2uO09moJl9aEpt5D0OcXB5mck8hq744=" data-language="js">    <span class="token keyword">var</span> <span class="token function-variable function">f</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span> <span class="token string">'use strict'</span><span class="token punctuation">;</span> <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">;</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
+    <span class="token function">f</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">===</span> window<span class="token punctuation">;</span> <span class="token comment">// 혹은 전역객체</span>
+</pre>
+</div> <p>엄격 모드의 나머지 규칙은 평소대로 적용합니다.</p> <p><strong>CORRECTION: START</strong></p> <p>NOTE: the previous statement seems false.</p> <p>Strict mode should prevent creating global variables when assigning to an undeclared identifier in a function.</p> <p>This code sample using Chrome 81 demonstrates that arrow functions allow the creation of global variables in such situations (both for a concise body and for a normal function body):</p> <pre class="notranslate">    &gt; f1 = x =&gt; { y = x; console.log(`x: ${x}, y: ${y}`); return x + 1; }
+    x =&gt; { y = x; console.log(`x: ${x}, y: ${y}`); return x + 1; }
+
+    &gt; y
+    VM51587:1 Uncaught ReferenceError: y is not defined
+        at &lt;anonymous&gt;:1:1
+    (anonymous) @ VM51587:1
+
+    &gt; f1(3)
+    VM51533:1 x: 3, y: 3
+    4
+
+    &gt; y
+    3
+
+    &gt; f2 = x =&gt; { 'use strict'; z = x; console.log(`x: ${x}, z: ${z}`); return x + 1; }
+    x =&gt; { 'use strict'; z = x; console.log(`x: ${x}, z: ${z}`); return x + 1; }
+
+    &gt; z
+    VM51757:1 Uncaught ReferenceError: z is not defined
+        at &lt;anonymous&gt;:1:1
+    (anonymous) @ VM51757:1
+
+    &gt; f2(4)
+    VM51712:1 Uncaught ReferenceError: z is not defined
+        at f2 (&lt;anonymous&gt;:1:29)
+        at &lt;anonymous&gt;:1:1
+    f2 @ VM51712:1
+    (anonymous) @ VM51800:1
+
+    &gt; f3 = x =&gt; (z1 = x + 1)
+    x =&gt; (z1 = x + 1)
+
+    &gt; z1
+    VM51891:1 Uncaught ReferenceError: z1 is not defined
+        at &lt;anonymous&gt;:1:1
+    (anonymous) @ VM51891:1
+
+    &gt; f3(10)
+    11
+
+    &gt; z1
+    11
+</pre> <p>f2 illustrates that when explicitly setting the arrow function to apply strict mode, it does throw an error when attempting to assign an undeclared variable.</p> <p><a href="https://www.ecma-international.org/ecma-262/10.0/index.html#sec-strict-mode-code" target="_blank">https://www.ecma-international.org/ecma-262/10.0/index.html#sec-strict-mode-code</a></p> <p><a href="https://www.ecma-international.org/ecma-262/10.0/index.html#sec-arrow-function-definitions-runtime-semantics-evaluation" target="_blank">https://www.ecma-international.org/ecma-262/10.0/index.html#sec-arrow-function-definitions-runtime-semantics-evaluation</a></p> <p><strong>CORRECTION: END</strong></p> <h4 id="call_또는_apply를_통한_피호출">call 또는 apply를 통한 피호출</h4> <p>화살표 함수에서는 <code>this</code> 가 바인딩되지 않았기 때문에, <code>call()</code> 또는 <code>apply()</code> 메서드는 인자만 전달 할 수 있습니다. this는 무시됩니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="XvvlUPZBRZdHq5tMSja35jWG49jN33T4oKRiIEVuewo=" data-language="js"><span class="token keyword">var</span> adder <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token literal-property property">base</span> <span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+
+  <span class="token function-variable function">add</span> <span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">a</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">var</span> <span class="token function-variable function">f</span> <span class="token operator">=</span> <span class="token parameter">v</span> <span class="token operator">=&gt;</span> v <span class="token operator">+</span> <span class="token keyword">this</span><span class="token punctuation">.</span>base<span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token function">f</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+
+  <span class="token function-variable function">addThruCall</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">a</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">var</span> <span class="token function-variable function">f</span> <span class="token operator">=</span> <span class="token parameter">v</span> <span class="token operator">=&gt;</span> v <span class="token operator">+</span> <span class="token keyword">this</span><span class="token punctuation">.</span>base<span class="token punctuation">;</span>
+    <span class="token keyword">var</span> b <span class="token operator">=</span> <span class="token punctuation">{</span>
+      <span class="token literal-property property">base</span> <span class="token operator">:</span> <span class="token number">2</span>
+    <span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">return</span> <span class="token function">f</span><span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span>b<span class="token punctuation">,</span> a<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>adder<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>         <span class="token comment">// 이는 2가 콘솔에 출력될 것임</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>adder<span class="token punctuation">.</span><span class="token function">addThruCall</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 이도 2가 콘솔에 출력될 것임</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="바인딩_되지_않은_arguments"><h3 id="바인딩_되지_않은_arguments">바인딩 되지 않은 <code>arguments</code>
+</h3>
+<div class="section-content">
+<p>화살표 함수는 <a href="arguments"><code>arguments</code> 객체</a>를 바인드 하지 않습니다. 때문에, <code>arguments는</code> 그저 둘러싸는 범위(scope) 내 이름에 대한 참조입니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="ogukq9TgM5xNW03LWu4mshp0MKAzhOQ+IIZzOTFqLZU=" data-language="js"><span class="token keyword">var</span> arguments <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> <span class="token function-variable function">arr</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> arguments<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+<span class="token function">arr</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 1</span>
+
+<span class="token keyword">function</span> <span class="token function">foo</span><span class="token punctuation">(</span><span class="token parameter">n</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">var</span> <span class="token function-variable function">f</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> arguments<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">+</span> n<span class="token punctuation">;</span> <span class="token comment">// foo's implicit arguments binding. arguments[0] is n</span>
+  <span class="token keyword">return</span> <span class="token function">f</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token function">foo</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 2</span>
+</pre>
+</div> <p>화살표 함수는 자신의 <code>arguments</code> 객체가 없지만, 대부분의 경우에 <a href="rest_parameters">나머지 매개변수</a>가 좋은 대안입니다:</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="JWPZ1qpKPvLVt4g89qoq+lT2331ycB54lbwrDhkVAr8=" data-language="js"><span class="token keyword">function</span> <span class="token function">foo</span><span class="token punctuation">(</span><span class="token parameter">n</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">var</span> <span class="token function-variable function">f</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter"><span class="token operator">...</span>args</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> args<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">+</span> n<span class="token punctuation">;</span>
+  <span class="token keyword">return</span> <span class="token function">f</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token function">foo</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 3</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="메소드로_사용되는_화살표_함수"><h3 id="메소드로_사용되는_화살표_함수">메소드로 사용되는 화살표 함수</h3>
+<div class="section-content">
+<p>이야기 했듯이, 화살표 함수 표현은 메소드 함수가 아닌 형태로 사용 할 수 있습니다. 메소드로 사용하려고 한다면 무슨일이 발생하는지 봅시다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="VbPg6ojVpl/QxAzb4GI3RQTO/cXNLBDNekTZxTGE6kg=" data-language="js"><span class="token string">'use strict'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">var</span> obj <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token comment">// does not create a new scope</span>
+  <span class="token literal-property property">i</span><span class="token operator">:</span> <span class="token number">10</span><span class="token punctuation">,</span>
+  <span class="token function-variable function">b</span><span class="token operator">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>i<span class="token punctuation">,</span> <span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  <span class="token function-variable function">c</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span> <span class="token keyword">this</span><span class="token punctuation">.</span>i<span class="token punctuation">,</span> <span class="token keyword">this</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+obj<span class="token punctuation">.</span><span class="token function">b</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// prints undefined, Window {...} (or the global object)</span>
+obj<span class="token punctuation">.</span><span class="token function">c</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// prints 10, Object {...}</span>
+</pre>
+</div> <p>화살표 함수는 자신의 this를 가지고("bind" 바인드)있지 않습니다.<a href="../global_objects/object/defineproperty"><code>Object.defineProperty()</code></a></p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="EKF1U4Tv5SKpaTMEf7LbG4D5jcu3LpSjs722JYEifKs=" data-language="js"><span class="token string">'use strict'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">var</span> obj <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token literal-property property">a</span><span class="token operator">:</span> <span class="token number">10</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+Object<span class="token punctuation">.</span><span class="token function">defineProperty</span><span class="token punctuation">(</span>obj<span class="token punctuation">,</span> <span class="token string">'b'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+  <span class="token function-variable function">get</span><span class="token operator">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>a<span class="token punctuation">,</span> <span class="token keyword">typeof</span> <span class="token keyword">this</span><span class="token punctuation">.</span>a<span class="token punctuation">,</span> <span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// undefined 'undefined' Window {...} (or the global object)</span>
+    <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span>a <span class="token operator">+</span> <span class="token number">10</span><span class="token punctuation">;</span> <span class="token comment">// represents global object 'Window', therefore 'this.a' returns 'undefined'</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="new_연산자_사용"><h3 id="new_연산자_사용">
+<code>new</code> 연산자 사용</h3>
+<div class="section-content">
+<p>화살표 함수는 생성자로서 사용될 수 없으며 <code>new</code>와 함께 사용하면 오류가 발생합니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="F0UPgH0tPPzj1mCXNf4M/TwDCzcaUaCYu78JUr74TXE=" data-language="js"><span class="token keyword">var</span> <span class="token function-variable function">Foo</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> foo <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// TypeError: Foo is not a constructor</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="prototype_속성_사용"><h3 id="prototype_속성_사용">
+<code>prototype</code> 속성 사용</h3>
+<div class="section-content">
+<p>화살표 함수는 <code>prototype</code> 속성이 없습니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="8oS153vWoG8MwKLwz+JMVved3en6IXHsjMAC5SM03Lc=" data-language="js"><span class="token keyword">var</span> <span class="token function-variable function">Foo</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token class-name">Foo</span><span class="token punctuation">.</span>prototype<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// undefined</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="yield_키워드_사용"><h3 id="yield_키워드_사용">
+<code>yield</code> 키워드 사용</h3>
+<div class="section-content"><p><a href="../operators/yield"><code>yield</code></a> 키워드는 화살표 함수의 본문(그 안에 더 중첩된 함수 내에서 허용한 경우를 제외하고)에 사용될 수 없습니다. 그 결과, 화살표 함수는 생성기(generator)로서 사용될 수 없습니다.</p></div></section><section aria-labelledby="함수_본문"><h3 id="함수_본문">함수 본문</h3>
+<div class="section-content">
+<p>화살표 함수는 "concise 바디"든 보통 "block 바디"든 하나를 가질 수 있습니다.</p> <div class="note notecard" id="sect1"> <p>concise바디는 중괄호'{}'로 묶이지않은 한줄짜리 바디이고 block바디는 중괄호로 묶인 바디입니다. 보통 여러줄 쓸때 block바디를 사용합니다.</p> </div> <p>block바디는 자동으로 값을 반환하지 않습니다. <code>return</code>을 사용해서 값을 반환해야 합니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="7Vk/K9M9LK/j6HBczZsNei7hPLfHYaSe4V7MfOgxbUM=" data-language="js"><span class="token keyword">var</span> <span class="token function-variable function">func</span> <span class="token operator">=</span> <span class="token parameter">x</span> <span class="token operator">=&gt;</span> x <span class="token operator">*</span> x<span class="token punctuation">;</span>                  <span class="token comment">// concise 바디, 생략된 "return" 여기서는 x * x</span>
+<span class="token keyword">var</span> <span class="token function-variable function">func</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">x<span class="token punctuation">,</span> y</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> x <span class="token operator">+</span> y<span class="token punctuation">;</span> <span class="token punctuation">}</span><span class="token punctuation">;</span> <span class="token comment">// block 바디, "return"이 필요</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="객체_리터럴_반환"><h3 id="객체_리터럴_반환">객체 리터럴 반환</h3>
+<div class="section-content">
+<p>간결한 구문 <code>params =&gt; {object:literal}</code>을 사용한 객체 리터럴 반환은 예상대로 작동하지 않음을 명심하세요:</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="W0xzW+Rvq1jEjPSvv/1KAKh17jfmYqobG1M9ecMWGkM=" data-language="js"><span class="token keyword">var</span> <span class="token function-variable function">func</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>  <span class="token literal-property property">foo</span><span class="token operator">:</span> <span class="token number">1</span>  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token comment">// func() 호출은 undefined를 반환!</span>
+
+<span class="token keyword">var</span> <span class="token function-variable function">func</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>  <span class="token function-variable function">foo</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token comment">// SyntaxError: function 문은 이름이 필요함</span>
+</pre>
+</div> <p>이는 중괄호({}) 안 코드가 일련의 문(즉 <code>foo</code>는 라벨처럼 취급됩니다, 객체 리터럴 내 키가 아니라)으로 파싱(parse, 구문 분석)되기 때문입니다.</p> <p>객체 리터럴를 괄호로 감싸는 것을 기억하세요:</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="iMj7xmopMUx9LUh+fMF46c2nkJFy/2XHtudr/aujmb8=" data-language="js"><span class="token keyword">var</span> <span class="token function-variable function">func</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token literal-property property">foo</span><span class="token operator">:</span> <span class="token number">1</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="줄바꿈"><h3 id="줄바꿈">줄바꿈</h3>
+<div class="section-content">
+<p>화살표 함수는 파라메터와 화살표 사이에 개행 문자를 포함 할 수 없습니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="MfHQpAZeaLyc0Icl1Pgv8zjRusy0MlmJ5uVbDdjsL/Y=" data-language="js"><span class="token keyword">var</span> <span class="token function-variable function">func</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">a<span class="token punctuation">,</span> b<span class="token punctuation">,</span> c</span><span class="token punctuation">)</span>
+           <span class="token operator">=&gt;</span> <span class="token number">1</span><span class="token punctuation">;</span>
+<span class="token comment">// SyntaxError: expected expression, got '=&gt;'</span>
+</pre>
+</div> <p>하지만, 보기 좋은 코드를 유지하고 싶다면, 아래에 보는 것처럼 괄호나 개행을 둠으로써 이를 수정할 수 있습니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="APIAmnEaY8oYJH4MxKd6+wDfdoXeqnWc6L6De1tadkc=" data-language="js">    <span class="token keyword">var</span> <span class="token function-variable function">func</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">a<span class="token punctuation">,</span> b<span class="token punctuation">,</span> c</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span>
+      <span class="token number">1</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">var</span> <span class="token function-variable function">func</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">a<span class="token punctuation">,</span> b<span class="token punctuation">,</span> c</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">(</span>
+      <span class="token number">1</span>
+    <span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">var</span> <span class="token function-variable function">func</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">a<span class="token punctuation">,</span> b<span class="token punctuation">,</span> c</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+      <span class="token keyword">return</span> <span class="token number">1</span>
+    <span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">var</span> <span class="token function-variable function">func</span> <span class="token operator">=</span> <span class="token punctuation">(</span>
+      <span class="token parameter">a<span class="token punctuation">,</span>
+      b<span class="token punctuation">,</span>
+      c</span>
+    <span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token number">1</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// SyntaxError가 발생하지 않습니다.</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="파싱순서"><h3 id="파싱순서">파싱순서</h3>
+<div class="section-content">
+<p>화살표 함수 내의 화살표는 연산자가 아닙니다. 그러나 화살표 함수는 평범한 함수와 비교했을 때 <a href="../operators/operator_precedence">operator precedence</a>와 다르게 반응하는 특별한 파싱룰을 가지고 있습니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="ut3yN2IHwFTd+8+0LjGCkXYe2iHz+2aqcC+kKVrq2n0=" data-language="js"><span class="token keyword">let</span> callback<span class="token punctuation">;</span>
+
+callback <span class="token operator">=</span> callback <span class="token operator">||</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span> <span class="token comment">// ok</span>
+
+callback <span class="token operator">=</span> callback <span class="token operator">||</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token comment">// SyntaxError: invalid arrow-function arguments</span>
+
+callback <span class="token operator">=</span> callback <span class="token operator">||</span> <span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token comment">// ok</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="다른_예"><h2 id="다른_예">다른 예</h2>
+</section><section aria-labelledby="기본_사용법"><h3 id="기본_사용법">기본 사용법</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="vKfxTZdfBAZ+bU3X9PNjDSb4bQrLGco/wNckAUHzPSA=" data-language="js"><span class="token comment">//  empty 화살표 함수는 undefined를 반환</span>
+<span class="token keyword">let</span> <span class="token function-variable function">empty</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token string">'foobar'</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// "foobar" 반환</span>
+<span class="token comment">// (this is an Immediately Invoked Function Expression</span>
+
+<span class="token keyword">var</span> <span class="token function-variable function">simple</span> <span class="token operator">=</span> <span class="token parameter">a</span> <span class="token operator">=&gt;</span> a <span class="token operator">&gt;</span> <span class="token number">15</span> <span class="token operator">?</span> <span class="token number">15</span> <span class="token operator">:</span> a<span class="token punctuation">;</span>
+<span class="token function">simple</span><span class="token punctuation">(</span><span class="token number">16</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 15</span>
+<span class="token function">simple</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 10</span>
+
+<span class="token keyword">let</span> <span class="token function-variable function">max</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">a<span class="token punctuation">,</span> b</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> a <span class="token operator">&gt;</span> b <span class="token operator">?</span> a <span class="token operator">:</span> b<span class="token punctuation">;</span>
+
+<span class="token comment">// Easy array filtering, mapping, ...</span>
+
+<span class="token keyword">var</span> arr <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">,</span> <span class="token number">13</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">18</span><span class="token punctuation">,</span> <span class="token number">23</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+<span class="token keyword">var</span> sum <span class="token operator">=</span> arr<span class="token punctuation">.</span><span class="token function">reduce</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">a<span class="token punctuation">,</span> b</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> a <span class="token operator">+</span> b<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// 66</span>
+
+<span class="token keyword">var</span> even <span class="token operator">=</span> arr<span class="token punctuation">.</span><span class="token function">filter</span><span class="token punctuation">(</span><span class="token parameter">v</span> <span class="token operator">=&gt;</span> v <span class="token operator">%</span> <span class="token number">2</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// [6, 0, 18]</span>
+
+<span class="token keyword">var</span> double <span class="token operator">=</span> arr<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token parameter">v</span> <span class="token operator">=&gt;</span> v <span class="token operator">*</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// [10, 12, 26, 0, 2, 36, 46]</span>
+
+<span class="token comment">// 더 간결한 promise 체인</span>
+promise<span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token parameter">a</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token comment">// ...</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token parameter">b</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token comment">// ...</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// 매개변수가 없는 경우에도 더 읽기 쉬움</span>
+<span class="token function">setTimeout</span><span class="token punctuation">(</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'I happen sooner'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">setTimeout</span><span class="token punctuation">(</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    <span class="token comment">// deeper code</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'I happen later'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div></div></section><h2 id="명세서">명세서</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://tc39.es/ecma262/multipage/ecmascript-language-functions-and-classes.html#sec-arrow-function-definitions">ECMAScript Language Specification <br><small># sec-arrow-function-definitions</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="참조"><h2 id="참조">참조</h2>
+<div class="section-content"><ul> <li><a href="https://hacks.mozilla.org/2015/06/es6-in-depth-arrow-functions/" target="_blank">Hacks 블로그 "ES6 In Depth: Arrow functions" 포스트</a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Functions/Arrow_functions" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Functions/Arrow_functions</a>
+  </p>
+</div>

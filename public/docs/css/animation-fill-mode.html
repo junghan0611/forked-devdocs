@@ -1,0 +1,117 @@
+<header><h1>animation-fill-mode</h1></header><div class="section-content">
+<p><code>animation-fill-mode</code> <a href="https://developer.mozilla.org/en-US/CSS">CSS</a> 속성은 CSS 애니메이션이 실행 전과 후에 대상에 스타일을 적용하는 방법을 지정합니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="fvQ9pVW3A/7RICHlDPPmwkCq81DyI0NHO7axa9A5voI=" data-language="css"><span class="token comment">/* Single animation */</span>
+<span class="token property">animation-fill-mode</span><span class="token punctuation">:</span> none<span class="token punctuation">;</span>
+<span class="token property">animation-fill-mode</span><span class="token punctuation">:</span> forwards<span class="token punctuation">;</span>
+<span class="token property">animation-fill-mode</span><span class="token punctuation">:</span> backwards<span class="token punctuation">;</span>
+<span class="token property">animation-fill-mode</span><span class="token punctuation">:</span> both<span class="token punctuation">;</span>
+
+<span class="token comment">/* Multiple animations */</span>
+<span class="token property">animation-fill-mode</span><span class="token punctuation">:</span> none<span class="token punctuation">,</span> backwards<span class="token punctuation">;</span>
+<span class="token property">animation-fill-mode</span><span class="token punctuation">:</span> both<span class="token punctuation">,</span> forwards<span class="token punctuation">,</span> none<span class="token punctuation">;</span>
+</pre>
+</div> <p>축약 속성 <a href="animation"><code>animation</code></a>을 사용하여 모든 애니메이션 속성을 한꺼번에 설정하는 것이 편리합니다.</p>
+<figure class="table-container"><div class="_table"><table class="properties"><tbody>
+<tr>
+<th scope="row"><a href="initial_value">초기값</a></th>
+<td><code>none</code></td>
+</tr>
+<tr>
+<th scope="row">적용대상</th>
+<td>all elements, <a href="::before"><code>::before</code></a> and <a href="::after"><code>::after</code></a> <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-elements">pseudo-elements</a>
+</td>
+</tr>
+<tr>
+<th scope="row"><a href="inheritance">상속</a></th>
+<td>no</td>
+</tr>
+<tr>
+<th scope="row"><a href="computed_value">계산 값</a></th>
+<td>as specified</td>
+</tr>
+<tr>
+<th scope="row">Animation type</th>
+<td>Not animatable</td>
+</tr>
+</tbody></table></div></figure>
+</div>
+<section aria-labelledby="문법syntax"><h2 id="문법syntax">문법(Syntax)</h2>
+</section><section aria-labelledby="값values"><h3 id="값values">값(Values)</h3>
+<div class="section-content">
+<dl> <dt id="none"><code>none</code></dt> <dd> <p>애니메이션은 실행되지 않을 때 대상에 스타일을 적용하지 않습니다. 요소는 대신 적용된 다른 CSS 규칙을 사용하여 표시됩니다. 이것은 기본값입니다.</p> </dd> <dt id="forwards"><code>forwards</code></dt> <dd> <p>대상은 실행 된 애니메이션의 마지막 <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/@keyframes" class="only-in-en-us">keyframe <small>(en-US)</small></a>에 의해 설정된 계산 된 값을 유지합니다. 마지막 키 프레임은 <a href="animation-direction"><code>animation-direction</code></a>및 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/animation-iteration-count"><code>animation-iteration-count</code> <small>(en-US)</small></a>의 값에 따라 다릅니다.</p> <figure class="table-container"><div class="_table"><table> <thead> <tr> <th><code>animation-direction</code></th> <th><code>animation-iteration-count</code></th> <th>last keyframe encountered</th> </tr> </thead> <tbody> <tr> <td><code>normal</code></td> <td>even or odd</td> <td>
+<code>100%</code> or <code>to</code>
+</td> </tr> <tr> <td><code>reverse</code></td> <td>even or odd</td> <td>
+<code>0%</code> or <code>from</code>
+</td> </tr> <tr> <td><code>alternate</code></td> <td>even</td> <td>
+<code>0%</code> or <code>from</code>
+</td> </tr> <tr> <td><code>alternate</code></td> <td>odd</td> <td>
+<code>100%</code> or <code>to</code>
+</td> </tr> <tr> <td><code>alternate-reverse</code></td> <td>even</td> <td>
+<code>100%</code> or <code>to</code>
+</td> </tr> <tr> <td><code>alternate-reverse</code></td> <td>odd</td> <td>
+<code>0%</code> or <code>from</code>
+</td> </tr> </tbody> </table></div></figure> </dd> <dt id="backwards"><code>backwards</code></dt> <dd> <p>애니메이션은 대상에 적용되는 즉시 첫 번째 관련 <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/@keyframes" class="only-in-en-us">keyframe <small>(en-US)</small></a> 에 정의 된 값을 적용하고 <a href="animation-delay"><code>animation-delay</code></a> 기간 동안 이 값을 유지합니다. 첫 번째 관련 키프레임은 <a href="animation-direction"><code>animation-direction</code></a>의 값에 따라 다릅니다.</p> <figure class="table-container"><div class="_table"><table> <thead> <tr> <th><code>animation-direction</code></th> <th>first relevant keyframe</th> </tr> </thead> <tbody> <tr> <td>
+<code>normal</code> or <code>alternate</code>
+</td> <td>
+<code>0%</code> or <code>from</code>
+</td> </tr> <tr> <td>
+<code>reverse</code> or <code>alternate-reverse</code>
+</td> <td>
+<code>100%</code> or <code>to</code>
+</td> </tr> </tbody> </table></div></figure> </dd> <dt id="both"><code>both</code></dt> <dd> <p>애니메이션은 앞뒤 양쪽 모두의 규칙을 따르므로 애니메이션 속성이 양방향으로 확장됩니다.</p> </dd> </dl> <div class="notecard note" id="sect1"> <p><strong>참고:</strong> animation- * 속성에 여러 개의 쉼표로 구분 된 값을 지정하면 <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/animation-name" class="only-in-en-us"><code>animation-name</code> <small>(en-US)</small></a> 속성에 지정된 애니메이션에 할당되는 값의 수에 따라 다른 방식으로 지정됩니다. 자세한 내용은 <a href="css_animations/using_css_animations#setting_multiple_animation_property_values">여러 애니메이션 속성 값 설정</a>을 참조하십시오.</p> </div>
+</div></section><section aria-labelledby="formal_syntax"><h3 id="formal_syntax">Formal syntax</h3>
+<div class="section-content"><pre class="notranslate"><span class="token property" id="animation-fill-mode">animation-fill-mode = </span><br>  <span class="token property">&lt;single-animation-fill-mode&gt;</span><a href="value_definition_syntax#hash_mark">#</a>  <br><br><span class="token property" id="&lt;single-animation-fill-mode&gt;">&lt;single-animation-fill-mode&gt; = </span><br>  <span class="token keyword">none</span>       <a href="value_definition_syntax#single_bar">|</a><br>  <span class="token keyword">forwards</span>   <a href="value_definition_syntax#single_bar">|</a><br>  <span class="token keyword">backwards</span>  <a href="value_definition_syntax#single_bar">|</a><br>  <span class="token keyword">both</span>       <br><br></pre></div></section><section aria-labelledby="예제examples"><h2 id="예제examples">예제(Examples)</h2>
+<div class="section-content"><p>다음 예제에서 animation-fill-mode의 효과를 볼 수 있습니다. 무한 시간 동안 실행되는 애니메이션의 경우 원래 상태 (기본값)로 되돌리기보다는 최종 상태로 유지하는 방법을 보여줍니다.</p></div></section><section aria-labelledby="html"><h3 id="html">HTML</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="xye0gaedd87n1oJvp4pog5AulZ+VK27/JmcgT+xPcag=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>회색 박스 위에 마우스를 올려보세요!<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>demo<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>grows<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>이 글씨는 커집니다.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>growsandstays<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>이 글씨는 커지며, 커진 상태를 유지합니다.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div></div></section><section aria-labelledby="css"><h3 id="css">CSS</h3>
+<div class="section-content">
+<div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="gD2Jrs2FrIToIZ4iHK30TlYJ8yj1WQf+zmMVfG8spNw=" data-language="css"><span class="token selector">.demo</span> <span class="token punctuation">{</span>
+  <span class="token property">border-top</span><span class="token punctuation">:</span> 100px solid #ccc<span class="token punctuation">;</span>
+  <span class="token property">height</span><span class="token punctuation">:</span> 300px<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token atrule"><span class="token rule">@keyframes</span> grow</span> <span class="token punctuation">{</span>
+  <span class="token selector">0%</span> <span class="token punctuation">{</span> <span class="token property">font-size</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+  <span class="token selector">100%</span> <span class="token punctuation">{</span> <span class="token property">font-size</span><span class="token punctuation">:</span> 40px<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">.demo:hover .grows</span> <span class="token punctuation">{</span>
+  <span class="token property">animation-name</span><span class="token punctuation">:</span> grow<span class="token punctuation">;</span>
+  <span class="token property">animation-duration</span><span class="token punctuation">:</span> 3s<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">.demo:hover .growsandstays</span> <span class="token punctuation">{</span>
+  <span class="token property">animation-name</span><span class="token punctuation">:</span> grow<span class="token punctuation">;</span>
+  <span class="token property">animation-duration</span><span class="token punctuation">:</span> 3s<span class="token punctuation">;</span>
+  <span class="token property">animation-fill-mode</span><span class="token punctuation">:</span> forwards<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div>
+<div class="code-example" id="sect2">
+
+<iframe class="sample-code-frame" title="CSS" id="frame_example" width="700" height="300" src="https://live.mdnplay.dev/ko/docs/Web/CSS/animation-fill-mode/runner.html?id=example" loading="lazy"></iframe>
+</div> <p>자세한 예제는 <a href="css_animations/using_css_animations">CSS animations</a>를 보십시오.</p>
+</div></section><h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://drafts.csswg.org/css-animations/#animation-fill-mode">CSS Animations Level 1 <br><small># animation-fill-mode</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성browser_compatibility">브라우저 호환성(Browser compatibility)</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기see_also"><h2 id="같이_보기see_also">같이 보기(See also)</h2>
+<div class="section-content"><ul> <li><a href="css_animations/using_css_animations">Using CSS animations</a></li> <li>JavaScript <a href="https://developer.mozilla.org/ko/docs/Web/API/AnimationEvent"><code>AnimationEvent</code></a> API</li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/CSS/animation-fill-mode" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/CSS/animation-fill-mode</a>
+  </p>
+</div>

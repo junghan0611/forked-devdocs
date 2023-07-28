@@ -1,0 +1,73 @@
+<header><h1>MediaDevices</h1></header><div class="section-content"><p><code>MediaDevices</code> 인터페이스는 카메라, 마이크, 공유 화면 등 현재 연결된 미디어 입력 장치로의 접근 방법을 제공하는 인터페이스입니다. 다르게 말하자면, 미디어 데이터를 제공하는 모든 하드웨어로 접근할 수 있는 방법입니다.</p></div>
+<h2 id="속성">속성</h2>
+<div class="section-content"><p>부모 인터페이스인 <a href="eventtarget"><code>EventTarget</code></a>의 속성을 상속합니다.</p></div>
+<h2 id="이벤트">이벤트</h2>
+<div class="section-content"><dl> <dt id="devicechange"><a href="https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/devicechange_event" class="only-in-en-us"><code>devicechange</code> <small>(en-US)</small></a></dt> <dd> <p> 사용자 컴퓨터에 미디어 입출력 장치가 추가되거나 제거됐을 때 발생합니다. <a href="https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/devicechange_event" class="only-in-en-us"><code>ondevicechange</code> <small>(en-US)</small></a> 속성으로도 사용할 수 있습니다. </p> </dd> </dl></div>
+<h2 id="메서드">메서드</h2>
+<div class="section-content">
+<p>부모 인터페이스인 <a href="eventtarget"><code>EventTarget</code></a>의 메서드를 상속합니다.</p> <dl> <dt id="enumeratedevices"><a href="mediadevices/enumeratedevices"><code>enumerateDevices()</code></a></dt> <dd>시스템에서 사용 가능한 미디어 입출력 장치의 정보를 담은 배열을 가져옵니다.</dd> <dt id="getsupportedconstraints_en-us"><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/getSupportedConstraints"><code>getSupportedConstraints()</code> <small>(en-US)</small></a></dt> <dd>
+<a href="mediastreamtrack"><code>MediaStreamTrack</code></a> 인터페이스가 지원하는 제약을 나타내는 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/MediaTrackSupportedConstraints"><code>MediaTrackSupportedConstraints</code> <small>(en-US)</small></a> 호환 객체를 반환합니다.</dd>  <dt id="getdisplaymedia_en-us"><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/getDisplayMedia"><code>getDisplayMedia()</code> <small>(en-US)</small></a></dt> <dd>
+<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/MediaStream"><code>MediaStream</code> <small>(en-US)</small></a>으로 캡처해 공유나 녹화 용도로 사용할 화면 혹은 화면의 일부(창)를 선택하도록 사용자에게 요청합니다. <code>MediaStream</code>으로 이행하는 <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Promise"><code>Promise</code></a>를 반환합니다.</dd> <dt id="getusermedia"><a href="mediadevices/getusermedia"><code>getUserMedia()</code></a></dt> <dd>사용자에게 권한을 요청한 후, 시스템의 카메라와 오디오 각각 혹은 모두 활성화하여, 장치의 입력 데이터를 비디오/오디오 트랙으로 포함한 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/MediaStream"><code>MediaStream</code> <small>(en-US)</small></a>을 반환합니다.</dd> </dl>
+</div>
+<h2 id="예제">예제</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="l7ebouh7lIdieI2Shlc83h8jnyEUCj45PpSzTJnPsfg=" data-language="js"><span class="token string">'use strict'</span><span class="token punctuation">;</span>
+
+<span class="token comment">// Put variables in global scope to make them available to the browser console.</span>
+<span class="token keyword">var</span> video <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">querySelector</span><span class="token punctuation">(</span><span class="token string">'video'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> constraints <span class="token operator">=</span> window<span class="token punctuation">.</span>constraints <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token literal-property property">audio</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">video</span><span class="token operator">:</span> <span class="token boolean">true</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> errorElement <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">querySelector</span><span class="token punctuation">(</span><span class="token string">'#errorMsg'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+navigator<span class="token punctuation">.</span>mediaDevices<span class="token punctuation">.</span><span class="token function">getUserMedia</span><span class="token punctuation">(</span>constraints<span class="token punctuation">)</span>
+<span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">stream</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">var</span> videoTracks <span class="token operator">=</span> stream<span class="token punctuation">.</span><span class="token function">getVideoTracks</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'Got stream with constraints:'</span><span class="token punctuation">,</span> constraints<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'Using video device: '</span> <span class="token operator">+</span> videoTracks<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>label<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  stream<span class="token punctuation">.</span><span class="token function-variable function">onremovetrack</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'Stream ended'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+  window<span class="token punctuation">.</span>stream <span class="token operator">=</span> stream<span class="token punctuation">;</span> <span class="token comment">// make variable available to browser console</span>
+  video<span class="token punctuation">.</span>srcObject <span class="token operator">=</span> stream<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token punctuation">.</span><span class="token function">catch</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">error</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>error<span class="token punctuation">.</span>name <span class="token operator">===</span> <span class="token string">'ConstraintNotSatisfiedError'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">errorMsg</span><span class="token punctuation">(</span><span class="token string">'The resolution '</span> <span class="token operator">+</span> constraints<span class="token punctuation">.</span>video<span class="token punctuation">.</span>width<span class="token punctuation">.</span>exact <span class="token operator">+</span> <span class="token string">'x'</span> <span class="token operator">+</span>
+        constraints<span class="token punctuation">.</span>video<span class="token punctuation">.</span>width<span class="token punctuation">.</span>exact <span class="token operator">+</span> <span class="token string">' px is not supported by your device.'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>error<span class="token punctuation">.</span>name <span class="token operator">===</span> <span class="token string">'PermissionDeniedError'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">errorMsg</span><span class="token punctuation">(</span><span class="token string">'Permissions have not been granted to use your camera and '</span> <span class="token operator">+</span>
+      <span class="token string">'microphone, you need to allow the page access to your devices in '</span> <span class="token operator">+</span>
+      <span class="token string">'order for the demo to work.'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token function">errorMsg</span><span class="token punctuation">(</span><span class="token string">'getUserMedia error: '</span> <span class="token operator">+</span> error<span class="token punctuation">.</span>name<span class="token punctuation">,</span> error<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">function</span> <span class="token function">errorMsg</span><span class="token punctuation">(</span><span class="token parameter">msg<span class="token punctuation">,</span> error</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  errorElement<span class="token punctuation">.</span>innerHTML <span class="token operator">+=</span> <span class="token string">'&lt;p&gt;'</span> <span class="token operator">+</span> msg <span class="token operator">+</span> <span class="token string">'&lt;/p&gt;'</span><span class="token punctuation">;</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">typeof</span> error <span class="token operator">!==</span> <span class="token string">'undefined'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span>error<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</pre>
+</div></div>
+<h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://w3c.github.io/mediacapture-main/#mediadevices">Media Capture and Streams <br><small># mediadevices</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li>인터페이스가 속한 <a href="media_capture_and_streams_api">Media Capture and Streams API</a>
+</li> <li>
+<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/getDisplayMedia"><code>getDisplayMedia()</code> <small>(en-US)</small></a> 메서드를 정의하는 <a href="https://developer.mozilla.org/en-US/docs/Web/API/Screen_Capture_API" class="only-in-en-us">Screen Capture API <small>(en-US)</small></a>
+</li> <li><a href="webrtc_api">WebRTC API</a></li> <li>장치에 접근할 때 사용할 <code>MediaDevices</code> 객체의 참조를 반환하는 <a href="navigator/mediadevices"><code>Navigator.mediaDevices</code></a>
+</li> </ul></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/MediaDevices" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/MediaDevices</a>
+  </p>
+</div>

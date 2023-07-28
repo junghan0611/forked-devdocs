@@ -1,0 +1,36 @@
+<h1>DELETE</h1>
+<header><h1>DELETE</h1></header><div class="section-content">
+<p><code>DELETE</code>는 지정한 리소스를 삭제합니다.</p> <figure class="table-container"><div class="_table"><table class="properties"> <tbody> <tr> <th scope="row">요청에 본문 존재</th> <td>May</td> </tr> <tr> <th scope="row">성공 응답에 본문 존재</th> <td>May</td> </tr> <tr> <th scope="row"><a href="https://developer.mozilla.org/ko/docs/Glossary/Safe">안전함</a></th> <td>No</td> </tr> <tr> <th scope="row"><a href="https://developer.mozilla.org/ko/docs/Glossary/Idempotent">멱등성</a></th> <td>Yes</td> </tr> <tr> <th scope="row"><a href="https://developer.mozilla.org/ko/docs/Glossary/Cacheable">캐시 가능</a></th> <td>No</td> </tr> <tr> <th scope="row">
+<a href="https://developer.mozilla.org/ko/docs/Learn/Forms">HTML 양식</a>에서 사용 가능</th> <td>No</td> </tr> </tbody> </table></div></figure>
+</div>
+<section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content"><pre class="notranslate">DELETE /file.html HTTP/1.1
+</pre></div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+</section><section aria-labelledby="요청"><h3 id="요청">요청</h3>
+<div class="section-content"><pre class="notranslate">DELETE /file.html HTTP/1.1
+</pre></div></section><section aria-labelledby="응답"><h3 id="응답">응답</h3>
+<div class="section-content">
+<p><code>DELETE</code> 메서드를 성공적으로 적용한 후에 사용할 수 있는 응답 상태 코드는 다음과 같이 몇 가지가 있습니다.</p> <ul> <li>아마도 명령을 성공적으로 수행할 것 같으나 아직은 실행하지 않은 경우 <a href="../status/202"><code>202</code></a> (<code>Accepted</code>) 상태 코드.</li> <li>명령을 수행했고 더 이상 제공할 정보가 없는 경우 <a href="../status/204"><code>204</code></a> (<code>No Content</code>) 상태 코드.</li> <li>명령을 수행했고 응답 메시지가 이후의 상태를 설명하는 경우 <a href="../status/200"><code>200</code></a> (<code>OK</code>) 상태 코드.</li> </ul> <pre class="notranslate">HTTP/1.1 200 OK
+Date: Wed, 21 Oct 2015 07:28:00 GMT
+
+&lt;html&gt;
+  &lt;body&gt;
+    &lt;h1&gt;File deleted.&lt;/h1&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</pre>
+</div></section><h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://www.rfc-editor.org/rfc/rfc9110#DELETE">HTTP Semantics <br><small># DELETE</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li>HTTP 상태: <a href="../status/200"><code>200</code></a>, <a href="../status/202"><code>202</code></a>, <a href="../status/204"><code>204</code></a>
+</li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/HTTP/Methods/DELETE" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/HTTP/Methods/DELETE</a>
+  </p>
+</div>

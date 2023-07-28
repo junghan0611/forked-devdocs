@@ -1,0 +1,61 @@
+<header><h1>@font-face</h1></header><section aria-labelledby="요약summary"><h2 id="요약summary">요약(Summary)</h2>
+<div class="section-content"><p><a href="https://developer.mozilla.org/en-US/CSS">CSS</a> <a href="https://developer.mozilla.org/en-US/CSS/At-rule">at-rule</a> 인 <code>@font-face</code> 를 사용하여 웹페이지의 텍스트에 온라인폰트(online fonts)를 적용할 수 있다. <code>@font-face</code> 를 사용하여 웹페이지 제작자가 원하는 폰트를 사용할 수 있게함으로써, 컴퓨터에 설치된 폰트만을 사용해야했던 제약이 없어지게되었다. <code>@font-face</code> at-rule 은 CSS의 top-level에서 뿐 아니라, <a href="https://developer.mozilla.org/en-US/CSS/At-rule#conditional_group_rules">CSS conditional-group at-rule</a> 안에서도 사용될 수도 있다.</p></div></section><section aria-labelledby="문법syntax"><h2 id="문법syntax">문법(Syntax)</h2>
+<div class="section-content"><pre class="notranslate">@font-face {
+  font-family: &lt;a-remote-font-name&gt;;
+  src: &lt;source&gt; [,&lt;source&gt;]*;
+  [font-weight: &lt;weight&gt;];
+  [font-style: &lt;style&gt;];
+}
+</pre></div></section><section aria-labelledby="속성값values"><h3 id="속성값values">속성값(Values)</h3>
+<div class="section-content">
+<ul> <li>
+<code>&lt;a-remote-font-name&gt;</code> <ul> <li>: font 속성에서 폰트명(font face)으로 지정될 이름을 설정한다.</li> </ul> </li> <li>
+<code>&lt;source&gt;</code> <ul> <li>: 원격 폰트(remote font) 파일의 위치를 나타내는 URL 값을 지정하거나, 사용자 컴퓨터에 설치된 폰트명을 <code>local("Font Name")</code>형식으로 지정하는 속성이다.</li> </ul> </li> <li>
+<code>&lt;weight&gt;</code> <ul> <li>
+<a href="https://developer.mozilla.org/en-US/CSS/font-weight">: 폰트의 굵기(font weight)</a> 값.</li> </ul> </li> <li>
+<code>&lt;style&gt;</code> <ul> <li>
+<a href="https://developer.mozilla.org/en-US/CSS/font-style">: 폰트 스타일(font style)</a> 값.</li> </ul> </li> </ul> <p>사용자의 로컬환경(local computer)에 설치된 폰트는 <code>local()</code> 이라는 구문을 사용하여 지정이 가능하다. 만약 해당 폰트를 찾지못한다면, 다른 대체 폰트를 찾을때까지 폰트를 검색작업을 계속 할 것이다.</p>
+</div></section><section aria-labelledby="예제examples"><h2 id="예제examples">예제(Examples)</h2>
+<div class="section-content">
+<p>아래는 다운로드하여 사용가능한 폰트를 설정하는 간단한 예제이며, document의 전체 body 영역에 폰트가 적용된다.</p> <pre class="notranslate">&lt;html&gt;
+&lt;head&gt;
+  &lt;title&gt;Web Font Sample&lt;/title&gt;
+  &lt;style type="text/css" media="screen, print"&gt;
+    @font-face {
+      font-family: "Bitstream Vera Serif Bold";
+      src: url("https://mdn.github.io/css-examples/web-fonts/VeraSeBd.ttf");
+    }
+
+    body { font-family: "Bitstream Vera Serif Bold", serif }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  This is Bitstream Vera Serif Bold.
+&lt;/body&gt;
+&lt;/html&gt;
+</pre> <p> 실행 결과는 다음과 같다. <iframe width="100%" height="100" src="https://mdn.github.io/css-examples/web-fonts/basic-web-font.html" loading="lazy"></iframe> </p> <p>아래 예제에서는 로컬에 설치된 "Helvetica Neue Bold" 폰트가 사용된다. 만약 해당 폰트가 설치되어 있지 않다면(다른 2개의 폰트를 적용하기 위한 시도를 하고), 다운로드 가능한 "MgOpenModernaBold.ttf" 폰트가 대신 사용된다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="9IpjNxwTMASzer2RvwAwTrIjdVIs7t7h7IbHNArojtE=" data-language="css"><span class="token atrule"><span class="token rule">@font-face</span></span> <span class="token punctuation">{</span>
+  <span class="token property">font-family</span><span class="token punctuation">:</span> MyHelvetica<span class="token punctuation">;</span>
+  <span class="token property">src</span><span class="token punctuation">:</span> <span class="token function">local</span><span class="token punctuation">(</span><span class="token string">"Helvetica Neue Bold"</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  <span class="token function">local</span><span class="token punctuation">(</span><span class="token string">"HelveticaNeue-Bold"</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  <span class="token url"><span class="token function">url</span><span class="token punctuation">(</span>MgOpenModernaBold.ttf<span class="token punctuation">)</span></span><span class="token punctuation">;</span>
+  <span class="token property">font-weight</span><span class="token punctuation">:</span> bold<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="주의사항notes"><h2 id="주의사항notes">주의사항(Notes)</h2>
+<div class="section-content"><ul> <li>Gecko에서는, 동일 도메인 제한(same domain restriction)을 피하기 위해 <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS" class="only-in-en-us">HTTP access controls <small>(en-US)</small></a> 을 사용하지 않는한, 웹폰트(web fonts)의 사용시에는 동일 도메인 제한이 적용된다(폰트 파일은 폰트가 사용되는 페이지와 동일한 도메인상에 존재해야 함).</li> <li> <div class="notecard note" id="sect1"> <p><strong>참고:</strong> <strong>주의사항:</strong> TrueType, OpenType, Web Open File(WOFF) 폰트에 대한 MIME타입이 정의되지 않았기 때문에, 파일에 적용될 MIME 타입에 대해서는 고려하지 않아도 된다.</p> </div> </li> <li>Gecko에서는 웹폰트(web font)가 사용된 페이지를 표시할 때는 웹폰트가 다운로드 되는 동안 사용자의 컴퓨터에 이미 설치되어 있어 즉시 사용가능한 폰트(CSS fallback font)를 사용하여 텍스트를 표시한다. 각각의 웹폰트의 다운로드가 완료되면 Gecko는 해당 텍스트의 폰트를 교체한다. 이러한 과정은 사용자가 웹페이지 내의 텍스트를 좀 더 빨리 읽게끔 도와준다.</li> </ul></div></section><h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://drafts.csswg.org/css-fonts/#font-face-rule">CSS Fonts Module Level 4 <br><small># font-face-rule</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="참고자료see_also"><h2 id="참고자료see_also">참고자료(See also)</h2>
+<div class="section-content"><ul> <li><a href="https://developer.mozilla.org/en-US/docs/Web/Guide/WOFF">About WOFF</a></li> <li><a href="https://www.fontsquirrel.com/fontface/generator" target="_blank">FontSquirrel @font-face generator</a></li> <li><a href="https://hacks.mozilla.org/2009/06/beautiful-fonts-with-font-face/" target="_blank">Beautiful fonts with @font-face</a></li> <li><a href="https://openfontlibrary.org/" target="_blank">Open Font Library</a></li> <li><a href="http://msdn.microsoft.com/en-us/library/ms530757(VS.85).aspx" target="_blank">Microsoft Developer Network (MSDN) @font-face reference</a></li> <li><a href="http://caniuse.com/woff" target="_blank">When can I use WOFF?</a></li> <li><a href="http://caniuse.com/svg-fonts" target="_blank">When can I use SVG Fonts?</a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/CSS/@font-face" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/CSS/@font-face</a>
+  </p>
+</div>

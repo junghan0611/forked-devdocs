@@ -1,0 +1,73 @@
+<header><h1>Window.innerWidth</h1></header><div class="section-content">
+<p>읽기 전용인 <a href="../window"><code>Window</code></a> 속성 <code>innerWidth</code> 은 픽셀로 창 내부의 너비를 반환합니다. 하나가 존재하는 경우, 수직 스크롤 막대의 너비를 포함합니다.</p> <p>더 정확하게는, <code>innerWidth</code>은 창의 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Glossary/Layout_viewport">layout viewport <small>(en-US)</small></a>의 너비를 반환합니다. 창 내부의 높이, 레이아웃 뷰포트의 높이는 <a href="innerheight"><code>innerHeight</code></a> 속성으로부터 얻을 수 있습니다.</p>
+</div>
+<h2 id="값">값</h2>
+<div class="section-content">
+<p>창의 레이아웃 뷰포트 너비를 픽셀로 나타낸 정수 값입니다. 속성은 읽기 전용이며, 기본 값이 없습니다.</p> <p>창의 너비를 변경하려면, <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/Window/resizeBy"><code>resizeBy()</code> <small>(en-US)</small></a>나 <a href="resizeto"><code>resizeTo()</code></a>와 같은 크기를 조정하는 메서드 중 하나를 사용해야합니다.</p>
+</div>
+<h2 id="사용_일람">사용 일람</h2>
+<div class="section-content">
+<p>스크롤 막대와 테두리를 제외한 창의 너비를 구하려면, 루트 <a href="https://developer.mozilla.org/ko/docs/Web/HTML/Element/html"><code>&lt;html&gt;</code></a> 요소의 <a href="../element/clientwidth"><code>clientWidth</code></a> 속성을 대신 사용하십시오.</p> <p><code>innerWidth</code> 속성은 탭이나 프레임같은 창처럼 행동하는 모든 창이나 모든 객체에서 사용할 수 있습니다.</p>
+</div>
+<h2 id="예제">예제</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="GiNBEHu4RckQpBUtfpW1rkvqt6xH5hujA57eLs+HdFQ=" data-language="js"><span class="token comment">// 뷰포트의 너비를 기록합니다.</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>window<span class="token punctuation">.</span>innerWidth<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// 프레임셋 내의 프레임 뷰포트의 너비를 기록합니다.</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>self<span class="token punctuation">.</span>innerWidth<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// 가장 가까운 프레임셋의 뷰포트의 너비를 기록합니다.</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>parent<span class="token punctuation">.</span>innerWidth<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// 가장 먼 프레임셋의 뷰포트의 너비를 기록합니다.</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>top<span class="token punctuation">.</span>innerWidth<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div></div>
+<h2 id="데모">데모</h2>
+
+<h3 id="html">HTML</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="Td127IM/5fm/r6HwcJrn+tmL0LGboIJNH4mbzrKRdkw=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>Resize the browser window to fire the <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>code</span><span class="token punctuation">&gt;</span></span>resize<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>code</span><span class="token punctuation">&gt;</span></span> event.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>Window height: <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>height<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>Window width: <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>width<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div></div>
+<h3 id="javascript">JavaScript</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="sbBjzP+vc1vf05v3lOn6bo/KD2I5K09Mp7nGBEm1ZM0=" data-language="js"><span class="token keyword">const</span> heightOutput <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">querySelector</span><span class="token punctuation">(</span><span class="token string">"#height"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> widthOutput <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">querySelector</span><span class="token punctuation">(</span><span class="token string">"#width"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">function</span> <span class="token function">updateSize</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  heightOutput<span class="token punctuation">.</span>textContent <span class="token operator">=</span> window<span class="token punctuation">.</span>innerHeight<span class="token punctuation">;</span>
+  widthOutput<span class="token punctuation">.</span>textContent <span class="token operator">=</span> window<span class="token punctuation">.</span>innerWidth<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token function">updateSize</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+window<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">"resize"</span><span class="token punctuation">,</span> updateSize<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div></div>
+<h3 id="결과">결과</h3>
+<div class="section-content">
+<div class="code-example" id="sect1">
+
+<iframe class="sample-code-frame" title="데모" id="frame_demo" src="https://live.mdnplay.dev/ko/docs/Web/API/Window/innerWidth/runner.html?id=demo" loading="lazy"></iframe>
+</div> <p>당신은 또한 <a href="https://live.mdnplay.dev/ko/docs/Web/API/Window/innerWidth/runner.html?id=Demo" target="_blank">별도의 페이지에서 데모 코드의 결과를 볼 수 있습니다</a>.</p>
+</div>
+<h2 id="명세서">명세서</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://drafts.csswg.org/cssom-view/#dom-window-innerwidth">CSSOM View Module <br><small># dom-window-innerwidth</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="outerwidth"><code>window.outerWidth</code></a></li> <li><a href="innerheight"><code>window.innerHeight</code></a></li> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/Window/outerHeight"><code>window.outerHeight</code> <small>(en-US)</small></a></li> </ul></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/Window/innerWidth" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/Window/innerWidth</a>
+  </p>
+</div>

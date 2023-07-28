@@ -1,0 +1,34 @@
+<header><h1>AudioDestinationNode</h1></header><div class="section-content">
+<p><code>AudioDestinationNode</code> 은 주어진 컨택스트의 음원의 종착점을 나타냅니다. 보통 스피커를 가리킵니다. 이는 또한 <code>OfflineAudioContext</code> 를 사용해 데이터가 녹음되는 노드가 되기도 합니다.</p> <p><code>AudioDestinationNode</code> has no output (as it <em>is</em> the output, no more <code>AudioNode</code> can be linked after it in the audio graph) and one input. 입력받은 음원의 채널의 총 갯수는 반드시 0과 <code>maxChannelCount값의 사이에 있거나 예외(an exception is raised)가 발생한다.</code></p> <p>주어진 <code>AudioContext</code> 의 <code>AudioDestinationNode</code> 는 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/BaseAudioContext/destination"><code>AudioContext.destination</code> <small>(en-US)</small></a>프로퍼티를 통해 검색이 된다.</p> <figure class="table-container"><div class="_table"><table> <thead> <tr> <th>Number of inputs</th> <th><code>1</code></th> </tr> </thead> <tbody> <tr> <td>Number of outputs</td> <td><code>0</code></td> </tr> <tr> <td>Channel count mode</td> <td><code>"explicit"</code></td> </tr> <tr> <td>Channel count</td> <td><code>2</code></td> </tr> <tr> <td>Channel interpretation</td> <td><code>"speakers"</code></td> </tr> </tbody> </table></div></figure>
+</div>
+<h2 id="properties">Properties</h2>
+<div class="section-content">
+<p><em>Inherits properties from its parent,</em> <em><a href="audionode"><code>AudioNode</code></a></em>.</p> <dl> <dt id="audiodestinationnode.maxchannelcount_en-us"><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/AudioDestinationNode/maxChannelCount"><code>AudioDestinationNode.maxChannelCount</code> <small>(en-US)</small></a></dt> <dd> <p><code>unsigned long 형의 물리적인 디바이스로 다룰수 있는 최대 채널의 갯수.</code></p> </dd> </dl>
+</div>
+<h2 id="methods">Methods</h2>
+<div class="section-content"><p><em>No specific method; inherits methods from its parent,</em> <em><a href="audionode"><code>AudioNode</code></a></em>.</p></div>
+<h2 id="example">Example</h2>
+<div class="section-content">
+<p><code>AudioDestinationNode를 사용하면 복잡한 세팅없이 몇줄의 코드로 오디오 그래프를 확인할 수 있습니다.</code></p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="mtbMPgaYsiYK863KtL/D26a4yxYsYi1C6pR6/1m/l5A=" data-language="js"><span class="token keyword">var</span> audioCtx <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">AudioContext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> source <span class="token operator">=</span> audioCtx<span class="token punctuation">.</span><span class="token function">createMediaElementSource</span><span class="token punctuation">(</span>myMediaElement<span class="token punctuation">)</span><span class="token punctuation">;</span>
+source<span class="token punctuation">.</span><span class="token function">connect</span><span class="token punctuation">(</span>gainNode<span class="token punctuation">)</span><span class="token punctuation">;</span>
+gainNode<span class="token punctuation">.</span><span class="token function">connect</span><span class="token punctuation">(</span>audioCtx<span class="token punctuation">.</span>destination<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div> <p>To see a more complete implementation, check out one of our MDN Web Audio examples, such as <a href="https://mdn.github.io/voice-change-o-matic/" target="_blank">Voice-change-o-matic</a> or <a href="https://mdn.github.io/violent-theremin/" target="_blank">Violent Theremin</a>.</p>
+</div>
+<h2 id="명세서">명세서</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://webaudio.github.io/web-audio-api/#AudioDestinationNode">Web Audio API <br><small># AudioDestinationNode</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<h2 id="see_also">See also</h2>
+<div class="section-content"><ul> <li><a href="web_audio_api/using_web_audio_api">Using the Web Audio API</a></li> </ul></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/AudioDestinationNode" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/AudioDestinationNode</a>
+  </p>
+</div>

@@ -1,0 +1,34 @@
+<h1>PUT</h1>
+<header><h1>PUT</h1></header><div class="section-content">
+<p><code>PUT</code>는 요청 페이로드를 사용해 새로운 리소스를 생성하거나, 대상 리소스를 나타내는 데이터를 대체합니다.</p> <p><code>PUT</code>과 <a href="post"><code>POST</code></a>의 차이는 <a href="https://developer.mozilla.org/ko/docs/Glossary/Idempotent">멱등성</a>으로, <code>PUT</code>은 멱등성을 가집니다. <code>PUT</code>은 한 번을 보내도, 여러 번을 연속으로 보내도 같은 효과를 보입니다. 즉, 부수 효과가 없습니다.</p> <figure class="table-container"><div class="_table"><table class="properties"> <tbody> <tr> <th scope="row">요청에 본문 존재</th> <td>예</td> </tr> <tr> <th scope="row">성공 응답에 본문 존재</th> <td>아니오</td> </tr> <tr> <th scope="row"><a href="https://developer.mozilla.org/ko/docs/Glossary/Safe">안전함</a></th> <td>아니오</td> </tr> <tr> <th scope="row"><a href="https://developer.mozilla.org/ko/docs/Glossary/Idempotent">멱등성</a></th> <td>예</td> </tr> <tr> <th scope="row"><a href="https://developer.mozilla.org/ko/docs/Glossary/Cacheable">캐시 가능</a></th> <td>아니오</td> </tr> <tr> <th scope="row">HTML 양식에서 사용 가능</th> <td>아니오</td> </tr> </tbody> </table></div></figure>
+</div>
+<section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content"><pre class="notranslate">PUT /new.html HTTP/1.1
+</pre></div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+</section><section aria-labelledby="요청"><h3 id="요청">요청</h3>
+<div class="section-content"><pre class="notranslate">PUT /new.html HTTP/1.1
+Host: example.com
+Content-type: text/html
+Content-length: 16
+
+&lt;p&gt;New File&lt;/p&gt;
+</pre></div></section><section aria-labelledby="응답"><h3 id="응답">응답</h3>
+<div class="section-content">
+<p>대상 리소스를 나타내는 데이터가 없고, PUT 요청이 성공적으로 하나를 새로 생성한 경우, 출처 서버는 반드시 <a href="https://developer.mozilla.org/ko/docs/Glossary/User_agent">사용자 에이전트</a>에게 <a href="../status/201"><code>201</code></a> (<code>Created</code>) 응답을 보내 해당 사항을 알려줘야 합니다.</p> <pre class="newpage notranslate">HTTP/1.1 201 Created
+Content-Location: /new.html</pre> <p>대상 리소스를 나타내는 데이터가 있고, 이를 요청에 포함된 자료에 준하여 성공적으로 수정했다면, 출처 서버는 반드시 <a href="../status/200"><code>200</code></a> (<code>OK</code>) 또는 <a href="../status/204"><code>204</code></a> (<code>No Content</code>) 응답을 보내 성공을 알려줘야 합니다.</p> <pre class="notranslate">HTTP/1.1 204 No Content
+Content-Location: /existing.html
+</pre>
+</div></section><h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://www.rfc-editor.org/rfc/rfc9110#PUT">HTTP Semantics <br><small># PUT</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="../status/201"><code>201</code></a></li> <li><a href="../status/204"><code>204</code></a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/HTTP/Methods/PUT" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/HTTP/Methods/PUT</a>
+  </p>
+</div>

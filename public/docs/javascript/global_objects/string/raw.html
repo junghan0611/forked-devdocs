@@ -1,0 +1,68 @@
+<header><h1>String.raw()</h1></header><div class="section-content"><p> <code>String.raw()</code>메서드는 <a href="../../template_literals">템플릿 리터럴</a>의 태그 함수입니다. 이는 Pyhon의 <code>r</code> 접두사 또는 C#의 문자열 리터럴의 <code>@</code> 접두사와 유사합니다.(그러나 동일 하지는 않습니다. 이 문제에 관해서는 여기 <a href="https://bugs.chromium.org/p/v8/issues/detail?id=5016" target="_blank">이슈</a>를 참조하십시오.) 이 메서드는 템플릿 리터럴의 윈시 문자열을 가져오는데 사용됩니다. 즉, 대체(예: <code>${foo}</code>)는 처리되지만 이스케이프(예: <code>\n</code>)는 처리되지 않습니다. </p></div>
+<section aria-labelledby="시도해보기"><h2 id="시도해보기">시도해보기</h2>
+<div class="section-content"><iframe class="interactive is-js-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/js/string-raw.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe></div></section><section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="2gJE0PZcXmJi2un488x2pQxK4+6eIdKFYOjQ4MzKTmM=" data-language="js">String<span class="token punctuation">.</span><span class="token function">raw</span><span class="token punctuation">(</span>callSite<span class="token punctuation">,</span> <span class="token operator">...</span>substitutions<span class="token punctuation">)</span>
+
+String<span class="token punctuation">.</span>raw<span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">templateString</span><span class="token template-punctuation string">`</span></span>
+</pre>
+</div></div></section><section aria-labelledby="매개변수"><h3 id="매개변수">매개변수</h3>
+<div class="section-content"><dl> <dt id="callsite"><code>callSite</code></dt> <dd> <p>정해진 형식의 템플릿 호출 개체 예: <code>{ raw: ['foo', 'bar', 'baz'] }</code>.</p> </dd> <dt id="...substitutions"><code>...substitutions</code></dt> <dd> <p>대체값을 포함합니다.</p> </dd> <dt id="templatestring"><code>templateString</code></dt> <dd> <p><a href="../../template_literals">템플릿 리터럴</a>, 선택사항으로 대체를 포함 예:(<code>${...}</code>).</p> </dd> </dl></div></section><section aria-labelledby="반환값"><h3 id="반환값">반환값</h3>
+<div class="section-content"><p>주어진 템플릿 리터럴의 원시 문자열 형식.</p></div></section><section aria-labelledby="예외"><h3 id="예외">예외</h3>
+<div class="section-content"><dl> <dt id="typeerror"><a href="../typeerror"><code>TypeError</code></a></dt> <dd> <p>첫번째 인자의 객체의 포맷이 올바르지 않은 경우 <a href="../typeerror"><code>TypeError</code></a>예외가 발생(throw)한다.</p> </dd> </dl></div></section><section aria-labelledby="설명"><h2 id="설명">설명</h2>
+<div class="section-content">
+<p> <code>String.raw()</code>의 경우 보통 템플릿 리터럴과 많이 사용하고, 첫번째 구문의 경우 잘 사용되지 않습니다. 왜냐하면 자바스크립트 엔진이 당신을 위해서 자동으로 적절한 인수로 호출해주기 때문입니다. ( 다른 <a href="../../template_literals#tagged_template_literals">태그 메서드</a> 들과 마찬가지로). </p> <p><code>String.raw()</code>은 템플릿 리터럴의 유일한 내장 함수입니다. 기본 템플릿 기능과 동일하게 작동하며 연결을 수행합니다. JavaScript 코드를 사용하여 다시 구현할 수도 있습니다.</p>
+</div></section><section aria-labelledby="예시"><h2 id="예시">예시</h2>
+</section><section aria-labelledby="string.raw_사용"><h3 id="string.raw_사용">String.raw() 사용</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="KXvvQ08idnKDAeyNfqTySB84Kw8zhqxUqAr9uNwaIRs=" data-language="js">String<span class="token punctuation">.</span>raw<span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">Hi\n</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span><span class="token number">2</span><span class="token operator">+</span><span class="token number">3</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">!</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">;</span>
+<span class="token comment">// 'Hi\\n5!', the character after 'Hi'</span>
+<span class="token comment">// is not a newline character,</span>
+<span class="token comment">// '\' and 'n' are two characters.</span>
+
+String<span class="token punctuation">.</span>raw<span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">Hi\u000A!</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">;</span>
+<span class="token comment">// 'Hi\\u000A!', same here, this time we will get the</span>
+<span class="token comment">//  \, u, 0, 0, 0, A, 6 characters.</span>
+<span class="token comment">// All kinds of escape characters will be ineffective</span>
+<span class="token comment">// and backslashes will be present in the output string.</span>
+<span class="token comment">// You can confirm this by checking the .length property</span>
+<span class="token comment">// of the string.</span>
+
+<span class="token keyword">let</span> name <span class="token operator">=</span> <span class="token string">'Bob'</span><span class="token punctuation">;</span>
+String<span class="token punctuation">.</span>raw<span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">Hi\n</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>name<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">!</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">;</span>
+<span class="token comment">// 'Hi\\nBob!', substitutions are processed.</span>
+
+<span class="token comment">// Normally you would not call String.raw() as a function,</span>
+<span class="token comment">// but to simulate `foo${2 + 3}bar${'Java' + 'Script'}baz` you can do:</span>
+String<span class="token punctuation">.</span><span class="token function">raw</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  <span class="token literal-property property">raw</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'foo'</span><span class="token punctuation">,</span> <span class="token string">'bar'</span><span class="token punctuation">,</span> <span class="token string">'baz'</span><span class="token punctuation">]</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token number">2</span> <span class="token operator">+</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token string">'Java'</span> <span class="token operator">+</span> <span class="token string">'Script'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 'foo5barJavaScriptbaz'</span>
+<span class="token comment">// Notice the first argument is an object with a 'raw' property,</span>
+<span class="token comment">// whose value is an iterable representing the separated strings</span>
+<span class="token comment">// in the template literal.</span>
+<span class="token comment">// The rest of the arguments are the substitutions.</span>
+
+<span class="token comment">// The first argument’s 'raw' value can be any iterable, even a string!</span>
+<span class="token comment">// For example, 'test' is treated as ['t', 'e', 's', 't'].</span>
+<span class="token comment">// The following is equivalent to</span>
+<span class="token comment">// `t${0}e${1}s${2}t`:</span>
+String<span class="token punctuation">.</span><span class="token function">raw</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token literal-property property">raw</span><span class="token operator">:</span> <span class="token string">'test'</span> <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 't0e1s2t'</span>
+</pre>
+</div></div></section><h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://tc39.es/ecma262/multipage/text-processing.html#sec-string.raw">ECMAScript Language Specification <br><small># sec-string.raw</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li>
+<code>String.raw</code>의 폴리필은 여기를 참고<a href="https://github.com/zloirock/core-js#ecmascript-string-and-regexp" target="_blank"><code>core-js</code></a>
+</li> <li><a href="../../template_literals">Template literals</a></li> <li><a href="../string"><code>String</code></a></li> <li><a href="../../lexical_grammar">Lexical grammar</a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/String/raw" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/String/raw</a>
+  </p>
+</div>

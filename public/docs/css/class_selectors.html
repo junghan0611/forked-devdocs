@@ -1,0 +1,67 @@
+<header><h1>클래스 선택자</h1></header><div class="section-content">
+<p><a href="https://developer.mozilla.org/ko/docs/Web/CSS">CSS</a> <strong>클래스 선택자</strong>는 요소의 <a href="https://developer.mozilla.org/ko/docs/Web/HTML/Global_attributes#class"><code>class</code></a> 특성에 기반해 요소를 선택합니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="P0YYyqUphLk+qdpXspUvNWmKJvrWFuLvvU/TEigtr+M=" data-language="css"><span class="token comment">/* All elements with class="spacious" */</span>
+<span class="token selector">.spacious</span> <span class="token punctuation">{</span>
+  <span class="token property">margin</span><span class="token punctuation">:</span> 2em<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">/* All &lt;li&gt; elements with class="spacious" */</span>
+<span class="token selector">li.spacious</span> <span class="token punctuation">{</span>
+  <span class="token property">margin</span><span class="token punctuation">:</span> 2em<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">/* All &lt;li&gt; elements with a class list that includes both "spacious" and "elegant" */</span>
+<span class="token comment">/* For example, class="elegant retro spacious" */</span>
+<span class="token selector">li.spacious.elegant</span> <span class="token punctuation">{</span>
+  <span class="token property">margin</span><span class="token punctuation">:</span> 2em<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div>
+</div>
+<section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content">
+<pre class="notranslate">.class_name { style properties }
+</pre> <p>위의 구문은 <a href="attribute_selectors">특성 선택자</a>를 사용한 다음 구문과 동일합니다.</p> <pre class="notranslate">[class~=class_name] { style properties }
+</pre>
+</div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+</section><section aria-labelledby="css"><h3 id="css">CSS</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="PZGAJW2fRVj9Cq2WwbUeDMA9oHXwhV8hAr2/IQWqD/k=" data-language="css"><span class="token selector">.red</span> <span class="token punctuation">{</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> #f33<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">.yellow-bg</span> <span class="token punctuation">{</span>
+  <span class="token property">background</span><span class="token punctuation">:</span> #ffa<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">.fancy</span> <span class="token punctuation">{</span>
+  <span class="token property">font-weight</span><span class="token punctuation">:</span> bold<span class="token punctuation">;</span>
+  <span class="token property">text-shadow</span><span class="token punctuation">:</span> 4px 4px 3px #77f<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div></div></section><section aria-labelledby="html"><h3 id="html">HTML</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="v2dRJnEjM1zgdUfPyWai5Y3BRAiqLc+Xf0Qo7ay8+t4=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>red<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>빨간 글자색의 문단입니다.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>red yellow-bg<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>빨간 글자색과 노란 배경의 문단입니다.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>red fancy<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>빨간 글자색과 "멋진" 스타일을 가진 문단입니다.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>이건 그냥 문단이에요.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div></div></section><section aria-labelledby="결과"><h3 id="결과">결과</h3>
+<div class="section-content"><div class="code-example" id="sect1">
+
+<iframe class="sample-code-frame" title="예제 sample" id="frame_예제" src="https://live.mdnplay.dev/ko/docs/Web/CSS/Class_selectors/runner.html?id=%EC%98%88%EC%A0%9C" loading="lazy"></iframe>
+</div></div></section><h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://drafts.csswg.org/selectors/#class-html">Selectors Level 4 <br><small># class-html</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/CSS/Class_selectors" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/CSS/Class_selectors</a>
+  </p>
+</div>

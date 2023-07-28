@@ -1,0 +1,106 @@
+<header><h1>calc()</h1></header><div class="section-content"><p><code>calc()</code> <a href="https://developer.mozilla.org/ko/docs/Web/API/CSS">CSS</a> 함수를 사용하면 CSS 속성의 값으로 계산식을 지정할 수 있습니다. <a href="length"><code>&lt;length&gt;</code></a>, <a href="frequency"><code>&lt;frequency&gt;</code></a>, <a href="angle"><code>&lt;angle&gt;</code></a>, <a href="time"><code>&lt;time&gt;</code></a>, <a href="percentage"><code>&lt;percentage&gt;</code></a>, <a href="number"><code>&lt;number&gt;</code></a>, 또는 <a href="integer"><code>&lt;integer&gt;</code></a>를 받는 속성의 값으로 사용할 수 있습니다.</p></div>
+<section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content">
+<div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="V8m2x48k0wbxAwyl8HGWbO6EcU83rRE/l7YlbFnIy+8=" data-language="css"><span class="token comment">/* property: calc(expression) */</span>
+<span class="token property">width</span><span class="token punctuation">:</span> <span class="token function">calc</span><span class="token punctuation">(</span>100% - 80px<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div> <p><code>calc()</code> 함수는 매개변수로 표현식 하나를 받고, 표현식의 결과가 최종 값이 됩니다. 표현식은 단순 계산식은 무엇이든 가능하며, 표준 연산자 우선순위를 따릅니다.</p> <dl> <dt id="sect1"><code>+</code></dt> <dd> <p>덧셈.</p> </dd> <dt id="-"><code>-</code></dt> <dd> <p>뺄셈.</p> </dd> <dt id="sect2"><code>*</code></dt> <dd> <p>곱셈. 하나 이상의 피연산자가 <a href="number"><code>&lt;number&gt;</code></a>여야 합니다.</p> </dd> <dt id="sect3"><code>/</code></dt> <dd> <p>나눗셈. 오른쪽 피연산자는 <a href="number"><code>&lt;number&gt;</code></a>여야 합니다.</p> </dd> </dl> <p>피연산자로는 <a href="length"><code>&lt;length&gt;</code></a> 구문의 아무 값이나 사용할 수 있고, 원한다면 서로 다른 단위끼리도 계산할 수 있습니다. 괄호를 사용해서 연산 순서를 바꿀 수도 있습니다.</p>
+</div></section><section aria-labelledby="참고"><h3 id="참고">참고</h3>
+<div class="section-content"><ul> <li>0으로 나누면 HTML 구문분석기에서 오류가 발생합니다.</li> <li>
+<code>+</code>와 <code>-</code> 연산자는 좌우에 공백이 있어야 합니다. <code>calc(50% -8px)</code>은 백분율 값과 음수 길로 해석하여 유효하지 않지만, <code>calc(50% - 8px)</code>은 백분율과 길이의 뺄셈으로 해석합니다. 마찬가지로, <code>calc(8px + -50%)</code>는 길이와 음의 백분율간의 덧셈으로 처리합니다.</li> <li>
+<code>*</code>와 <code>/</code> 연산자는 좌우 공백을 요구하지 않지만, 그래도 추가하는 편이 일관성을 유지하기에 좋습니다.</li> <li>표의 행, 열, 행/열 그룹, 자동이나 고정 레이아웃 칸에서 백분율을 포함한 수학식을 너비나 높이로 사용하면 <code>auto</code> 키워드를 사용한 것과 동일하게 처리합니다.</li> <li>
+<code>calc()</code> 함수를 중첩해서 사용하면 내부의 <code>calc()</code>는 단순한 괄호로 간주합니다.</li> </ul></div></section><section aria-labelledby="형식_구문"><h3 id="형식_구문">형식 구문</h3>
+<div class="section-content"><pre class="notranslate"><span class="token property" id="&lt;calc()&gt;">&lt;calc()&gt; = </span><br>  <span class="token function">calc(</span> <span class="token property">&lt;calc-sum&gt;</span> <span class="token function">)</span>  <br><br><span class="token property" id="&lt;calc-sum&gt;">&lt;calc-sum&gt; = </span><br>  <span class="token property">&lt;calc-product&gt;</span> <a href="value_definition_syntax#brackets">[</a> <a href="value_definition_syntax#brackets">[</a> '+' <a href="value_definition_syntax#single_bar">|</a> '-' <a href="value_definition_syntax#brackets">]</a> <span class="token property">&lt;calc-product&gt;</span> <a href="value_definition_syntax#brackets">]</a><a href="value_definition_syntax#asterisk">*</a>  <br><br><span class="token property" id="&lt;calc-product&gt;">&lt;calc-product&gt; = </span><br>  <span class="token property">&lt;calc-value&gt;</span> <a href="value_definition_syntax#brackets">[</a> <a href="value_definition_syntax#brackets">[</a> '*' <a href="value_definition_syntax#single_bar">|</a> '/' <a href="value_definition_syntax#brackets">]</a> <span class="token property">&lt;calc-value&gt;</span> <a href="value_definition_syntax#brackets">]</a><a href="value_definition_syntax#asterisk">*</a>  <br><br><span class="token property" id="&lt;calc-value&gt;">&lt;calc-value&gt; = </span><br>  <a href="number"><span class="token property">&lt;number&gt;</span></a>         <a href="value_definition_syntax#single_bar">|</a><br>  <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/dimension" class="only-in-en-us"><span class="token property">&lt;dimension&gt;</span> <small>(en-US)</small></a>      <a href="value_definition_syntax#single_bar">|</a><br>  <a href="percentage"><span class="token property">&lt;percentage&gt;</span></a>     <a href="value_definition_syntax#single_bar">|</a><br>  <span class="token property">&lt;calc-constant&gt;</span>  <a href="value_definition_syntax#single_bar">|</a><br>  ( <span class="token property">&lt;calc-sum&gt;</span> <span class="token function">)</span>   <br><br><span class="token property" id="&lt;calc-constant&gt;">&lt;calc-constant&gt; = </span><br>  <span class="token keyword">e</span>          <a href="value_definition_syntax#single_bar">|</a><br>  <span class="token keyword">pi</span>         <a href="value_definition_syntax#single_bar">|</a><br>  <span class="token keyword">infinity</span>   <a href="value_definition_syntax#single_bar">|</a><br>  <span class="token keyword">-infinity</span>  <a href="value_definition_syntax#single_bar">|</a><br>  <span class="token keyword">NaN</span>        <br><br></pre></div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+</section><section aria-labelledby="요소를_화면에_여백과_함께_배치하기"><h3 id="요소를_화면에_여백과_함께_배치하기">요소를 화면에 여백과 함께 배치하기</h3>
+<div class="section-content">
+<p><code>calc()</code>를 이용하면 고정된 너비의 여백을 가진 요소를 쉽게 배치할 수 있습니다. 다음 예제에서는 화면을 가로지르면서 창의 좌우 모서리와 간격이 40픽셀인 배너를 생성합니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="kB62Cza03uzLL4px3lbWkJUYC8foBsGAEaajJRoXe14=" data-language="css"><span class="token selector">.banner</span> <span class="token punctuation">{</span>
+  <span class="token property">position</span><span class="token punctuation">:</span> absolute<span class="token punctuation">;</span>
+  <span class="token property">left</span><span class="token punctuation">:</span> 40px<span class="token punctuation">;</span>
+  <span class="token property">width</span><span class="token punctuation">:</span> <span class="token function">calc</span><span class="token punctuation">(</span>100% - 80px<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token property">border</span><span class="token punctuation">:</span> solid black 1px<span class="token punctuation">;</span>
+  <span class="token property">box-shadow</span><span class="token punctuation">:</span> 1px 2px<span class="token punctuation">;</span>
+  <span class="token property">background-color</span><span class="token punctuation">:</span> yellow<span class="token punctuation">;</span>
+  <span class="token property">padding</span><span class="token punctuation">:</span> 6px<span class="token punctuation">;</span>
+  <span class="token property">text-align</span><span class="token punctuation">:</span> center<span class="token punctuation">;</span>
+  <span class="token property">box-sizing</span><span class="token punctuation">:</span> border-box<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div> <div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="JWsLIfZkjqJ2UkbB6G8CWZTkOOSF6vLnK5z43N1JYzc=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>banner<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>이건 현수막입니다!<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div>
+<div class="code-example" id="sect4">
+
+<iframe class="sample-code-frame" title="요소를 화면에 여백과 함께 배치하기 sample" id="frame_요소를_화면에_여백과_함께_배치하기" width="auto" height="60" src="https://live.mdnplay.dev/ko/docs/Web/CSS/calc/runner.html?id=%EC%9A%94%EC%86%8C%EB%A5%BC_%ED%99%94%EB%A9%B4%EC%97%90_%EC%97%AC%EB%B0%B1%EA%B3%BC_%ED%95%A8%EA%BB%98_%EB%B0%B0%EC%B9%98%ED%95%98%EA%B8%B0" loading="lazy"></iframe>
+</div>
+</div></section><section aria-labelledby="입력_양식_요소를_컨테이너_크기에_자동으로_맞추기"><h3 id="입력_양식_요소를_컨테이너_크기에_자동으로_맞추기">입력 양식 요소를 컨테이너 크기에 자동으로 맞추기</h3>
+<div class="section-content">
+<p><code>calc()</code>의 다른 용도는 입력 양식의 필드가 적절한 여백을 갖추면서도 컨테이너 모서리 바깥으로 빠져나가지 않도록 설정하는 것입니다.</p> <p>다음 CSS 코드를 살펴보세요.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="/UL9MZEIqUMyZl+2Zcer7C1KyizaRmuMk+i2v1IPf5o=" data-language="css"><span class="token selector">input</span> <span class="token punctuation">{</span>
+  <span class="token property">padding</span><span class="token punctuation">:</span> 2px<span class="token punctuation">;</span>
+  <span class="token property">display</span><span class="token punctuation">:</span> block<span class="token punctuation">;</span>
+  <span class="token property">width</span><span class="token punctuation">:</span> <span class="token function">calc</span><span class="token punctuation">(</span>100% - 1em<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">#formbox</span> <span class="token punctuation">{</span>
+  <span class="token property">width</span><span class="token punctuation">:</span> <span class="token function">calc</span><span class="token punctuation">(</span>100% / 6<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token property">border</span><span class="token punctuation">:</span> 1px solid black<span class="token punctuation">;</span>
+  <span class="token property">padding</span><span class="token punctuation">:</span> 4px<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div> <p>위 코드에서, 폼 스스로는 창에서 사용 가능한 공간의 1/6을 차지합니다. 그 후, 입력 필드가 적절한 크기를 가질 수 컨테이너 너비에서 1em 뺀 만큼을 calc()로 지정했습니다. 이제 HTML에 CSS를 적용해보겠습니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="rqtSY49e/sIdKyS6Xu7s746zwLzZ44V5eDEPMjsJ7yE=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>form</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>formBox<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>label</span><span class="token punctuation">&gt;</span></span>뭔가 입력해 보세요.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>label</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>text<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>form</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div>
+<div class="code-example" id="sect5">
+
+<iframe class="sample-code-frame" title="입력 양식 요소를 컨테이너 크기에 자동으로 맞추기 sample" id="frame_입력_양식_요소를_컨테이너_크기에_자동으로_맞추기" width="100%" height="80" src="https://live.mdnplay.dev/ko/docs/Web/CSS/calc/runner.html?id=%EC%9E%85%EB%A0%A5_%EC%96%91%EC%8B%9D_%EC%9A%94%EC%86%8C%EB%A5%BC_%EC%BB%A8%ED%85%8C%EC%9D%B4%EB%84%88_%ED%81%AC%EA%B8%B0%EC%97%90_%EC%9E%90%EB%8F%99%EC%9C%BC%EB%A1%9C_%EB%A7%9E%EC%B6%94%EA%B8%B0" loading="lazy"></iframe>
+</div>
+</div></section><section aria-labelledby="css_변수와_중첩_calc"><h3 id="css_변수와_중첩_calc">CSS 변수와 중첩 <code>calc()</code>
+</h3>
+<div class="section-content">
+<p><a href="css_cascading_variables">CSS 변수</a>도 <code>calc()</code>와 같이 사용할 수 있습니다. 다음 코드를 살펴보세요.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="mSKgxHHlvXEN6o9NsthVnh7i0uWY9fYSDhMgE0QVLic=" data-language="css"><span class="token selector">.foo</span> <span class="token punctuation">{</span>
+  <span class="token property">--widthA</span><span class="token punctuation">:</span> 100px<span class="token punctuation">;</span>
+  <span class="token property">--widthB</span><span class="token punctuation">:</span> <span class="token function">calc</span><span class="token punctuation">(</span><span class="token function">var</span><span class="token punctuation">(</span>--widthA<span class="token punctuation">)</span> / 2<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token property">--widthC</span><span class="token punctuation">:</span> <span class="token function">calc</span><span class="token punctuation">(</span><span class="token function">var</span><span class="token punctuation">(</span>--widthB<span class="token punctuation">)</span> / 2<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token property">width</span><span class="token punctuation">:</span> <span class="token function">var</span><span class="token punctuation">(</span>--widthC<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div> <p>모든 변수를 펼치면 <code>widthC</code>의 값은 <code>calc( calc( 100px / 2) / 2)</code>가 됩니다. 그 후 <code>.foo</code>의 너비 속성으로 지정될 때, 모든 중첩 <code>calc()</code>는 깊이에 관계 없이 단순한 괄호로 바뀌므로 <code>width</code> 속성의 값은 <code>calc( ( 100px / 2) / 2)</code>, 즉 <code>25px</code>이 됩니다. 요약하자면 <code>calc()</code> 안의 <code>calc()</code>는 그냥 괄호와 같습니다.</p>
+</div></section><section aria-labelledby="접근성_고려사항"><h2 id="접근성_고려사항">접근성 고려사항</h2>
+<div class="section-content">
+<p><code>calc()</code>를 사용해 글씨 크기를 조절할땐 아래 코드처럼 피연산자 중 하나로 꼭 <a href="length#%EC%83%81%EB%8C%80%EA%B8%B8%EC%9D%B4_%EB%8B%A8%EC%9C%84">상대길이 단위</a>를 사용해주세요.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="HNPsObub4swGvhdrAUgdww1021m6z74/W36WNT8t+9c=" data-language="css"><span class="token selector">h1</span> <span class="token punctuation">{</span>
+  <span class="token property">font-size</span><span class="token punctuation">:</span> <span class="token function">calc</span><span class="token punctuation">(</span>1.5rem + 3vw<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div> <p>이제 페이지를 확대해도 글씨 크기의 비율이 적절히 유지됩니다.</p> <ul> <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/Understanding_WCAG/Perceivable" class="only-in-en-us">MDN Understanding WCAG, Guideline 1.4 explanations <small>(en-US)</small></a></li> <li><a href="https://www.w3.org/TR/UNDERSTANDING-WCAG20/visual-audio-contrast-scale.html" target="_blank">Understanding Success Criterion 1.4.4 | W3C Understanding WCAG 2.0</a></li> </ul>
+</div></section><h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://drafts.csswg.org/css-values/#calc-func">CSS Values and Units Module Level 4 <br><small># calc-func</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="https://hacks.mozilla.org/2010/06/css3-calc/" target="_blank">Firefox 4: CSS3 calc() ✩ Mozilla Hacks – the Web developer blog</a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/CSS/calc" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/CSS/calc</a>
+  </p>
+</div>

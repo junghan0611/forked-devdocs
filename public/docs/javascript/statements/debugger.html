@@ -1,0 +1,30 @@
+<header><h1>debugger</h1></header><div class="section-content"><p><code>debugger</code>은 중단점 설정 등 현재 사용할 수 있는 디버그 기능을 호출합니다. 사용할 수있는 디버깅 기능이 없으면 아무런 동작도 하지 않습니다.</p></div>
+<section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="2F6kGR+bXep9sLAXeS7rN+0XctNGjWg93fwNsqWzVeQ=" data-language="js">    <span class="token keyword">debugger</span><span class="token punctuation">;</span>
+</pre>
+</div></div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+<div class="section-content">
+<p>다음 예제에서는 함수가 호출 시 디버거를 활성화하도록 <code>debugger</code>를 삽입한 모습입니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="g1CRrVXaOsNS3VYPYRSQGKQJGuGMfmmXFDQc3ImqlII=" data-language="js"><span class="token keyword">function</span> <span class="token function">potentiallyBuggyCode</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">debugger</span><span class="token punctuation">;</span>
+    <span class="token comment">// 버그가 있을 것으로 생각하는 코드를 분석하거나, 한 단계씩 진행해보거나...</span>
+<span class="token punctuation">}</span>
+</pre>
+</div> <p>디버거가 활성화되면 디버거 문의 위치에서 실행이 일시중지됩니다. 스크립트 소스의 중단점과 비슷합니다.</p> <p><a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Statements/debugger/screen_shot_2014-02-07_at_9.14.35_am.png"><img src="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Statements/debugger/screen_shot_2014-02-07_at_9.14.35_am.png" alt="Paused at a debugger statement." width="2730" height="1446" loading="lazy"></a></p>
+</div></section><h2 id="명세서">명세서</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://tc39.es/ecma262/multipage/ecmascript-language-statements-and-declarations.html#sec-debugger-statement">ECMAScript Language Specification <br><small># sec-debugger-statement</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="https://developer.mozilla.org/ko/docs/Mozilla/Debugging/Debugging_JavaScript" class="page-not-created">JavaScript 디버깅</a></li> <li><a href="https://firefox-source-docs.mozilla.org/devtools-user/debugger/index.html" target="_blank">Firefox 개발자 도구의 디버거</a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Statements/debugger" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Statements/debugger</a>
+  </p>
+</div>

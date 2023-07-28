@@ -1,0 +1,37 @@
+<header><h1>DataTransfer</h1></header><div class="section-content">
+<p><code>DateTransfer</code> 객체는 드래그 앤 드롭 작업 중에 드래그되고 있는 데이터를 보관하기 위해 사용됩니다. 각각의 데이터 타입들에 해당하는 하나 이상의 데이터 항목을 포함할 수 있습니다. 드래그 앤 드롭에 대한 자세한 정보는 <a href="html_drag_and_drop_api">HTML Drag and Drop API</a>을 확인하시길 바랍니다.</p> <p>이 객체는 모든 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/DragEvent"><code>drag events</code> <small>(en-US)</small></a>의 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/DragEvent/dataTransfer"><code>dataTransfer</code> <small>(en-US)</small></a> 속성에서 사용할 수 있습니다.</p>
+</div>
+<h2 id="생성자">생성자</h2>
+<div class="section-content"><dl> <dt id="datatransfer_en-us"><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/DataTransfer/DataTransfer"><code>DataTransfer()</code> <small>(en-US)</small></a></dt> <dd> <p>새로운 <code>DataTransfer</code> 객체를 생성하고 반환합니다.</p> </dd> </dl></div>
+<h2 id="인스턴스_속성">인스턴스 속성</h2>
+
+<h3 id="표준_속성">표준 속성</h3>
+<div class="section-content"><dl> <dt id="datatransfer.dropeffect_en-us"><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/DataTransfer/dropEffect"><code>DataTransfer.dropEffect</code> <small>(en-US)</small></a></dt> <dd> <p>현재 선택된 드래그 앤 드롭 작업의 타입을 가져오거나 작업을 새로운 타입으로 설정합니다. 값은 <code>none</code>, <code>copy</code>, <code>link</code> 또는 <code>move</code>이어야 합니다.</p> </dd> <dt id="datatransfer.effectallowed_en-us"><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/DataTransfer/effectAllowed"><code>DataTransfer.effectAllowed</code> <small>(en-US)</small></a></dt> <dd> <p>가능한 작업의 모든 타입을 제공합니다. <code>none</code>, <code>copy</code>, <code>copyLink</code>, <code>copyMove</code>, <code>link</code>, <code>linkMove</code>, <code>move</code>, <code>all</code> 또는 <code>uninitialized</code> 중 하나이어야 합니다.</p> </dd> <dt id="datatransfer.files_en-us"><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/DataTransfer/files"><code>DataTransfer.files</code> <small>(en-US)</small></a></dt> <dd> <p>데이터 전송에서 사용할 수 있는 모든 로컬 파일의 목록을 포함합니다. 드래그 작업에 드래그하고 있는 파일이 포함되지 않으면 이 속성은 빈 목록입니다.</p> </dd> <dt id="datatransfer.items_en-us">
+<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/DataTransfer/items"><code>DataTransfer.items</code> <small>(en-US)</small></a> <span class="badge inline readonly">읽기 전용</span>
+</dt> <dd> <p>모든 드래그 데이터의 목록인 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/DataTransferItemList"><code>DataTransferItemList</code> <small>(en-US)</small></a> 객체를 받습니다.</p> </dd> <dt id="datatransfer.types_en-us">
+<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/DataTransfer/types"><code>DataTransfer.types</code> <small>(en-US)</small></a> <span class="badge inline readonly">읽기 전용</span>
+</dt> <dd> <p><a href="htmlelement/dragstart_event"><code>dragstart</code></a> 이벤트에 설정된 형식을 제공하는 문자열 배열입니다.</p> </dd> </dl></div>
+<h3 id="gecko_속성">Gecko 속성</h3>
+<div class="section-content"><div class="notecard experimental" id="sect1"><p><strong>Experimental:</strong> <strong>This is an <a href="https://developer.mozilla.org/en-US/docs/MDN/Writing_guidelines/Experimental_deprecated_obsolete#experimental">experimental technology</a></strong><br>Check the <a href="#browser_compatibility">Browser compatibility table</a> carefully before using this in production.</p></div></div>
+<h2 id="인스턴스_메서드">인스턴스 메서드</h2>
+
+<h3 id="표준_메서드">표준 메서드</h3>
+<div class="section-content"><dl> <dt id="datatransfer.cleardata_en-us"><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/DataTransfer/clearData"><code>DataTransfer.clearData()</code> <small>(en-US)</small></a></dt> <dd> <p>지정된 타입과 연결된 데이터를 제거합니다. 타입 전달인자는 선택 사항입니다. 타입이 비어있거나 지정되지 않은 경우 모든 타입과 연결된 데이터가 제거됩니다. 지정된 타입의 데이터가 없거나 데이터 전송에 데이터가 포함되어 있지 않으면 이 메서드는 아무런 효과가 없습니다.</p> </dd> <dt id="datatransfer.getdata"><a href="datatransfer/getdata"><code>DataTransfer.getData()</code></a></dt> <dd> <p>지정된 타입의 데이터를 검색합니다. 혹은 해당 타입의 데이터가 없거나 데이터 전송에 데이터가 없는 경우에는 빈 문자열을 검색합니다.</p> </dd> <dt id="datatransfer.setdata_en-us"><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/DataTransfer/setData"><code>DataTransfer.setData()</code> <small>(en-US)</small></a></dt> <dd> <p>지정된 타입의 데이터를 설정합니다. 타입의 데이터가 없으면 타입 목록의 마지막 항목이 새로운 형식이 되도록 타입이 마지막에 추가됩니다. 타입의 데이터가 이미 존재하면 기존 데이터가 동일한 위치에서 교체됩니다.</p> </dd> <dt id="datatransfer.setdragimage_en-us"><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/DataTransfer/setDragImage"><code>DataTransfer.setDragImage()</code> <small>(en-US)</small></a></dt> <dd> <p>사용자 지정 이미지를 원하는 경우 드래그에 사용될 이미지를 설정합니다.</p> </dd> </dl></div>
+<h3 id="gecko_메서드">Gecko 메서드</h3>
+<div class="section-content"><div class="notecard nonstandard" id="sect2"><p><strong>비표준:</strong> 이 기능은 비표준이므로 실제 프로덕션에서 사용하지 마세요. 모든 사용자 환경에서 작동하지 않을 수 도 있으며, 미래에 호환성 문제가 생길 수 있습니다.</p></div></div>
+<h2 id="예제">예제</h2>
+<div class="section-content"><p>문서에 나열된 모든 메서드와 속성은 고유한 참조 페이지가 있으며 각 참조 페이지에는 인터페이스의 예제가 직접 포함되어 있거나 예제에 대한 링크가 있습니다.</p></div>
+<h2 id="명세서">명세서</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://html.spec.whatwg.org/multipage/dnd.html#the-datatransfer-interface">HTML Standard <br><small># the-datatransfer-interface</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="html_drag_and_drop_api">HTML 드래그 앤 드롭 API</a></li> <li><a href="html_drag_and_drop_api/drag_operations">Drag Operations</a></li> <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/HTML_Drag_and_Drop_API/Recommended_drag_types" class="only-in-en-us">Recommended Drag Types <small>(en-US)</small></a></li> <li><a href="https://codepen.io/tech_query/pen/MqGgap" target="_blank">DataTransfer test - Paste or Drag</a></li> </ul></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/DataTransfer" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/DataTransfer</a>
+  </p>
+</div>

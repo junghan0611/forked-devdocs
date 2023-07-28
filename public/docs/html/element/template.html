@@ -1,0 +1,81 @@
+<header><h1>&lt;template&gt;: 콘텐츠 템플릿 요소</h1></header><div class="section-content">
+<p><code>&lt;template&gt;</code>는 페이지를 불러온 순간 즉시 그려지지는 않지만, 이후 JavaScript를 사용해 인스턴스를 생성할 수 있는 <a href="https://developer.mozilla.org/ko/docs/Glossary/HTML">HTML</a> 코드를 담을 방법을 제공합니다.</p> <p>템플릿은 콘텐츠 조각을 나중에 사용하기 위해 담아놓는 컨테이너로 생각하세요. 페이지를 불러오는 동안 구문 분석기가 <code>&lt;template&gt;</code> 요소의 콘텐츠도 읽기는 하지만, 이는 유효성을 검증하기 위함이며 렌더링 하기 위함은 아닙니다.</p> <figure class="table-container"><div class="_table"><table class="properties"> <tbody> <tr> <th scope="row"><a href="../content_categories">콘텐츠 카테고리</a></th> <td> <a href="../content_categories#%eb%a9%94%ed%83%80%eb%8d%b0%ec%9d%b4%ed%84%b0_%ec%bd%98%ed%85%90%ec%b8%a0">메타데이터 콘텐츠</a>, <a href="../content_categories#%ed%94%8c%eb%a1%9c%ec%9a%b0_%ec%bd%98%ed%85%90%ec%b8%a0">플로우 콘텐츠</a>, <a href="../content_categories#%ea%b5%ac%eb%ac%b8_%ec%bd%98%ed%85%90%ec%b8%a0">구문 콘텐츠</a>, <a href="../content_categories#%ec%8a%a4%ed%81%ac%eb%a6%bd%ed%8a%b8_%ec%a7%80%ec%9b%90_%ec%9a%94%ec%86%8c">스크립트 지원 요소</a>. </td> </tr> <tr> <th scope="row">가능한 콘텐츠</th> <td>제한 없음.</td> </tr> <tr> <th scope="row">태그 생략</th> <td>불가능, 시작과 끝에 태그를 추가하는것은 필수입니다.</td> </tr> <tr> <th scope="row">가능한 부모 요소</th> <td> 메타데이터 콘텐츠, 구문 콘텐츠, 또는 스크립트 지원 요소를 허용하는 모든 요소. 또한, <a href="colgroup#attr-span"><code>span</code></a> 특성이 없는 <a href="colgroup"><code>&lt;colgroup&gt;</code></a> 요소도 가능. </td> </tr> <tr> <th scope="row">가능한 ARIA 역할</th> <td>없음</td> </tr> <tr> <th scope="row">DOM 인터페이스</th> <td><a href="https://developer.mozilla.org/ko/docs/Web/API/HTMLTemplateElement"><code>HTMLTemplateElement</code></a></td> </tr> </tbody> </table></div></figure>
+</div>
+<h2 id="특성">특성</h2>
+<div class="section-content">
+<p>이 요소는 <a href="../global_attributes">전역 특성</a>만 포함합니다.</p> <p>다만, <a href="https://developer.mozilla.org/ko/docs/Web/API/HTMLTemplateElement"><code>HTMLTemplateElement</code></a>는 읽기 전용 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLTemplateElement/content"><code>content</code> <small>(en-US)</small></a> 속성을 가집니다. <code>content</code>는 템플릿이 담고 있는 DOM 하위 트리를 나타내는 <a href="https://developer.mozilla.org/ko/docs/Web/API/DocumentFragment"><code>DocumentFragment</code></a>입니다.</p>
+</div>
+<h2 id="예제">예제</h2>
+<div class="section-content">
+<p>우선 예제의 HTML부터 보겠습니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="fsbbTdz2DNSsiI/8VHeDgQkSTi2sU4FL/BpU0nWU6Vc=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>table</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>producttable<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>thead</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>tr</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>td</span><span class="token punctuation">&gt;</span></span>UPC_Code<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>td</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>td</span><span class="token punctuation">&gt;</span></span>Product_Name<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>td</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>tr</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>thead</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>tbody</span><span class="token punctuation">&gt;</span></span>
+    <span class="token comment">&lt;!-- 존재하는 데이터는 선택적으로 여기에 포함됩니다 --&gt;</span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>tbody</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>table</span><span class="token punctuation">&gt;</span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>productrow<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>tr</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>td</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>record<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>td</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>td</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>td</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>tr</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div> <p>먼저, 나중에 JavaScript 코드를 사용해 컨텐츠를 삽입할 테이블이 있습니다. 그 다음 테이블의 열을 표현하는 HTML 조각의 구조를 설명하는 템플릿이 옵니다.</p> <p>이제 테이블이 생성되었고 템플릿이 정의되었으므로, JavaScript 를 사용해 템플릿을 사용해 구성된 열을 기반으로 각 열을 테이블로 삽입합니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="kATnIlYe5H9gT8YSkRa8424WfZJLmWIMFWMmTl0FPPA=" data-language="js"><span class="token comment">// 템플릿 엘리먼트의 컨텐츠 존재 유무를 통해</span>
+<span class="token comment">// 브라우저가 HTML 템플릿 엘리먼트를 지원하는지 확인합니다</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token string">'content'</span> <span class="token keyword">in</span> document<span class="token punctuation">.</span><span class="token function">createElement</span><span class="token punctuation">(</span><span class="token string">'template'</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+    <span class="token comment">// 기존 HTML tbody 와 템플릿 열로 테이블을 인스턴스화합니다</span>
+    <span class="token keyword">var</span> t <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">querySelector</span><span class="token punctuation">(</span><span class="token string">'#productrow'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// 새로운 열을 복제하고 테이블에 삽입합니다</span>
+    <span class="token keyword">var</span> tb <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">querySelector</span><span class="token punctuation">(</span><span class="token string">"tbody"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">var</span> clone <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">importNode</span><span class="token punctuation">(</span>t<span class="token punctuation">.</span>content<span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    td <span class="token operator">=</span> clone<span class="token punctuation">.</span><span class="token function">querySelectorAll</span><span class="token punctuation">(</span><span class="token string">"td"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    td<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>textContent <span class="token operator">=</span> <span class="token string">"1235646565"</span><span class="token punctuation">;</span>
+    td<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">.</span>textContent <span class="token operator">=</span> <span class="token string">"Stuff"</span><span class="token punctuation">;</span>
+
+    tb<span class="token punctuation">.</span><span class="token function">appendChild</span><span class="token punctuation">(</span>clone<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// 새로운 열을 복제하고 테이블에 삽입합니다</span>
+    <span class="token keyword">var</span> clone2 <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">importNode</span><span class="token punctuation">(</span>t<span class="token punctuation">.</span>content<span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    td <span class="token operator">=</span> clone2<span class="token punctuation">.</span><span class="token function">querySelectorAll</span><span class="token punctuation">(</span><span class="token string">"td"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    td<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>textContent <span class="token operator">=</span> <span class="token string">"0384928528"</span><span class="token punctuation">;</span>
+    td<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">.</span>textContent <span class="token operator">=</span> <span class="token string">"Acme Kidney Beans 2"</span><span class="token punctuation">;</span>
+
+    tb<span class="token punctuation">.</span><span class="token function">appendChild</span><span class="token punctuation">(</span>clone2<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+  <span class="token comment">// HTML 템플릿 엘리먼트를 지원하지 않으므로</span>
+  <span class="token comment">// 테이블에 열을 추가하는 다른 방법을 찾습니다.</span>
+<span class="token punctuation">}</span>
+</pre>
+</div> <p>결과는 JavaScript 를 통해 추가된 두 개의 새로운 열을 포함하는 기존 HTML 테이블입니다.</p> 
+<div class="code-example" id="sect1">
+
+<iframe class="sample-code-frame" title="예제 sample" id="frame_예제" width="500" height="120" src="https://live.mdnplay.dev/ko/docs/Web/HTML/Element/template/runner.html?id=%EC%98%88%EC%A0%9C" loading="lazy"></iframe>
+</div>
+</div>
+<h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://html.spec.whatwg.org/multipage/scripting.html#the-template-element">HTML Standard <br><small># the-template-element</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_components/Using_templates_and_slots" class="only-in-en-us">템플릿과 슬롯 사용하기 <small>(en-US)</small></a></li> </ul></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/HTML/Element/template" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/HTML/Element/template</a>
+  </p>
+</div>

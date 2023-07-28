@@ -1,0 +1,29 @@
+<header><h1>DOMContentLoaded</h1></header><div class="section-content">
+<p><code>DOMContentLoaded</code> 이벤트는 초기 HTML 문서를 완전히 불러오고 분석했을 때 발생합니다. 스타일 시트, 이미지, 하위 프레임의 로딩은 기다리지 않습니다.</p> <figure class="table-container"><div class="_table"><table> <thead> <tr> <th>확산</th> <th>예</th> </tr> </thead> <tbody> <tr> <td>취소 가능</td> <td>예 (although specified as a simple event that isn't cancelable)</td> </tr> <tr> <td>인터페이스</td> <td><a href="../event"><code>Event</code></a></td> </tr> <tr> <td>이벤트 처리기 속성</td> <td>아니오</td> </tr> </tbody> </table></div></figure> <p><code>DOMContentLoaded</code>의 원본 대상은 다 불러온 <a href="../document"><code>Document</code></a>입니다. You can listen for this event on the <code>Window</code> interface to handle it in the capture or bubbling phases. For full details on this event please see the page on the Document: <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/Document/DOMContentLoaded_event"><code>DOMContentLoaded</code> <small>(en-US)</small></a> event.</p> <p>A different event, <a href="load_event"><code>load</code></a>, should be used only to detect a fully-loaded page. It is a common mistake to use <code>load</code> where <code>DOMContentLoaded</code> would be more appropriate.</p>
+</div>
+<h2 id="예제">예제</h2>
+
+<h3 id="기본_용도">기본 용도</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="7LOfNq3wp8UpmiUbaL0+EP/DBHllIRq6Q7RfS0uEQs4=" data-language="js">window<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">'DOMContentLoaded'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">event</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'DOM fully loaded and parsed'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div></div>
+<h2 id="명세서">명세서</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://html.spec.whatwg.org/multipage/indices.html#event-domcontentloaded">HTML Standard <br><small># event-domcontentloaded</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li>Related events: <a href="load_event"><code>load</code></a>, <a href="../document/readystatechange_event"><code>readystatechange</code></a>, <a href="beforeunload_event"><code>beforeunload</code></a>, <a href="unload_event"><code>unload</code></a>
+</li> <li>This event on <a href="../document"><code>Document</code></a> targets: <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/Document/DOMContentLoaded_event"><code>DOMContentLoaded</code> <small>(en-US)</small></a>
+</li> </ul></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/Window/DOMContentLoaded_event" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/Window/DOMContentLoaded_event</a>
+  </p>
+</div>

@@ -1,0 +1,58 @@
+<header><h1>MediaDevices.enumerateDevices()</h1></header><div class="section-content"><p><a href="../mediadevices"><code>MediaDevices</code></a>의 <code>enumerateDevices()</code> 메서드는 사용(또는 접근)이 가능한 미디어 입력장치나 출력장치들의 리스트를 가져옵니다. 예를 들면 마이크, 카메라, 헤드셋 등의 미디어 입/출력 장치 리스트를 불러오는 것 이죠. 이 메서드는 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise"><code>Promise</code> <small>(en-US)</small></a>를 반환하는데, 이 Promise가 resolve되면 장치(device)정보가 들어있는 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/MediaDeviceInfo"><code>MediaDeviceInfo</code> <small>(en-US)</small></a> 배열(array)을 확인할 수 있습니다.</p></div>
+<h2 id="syntax_구문">Syntax (구문)</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="RnGYwCKMBbgEfm3vrZAbQB/D1LbrEwept7Dhfh5dZZ8=" data-language="js"><span class="token keyword">var</span> enumeratorPromise <span class="token operator">=</span> navigator<span class="token punctuation">.</span>mediaDevices<span class="token punctuation">.</span><span class="token function">enumerateDevices</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div></div>
+<h3 id="return_value_반환값">Return value ( 반환값 )</h3>
+<div class="section-content">
+<p>반환받는 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise"><code>Promise</code> <small>(en-US)</small></a>는 모든 장치 리스트를 가져오는 것에 성공하면 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/MediaDeviceInfo"><code>MediaDeviceInfo</code> <small>(en-US)</small></a>객체 배열(array)를 받습니다. 배열에 들어있는 객체들은 각각의 장치정보를 가지고 있습니다.</p> <p>장치 리스트를 가져오는 것이 실패하면, promise는 rejected처리 됩니다.</p>
+</div>
+<h2 id="example_예제">Example (예제)</h2>
+<div class="section-content">
+<p><code>enumerateDevices()</code>을 사용하는 방법을 알아봅시다. 아래는 장치 종류와 <a href="https://developer.mozilla.org/en-US/docs/Web/API/MediaDeviceInfo/deviceId" class="only-in-en-us">device IDs (장치 아이디) <small>(en-US)</small></a>를 반환하며, 레이블이 있을 경우 레이블도 보여주는 간단한 코드 입니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="c/AfUHhwGyvLF58HtY8ktC5qyt84+J2h7pzTbPcmAnw=" data-language="js"><span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>navigator<span class="token punctuation">.</span>mediaDevices <span class="token operator">||</span> <span class="token operator">!</span>navigator<span class="token punctuation">.</span>mediaDevices<span class="token punctuation">.</span>enumerateDevices<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"enumerateDevices()를 지원하지 않습니다."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">return</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// 카메라와 마이크 리스트</span>
+
+navigator<span class="token punctuation">.</span>mediaDevices<span class="token punctuation">.</span><span class="token function">enumerateDevices</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">devices</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  devices<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">device</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>device<span class="token punctuation">.</span>kind <span class="token operator">+</span> <span class="token string">": "</span> <span class="token operator">+</span> device<span class="token punctuation">.</span>label <span class="token operator">+</span>
+                <span class="token string">" id = "</span> <span class="token operator">+</span> device<span class="token punctuation">.</span>deviceId<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token punctuation">.</span><span class="token function">catch</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">err</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>err<span class="token punctuation">.</span>name <span class="token operator">+</span> <span class="token string">": "</span> <span class="token operator">+</span> err<span class="token punctuation">.</span>message<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div> <p>위 코드를 실행하면 아래와 같은 결과를 볼 수 있을 것입니다.:</p> <pre class="notranslate">videoinput: id = csO9c0YpAf274OuCPUA53CNE0YHlIr2yXCi+SqfBZZ8=
+audioinput: id = RKxXByjnabbADGQNNZqLVLdmXlS0YkETYCIbg+XxnvM=
+audioinput: id = r2/xw1xUPIyZunfV1lGrKOma5wTOvCkWfZ368XCndm0=
+</pre> <p>또는 하나 이상의 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/MediaStream"><code>MediaStream</code> <small>(en-US)</small></a>이 사용 가능하거나 접근(사용권한)이 가능할 경우:</p> <pre class="notranslate">videoinput: FaceTime HD Camera (Built-in) id=csO9c0YpAf274OuCPUA53CNE0YHlIr2yXCi+SqfBZZ8=
+audioinput: default (Built-in Microphone) id=RKxXByjnabbADGQNNZqLVLdmXlS0YkETYCIbg+XxnvM=
+audioinput: Built-in Microphone id=r2/xw1xUPIyZunfV1lGrKOma5wTOvCkWfZ368XCndm0=
+</pre>
+</div>
+<h2 id="명세서">명세서</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://w3c.github.io/mediacapture-main/#dom-mediadevices-enumeratedevices">Media Capture and Streams <br><small># dom-mediadevices-enumeratedevices</small></a></td></tr></tbody>
+</table></div>
+<h2 id="browser_compatibility_브라우저_호환">Browser compatibility (브라우저 호환)</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<h2 id="see_also">See also</h2>
+<div class="section-content"><ul> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/getUserMedia"><code>navigator.mediaDevices.getUserMedia()</code> <small>(en-US)</small></a></li> <li>
+<a href="https://developer.mozilla.org/en-US/docs/Web/API/WebRTC_API" class="only-in-en-us">WebRTC <small>(en-US)</small></a> - the introductory page to the API</li> <li>
+<a href="https://developer.mozilla.org/en-US/docs/Web/API/Media_Capture_and_Streams_API" class="only-in-en-us">MediaStream API <small>(en-US)</small></a> - the API for the media stream objects</li> <li>
+<a href="https://developer.mozilla.org/en-US/docs/Web/API/Media_Capture_and_Streams_API/Taking_still_photos" class="only-in-en-us">Taking webcam photos <small>(en-US)</small></a> - a tutorial on using <code>getUserMedia()</code> for taking photos rather than video.</li> </ul></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/MediaDevices/enumerateDevices" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/MediaDevices/enumerateDevices</a>
+  </p>
+</div>

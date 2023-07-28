@@ -1,0 +1,55 @@
+<header><h1>AbortController.abort()</h1></header><div class="section-content">
+<div class="notecard experimental" id="sect1"><p><strong>Experimental:</strong> <strong>This is an <a href="https://developer.mozilla.org/en-US/docs/MDN/Writing_guidelines/Experimental_deprecated_obsolete#experimental">experimental technology</a></strong><br>Check the <a href="#browser_compatibility">Browser compatibility table</a> carefully before using this in production.</p></div> <p><a href="../abortcontroller"><code>AbortController</code></a> 인터페이스의 <code>abort()</code> 메소드는 DOM 요청(Fetch 요청과 같은)이 완료되기 전에 취소한다. 이를 통해 <a href="../fetch">fetch 요청</a>, 모든 응답 <a class="page-not-created"><code>Body</code></a> 소비, 스트림을 취소할 수 있다.</p>
+</div>
+<h2 id="구문">구문</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="FOtp8tFrWBvNXD8IQ2Y77pnmh7cGOmOIZYO2NQUz3pk=" data-language="js">controller<span class="token punctuation">.</span><span class="token function">abort</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div></div>
+<h3 id="파라미터">파라미터</h3>
+<div class="section-content"><p>없음.</p></div>
+<h3 id="반환_값">반환 값</h3>
+<div class="section-content"><p>Void.</p></div>
+<h2 id="예제">예제</h2>
+<div class="section-content">
+<p>다음 스니펫에서는 <a href="../fetch_api">Fetch API</a>를 사용해 비디오를 다운로드하는 것을 목표로 한다.</p> <p>먼저 <a href="abortcontroller"><code>AbortController()</code></a> 생성자를 사용해 컨트롤러를 <a href="signal"><code>AbortController.signal</code></a> 프로퍼티를 사용해 <a href="../abortsignal"><code>AbortSignal</code></a> 객체와 관계된 참조를 얻는다.</p> <p><a href="../fetch">Fetch 요청</a>을 시작할 때, 요청의 옵션 객체 내부에 <code>AbortSignal</code> 옵션을 전달한다(아래의 <code>{signal}</code> 참고). 이것은 신호와 컨트롤러를 fetch 요청과 관계짓고, 아래의 두 번째 이벤트 리스너에서 보여주듯이 <a href="abort" aria-current="page"><code>AbortController.abort()</code></a>를 호출하여 이를 취소할 수 있게한다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="m0BtM8mn9RUfdYlSGppV2TI6Isme43bOkS9WD0xTI30=" data-language="js"><span class="token keyword">var</span> controller <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">AbortController</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> signal <span class="token operator">=</span> controller<span class="token punctuation">.</span>signal<span class="token punctuation">;</span>
+
+<span class="token keyword">var</span> downloadBtn <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">querySelector</span><span class="token punctuation">(</span><span class="token string">'.download'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> abortBtn <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">querySelector</span><span class="token punctuation">(</span><span class="token string">'.abort'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+downloadBtn<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">'click'</span><span class="token punctuation">,</span> fetchVideo<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+abortBtn<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">'click'</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  controller<span class="token punctuation">.</span><span class="token function">abort</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'Download aborted'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">function</span> <span class="token function">fetchVideo</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token operator">...</span>
+  <span class="token function">fetch</span><span class="token punctuation">(</span>url<span class="token punctuation">,</span> <span class="token punctuation">{</span>signal<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">response</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token operator">...</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">catch</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">e</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    reports<span class="token punctuation">.</span>textContent <span class="token operator">=</span> <span class="token string">'Download error: '</span> <span class="token operator">+</span> e<span class="token punctuation">.</span>message<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</pre>
+</div> <div class="notecard note" id="sect2"> <p><strong>참고:</strong> <code>abort()</code>가 호출되면, <code>fetch()</code> promise는 <code dir="ltr">AbortError</code>과 함께 reject된다.</p> </div> <p>동작하는 완전한 예제는 GitHub에서 확인 할 수 있다 — <a href="https://github.com/mdn/dom-examples/tree/master/abort-api" target="_blank">abort-api</a> 참고(<a href="https://mdn.github.io/dom-examples/abort-api/" target="_blank">라이브 실행도 확인할 수 있다</a>).</p>
+</div>
+<h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="#">DOM Standard <br><small># ref-for-dom-abortcontroller-abortcontroller①</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<h2 id="함께_보기">함께 보기</h2>
+<div class="section-content"><ul> <li><a href="../fetch_api">Fetch API</a></li> </ul></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/AbortController/abort" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/AbortController/abort</a>
+  </p>
+</div>

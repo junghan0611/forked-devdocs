@@ -1,0 +1,63 @@
+<header><h1>&lt;thead&gt;: 표 머릿글 요소</h1></header><div class="section-content"><p><code>&lt;thead&gt;</code> <a href="../index">HTML</a> 요소는 테이블의 열의 머리글인 행들의 집합입니다.</p></div>
+<h2 id="시도해보기">시도해보기</h2>
+<div class="section-content">
+<iframe class="interactive is-tabbed-taller-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/tabbed/thead.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe> <figure class="table-container"><div class="_table"><table class="properties"> <tbody> <tr> <th scope="row"><a href="../content_categories">콘텐츠 카테고리</a></th> <td>없음.</td> </tr> <tr> <th scope="row">가능한 콘텐츠</th> <td>0개 이상의 <a href="tr"><code>&lt;tr&gt;</code></a> 요소.</td> </tr> <tr> <th scope="row">태그 생략</th> <td>여는 태그는 필수입니다. <a href="thead" aria-current="page"><code>&lt;thead&gt;</code></a> 요소 뒤에 <a href="tbody"><code>&lt;tbody&gt;</code></a> 또는 <a href="tfoot"><code>&lt;tfoot&gt;</code></a> 요소가 바로 이어지는 경우에는 닫는 태그를 생략할 수 있습니다.</td> </tr> <tr> <th scope="row">가능한 부모 요소</th> <td> <a href="table"><code>&lt;table&gt;</code></a> 요소. <a href="thead" aria-current="page"><code>&lt;thead&gt;</code></a> 요소는 무조건 <a href="caption"><code>&lt;caption&gt;</code></a> 또는 <a href="colgroup"><code>&lt;colgroup&gt;</code></a> 요소 뒤에 (암시적으로 정의된 경우에도) 위치해야 하지만, <a href="tbody"><code>&lt;tbody&gt;</code></a>, <a href="tfoot"><code>&lt;tfoot&gt;</code></a> 과 <a href="tr"><code>&lt;tr&gt;</code></a> 요소의 앞에 위치해야 합니다. </td> </tr> <tr> <th scope="row">암시적 ARIA 역할</th> <td><code><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/rowgroup_role" class="only-in-en-us">rowgroup <small>(en-US)</small></a></code></td> </tr> <tr> <th scope="row">가능한 ARIA 역할</th> <td>모두</td> </tr> <tr> <th scope="row">DOM 인터페이스</th> <td><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLTableSectionElement"><code>HTMLTableSectionElement</code> <small>(en-US)</small></a></td> </tr> </tbody> </table></div></figure>
+</div>
+<h2 id="특성">특성</h2>
+<div class="section-content"><p>이 요소는 <a href="../global_attributes">전역 특성</a>만 포함합니다.</p></div>
+<h3 id="더_이상_사용하지_않는_특성">더 이상 사용하지 않는 특성</h3>
+<div class="section-content"><dl> <dt id="align">
+<a id="attr-align" class="inline-block" href="#attr-align"><b><code>align</code></b></a> <abbr class="icon icon-deprecated" title="지원이 중단되었습니다. 새로운 웹사이트에서 사용하지 마세요."> <span class="visually-hidden">지원이 중단되었습니다</span> </abbr>
+</dt> <dd> <p>아래에 나열된 속성들은 각 셀 컨텐츠의 수평 정렬 방법을 지정합니다. 가능한 값:</p> <ul> <li>
+<code>left</code>, 컨텐츠를 셀의 왼쪽으로 정렬합니다.</li> <li>
+<code>center</code>, 컨텐츠를 셀의 가운데로 정렬합니다.</li> <li>
+<code>right</code>, 컨텐츠를 셀의 오른쪽으로 정렬합니다.</li> <li>
+<code>justify</code>, 컨텐츠가 셀의 양쪽으로 정렬되도록 텍스트 컨텐츠에 공백을 삽입합니다.</li> <li>
+<code>char</code>, <a href="thead#attr-char" aria-current="page"><code>char</code></a> 와 <a href="thead#attr-charoff" aria-current="page"><code>charoff</code></a> 특성에 의해 정해지는 최소 오프셋을 가진 특수 문자에 대해 텍스트 컨텐츠를 정렬합니다.</li> </ul> <p>만약 값이 따로 할당되어 있지 않다면 <code>left</code> 가 기본값으로 지정됩니다.</p> <blockquote> <p><strong>주의:</strong> 이 속성은 최신 표준에서는 사용되지 않으며 지원되지 않으므로 사용하지 마십시오.</p> <ul> <li>
+<code>left</code>, <code>center</code>, <code>right</code> 또는 <code>justify</code> 값과 같은 효과를 내고 싶다면, CSS <a href="https://developer.mozilla.org/ko/docs/Web/CSS/text-align"><code>text-align</code></a> 속성을 적용하세요.</li> <li>
+<code>char</code> 값과 같은 효과를 내고 싶다면, CSS3에서 <a href="https://developer.mozilla.org/ko/docs/Web/CSS/text-align"><code>text-align</code></a> 속성의 값으로 <a href="thead#attr-char" aria-current="page"><code>char</code></a>의 값을 사용할 수 있습니다.</li> </ul> </blockquote> </dd> <dt id="bgcolor">
+<a id="attr-bgcolor" class="inline-block" href="#attr-bgcolor"><b><code>bgcolor</code></b></a> <abbr class="icon icon-nonstandard" title="비표준. 사용하기전에 다른 브라우저에서도 사용 가능한지 확인 해주세요."> <span class="visually-hidden">비표준</span> </abbr>
+</dt> <dd> <p>이 특성은 열의 각 셀의 배경색을 정의합니다. 앞에 '#'을 붙인 <a href="https://www.w3.org/Graphics/Color/sRGB" target="_blank">sRGB</a> 6자리 16진수 코드입니다. 미리 정의된 16개의 색상 문자열을 사용할 수도 있습니다.</p> <ul> <li>
+<code>black</code> = "#000000"</li> <li>
+<code>green</code> = "#008000"</li> <li>
+<code>silver</code> = "#C0C0C0"</li> <li>
+<code>lime</code> = "#00FF00"</li> <li>
+<code>gray</code> = "#808080"</li> <li>
+<code>olive</code> = "#808000"</li> <li>
+<code>white</code> = "#FFFFFF"</li> <li>
+<code>yellow</code> = "#FFFF00"</li> <li>
+<code>maroon</code> = "#800000"</li> <li>
+<code>navy</code> = "#000080"</li> <li>
+<code>red</code> = "#FF0000"</li> <li>
+<code>blue</code> = "#0000FF"</li> <li>
+<code>purple</code> = "#800080"</li> <li>
+<code>teal</code> = "#008080"</li> <li>
+<code>fuchsia</code> = "#FF00FF"</li> <li>
+<code>aqua</code> = "#00FFFF"</li> </ul> <blockquote> <p><strong>Note:</strong> 이 특성은 표준이 아니며, Microsoft Internet Explorer의 몇몇 버전에서만 구현되므로 사용하지 마십시오. <a href="thead" aria-current="page"><code>&lt;thead&gt;</code></a> 요소에 스타일을 적용하려면 <a href="https://developer.mozilla.org/ko/docs/Web/CSS">CSS</a>를 사용해야 합니다. <strong>bgcolor</strong> 특성과 비슷한 효과를 내고 싶다면, 관련된 <a href="td"><code>&lt;td&gt;</code></a> 또는 <a href="th"><code>&lt;th&gt;</code></a> 요소에 <a href="https://developer.mozilla.org/ko/docs/Web/CSS">CSS</a> <a href="https://developer.mozilla.org/ko/docs/Web/CSS/background-color"><code>background-color</code></a> 속성을 사용하세요.</p> </blockquote> </dd> <dt id="char">
+<a id="attr-char" class="inline-block" href="#attr-char"><b><code>char</code></b></a> <abbr class="icon icon-deprecated" title="지원이 중단되었습니다. 새로운 웹사이트에서 사용하지 마세요."> <span class="visually-hidden">지원이 중단되었습니다</span> </abbr>
+</dt> <dd> <p>이 특성은 열의 셀을 정렬할 문자를 설정하는 데 사용됩니다. 숫자 또는 통화 값을 정렬할 때에는 일반적으로 마침표(.)가 포함됩니다. 만약 <a href="thead#attr-align" aria-current="page"><code>align</code></a>이 <code>char</code>로 설정되어 있지 않으면, 이 특성은 무시됩니다.</p> <blockquote> <p><strong>Note:</strong> 이 특성은 최신 표준에서는 사용되지 않으며 지원되지 않으므로 사용하지 마십시오. <a href="thead#attr-char" aria-current="page"><code>char</code></a>와 같은 효과를 내고 싶다면, CSS3에서 <a href="thead#attr-char" aria-current="page"><code>char</code></a> 특성을 <a href="https://developer.mozilla.org/ko/docs/Web/CSS/text-align"><code>text-align</code></a> 속성의 값으로 하여 문자 집합을 사용할 수 있습니다.</p> </blockquote> </dd> <dt id="charoff">
+<a id="attr-charoff" class="inline-block" href="#attr-charoff"><b><code>charoff</code></b></a> <abbr class="icon icon-deprecated" title="지원이 중단되었습니다. 새로운 웹사이트에서 사용하지 마세요."> <span class="visually-hidden">지원이 중단되었습니다</span> </abbr>
+</dt> <dd> <p>이 특성은 <strong>char</strong> 특성으로 지정된 정렬 문자에서 열 데이터를 오프셋할 문자의 수를 나타내는 데 사용됩니다.</p> <blockquote> <p><strong>주의:</strong> 이 특성은 최신 표준에서는 사용되지 않으며 지원되지 않으므로 사용하지 마십시오.</p> </blockquote> </dd> <dt id="valign">
+<a id="attr-valign" class="inline-block" href="#attr-valign"><b><code>valign</code></b></a> <abbr class="icon icon-deprecated" title="지원이 중단되었습니다. 새로운 웹사이트에서 사용하지 마세요."> <span class="visually-hidden">지원이 중단되었습니다</span> </abbr>
+</dt> <dd> <p>이 특성은 표 머리글의 각 행 내에 있는 텍스트의 수직 정렬 방식을 지정합니다. 이 특성에 사용 가능한 값:</p> <ul> <li>
+<code>baseline</code>, 텍스트를 가능한 셀의 하단에 가깝게, 하지만 텍스트의 <a href="https://en.wikipedia.org/wiki/Baseline_%28typography%29" target="_blank">baseline</a>에 맞춰 배치합니다. 만약 문자들의 크기가 모두 같다면, 이것은 <code>bottom</code>과 같은 효과를 가집니다.</li> <li>
+<code>bottom</code>, 텍스트를 가능한 한 셀의 하단에 가깝게 배치합니다.</li> <li>
+<code>middle</code>, 텍스트를 셀의 가운데에 배치합니다.</li> <li>
+<code>top</code>, 텍스트를 가능한 한 셀의 상단에 가깝게 배치합니다.</li> </ul> <blockquote> <p><strong>Note:</strong> 이 특성은 최신 표준에서는 사용되지 않으며 지원되지 않으므로 사용하지 마십시오. 대신 CSS의 <a href="https://developer.mozilla.org/ko/docs/Web/CSS/vertical-align"><code>vertical-align</code></a> 속성을 적용하세요.</p> </blockquote> </dd> </dl></div>
+<h2 id="예제">예제</h2>
+<div class="section-content"><p><code>&lt;thead&gt;</code>에 대한 예제는 <a href="table"><code>&lt;table&gt;</code></a>을 참고해 주세요.</p></div>
+<h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://html.spec.whatwg.org/multipage/tables.html#the-thead-element">HTML Standard <br><small># the-thead-element</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li>테이블과 관련된 다른 HTML 요소들: <a href="caption"><code>&lt;caption&gt;</code></a>, <a href="col"><code>&lt;col&gt;</code></a>, <a href="colgroup"><code>&lt;colgroup&gt;</code></a>, <a href="table"><code>&lt;table&gt;</code></a>, <a href="tbody"><code>&lt;tbody&gt;</code></a>, <a href="td"><code>&lt;td&gt;</code></a>, <a href="tfoot"><code>&lt;tfoot&gt;</code></a>, <a href="th"><code>&lt;th&gt;</code></a>, <a href="tr"><code>&lt;tr&gt;</code></a>.</li> <li>
+<code>&lt;thead&gt;</code> 요소에 스타일을 지정할 때 특히 유용할 CSS 속성과 가상 클래스들: <ul> <li>각 열의 셀들을 정렬할 때 사용하는 <a href="https://developer.mozilla.org/ko/docs/Web/CSS/:nth-child"><code>:nth-child</code></a> 가상 클래스.</li> <li>'.'같은 동일한 문자에 모든 셀 내용을 정렬할 때 사용하는 <a href="https://developer.mozilla.org/ko/docs/Web/CSS/text-align"><code>text-align</code></a> 속성.</li> </ul> </li> </ul></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/HTML/Element/thead" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/HTML/Element/thead</a>
+  </p>
+</div>

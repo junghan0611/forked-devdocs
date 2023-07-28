@@ -1,0 +1,172 @@
+<header><h1>background</h1></header><div class="section-content"><p><a href="https://developer.mozilla.org/ko/docs/Web/API/CSS">CSS</a> <code>background</code> <a href="shorthand_properties">단축 속성</a>은 색상, 이미지, 원점, 크기, 반복 등 여러 배경 스타일을 한 번에 지정합니다.</p></div>
+<section aria-labelledby="시도해보기"><h2 id="시도해보기">시도해보기</h2>
+<div class="section-content"><iframe class="interactive is-default-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/css/background.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe></div></section><section aria-labelledby="구성_속성"><h2 id="구성_속성">구성 속성</h2>
+<div class="section-content">
+<p><code>background</code>는 단축 속성으로서 다음의 하위 속성을 포함합니다.</p> <ul> <li><a href="background-attachment"><code>background-attachment</code></a></li> <li><a href="background-clip"><code>background-clip</code></a></li> <li><a href="background-color"><code>background-color</code></a></li> <li><a href="background-image"><code>background-image</code></a></li> <li><a href="background-origin"><code>background-origin</code></a></li> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/background-position"><code>background-position</code> <small>(en-US)</small></a></li> <li><a href="background-repeat"><code>background-repeat</code></a></li> <li><a href="background-size"><code>background-size</code></a></li> </ul>
+</div></section><section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content">
+<div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="xDNOC2GXEWJrRpfaIi6oYbbZ+Uq8d/riSFvOaSUT6FU=" data-language="css"><span class="token comment">/* &lt;background-color&gt; 사용 */</span>
+<span class="token property">background</span><span class="token punctuation">:</span> green<span class="token punctuation">;</span>
+
+<span class="token comment">/* &lt;bg-image&gt;와 &lt;repeat-style&gt; 사용 */</span>
+<span class="token property">background</span><span class="token punctuation">:</span> <span class="token url"><span class="token function">url</span><span class="token punctuation">(</span><span class="token string url">"test.jpg"</span><span class="token punctuation">)</span></span> repeat-y<span class="token punctuation">;</span>
+
+<span class="token comment">/* &lt;box&gt;와 &lt;background-color&gt; 사용 */</span>
+<span class="token property">background</span><span class="token punctuation">:</span> border-box red<span class="token punctuation">;</span>
+
+<span class="token comment">/* 단일 이미지, 중앙 배치 및 크기 조절 */</span>
+<span class="token property">background</span><span class="token punctuation">:</span> no-repeat center/80% <span class="token url"><span class="token function">url</span><span class="token punctuation">(</span><span class="token string url">"../img/image.png"</span><span class="token punctuation">)</span></span><span class="token punctuation">;</span>
+</pre>
+</div> <p><code>background</code> 속성을 쉼표로 구분해서 배경 레이어를 여러 개 지정할 수 있습니다.</p> <p>각 레이어의 구문은 다음과 같습니다.</p> <ul> <li>각 레이어는 다음 값을 가지거나 가지지 않을 수 있습니다. <ul> <li><a href="#attachment"><code>&lt;attachment&gt;</code></a></li> <li><a href="#bg-image"><code>&lt;bg-image&gt;</code></a></li> <li><a href="#position"><code>&lt;position&gt;</code></a></li> <li><a href="#bg-size"><code>&lt;bg-size&gt;</code></a></li> <li><a href="#repeat-style"><code>&lt;repeat-style&gt;</code></a></li> </ul> </li> <li>
+<a href="#bg-size"><code>&lt;bg-size&gt;</code></a> 값은 <a href="#position"><code>&lt;position&gt;</code></a> 바로 뒤에만 위치할 수 있으며 '/' 문자로 구분해야 합니다. 예를 들면 "<code>center/80%</code>" 처럼 사용합니다.</li> <li>
+<a href="#box"><code>&lt;box&gt;</code></a> 값은 2개까지 가지거나 가지지 않을 수 있습니다. 1개 가진다면 <a href="background-origin"><code>background-origin</code></a>과 <a href="background-clip"><code>background-clip</code></a>을 모두 설정합니다. 2개 가진다면 처음 값은 <a href="background-origin"><code>background-origin</code></a>, 두 번째 값은 <a href="background-clip"><code>background-clip</code></a>을 설정합니다.</li> <li>
+<a href="#background-color"><code>&lt;background-color&gt;</code></a> 값은 마지막 레이어만 가질 수 있습니다.</li> </ul>
+</div></section><section aria-labelledby="값"><h3 id="값">값</h3>
+<div class="section-content"><dl> <dt id="attachment"><code>&lt;attachment&gt;</code></dt> <dd><a href="background-attachment"><code>background-attachment</code></a></dd> <dt id="box"><code>&lt;box&gt;</code></dt> <dd>
+<a href="background-clip"><code>background-clip</code></a>, <a href="background-origin"><code>background-origin</code></a>
+</dd> <dt id="background-color"><code>&lt;background-color&gt;</code></dt> <dd><a href="background-color"><code>background-color</code></a></dd> <dt id="bg-image"><code>&lt;bg-image&gt;</code></dt> <dd><a href="background-image"><code>background-image</code></a></dd> <dt id="position"><code>&lt;position&gt;</code></dt> <dd><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/background-position"><code>background-position</code> <small>(en-US)</small></a></dd> <dt id="repeat-style"><code>&lt;repeat-style&gt;</code></dt> <dd><a href="background-repeat"><code>background-repeat</code></a></dd> <dt id="bg-size"><code>&lt;bg-size&gt;</code></dt> <dd><a href="background-size"><code>background-size</code></a></dd> </dl></div></section><section aria-labelledby="접근성_고려사항"><h2 id="접근성_고려사항">접근성 고려사항</h2>
+<div class="section-content">
+<p>브라우저는 배경 이미지에 대한 어떠한 추가 정보도 접근성 보조 기술에 제공하지 않습니다. 특히 스크린 리더의 경우 배경 이미지의 존재 유무조차 알려주지 않습니다. 이미지가 페이지 목적의 이해에 필수적인 정보를 갖고 있다면 문서에서 구조적으로 설명하는 편이 좋습니다.</p> <ul> <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/Understanding_WCAG/Perceivable" class="only-in-en-us">MDN Understanding WCAG, Guideline 1.1 explanations <small>(en-US)</small></a></li> <li><a href="https://www.w3.org/TR/2016/NOTE-UNDERSTANDING-WCAG20-20161007/text-equiv-all.html" target="_blank">Understanding Success Criterion 1.1.1 | W3C Understanding WCAG 2.0</a></li> </ul>
+</div></section><section aria-labelledby="형식_정의"><h2 id="형식_정의">형식 정의</h2>
+<div class="section-content"><figure class="table-container"><div class="_table"><table class="properties"><tbody>
+<tr>
+<th scope="row"><a href="initial_value">초기값</a></th>
+<td>as each of the properties of the shorthand:<br><ul>
+<li>
+<a href="background-image"><code>background-image</code></a>: <code>none</code>
+</li>
+<li>
+<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/background-position" class="only-in-en-us"><code>background-position</code> <small>(en-US)</small></a>: <code>0% 0%</code>
+</li>
+<li>
+<a href="background-size"><code>background-size</code></a>: <code>auto auto</code>
+</li>
+<li>
+<a href="background-repeat"><code>background-repeat</code></a>: <code>repeat</code>
+</li>
+<li>
+<a href="background-origin"><code>background-origin</code></a>: <code>padding-box</code>
+</li>
+<li>
+<a href="background-clip"><code>background-clip</code></a>: <code>border-box</code>
+</li>
+<li>
+<a href="background-attachment"><code>background-attachment</code></a>: <code>scroll</code>
+</li>
+<li>
+<a href="background-color"><code>background-color</code></a>: <code>transparent</code>
+</li>
+</ul>
+</td>
+</tr>
+<tr>
+<th scope="row">적용대상</th>
+<td>all elements. It also applies to <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/::first-letter" class="only-in-en-us"><code>::first-letter</code> <small>(en-US)</small></a> and <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/::first-line" class="only-in-en-us"><code>::first-line</code> <small>(en-US)</small></a>.</td>
+</tr>
+<tr>
+<th scope="row"><a href="inheritance">상속</a></th>
+<td>no</td>
+</tr>
+<tr>
+<th scope="row">Percentages</th>
+<td>as each of the properties of the shorthand:<br><ul>
+<li>
+<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/background-position" class="only-in-en-us"><code>background-position</code> <small>(en-US)</small></a>: refer to the size of the background positioning area minus size of background image; size refers to the width for horizontal offsets and to the height for vertical offsets</li>
+<li>
+<a href="background-size"><code>background-size</code></a>: relative to the background positioning area</li>
+</ul>
+</td>
+</tr>
+<tr>
+<th scope="row"><a href="computed_value">계산 값</a></th>
+<td>as each of the properties of the shorthand:<br><ul>
+<li>
+<a href="background-image"><code>background-image</code></a>: as specified, but with <a href="url"><code>url</code></a> values made absolute</li>
+<li>
+<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/background-position" class="only-in-en-us"><code>background-position</code> <small>(en-US)</small></a>: as each of the properties of the shorthand:<br><ul>
+<li>
+<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/background-position-x" class="only-in-en-us"><code>background-position-x</code> <small>(en-US)</small></a>: A list, each item consisting of: an offset given as a combination of an absolute length and a percentage, plus an origin keyword</li>
+<li>
+<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/background-position-y" class="only-in-en-us"><code>background-position-y</code> <small>(en-US)</small></a>: A list, each item consisting of: an offset given as a combination of an absolute length and a percentage, plus an origin keyword</li>
+</ul>
+</li>
+<li>
+<a href="background-size"><code>background-size</code></a>: as specified, but with relative lengths converted into absolute lengths</li>
+<li>
+<a href="background-repeat"><code>background-repeat</code></a>: a list, each item consisting of two keywords, one per dimension</li>
+<li>
+<a href="background-origin"><code>background-origin</code></a>: as specified</li>
+<li>
+<a href="background-clip"><code>background-clip</code></a>: as specified</li>
+<li>
+<a href="background-attachment"><code>background-attachment</code></a>: as specified</li>
+<li>
+<a href="background-color"><code>background-color</code></a>: computed color</li>
+</ul>
+</td>
+</tr>
+<tr>
+<th scope="row">Animation type</th>
+<td>as each of the properties of the shorthand:<br><ul>
+<li>
+<a href="background-color"><code>background-color</code></a>: a <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#interpolation">color</a>
+</li>
+<li>
+<a href="background-image"><code>background-image</code></a>: discrete</li>
+<li>
+<a href="background-clip"><code>background-clip</code></a>: a repeatable list of </li>
+<li>
+<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/background-position" class="only-in-en-us"><code>background-position</code> <small>(en-US)</small></a>: a repeatable list of </li>
+<li>
+<a href="background-size"><code>background-size</code></a>: a repeatable list of </li>
+<li>
+<a href="background-repeat"><code>background-repeat</code></a>: discrete</li>
+<li>
+<a href="background-attachment"><code>background-attachment</code></a>: discrete</li>
+</ul>
+</td>
+</tr>
+</tbody></table></div></figure></div></section><section aria-labelledby="형식_구문"><h2 id="형식_구문">형식 구문</h2>
+<div class="section-content"><pre class="notranslate"><span class="token property" id="background">background = </span><br>  <a href="value_definition_syntax#brackets">[</a> <span class="token property">&lt;bg-layer&gt;</span><a href="value_definition_syntax#hash_mark">#</a> , <a href="value_definition_syntax#brackets">]</a><a href="value_definition_syntax#question_mark">?</a> <span class="token property">&lt;final-bg-layer&gt;</span>  <br><br><span class="token property" id="&lt;bg-layer&gt;">&lt;bg-layer&gt; = </span><br>  <span class="token property">&lt;bg-image&gt;</span>                      <a href="value_definition_syntax#double_bar">||</a><br>  <span class="token property">&lt;bg-position&gt;</span> <a href="value_definition_syntax#brackets">[</a> / <span class="token property">&lt;bg-size&gt;</span> <a href="value_definition_syntax#brackets">]</a><a href="value_definition_syntax#question_mark">?</a>  <a href="value_definition_syntax#double_bar">||</a><br>  <span class="token property">&lt;repeat-style&gt;</span>                  <a href="value_definition_syntax#double_bar">||</a><br>  <span class="token property">&lt;attachment&gt;</span>                    <a href="value_definition_syntax#double_bar">||</a><br>  <span class="token property">&lt;box&gt;</span>                           <a href="value_definition_syntax#double_bar">||</a><br>  <span class="token property">&lt;box&gt;</span>                           <br><br><span class="token property" id="&lt;final-bg-layer&gt;">&lt;final-bg-layer&gt; = </span><br>  <span class="token property">&lt;'background-color'&gt;</span>            <a href="value_definition_syntax#double_bar">||</a><br>  <span class="token property">&lt;bg-image&gt;</span>                      <a href="value_definition_syntax#double_bar">||</a><br>  <span class="token property">&lt;bg-position&gt;</span> <a href="value_definition_syntax#brackets">[</a> / <span class="token property">&lt;bg-size&gt;</span> <a href="value_definition_syntax#brackets">]</a><a href="value_definition_syntax#question_mark">?</a>  <a href="value_definition_syntax#double_bar">||</a><br>  <span class="token property">&lt;repeat-style&gt;</span>                  <a href="value_definition_syntax#double_bar">||</a><br>  <span class="token property">&lt;attachment&gt;</span>                    <a href="value_definition_syntax#double_bar">||</a><br>  <span class="token property">&lt;box&gt;</span>                           <a href="value_definition_syntax#double_bar">||</a><br>  <span class="token property">&lt;box&gt;</span>                           <br><br><span class="token property" id="&lt;bg-image&gt;">&lt;bg-image&gt; = </span><br>  <span class="token property">&lt;image&gt;</span>  <a href="value_definition_syntax#single_bar">|</a><br>  <span class="token keyword">none</span>     <br><br><span class="token property" id="&lt;bg-position&gt;">&lt;bg-position&gt; = </span><br>  <a href="value_definition_syntax#brackets">[</a> <span class="token keyword">left</span> <a href="value_definition_syntax#single_bar">|</a> <span class="token keyword">center</span> <a href="value_definition_syntax#single_bar">|</a> <span class="token keyword">right</span> <a href="value_definition_syntax#single_bar">|</a> <span class="token keyword">top</span> <a href="value_definition_syntax#single_bar">|</a> <span class="token keyword">bottom</span> <a href="value_definition_syntax#single_bar">|</a> <span class="token property">&lt;length-percentage&gt;</span> <a href="value_definition_syntax#brackets">]</a>  <a href="value_definition_syntax#single_bar">|</a><br>  <a href="value_definition_syntax#brackets">[</a> <span class="token keyword">left</span> <a href="value_definition_syntax#single_bar">|</a> <span class="token keyword">center</span> <a href="value_definition_syntax#single_bar">|</a> <span class="token keyword">right</span> <a href="value_definition_syntax#single_bar">|</a> <span class="token property">&lt;length-percentage&gt;</span> <a href="value_definition_syntax#brackets">]</a> <a href="value_definition_syntax#brackets">[</a> <span class="token keyword">top</span> <a href="value_definition_syntax#single_bar">|</a> <span class="token keyword">center</span> <a href="value_definition_syntax#single_bar">|</a> <span class="token keyword">bottom</span> <a href="value_definition_syntax#single_bar">|</a> <span class="token property">&lt;length-percentage&gt;</span> <a href="value_definition_syntax#brackets">]</a>  <a href="value_definition_syntax#single_bar">|</a><br>  <a href="value_definition_syntax#brackets">[</a> <span class="token keyword">center</span> <a href="value_definition_syntax#single_bar">|</a> <a href="value_definition_syntax#brackets">[</a> <span class="token keyword">left</span> <a href="value_definition_syntax#single_bar">|</a> <span class="token keyword">right</span> <a href="value_definition_syntax#brackets">]</a> <span class="token property">&lt;length-percentage&gt;</span><a href="value_definition_syntax#question_mark">?</a> <a href="value_definition_syntax#brackets">]</a> <a href="value_definition_syntax#double_ampersand">&amp;&amp;</a> <a href="value_definition_syntax#brackets">[</a> <span class="token keyword">center</span> <a href="value_definition_syntax#single_bar">|</a> <a href="value_definition_syntax#brackets">[</a> <span class="token keyword">top</span> <a href="value_definition_syntax#single_bar">|</a> <span class="token keyword">bottom</span> <a href="value_definition_syntax#brackets">]</a> <span class="token property">&lt;length-percentage&gt;</span><a href="value_definition_syntax#question_mark">?</a> <a href="value_definition_syntax#brackets">]</a>  <br><br><span class="token property" id="&lt;bg-size&gt;">&lt;bg-size&gt; = </span><br>  <a href="value_definition_syntax#brackets">[</a> <a href="length-percentage"><span class="token property">&lt;length-percentage [0,∞]&gt;</span></a> <a href="value_definition_syntax#single_bar">|</a> <span class="token keyword">auto</span> <a href="value_definition_syntax#brackets">]</a><a href="value_definition_syntax#curly_braces">{1,2}</a>  <a href="value_definition_syntax#single_bar">|</a><br>  <span class="token keyword">cover</span>                                      <a href="value_definition_syntax#single_bar">|</a><br>  <span class="token keyword">contain</span>                                    <br><br><span class="token property" id="&lt;repeat-style&gt;">&lt;repeat-style&gt; = </span><br>  <span class="token keyword">repeat-x</span>                                     <a href="value_definition_syntax#single_bar">|</a><br>  <span class="token keyword">repeat-y</span>                                     <a href="value_definition_syntax#single_bar">|</a><br>  <a href="value_definition_syntax#brackets">[</a> <span class="token keyword">repeat</span> <a href="value_definition_syntax#single_bar">|</a> <span class="token keyword">space</span> <a href="value_definition_syntax#single_bar">|</a> <span class="token keyword">round</span> <a href="value_definition_syntax#single_bar">|</a> <span class="token keyword">no-repeat</span> <a href="value_definition_syntax#brackets">]</a><a href="value_definition_syntax#curly_braces">{1,2}</a>  <br><br><span class="token property" id="&lt;attachment&gt;">&lt;attachment&gt; = </span><br>  <span class="token keyword">scroll</span>  <a href="value_definition_syntax#single_bar">|</a><br>  <span class="token keyword">fixed</span>   <a href="value_definition_syntax#single_bar">|</a><br>  <span class="token keyword">local</span>   <br><br><span class="token property" id="&lt;box&gt;">&lt;box&gt; = </span><br>  <span class="token keyword">border-box</span>   <a href="value_definition_syntax#single_bar">|</a><br>  <span class="token keyword">padding-box</span>  <a href="value_definition_syntax#single_bar">|</a><br>  <span class="token keyword">content-box</span>  <br><br><span class="token property" id="&lt;image&gt;">&lt;image&gt; = </span><br>  <span class="token property">&lt;url&gt;</span>       <a href="value_definition_syntax#single_bar">|</a><br>  <a href="gradient"><span class="token property">&lt;gradient&gt;</span></a>  <br><br><span class="token property" id="&lt;length-percentage&gt;">&lt;length-percentage&gt; = </span><br>  <a href="length"><span class="token property">&lt;length&gt;</span></a>      <a href="value_definition_syntax#single_bar">|</a><br>  <a href="percentage"><span class="token property">&lt;percentage&gt;</span></a>  <br><br><span class="token property" id="&lt;url&gt;">&lt;url&gt; = </span><br>  <span class="token function">url(</span> <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/string" class="only-in-en-us"><span class="token property">&lt;string&gt;</span> <small>(en-US)</small></a> <a href="url-modifier" class="page-not-created"><span class="token property">&lt;url-modifier&gt;</span></a><a href="value_definition_syntax#asterisk">*</a> <span class="token function">)</span>  <a href="value_definition_syntax#single_bar">|</a><br>  <span class="token function">src(</span> <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/string" class="only-in-en-us"><span class="token property">&lt;string&gt;</span> <small>(en-US)</small></a> <a href="url-modifier" class="page-not-created"><span class="token property">&lt;url-modifier&gt;</span></a><a href="value_definition_syntax#asterisk">*</a> <span class="token function">)</span>  <br><br></pre></div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+</section><section aria-labelledby="색상_키워드와_이미지를_사용한_배경"><h3 id="색상_키워드와_이미지를_사용한_배경">색상 키워드와 이미지를 사용한 배경</h3>
+<div class="section-content">
+<h4 id="html">HTML</h4> <div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="bO8Gc7kUsosDwS1SDv8kNWKL+1H9hP0sya1+RVrBn48=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>topbanner<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+  작은 별<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>br</span><span class="token punctuation">/&gt;</span></span>
+  반짝 반짝<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>br</span><span class="token punctuation">/&gt;</span></span>
+  작은 별
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>warning<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>문단 하나<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div> <h4 id="css">CSS</h4> <div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="fOyQYiYvPTKfZZbKVxDQEgVVeakk7TJHLxTVrJ9BaNs=" data-language="css"><span class="token selector">.warning</span> <span class="token punctuation">{</span>
+  <span class="token property">background</span><span class="token punctuation">:</span> pink<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">.topbanner</span> <span class="token punctuation">{</span>
+  <span class="token property">background</span><span class="token punctuation">:</span> <span class="token url"><span class="token function">url</span><span class="token punctuation">(</span><span class="token string url">"starsolid.gif"</span><span class="token punctuation">)</span></span> #99f repeat-y fixed<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div> <h4 id="결과">결과</h4>
+<div class="code-example" id="sect1">
+
+<iframe class="sample-code-frame" title="색상 키워드와 이미지를 사용한 배경 sample" id="frame_색상_키워드와_이미지를_사용한_배경" src="https://live.mdnplay.dev/ko/docs/Web/CSS/background/runner.html?id=%EC%83%89%EC%83%81_%ED%82%A4%EC%9B%8C%EB%93%9C%EC%99%80_%EC%9D%B4%EB%AF%B8%EC%A7%80%EB%A5%BC_%EC%82%AC%EC%9A%A9%ED%95%9C_%EB%B0%B0%EA%B2%BD" loading="lazy"></iframe>
+</div>
+</div></section><h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://drafts.csswg.org/css-backgrounds/#the-background">CSS Backgrounds and Borders Module Level 3 <br><small># the-background</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/CSS/box-decoration-break"><code>box-decoration-break</code> <small>(en-US)</small></a></li> <li><a href="css_images/using_css_gradients">CSS 그레이디언트 사용하기</a></li> <li><a href="css_backgrounds_and_borders/using_multiple_backgrounds">한 번에 여러 배경 사용하기</a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/CSS/background" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/CSS/background</a>
+  </p>
+</div>

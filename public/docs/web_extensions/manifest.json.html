@@ -1,0 +1,127 @@
+<header><h1>manifest.json</h1></header><div class="section-content">
+<p>manifest.json 파일은 json 포맷 파일로서, 모든 웹 익스텐션이 포함하고 있어야 하는 파일입니다.</p> <p>manifest.json을 사용함으로써, 당신은 당신의 익스텐션의 이름, 버젼과 같은 기본 정보를 명시하며, 또한 당신의 익스텐션의 기능, 예를 들어 기본 스크립트, 내용 스크립트, 브라우져 활동 등과 같은 측면을 명시합니다.</p> <p>manifest.json에 지원되는 키들은 아래와 같습니다.</p>
+<ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/manifest.json/action">action</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/manifest.json/author">author</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/manifest.json/background">background</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/manifest.json/browser_action">browser_action</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/manifest.json/browser_specific_settings">browser_specific_settings</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/manifest.json/chrome_settings_overrides">chrome_settings_overrides</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/manifest.json/chrome_url_overrides">chrome_url_overrides</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/manifest.json/commands">commands</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/manifest.json/content_scripts">content_scripts</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/manifest.json/content_security_policy">content_security_policy</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/manifest.json/declarative_net_request">declarative_net_request</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/manifest.json/default_locale">default_locale</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/manifest.json/description">description</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/manifest.json/developer">developer</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/manifest.json/devtools_page">devtools_page</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/manifest.json/dictionaries">dictionaries</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/manifest.json/externally_connectable">externally_connectable</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/manifest.json/homepage_url">homepage_url</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/manifest.json/host_permissions">host_permissions</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/manifest.json/icons">icons</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/manifest.json/incognito">incognito</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/manifest.json/manifest_version">manifest_version</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/manifest.json/name">name</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/manifest.json/offline_enabled">offline_enabled</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/manifest.json/omnibox">omnibox</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/manifest.json/optional_permissions">optional_permissions</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/manifest.json/options_page">options_page</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/manifest.json/options_ui">options_ui</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/manifest.json/page_action">page_action</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/manifest.json/permissions">permissions</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/manifest.json/protocol_handlers">protocol_handlers</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/manifest.json/short_name">short_name</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/manifest.json/sidebar_action">sidebar_action</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/manifest.json/storage">storage</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/manifest.json/theme">theme</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/manifest.json/theme_experiment">theme_experiment</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/manifest.json/user_scripts">user_scripts</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/manifest.json/version">version</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/manifest.json/version_name">version_name</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/manifest.json/web_accessible_resources">web_accessible_resources</a></li>
+</ul> <p><code>"manifest_version"</code>, <code>"version"</code>, <code>"name" 키들은 반드시 있어야 합니다.</code></p> <p>"_locales" 경로가 있다면, <code>"default_locale"</code> 은 반드시 있어야 하며, <code>"_locales"</code> 경로가 없다면, <code>"default_locale"</code> 은 없어야 합니다.`</p> <p><code>"applications"는 구글 크롬에서는 지원되지 않고, 파이어폭스 48 이전 버젼에는 의무적으로 있어야 합니다.</code></p> <p>간단한 manifest.json 구문은 다음과 같습니다:</p> <div class="code-example">
+<p class="example-header"><span class="language-name">json</span></p>
+<pre data-signature="zI4ypQ2eiq7Fyrtw2rbUFXCVdRPt/UUMI93Ldy5Z11U=" data-language="json"><span class="token punctuation">{</span>
+
+    <span class="token property">"applications"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token property">"gecko"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">"id"</span><span class="token operator">:</span> <span class="token string">"addon@example.com"</span><span class="token punctuation">,</span>
+          <span class="token property">"strict_min_version"</span><span class="token operator">:</span> <span class="token string">"42.0"</span><span class="token punctuation">,</span>
+          <span class="token property">"strict_max_version"</span><span class="token operator">:</span> <span class="token string">"50.*"</span><span class="token punctuation">,</span>
+          <span class="token property">"update_url"</span><span class="token operator">:</span> <span class="token string">"https://example.com/updates.json"</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+
+    <span class="token property">"background"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">"scripts"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"jquery.js"</span><span class="token punctuation">,</span> <span class="token string">"my-background.js"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+        <span class="token property">"page"</span><span class="token operator">:</span> <span class="token string">"my-background.html"</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+
+    <span class="token property">"browser_action"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token property">"default_icon"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">"19"</span><span class="token operator">:</span> <span class="token string">"button/geo-19.png"</span><span class="token punctuation">,</span>
+        <span class="token property">"38"</span><span class="token operator">:</span> <span class="token string">"button/geo-38.png"</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token property">"default_title"</span><span class="token operator">:</span> <span class="token string">"Whereami?"</span><span class="token punctuation">,</span>
+      <span class="token property">"default_popup"</span><span class="token operator">:</span> <span class="token string">"popup/geo.html"</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+
+    <span class="token property">"commands"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token property">"toggle-feature"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">"suggested_key"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+          <span class="token property">"default"</span><span class="token operator">:</span> <span class="token string">"Ctrl+Shift+Y"</span><span class="token punctuation">,</span>
+          <span class="token property">"linux"</span><span class="token operator">:</span> <span class="token string">"Ctrl+Shift+U"</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token property">"description"</span><span class="token operator">:</span> <span class="token string">"Send a 'toggle-feature' event"</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+
+    <span class="token property">"content_security_policy"</span><span class="token operator">:</span> <span class="token string">"script-src 'self' https://example.com; object-src 'self'"</span><span class="token punctuation">,</span>
+
+    <span class="token property">"content_scripts"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+      <span class="token punctuation">{</span>
+        <span class="token property">"exclude_matches"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"*://developer.mozilla.org/*"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+        <span class="token property">"matches"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"*://*.mozilla.org/*"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+        <span class="token property">"js"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"borderify.js"</span><span class="token punctuation">]</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">]</span><span class="token punctuation">,</span>
+
+    <span class="token property">"default_locale"</span><span class="token operator">:</span> <span class="token string">"en"</span><span class="token punctuation">,</span>
+
+    <span class="token property">"description"</span><span class="token operator">:</span> <span class="token string">"..."</span><span class="token punctuation">,</span>
+
+    <span class="token property">"icons"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token property">"48"</span><span class="token operator">:</span> <span class="token string">"icon.png"</span><span class="token punctuation">,</span>
+      <span class="token property">"96"</span><span class="token operator">:</span> <span class="token string">"icon@2x.png"</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+
+    <span class="token property">"manifest_version"</span><span class="token operator">:</span> <span class="token number">2</span><span class="token punctuation">,</span>
+
+    <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"..."</span><span class="token punctuation">,</span>
+
+    <span class="token property">"page_action"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token property">"default_icon"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">"19"</span><span class="token operator">:</span> <span class="token string">"button/geo-19.png"</span><span class="token punctuation">,</span>
+        <span class="token property">"38"</span><span class="token operator">:</span> <span class="token string">"button/geo-38.png"</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token property">"default_title"</span><span class="token operator">:</span> <span class="token string">"Whereami?"</span><span class="token punctuation">,</span>
+      <span class="token property">"default_popup"</span><span class="token operator">:</span> <span class="token string">"popup/geo.html"</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+
+    <span class="token property">"permissions"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"webNavigation"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+
+    <span class="token property">"version"</span><span class="token operator">:</span> <span class="token string">"0.1"</span><span class="token punctuation">,</span>
+
+    <span class="token property">"web_accessible_resources"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"images/my-image.png"</span><span class="token punctuation">]</span>
+
+<span class="token punctuation">}</span>
+</pre>
+</div>
+</div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Mozilla/Add-ons/WebExtensions/manifest.json" class="_attribution-link">https://developer.mozilla.org/ko/docs/Mozilla/Add-ons/WebExtensions/manifest.json</a>
+  </p>
+</div>

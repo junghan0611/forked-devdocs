@@ -1,0 +1,48 @@
+<header><h1>증가 연산자(++)</h1></header><div class="section-content"><p><code>++</code> 는 피연산자를 증가(1을 더함)시키고 연산자의 위치에 따라 증가하기 전이나 후의 값을 반환합니다.</p></div>
+<section aria-labelledby="시도해보기"><h2 id="시도해보기">시도해보기</h2>
+<div class="section-content"><iframe class="interactive is-js-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/js/expressions-increment.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe></div></section><section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="amrUUcs0XbFwkChWp4g9k43ZWrsoKGaE+s+F+Nrmy8U=" data-language="js">x<span class="token operator">++</span>
+<span class="token operator">++</span>x
+</pre>
+</div></div></section><section aria-labelledby="설명"><h2 id="설명">설명</h2>
+<div class="section-content">
+<p>만약 피연산자 뒤에 연산자를 붙여서 사용한다면 (예를 들어 <code>x++</code>) 증가 연산자는 수를 증가시키고 증가하기 전 값을 반환합니다.</p> <p>만약 피연산자 앞에 연산자를 붙여서 사용한다면(예를 들어 <code>++x</code>) 증가 연산자는 수를 증가시키고 증가 후 값을 반환합니다.</p> <p>증가 연산자는 참조인 피연산자(변수 및 객체 속성, 다시말해 유효한 <a href="assignment">할당 대상</a>에만 적용할 수 있습니다. <code>++x</code> 자체는 참조가 아닌 값으로 평가되기 때문에 여러 증가 연산자를 연속적으로 사용할 수 없습니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="En66GRXlGSaR6upU6jJ2RhLqL1ykR58bHwi1AjebUu0=" data-language="js"><span class="token operator">++</span><span class="token punctuation">(</span><span class="token operator">++</span>x<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// SyntaxError: Invalid left-hand side expression in prefix operation</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+</section><section aria-labelledby="후위_증가"><h3 id="후위_증가">후위 증가</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="cJGnpNabjAHkq0Epa1smeuB2wGafNsLfkbKETEx5aKU=" data-language="js"><span class="token keyword">let</span> x <span class="token operator">=</span> <span class="token number">3</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> y <span class="token operator">=</span> x<span class="token operator">++</span><span class="token punctuation">;</span>
+
+<span class="token comment">// x = 4</span>
+<span class="token comment">// y = 3</span>
+</pre>
+</div></div></section><section aria-labelledby="전위_증가"><h3 id="전위_증가">전위 증가</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="Fyeep+f65wl8nIzD+MrHfNdkgZcD7Y0BhzJ6vncEOKE=" data-language="js"><span class="token keyword">let</span> x <span class="token operator">=</span> <span class="token number">3</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> y <span class="token operator">=</span> <span class="token operator">++</span>x<span class="token punctuation">;</span>
+
+<span class="token comment">// x = 4</span>
+<span class="token comment">// y = 4</span>
+</pre>
+</div></div></section><h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://tc39.es/ecma262/multipage/ecmascript-language-expressions.html#sec-postfix-increment-operator">ECMAScript Language Specification <br><small># sec-postfix-increment-operator</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="addition">더하기 연산자</a></li> <li><a href="subtraction">빼기 연산자</a></li> <li><a href="division">나누기 연산자</a></li> <li><a href="multiplication">곱하기 연산자</a></li> <li><a href="remainder">나머지 연산자</a></li> <li><a href="exponentiation">거듭제곱 연산자</a></li> <li><a href="decrement">감소 연산자</a></li> <li><a href="unary_negation">단항 부정 연산자</a></li> <li><a href="unary_plus">단항 더하기 연산자</a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Operators/Increment" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Operators/Increment</a>
+  </p>
+</div>

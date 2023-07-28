@@ -1,0 +1,23 @@
+<h1>Expires</h1>
+<header><h1>Expires</h1></header><div class="section-content">
+<p><code>Expires</code> 헤더는 응답이 더 이상 신선하지 않다고 판단할 날짜/시간을 포함합니다.</p> <p>0과 같은, 유효하지 않은 날짜는 과거의 시간을 나타내어 리소스가 이미 만료되었음을 의미합니다.</p> <p>응답 내에 "max-age" 혹은 "s-max-age" 디렉티브를 지닌 <a href="cache-control"><code>Cache-Control</code></a> 헤더가 존재할 경우, <code>Expires</code> 헤더는 무시됩니다.</p> <figure class="table-container"><div class="_table"><table class="properties"> <tbody> <tr> <th scope="row">Header type</th> <td><a href="https://developer.mozilla.org/ko/docs/Glossary/Response_header">Response header</a></td> </tr> <tr> <th scope="row"><a href="https://developer.mozilla.org/ko/docs/Glossary/Forbidden_header_name">Forbidden header name</a></th> <td>no</td> </tr> <tr> <th scope="row"><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Glossary/Simple_response_header">CORS-safelisted response-header <small>(en-US)</small></a></th> <td>yes</td> </tr> </tbody> </table></div></figure>
+</div>
+<section aria-labelledby="문법"><h2 id="문법">문법</h2>
+<div class="section-content"><pre class="notranslate">Expires: &lt;http-date&gt;
+</pre></div></section><section aria-labelledby="디렉티브"><h2 id="디렉티브">디렉티브</h2>
+<div class="section-content"><dl> <dt id="http-date">&lt;http-date&gt;</dt> <dd> <p>HTTP-date timestamp.</p> </dd> </dl></div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+<div class="section-content"><pre class="notranslate">Expires: Wed, 21 Oct 2015 07:28:00 GMT
+</pre></div></section><h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://www.rfc-editor.org/rfc/rfc9111#field.expires">HTTP Caching <br><small># field.expires</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="함께_참고할_내용"><h2 id="함께_참고할_내용">함께 참고할 내용</h2>
+<div class="section-content"><ul> <li><a href="cache-control"><code>Cache-Control</code></a></li> <li><a href="age"><code>Age</code></a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/HTTP/Headers/Expires" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/HTTP/Headers/Expires</a>
+  </p>
+</div>

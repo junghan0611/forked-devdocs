@@ -1,0 +1,22 @@
+<header><h1>Beacon API</h1></header><div class="section-content">
+<p><code>Beacon</code> API는 웹 서버에 비동기적인 논블로킹 요청을 보내기 위해 사용됩니다. 이 요청은 서버로부터 응답을 요구하지 않습니다. <a href="xmlhttprequest"><code>XMLHttpRequest</code></a> 나 <a href="fetch_api">Fetch API</a> 로 만들어진 요청과는 다르게, 브라우저는 Beacon 요청이 페이지가 닫히기 전에 보내지게 하고, 그것이 완료될 수 있게 보장합니다.</p> <p>Beacon API의 주된 용도로는 클라이언트 사이드 이벤트나 세션 데이터 같은 분석 정보를 서버로 보내는 것입니다. 과거에는 이를 위해 웹사이트들은 <a href="xmlhttprequest"><code>XMLHttpRequest</code></a>를 사용했습니다. 하지만 브라우저는 페이지가 전송 전에 닫힐 때 등, 몇몇 상황에선 브라우저가 이러한 비동기적 요청이 전송되는 것을 보장하지 않습니다. 이처럼 요청이 전송되지 않는 것을 방지하기 위해서, 웹사이트들은 동기적으로 요청하는 등의 응답성에 부정적인 영향을 주는 여러가지 기술에 기대왔습니다. Beacon 요청들은 비동기적이고 서버로 전송되기로 보장되어 있는 덕분에 Beacon은 신뢰성과 좋은 성능을 겸비하고 있습니다.</p> <p>이 API의 동기 및 사용에 대한 자세한 내용은, <a href="navigator/sendbeacon"><code>navigator.sendBeacon()</code></a> 메서드 문서를 참조하세요.</p> <div class="notecard note" id="sect1"> <p><strong>참고:</strong> 이 API는 <a href="web_workers_api">Web Workers</a> 에서 사용이 불가능 합니다. (<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/WorkerNavigator"><code>WorkerNavigator</code> <small>(en-US)</small></a> 에 포함되어 있지 않음)</p> </div>
+</div>
+<h2 id="인터페이스">인터페이스</h2>
+<div class="section-content">
+<p>이 API는 <a href="navigator/sendbeacon"><code>navigator.sendBeacon()</code></a> 라는 하나의 메서드를 정의합니다.</p> <p>이 메서드는 URL과 서버로 보낼 데이터, 두 개의 인수를 필요로 합니다. 서버로 보낼 데이터는 필수 사항이 아니며, 데이터의 타입은 <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/TypedArray"><code>TypedArray</code></a>, <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/DataView"><code>DataView</code></a>, <a href="blob"><code>Blob</code></a>, 문자열 이나 객체, <a href="formdata"><code>FormData</code></a> 객체가 될 수도 있습니다. 브라우저가 요청을 성공적으로 대기열에 넣으면 <code>true</code> 를 반환하고 그 외에는 <code>false</code> 를 반환합니다.</p>
+</div>
+<h2 id="명세서">명세서</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://w3c.github.io/beacon/#sendbeacon-method">Beacon <br><small># sendbeacon-method</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="https://w3c.github.io/beacon/" target="_blank">Beacon standard</a></li> <li><a href="https://caniuse.com/#search=beacon" target="_blank">Beacon CanIUse data</a></li> <li>
+<a href="https://ehsanakhgari.org/blog/2015-04-08/intercepting-beacons-through-service-workers/" target="_blank">Intercepting beacons through service workers</a>; Ehsan Akhgari; 2015-Apr-08</li> <li><a href="https://webkit.org/blog/8821/link-click-analytics-and-privacy/" target="_blank">https://webkit.org/blog/8821/link-click-analytics-and-privacy/</a></li> <li><a href="https://calendar.perfplanet.com/2020/beaconing-in-practice/" target="_blank">Beaconing in Practice</a></li> </ul></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/Beacon_API" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/Beacon_API</a>
+  </p>
+</div>

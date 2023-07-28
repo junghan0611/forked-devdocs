@@ -1,0 +1,167 @@
+<header><h1>Private class fields</h1></header><div class="section-content"><p>class 의 속성(property)들은 기본적으로 public 하며 class 외부에서 읽히고 수정될 수 있다. 하지만, ES2019 에서는 해쉬 <code>#</code> prefix 를 추가해 private class 필드를 선언할 수 있게 되었다.</p></div>
+<section aria-labelledby="syntax"><h2 id="syntax">Syntax</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="XuoH1xY+Doh1hNs0DxjOOPf3Xwb2Zo5aUfXieoGIFA8=" data-language="js">    <span class="token keyword">class</span> <span class="token class-name">ClassWithPrivateField</span> <span class="token punctuation">{</span>
+      #privateField
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">class</span> <span class="token class-name">ClassWithPrivateMethod</span> <span class="token punctuation">{</span>
+      <span class="token function">#privateMethod</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token string">'hello world'</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">class</span> <span class="token class-name">ClassWithPrivateStaticField</span> <span class="token punctuation">{</span>
+      <span class="token keyword">static</span> #<span class="token constant">PRIVATE_STATIC_FIELD</span>
+    <span class="token punctuation">}</span>
+</pre>
+</div></div></section><section aria-labelledby="examples"><h2 id="examples">Examples</h2>
+</section><section aria-labelledby="private_static_fields"><h3 id="private_static_fields">Private static fields</h3>
+<div class="section-content">
+<p>private 필드는 class 선언문 내부의 class 생성자(class constructor)에서 접근이 가능하다.</p> <p>static 메소드에서만 static 변수들을 호출할 수 있다는 제약은 그대로 유지된다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="U9ENOOa3jYLHvxAy+r+jUOHFvzA8QNr8rRMg/QgHyl0=" data-language="js">    <span class="token keyword">class</span> <span class="token class-name">ClassWithPrivateStaticField</span> <span class="token punctuation">{</span>
+      <span class="token keyword">static</span> #<span class="token constant">PRIVATE_STATIC_FIELD</span>
+
+      <span class="token keyword">static</span> <span class="token function">publicStaticMethod</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        ClassWithPrivateStaticField<span class="token punctuation">.</span>#<span class="token constant">PRIVATE_STATIC_FIELD</span> <span class="token operator">=</span> <span class="token number">42</span>
+        <span class="token keyword">return</span> ClassWithPrivateStaticField<span class="token punctuation">.</span>#<span class="token constant">PRIVATE_STATIC_FIELD</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+    console<span class="token punctuation">.</span><span class="token function">assert</span><span class="token punctuation">(</span>ClassWithPrivateStaticField<span class="token punctuation">.</span><span class="token function">publicStaticMethod</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">===</span> <span class="token number">42</span><span class="token punctuation">)</span>
+</pre>
+</div> <p>Private static 필드는 class evaluation 시 class 생성자(class constructor)에 추가된다.</p> <p>Private static 필드는 해당 필드를 선언한 class 에서만 접근할 수 있다.</p> <p>이는 <code>this</code> 를 사용함에 있어 예상치 못한 동작을 야기할 수 있다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="UgRUo4WRkQFNFyZt/V3yu+i8jp9QYVMGMTid6aVyqKA=" data-language="js">    <span class="token keyword">class</span> <span class="token class-name">BaseClassWithPrivateStaticField</span> <span class="token punctuation">{</span>
+      <span class="token keyword">static</span> #<span class="token constant">PRIVATE_STATIC_FIELD</span>
+
+      <span class="token keyword">static</span> <span class="token function">basePublicStaticMethod</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>#<span class="token constant">PRIVATE_STATIC_FIELD</span> <span class="token operator">=</span> <span class="token number">42</span>
+        <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span>#<span class="token constant">PRIVATE_STATIC_FIELD</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">class</span> <span class="token class-name">SubClass</span> <span class="token keyword">extends</span> <span class="token class-name">BaseClassWithPrivateStaticField</span> <span class="token punctuation">{</span> <span class="token punctuation">}</span>
+
+    <span class="token keyword">let</span> error <span class="token operator">=</span> <span class="token keyword">null</span>
+
+    <span class="token keyword">try</span> <span class="token punctuation">{</span>
+      SubClass<span class="token punctuation">.</span><span class="token function">basePublicStaticMethod</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span> <span class="token keyword">catch</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span> <span class="token punctuation">{</span> error <span class="token operator">=</span> e<span class="token punctuation">}</span>
+
+    console<span class="token punctuation">.</span><span class="token function">assert</span><span class="token punctuation">(</span>error <span class="token keyword">instanceof</span> <span class="token class-name">TypeError</span><span class="token punctuation">)</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="private_instance_fields"><h3 id="private_instance_fields">Private instance fields</h3>
+<div class="section-content">
+<p>private 인스턴스 필드는 <strong># 이름 ('해쉬 이름' 으로 발음)</strong>, 즉 <code>#</code> prefix 를 가진 식별자로 선언된다. <code>#</code> 은 그 이름 자체의 일부이며 선언과 접근 시에 모두 사용된다.</p> <p>캡슐화(encapsulation) 는 언어로부터 강제된다(enforced by the language). 즉, scope 밖에서 <code>#</code> 이름에 접근하는 것은 syntax error 이다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="auS0jtYKX793/w+urrEDV1a0g9A7n8hDaVGfKqo/v/0=" data-language="js">    <span class="token keyword">class</span> <span class="token class-name">ClassWithPrivateField</span> <span class="token punctuation">{</span>
+      #privateField
+
+      <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>#privateField <span class="token operator">=</span> <span class="token number">42</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>#randomField <span class="token operator">=</span> <span class="token number">444</span> <span class="token comment">// Syntax error</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">const</span> instance <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ClassWithPrivateField</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    instance<span class="token punctuation">.</span>#privateField <span class="token operator">===</span> <span class="token number">42</span> <span class="token comment">// Syntax error</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="private_methods"><h3 id="private_methods">Private Methods</h3>
+<div class="section-content">
+<h4 id="private_static_methods">Private static methods</h4> <p><strong>private static 메소드</strong>는 public static 메소드처럼 인스턴스가 아닌 class 로부터 호출된다. 그리고 private static 필드처럼 class 선언문 내부에서만 접근 가능하다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="UBp1NIqwI0T1jX0rAmKpqwXcpkfznkYrIZ6ypLIDM2M=" data-language="js"><span class="token keyword">private</span> <span class="token keyword">static</span> 메소드는 generator<span class="token punctuation">,</span> <span class="token keyword">async</span> 그리고 <span class="token keyword">async</span> generator 함수가 될 수 있다<span class="token punctuation">.</span>
+
+    <span class="token keyword">class</span> <span class="token class-name">ClassWithPrivateStaticMethod</span> <span class="token punctuation">{</span>
+      <span class="token keyword">static</span> <span class="token function">#privateStaticMethod</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token number">42</span>
+      <span class="token punctuation">}</span>
+
+      <span class="token keyword">static</span> <span class="token function">publicStaticMethod1</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> ClassWithPrivateStaticMethod<span class="token punctuation">.</span><span class="token function">#privateStaticMethod</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+
+      <span class="token keyword">static</span> <span class="token function">publicStaticMethod2</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">#privateStaticMethod</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+    console<span class="token punctuation">.</span><span class="token function">assert</span><span class="token punctuation">(</span>ClassWithPrivateStaticMethod<span class="token punctuation">.</span><span class="token function">publicStaticMethod1</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">===</span> <span class="token number">42</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    console<span class="token punctuation">.</span><span class="token function">assert</span><span class="token punctuation">(</span>ClassWithPrivateStaticMethod<span class="token punctuation">.</span><span class="token function">publicStaticMethod2</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">===</span> <span class="token number">42</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div> <p>이는 <code>this</code> 를 사용할 때 예상치 못한 동작을 발생시킬 수 있다. (이는 <code>this</code> binding rule 이 적용되기 때문이다.) 다음 예시에서 <code>Derived.publicStaticMethod2()</code> 를 호출할 때, <code>this</code> 는 class <code>Derived</code> (<code>Base</code> 가 아니라) 를 가리킨다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="Oqm8T1Id9gDOxxlSFpJDju9xx8z1xXSsJvLNDaxUC/4=" data-language="js">    <span class="token keyword">class</span> <span class="token class-name">Base</span> <span class="token punctuation">{</span>
+      <span class="token keyword">static</span> <span class="token function">#privateStaticMethod</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token number">42</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+      <span class="token keyword">static</span> <span class="token function">publicStaticMethod1</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> Base<span class="token punctuation">.</span><span class="token function">#privateStaticMethod</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+      <span class="token keyword">static</span> <span class="token function">publicStaticMethod2</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">#privateStaticMethod</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">class</span> <span class="token class-name">Derived</span> <span class="token keyword">extends</span> <span class="token class-name">Base</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>Derived<span class="token punctuation">.</span><span class="token function">publicStaticMethod1</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 42</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>Derived<span class="token punctuation">.</span><span class="token function">publicStaticMethod2</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// TypeError</span>
+</pre>
+</div> <h4 id="private_instance_methods">Private instance methods</h4> <p>private 인스턴스 메소드는 private 인스턴스 필드와는 다르게 class 인스턴스로부터 접근 가능하다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="LAbJMehszM7oAKryCrSG+uBtfnIRi4eN3ch4pfVrBfc=" data-language="js">    <span class="token keyword">class</span> <span class="token class-name">ClassWithPrivateMethod</span> <span class="token punctuation">{</span>
+      <span class="token function">#privateMethod</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token string">'hello world'</span>
+      <span class="token punctuation">}</span>
+
+      <span class="token function">getPrivateMessage</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">#privateMethod</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">const</span> instance <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ClassWithPrivateMethod</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>instance<span class="token punctuation">.</span><span class="token function">getPrivateMessage</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token comment">// expected output: "hello world"</span>
+</pre>
+</div> <p>private 인스턴스 메소드는 generator, async 그리고 async generator 함수가 될 수 있다. private getter 와 setter 또한 가능하다:</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="RhB+4e7gJTNmncvraRXGmbsbSHMs6WLVMd0qK6Dcz+0=" data-language="js">    <span class="token keyword">class</span> <span class="token class-name">ClassWithPrivateAccessor</span> <span class="token punctuation">{</span>
+      #message
+
+      <span class="token keyword">get</span> <span class="token function">#decoratedMessage</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">✨</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span><span class="token keyword">this</span><span class="token punctuation">.</span>#message<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">✨</span><span class="token template-punctuation string">`</span></span>
+      <span class="token punctuation">}</span>
+      <span class="token keyword">set</span> <span class="token function">#decoratedMessage</span><span class="token punctuation">(</span><span class="token parameter">msg</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>#message <span class="token operator">=</span> msg
+      <span class="token punctuation">}</span>
+
+      <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>#decoratedMessage <span class="token operator">=</span> <span class="token string">'hello world'</span>
+        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>#decoratedMessage<span class="token punctuation">)</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">new</span> <span class="token class-name">ClassWithPrivateAccessor</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// expected output: "✨hello world✨"</span>
+</pre>
+</div>
+</div></section><h2 id="명세서">명세서</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://tc39.es/ecma262/multipage/ecmascript-language-lexical-grammar.html#prod-PrivateIdentifier">ECMAScript Language Specification <br><small># prod-PrivateIdentifier</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="see_also"><h2 id="see_also">See also</h2>
+<div class="section-content"><ul> <li><a href="public_class_fields">Public class fields</a></li> <li><a href="https://rfrn.org/~shu/2018/05/02/the-semantics-of-all-js-class-elements.html" target="_blank">The Semantics of All JS Class Elements</a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Classes/Private_class_fields" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Classes/Private_class_fields</a>
+  </p>
+</div>

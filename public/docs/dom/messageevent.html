@@ -1,0 +1,28 @@
+<header><h1>MessageEvent</h1></header><div class="section-content">
+<p><code>MessageEvent</code> 는 <a href="websocket"><code>WebSocket</code></a> 또는 WebRTC <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/RTCDataChannel"><code>RTCDataChannel</code> <small>(en-US)</small></a> 으로 된 타겟으로 부터 전달받은 메시지를 보여주는 interface 입니다.</p> <p>이 이벤트는 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/WebSocket/message_event"><code>WebSocket.onmessage</code> <small>(en-US)</small></a> 또는 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/RTCDataChannel/message_event"><code>RTCDataChannel.onmessage</code> <small>(en-US)</small></a> 으로 설정된 이벤트 핸들러를 통해 실행이 되게 됩니다.</p>
+<div class="notecard note" id="sect1"> <p><strong>참고:</strong> 이 기능은 <a href="web_workers_api">Web Worker</a>에서 사용할 수 있습니다</p> </div>
+</div>
+<h2 id="생성자">생성자</h2>
+<div class="section-content"><dl> <dt id="messageevent_en-us"><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/MessageEvent/MessageEvent"><code>MessageEvent()</code> <small>(en-US)</small></a></dt> <dd> <p>새로운 <code>MessageEvent를 생성합니다.</code></p> </dd> </dl></div>
+<h2 id="속성">속성</h2>
+<div class="section-content">
+<p><em>이 interface는 부모 객체인 <a href="event"><code>Event</code></a>의 속성을 상속받습니다.</em></p> <dl> <dt id="messageevent.data_en-us">
+<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/MessageEvent/data"><code>MessageEvent.data</code> <small>(en-US)</small></a> <span class="badge inline readonly">읽기 전용</span>
+</dt> <dd> <p>emitter에 의해 보내진 데이터인 <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/String"><code>DOMString</code></a>, <a href="blob"><code>Blob</code></a> 또는 <a class="page-not-created"><code>ArrayBuffer</code></a>를 포함합니다.</p> </dd> <dt id="messageevent.origin_en-us"><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/MessageEvent/origin"><code>MessageEvent.origin</code> <small>(en-US)</small></a></dt> <dd> <p><a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/String"><code>DOMString</code></a> 입니다.…</p> </dd> <dt id="messageevent.ports_en-us"><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/MessageEvent/ports"><code>MessageEvent.ports</code> <small>(en-US)</small></a></dt> <dd> <p>…</p> </dd> <dt id="messageevent.source_en-us"><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/MessageEvent/source"><code>MessageEvent.source</code> <small>(en-US)</small></a></dt> <dd> <p>…</p> </dd> </dl>
+</div>
+<h2 id="메서드">메서드</h2>
+<div class="section-content">
+<p><em>이 interface는 부모 객체인 <a href="event"><code>Event</code></a>의 메서드를 상속받습니다.</em></p> <dl> <dt id="messageevent.initmessageevent">
+<a class="page-not-created"><code>MessageEvent.initMessageEvent()</code></a> <abbr class="icon icon-deprecated" title="지원이 중단되었습니다. 새로운 웹사이트에서 사용하지 마세요."> <span class="visually-hidden">지원이 중단되었습니다</span> </abbr>
+</dt> <dd> <p> … <strong>더 이상 사용하지 마십시오</strong> : <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/MessageEvent/MessageEvent"><code>MessageEvent()</code> <small>(en-US)</small></a> 생성자를 대신 사용하십시오. </p> </dd> </dl>
+</div>
+<h2 id="browser_호환성">Browser 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<h2 id="see_also">See also</h2>
+<div class="section-content"><ul> <li>
+<a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/ExtendableMessageEvent"><code>ExtendableMessageEvent</code> <small>(en-US)</small></a>, 와 유사한 interface이며, 개발자에게 더 유연성을 제공하기 위해 사용되는 interface 입니다.</li> <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API" class="only-in-en-us">WebSocket API <small>(en-US)</small></a></li> <li><a href="webrtc_api">WebRTC API</a></li> </ul></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/MessageEvent" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/MessageEvent</a>
+  </p>
+</div>

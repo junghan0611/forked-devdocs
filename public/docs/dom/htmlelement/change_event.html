@@ -1,0 +1,91 @@
+<header><h1>HTMLElement: change 이벤트</h1></header><div class="section-content">
+<p><code>change</code> 이벤트는 사용자가 <a href="https://developer.mozilla.org/ko/docs/Web/HTML/Element/input"><code>&lt;input&gt;</code></a>, <a href="https://developer.mozilla.org/ko/docs/Web/HTML/Element/select"><code>&lt;select&gt;</code></a>, <a href="https://developer.mozilla.org/ko/docs/Web/HTML/Element/textarea"><code>&lt;textarea&gt;</code></a> 요소의 값을 변경할 때 발생합니다. <a href="input_event"><code>input</code></a> 이벤트와 달리 <code>change</code>는 요소의 <code>value</code>값이 변경될 때마다 매번 발생하지는 않을 수 있습니다.</p> <p>값이 바뀐 요소와 사용자가 값을 바꾼 방법에 따라 <code>change</code> 이벤트가 발생하는 시점은 달라집니다.</p> <ul> <li>
+<code><a href="https://developer.mozilla.org/ko/docs/Web/HTML/Element/input/checkbox">&lt;input type="checkbox"&gt;</a></code> 요소를 클릭하거나 키보드를 사용해서 체크하거나 해제할 때</li> <li>
+<code><a href="https://developer.mozilla.org/ko/docs/Web/HTML/Element/input/radio">&lt;input type="radio"&gt;</a></code> 요소가 체크될 때 (해제될 때는 발생하지 않음)</li> <li>사용자가 변경사항을 직접 반영할 때 (<a href="https://developer.mozilla.org/ko/docs/Web/HTML/Element/select"><code>&lt;select&gt;</code></a>의 드롭다운에서 값을 클릭, <code><a href="https://developer.mozilla.org/ko/docs/Web/HTML/Element/input/date">&lt;input type="date"&gt;</a></code>의 달력에서 날짜 선택, <code><a href="https://developer.mozilla.org/ko/docs/Web/HTML/Element/input/file">&lt;input type="file"&gt;</a></code>의 파일 선택 창에서 파일을 선택할 때 등)</li> <li>
+<a href="https://developer.mozilla.org/ko/docs/Web/HTML/Element/textarea"><code>&lt;textarea&gt;</code></a>와 <a href="https://developer.mozilla.org/ko/docs/Web/HTML/Element/input"><code>&lt;input&gt;</code></a>의 <code><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/text">text <small>(en-US)</small></a></code>, <code><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/search">search <small>(en-US)</small></a></code>, <code><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/url">url <small>(en-US)</small></a></code>, <code><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/tel">tel <small>(en-US)</small></a></code>, <code><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/email">email <small>(en-US)</small></a></code>, <code><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/password">password <small>(en-US)</small></a></code> 유형처럼, 사용자 상호작용이 값 선택이 아니라 타이핑인 요소의 값이 바뀐 뒤 포커스를 상실했을 때</li> </ul> <p>HTML 명세서에 <a href="https://html.spec.whatwg.org/multipage/forms.html#concept-input-apply" target="_blank"><code>change</code> 이벤트가 발생해야 하는 <code>&lt;input&gt;</code> 유형들</a>이 나열되어 있습니다.</p>
+</div>
+<h2 id="구문">구문</h2>
+<div class="section-content">
+<p>이벤트 이름을 <a href="../eventtarget/addeventlistener"><code>addEventListener()</code></a> 등의 메서드에 제공하거나, 이벤트 처리기 속성을 사용하세요.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="h2fVJXHoOwmeLfJH1uwHbqB17txhuxmU9VGt2uzqD6s=" data-language="js"><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">"change"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">event</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token function-variable function">onchange</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">event</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+</pre>
+</div>
+</div>
+<h2 id="이벤트_유형">이벤트 유형</h2>
+<div class="section-content"><p>일반 <a href="../event"><code>Event</code></a>.</p></div>
+<h2 id="예제">예제</h2>
+
+<h3 id="select_요소">&lt;select&gt; 요소</h3>
+<div class="section-content">
+<h4 id="html">HTML</h4> <div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="RvK8HbEfmR2JihZaMa9D2ti5Bn5UnvdOFYJylrHob24=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>label</span><span class="token punctuation">&gt;</span></span>
+  아이스크림 맛을 선택하세요.
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>select</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>ice-cream<span class="token punctuation">"</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>ice-cream<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>option</span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>선택…<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>option</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>option</span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>초콜릿<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>초콜릿<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>option</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>option</span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>정어리<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>정어리<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>option</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>option</span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>바닐라<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>바닐라<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>option</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>select</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>label</span><span class="token punctuation">&gt;</span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>result<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div>  <h4 id="javascript">JavaScript</h4> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="lL5bM500bdiEB/zHJX4opmdKvKw0MecNqpk7QALXEeE=" data-language="js"><span class="token keyword">const</span> selectElement <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">querySelector</span><span class="token punctuation">(</span><span class="token string">".ice-cream"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+selectElement<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">"change"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">event</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> result <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">querySelector</span><span class="token punctuation">(</span><span class="token string">".result"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  result<span class="token punctuation">.</span>textContent <span class="token operator">=</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>event<span class="token punctuation">.</span>target<span class="token punctuation">.</span>value<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string"> 맛을 좋아하시는군요</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div> <h4 id="결과">결과</h4>
+<div class="code-example" id="sect1">
+
+<iframe class="sample-code-frame" title="select 요소 sample" id="frame_select_요소" width="100%" height="75px" src="https://live.mdnplay.dev/ko/docs/Web/API/HTMLElement/change_event/runner.html?id=select_%EC%9A%94%EC%86%8C" loading="lazy"></iframe>
+</div>
+</div>
+<h3 id="텍스트_입력_요소">텍스트 입력 요소</h3>
+<div class="section-content">
+<p><code>&lt;input type="text"&gt;</code>를 포함한 일부 요소들에서는 컨트롤이 포커스를 잃을 때까지 <code>change</code> 이벤트가 발생하지 않습니다. 아래 입력 필드에 텍스트를 입력하고, 다른 아무 곳이나 클릭해서 이벤트를 발생시켜보세요.</p> <h4 id="html_2">HTML</h4> <div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="ABPvSRhx0qzaIngwmpqBs8dtylr8qrNQrQKoCl1y2Mk=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">placeholder</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>아무 텍스트나 입력<span class="token punctuation">"</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>name<span class="token punctuation">"</span></span> <span class="token punctuation">/&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>log<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div> <h4 id="javascript_2">JavaScript</h4> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="5ENZ0MOeDQuwzx4MSdwSxEPabh+WXUkzk+4wfGrjJ1o=" data-language="js"><span class="token keyword">const</span> input <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">querySelector</span><span class="token punctuation">(</span><span class="token string">"input"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> log <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">"log"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+input<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">"change"</span><span class="token punctuation">,</span> updateValue<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">function</span> <span class="token function">updateValue</span><span class="token punctuation">(</span><span class="token parameter">e</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  log<span class="token punctuation">.</span>textContent <span class="token operator">=</span> e<span class="token punctuation">.</span>target<span class="token punctuation">.</span>value<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div> <h4 id="결과_2">결과</h4>
+<div class="code-example" id="sect2">
+
+<iframe class="sample-code-frame" title="텍스트 입력 요소 sample" id="frame_텍스트_입력_요소" width="100%" height="90px" src="https://live.mdnplay.dev/ko/docs/Web/API/HTMLElement/change_event/runner.html?id=%ED%85%8D%EC%8A%A4%ED%8A%B8_%EC%9E%85%EB%A0%A5_%EC%9A%94%EC%86%8C" loading="lazy"></iframe>
+</div>
+</div>
+<h2 id="명세서">명세서</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody>
+<tr><td><a href="https://html.spec.whatwg.org/multipage/indices.html#event-change">HTML Standard <br><small># event-change</small></a></td></tr>
+<tr><td><a href="https://html.spec.whatwg.org/multipage/webappapis.html#handler-onchange">HTML Standard <br><small># handler-onchange</small></a></td></tr>
+</tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<div class="section-content"><p>어떤 상호작용들은 브라우저마다 <code>change</code> 이벤트의 발생 여부가 다를 수도 있습니다. 예를 들어, Gecko에서는 <a href="https://developer.mozilla.org/ko/docs/Web/HTML/Element/select"><code>&lt;select&gt;</code></a> 요소의 키보드 탐색으로 <code>change</code> 이벤트가 발생하지 않았습니다(<a href="https://bugzil.la/126379" target="_blank">Firefox 버그 126379</a>). 하지만 Firefox 63 (Quantum) 이후로 이 동작은 모든 주요 브라우저에서 동일합니다.</p></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/HTMLElement/change_event" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/HTMLElement/change_event</a>
+  </p>
+</div>

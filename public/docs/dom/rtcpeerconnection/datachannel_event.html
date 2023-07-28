@@ -1,0 +1,36 @@
+<header><h1>RTCPeerConnection.ondatachannel</h1></header><div class="section-content">
+<div class="notecard experimental" id="sect1"><p><strong>Experimental:</strong> <strong>This is an <a href="https://developer.mozilla.org/en-US/docs/MDN/Writing_guidelines/Experimental_deprecated_obsolete#experimental">experimental technology</a></strong><br>Check the <a href="#browser_compatibility">Browser compatibility table</a> carefully before using this in production.</p></div> <p><code>RTCPeerConnection.ondatachannel</code> 속성은 <a href="../rtcpeerconnection"><code>RTCPeerConnection</code></a>에서 발생하는 <code><a href="https://developer.mozilla.org/ko/docs/Web/Reference/Events/datachannel" class="page-not-created">datachannel</a></code> 이벤트에 의해 호출되는 <code><a href="https://developer.mozilla.org/ko/docs/Web/Reference/Events/Event_handlers" class="page-not-created">event handler</a></code>입니다. 이 속성에는 함수를 정의하게됩니다. <a href="../rtcdatachannelevent"><code>RTCDataChannelEvent</code></a>의 한 종류인 이 이벤트는 원격 유저가 <a href="createdatachannel"><code>createDataChannel()</code></a>를 호출해서 연결에 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/RTCDataChannel"><code>RTCDataChannel</code> <small>(en-US)</small></a>가 추가되었을 때, 전달됩니다.</p> <p>이 이벤트를 수신하게되는 시점에서는 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/RTCDataChannel"><code>RTCDataChannel</code> <small>(en-US)</small></a>가 아직 열리지 않았을 수 있습니다. 사용하기 전에 꼭 신규 <code>RTCDataChannel</code>에 <code>"open"</code>이벤트가 발생하는 것을 확인하십시오.</p>
+</div>
+<h2 id="syntax">Syntax</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="SqlJrqRQb4CISW8erGDD4PF4iBLluXXjpQ+pImCGzj0=" data-language="js">RTCPeerConnection<span class="token punctuation">.</span><span class="token function-variable function">ondatachannel</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">;</span>
+</pre>
+</div></div>
+<h3 id="값">값</h3>
+<div class="section-content"><p>이 속성에 지정하는 함수는 단일 패러미터를 입력 인자로 받습니다. <code>channel</code> 속성에 생성된 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/RTCDataChannel"><code>RTCDataChannel</code> <small>(en-US)</small></a>를 제공하는 <a href="../rtcdatachannelevent"><code>RTCDataChannelEvent</code></a> 입니다.</p></div>
+<h2 id="예시">예시</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="89iOaF6njt3gD4vgfAzCFCN3CiFNcG9zN/mbWLNMCA4=" data-language="js">pc<span class="token punctuation">.</span><span class="token function-variable function">ondatachannel</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">ev</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'Data channel is created!'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  ev<span class="token punctuation">.</span>channel<span class="token punctuation">.</span><span class="token function-variable function">onopen</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'Data channel is open and ready to be used.'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</pre>
+</div></div>
+<h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://w3c.github.io/webrtc-pc/#dom-rtcpeerconnection-ondatachannel">WebRTC: Real-Time Communication in Browsers <br><small># dom-rtcpeerconnection-ondatachannel</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<h2 id="참조">참조</h2>
+<div class="section-content"><ul> <li>The <code><a href="https://developer.mozilla.org/ko/docs/Web/Reference/Events/datachannel" class="page-not-created">datachannel</a></code> event and its type, <a href="../rtcdatachannelevent"><code>RTCDataChannelEvent</code></a>.</li> <li><a href="createdatachannel"><code>RTCPeerConnection.createDataChannel()</code></a></li> <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/WebRTC_API/Simple_RTCDataChannel_sample" class="only-in-en-us">A simple RTCDataChannel sample <small>(en-US)</small></a></li> </ul></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/RTCPeerConnection/datachannel_event" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/RTCPeerConnection/datachannel_event</a>
+  </p>
+</div>

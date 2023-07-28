@@ -1,0 +1,122 @@
+<header><h1>height</h1></header><div class="section-content"><p><code>height</code> CSS 속성은 요소의 높이를 지정합니다. 기본값은 콘텐츠 영역의 높이지만, <a href="box-sizing"><code>box-sizing</code></a>이 <code>border-box</code>라면 테두리 영역의 높이를 설정합니다.</p></div>
+<section aria-labelledby="시도해보기"><h2 id="시도해보기">시도해보기</h2>
+<div class="section-content">
+<iframe class="interactive is-default-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/css/height.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe> <p><a href="min-height"><code>min-height</code></a>와 <a href="max-height"><code>max-height</code></a> 속성은 <code>height</code>를 덮어씁니다.</p>
+</div></section><section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="OeM4u/Q/2pmT9BGKdFUDKdGQZjTI80Q6SwRJNFu042w=" data-language="css"><span class="token comment">/* 키워드 */</span>
+<span class="token property">height</span><span class="token punctuation">:</span> auto<span class="token punctuation">;</span>
+
+<span class="token comment">/* &lt;length&gt; */</span>
+<span class="token property">height</span><span class="token punctuation">:</span> 120px<span class="token punctuation">;</span>
+<span class="token property">height</span><span class="token punctuation">:</span> 10em<span class="token punctuation">;</span>
+
+<span class="token comment">/* &lt;percentage&gt; */</span>
+<span class="token property">height</span><span class="token punctuation">:</span> 75%<span class="token punctuation">;</span>
+
+<span class="token comment">/* 전역 값 */</span>
+<span class="token property">height</span><span class="token punctuation">:</span> inherit<span class="token punctuation">;</span>
+<span class="token property">height</span><span class="token punctuation">:</span> initial<span class="token punctuation">;</span>
+<span class="token property">height</span><span class="token punctuation">:</span> unset<span class="token punctuation">;</span>
+</pre>
+</div></div></section><section aria-labelledby="값"><h3 id="값">값</h3>
+<div class="section-content"><ul> <li>
+<a href="length"><code>&lt;length&gt;</code></a> <ul> <li>: 높이의 절대값.</li> </ul> </li> <li>
+<a href="percentage"><code>&lt;percentage&gt;</code></a> <ul> <li>
+<a href="containing_block">: 컨테이닝 블록</a> 높이의 백분율.</li> </ul> </li> <li>
+<code>border-box</code> <abbr class="icon icon-experimental" title="Experimental. 예상되는 동작은 향후 변경될 수 있습니다."> <span class="visually-hidden">Experimental</span> </abbr> <ul> <li>: 앞선 <a href="length"><code>&lt;length&gt;</code></a> 또는 <a href="percentage"><code>&lt;percentage&gt;</code></a>가 요소의 보더 박스에 적용.</li> </ul> </li> <li>
+<code>content-box</code> <abbr class="icon icon-experimental" title="Experimental. 예상되는 동작은 향후 변경될 수 있습니다."> <span class="visually-hidden">Experimental</span> </abbr> <ul> <li>: 앞선 <a href="length"><code>&lt;length&gt;</code></a> 또는 <a href="percentage"><code>&lt;percentage&gt;</code></a>가 요소의 콘텐츠 박스에 적용.</li> </ul> </li> <li>
+<code>auto</code> <ul> <li>: 브라우저가 요소의 높이를 계산하고 선택.</li> </ul> </li> <li>
+<code>fill</code> <abbr class="icon icon-experimental" title="Experimental. 예상되는 동작은 향후 변경될 수 있습니다."> <span class="visually-hidden">Experimental</span> </abbr> <ul> <li>: 글쓰기 방향에 따라 <code>fill-available</code> 인라인 크기 또는 <code>fill-available</code> 블록 크기를 사용.</li> </ul> </li> <li>
+<code>max-content</code> <abbr class="icon icon-experimental" title="Experimental. 예상되는 동작은 향후 변경될 수 있습니다."> <span class="visually-hidden">Experimental</span> </abbr> <ul> <li>: 본질적인 선호 높이.</li> </ul> </li> <li>
+<code>min-content</code> <abbr class="icon icon-experimental" title="Experimental. 예상되는 동작은 향후 변경될 수 있습니다."> <span class="visually-hidden">Experimental</span> </abbr> <ul> <li>: 본질적인 최소 높이.</li> </ul> </li> <li>
+<code>available</code> <abbr class="icon icon-experimental" title="Experimental. 예상되는 동작은 향후 변경될 수 있습니다."> <span class="visually-hidden">Experimental</span> </abbr> <ul> <li>: 컨테이닝 블록 높이에서 수평 여백, 테두리, 패딩을 제외한 값.</li> </ul> </li> <li>
+<code>fit-content</code> <abbr class="icon icon-experimental" title="Experimental. 예상되는 동작은 향후 변경될 수 있습니다."> <span class="visually-hidden">Experimental</span> </abbr> <ul> <li>: 다음 중 더 큰 값. <ul> <li>본질적인 최소 높이</li> <li>본질적인 선호 높이와 사용 가능한 높이 중 작은 값</li> </ul> </li> </ul> </li> </ul></div></section><section aria-labelledby="형식_구문"><h3 id="형식_구문">형식 구문</h3>
+<div class="section-content"><pre class="notranslate"><span class="token property" id="height">height = </span><br>  <span class="token keyword">auto</span>                                      <a href="value_definition_syntax#single_bar">|</a><br>  <a href="length-percentage"><span class="token property">&lt;length-percentage [0,∞]&gt;</span></a>                 <a href="value_definition_syntax#single_bar">|</a><br>  <span class="token keyword">min-content</span>                               <a href="value_definition_syntax#single_bar">|</a><br>  <span class="token keyword">max-content</span>                               <a href="value_definition_syntax#single_bar">|</a><br>  <span class="token function">fit-content(</span> <a href="length-percentage"><span class="token property">&lt;length-percentage [0,∞]&gt;</span></a> <span class="token function">)</span>  <br><br><span class="token property" id="&lt;length-percentage&gt;">&lt;length-percentage&gt; = </span><br>  <a href="length"><span class="token property">&lt;length&gt;</span></a>      <a href="value_definition_syntax#single_bar">|</a><br>  <a href="percentage"><span class="token property">&lt;percentage&gt;</span></a>  <br><br></pre></div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+</section><section aria-labelledby="html"><h3 id="html">HTML</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="MGzaqih97rkgpnNSAuqY6Nxe7Spe0nsXjh0qaWp2IoY=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>taller<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>제 키는 50픽셀입니다.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>shorter<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>제 키는 25픽셀입니다.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>parent<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>child<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+    제 키는 부모의 절반입니다.
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div></div></section><section aria-labelledby="css"><h3 id="css">CSS</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="Ivd/V0kqKke1FFUrPprmkj/6gSDjVYPMM79QbkPbkpg=" data-language="css"><span class="token selector">div</span> <span class="token punctuation">{</span>
+  <span class="token property">width</span><span class="token punctuation">:</span> 250px<span class="token punctuation">;</span>
+  <span class="token property">margin-bottom</span><span class="token punctuation">:</span> 5px<span class="token punctuation">;</span>
+  <span class="token property">border</span><span class="token punctuation">:</span> 2px solid blue<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">#taller</span> <span class="token punctuation">{</span>
+  <span class="token property">height</span><span class="token punctuation">:</span> 50px<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">#shorter</span> <span class="token punctuation">{</span>
+  <span class="token property">height</span><span class="token punctuation">:</span> 25px<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">#parent</span> <span class="token punctuation">{</span>
+  <span class="token property">height</span><span class="token punctuation">:</span> 100px<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">#child</span> <span class="token punctuation">{</span>
+  <span class="token property">height</span><span class="token punctuation">:</span> 50%<span class="token punctuation">;</span>
+  <span class="token property">width</span><span class="token punctuation">:</span> 75%<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div></div></section><section aria-labelledby="결과"><h3 id="결과">결과</h3>
+<div class="section-content"><div class="code-example" id="sect1">
+
+<iframe class="sample-code-frame" title="예제 sample" id="frame_예제" width="auto" height="240" src="https://live.mdnplay.dev/ko/docs/Web/CSS/height/runner.html?id=%EC%98%88%EC%A0%9C" loading="lazy"></iframe>
+</div></div></section><section aria-labelledby="접근성_고려사항"><h2 id="접근성_고려사항">접근성 고려사항</h2>
+<div class="section-content">
+<p>페이지를 확대하거나 글꼴 크기를 늘렸을 때 height 속성을 지정한 요소가 잘리거나 다른 내용을 가리지 않도록 확인하세요.</p> <ul> <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/Understanding_WCAG/Perceivable" class="only-in-en-us">MDN Understanding WCAG, Guideline 1.4 explanations <small>(en-US)</small></a></li> <li><a href="https://www.w3.org/TR/UNDERSTANDING-WCAG20/visual-audio-contrast-scale.html" target="_blank">Understanding Success Criterion 1.4.4 | W3C Understanding WCAG 2.0</a></li> </ul>
+</div></section><h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://drafts.csswg.org/css-sizing/#preferred-size-properties">CSS Box Sizing Module Level 3 <br><small># preferred-size-properties</small></a></td></tr></tbody>
+</table></div>
+<div class="section-content"><figure class="table-container"><div class="_table"><table class="properties"><tbody>
+<tr>
+<th scope="row"><a href="initial_value">초기값</a></th>
+<td><code>auto</code></td>
+</tr>
+<tr>
+<th scope="row">적용대상</th>
+<td>all elements but non-replaced inline elements, table columns, and column groups</td>
+</tr>
+<tr>
+<th scope="row"><a href="inheritance">상속</a></th>
+<td>no</td>
+</tr>
+<tr>
+<th scope="row">Percentages</th>
+<td>The percentage is calculated with respect to the height of the generated box's containing block. If the height of the containing block is not specified explicitly (i.e., it depends on content height), and this element is not absolutely positioned, the value computes to <code>auto</code>. A percentage height on the root element is relative to the initial containing block.</td>
+</tr>
+<tr>
+<th scope="row"><a href="computed_value">계산 값</a></th>
+<td>a percentage or <code>auto</code> or the absolute length</td>
+</tr>
+<tr>
+<th scope="row">Animation type</th>
+<td>a <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/length#interpolation">length</a>, <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/percentage#interpolation">percentage</a> or calc();</td>
+</tr>
+</tbody></table></div></figure></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li>
+<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_box_model/Introduction_to_the_CSS_box_model" class="only-in-en-us">box model <small>(en-US)</small></a>, <a href="width"><code>width</code></a>, <a href="box-sizing"><code>box-sizing</code></a>, <a href="min-height"><code>min-height</code></a>, <a href="max-height"><code>max-height</code></a>
+</li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/CSS/height" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/CSS/height</a>
+  </p>
+</div>

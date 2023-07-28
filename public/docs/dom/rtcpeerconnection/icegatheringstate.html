@@ -1,0 +1,37 @@
+<header><h1>RTCPeerConnection.iceGatheringState</h1></header><div class="section-content">
+<div class="notecard experimental" id="sect1"><p><strong>Experimental:</strong> <strong>This is an <a href="https://developer.mozilla.org/en-US/docs/MDN/Writing_guidelines/Experimental_deprecated_obsolete#experimental">experimental technology</a></strong><br>Check the <a href="#browser_compatibility">Browser compatibility table</a> carefully before using this in production.</p></div> <p>읽기 속성인 <code>RTCPeerConnection.iceGatheringState</code> 는 연결 인터페이스의 ICE 수집 상태를 알려주는 <code>RTCIceGatheringState</code>타입의 Enum을 반환합니다. 이 속성을 활용하면, ICE candidate 수집 과정이 언제 종료되는지 감지 할 수 있습니다.</p> <p><a href="icegatheringstatechange_event"><code>icegatheringstatechange</code></a>타입의 이벤트 감시를 통해 이 속성 값이 언제 변하는지를 확인 할 수 있습니다.</p>
+</div>
+<h2 id="syntax">Syntax</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="Iz8jGQqnQnAdAyU7QYFBxurjnqCXF0D7LJmDfdxCE40=" data-language="js"><span class="token keyword">var</span> state <span class="token operator">=</span> RTCPeerConnection<span class="token punctuation">.</span>iceGatheringState<span class="token punctuation">;</span>
+</pre>
+</div></div>
+<h3 id="값">값</h3>
+<div class="section-content"><p>반환되는 값은 <code>RTCIceGatheringState</code>타입의 Enum입니다.</p></div>
+<h3 id="rtcicegatheringstate_enum섹션">RTCIceGatheringState enum섹션</h3>
+<div class="section-content">
+<p><a href="icegatheringstate" aria-current="page"><code>RTCPeerConnection.iceGatheringState</code></a> 속성을 사용하게되면 반환되는 <code>RTCIceGatheringState</code> enum은 현재의 ICE 수집 상태를 반영하여 알려주는 문자열 상수입니다. <a href="icegatheringstatechange_event"><code>icegatheringstatechange</code></a> 타입의 이벤트를 감시해서 이 값이 언제 변하는지 확인 할 수 있습니다.</p> <figure class="table-container"><div class="_table"><table> <thead> <tr> <th>상수명</th> <th>설명</th> </tr> </thead> <tbody> <tr> <td><code>"new"</code></td> <td>피어 연결이 새로 생성되었지만, 아직 네트워킹은 시작되지 않은 상태</td> </tr> <tr> <td><code>"gathering"</code></td> <td>ICE 에이전트가 연결을 위한 ICE candidate를 수집하는 과정에 있음을 알려주는 상태</td> </tr> <tr> <td><code>"complete"</code></td> <td>ICE 에이전트가 candidate 수집을 완료한 상태. 새로운 인터페이스가 추가되거나, 신규 ICE 서버가 추가와 같이 신규 ICE candidate를 수집해야하는 상황이 오면, 상태가 <code>complete</code>에서 <code>gathering</code>으로 다시 바뀝니다.</td> </tr> </tbody> </table></div></figure>
+</div>
+<h2 id="예시">
+<br>예시</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="JIr00AirsSXg89J1MIjgnpckWktpiQMEAcFvdWb8dWk=" data-language="js"><span class="token keyword">var</span> pc <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">RTCPeerConnection</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> state <span class="token operator">=</span> pc<span class="token punctuation">.</span>iceGatheringState<span class="token punctuation">;</span>
+</pre>
+</div></div>
+<h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://w3c.github.io/webrtc-pc/#dom-peerconnection-ice-gathering-state">WebRTC: Real-Time Communication in Browsers <br><small># dom-peerconnection-ice-gathering-state</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<h2 id="참조">참조</h2>
+<div class="section-content"><ul> <li><a href="icegatheringstatechange_event"><code>icegatheringstatechange</code></a></li> <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/WebRTC_API" class="only-in-en-us">WebRTC <small>(en-US)</small></a></li> </ul></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/RTCPeerConnection/iceGatheringState" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/RTCPeerConnection/iceGatheringState</a>
+  </p>
+</div>

@@ -1,0 +1,42 @@
+<header><h1>do...while</h1></header><div class="section-content"><p> <code>do...while</code> 테스트 조건이 거짓으로 평가될 때까지 지정된 구문을 실행하는 루프를 만듭니다. 단, 구문이 실행된 뒤에 테스트 조건이 평가됨으로 구문은 무조건 한 번은 실행됩니다. </p></div>
+<section aria-labelledby="시도해보기"><h2 id="시도해보기">시도해보기</h2>
+<div class="section-content"><iframe class="interactive is-js-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/js/statement-dowhile.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe></div></section><section aria-labelledby="문법"><h2 id="문법">문법</h2>
+<div class="section-content">
+<div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="ZJzWdYCYOzND92qhWDfqXh51NjcbB3OlCSYlRguDjYg=" data-language="js"><span class="token keyword">do</span>
+  statement
+<span class="token keyword">while</span> <span class="token punctuation">(</span>condition<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div> <dl> <dt id="구문"><code>구문</code></dt> <dd> <p>테스트 조건이 참일 때마다 한 번이상 실행되는 구문입니다. 만약 루프 내에서 여러 구문을 반복 실행 시키고 싶으시다면, 다음 명령을 사용합니다. <a href="block">block</a> 구문을 활용하여 (<code>{ ... }</code>) 이런 식으로 그룹화합니다.</p> </dd> <dt id="조건식"><code>조건식</code></dt> <dd> <p>루프가 실행될 때마다 평가되는 식입니다. 만약 조건식이 참으로 평가되었다면, <code>구문</code> 이 다시 실행됩니다. 만약 조건식이 거짓으로 평가되었다면, 자바스크립트는 <code>do...while</code>. 구문 밑에 있는 구문들을 실행시킵니다.</p> </dd> </dl>
+</div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+</section><section aria-labelledby="do...while"><h3 id="do...while"><code>do...while</code></h3>
+<div class="section-content">
+<p>예제에서 <code>do...while</code> 문은 적어도 한번 반복되고 i 변수가 5 보다 작을 때까지 실행됩니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="h6ZFUutbLhZlxLRpSFcyvcbTTf5jFpTkNzA9/0SYV58=" data-language="js"><span class="token keyword">var</span> result <span class="token operator">=</span> <span class="token string">''</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token keyword">do</span> <span class="token punctuation">{</span>
+   i <span class="token operator">+=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+   result <span class="token operator">+=</span> i <span class="token operator">+</span> <span class="token string">' '</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">while</span> <span class="token punctuation">(</span>i <span class="token operator">&gt;</span> <span class="token number">0</span> <span class="token operator">&amp;&amp;</span> i <span class="token operator">&lt;</span> <span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// Despite i == 0 this will still loop as it starts off without the test</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>result<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div>
+</div></section><h2 id="명세서">명세서</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://tc39.es/ecma262/multipage/ecmascript-language-statements-and-declarations.html#sec-do-while-statement">ECMAScript Language Specification <br><small># sec-do-while-statement</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="while"><code>while</code></a></li> <li><a href="for"><code>for</code></a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Statements/do...while" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Statements/do...while</a>
+  </p>
+</div>

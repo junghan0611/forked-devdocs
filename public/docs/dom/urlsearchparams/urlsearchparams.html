@@ -1,0 +1,86 @@
+<header><h1>URLSearchParams()</h1></header><div class="section-content">
+<p><code>URLSearchParams()</code> 생성자는 새로운 <a href="../urlsearchparams"><code>URLSearchParams</code></a> 객체를 생성하고 반환합니다.</p>
+<div class="notecard note" id="sect1"> <p><strong>참고:</strong> 이 기능은 <a href="../web_workers_api">Web Worker</a>에서 사용할 수 있습니다</p> </div>
+</div>
+<h2 id="구문">구문</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="gavr4KFot8SzFiBsnkGngfQgTMCqAYvdveyol/rBweU=" data-language="js"><span class="token keyword">new</span> <span class="token class-name">URLSearchParams</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">new</span> <span class="token class-name">URLSearchParams</span><span class="token punctuation">(</span>init<span class="token punctuation">)</span>
+</pre>
+</div></div>
+<h3 id="매개변수">매개변수</h3>
+<div class="section-content"><dl> <dt id="init">
+<code>init</code> <span class="badge inline optional">Optional</span>
+</dt> <dd> <p>다음 중 하나입니다.</p> <ul> <li>문자열. <code>application/x-www-form-urlencoded</code> 형식으로 파싱합니다. 선행 <code>'?'</code> 문자는 무시합니다.</li> <li>이름-값 문자열 쌍을 생성하는 <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Guide/Iterators_and_generators#iterators">순회기</a>를 가지는 객체. <a href="../formdata"><code>FormData</code></a> 등의 객체가 이 범주에 속합니다. 참고로 <a href="../file"><code>File</code></a> 값은 파일 이름이 아니라 <code>[object File]</code>로 직렬화됩니다. (<code>application/x-www-form-urlencoded</code> 양식에서의 동작과 동일)</li> <li>문자열 키와 문자열 값으로 구성된 레코드.</li> </ul> </dd> </dl></div>
+<h3 id="반환값">반환값</h3>
+<div class="section-content"><p><a href="../urlsearchparams"><code>URLSearchParams</code></a> 객체 인스턴스입니다.</p></div>
+<h2 id="예제">예제</h2>
+<div class="section-content">
+<p>다음 예제는 URL 문자열에서 <a href="../urlsearchparams"><code>URLSearchParams</code></a> 객체를 생성하는 모습입니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="jX37SXiXAi6muxiS3PoGaH9VchcCiKUysymLQ7g0e4w=" data-language="js"><span class="token comment">// url 생성자에 전달된 주소를 url.search를 통해 params라는 변수로 검색합니다.</span>
+<span class="token keyword">var</span> url <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">URL</span><span class="token punctuation">(</span><span class="token string">'https://example.com?foo=1&amp;bar=2'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> params <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">URLSearchParams</span><span class="token punctuation">(</span>url<span class="token punctuation">.</span>search<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// 문자열 리터럴을 전달합니다.</span>
+<span class="token keyword">var</span> params2 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">URLSearchParams</span><span class="token punctuation">(</span><span class="token string">"foo=1&amp;bar=2"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> params2a <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">URLSearchParams</span><span class="token punctuation">(</span><span class="token string">"?foo=1&amp;bar=2"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// 일련의 쌍으로 전달합니다.</span>
+<span class="token keyword">var</span> params3 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">URLSearchParams</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token string">"foo"</span><span class="token punctuation">,</span> <span class="token string">"1"</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token string">"bar"</span><span class="token punctuation">,</span> <span class="token string">"2"</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// 레코드로 전달합니다.</span>
+<span class="token keyword">var</span> params4 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">URLSearchParams</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token string-property property">"foo"</span><span class="token operator">:</span> <span class="token string">"1"</span><span class="token punctuation">,</span> <span class="token string-property property">"bar"</span><span class="token operator">:</span> <span class="token string">"2"</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div> <p>다음 예제는 검색 매개변수를 포함한 URL과, 검색 매개변수 객체를 사용해 새로운 URL을 만드는 모습을 보입니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="EychPRDuAfWUzzMxtUx437YzLweH+kQUGl4+cAa7BWE=" data-language="js"><span class="token keyword">const</span> url <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">URL</span><span class="token punctuation">(</span><span class="token string">'https://example.com/?a=hello&amp;b=world'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>url<span class="token punctuation">.</span>href<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// https://example.com/?a=hello&amp;b=world</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>url<span class="token punctuation">.</span>origin<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// https://example.com</span>
+
+<span class="token keyword">const</span> add_params <span class="token operator">=</span> <span class="token punctuation">{</span>
+    <span class="token literal-property property">c</span><span class="token operator">:</span> <span class="token string">'a'</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">d</span><span class="token operator">:</span> <span class="token keyword">new</span> <span class="token class-name">String</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">e</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">const</span> new_params <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">URLSearchParams</span><span class="token punctuation">(</span><span class="token punctuation">[</span>
+    <span class="token operator">...</span>Array<span class="token punctuation">.</span><span class="token function">from</span><span class="token punctuation">(</span>url<span class="token punctuation">.</span>searchParams<span class="token punctuation">.</span><span class="token function">entries</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token comment">// [["a","hello"],["b","world"]]</span>
+    <span class="token operator">...</span>Object<span class="token punctuation">.</span><span class="token function">entries</span><span class="token punctuation">(</span>add_params<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token comment">// [["c","a"],["d","2"],["e","false"]]</span>
+<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>new_params<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// a=hello&amp;b=world&amp;c=a&amp;d=2&amp;e=false</span>
+
+<span class="token keyword">const</span> new_url <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">URL</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>url<span class="token punctuation">.</span>origin<span class="token interpolation-punctuation punctuation">}</span></span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>url<span class="token punctuation">.</span>pathname<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">?</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>new_params<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>new_url<span class="token punctuation">.</span>href<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// https://example.com/?a=hello&amp;b=world&amp;c=a&amp;d=2&amp;e=false</span>
+
+<span class="token comment">// (URL, Record&lt;string, string&gt;)을 받는 함수</span>
+<span class="token keyword">const</span> <span class="token function-variable function">addSearchParams</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">url<span class="token punctuation">,</span> params <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span>
+  <span class="token keyword">new</span> <span class="token class-name">URL</span><span class="token punctuation">(</span>
+    <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>url<span class="token punctuation">.</span>origin<span class="token interpolation-punctuation punctuation">}</span></span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>url<span class="token punctuation">.</span>pathname<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">?</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span><span class="token keyword">new</span> <span class="token class-name">URLSearchParams</span><span class="token punctuation">(</span><span class="token punctuation">[</span>
+      <span class="token operator">...</span>Array<span class="token punctuation">.</span><span class="token function">from</span><span class="token punctuation">(</span>url<span class="token punctuation">.</span>searchParams<span class="token punctuation">.</span><span class="token function">entries</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+      <span class="token operator">...</span>Object<span class="token punctuation">.</span><span class="token function">entries</span><span class="token punctuation">(</span>params<span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span>
+  <span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div>
+</div>
+<h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://url.spec.whatwg.org/#dom-urlsearchparams-urlsearchparams">URL Standard <br><small># dom-urlsearchparams-urlsearchparams</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/URLSearchParams/URLSearchParams" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/URLSearchParams/URLSearchParams</a>
+  </p>
+</div>

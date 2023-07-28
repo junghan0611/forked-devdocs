@@ -1,0 +1,38 @@
+<header><h1>AbortSignal.aborted</h1></header><div class="section-content">
+<div class="notecard experimental" id="sect1"><p><strong>Experimental:</strong> <strong>This is an <a href="https://developer.mozilla.org/en-US/docs/MDN/Writing_guidelines/Experimental_deprecated_obsolete#experimental">experimental technology</a></strong><br>Check the <a href="#browser_compatibility">Browser compatibility table</a> carefully before using this in production.</p></div> <p><code>aborted</code> 읽기 전용 프로퍼티는 신호가 통신하는 DOM 요청이 취소되었는지(<code>true</code>) 그렇지 않은지(<code>false</code>)를 나타내는 <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Boolean"><code>Boolean</code></a>을 반환한다.</p>
+</div>
+<h2 id="구문">구문</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="4XbT/3Tmn1Yx50f7k1lt6eWZhxal3gpQQTHATknyKdk=" data-language="js"><span class="token keyword">var</span> isAborted <span class="token operator">=</span> abortSignal<span class="token punctuation">.</span>aborted<span class="token punctuation">;</span>
+</pre>
+</div></div>
+<h3 id="값">값</h3>
+<div class="section-content"><a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Boolean"><code>Boolean</code></a></div>
+<h2 id="예제">예제</h2>
+<div class="section-content">
+<p>다음 스니펫에서는 새로운 <code>AbortController</code> 객체를 생성하고 <a href="../abortsignal"><code>AbortSignal</code></a>를 얻는다(<code>signal</code> 프로퍼티에서 가능). 그 다음 <code>aborted</code> 프로퍼티를 사용해 신호가 취소되었는지 확인하고 콘솔로 적절한 로그를 전송한다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="Up+Rc6fxBr/xrUPzp9/iNztQuXOkqpoi21z9iKv8Cx4=" data-language="js"><span class="token keyword">var</span> controller <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">AbortController</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> signal <span class="token operator">=</span> controller<span class="token punctuation">.</span>signal<span class="token punctuation">;</span>
+
+<span class="token comment">// ...</span>
+
+signal<span class="token punctuation">.</span>aborted <span class="token operator">?</span> console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'Request has been aborted'</span><span class="token punctuation">)</span> <span class="token operator">:</span> console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'Request not aborted'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div>
+</div>
+<h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="#">DOM Standard <br><small># ref-for-dom-abortsignal-aborted①</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<h2 id="see_also">See also</h2>
+<div class="section-content"><ul> <li><a href="../fetch_api">Fetch API</a></li> </ul></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/AbortSignal/aborted" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/AbortSignal/aborted</a>
+  </p>
+</div>

@@ -1,0 +1,48 @@
+<header><h1>&lt;address&gt;</h1></header><div class="section-content"><p><code>&lt;address&gt;</code>는 가까운 HTML 요소의 사람, 단체, 조직 등에 대한 연락처 정보를 나타냅니다.</p></div>
+<h2 id="시도해보기">시도해보기</h2>
+<div class="section-content">
+<iframe class="interactive is-tabbed-standard-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/tabbed/address.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe>  <p><code>&lt;address&gt;</code> 요소의 콘텐츠가 제공하는 연락처 정보는 현재 맥락에 적절한 아무 형태나 취할 수 있으며, 물리적 주소, URL, 이메일 주소, 전화번호, SNS 식별자, 좌표 등 어떠한 정보라도 포함할 수 있습니다. 반드시 포함해야 하는 정보는 연락처가 가리키는 개인, 조직, 단체의 이름입니다.</p> <p><code>&lt;address&gt;</code>는 다양한 맥락에서 사용할 수 있습니다. 사업체 연락 방법을 페이지 헤더에 배치할 때도 쓸 수 있고, <a href="article"><code>&lt;article&gt;</code></a> 내부에 배치해서 글의 작성자를 나타낼 수도 있습니다.</p> <figure class="table-container"><div class="_table"><table class="properties"> <tbody> <tr> <th scope="row"><a href="../content_categories">콘텐츠 카테고리</a></th> <td>
+<a href="../content_categories#%ed%94%8c%eb%a1%9c%ec%9a%b0_%ec%bd%98%ed%85%90%ec%b8%a0">플로우 콘텐츠</a>, 뚜렷한 콘텐츠.</td> </tr> <tr> <th scope="row">가능한 콘텐츠</th> <td> <a href="../content_categories#%ed%94%8c%eb%a1%9c%ec%9a%b0_%ec%bd%98%ed%85%90%ec%b8%a0">플로우 콘텐츠</a>. 단, 다음의 요소는 사용할 수 없습니다.<br>다른 <code>&lt;address&gt;</code>, 제목 콘텐츠 (<a href="hgroup"><code>&lt;hgroup&gt;</code></a>, <a href="heading_elements"><code>&lt;h1&gt;</code></a>, <a href="heading_elements"><code>&lt;h2&gt;</code></a>, <a href="heading_elements"><code>&lt;h3&gt;</code></a>, <a href="heading_elements"><code>&lt;h4&gt;</code></a>, <a href="heading_elements"><code>&lt;h5&gt;</code></a>, <a href="heading_elements"><code>&lt;h6&gt;</code></a>), 구획 콘텐츠 (<a href="article"><code>&lt;article&gt;</code></a>, <a href="aside"><code>&lt;aside&gt;</code></a>, <a href="section"><code>&lt;section&gt;</code></a>, <a href="nav"><code>&lt;nav&gt;</code></a>), <a href="header"><code>&lt;header&gt;</code></a>, <a href="footer"><code>&lt;footer&gt;</code></a> 요소. </td> </tr> <tr> <th scope="row">태그 생략</th> <td>불가능, 시작과 끝에 태그를 추가하는것은 필수입니다.</td> </tr> <tr> <th scope="row">가능한 부모 요소</th> <td>
+<a href="../content_categories#%ed%94%8c%eb%a1%9c%ec%9a%b0_%ec%bd%98%ed%85%90%ec%b8%a0">플로우 콘텐츠</a>를 허용하는 모든 요소. 단, <code>&lt;address&gt;</code> 요소 제외.</td> </tr> <tr> <th scope="row">암시적 ARIA 역할</th> <td><a href="https://www.w3.org/TR/html-aria/#dfn-no-corresponding-role" target="_blank">대응하는 역할 없음</a></td> </tr> <tr> <th scope="row">가능한 ARIA 역할</th> <td>없음</td> </tr> <tr> <th scope="row">DOM 인터페이스</th> <td><a href="https://developer.mozilla.org/ko/docs/Web/API/HTMLElement"><code>HTMLElement</code></a></td> </tr> </tbody> </table></div></figure>
+</div>
+<h2 id="특성">특성</h2>
+<div class="section-content"><p>이 요소는 <a href="../global_attributes">전역 특성</a>만 포함합니다.</p></div>
+<h2 id="사용_일람">사용 일람</h2>
+<div class="section-content"><ul> <li>기존 명세에서의 <code>&lt;address&gt;</code> 요소는 문서 작성자의 연락처만 나타내는 요소였습니다. 그러나 최신 명세에서 임의의 연락처를 포함할 수 있도록 수정됐습니다.</li> <li>연락처 외의 정보(출판일 등)를 담아서는 안됩니다.</li> <li>보통, 현재 구획에 <a href="footer"><code>&lt;footer&gt;</code></a> 요소가 존재하면 <code>&lt;address&gt;</code>를 그 안에 배치할 수 있습니다.</li> </ul></div>
+<h2 id="예제">예제</h2>
+<div class="section-content">
+<p>다음 예제는 <code>&lt;address&gt;</code>를 사용해 글 작성자의 연락처를 구별하는 모습을 보입니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="e1Bb6eZ3mHd3Frzv/AfoV86R8T3QNtKA4jvEIiUSmC0=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>address</span><span class="token punctuation">&gt;</span></span>
+  You can contact author at <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>http://www.somedomain.com/contact<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+  www.somedomain.com<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">&gt;</span></span>.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>br</span><span class="token punctuation">&gt;</span></span>
+  If you see any bugs, please <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>mailto:webmaster@somedomain.com<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+  contact webmaster<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">&gt;</span></span>.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>br</span><span class="token punctuation">&gt;</span></span>
+  You may also want to visit us:<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>br</span><span class="token punctuation">&gt;</span></span>
+  Mozilla Foundation<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>br</span><span class="token punctuation">&gt;</span></span>
+  331 E Evelyn Ave<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>br</span><span class="token punctuation">&gt;</span></span>
+  Mountain View, CA 94041<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>br</span><span class="token punctuation">&gt;</span></span>
+  USA
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>address</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div>
+</div>
+<h3 id="결과">결과</h3>
+<div class="section-content">
+<div class="code-example" id="sect2">
+
+<iframe class="sample-code-frame" title="예제 sample" id="frame_예제" width="300" height="200" src="https://live.mdnplay.dev/ko/docs/Web/HTML/Element/address/runner.html?id=%EC%98%88%EC%A0%9C" loading="lazy"></iframe>
+</div> <p>비록 겉보기는 <a href="i"><code>&lt;i&gt;</code></a>나 <a href="em"><code>&lt;em&gt;</code></a> 요소와 같지만, <code>&lt;address&gt;</code> 요소는 자체적인 의미를 갖고 있으므로 연락처 표기에는 <code>&lt;address&gt;</code>가 더 적합합니다.</p>
+</div>
+<h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://html.spec.whatwg.org/multipage/sections.html#the-address-element">HTML Standard <br><small># the-address-element</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/HTML/Element/address" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/HTML/Element/address</a>
+  </p>
+</div>

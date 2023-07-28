@@ -1,0 +1,41 @@
+<header><h1>Function.arguments</h1></header><div class="section-content">
+<div class="notecard deprecated" id="sect1"><p><strong>지원이 중단되었습니다:</strong> This feature is no longer recommended. Though some browsers might still support it, it may have already been removed from the relevant web standards, may be in the process of being dropped, or may only be kept for compatibility purposes. Avoid using it, and update existing code if possible; see the <a href="#browser_compatibility">compatibility table</a> at the bottom of this page to guide your decision. Be aware that this feature may cease to work at any time.</p></div> <blockquote> <p><code>function.arguments</code> 속성은 함수로 부터 넘겨 받은 arguments에 해당하는 배열과 같은 객체이다. 간단하게 <a href="../../functions/arguments"><code>arguments</code></a>를 대신 사용하자. 이 속성은 strict mode에서 <a href="https://www.ecma-international.org/ecma-262/6.0/#sec-addrestrictedfunctionproperties" target="_blank">꼬리 호출 최적화</a> 때문에 금지 된다.</p> </blockquote>
+</div>
+<section aria-labelledby="설명"><h2 id="설명">설명</h2>
+<div class="section-content">
+<p><code>function.arguments</code> 문법은 deprecated 되었다. 함수 내 에서 사용 가능한 객체<a href="../../functions/arguments"><code>arguments</code></a>에 접근하는 추천되는 방법은 단순히 <a href="../../functions/arguments"><code>arguments</code></a>변수로 참조하는 것이다.</p> <p>반복문의 경우, 함수 <code>f</code> 가 여러번 호출 스택에 나타나면, <code>f.arguments</code>의 값은 함수의 가장 최근 호출 arguments를 나타낸다.</p> <p>arguments의 값은 함수 실행 과정에서 특별한 호출이 없다면 일반적으로 null 이다 (즉, 함수가 호출은 되었으나 반환되지 않음).</p>
+</div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+</section><section aria-labelledby="arguments_object를_사용한_예시"><h3 id="arguments_object를_사용한_예시">arguments object를 사용한 예시</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="WWx2d94dRfDkLuv9nwReUzmA7CaCe2USvVniSUslVEE=" data-language="js"><span class="token keyword">function</span> <span class="token function">f</span><span class="token punctuation">(</span><span class="token parameter">n</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token function">g</span><span class="token punctuation">(</span>n <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+
+<span class="token keyword">function</span> <span class="token function">g</span><span class="token punctuation">(</span><span class="token parameter">n</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'before: '</span> <span class="token operator">+</span> g<span class="token punctuation">.</span>arguments<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>n <span class="token operator">&gt;</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token function">f</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'after: '</span> <span class="token operator">+</span> g<span class="token punctuation">.</span>arguments<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token function">f</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'returned: '</span> <span class="token operator">+</span> g<span class="token punctuation">.</span>arguments<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// Output</span>
+
+<span class="token comment">// before: 1</span>
+<span class="token comment">// before: 0</span>
+<span class="token comment">// after: 0</span>
+<span class="token comment">// after: 1</span>
+<span class="token comment">// returned: null</span>
+</pre>
+</div></div></section><section aria-labelledby="specifications"><h2 id="specifications">Specifications</h2>
+<div class="section-content"><p><code>function.arguments</code>는 표준이 아니다. ECMAScript 3에서 <a href="../../functions/arguments"><code>arguments</code></a>를 참조하기 때문에 deprecated 되었다.</p></div></section><h2 id="browser_호환성">Browser 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="see_also"><h2 id="see_also">See also</h2>
+<div class="section-content"><ul> <li>
+<a href="../../functions/arguments"><code>arguments</code></a> 객체</li> <li><a href="../../functions">Functions and function scope</a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Function/arguments" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Function/arguments</a>
+  </p>
+</div>

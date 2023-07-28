@@ -1,0 +1,37 @@
+<header><h1>menus.getTargetElement()</h1></header><div class="section-content">
+<p>주어진 <code>targetElementId</code>에 해당하는 요소를 돌려준다.</p> <p>이 함수는 오직 클릭된 요소가 있는 문서에서만 동작한다. so everywhere but in the background page.</p>
+</div>
+<section aria-labelledby="문법"><h2 id="문법">문법</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="Ry/XZJYmF5m0rEa8Y37yoSHhsLIw+nry+i41kfcvxos=" data-language="js"><span class="token keyword">let</span> elem <span class="token operator">=</span> browser<span class="token punctuation">.</span>menus<span class="token punctuation">.</span><span class="token function">getTargetElement</span><span class="token punctuation">(</span>targetElementId<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div></div></section><section aria-labelledby="파라메터"><h3 id="파라메터">파라메터</h3>
+<div class="section-content"><dl> <dt id="targetelementid"><code>targetElementId</code></dt> <dd> <p><code><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/menus/onClicked" class="only-in-en-us"><code>menus.onClicked</code> <small>(en-US)</small></a></code> 핸들러 또는 <code><a href="onshown"><code>menus.onShown</code></a></code> 이벤트에 전달된 <code><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/menus/OnClickData" class="only-in-en-us"><code>menus.OnClickData</code> <small>(en-US)</small></a></code> 객체의 속성</p> </dd> </dl></div></section><section aria-labelledby="반환값"><h3 id="반환값">반환값</h3>
+<div class="section-content"><p><code>targetElementId</code>로 참조되는 요소를 반환한다. <code>targetElementId</code>가 유효하지 않으면 <code>null</code>를 반환한다.</p></div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+<div class="section-content">
+<p>아래 예제는 인수로 전달된 <code>info.targetElementId</code> 값으로 요소를 구하고, 그것을 지운다. 하지만 <code>getTargetElement</code>는 요소가 있는 문서에서만 동작하므로 문서가 있는 탭에 스크립트를 주입하는 형태로 처리하고 있다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="4ZtQMyx9YG/GHDSGqQLyFmtMNuJnkJQNjc2IBww9i4Q=" data-language="js">browser<span class="token punctuation">.</span>menus<span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  <span class="token literal-property property">title</span><span class="token operator">:</span> <span class="token string">"Remove element"</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">documentUrlPatterns</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"*://*/*"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">contexts</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"audio"</span><span class="token punctuation">,</span> <span class="token string">"editable"</span><span class="token punctuation">,</span> <span class="token string">"frame"</span><span class="token punctuation">,</span> <span class="token string">"image"</span><span class="token punctuation">,</span> <span class="token string">"link"</span><span class="token punctuation">,</span> <span class="token string">"page"</span><span class="token punctuation">,</span> <span class="token string">"password"</span><span class="token punctuation">,</span> <span class="token string">"video"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+  <span class="token function">onclick</span><span class="token punctuation">(</span><span class="token parameter">info<span class="token punctuation">,</span> tab</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    browser<span class="token punctuation">.</span>tabs<span class="token punctuation">.</span><span class="token function">executeScript</span><span class="token punctuation">(</span>tab<span class="token punctuation">.</span>id<span class="token punctuation">,</span> <span class="token punctuation">{</span>
+      <span class="token literal-property property">frameId</span><span class="token operator">:</span> info<span class="token punctuation">.</span>frameId<span class="token punctuation">,</span>
+      <span class="token literal-property property">code</span><span class="token operator">:</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">browser.menus.getTargetElement(</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>info<span class="token punctuation">.</span>targetElementId<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">).remove();</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="example_extensions"><h3 id="example_extensions">Example extensions</h3>
+<div class="section-content"><ul><li><a href="https://github.com/mdn/webextensions-examples/tree/master/menu-remove-element" target="_blank">menu-remove-element</a></li></ul></div></section><h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="create"><code>menus.create</code></a></li> <li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/menus/OnClickData" class="only-in-en-us"><code>menus.OnClickData</code> <small>(en-US)</small></a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Mozilla/Add-ons/WebExtensions/API/menus/getTargetElement" class="_attribution-link">https://developer.mozilla.org/ko/docs/Mozilla/Add-ons/WebExtensions/API/menus/getTargetElement</a>
+  </p>
+</div>

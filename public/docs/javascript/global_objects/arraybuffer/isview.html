@@ -1,0 +1,41 @@
+<header><h1>ArrayBuffer.isView()</h1></header><div class="section-content"><p><code>ArrayBuffer.isView()</code> 메서드는 주어진 값이 <code>ArrayBuffer</code> 뷰, 즉 <a href="../typedarray">형식화 배열 객체</a> 또는 <a href="../dataview"><code>DataView</code></a>인지 판별합니다..</p></div>
+<section aria-labelledby="시도해보기"><h2 id="시도해보기">시도해보기</h2>
+<div class="section-content"><iframe class="interactive is-js-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/js/arraybuffer-isview.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe></div></section><section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="Q4/ZGKamRW6T3sWuJN9hcGMDGcgj6kToj9vOlJ55pp8=" data-language="js">    ArrayBuffer<span class="token punctuation">.</span><span class="token function">isView</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span>
+</pre>
+</div></div></section><section aria-labelledby="매개변수"><h3 id="매개변수">매개변수</h3>
+<div class="section-content"><dl> <dt id="value"><code>value</code></dt> <dd> <p>판별할 값.</p> </dd> </dl></div></section><section aria-labelledby="반환_값"><h3 id="반환_값">반환 값</h3>
+<div class="section-content"><p>주어진 값이 <a href="../arraybuffer"><code>ArrayBuffer</code></a> 뷰라면 <code>true</code>, 아니면 <code>false</code>.</p></div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="qZxdRNmbgX+c+CfX2pNyGJVf0iNzyR8ut8JBcbCE7yg=" data-language="js">ArrayBuffer<span class="token punctuation">.</span><span class="token function">isView</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>                    <span class="token comment">// false</span>
+ArrayBuffer<span class="token punctuation">.</span><span class="token function">isView</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>                  <span class="token comment">// false</span>
+ArrayBuffer<span class="token punctuation">.</span><span class="token function">isView</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>                  <span class="token comment">// false</span>
+ArrayBuffer<span class="token punctuation">.</span><span class="token function">isView</span><span class="token punctuation">(</span><span class="token keyword">null</span><span class="token punctuation">)</span><span class="token punctuation">;</span>                <span class="token comment">// false</span>
+ArrayBuffer<span class="token punctuation">.</span><span class="token function">isView</span><span class="token punctuation">(</span><span class="token keyword">undefined</span><span class="token punctuation">)</span><span class="token punctuation">;</span>           <span class="token comment">// false</span>
+ArrayBuffer<span class="token punctuation">.</span><span class="token function">isView</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">ArrayBuffer</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// false</span>
+
+ArrayBuffer<span class="token punctuation">.</span><span class="token function">isView</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Uint8Array</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token comment">// true</span>
+ArrayBuffer<span class="token punctuation">.</span><span class="token function">isView</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Float32Array</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// true</span>
+ArrayBuffer<span class="token punctuation">.</span><span class="token function">isView</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Int8Array</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">subarray</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// true</span>
+
+<span class="token keyword">const</span> buffer <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayBuffer</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> dv <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">DataView</span><span class="token punctuation">(</span>buffer<span class="token punctuation">)</span><span class="token punctuation">;</span>
+ArrayBuffer<span class="token punctuation">.</span><span class="token function">isView</span><span class="token punctuation">(</span>dv<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// true</span>
+</pre>
+</div></div></section><h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://tc39.es/ecma262/multipage/structured-data.html#sec-arraybuffer.isview">ECMAScript Language Specification <br><small># sec-arraybuffer.isview</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Guide/Typed_arrays">JavaScript 형식화 배열</a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer/isView" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer/isView</a>
+  </p>
+</div>

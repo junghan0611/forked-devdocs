@@ -1,0 +1,161 @@
+<header><h1>setInterval()</h1></header><div class="section-content">
+<p> <a href="window"><code>Window</code></a> 및 <a href="worker"><code>Worker</code></a> 인터페이스에서 제공되는 <code>setInterval()</code> 메서드는 각 호출 사이에 고정된 시간 지연으로 함수를 반복적으로 호출하거나 코드 스니펫을 실행합니다. </p> <p>이 메서드는 간격(interval)을 고유하게 식별할 수 있는 interval ID를 반환하므로 나중에 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/clearInterval"><code>clearInterval()</code> <small>(en-US)</small></a> 함수를 호출하여 제거할 수 있습니다.</p>
+</div>
+<h2 id="구문">구문</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="YAiBQWv4Zo/sFcp94A2Y5ReMk2SZnk2Z2hP6yzd6iTE=" data-language="js"><span class="token function">setInterval</span><span class="token punctuation">(</span>code<span class="token punctuation">)</span>
+<span class="token function">setInterval</span><span class="token punctuation">(</span>code<span class="token punctuation">,</span> delay<span class="token punctuation">)</span>
+
+<span class="token function">setInterval</span><span class="token punctuation">(</span>func<span class="token punctuation">)</span>
+<span class="token function">setInterval</span><span class="token punctuation">(</span>func<span class="token punctuation">,</span> delay<span class="token punctuation">)</span>
+<span class="token function">setInterval</span><span class="token punctuation">(</span>func<span class="token punctuation">,</span> delay<span class="token punctuation">,</span> arg0<span class="token punctuation">)</span>
+<span class="token function">setInterval</span><span class="token punctuation">(</span>func<span class="token punctuation">,</span> delay<span class="token punctuation">,</span> arg0<span class="token punctuation">,</span> arg1<span class="token punctuation">)</span>
+<span class="token function">setInterval</span><span class="token punctuation">(</span>func<span class="token punctuation">,</span> delay<span class="token punctuation">,</span> arg0<span class="token punctuation">,</span> arg1<span class="token punctuation">,</span> <span class="token comment">/* … ,*/</span> argN<span class="token punctuation">)</span>
+</pre>
+</div></div>
+<h3 id="매개변수">매개변수</h3>
+<div class="section-content"><dl> <dt id="func"><code>func</code></dt> <dd> <p><code>delay</code>(밀리초)마다 실행되는 <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Function"><code>function</code></a>입니다. 첫 번째 실행은 <code>delay</code>(밀리초) 후에 발생합니다.</p> </dd> <dt id="code"><code>code</code></dt> <dd> <p> 선택적 구문을 사용하면 함수 대신 문자열을 포함할 수 있습니다. 모든 <code>delay</code>(밀리초)마다 컴파일되고 실행됩니다. 이 구문은 <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/eval"><code>eval()</code></a>을 사용하는 것과 같은 이유로 보안상 위험하므로 "권장하지 않습니다". </p> </dd> <dt id="delay">
+<code>delay</code> <span class="badge inline optional">Optional</span>
+</dt> <dd> <p> 타이머가 지정된 함수 또는 코드 실행 사이에 지연해야 하는 밀리초(1/1000초) 단위의 시간입니다. 지정하지 않으면 기본 값은 0입니다. <code>delay</code> 값의 허용 범위에 대한 자세한 내용은 아래의 <a href="#%EC%A7%80%EC%97%B0_%EC%A0%9C%ED%95%9C">지연 제한</a>을 참조하세요. </p> </dd> <dt id="arg0_…_argn">
+<code>arg0, …, argN</code> <span class="badge inline optional">Optional</span>
+</dt> <dd> <p>타이머가 만료되면 <em>func</em> 에서 지정한 함수로 전달되는 추가 인수입니다.</p> </dd> </dl></div>
+<h3 id="반환_값">반환 값</h3>
+<div class="section-content">
+<p> 반환된 <code>intervalID</code>는 <code>setInterval()</code> 호출로 생성된, 타이머를 식별하는 0이 아닌 숫자 값입니다. 이 값은 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/clearInterval"><code>clearInterval()</code> <small>(en-US)</small></a>에 전달되어 interval을 취소할 수 있습니다. </p> <p> <code>setInterval()</code> 및 <a href="settimeout"><code>setTimeout()</code></a>은 동일한 ID 풀을 공유하고 <code>clearInterval()</code> 및 <a href="cleartimeout"><code>clearTimeout()</code></a>은 기술적으로 상호 교환하여 사용할 수 있음을 알고 있으면 도움이 될 수 있습니다. 그러나 명확성을 위해 코드를 유지 관리할 때 혼동을 피하기 위해 항상 일치하도록 노력해야 합니다. </p> <blockquote> <p> <strong>Note:</strong> <code>delay</code> 인수는 부호 있는 32-bit 정수로 변환됩니다. 이는 IDL에서 부호 있는 정수로 지정되기 때문에 <code>delay</code>를 2147483647 ms로 효과적으로 제한합니다. </p> </blockquote>
+</div>
+<h2 id="예제">예제</h2>
+
+<h3 id="예제_1_기본_구문">예제 1: 기본 구문</h3>
+<div class="section-content">
+<p>다음 예제는 <code>setInterval()</code>의 기본 구문을 보여줍니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="HKrB9xK6zuxY/4Zt6zGmVPvnqtx/1/KprteMczgmHG4=" data-language="js"><span class="token keyword">const</span> intervalID <span class="token operator">=</span> <span class="token function">setInterval</span><span class="token punctuation">(</span>myCallback<span class="token punctuation">,</span> <span class="token number">500</span><span class="token punctuation">,</span> <span class="token string">'Parameter 1'</span><span class="token punctuation">,</span> <span class="token string">'Parameter 2'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">function</span> <span class="token function">myCallback</span><span class="token punctuation">(</span><span class="token parameter">a<span class="token punctuation">,</span> b</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+ <span class="token comment">// 여기에 코드를 작성하세요</span>
+ <span class="token comment">// 매개변수는 순전히 선택적입니다.</span>
+ console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span>
+ console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div>
+</div>
+<h3 id="예제_2_두_가지_색상_변환하기">예제 2: 두 가지 색상 변환하기</h3>
+<div class="section-content">
+<p>다음 에제는 중지 버튼을 누를 때까지 1초에 한 번씩 <code>flashtext()</code> 함수를 호출합니다.</p> <h4 id="html">HTML</h4> <div class="code-example">
+<p class="example-header"><span class="language-name">html</span></p>
+<pre data-signature="rrUQWUFCpSgqlfOvtvGTk8Drx7/uK4SyATkryZWR0vw=" data-language="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>my_box<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h3</span><span class="token punctuation">&gt;</span></span>Hello World<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h3</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>start<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Start<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>stop<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Stop<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">&gt;</span></span>
+</pre>
+</div> <h4 id="css">CSS</h4> <div class="code-example">
+<p class="example-header"><span class="language-name">css</span></p>
+<pre data-signature="tt91jqclJ/BzocBP1J8TKjzKud2L2OAoZ2gwzxnauS4=" data-language="css"><span class="token selector">.go</span> <span class="token punctuation">{</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> green<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token selector">.stop</span> <span class="token punctuation">{</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> red<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre>
+</div> <h4 id="javascript">JavaScript</h4> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="pv6pBVfH6nm3d68b/DlS0Q1UEWLbrk/VNVwQaxgOLJM=" data-language="js"><span class="token comment">// intervalID를 저장할 변수입니다</span>
+<span class="token keyword">let</span> nIntervId<span class="token punctuation">;</span>
+
+<span class="token keyword">function</span> <span class="token function">changeColor</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">// 간격이 이미 설정되어 있는지 확인합니다</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>nIntervId<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    nIntervId <span class="token operator">=</span> <span class="token function">setInterval</span><span class="token punctuation">(</span>flashText<span class="token punctuation">,</span> <span class="token number">1000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">function</span> <span class="token function">flashText</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> oElem <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">"my_box"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  oElem<span class="token punctuation">.</span>className <span class="token operator">=</span> oElem<span class="token punctuation">.</span>className <span class="token operator">===</span> <span class="token string">"go"</span> <span class="token operator">?</span> <span class="token string">"stop"</span> <span class="token operator">:</span> <span class="token string">"go"</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">function</span> <span class="token function">stopTextColor</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token function">clearInterval</span><span class="token punctuation">(</span>nIntervId<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token comment">// 변수에서 intervalID를 해체합니다</span>
+  nIntervId <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">"start"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">"click"</span><span class="token punctuation">,</span> changeColor<span class="token punctuation">)</span><span class="token punctuation">;</span>
+document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">"stop"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">"click"</span><span class="token punctuation">,</span> stopTextColor<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div> <h4 id="결과">결과</h4>
+<div class="code-example" id="sect1">
+
+<iframe class="sample-code-frame" title="예제 2: 두 가지 색상 변환하기" id="frame_example_2_alternating_two_colors" src="https://live.mdnplay.dev/ko/docs/Web/API/setInterval/runner.html?id=example_2_alternating_two_colors" loading="lazy"></iframe>
+</div> <p>같이 보기: <a href="https://developer.mozilla.org/en-US/docs/Web/API/clearInterval" class="only-in-en-us"><code>clearInterval()</code> <small>(en-US)</small></a></p>
+</div>
+<h2 id="this_문제">"this" 문제</h2>
+<div class="section-content"><p> 메서드를 <code>setInterval()</code> 또는 다른 함수에 전달하면 잘못된 <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Operators/this"><code>this</code></a> 값으로 호출됩니다. 이 문제는 <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Operators/this#as_an_object_method">JavaScript reference</a>에서 자세히 설명합니다. </p></div>
+<h3 id="설명">설명</h3>
+<div class="section-content">
+<p> <code>setInterval()</code>에 의해 실행되는 코드는 호출된 함수와 별도의 실행 컨텍스트에서 실행됩니다. 결과적으로 호출된 함수의 <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Operators/this"><code>this</code></a> 키워드는 <code>window</code> (또는 <code>global</code>) 객체로 설정되며 <code>setTimeout</code>을 호출한 함수의 <code>this</code> 값과 동일하지 않습니다. <code>setTimeout()</code> 대신 <code>setInterval()</code> 을 사용하여 다음 예제를 참조하세요(사실 문제는 두 타이머 모두 동일합니다) </p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="gEI8NRNdElG2A3/tjiIbEvWvfbzSuzM6YdC+vvsvnRA=" data-language="js">myArray <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'zero'</span><span class="token punctuation">,</span> <span class="token string">'one'</span><span class="token punctuation">,</span> <span class="token string">'two'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+myArray<span class="token punctuation">.</span><span class="token function-variable function">myMethod</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">sProperty</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token function">alert</span><span class="token punctuation">(</span>arguments<span class="token punctuation">.</span>length <span class="token operator">&gt;</span> <span class="token number">0</span> <span class="token operator">?</span> <span class="token keyword">this</span><span class="token punctuation">[</span>sProperty<span class="token punctuation">]</span> <span class="token operator">:</span> <span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+myArray<span class="token punctuation">.</span><span class="token function">myMethod</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// "zero,one,two"가 출력됩니다</span>
+myArray<span class="token punctuation">.</span><span class="token function">myMethod</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// "one"가 출력됩니다</span>
+<span class="token function">setTimeout</span><span class="token punctuation">(</span>myArray<span class="token punctuation">.</span>myMethod<span class="token punctuation">,</span> <span class="token number">1000</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 1초 후 "[object Window]"가 출력됩니다</span>
+<span class="token function">setTimeout</span><span class="token punctuation">(</span>myArray<span class="token punctuation">.</span>myMethod<span class="token punctuation">,</span> <span class="token number">1500</span><span class="token punctuation">,</span> <span class="token string">"1"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 1,5초 후에 "undefined"가 출력됩니다</span>
+
+<span class="token comment">// myArray.myMethod 내에서 this의 값을 변경하려는 동안</span>
+<span class="token comment">// setTimeout 내부에서 this의 값을 변경하기 때문에</span>
+<span class="token comment">// .call과 함께 'this'객체를 전달하는 것은 동작하지 않습니다</span>
+<span class="token comment">// 사실 setTimeout 코드는 this가 window 객체가 될 것으로 예상하기 때문에 오류가 발생합니다</span>
+<span class="token function">setTimeout</span><span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span>myArray<span class="token punctuation">,</span> myArray<span class="token punctuation">.</span>myMethod<span class="token punctuation">,</span> <span class="token number">2000</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// error: "NS_ERROR_XPC_BAD_OP_ON_WN_PROTO: Illegal operation on WrappedNative prototype object"</span>
+<span class="token function">setTimeout</span><span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span>myArray<span class="token punctuation">,</span> myArray<span class="token punctuation">.</span>myMethod<span class="token punctuation">,</span> <span class="token number">2500</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 위와 동일한 에러가 발생합니다</span>
+</pre>
+</div> <p> 보시다시피 레거시 JavaScript에서는 <code>this</code> 객체를 콜백 함수에 전달할 방법이 없습니다. </p>
+</div>
+<h3 id="가능한_해결_방법">가능한 해결 방법</h3>
+<div class="section-content">
+<p>모든 최신 JavaScript 런타임(브라우저 및 기타)은 lexical <code>this</code>를 사용하여 <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Functions/Arrow_functions">화살표 함수</a>를 지원합니다. <code>myArray</code> 메서드 내부에 있는 경우 <code>setInterval(() =&gt; this.myMethod())</code>를 작성할 수 있습니다.</p> <p>IE를 지원해야 하는 경우 지정된 함수의 모든 호출에 <code>this</code>의 값을 고정할 수 있는 <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Function/bind"><code>Function.prototype.bind()</code></a> 메서드를 사용하세요. 이렇게 하면 함수가 호출된 컨텍스트에 따라 <code>this</code>가 무엇인지 명확하지 않은 문제를 쉽게 우회할 수 있습니다.</p>
+</div>
+<h2 id="사용_일람">사용 일람</h2>
+<div class="section-content">
+<p> <code>setInterval()</code> 함수는 일반적으로 애니메이션과 같이 반복해서 실행되는 함수의 지연을 설정하는 데 사용됩니다. <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/clearInterval"><code>clearInterval()</code> <small>(en-US)</small></a>을 사용하여 interval을 취소할 수 있습니다. </p> <p> 지정된 지연 후 함수를 "한번" 호출하려면 <a href="settimeout"><code>setTimeout()</code></a>를 사용하세요. </p>
+</div>
+<h3 id="지연_제한">지연 제한</h3>
+<div class="section-content">
+<p> 간격(interval)은 중첩될 수 있습니다. 즉, <code>setInterval()</code>에 대한 콜백이 <code>setInterval()</code>을 호출하여 첫 번째 간격이 계속 진행 중일지라도 다른 간격의 실행을 시작할 수 있습니다. 이것이 성능에 미칠 수 있는 잠재적인 영향을 완화하기 위해 간격이 5개 수준 이상으로 중첩되면 브라우저는 자동으로 간격에 대해 4 ms 최소 값을 적용합니다. 중첩 호출이 심화된 <code>setInterval()</code>의 호출에서 4 ms 미만의 값을 지정하면 4 ms로 고정됩니다. </p> <p> 브라우저는 일부 상황에서 간격에 대해 훨씬 더 엄격한 최소 값을 적용할 수 있지만 이러한 경우는 일반적이지 않아야 합니다. 또한 콜백 호출 사이의 실제 경과 시간은 주어진 <code>delay</code> 보다 길 수 있습니다. 더 많은 예제는 <a href="settimeout#%EB%94%9C%EB%A0%88%EC%9D%B4%EA%B0%80_%EC%A7%80%EC%A0%95%ED%95%9C_%EA%B0%92%EB%B3%B4%EB%8B%A4_%EB%8D%94_%EA%B8%B4_%EC%9D%B4%EC%9C%A0">지정된 값보다 더 오래 지연되는 이유</a>를 참고하세요. </p>
+</div>
+<h3 id="실행_시간이_간격_빈도보다_짧은지_확인">실행 시간이 간격 빈도보다 짧은지 확인</h3>
+<div class="section-content">
+<p> 로직 실행 시간이 간격 시간보다 오래 걸릴 가능성이 있는 경우 <a href="settimeout"><code>setTimeout()</code></a>을 사용하여 명명된 함수를 재귀적으로 호출하는 것이 좋습니다. 예를 들어 <code>setInterval()</code>을 사용하여 5초마다 원격 서버를 폴링하는 경우 네트워크 대기 시간, 응답하지 않는 서버 및 기타 여러 문제로 인해 요청이 할당된 시간 내에 완료되지 않을 수 있습니다. 따라서 반드시 순서대로 반환되지 않는 대기 중인 XHR 요청이 있을 수 있습니다. </p> <p>이러한 경우 재귀적인 <code>setTimeout()</code> 패턴이 선호됩니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="KndY/lDhS6/bhungCwAD0Rum0HUE+it8cESym4amJdU=" data-language="js"><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token function">loop</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+   <span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+      <span class="token comment">// 로직을 넣어주세요</span>
+
+      <span class="token function">loop</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span> delay<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div> <p> 위 스니펫에서 명명된 함수 <code>loop()</code>가 선언되고 즉시 실행됩니다. <code>loop()</code>는 로직이 실행된 후 <code>setTimeout()</code> 내에서 재귀적으로 호출됩니다. 이 패턴은 고정 간격에서의 실행을 보장하지 않지만 이전 간격이 재귀하기 전에 완료되었음을 보장합니다. </p>
+</div>
+<h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://html.spec.whatwg.org/multipage/timers-and-user-prompts.html#dom-setinterval-dev">HTML Standard <br><small># dom-setinterval-dev</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="https://github.com/zloirock/core-js#settimeout-and-setinterval" target="_blank"><code>core-js</code>의 콜백에 인수를 전달할 수 있는 <code>setInterval</code>의 Polyfill</a></li> <li><a href="settimeout"><code>setTimeout</code></a></li> <li><a href="cleartimeout"><code>clearTimeout</code></a></li> <li><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/clearInterval"><code>clearInterval</code> <small>(en-US)</small></a></li> <li><a href="window/requestanimationframe"><code>window.requestAnimationFrame</code></a></li> </ul></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/setInterval" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/setInterval</a>
+  </p>
+</div>

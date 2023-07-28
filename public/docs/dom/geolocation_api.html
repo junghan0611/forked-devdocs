@@ -1,0 +1,30 @@
+<header><h1>Geolocation API</h1></header><div class="section-content">
+<div class="notecard secure" id="sect1"><p><strong>Secure context:</strong> This feature is available only in <a href="https://developer.mozilla.org/ko/docs/Web/Security/Secure_Contexts">secure contexts</a> (HTTPS), in some or all <a href="#browser_compatibility">supporting browsers</a>.</p></div> <p><strong>Geolocation API</strong>는 사용자의 동의 하에 웹 애플리케이션에서 위치 정보에 접근할 수 있는 API입니다. 개인정보 보호를 위해, 브라우저는 위치 정보를 제공하기 전에 사용자에게 위치 정보 권한에 대한 확인을 받습니다.</p> <p><code>Geolocation</code> 객체를 사용하려는 WebExtension은 매니페스트에 <code>"geolocation"</code> 권한을 추가해야 합니다. 사용자의 운영 체제는 WebExtension이 처음으로 위치 정보를 요청하는 순간 사용자에게 정보 제공 여부를 물어봅니다.</p>
+</div>
+<h2 id="개념과_사용법">개념과 사용법</h2>
+<div class="section-content">
+<p>사용자의 위치를 지도에 표시하거나 위치 기반 개인화 정보를 제공하는 등, 웹 앱에서 위치 정보를 가져와야 하는 이유는 다양합니다.</p> <p>Geolocation API는 <a href="navigator/geolocation"><code>navigator.geolocation</code></a>을 통해 접근할 수 있습니다. 이때, 브라우저는 사용자에게 위치 정보 접근 권한을 요청하게 되고, 사용자가 동의하는 경우 현재 장치에서 사용 가능한 최선의 방법(GPS 등)을 통해 위치 정보를 가져옵니다.</p> <p>개발자는 이 위치 정보를 몇 가지 방법으로 가져올 수 있습니다.</p> <ul> <li>
+<a href="geolocation/getcurrentposition"><code>Geolocation.getCurrentPosition()</code></a>: 장치의 현재 위치를 가져옵니다.</li> <li>
+<a href="geolocation/watchposition"><code>Geolocation.watchPosition()</code></a>: 장치의 위치가 바뀔 때마다, 자동으로 새로운 위치를 사용해 호출할 처리기 함수를 등록합니다.</li> </ul> <p>두 메서드 모두 최대 세 개의 매개변수를 받습니다.</p> <ul> <li>필수로 제공하는 성공 콜백: 위치 정보를 성공적으로 가져온 경우, 위치 데이터를 담은 <a href="geolocationposition"><code>GeolocationPosition</code></a> 객체를 유일한 매개변수로 하여 콜백을 호출합니다.</li> <li>선택적으로 제공하는 실패 콜백: 위치 정보를 가져오지 못한 경우, 실패 원인을 담은 <a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/GeolocationPositionError"><code>GeolocationPositionError</code> <small>(en-US)</small></a> 객체를 유일한 매개변수로 하여 콜백을 호출합니다.</li> <li>선택적으로 제공하는 객체: 위치 정보 회수에 사용할 옵션을 지정합니다.</li> </ul> <p><code>Geolocation</code> 사용법에 대한 추가 정보는 <a href="geolocation_api/using_the_geolocation_api">Geolocation API 사용하기</a> 문서를 참고하세요.</p>
+</div>
+<h2 id="인터페이스">인터페이스</h2>
+<div class="section-content"><dl> <dt id="geolocation"><a href="geolocation"><code>Geolocation</code></a></dt> <dd> <p>Geolocation API의 주요 클래스로서 사용자의 현재 위치를 가져오고, 위치 변경을 감지하고, 이전에 등록했던 감지기를 제거하는 메서드를 담고 있습니다.</p> </dd> <dt id="geolocationposition"><a href="geolocationposition"><code>GeolocationPosition</code></a></dt> <dd> <p>사용자의 위치를 나타냅니다. <code>GeolocationPosition</code> 인스턴스는 <a href="geolocation"><code>Geolocation</code></a> 객체 메서드의 성공 콜백에 제공되며, 타임스탬프와 함께 <a href="geolocationcoordinates"><code>GeolocationCoordinates</code></a> 객체 인스턴스를 포함합니다.</p> </dd> <dt id="geolocationcoordinates"><a href="geolocationcoordinates"><code>GeolocationCoordinates</code></a></dt> <dd> <p>사용자 위치의 좌표를 나타냅니다. <code>GeolocationCoordinates</code> 인스턴스는 위도, 경도 외에도 기타 중요한 관련 정보를 포함합니다.</p> </dd> <dt id="geolocationpositionerror_en-us"><a class="only-in-en-us" href="https://developer.mozilla.org/en-US/docs/Web/API/GeolocationPositionError"><code>GeolocationPositionError</code> <small>(en-US)</small></a></dt> <dd> <p><code>GeolocationPositionError</code>는 <a href="geolocation"><code>Geolocation</code></a> 객체 메서드의 오류 콜백에 제공되며, 오류 코드와 오류 메시지를 담고 있습니다.</p> </dd> <dt id="navigator.geolocation"><a href="navigator/geolocation"><code>Navigator.geolocation</code></a></dt> <dd> <p>API 진입점입니다. Geolocation API의 모든 기능을 제공하는 <a href="geolocation"><code>Geolocation</code></a> 객체 인스턴스를 반환합니다.</p> </dd> </dl></div>
+<h2 id="예제">예제</h2>
+<div class="section-content"><p><a href="geolocation_api/using_the_geolocation_api#%EC%98%88%EC%A0%9C">Geolocation API 사용하기</a>에서 예제를 확인하세요.</p></div>
+<h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://w3c.github.io/geolocation-api/#geolocation_interface">Geolocation API <br><small># geolocation_interface</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<h3 id="가용성">가용성</h3>
+<div class="section-content"><p>Wi-Fi 기반의 위치 정보는 보통 Google이 제공하므로, 기본 Geolocation API로는 중국에서 사용하지 못할 수도 있습니다. 대신 <a href="https://lbsyun.baidu.com/index.php?title=jspopular/guide/geolocation" target="_blank">Baidu</a>, <a href="https://lbs.amap.com/api/javascript-api/guide/services/geolocation#geolocation" target="_blank">Autonavi</a>, <a href="https://lbs.qq.com/tool/component-geolocation.html" target="_blank">Tencent</a> 등 지역 서드파티 제공자가 지원하는 라이브러리를 사용할 수 있습니다. 이 서비스들은 Wi-Fi 대신 IP 주소와 지역 앱을 사용해 개선된 위치 정보를 제공합니다.</p></div>
+<h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="geolocation_api/using_the_geolocation_api">Geolocation API 사용하기</a></li> <li><a href="https://www.w3.org/TR/geolocation-API/" target="_blank">w3.org의 Geolocation API</a></li> <li>
+<a href="https://hacks.mozilla.org/2013/10/who-moved-my-geolocation/" target="_blank">Who moved my geolocation?</a> (Hacks 블로그)</li> </ul></div><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/API/Geolocation_API" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/API/Geolocation_API</a>
+  </p>
+</div>

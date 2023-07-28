@@ -1,0 +1,26 @@
+<header><h1>RangeError: repeat count must be non-negative</h1></header><section aria-labelledby="메시지"><h2 id="메시지">메시지</h2>
+<div class="section-content"><pre class="notranslate">    RangeError: repeat count must be non-negative (Firefox)
+    RangeError: Invalid count value (Chrome)
+</pre></div></section><section aria-labelledby="에러_형식"><h2 id="에러_형식">에러 형식</h2>
+<div class="section-content"><a href="../global_objects/rangeerror"><code>RangeError</code></a></div></section><section aria-labelledby="무엇이_잘못되었을까"><h2 id="무엇이_잘못되었을까">무엇이 잘못되었을까?</h2>
+<div class="section-content"><p><a href="../global_objects/string/repeat"><code>String.prototype.repeat()</code></a> 메소드가 사용되었습니다. 이 메소드는 문자열이 반복되는 수를 예측하는 카운트 파라메터를 가지고 있었습니다. 이 파라메터는 0보다 크고, 양의 <a href="../global_objects/infinity"><code>Infinity</code></a> 보다는 작으며, 음수는 될수 없습니다. 이 범위는 이렇게 표현 될 수 있습니다. : [0, +∞)</p></div></section><section aria-labelledby="예"><h2 id="예">예</h2>
+</section><section aria-labelledby="허용되지_않는_경우"><h3 id="허용되지_않는_경우">허용되지 않는 경우</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="KstTbn8i0VUzEH2YbEQKRgBuHnk6VbeHwkIAhYp4wlY=" data-language="js"><span class="token string">'abc'</span><span class="token punctuation">.</span><span class="token function">repeat</span><span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// RangeError</span>
+</pre>
+</div></div></section><section aria-labelledby="허용되는_경우"><h3 id="허용되는_경우">허용되는 경우</h3>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="sESRBa+BvoFUBQfshnbK08kczE/bb9yXjICfK68VwF0=" data-language="js"><span class="token string">'abc'</span><span class="token punctuation">.</span><span class="token function">repeat</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token comment">// ''</span>
+<span class="token string">'abc'</span><span class="token punctuation">.</span><span class="token function">repeat</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token comment">// 'abc'</span>
+<span class="token string">'abc'</span><span class="token punctuation">.</span><span class="token function">repeat</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token comment">// 'abcabc'</span>
+<span class="token string">'abc'</span><span class="token punctuation">.</span><span class="token function">repeat</span><span class="token punctuation">(</span><span class="token number">3.5</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// 'abcabcabc' (수는 정수로 변환될 것입니다.)</span>
+</pre>
+</div></div></section><section aria-labelledby="참조"><h2 id="참조">참조</h2>
+<div class="section-content"><ul> <li><a href="../global_objects/string/repeat"><code>String.prototype.repeat()</code></a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Errors/Negative_repetition_count" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Errors/Negative_repetition_count</a>
+  </p>
+</div>

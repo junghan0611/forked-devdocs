@@ -1,0 +1,103 @@
+<header><h1>return</h1></header><div class="section-content"><p><code>return</code>은 함수 실행을 종료하고, 주어진 값을 함수 호출 지점으로 반환합니다.</p></div>
+<section aria-labelledby="시도해보기"><h2 id="시도해보기">시도해보기</h2>
+<div class="section-content"><iframe class="interactive is-js-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/js/statement-return.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe></div></section><section aria-labelledby="구문"><h2 id="구문">구문</h2>
+<div class="section-content">
+<div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="HwoDUVWuG7dLrIn932ebrHrKOwrBNQHsWy5ZIhMOhEM=" data-language="js">    <span class="token keyword">return</span> <span class="token punctuation">[</span><span class="token punctuation">[</span>expression<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+</pre>
+</div> <dl> <dt id="expression"><code>expression</code></dt> <dd> <p>반환할 값으로 사용할 표현식. 생략할 경우 <a href="../global_objects/undefined"><code>undefined</code></a>를 대신 반환합니다.</p> </dd> </dl>
+</div></section><section aria-labelledby="설명"><h2 id="설명">설명</h2>
+<div class="section-content">
+<p>함수 본문에서 <code>return</code> 명령문에 도달하면 함수의 실행은 그 지점에서 중단됩니다. 값을 제공한 경우 함수를 호출한 곳에 그 값을 반환합니다. 예를 들어, 다음 함수는 숫자 매개변수 <code>x</code>의 제곱을 반환합니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="oONNQfdfYp/AQWW4pexI/JH/jTErtOanYmYWbEKRp88=" data-language="js"><span class="token keyword">function</span> <span class="token function">square</span><span class="token punctuation">(</span><span class="token parameter">x</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+   <span class="token keyword">return</span> x <span class="token operator">*</span> x<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">var</span> demo <span class="token operator">=</span> <span class="token function">square</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// demo는 9</span>
+</pre>
+</div> <p>값을 명시하지 않으면 대신 <code>undefined</code>를 반환합니다.</p> <p>다음 <code>return</code> 명령문 모두 함수 실행을 끊습니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="Z+3Fqe+dLwqCX7RkJOuScj1ySSYJIOoMpLvvm8N3RdU=" data-language="js"><span class="token keyword">return</span><span class="token punctuation">;</span>
+<span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+<span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+<span class="token keyword">return</span> x<span class="token punctuation">;</span>
+<span class="token keyword">return</span> x <span class="token operator">+</span> y <span class="token operator">/</span> <span class="token number">3</span><span class="token punctuation">;</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="자동_세미콜론_삽입"><h3 id="자동_세미콜론_삽입">자동 세미콜론 삽입</h3>
+<div class="section-content">
+<p><code>return</code> 명령문은 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Lexical_grammar#automatic_semicolon_insertion">자동 세미콜론 삽입(ASI)</a>의 영향을 받습니다. <code>return</code> 키워드와 표현식 사이에는 줄바꿈 문자가 올 수 없습니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="osZrQiwQYnCUmCAtd8d2qK3ukjHqtNJkSZWvQzfZO78=" data-language="js"><span class="token keyword">return</span>
+a <span class="token operator">+</span> b<span class="token punctuation">;</span>
+</pre>
+</div> <p>위 코드는 ASI로 인해 아래처럼 처리됩니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="mYLuZnpJkixZkuBP9jl+7Pe9Kk6zIvY4wFifIPqwuwo=" data-language="js"><span class="token keyword">return</span><span class="token punctuation">;</span>
+a <span class="token operator">+</span> b<span class="token punctuation">;</span>
+</pre>
+</div> <p>콘솔이 "unreachable code after return statement" 경고를 출력할 것입니다.</p> <p>문제를 해결하려면 괄호를 사용해 ASI를 방지해야 합니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="tYlQTlOAl6NK4R7KT59P0PiW7blw2GbpJD2brX4/aaE=" data-language="js"><span class="token keyword">return</span> <span class="token punctuation">(</span>
+  a <span class="token operator">+</span> b
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+</section><section aria-labelledby="함수_중단"><h3 id="함수_중단">함수 중단</h3>
+<div class="section-content">
+<p>함수는 <code>return</code>을 호출하는 지점에서 즉시 실행을 멈춥니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="+K2RaPGROVDR9gMZmMx8y3defRLD2nh+JzViZtt+/18=" data-language="js"><span class="token keyword">function</span> <span class="token function">counter</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">var</span> count <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> <span class="token punctuation">;</span> count<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>  <span class="token comment">// 무한 반복</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>count <span class="token operator">+</span> <span class="token string">"A"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 5까지</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span>count <span class="token operator">===</span> <span class="token number">5</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>count <span class="token operator">+</span> <span class="token string">"B"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// 4까지</span>
+    <span class="token punctuation">}</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>count <span class="token operator">+</span> <span class="token string">"C"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// 절대 나타나지 않음</span>
+<span class="token punctuation">}</span>
+
+<span class="token function">counter</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// 출력:</span>
+<span class="token comment">// 1A</span>
+<span class="token comment">// 1B</span>
+<span class="token comment">// 2A</span>
+<span class="token comment">// 2B</span>
+<span class="token comment">// 3A</span>
+<span class="token comment">// 3B</span>
+<span class="token comment">// 4A</span>
+<span class="token comment">// 4B</span>
+<span class="token comment">// 5A</span>
+</pre>
+</div>
+</div></section><section aria-labelledby="함수_반환하기"><h3 id="함수_반환하기">함수 반환하기</h3>
+<div class="section-content">
+<p><a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Closures">클로저</a>에 대해서도 더 알아보세요.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="BHJtAcx88ziJH0tL4B3+WgNETQW1qIIKEL2k/lSDlq4=" data-language="js"><span class="token keyword">function</span> <span class="token function">magic</span><span class="token punctuation">(</span><span class="token parameter">x</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token keyword">function</span> <span class="token function">calc</span><span class="token punctuation">(</span><span class="token parameter">x</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> x <span class="token operator">*</span> <span class="token number">42</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">var</span> answer <span class="token operator">=</span> <span class="token function">magic</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">answer</span><span class="token punctuation">(</span><span class="token number">1337</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 56154</span>
+</pre>
+</div>
+</div></section><h2 id="명세서">명세서</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://tc39.es/ecma262/multipage/ecmascript-language-statements-and-declarations.html#sec-return-statement">ECMAScript Language Specification <br><small># sec-return-statement</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="../functions">함수</a></li> <li><a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Closures">클로저</a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Statements/return" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Statements/return</a>
+  </p>
+</div>

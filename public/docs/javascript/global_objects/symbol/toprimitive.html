@@ -1,0 +1,52 @@
+<header><h1>Symbol.toPrimitive</h1></header><div class="section-content"><p> <code>Symbol.toPrimitive</code> 정적 데이터 속성은 <a href="../symbol#%EC%9E%98_%EC%95%8C%EB%A0%A4%EC%A7%84_%EC%8B%AC%EB%B3%BC">잘 알려진 심볼</a> <code>@@toPrimitive</code>를 나타냅니다. 모든 <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Data_structures#type_coercion">타입 강제 변환</a> 알고리즘은 객체에서 이 심볼을 찾아서 선호하는 유형을 허용하고 객체의 원시 표현을 반환하는 메서드를 찾은 다음 객체의 <code>valueOf()</code> 및 <code>toString()</code> 메서드를 다시 사용합니다. </p></div>
+<section aria-labelledby="시도해보기"><h2 id="시도해보기">시도해보기</h2>
+<div class="section-content"><iframe class="interactive is-js-height" height="200" src="https://interactive-examples.mdn.mozilla.net/pages/js/symbol-toprimitive.html" title="MDN Web Docs Interactive Example" loading="lazy"></iframe></div></section><section aria-labelledby="값"><h2 id="값">값</h2>
+<div class="section-content">
+<p>잘 알려진 심볼 <code>@@toPrimitive</code>.</p>
+<figure class="table-container"><div class="_table"><table class="standard-table"> <thead> <tr> <th class="header" colspan="2">Property attributes of <code>Symbol.toPrimitive</code>
+</th> </tr> </thead> <tbody> <tr> <td>Writable</td> <td>불가능</td> </tr> <tr> <td>Enumerable</td> <td>불가능</td> </tr> <tr> <td>Configurable</td> <td>불가능</td> </tr> </tbody> </table></div></figure>
+</div></section><section aria-labelledby="설명"><h2 id="설명">설명</h2>
+<div class="section-content">
+<p> 함수 값으로 사용되는 <code>Symbol.toPrimitive</code> 속성의 도움으로 객체를 원시 값으로 변환할 수 있습니다. 함수는 결과로 나온 원시 값의 선호 유형을 지정하는 문자열 인수 <code>hint</code>와 함께 호출됩니다. <code>hint</code> 인수는 <code>"number"</code> <code>"string"</code>, <code>"default"</code>중 하나일 수 있습니다. </p> <p><code>"number"</code> 힌트는 <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Data_structures#numeric_coercion">숫자 강제</a> 알고리즘에서 사용됩니다. <code>"string"</code> 힌트는 <a href="../string#string_coercion">문자열 강제</a> 알고리즘에서 사용됩니다. <code>"default"</code> 힌트는 <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Data_structures#primitive_coercion">원시형 강제</a> 알고리즘에서 사용됩니다. <code>hint</code>는 <a href="@@toprimitive"><code>Symbol.prototype[@@toPrimitive]()</code></a>와 같이 선호 사항정도로만 작용하며, 구현은 이를 무시할 수 있습니다. 언어에서는 <code>hint</code>와 결과 유형 간의 정렬을 강제하지 않지만, <code>[@@toPrimitive]()</code>는 원시형을 반환해야 하며, 그렇지 않으면 <a href="../typeerror"><code>TypeError</code></a>가 발생합니다.</p> <p> <code>@@toPrimitive</code> 속성이 없는 객체는 <code>valueOf()</code> 및 <code>toString()</code> 메서드를 다른 순서로 호출하여 원시형으로 변환되며, 이에 대한 자세한 설명은 <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Data_structures#type_coercion">타입 강제</a> 섹션에서 확인할 수 있습니다. <code>@@toPrimitive</code>를 사용하면 윈시형 변환 절차를 완전히 제어할 수 있습니다. 예를 들어, <a href="../date/@@toprimitive"><code>Date.prototype[@@toPrimitive]</code></a>는 <code>"default"</code>를 <code>"string"</code>으로 취급하여 <code>valueOf()</code> 대신 <code>toString()</code>을 호출합니다. <a href="@@toprimitive"><code>Symbol.prototype[@@toPrimitive]</code></a>는 힌트를 무시하고 항상 심볼을 반환하므로 문자열 컨텍스트에서도 <a href="tostring"><code>Symbol.prototype.toString()</code></a>이 호출되지 않으며, <code>Symbol</code> 객체는 항상 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/String" class="only-in-en-us"><code>String()</code> <small>(en-US)</small></a>을 통해 명시적으로 문자열로 변환해야 합니다. </p>
+</div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+</section><section aria-labelledby="객체에서_변환된_원시값_수정하기"><h3 id="객체에서_변환된_원시값_수정하기">객체에서 변환된 원시값 수정하기</h3>
+<div class="section-content">
+<p>다음 예제에서는 <code>Symbol.toPrimitive</code> 속성이 객체에서 변환된 원시값을 수정하는 방법을 설명합니다.</p> <div class="code-example">
+<p class="example-header"><span class="language-name">js</span></p>
+<pre data-signature="NSHo5oBaDRT35/Nh2y6RrriZu5LH867qG1qF6e4WRHw=" data-language="js"><span class="token comment">// Symbol.toPrimitive 속성이 없는 객체.</span>
+<span class="token keyword">const</span> obj1 <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token operator">+</span>obj1<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// NaN</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>obj1<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// "[object Object]"</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>obj1 <span class="token operator">+</span> <span class="token string">""</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// "[object Object]"</span>
+
+<span class="token comment">// Symbol.toPrimitive 속성이 있는 객체.</span>
+<span class="token keyword">const</span> obj2 <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token punctuation">[</span>Symbol<span class="token punctuation">.</span>toPrimitive<span class="token punctuation">]</span><span class="token punctuation">(</span><span class="token parameter">hint</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>hint <span class="token operator">===</span> <span class="token string">"number"</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">return</span> <span class="token number">10</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>hint <span class="token operator">===</span> <span class="token string">"string"</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">return</span> <span class="token string">"hello"</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token operator">+</span>obj2<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 10        — hint is "number"</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>obj2<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// "hello"   — hint is "string"</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>obj2 <span class="token operator">+</span> <span class="token string">""</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// "true"    — hint is "default"</span>
+</pre>
+</div>
+</div></section><h2 id="명세서">명세서</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://tc39.es/ecma262/multipage/fundamental-objects.html#sec-symbol.toprimitive">ECMAScript Language Specification <br><small># sec-symbol.toprimitive</small></a></td></tr></tbody>
+</table></div>
+<h2 id="브라우저_호환성">브라우저 호환성</h2>
+<p>BCD tables only load in the browser<noscript> with JavaScript enabled. Enable JavaScript to view data.</noscript></p>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="https://github.com/zloirock/core-js#ecmascript-symbol" target="_blank">Polyfill of <code>Symbol.toPrimitive</code> in <code>core-js</code></a></li> <li><a href="../date/@@toprimitive"><code>Date.prototype[@@toPrimitive]()</code></a></li> <li><a href="@@toprimitive"><code>Symbol.prototype[@@toPrimitive]()</code></a></li> <li><a href="../object/tostring"><code>Object.prototype.toString()</code></a></li> <li><a href="../object/valueof"><code>Object.prototype.valueOf()</code></a></li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Symbol/toPrimitive" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Symbol/toPrimitive</a>
+  </p>
+</div>

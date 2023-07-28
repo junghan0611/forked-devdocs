@@ -1,0 +1,33 @@
+<h1>426 Upgrade Required</h1>
+<header><h1>426 Upgrade Required</h1></header><div class="section-content">
+<p> HTTP <code>426 Upgrade Required</code> 클라이언트 에러 응답 코드는 서버가 현재 프로토콜을 사용하여 요청을 처리하는 것은 거부하지만 클라이언트가 다른 프로토콜로 업그레이드한 후에는 요청을 수행할 의향이 있음을 나타냅니다. </p> <p>서버는 필요한 하나 이상의 프로토콜을 나타내기 위해 이 응답에 <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Upgrade" class="only-in-en-us"><code>Upgrade</code> <small>(en-US)</small></a> 헤더를 같이 보냅니다.</p>
+</div>
+<section aria-labelledby="상태"><h2 id="상태">상태</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">http</span></p>
+<pre data-signature="niJI7Xd26bqhPKn5vf4h6/BYR4KIItAPg087QdEmAI0=" data-language="http">426 Upgrade Required
+</pre>
+</div></div></section><section aria-labelledby="예제"><h2 id="예제">예제</h2>
+<div class="section-content"><div class="code-example">
+<p class="example-header"><span class="language-name">http</span></p>
+<pre data-signature="5hZcMyDUKVVlzz96HfcGA+WZDLMQtrW2uXlkUGpyi+0=" data-language="http"><span class="token response-status"><span class="token http-version property">HTTP/1.1</span> <span class="token status-code number">426</span> <span class="token reason-phrase string">Upgrade Required</span></span>
+<span class="token header"><span class="token header-name keyword">Upgrade</span><span class="token punctuation">:</span> <span class="token header-value">HTTP/2.0</span></span>
+<span class="token header"><span class="token header-name keyword">Connection</span><span class="token punctuation">:</span> <span class="token header-value">Upgrade</span></span>
+<span class="token header"><span class="token header-name keyword">Content-Length</span><span class="token punctuation">:</span> <span class="token header-value">53</span></span>
+<span class="token header"><span class="token header-name keyword">Content-Type</span><span class="token punctuation">:</span> <span class="token header-value">text/plain</span></span>
+This service requires use of the HTTP/2.0 protocol
+</pre>
+</div></div></section><h2 id="명세">명세</h2>
+<div class="_table"><table class="standard-table">
+<thead><tr><th scope="col">Specification</th></tr></thead>
+<tbody><tr><td><a href="https://httpwg.org/specs/rfc9110.html#status.426">Unknown specification <br><small># status.426</small></a></td></tr></tbody>
+</table></div>
+<section aria-labelledby="같이_보기"><h2 id="같이_보기">같이 보기</h2>
+<div class="section-content"><ul> <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Upgrade" class="only-in-en-us"><code>Upgrade</code> <small>(en-US)</small></a></li> <li>
+<a href="101"><code>101</code></a> <code>Switching Protocols</code>
+</li> </ul></div></section><div class="_attribution">
+  <p class="_attribution-p">
+    &copy; 2005&ndash;2023 MDN contributors.<br>Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.<br>
+    <a href="https://developer.mozilla.org/ko/docs/Web/HTTP/Status/426" class="_attribution-link">https://developer.mozilla.org/ko/docs/Web/HTTP/Status/426</a>
+  </p>
+</div>
